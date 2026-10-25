@@ -326,9 +326,20 @@ internal static class P1Runner
 				num3++;
 			}
 			perf.Mark("生成页签");
+
 			// ★ 记录本回合的预期（对账用）—— 必须在第二遍算完之后
 			try { RecordExpectation(reconcileSnap, reconcileMyHp, reconcileHand, reconcileFp); }
 			catch (Exception e) { Plugin.Log?.LogWarning($"[FHSolver] 记录预期失败: {e.Message}"); }
+
+			// ★ 战报落盘（每回合一次）
+			//   实际战报来自游戏结算（DamageVerifyPatch），预测战报来自 P1Planner，
+			//   两者在同一个 TSV 里，回合号分段 → 事后可逐条比对。
+			try
+			{
+				CombatReport.CurrentRound = reconcileSnap != null ? reconcileSnap.RoundNumber : 1;
+				CombatReport.Flush();
+			}
+			catch (Exception e) { Plugin.Log?.LogWarning($"[FHSolver] 战报落盘失败: {e.Message}"); }
 
 			Flush(list.Count, num3, list7, order, list5, list4, goals, shadowCount, list3, dictionary5, reconcile);
 
@@ -1069,12 +1080,38 @@ internal static class P1Runner
 				if (m != null && m.EffectiveHealth > 0) remainingHp += m.EffectiveHealth;
 			}
 		}
+
 		string effNote = "";
 		if (remainingHp > 0 && p.EffectiveDamage > 0)
 		{
 			int est = (int)Math.Ceiling(remainingHp / (double)p.EffectiveDamage);
 			effNote = $"，★ 清场预计还要 {est} 回合（剩余敌人 {remainingHp} 血）";
 		}
+
+		// ★ 记录**预测**侧战报（与游戏结算的实际战报配对）
+		//   玩家若照推荐打，两者应一一对应；对不上 = 模型误差的精确位置。
+		try
+		{
+			if (p.Attacks != null)
+			{
+				foreach (AttackChoice a in p.Attacks)
+				{
+					if (a == null) continue;
+					CombatReport.Add(new CombatReport.Row
+					{
+						Kind = "预测",
+						Attacker = ctx != null ? ctx.ActorName : "?",
+						Target = a.TargetName ?? "",
+						BaseStrength = a.BaseStrength,
+						Mods = a.Mods != null ? string.Join(" ", a.Mods) : "",
+						Damage = a.Damage,
+						Note = (a.Kills ? "击杀" : "")
+							  + (string.IsNullOrEmpty(a.Expr) ? "" : " " + a.Expr),
+					});
+				}
+			}
+		}
+		catch { /* 战报失败不影响游戏 */ }
 
 		list.Add($"预期：造成 {p.TotalDamage} 点伤害（有效 {p.EffectiveDamage}）" + ((p.KillCount > 0) ? $"，击杀 {p.KillCount} 个" : "") + $"，得经验 {p.TotalXP}" + ((p.LostCost > 0) ? $"，⚠ 会永久失去 {p.LostCost} 个半边" : "") + ((p.GoalValue > 0) ? $"，★ 顺手捡到（战役目标 +{p.GoalValue}）" : "") + ((p.SelfHazardDamage > 0) ? $"，⚠ 移动会吃 {p.SelfHazardDamage} 点危险地形伤害（已计入评分）" : "") + ((p.IncomingDamage > 0) ? $"，⚠ **这回合会挨打 {p.IncomingDamage} 点**（先攻比你低的敌人能打到你，已计入评分）" : "") + ((p.IncomingConditions != null && p.IncomingConditions.Count > 0) ? ("，⚠ 敌人会给你上 **" + string.Join("、", p.IncomingConditions) + "**（缴械=不能攻击 / 静足=不能移动）") : "") + (p.WouldDie ? "，☠ **这回合打完你会死**" : "") + ((p.ShadowGain > 0) ? $"，★ 造出 {p.ShadowGain} 个阴影（抬高后续「深渊力量」，位置见下方说明）" : "") + effNote);
 		list.Add($"评分 {p.Score:F1}");

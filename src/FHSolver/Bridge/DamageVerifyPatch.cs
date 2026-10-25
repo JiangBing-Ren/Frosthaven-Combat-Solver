@@ -32,6 +32,10 @@ namespace FHSolver.Bridge
         private static List<ModifierCardSnapshot> _deckBefore;
         private static int _abilityStrength;
         private static bool _armed;
+        private static CAbilityAttack attackAbilityRef;
+        private static CActor _actor;
+
+
 
         public static int Hit;
         public static int Miss;
@@ -79,6 +83,10 @@ namespace FHSolver.Bridge
                 _attackStrength = attackStrength;
                 _adv = ToAdv(advantageStatus);
                 _abilityStrength = attackAbility != null ? attackAbility.Strength : -1;
+                attackAbilityRef = attackAbility;
+                _actor = actor;
+
+
 
                 _deckBefore = SnapshotDeck(actor);
                 _armed = _deckBefore != null;
@@ -138,8 +146,42 @@ namespace FHSolver.Bridge
                     Streak = 0;
                 }
 
+                // ★ 记录到原版战报（实际侧）：攻击者/基础攻击/修正牌/护盾前伤害/目标
+                try
+                {
+                    var rep = new CombatReport.Row
+                    {
+                        Kind = "实际",
+                        Attacker = _actor != null ? _actor.ActorLocKey() : "?",
+
+                        BaseStrength = _attackStrength,
+                        Mods = string.Join(" ", actualNames),
+                        Damage = __result,
+                        Note = "护盾前",
+                    };
+                    if (attackAbilityRef != null)
+                    {
+                        var sums = attackAbilityRef.TotalTargetSummaries;
+                        if (sums != null && sums.Count > 0)
+                        {
+                            var names = new List<string>();
+                            foreach (var ts in sums)
+                            {
+                                if (ts == null || ts.Actor == null) continue;
+                                names.Add(ts.Actor.ActorLocKey()
+                                    + (ts.Shield > 0 ? $"(盾{ts.Shield})" : "")
+                                    + (ts.Pierce > 0 ? $"(穿{ts.Pierce})" : ""));
+                            }
+                            if (names.Count > 0) rep.Target = string.Join("+", names);
+                        }
+                    }
+                    CombatReport.Add(rep);
+                }
+                catch { /* 战报失败不影响游戏 */ }
+
                 // 每次都打，便于事后逐条核对；前面带 OK / XX
                 Plugin.Log?.LogInfo($"[FHSolver] 对拍[{(ok ? "OK" : "XX")}]"
+
                     + $" 基础攻(卡)={_abilityStrength} 实际基础={_attackStrength} 差={_attackStrength - _abilityStrength}"
                     + $" 优劣势={_adv}"
                     + $" 预测牌=[{string.Join(" ", predNames)}]"
