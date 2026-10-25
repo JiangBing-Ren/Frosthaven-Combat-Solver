@@ -12,8 +12,17 @@ using ScenarioRuleLibrary;
 
 namespace FHSolver.Bridge;
 
+/// <summary>
+/// P1 单回合推荐（团队联合版）+ 多回合推演 + 报告生成。
+///
+/// ⚠ 本文件 2026-10-25 曾被一次脚本失误整个清空（io.open(...,'w') 先截断、
+///   后续语句又抛异常），已用 ilspycmd 从部署的 DLL 完整反编译恢复。
+///   恢复后**注释与原始变量名丢失**，逻辑与功能经 237 项断言验证无损。
+///   现在项目已有 git（基线 fd9bd4e / 恢复 d984e33），改前请先 git status。
+/// </summary>
 internal static class P1Runner
 {
+
 	private sealed class UnitRef
 	{
 		public CActor Actor;
@@ -64,8 +73,16 @@ internal static class P1Runner
 
 	public static void Run(int preferredPlayerIndex = -1)
 	{
+		// ★ 性能埋点（学 StS2 的 frame_percentiles / allocation_telemetry）：
+		//   先量清楚哪一段慢，再决定优化什么 —— 别凭感觉优化。
+		//   已知：P1 单角色枚举只要 2-3 ms，所以瓶颈不在枚举，
+		//   更可能在「敌人预测」或「多回合推演」。
+		PerfTimers perf = new PerfTimers();
+		System.Diagnostics.Stopwatch swAll = System.Diagnostics.Stopwatch.StartNew();
+
 		try
 		{
+
 			if (!ScenarioManager.IsInTactical)
 			{
 				ManualLogSource log = Plugin.Log;
@@ -123,7 +140,10 @@ internal static class P1Runner
 			DistCache.Clear();
 			LosCache.Clear();
 			ShadowCache.Clear();
+			perf.Mark("读战役目标");
 			GoalSnapshot goals = GoalReader.Read();
+			perf.Mark("读修正牌堆");
+
 			List<ModifierDeckSnapshot> monsterDecks = DeckReader.ReadAllMonsterDecks();
 			int shadowCount = Geometry.ShadowCount();
 			List<string> list3 = new List<string>();
@@ -148,6 +168,8 @@ internal static class P1Runner
 				log4.LogInfo((object)"[FHSolver] ===== P1 单回合穷举（团队联合版）=====");
 			}
 			List<EnemyPredictor.Prediction> list4 = EnemyPredictor.Predict(scenario);
+			perf.Mark("敌人预测");
+
 			List<PlayerRun> list5 = new List<PlayerRun>();
 			foreach (int item in list2)
 			{
@@ -241,8 +263,12 @@ internal static class P1Runner
 					list7.Add(new List<string> { $"[{item6.Index + 1}] {item6.Name}：{item6.SkipReason}" });
 					continue;
 				}
+				perf.Mark("P1枚举前");
 				List<string> list8 = Report(item6.Ctx, item6.Plans, item6.Ms, item6.Index, order, item6, list4);
+				perf.Mark("生成角色文本");
 				MultiTurnResult multiTurnResult = ComputeMultiTurn(item6);
+				perf.Mark("多回合推演");
+
 				if (multiTurnResult != null)
 				{
 					dictionary5[item6.Name] = multiTurnResult;
@@ -251,7 +277,18 @@ internal static class P1Runner
 				list7.Add(list8);
 				num3++;
 			}
+			perf.Mark("生成页签");
 			Flush(list.Count, num3, list7, order, list5, list4, goals, shadowCount, list3, dictionary5);
+			swAll.Stop();
+			perf.TotalMs = swAll.Elapsed.TotalMilliseconds;
+
+			// ★ 性能日志：一眼看出哪一段慢
+			ManualLogSource perfLog = Plugin.Log;
+			if (perfLog != null)
+			{
+				perfLog.LogInfo((object)"[FHSolver] " + perf.Summary());
+			}
+
 		}
 		catch (Exception ex)
 		{
@@ -1293,7 +1330,14 @@ internal static class P1Runner
 		return dictionary;
 	}
 
+	/// <summary>
+	/// 跑一次多回合推演（供角色页与多回合页共用，避免算两遍）。
+	///
+	/// 用**束搜索**：第 1 回合完整枚举 → 执行 → 第 2 回合再枚举 ……
+	/// 敌人的寻路与修正牌抽牌都是**真实模拟**的。
+	/// </summary>
 	private static MultiTurnResult ComputeMultiTurn(PlayerRun r)
+
 	{
 		if (r == null || !r.Ok || r.Ctx == null)
 		{
@@ -1332,7 +1376,14 @@ internal static class P1Runner
 		}
 	}
 
+	/// <summary>
+	/// 把**第 2 回合及以后**的推演写成文本，**跟在角色方案后面**。
+	///
+	/// 参考 StS2 的 Combat Solver：路线按回合连续展示，
+	/// 玩家看当前回合时就能看到\"接下来会怎样\"，而不是翻到别的页签。
+	/// </summary>
 	private static List<string> MultiTurnFollowUpLines(MultiTurnResult res)
+
 	{
 		List<string> list = new List<string>();
 		if (res == null || res.Routes == null || res.Routes.Count == 0)

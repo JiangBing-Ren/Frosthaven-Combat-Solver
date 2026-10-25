@@ -46,6 +46,7 @@ namespace FHSolver.Bridge
         }
 
         /// <summary>拼成一行可读摘要（按耗时降序）。</summary>
+
         public string Summary()
         {
             var sb = new StringBuilder();

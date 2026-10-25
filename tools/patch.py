@@ -43,7 +43,26 @@ def main():
         return 1
 
     s = s.replace(old, new)
-    io.open(path, 'w', encoding='utf-8').write(s)
+
+    # ★ 原子写：先写临时文件再替换。
+    #   之前用 io.open(path,'w') 直接写 —— 一旦后面任何一步抛异常，
+    #   **文件已经被截断**（2026-10-25 就这么把 P1Runner.cs 整个清空了）。
+    #   原子替换保证：要么整个改好，要么原封不动。
+    import os
+    import tempfile
+    d = os.path.dirname(os.path.abspath(path)) or '.'
+    fd, tmp = tempfile.mkstemp(dir=d, prefix='.patch_', suffix='.tmp')
+    try:
+        with os.fdopen(fd, 'w', encoding='utf-8') as f:
+            f.write(s)
+        os.replace(tmp, path)     # 原子替换
+    except Exception:
+        try:
+            os.unlink(tmp)
+        except OSError:
+            pass
+        raise
+
     print('  [OK] %s' % old[:60].replace('\n', '\\n'))
     return 0
 
