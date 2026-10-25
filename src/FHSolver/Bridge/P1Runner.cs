@@ -453,27 +453,6 @@ internal static class P1Runner
 		p1Context2.ThreatByInitiative = BuildThreatByInitiative(enemyPreds, MyInitiativeOptions(p1Context2, myInitiative));
 		p1Context2.W.DiversityPerBucket = Plugin.StaticDiversityPerBucket;
 
-		// ★★ 先攻比我低的敌人**这回合会先移动** —— 目标评估必须用它们的**预测落点**，
-		//   否则会推荐"打一个已经不在这儿的怪"（用户实机：腐鼠侦察兵#2 先攻 53 会先走，
-		//   漂泊者先攻 65 却在 (1,7) 打它 → 打空气）。
-		//   注意只改**先动的**那些：后动的敌人这回合还没走，位置不变。
-		if (enemyPreds != null && myInitiative > 0 && p1Context2.Monsters != null)
-		{
-			var byGuid = new Dictionary<string, EnemyPredictor.Prediction>();
-			foreach (EnemyPredictor.Prediction pr in enemyPreds)
-			{
-				if (pr != null && !string.IsNullOrEmpty(pr.Guid)) byGuid[pr.Guid] = pr;
-			}
-			foreach (UnitSnapshot m in p1Context2.Monsters)
-			{
-				if (m == null || string.IsNullOrEmpty(m.Guid)) continue;
-				EnemyPredictor.Prediction pr;
-				if (!byGuid.TryGetValue(m.Guid, out pr)) continue;
-				if (pr.Initiative <= 0 || pr.Initiative >= myInitiative) continue;  // 它后动，位置不变
-				m.X = pr.ToX;
-				m.Y = pr.ToY;
-			}
-		}
 		try
 		{
 			UnitSnapshot unitSnapshot = StateReader.ReadUnit((CActor)(object)val, isPlayer: true);
@@ -528,6 +507,31 @@ internal static class P1Runner
 				else
 				{
 					p1Context2.Others.Add(unitSnapshot2);
+
+
+		// ★★ 先攻比我低的敌人**这回合会先移动** —— 目标评估必须用它们的**预测落点**，
+		//   否则会推荐"打一个已经不在这儿的怪"（用户实机：腐鼠侦察兵#2 先攻 53 会先走，
+		//   漂泊者先攻 65 却在 (1,7) 打它 → 打空气）。
+		//   注意只改**先动的**那些：后动的敌人这回合还没走，位置不变。
+		//   漂泊者先攻 65 却在 (1,7) 打它 → 打空气）。
+		//   注意只改**先动的**那些：后动的敌人这回合还没走，位置不变。
+		if (enemyPreds != null && myInitiative > 0 && p1Context2.Monsters != null)
+		{
+			var byGuid = new Dictionary<string, EnemyPredictor.Prediction>();
+			foreach (EnemyPredictor.Prediction pr in enemyPreds)
+			{
+				if (pr != null && !string.IsNullOrEmpty(pr.Guid)) byGuid[pr.Guid] = pr;
+			}
+			foreach (UnitSnapshot m in p1Context2.Monsters)
+			{
+				if (m == null || string.IsNullOrEmpty(m.Guid)) continue;
+				EnemyPredictor.Prediction pr;
+				if (!byGuid.TryGetValue(m.Guid, out pr)) continue;
+				if (pr.Initiative <= 0 || pr.Initiative >= myInitiative) continue;  // 它后动，位置不变
+				m.X = pr.ToX;
+				m.Y = pr.ToY;
+			}
+		}
 				}
 			}
 		}
