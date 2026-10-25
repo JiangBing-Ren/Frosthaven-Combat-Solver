@@ -55,7 +55,7 @@ def load(path):
 
 
 def norm_mods(s):
-    """修正牌规范化：只留数字/符号，空格分隔，便于比较。"""
+    """修正牌规范化：只留算式（+1 / *0 / -2），牌名（AMC_Basic_P0）无法映射 → 返回空。"""
     if not s:
         return ''
     out = []
@@ -63,7 +63,8 @@ def norm_mods(s):
         t = tok.strip()
         if not t:
             continue
-        # 去掉牌名，只留算式部分（如 "+1" / "*0" / "-2"）
+        if t.startswith('AMC_') or t.startswith('C'):   # 牌名，不是算式
+            continue
         for op in ('+', '-', '*', '/'):
             if t.startswith(op) and t[1:].replace('.', '').isdigit():
                 out.append(t)
@@ -91,13 +92,38 @@ def main():
         print('\n（只有一侧有数据 —— 预测侧要按 Insert 求解才会有）')
         return 0
 
-    # 按顺序配对（玩家照推荐打时应当一一对应）
-    n = min(len(actual), len(pred))
+    # ---- 配对：先按**目标**匹配，匹配不上的再按顺序 ----
+    #   按顺序配对在"玩家中途改了操作"时会全错位（用户实机就遇到过）。
+    #   按目标配对更稳：同一次攻击的目标名应该一致。
+    pairs = []
+    used_pred = set()
+    for a in actual:
+        hit = -1
+        for j, p in enumerate(pred):
+            if j in used_pred:
+                continue
+            if a['target'] and p['target'] and a['target'] == p['target']:
+                hit = j
+                break
+        if hit < 0:
+            # 目标没记上（实际侧早期没记目标）→ 退化成按顺序
+            hit = len(pairs)
+            if hit < len(pred) and hit not in used_pred:
+                used_pred.add(hit)
+        else:
+            used_pred.add(hit)
+        pairs.append((a, pred[hit] if hit < len(pred) else None))
+
+    n = len(pairs)
     diffs = []
     kinds = defaultdict(int)
 
     for i in range(n):
-        a, p = actual[i], pred[i]
+        a, p = pairs[i]
+        if p is None:
+            kinds['没有对应预测'] += 1
+            diffs.append((i, a, None, ['实际侧多出（没有对应的预测）']))
+            continue
         d = []
         if a['damage'] != p['damage']:
             d.append('伤害 实际%s vs 预测%s' % (a['damage'], p['damage']))
@@ -109,9 +135,14 @@ def main():
         if a['base'] != p['base']:
             d.append('基础攻击 实际%s vs 预测%s' % (a['base'], p['base']))
             kinds['基础攻击不一致'] += 1
-        if a['target'] != p['target']:
-            d.append('目标 实际[%s] vs 预测[%s]' % (a['target'], p['target']))
-            kinds['目标不一致'] += 1
+        # 目标：**双方都有**才比 —— 实际侧在早期版本里没记上目标（时机太早），
+        # 那时不该报"不一致"，而该报"实际侧缺目标"。
+        if a['target'] and p['target']:
+            if a['target'] != p['target']:
+                d.append('目标 实际[%s] vs 预测[%s]' % (a['target'], p['target']))
+                kinds['目标不一致'] += 1
+        elif not a['target'] and p['target']:
+            kinds['实际侧未记目标'] += 1
         if a['round'] != p['round']:
             d.append('回合 实际%s vs 预测%s' % (a['round'], p['round']))
             kinds['回合错位'] += 1
@@ -129,8 +160,9 @@ def main():
         for i, a, p, d in diffs[:20]:
             print('  #%d  实际: %s→%s 基攻%s 牌[%s] 伤%s' %
                   (i + 1, a['attacker'], a['target'], a['base'], a['mods'], a['damage']))
-            print('        预测: %s→%s 基攻%s 牌[%s] 伤%s' %
-                  (p['attacker'], p['target'], p['base'], p['mods'], p['damage']))
+            if p is not None:
+                print('        预测: %s→%s 基攻%s 牌[%s] 伤%s' %
+                      (p['attacker'], p['target'], p['base'], p['mods'], p['damage']))
             for x in d:
                 print('        → ' + x)
 

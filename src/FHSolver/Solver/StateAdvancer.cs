@@ -157,11 +157,15 @@ namespace FHSolver.Solver
                 if (it.AttackStrength <= 0) continue;
 
                 // ---- 候选目标：我排第 0，其余是队友/盟友 ----
-                var targets = new List<EnemyPathing.Target> { new EnemyPathing.Target(st.MyX, st.MyY, "我") };
+                // 目标列表：带上先攻（同距时 tie-break，照抄 ActorInitiativeComparer）
+                var targets = new List<EnemyPathing.Target>
+                {
+                    new EnemyPathing.Target(st.MyX, st.MyY, "我", myInitiative)
+                };
                 foreach (UnitSnapshot o in st.Others)
                 {
                     if (o == null || o.IsHostileToPlayer) continue;
-                    targets.Add(new EnemyPathing.Target(o.X, o.Y, o.DisplayName));
+                    targets.Add(new EnemyPathing.Target(o.X, o.Y, o.DisplayName, o.Initiative));
                 }
 
                 // 它自己站的格子不算阻挡（否则永远走不出去）

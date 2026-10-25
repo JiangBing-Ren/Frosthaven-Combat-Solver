@@ -116,9 +116,14 @@ namespace FHSolver.Bridge
                 int predicted = DamageModel.ComputePreShield(_attackStrength, drawn);
 
                 var actualNames = new List<string>();
+                var actualMaths = new List<string>();
                 foreach (AttackModifierYMLData c in outAttackModifierCards)
                 {
-                    if (c != null) actualNames.Add(c.Name);
+                    if (c == null) continue;
+                    actualNames.Add(c.Name);
+                    // ★ 记**算式**而不是牌名 —— 预测侧记的是算式（+1/*0），
+                    //   两边格式统一才能直接比对。
+                    actualMaths.Add(string.IsNullOrEmpty(c.MathModifier) ? c.Name : c.MathModifier);
                 }
                 var predNames = new List<string>();
                 foreach (ModifierCardSnapshot c in drawn) predNames.Add(c.Name);
@@ -155,7 +160,7 @@ namespace FHSolver.Bridge
                         Attacker = _actor != null ? _actor.ActorLocKey() : "?",
 
                         BaseStrength = _attackStrength,
-                        Mods = string.Join(" ", actualNames),
+                        Mods = string.Join(" ", actualMaths),
                         Damage = __result,
                         Note = "护盾前",
                     };

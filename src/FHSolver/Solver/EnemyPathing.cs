@@ -54,9 +54,12 @@ namespace FHSolver.Solver
             public int Y;
             public string Name;
 
-            public Target(int x, int y, string name)
+            /// <summary>目标的先攻（同距时用来 tie-break，照抄 ActorInitiativeComparer）。</summary>
+            public int Initiative;
+
+            public Target(int x, int y, string name, int initiative = int.MaxValue)
             {
-                X = x; Y = y; Name = name;
+                X = x; Y = y; Name = name; Initiative = initiative;
             }
         }
 
@@ -117,52 +120,62 @@ namespace FHSolver.Solver
 
             if (rangeDistance == null) return EnemyMovePlan.None;
 
-            // ---- ① 焦点 = 「能打到它所需的移动代价」最小者 ----
-            //    tie-break 严格照抄游戏的 CompareEnemies：
-            //      lowestMoveCostToAttack 升序 → hexDist 升序 → 先攻
-            //    ⚠ hexDist 指的是**敌人自己到目标**的距离，不是落点到目标的距离 ——
-            //      比错维度就会在"两个目标都不用移动就能打到"时选错焦点。
-            int bestCost = int.MaxValue;
+            // ---- ① 焦点 = **距离最近**的敌对单位（同距比先攻）----
+            //    ★ 严格照抄游戏：CAIMoveNew.ChooseClosestActor + ActorInitiativeComparer
+            //      —— 先按 hexDist 选最近，同距再比先攻（小的先动）。
+            //
+            //    ⚠ v1.31 之前这里是"在**能打到的**目标里选移动代价最小" ——
+            //      维度错了！后果：真实 AI 追的是"最近的人"（哪怕够不着），
+            //      我却可能去追"移动代价最小的人" → 落点不同 →
+            //      多回合推演里第 2 回合打在敌人已经不在这儿的格子上（打空气）。
             int bestFocusDist = int.MaxValue;
-            int bestX = -1, bestY = -1;
+            int bestFocusIni = int.MaxValue;
             int bestFocus = -1;
 
             for (int ti = 0; ti < targets.Count; ti++)
             {
                 Target tg = targets[ti];
-
-                // 敌人自己到这个目标的距离（tie-break 用的 hexDist）
-                int distToTarget = rangeDistance(fromX, fromY, tg.X, tg.Y);
-
-                for (int si = 0; si < spots.Count; si++)
+                int d = rangeDistance(fromX, fromY, tg.X, tg.Y);
+                if (d < 0) continue;
+                int ini = tg.Initiative;
+                if (d < bestFocusDist || (d == bestFocusDist && ini < bestFocusIni))
                 {
-                    (int X, int Y) s = spots[si];
-
-                    int r = rangeDistance(s.X, s.Y, tg.X, tg.Y);
-                    if (r < 0 || r > attackRange) continue;
-
-                    // 视线：墙后面打不到
-                    if (hasLOS != null && !hasLOS(s.X, s.Y, tg.X, tg.Y)) continue;
-
-                    // 移动代价 = 从原地走到这一格的距离
-                    int cost = rangeDistance(fromX, fromY, s.X, s.Y);
-                    if (cost < 0) continue;
-
-                    bool better = cost < bestCost
-                               || (cost == bestCost && distToTarget < bestFocusDist);
-
-                    if (better)
-                    {
-                        bestCost = cost;
-                        bestFocusDist = distToTarget;
-                        bestX = s.X;
-                        bestY = s.Y;
-                        bestFocus = ti;
-                    }
+                    bestFocusDist = d;
+                    bestFocusIni = ini;
+                    bestFocus = ti;
                 }
             }
 
-            if (bestFocus >= 0)
+            if (bestFocus < 0) return EnemyMovePlan.None;
+            Target focus = targets[bestFocus];
+
+            // ---- ② 在这个焦点下找落点：能打到它 + 移动代价最小 ----
+            int bestCost = int.MaxValue;
+            int bestX = -1, bestY = -1;
+
+            for (int si = 0; si < spots.Count; si++)
+            {
+                (int X, int Y) s = spots[si];
+
+                int r = rangeDistance(s.X, s.Y, focus.X, focus.Y);
+                if (r < 0 || r > attackRange) continue;
+
+                // 视线：墙后面打不到
+                if (hasLOS != null && !hasLOS(s.X, s.Y, focus.X, focus.Y)) continue;
+
+                // 移动代价 = 从原地走到这一格的距离
+                int cost = rangeDistance(fromX, fromY, s.X, s.Y);
+                if (cost < 0) continue;
+
+                if (cost < bestCost)
+                {
+                    bestCost = cost;
+                    bestX = s.X;
+                    bestY = s.Y;
+                }
+            }
+
+            if (bestCost < int.MaxValue)
             {
                 toX = bestX;
                 toY = bestY;
@@ -195,13 +208,19 @@ namespace FHSolver.Solver
 
             if (movePoints <= 0) return EnemyMovePlan.None;
 
-            // 焦点 = 离它最近的敌对单位
+            // 焦点 = 离它最近的敌对单位（**同距比先攻**，照抄游戏）
             int bestFd = int.MaxValue;
+            int bestIni = int.MaxValue;
             int fi = -1;
             for (int i = 0; i < targets.Count; i++)
             {
                 int d = rangeDistance(fromX, fromY, targets[i].X, targets[i].Y);
-                if (d >= 0 && d < bestFd) { bestFd = d; fi = i; }
+                if (d < 0) continue;
+                int ini = targets[i].Initiative;
+                if (d < bestFd || (d == bestFd && ini < bestIni))
+                {
+                    bestFd = d; bestIni = ini; fi = i;
+                }
             }
             if (fi < 0) return EnemyMovePlan.None;
 

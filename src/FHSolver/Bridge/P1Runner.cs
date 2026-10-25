@@ -822,7 +822,9 @@ internal static class P1Runner
 			{
 				list.Add("");
 				list.Add($"----- #{num + 1} -----");
-				list.AddRange(DescribePlan(ctx, plans[num]));
+				// ★ 只对**最优方案**（#1）记预测战报 —— 记全部方案会让预测条数
+				//   远超实际条数 → 配对全错位。
+				list.AddRange(DescribePlan(ctx, plans[num], num == 0));
 			}
 		}
 		list.Add("");
@@ -1046,7 +1048,7 @@ internal static class P1Runner
 		return string.IsNullOrEmpty(g) ? "?" : g.Substring(0, 8);
 	}
 
-	private static List<string> DescribePlan(P1Context ctx, TurnPlan p)
+	private static List<string> DescribePlan(P1Context ctx, TurnPlan p, bool recordReport = false)
 	{
 		List<string> list = new List<string>();
 		PlanHalf h1 = p.First;
@@ -1082,9 +1084,10 @@ internal static class P1Runner
 
 		// ★ 记录**预测**侧战报（与游戏结算的实际战报配对）
 		//   玩家若照推荐打，两者应一一对应；对不上 = 模型误差的精确位置。
+		//   ⚠ 只记最优方案（recordReport）—— 否则 Top-N 全部进账，配对必然错位。
 		try
 		{
-			if (p.Attacks != null)
+			if (recordReport && p.Attacks != null)
 			{
 				foreach (AttackChoice a in p.Attacks)
 				{
