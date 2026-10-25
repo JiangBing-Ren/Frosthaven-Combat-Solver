@@ -166,18 +166,34 @@ namespace FHSolver.Bridge
                     };
                     if (attackAbilityRef != null)
                     {
-                        var sums = attackAbilityRef.TotalTargetSummaries;
-                        if (sums != null && sums.Count > 0)
+                        // ★ 用 `ActorsTargeted`（目标在**选定时**就设了）而不是
+                        //   `TotalTargetSummaries`（结算完才有）——
+                        //   后者在 Postfix 时机还是空的 → 实际侧永远记不上目标。
+                        var targets = attackAbilityRef.ActorsTargeted;
+                        if (targets != null && targets.Count > 0)
                         {
                             var names = new List<string>();
-                            foreach (var ts in sums)
+                            foreach (var ta in targets)
                             {
-                                if (ts == null || ts.Actor == null) continue;
-                                names.Add(ts.Actor.ActorLocKey()
-                                    + (ts.Shield > 0 ? $"(盾{ts.Shield})" : "")
-                                    + (ts.Pierce > 0 ? $"(穿{ts.Pierce})" : ""));
+                                if (ta == null) continue;
+                                names.Add(ta.ActorLocKey());
                             }
                             if (names.Count > 0) rep.Target = string.Join("+", names);
+                        }
+                        if (rep.Target.Length == 0)
+                        {
+                            // 兜底：还没结算完，但能从 summary 里拿到护盾/穿透
+                            var sums = attackAbilityRef.TotalTargetSummaries;
+                            if (sums != null)
+                            {
+                                var names = new List<string>();
+                                foreach (var ts in sums)
+                                {
+                                    if (ts == null || ts.Actor == null) continue;
+                                    names.Add(ts.Actor.ActorLocKey());
+                                }
+                                if (names.Count > 0) rep.Target = string.Join("+", names);
+                            }
                         }
                     }
                     CombatReport.Add(rep);
