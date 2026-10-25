@@ -378,6 +378,18 @@ internal static class P1Runner
 		}
 
 
+		/// <summary>按 GUID 找敌人的预测（按 UnitSnapshot 查）。</summary>
+		private static EnemyPredictor.Prediction FindPrediction(
+			List<EnemyPredictor.Prediction> preds, UnitSnapshot unit)
+		{
+			if (preds == null || unit == null || string.IsNullOrEmpty(unit.Guid)) return null;
+			foreach (EnemyPredictor.Prediction pr in preds)
+			{
+				if (pr != null && pr.Guid == unit.Guid) return pr;
+			}
+			return null;
+		}
+
 		/// <summary>按 GUID 找敌人的预测（找不到返回 null）。</summary>
 		private static EnemyPredictor.Prediction FindPrediction(
 			List<EnemyPredictor.Prediction> preds, UnitRef unit)
@@ -824,6 +836,14 @@ internal static class P1Runner
 		foreach (UnitSnapshot monster in ctx.Monsters)
 		{
 			string text2 = ((monster.Intent != null) ? ("  意图: " + monster.Intent) : "");
+			// ★ 明确显示"它这回合会走到哪" —— 先攻比我低的敌人会**先移动**，
+			//   方案里的目标评估用的是这个新位置（不是快照原位）。
+			EnemyPredictor.Prediction pr = FindPrediction(enemyPreds, monster);
+			if (pr != null && (pr.ToX != monster.X || pr.ToY != monster.Y))
+			{
+				text2 += $"  →★本回合会走到({pr.ToX},{pr.ToY})"
+					  + (pr.Initiative < run.Initiative ? "（它先动）" : "（它后动）");
+			}
 			list.Add($"  「{monster.DisplayName}」@({monster.X},{monster.Y}) 血 {monster.Health}/{monster.MaxHealth}" + ((monster.PredictedDamage > 0) ? $"（先动队友预计打 {monster.PredictedDamage} → 到你时约 {monster.EffectiveHealth}）" : "") + ((monster.Shield > 0) ? $" 护盾{monster.Shield}" : "") + $" 先攻{monster.Initiative}" + text2);
 		}
 		foreach (UnitSnapshot other in ctx.Others)
@@ -893,6 +913,9 @@ internal static class P1Runner
 	{
 		List<string> list = new List<string>();
 		list.Add($"===== P1 单回合推荐 | 队伍 {playerCount} 人，已出 {done} 份 =====");
+		// ★ 版本号：插件是**启动时加载**的，不重启就还是旧版。
+		//   把版本号摆在报告最上面，一眼能看出"我跑的到底是哪一版"。
+		list.Add($"（插件版本 v{Plugin.Version} —— 若与最新版本不符，说明游戏没重启）");
 		list.Add($"全场 {order.Count} 个单位（敌人/盟友/召唤物/玩家已分开，友方绝不是攻击目标）");
 		list.Add("");
 		list.Add("【先攻顺序】（数值小的先动）");

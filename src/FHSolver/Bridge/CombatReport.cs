@@ -26,7 +26,22 @@ namespace FHSolver.Bridge
     public static class CombatReport
     {
         /// <summary>战报文件路径（放在项目目录，便于分析）。</summary>
-        public static string FilePath { get; set; } = @"D:\1Mods\FH\combat_report.tsv";
+        public static string FilePath
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_filePath))
+                {
+                    string v = "unknown";
+                    try { v = Plugin.Version ?? "unknown"; } catch { }
+                    _filePath = System.IO.Path.Combine("D:", "1Mods", "FH", "combat_report_v" + v + ".tsv");
+                }
+                return _filePath;
+            }
+            set { _filePath = value; }
+        }
+
+        private static string _filePath;
 
         /// <summary>战报条目：类型 / 回合 / 攻击者 / 目标 / 基础攻击 / 修正牌 / 伤害 / 备注</summary>
         public sealed class Row
@@ -82,7 +97,8 @@ namespace FHSolver.Bridge
                     if (Rows.Count <= _written) return;
 
                     var sb = new StringBuilder();
-                    sb.Append("# ==== 回合 " + _round + " ====\n");
+                    // ★ 战报也带版本号：混版时能分辨哪几行是旧版记的
+                    sb.Append("# ==== 回合 " + _round + " | 插件 v" + Plugin.Version + " ====\n");
                     for (int i = _written; i < Rows.Count; i++)
                     {
                         Row r = Rows[i];

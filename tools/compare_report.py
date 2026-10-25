@@ -21,6 +21,7 @@
 
 import io
 import os
+import re
 import sys
 from collections import defaultdict
 
@@ -31,8 +32,15 @@ def load(path):
     rows = []
     if not os.path.exists(path):
         return rows
+    version = ''
     with io.open(path, encoding='utf-8-sig', errors='replace') as f:
         for line in f:
+            # ★ 战报分段头带插件版本号：混版时能分辨哪些行是旧版记的
+            if line.startswith('# ==== 回合'):
+                m = re.search(r'插件 v([\d.]+)', line)
+                if m:
+                    version = m.group(1)
+                continue
             if line.startswith('#'):
                 continue
             line = line.rstrip('\n')
@@ -42,6 +50,7 @@ def load(path):
             if len(parts) < 7:
                 continue
             rows.append({
+                'version': version,
                 'kind': parts[0],
                 'round': parts[1],
                 'attacker': parts[2],
@@ -85,6 +94,15 @@ def main():
 
     actual = [r for r in rows if r['kind'] == '实际']
     pred = [r for r in rows if r['kind'] == '预测']
+
+    # ★ 版本混用检查：插件是启动时加载的，不重启就还是旧版
+    versions = sorted(set(r['version'] for r in rows if r['version']))
+    if len(versions) > 1:
+        print('\n⚠⚠ 数据跨了 %d 个插件版本：%s' % (len(versions), '、'.join(versions)))
+        print('   插件是**启动时加载**的 —— 部署新版后**必须重启游戏**才生效。')
+        print('   混版数据不能用来判断模型对错，请用同一版本重打一局。')
+    else:
+        print('插件版本：%s' % (versions[0] if versions else '(无)'))
 
     print('战报文件：%s' % path)
     print('总条目 %d  →  实际 %d / 预测 %d' % (len(rows), len(actual), len(pred)))
