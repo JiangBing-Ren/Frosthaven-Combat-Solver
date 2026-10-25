@@ -363,8 +363,9 @@ internal static class P1Runner
 			if (snap == null) return;
 			List<UnitSnapshot> monsters = snap.Monsters ?? new List<UnitSnapshot>();
 			TurnLedger.RecordExpectation(monsters, myHp, 0, hand,
-				TurnLedger.LastPlanSummary, fp);
+				TurnLedger.LastPlanSummary, fp, snap.RoundNumber);
 		}
+
 
 		private static PlayerRun PlanOne(List<CPlayerActor> players, CScenario scenario, int idx, Dictionary<string, int> adjust, Dictionary<string, (int X, int Y)> cover, int myInitiative, GoalSnapshot goals, List<ModifierDeckSnapshot> monsterDecks, int shadowCount, List<EnemyPredictor.Prediction> enemyPreds, out Dictionary<string, int> applied)
 
@@ -1006,6 +1007,16 @@ internal static class P1Runner
 			}
 		}
 		List<UiSection> list5 = ToUiSections(blocks, order, goals, enemyPreds, runs, mtResults);
+
+		// ★ 一回合一个页签（用户要求：翻页功能 + 多回合详细方案）
+		List<UiSection> roundSecs = BuildRoundSections(runs, mtResults);
+		foreach (UiSection rs in roundSecs)
+		{
+			if (rs == null) continue;
+			rs.Name = UiSection.UniqueName(list5.Select(x => x.Name), rs.Name);
+			list5.Add(rs);
+		}
+
 		foreach (UiSection item7 in list5)
 		{
 			if (item7 == null || item7.Name != "多回合")
@@ -1048,7 +1059,24 @@ internal static class P1Runner
 		}.OrderBy(((int idx, string name, string side, int ini) c) => c.ini).ThenBy(((int idx, string name, string side, int ini) c) => c.idx).ToList();
 		list.Add("出牌：" + string.Join(" + ", source.Select(((int idx, string name, string side, int ini) c) => $"第{c.idx}张「{c.name}」(先攻{c.ini})的【{c.side}】")));
 		list.Add($"次序：先做第{h1.CardIndex + 1}张，再做第{h2.CardIndex + 1}张" + $"（本方案先攻 {p.Initiative}）");
-		list.Add($"预期：造成 {p.TotalDamage} 点伤害（有效 {p.EffectiveDamage}）" + ((p.KillCount > 0) ? $"，击杀 {p.KillCount} 个" : "") + $"，得经验 {p.TotalXP}" + ((p.LostCost > 0) ? $"，⚠ 会永久失去 {p.LostCost} 个半边" : "") + ((p.GoalValue > 0) ? $"，★ 顺手捡到（战役目标 +{p.GoalValue}）" : "") + ((p.SelfHazardDamage > 0) ? $"，⚠ 移动会吃 {p.SelfHazardDamage} 点危险地形伤害（已计入评分）" : "") + ((p.IncomingDamage > 0) ? $"，⚠ **这回合会挨打 {p.IncomingDamage} 点**（先攻比你低的敌人能打到你，已计入评分）" : "") + ((p.IncomingConditions != null && p.IncomingConditions.Count > 0) ? ("，⚠ 敌人会给你上 **" + string.Join("、", p.IncomingConditions) + "**（缴械=不能攻击 / 静足=不能移动）") : "") + (p.WouldDie ? "，☠ **这回合打完你会死**" : "") + ((p.ShadowGain > 0) ? $"，★ 造出 {p.ShadowGain} 个阴影（抬高后续「深渊力量」，位置见下方说明）" : ""));
+		// ★ 战斗效率提示：让玩家直接看到"这个方案要打几个回合才清场"
+		//   （用户反馈"在通关前提下几乎是最差解" —— 回合数是最直观的指标）
+		int remainingHp = 0;
+		if (ctx != null && ctx.Monsters != null)
+		{
+			foreach (UnitSnapshot m in ctx.Monsters)
+			{
+				if (m != null && m.EffectiveHealth > 0) remainingHp += m.EffectiveHealth;
+			}
+		}
+		string effNote = "";
+		if (remainingHp > 0 && p.EffectiveDamage > 0)
+		{
+			int est = (int)Math.Ceiling(remainingHp / (double)p.EffectiveDamage);
+			effNote = $"，★ 清场预计还要 {est} 回合（剩余敌人 {remainingHp} 血）";
+		}
+
+		list.Add($"预期：造成 {p.TotalDamage} 点伤害（有效 {p.EffectiveDamage}）" + ((p.KillCount > 0) ? $"，击杀 {p.KillCount} 个" : "") + $"，得经验 {p.TotalXP}" + ((p.LostCost > 0) ? $"，⚠ 会永久失去 {p.LostCost} 个半边" : "") + ((p.GoalValue > 0) ? $"，★ 顺手捡到（战役目标 +{p.GoalValue}）" : "") + ((p.SelfHazardDamage > 0) ? $"，⚠ 移动会吃 {p.SelfHazardDamage} 点危险地形伤害（已计入评分）" : "") + ((p.IncomingDamage > 0) ? $"，⚠ **这回合会挨打 {p.IncomingDamage} 点**（先攻比你低的敌人能打到你，已计入评分）" : "") + ((p.IncomingConditions != null && p.IncomingConditions.Count > 0) ? ("，⚠ 敌人会给你上 **" + string.Join("、", p.IncomingConditions) + "**（缴械=不能攻击 / 静足=不能移动）") : "") + (p.WouldDie ? "，☠ **这回合打完你会死**" : "") + ((p.ShadowGain > 0) ? $"，★ 造出 {p.ShadowGain} 个阴影（抬高后续「深渊力量」，位置见下方说明）" : "") + effNote);
 		list.Add($"评分 {p.Score:F1}");
 		DescribeHalf(list, ctx, h1, 1, ctx.StartX, ctx.StartY, p.Attacks.FirstOrDefault((AttackChoice a) => a.CardIndex == h1.CardIndex && a.Source == h1.Source));
 		DescribeHalf(list, ctx, h2, 2, h1.ToX, h1.ToY, p.Attacks.FirstOrDefault((AttackChoice a) => a.CardIndex == h2.CardIndex && a.Source == h2.Source));
@@ -1480,6 +1508,110 @@ internal static class P1Runner
 	/// 参考 StS2 的 Combat Solver：路线按回合连续展示，
 	/// 玩家看当前回合时就能看到\"接下来会怎样\"，而不是翻到别的页签。
 	/// </summary>
+	/// <summary>
+	/// **某一回合的详细方案**（用户要求：多回合也要有详细方案，不是一句话）。
+	///
+	/// 展开：出哪两张牌的哪半 → 落点/血量 → 每次攻击的目标与伤害与翻的牌
+	///      → 治疗 → 挨打 → 累计 → 敌人这一回合的��实行动。
+	/// </summary>
+	private static List<string> MultiTurnDetailedLines(RouteStep st)
+	{
+		List<string> lines = new List<string>();
+		if (st == null)
+		{
+			return lines;
+		}
+
+		TurnPlan p = st.Plan;
+		if (p != null)
+		{
+			lines.Add($"出牌：{p.First?.CardName ?? "?"}【{p.First?.SideLabel ?? "?"}】"
+					  + $" + {p.Second?.CardName ?? "?"}【{p.Second?.SideLabel ?? "?"}】");
+			lines.Add($"落点：({st.MyX},{st.MyY})    血量：{st.MyHealth}");
+
+			if (p.Attacks != null && p.Attacks.Count > 0)
+			{
+				lines.Add("攻击：");
+				foreach (AttackChoice a in p.Attacks)
+				{
+					if (a == null) continue;
+					lines.Add($"    → {a.TargetName}  伤 {a.Damage}"
+							  + (a.Kills ? "  ★击杀" : "")
+							  + (a.Mods != null && a.Mods.Count > 0 ? $"  翻牌[{string.Join(" ", a.Mods)}]" : "")
+							  + (string.IsNullOrEmpty(a.Expr) ? "" : $"  {a.Expr}"));
+
+				}
+			}
+			if (p.HealValue > 0)
+			{
+				lines.Add($"治疗：+{p.HealValue}");
+			}
+			if (p.SelfHazardDamage > 0)
+			{
+				lines.Add($"⚠ 移动吃了 {p.SelfHazardDamage} 点危险地形伤害");
+			}
+		}
+
+		if (st.IncomingDamage > 0)
+		{
+			lines.Add($"⚠ 这回合挨打 {st.IncomingDamage} 点（剩 {st.MyHealth} 血）");
+		}
+		if (st.Died)
+		{
+			lines.Add("☠ 阵亡");
+		}
+		lines.Add($"累计：伤 {st.CumulativeDamage}  杀 {st.CumulativeKills}");
+
+		if (st.EnemyStrikes != null && st.EnemyStrikes.Count > 0)
+		{
+			lines.Add("敌人这一回合的行动：");
+			foreach (EnemyStrike es in st.EnemyStrikes)
+			{
+				if (es == null) continue;
+				lines.Add($"    {es.AttackerName}  伤 {es.Damage}"
+						  + (string.IsNullOrEmpty(es.CardsText) ? "" : $"  翻牌[{es.CardsText}]")
+						  + (es.ApproachOnly ? "（只是逼近，没出手）" : "")
+						  + (es.Approx ? "  ⚠估算" : ""));
+			}
+		}
+		return lines;
+	}
+
+	/// <summary>
+	/// **一回合一个页签**（用户要求：翻页功能）。
+	///
+	/// 每个角色 × 每个后续回合 = 一页，页签名形如「第2回合方案·旗矛」。
+	/// 页名冲突由 UiSection.UniqueName 处理。
+	/// </summary>
+	private static List<UiSection> BuildRoundSections(
+		List<PlayerRun> runs, Dictionary<string, MultiTurnResult> mtResults)
+	{
+		List<UiSection> sections = new List<UiSection>();
+		if (mtResults == null || runs == null) return sections;
+
+		foreach (PlayerRun r in runs)
+		{
+			if (r == null || r.Ctx == null) continue;
+			MultiTurnResult res;
+			if (!mtResults.TryGetValue(r.Name, out res)) continue;
+			if (res.Routes == null || res.Routes.Count == 0) continue;
+			List<RouteStep> route = res.Routes[0];
+			if (route == null) continue;
+
+			foreach (RouteStep st in route)
+			{
+				if (st == null || st.Round < 2) continue;
+
+				UiSection sec = new UiSection($"第{st.Round}回合方案·{r.Name}");
+				sec.Add($"—— 第 {st.Round} 回合（沿第 1 回合最佳方案继续）——", UiStyle.Head);
+				sec.Add("先攻 " + r.Initiative, UiStyle.Sub);
+				foreach (string line in MultiTurnDetailedLines(st)) sec.Add(line);
+				sections.Add(sec);
+			}
+		}
+		return sections;
+	}
+
 	private static List<string> MultiTurnFollowUpLines(MultiTurnResult res)
 
 	{
@@ -1505,7 +1637,8 @@ internal static class P1Runner
 		{
 			return list;
 		}
-		list.Add("—— 后续回合推演（沿第 1 回合最佳方案继续）——");
+		list.Add("—— 后续回合推演 —— 每回合的**详细方案**见独立页签「第N回合方案·角色名」——");
+
 		foreach (RouteStep item2 in list3)
 		{
 			TurnPlan plan = item2.Plan;

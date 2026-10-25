@@ -56,6 +56,10 @@ namespace FHSolver.Bridge
         /// <summary>是否已经有过一次推荐（第一次没有对账对象）。</summary>
         public static bool HasHistory;
 
+        /// <summary>记录预期时的回合号 —— 用来判断"是不是同一回合"。</summary>
+        public static int LastRound = -1;
+
+
         // ---------- 指纹计算 ----------
 
         /// <summary>
@@ -142,8 +146,18 @@ namespace FHSolver.Bridge
             int kills,
             List<AbilityCardSnapshot> hand,
             string planSummary,
-            Fingerprint fp)
+            Fingerprint fp,
+            int roundNumber = -1)
         {
+            // ★ 同一回合里**不要覆盖**预期！
+            //   玩家在出牌前可能反复按 Insert —— 每按一次就覆盖的话，
+            //   预期会变成"最近一次按下时的状态"，执行后就没得可对账了。
+            //   只有回合号变了（新回合）才更新预期。
+            if (HasHistory && roundNumber >= 0 && roundNumber == LastRound)
+            {
+                return;
+            }
+
             ExpectedEnemyHealth = new Dictionary<string, int>();
             if (monsters != null)
             {
@@ -170,6 +184,8 @@ namespace FHSolver.Bridge
             names.Sort(StringComparer.Ordinal);
             ExpectedHandSummary = string.Join("、", names);
             HasHistory = true;
+            LastRound = roundNumber;
+
         }
 
         /// <summary>

@@ -199,7 +199,35 @@ namespace FHSolver.Bridge
                             {
                                 u.Intent = HandReader.ReadAction(card.Action, "意图");
 
+                                // ★★ 怪物的**射程与目标数不在能力上**！
+                                //   反编译实证 CMonsterClass.cs:233 —— 怪物的基础攻击是运行时造的：
+                                //     CAbilityAttack.CreateDefaultAttack(
+                                //         m_CurrentMonsterStat.Attack,   ← 攻击力
+                                //         m_CurrentMonsterStat.Range,    ← 射程（能力上是 0！）
+                                //         m_CurrentMonsterStat.Target,   ← 目标数（能力上是 0！）
+                                //         isMonster: true)
+                                //   ⇒ 能力上读到的 Range/NumberTargets 是 0，必须用
+                                //     MonsterClass.Range / MonsterClass.Target 补全 ——
+                                //     否则敌人的威胁格算不出来，生存维度整个失效。
+                                try
+                                {
+                                    CMonsterClass mc = enemy.MonsterClass;
+                                    if (u.Intent != null && mc != null)
+                                    {
+                                        int mRange = mc.Range;
+                                        int mTarget = mc.Target;
+                                        if (u.Intent.AttackRange <= 0 && mRange > 0)
+                                            u.Intent.AttackRange = mRange;
+                                        if (u.Intent.AttackTargets <= 0 && mTarget > 0)
+                                            u.Intent.AttackTargets = mTarget;
+                                        if (u.Intent.AttackStrength <= 0 && mc.Attack > 0)
+                                            u.Intent.AttackStrength = mc.Attack;
+                                    }
+                                }
+                                catch { /* 读不到就维持原样 */ }
+
                                 // ★ 未激活的卡（还在抽牌堆里）运行时强度可能是 0
+
                                 //   （RoundAbilityCard 为空 → 回退 NextAbilityCard = 抽牌堆顶那张）
                                 //   → 回退读 **YML 原始卡**（强度是静态写死的数值）
                                 if (u.Intent != null && u.Intent.AttackStrength <= 0)

@@ -1071,18 +1071,21 @@ namespace FHSolver.Solver
                 //      所以要 **a 在前**（活着）时返回负数 → a.WouldDie.CompareTo(b.WouldDie)。
                 int c = a.WouldDie.CompareTo(b.WouldDie);
                 if (c != 0) return c;
-                // ② 挨打少
-                c = a.IncomingDamage.CompareTo(b.IncomingDamage);
-                if (c != 0) return c;
-                // ③ 击杀多
+                // ② 击杀多（**推进度**）—— v1.28 调整：原顺序把"挨打少"排在推进前面，
+                //    结果推荐"苟着打"：能赢但回合数极多 = 用户说的"几乎是最差解"。
+                //    在"能通关"的前提下，推进比少挨打更值钱。
                 c = b.KillCount.CompareTo(a.KillCount);
                 if (c != 0) return c;
-                // ④ 有效伤害多
+                // ③ 有效伤害多
                 c = b.EffectiveDamage.CompareTo(a.EffectiveDamage);
+                if (c != 0) return c;
+                // ④ 挨打少
+                c = a.IncomingDamage.CompareTo(b.IncomingDamage);
                 if (c != 0) return c;
                 // ⑤ 治疗收益多
                 c = b.HealValue.CompareTo(a.HealValue);
                 if (c != 0) return c;
+
                 // ⑥ 线性分（引导分）做 tiebreak
                 c = b.Score.CompareTo(a.Score);
                 if (c != 0) return c;

@@ -1658,6 +1658,60 @@ if ((!AreActorsAllied(...) & isTargetedAbility)
 `IgnoreLosTests()`（普通攻击被墙挡 / IgnoreLOS 能穿墙）+
 `InvisibleTargetTests()`（普通攻击打不到隐形 / CanTargetInvisible 可以）。
 
+### v1.28 差解分析与修正 + 多回合详细方案 + 翻页
+
+用户实机通关一次使命，反馈三件事：
+① 方案"在通关前提下几乎是最差解"；② 多回合只有一句话；③ 要翻页。
+
+#### ① "几乎是最差解"的两个根因
+
+**根因 A：怪物的射程/目标数读不到 → 生存维度整个失效**
+
+日志里敌人意图是 `攻击1(射程0,目标0)` —— 射程 0 意味着**敌人打不到任何格子**
+→ 威胁格全空 → 没有"会挨打"提示 → 推荐完全不考虑躲避。
+
+反编译实证（`CMonsterClass.cs:233`）—— 怪物的攻击是**运行时**造的：
+
+```csharp
+cAction.AddAbility(CAbilityAttack.CreateDefaultAttack(
+    m_CurrentMonsterStat.Attack,   // 攻击力
+    m_CurrentMonsterStat.Range,    // 射程 —— 能力上是 0！
+    m_CurrentMonsterStat.Target,   // 目标数 —— 能力上是 0！
+    isMonster: true));
+```
+
+⇒ 射程与目标数**不在能力上**，要用 `MonsterClass.Range / .Target / .Attack` 补全。
+已修（`StateReader`）。
+
+**根因 B：评分顺序把"少挨打"排在"推进"之前 → 推荐苟着打**
+
+原词典序：不会死 > **挨打少** > 击杀多 > 有效伤害多
+→ "打 3 点不挨打" 赢过 "打 10 点但挨 2 刀" → 能赢但回合数爆炸。
+
+新顺序（v1.28）：**不会死 > 击杀多 > 有效伤害多 > 挨打少 > 治疗 > 线性分**
+（推进度优先，"能通关"的前提下推进比少挨打值钱）
+
+并新增**效率提示**：`★ 清场预计还要 N 回合（剩余敌人 X 血）`
+—— 回合数是最直观的指标，直接摆在方案描述里。
+
+#### ② 多回合详细方案 + 翻页
+
+原来第 2 回合只有一行：`第2回合：X【下】+Y【上】 → 站(a,b) 血10 累计伤5 杀1`
+
+现在：
+- `MultiTurnDetailedLines(RouteStep)` —— 展开成完整方案：
+  出牌 → 落点/血量 → **每次攻击**（目标/伤害/翻的牌/是否击杀/表达式）
+  → 治疗 → 危险地形 → 挨打 → 累计 → 敌人这一回合的真实行动
+- `BuildRoundSections()` —— **一回合一个页签**（`第2回合方案·旗矛`），
+  页名冲突由 `UiSection.UniqueName` 处理
+- 角色页里的简述改成指向新页签
+
+#### ③ 对账预期被覆盖的修法
+
+玩家在出牌前会反复按 Insert —— 每按一次就覆盖预期的话，
+预期会变成"最近一次按下时的状态"，执行后就没得可对账。
+现在**只有回合号变了才更新预期**（`TurnLedger.LastRound`）。
+
 ### v1.27 【原生驱动 + 对账重规划】（学 StS2 第 8 节）
 
 StS2 的 `PlayerTurnSetupCoordinator`：**原生 UI + 反射驱动 + 持续对账**。
