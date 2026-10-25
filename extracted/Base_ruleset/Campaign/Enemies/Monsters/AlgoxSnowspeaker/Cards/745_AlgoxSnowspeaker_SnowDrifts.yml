@@ -1,0 +1,31 @@
+Parser: EnemyCard
+ID: 745
+Name: $Monster_Ability_745_AlgoxSnowspeaker_SnowDrifts$
+Initiative: 66
+Shuffle: False
+Data:
+    Abilities:
+        Immobilize1:
+            Text: "<size=200%><sprite name=Immobilize><size=100%> $FH/target_all$, <sprite name=Range> 6"
+            TextOnly: True
+            Immobilize: True
+            Target: -1
+            TargetIsBase: True
+            Range: 6
+            RangeIsBase: True
+            Filter: Enemy
+            AnimOverload: SnowDrifts
+    Consumes:
+        CAir:
+            Elements: Air
+            Abilities:
+                OAir:
+                    Text: "<size=200%><sprite name=Muddle><size=100%> $FH/target_all$, <sprite name=Range> 6"
+                    TextOnly: True
+                    Muddle: True
+                    Filter: Enemy
+                    Target: -1
+                    TargetIsBase: True
+                    Range: 6
+                    RangeIsBase: True
+                    SkipAnim: True

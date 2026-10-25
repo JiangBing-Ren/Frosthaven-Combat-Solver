@@ -1,0 +1,76 @@
+Parser: AbilityCard
+Name: $FH/268_character_ability_cards_shattersong_cloaking_refraction_1$
+Character: ShattersongID
+ID: 268
+Level: 7
+Initiative: 11
+Discard: [Discard,Discard]
+Prefab: 268_Shattersong_CloakingRefraction
+Data:
+    Top:
+        Abilities:            
+            TAttack:
+                Attack:
+                    Amount: 5
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")     
+            TConsume:
+                Consume:
+                    Resonance: 2
+                    XP: 1
+                    Abilities:
+                        TInvisible:
+                            AutoTrigger: True
+                            Invisible: True
+                            Filter: [Self]
+                            AnimOverload: Cast_Concentrate
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")     
+            BShieldSelfAndAllies:
+                Shield: 1
+                AnimOverload: CastTargetControlWeak
+                Range: 1
+                Target: 99
+                Filter: [Self,Ally]
+                MiscVars:
+                    PrintedProperties: list("Shield")     
+                    AutoSelectValidTiles: True   
+                ActiveBonus:
+                    Duration: Round
+                    ListLayoutOverride: [<sprite name=Shield> *BShieldSelfAndAllies*, Positive_Shield]
+                    
+        Consumes:
+            BCLight:
+                Elements: [Light]
+                AbilityOverrides:
+                    BShieldBuff:
+                        ParentName: BShieldSelfAndAllies
+                        Strength: 1
+                        Vars:
+                            # this is necessary since it thinks we're overriding a control actor ability and would otherwise end up generating the wrong description
+                            PreviewOverride: "'+1 <sprite name=Shield>, <sprite name=XP1>'"
+                XP: 1
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@ "
+        - Divider:
+        - Conditional:
+            Layout:
+                - Row: "$FH/268_character_ability_cards_shattersong_cloaking_refraction_2$"
+    Bottom:
+        - Row: "<sprite name=Move> *BMove* @BMove@"
+        - Divider:
+        - Row: "$FH/268_character_ability_cards_shattersong_cloaking_refraction_3$"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: BCLight
+                    Text: "+1 <sprite name=Shield>, <sprite name=XP1>"

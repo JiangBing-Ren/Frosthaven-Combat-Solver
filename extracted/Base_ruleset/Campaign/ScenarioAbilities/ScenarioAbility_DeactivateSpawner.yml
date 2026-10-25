@@ -1,0 +1,16 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_DeactivateSpawner
+ScenarioAbility:
+    TActive:
+        AddActiveBonus:
+            DeactivateSpawner: True
+            Range: 1
+            Target: 1               
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringTurnAbility
+            Restriction: OncePerTurn
+            IsToggleBonus: True
+            Requirements: 
+                ForgoBottomAction: True
+                ActiveSpawnersInRange: "> 0"

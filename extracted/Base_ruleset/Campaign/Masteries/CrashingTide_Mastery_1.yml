@@ -1,0 +1,20 @@
+Parser: Mastery
+ID: CrashingTide_MASTERY_1
+LocalisedName: CrashingTide_MASTERY_1_Name
+LocalisedDescription: CrashingTide_MASTERY_1_Desc
+PerkPoints: 1
+# be targeted by 5 attacks, fail if you ever suffer damage from an attack
+BattleGoalCondition:
+    - Targets: 
+        Filter: TargetedForAttacks
+        MonsterType: [Normal, Elite, Boss]
+        SubFilter: Scenario
+        CharacterIDs: 
+            ActorID: CrashingTideID
+        Value: 5
+BattleGoalFailCondition:
+    - Targets: 
+        Filter: ReceiveDamage
+        AbilityTypes: [Attack]
+        SubFilter: Scenario
+        Value: 1

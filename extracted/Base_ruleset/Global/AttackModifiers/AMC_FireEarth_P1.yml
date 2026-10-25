@@ -1,0 +1,7 @@
+Parser: AttackModifier
+Name: AMC_FireEarth_P1
+MathModifier: "+1"
+Abilities:
+    InfuseAbility:
+        Infuse: [Fire, Earth]
+        ShowElementPicker: True

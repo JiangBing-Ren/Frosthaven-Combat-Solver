@@ -1,0 +1,16 @@
+Parser: Mastery
+ID: Deathwalker_MASTERY_1
+LocalisedName: Deathwalker_MASTERY_1_Name
+LocalisedDescription: Deathwalker_MASTERY_1_Desc
+PerkPoints: 1
+BattleGoalCondition:
+    - Targets:
+        Filter: UseAbility
+        # each round
+        SubFilter: RoundCharactersOnly
+        AbilityTypes: [RemoveShadow]
+        HasHappened: True
+        StopCheckingAfterDeath: True
+        Amount: 7
+        CharacterIDs: 
+            ActorID: DeathwalkerID

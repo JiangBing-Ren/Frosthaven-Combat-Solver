@@ -1,0 +1,29 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FHScenario096_MoveMovingPlatform
+ScenarioAbility:
+    AMoveMovingPlatform:
+        NullHex: True
+        MiscVars:
+            # SelectedTiles passed as var when calculating PreviewPath
+            PreviewPath: ScenarioScript_FH096.GetTilesForPreviewFromTile(Ability, MouseoverTile)
+        Target: 1
+        Targeting: Custom
+        CanSkip: False
+        CanUndo: False
+        SkipAnim: True
+        IgnoreStun: True 
+        StatIsBasedOnX:
+            Target:
+                BasedOn: Vars
+                AddTo: True
+                Vars:
+                    Value: ScenarioScript_FH096.NumberOfPlayersOnMovingPlatform()
+        TargetingVars:
+            CalcTilesInRange: ScenarioScript_FH096.RecalcValidTilesToFormPath(parentContext.obj)
+        PerformVars:                
+            SelectHexPositions:
+                CalcTilesInRange: ScenarioScript_FH096.RecalcValidTilesToFormPath(obj)
+            OnTileDeselected:
+                RemoveFurtherTiles: CustomAbility.RemoveRemovedTilesToFormPath(obj)
+            OnAbilityEnded:
+                MoveBoat: ScenarioScript_FH096.MoveMovingPlatformOnPath(obj)

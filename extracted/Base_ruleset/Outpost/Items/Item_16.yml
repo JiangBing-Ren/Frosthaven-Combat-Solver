@@ -1,0 +1,10 @@
+Parser: FHItem
+ID: 16
+ScenarioItemID: 912
+Name: Inspiring Helmet
+Quantity: 2
+Type: Head
+CraftingCost:
+    Hide: 1
+    Metal: 1
+RequiredCraftingItemIDs: [ 2 ]

@@ -1,0 +1,7 @@
+Parser: FHItem
+ID: 69
+ScenarioItemID: 1003
+Name: Feathered Cloak
+Quantity: 2
+Type: Body
+RequiredCraftingItemIDs: [ 3, 233 ]

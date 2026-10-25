@@ -1,0 +1,48 @@
+Parser: AbilityCard
+Name: $FH/274_character_ability_cards_trapper_furry_facade_1$
+Character: TrapperID
+ID: 274
+Level: 1
+Initiative: 85
+Discard: [Discard,Discard]
+Prefab: 274_Trapper_FurryFacade
+Data:
+    Top:
+        Abilities:
+            TMove:
+                Move:
+                    Amount: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            TInvisible:
+                Invisible: True
+                Filter: Self
+                AnimOverload: PowerUp
+    Bottom:
+        Abilities:
+            BSummon:
+                Summon: ShaggyLureID
+                AnimOverload: Summon
+                SubAbilities:
+                    BDisarm:
+                        Disarm: True
+                        Filter: Self
+                        TextOnly: True
+                        Flags: [SubAbilityPreview]
+                        AnimOverload: Hit
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Move> *TMove* <size=100%><voffset=1>@TMove@"
+        - Row: "<size=20%> "
+        - Row: "$FH/274_character_ability_cards_trapper_furry_facade_2$"
+    Bottom:
+        - Active:
+              Ability: "BSummon"
+              Icon: "Summon"
+              Layout:
+                  - Summon:
+                        Ability: BSummon
+                        SummonName: "$FH/274_character_ability_cards_trapper_furry_facade_3$"
+                        SpecialText: "$FH/274_character_ability_cards_trapper_furry_facade_4$"
+        - Row: "<size=20%> "
+        - MandatoryTrigger: "$FH/274_character_ability_cards_trapper_furry_facade_5$"

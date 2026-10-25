@@ -1,0 +1,74 @@
+Parser: Enemy
+ID: PolarBearEliteID
+LocKey: $FH/PolarBearElite$
+MonsterType: Monster
+StandeeLimit: 6
+Model: PolarBear Elite
+NonEliteVariant: PolarBearID
+PredominantlyMelee: True
+AbilityCards: [834, 835, 836, 837, 838, 839, 840, 841]
+# Base Stats
+Level0:
+    Health: 10
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    Conditions: [Wound]
+    Immunities: [Immobilize, Stun]
+Level1:
+    Health: 12
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    Conditions: [Wound]
+    Immunities: [Immobilize, Stun]
+Level2:
+    Health: 14
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Conditions: [Wound]
+    Immunities: [Immobilize, Stun]
+Level3:
+    Health: 16
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    Conditions: [Wound]
+    Immunities: [Immobilize, Stun]
+Level4:
+    Health: 20
+    Move: 4
+    Attack: 5
+    Range: 1
+    Target: 1
+    Conditions: [Wound]
+    Immunities: [Immobilize, Stun]
+Level5:
+    Health: 24
+    Move: 4
+    Attack: 6
+    Range: 1
+    Target: 1
+    Conditions: [Wound]
+    Immunities: [Immobilize, Stun]
+Level6:
+    Health: 36
+    Move: 4
+    Attack: 6
+    Range: 1
+    Target: 1    
+    Conditions: [Wound]
+    Immunities: [Immobilize, Disarm, Stun]
+Level7:
+    Health: 44
+    Move: 4
+    Attack: 7
+    Range: 1
+    Target: 1    
+    Conditions: [Wound]
+    Immunities: [Immobilize, Disarm, Stun]

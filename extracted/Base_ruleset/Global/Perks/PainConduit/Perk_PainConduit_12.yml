@@ -1,0 +1,18 @@
+Parser: Perk
+ID: PainConduit12
+Name: FH/PERK_PainConduit_12_Name
+Description: FH/PERK_PainConduit_12_Desc
+CharacterID: PainConduitID
+Available: 1
+Cost: 2
+Flags: [Passive, ApplyActiveBonusesAtScenarioStart]
+Abilities:
+    AOverheal:
+        AllowOverheal: 5
+        Filter: Self
+        AutoTrigger: True
+        SkipAnim: True
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: AddAccumulativeOverhealAndHealIfMax
+            Hidden: True

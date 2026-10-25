@@ -1,0 +1,23 @@
+Parser: EnemyCard
+ID: 584
+Name: $Monster_Ability_584_NightDemon_Impale$
+Initiative: 35
+Shuffle: False
+Data:
+    Abilities: 
+        Attack1:
+            Attack: -1
+            Filter: Enemy
+        Attack2:
+            Attack: 
+                Amount: -1
+                Pierce: 2
+            Filter: Enemy
+    Consumes:
+        CLight:
+            Elements: Light
+            Abilities:
+                CLightMuddle:
+                    Curse: True
+                    Filter: Self
+                    AnimOverload: Hit

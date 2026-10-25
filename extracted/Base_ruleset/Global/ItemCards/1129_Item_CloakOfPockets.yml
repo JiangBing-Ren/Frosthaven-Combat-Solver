@@ -1,0 +1,18 @@
+Parser: ItemCard
+ID: 1129
+StringID: CloakOfPocketsID
+Name: $FH/1129_item_cards_cloak_of_pockets_1$
+Art: Cloak of Pockets
+TotalInGame: 2
+Cost: 0
+Slot: Body 
+Rarity: Rare
+Usage: Unrestricted
+Trigger: PassiveEffect
+# throws errors if we don't have anything in the data
+Data:
+    Abilities:
+        EmptyAbility:
+            Null:
+Layout: 
+    - Row: $FH/1129_item_cards_cloak_of_pockets_2$

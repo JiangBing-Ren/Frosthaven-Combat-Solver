@@ -1,0 +1,57 @@
+Parser: Enemy
+ID: AlgoxScoutID
+LocKey: $FH/AlgoxScout$
+MonsterType: Monster
+StandeeLimit: 6
+Model: AlgoxScout
+PredominantlyMelee: True
+AbilityCards: [770,771,772,773,774,775,776,777]
+# Base Stats
+Level0:
+    Health: 7
+    Move: 3
+    Attack: 2
+    Range: 1
+    Target: 1
+Level1:
+    Health: 8
+    Move: 4
+    Attack: 2
+    Range: 1
+    Target: 1
+Level2:
+    Health: 11
+    Move: 4
+    Attack: 2
+    Range: 1
+    Target: 1
+Level3:
+    Health: 12
+    Move: 4
+    Attack: 3
+    Range: 1
+    Target: 1
+Level4:
+    Health: 15
+    Move: 4
+    Attack: 3
+    Range: 1
+    Target: 1
+Level5:
+    Health: 18
+    Move: 5
+    Attack: 3
+    Range: 1
+    Target: 1
+Level6:
+    Health: 24
+    Move: 5
+    Attack: 4
+    Range: 1
+    Target: 1    
+Level7:
+    Health: 33
+    Move: 5
+    Attack: 4
+    Range: 1
+    Target: 1

@@ -1,0 +1,8 @@
+Parser: AttackModifier
+Name: AMC_Regenerate1_R
+MathModifier: "+1"
+Rolling: True
+AbilityOverrides:
+    PosCon:
+        ParentName: AMC_Regenerate1_R
+        Conditions: [Regenerate]

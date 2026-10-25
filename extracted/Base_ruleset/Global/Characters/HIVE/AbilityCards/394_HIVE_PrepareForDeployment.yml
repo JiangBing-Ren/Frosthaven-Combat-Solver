@@ -1,0 +1,35 @@
+Parser: AbilityCard
+Name: $FH/394_character_ability_cards_hive_prepare_for_deployment_1$
+Character: HIVEID
+ID: 394
+Level: 1
+Initiative: 64
+Discard: [Discard,Discard]
+Prefab: 394_HIVE_PrepareForDeployment
+Data:
+    Top:
+        XP: 1
+        Abilities:
+            THeal:
+                Heal:
+                    Amount: 4
+                    DiamondPlusEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self             
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 4
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+Layout:
+    Top:
+        - ColumnWidths: "20,30,20"
+        - Column:
+        - Column: "<b><size=130%><sprite name=Heal> *THeal* @THeal@"
+        - Column: "$Self$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* @BMove@"

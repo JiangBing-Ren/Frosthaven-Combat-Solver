@@ -1,0 +1,129 @@
+Parser: Enemy
+ID: TheTormentorBossCardsID
+LocKey: $FH/TheTormentor$
+MonsterType: Boss
+StandeeLimit: 1
+Model: TheTormentor
+PredominantlyMelee: True
+AbilityCards: [0874000201, 0875000202, 0876000203, 0877000204, 0878000205, 0879000206, 0880000207, 0881000208]
+# Base Stats
+Level0:
+    Health: 0
+    Move: 4
+    Attack: 3
+    Range: 1
+    Target: 1
+    Flying: True
+    Conditions: [Muddle]
+    Immunities: [Wound, Stun]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            Multiplier: 15
+            AddTo: True
+Level1:
+    Health: 0
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+    Flying: True    
+    Conditions: [Muddle]
+    Immunities: [Wound, Stun]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            Multiplier: 18
+            AddTo: True
+Level2:
+    Health: 0
+    Move: 4
+    Attack: 5
+    Range: 1
+    Target: 1
+    Flying: True    
+    Conditions: [Muddle]
+    Immunities: [Wound, Stun]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            Multiplier: 21
+            AddTo: True
+Level3:
+    Health: 0
+    Move: 5
+    Attack: 5
+    Range: 1
+    Target: 1
+    Flying: True
+    Conditions: [Muddle]
+    Immunities: [Wound, Stun]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            Multiplier: 27  
+            AddTo: True
+Level4:
+    Health: 0
+    Move: 5
+    Attack: 6
+    Range: 1
+    Target: 1
+    Flying: True    
+    Conditions: [Muddle]
+    Immunities: [Wound, Stun]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            Multiplier: 31.5
+            AddTo: True
+Level5:
+    Health: 0
+    Move: 5
+    Attack: 6
+    Range: 1
+    Target: 1
+    Flying: True    
+    Conditions: [Muddle]
+    Immunities: [Wound, Stun]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            Multiplier: 39
+            AddTo: True
+Level6:
+    Health: 0
+    Move: 5
+    Attack: 8
+    Range: 1
+    Target: 1
+    Flying: True    
+    Conditions: [Muddle]
+    Immunities: [Wound, Stun]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            Multiplier: 49.5
+            AddTo: True
+Level7:
+    Health: 0
+    Move: 6
+    Attack: 9
+    Range: 1
+    Target: 1
+    Flying: True
+    Conditions: [Muddle]
+    Immunities: [Wound, Stun]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            Multiplier: 58.5
+            AddTo: True

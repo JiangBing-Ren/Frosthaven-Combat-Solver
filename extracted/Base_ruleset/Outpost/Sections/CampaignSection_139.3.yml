@@ -1,0 +1,8 @@
+Parser: CampaignSection
+ID: 139.3
+Name: Vermling Attack
+SkipNarration: True
+SkipCompletedNotification: True
+Effects:
+    - Type: ActivateEvent
+      Param1: "CustomEvent_139.3"

@@ -1,0 +1,29 @@
+Parser: ItemCard
+ID: 1233
+StringID: LightningRodID
+Name: $FH/1233_item_cards_lightning_rod_1$
+Art: Lightning Rod
+TotalInGame: 1
+Cost: 20
+Slot: OneHand
+Rarity: Rare
+Usage: Spent
+Trigger: BeforeInitiativeCalc
+ProsperityRequirement: 1
+Data:
+    Abilities:
+        AFocusInitiative:
+            AdjustInitiative: 1
+            Filter: Self
+            ActiveBonus:
+                Duration: Round
+                Behaviour: FocusInitiative
+                ValidAbilityType: AdjustInitiative
+                MiscVars:
+                    IgnoreImpair: True
+Layout: 
+    - Active:
+        Ability: AFocusInitiative
+        ListLayout: $FH/1233_item_cards_lightning_rod_2$
+        Layout: $FH/1233_item_cards_lightning_rod_2$
+        Icon: "Negative_Target_Enemy_Item"

@@ -1,0 +1,20 @@
+Parser: EnemyCard
+ID: 08090109 # ID number 9 of the Lord Of Chaos cards 
+Name: $Monster_Ability_S34_ChaosSpark_ChaosStrike$
+Initiative: 90
+Shuffle: False
+Data:
+    Abilities: 
+        AMove:
+            Move: 0
+        AAttack:
+            Attack: 0
+            Filter:
+                TargetType: Enemy
+                ActorType: Player
+            ExploitVulnerability: True
+            StatIsBasedOnX:
+                Strength:
+                    BasedOn: XAddedToInitialPlayerCharacterCount
+                    Multiplier: -2
+                    AddTo: False

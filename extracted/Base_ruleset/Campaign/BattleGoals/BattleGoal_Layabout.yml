@@ -1,0 +1,22 @@
+Parser: BattleGoal
+ID: BattleGoal_Layabout
+LocalisedName: BATTLEGOAL_Layabout
+LocalisedDescription: BATTLEGOAL_Layabout_Desc
+#Gain 7 or fewer experience points during the scenario - 2
+PerkChecks: 2
+BattleGoalCondition:
+    - Targets:
+        Filter: XPGain
+        Conditional:
+            Type: EndScenario
+            Amount: "< 8"
+        Value: 7
+        SubFilter: Scenario
+BattleGoalFailCondition:
+    - Targets:
+        Filter: XPGain
+        Conditional:
+            Amount: "> 7"
+        Value: 1
+        SubFilter: Scenario
+TreasureTables: [TT_Battle_Goals_2]

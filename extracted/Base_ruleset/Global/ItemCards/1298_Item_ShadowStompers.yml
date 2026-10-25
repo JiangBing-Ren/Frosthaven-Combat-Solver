@@ -1,0 +1,20 @@
+Parser: ItemCard
+ID: 1298
+StringID: ShadowStompersID
+Name: $FH/1298_item_cards_shadow_stompers_1$
+Art: Shadow Stompers
+TotalInGame: 2
+Cost: 0
+Slot: Legs
+Rarity: Rare
+Usage: Spent
+Trigger: SingleAbility
+Consumes: Dark
+Data:    
+    Overrides:
+        OMove:
+            Strength: 2
+    CompareAbility:
+        AbilityType: Move
+Layout: 
+    - Row: $FH/1298_item_cards_shadow_stompers_2$

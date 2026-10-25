@@ -1,0 +1,13 @@
+Parser: BattleGoal
+ID: BattleGoal_Slayer
+LocalisedName: FH/1356_battle_goals_slayer_1
+LocalisedDescription: FH/1356_battle_goals_slayer_2
+PerkChecks: 2
+BattleGoalCondition:
+    - Targets:
+        Filter: Kill
+        MonsterType: [Normal, Elite, Boss]     
+        CharacterTypes:
+            Target: [Enemy,Enemy2]
+        Value: 2
+        SubFilter: Round

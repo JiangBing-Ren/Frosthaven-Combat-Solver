@@ -1,0 +1,21 @@
+Parser: ItemCard
+ID: 1282
+StringID: RingOfTheNightID
+Name: $FH/1282_item_cards_ring_of_the_night_1$
+Art: Ring Of The Night
+TotalInGame: 2
+Cost: 50
+Slot: SmallItem
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Consumes: [Dark,Any]
+Data: 
+    Abilities:
+        AInvisible:
+            Invisible: True
+            Filter: Self
+    Vars:
+        SkipSaveInfusionsState: True
+Layout: 
+    - Row: "$FH/1282_item_cards_ring_of_the_night_2$"

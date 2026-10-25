@@ -1,0 +1,32 @@
+Parser: ItemCard
+ID: 1127
+StringID: ChainmailID
+Name: $FH/1127_item_cards_chainmail_1$
+Art: Chainmail
+TotalInGame: 2
+Cost: 0
+Slot: Body 
+Rarity: Rare
+Usage: Spent
+Trigger: PassiveEffect
+Data: 
+    AddModifiers:
+        - [AMC_Basic_M1, 3]
+    Abilities:
+        AShield:
+            Shield: 1
+            Filter: Self
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: ShieldIncomingAttacks
+                XPTracker: [0,0,0]
+                IsToggleBonus: True
+                ValidAbilityType: Attack
+    CompareAbility:
+        AbilityType: Attack
+Layout:
+    - Active:
+        Ability: AShield
+        ListLayout: $FH/1127_item_cards_chainmail_2$
+        Layout: $FH/1127_item_cards_chainmail_2$
+        Icon: Positive_Shield_Item

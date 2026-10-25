@@ -1,0 +1,28 @@
+Parser: Mastery
+ID: Snowdancer_MASTERY_1
+LocalisedName: Snowdancer_MASTERY_1_Name
+LocalisedDescription: Snowdancer_MASTERY_1_Desc
+PerkPoints: 1
+CheckAtEndOfScenario: True
+# suceed if you moved an actor every round
+BattleGoalCondition:
+    - Targets:
+        Filter: CauseActorToMove
+        # each round
+        SubFilter: EveryRoundCharactersOnly
+        StopCheckingAfterDeath: True
+        # only for the snowdancer
+        CharacterIDs: 
+            ActorID: SnowdancerID
+        Value: 1
+# fail if you didn't move an actor during a round
+BattleGoalFailCondition:
+    - Targets:
+        Filter: CauseActorToMove
+        # each round
+        SubFilter: EveryRoundCharactersOnly
+        StopCheckingAfterDeath: True
+        # only for the snowdancer
+        CharacterIDs: 
+            ActorID: SnowdancerID
+        Value: 0

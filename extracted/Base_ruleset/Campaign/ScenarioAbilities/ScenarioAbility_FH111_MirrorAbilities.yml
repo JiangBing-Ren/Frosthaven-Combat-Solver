@@ -1,0 +1,15 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH111_MirrorAbilities
+ScenarioAbility:
+    AActive:
+        MirrorDamage: True
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: MirrorAbilities
+            IsToggleBonus: False
+            Hidden: True
+            # aura, so we can also catch push/pull abilities targeting this actor
+            IsAura: True
+            AuraTargeting: All
+        AnimOverload: None
+        AutoTrigger: True

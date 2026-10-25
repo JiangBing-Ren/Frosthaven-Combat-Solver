@@ -1,0 +1,47 @@
+Parser: ItemCard
+ID: 1202
+StringID: TemporalAmuletID
+Name: $FH/1202_item_cards_temporal_amulet_1$
+Art: Temporal Amulet
+TotalInGame: 1
+Cost: 30
+Slot: Head
+Rarity: Rare
+Usage: Spent
+Trigger: BeforeInitiativeCalc
+Data:
+    Abilities:
+        AFocusInitiative:
+            Filter: Self
+            HelpBoxTooltipLocKey: $FH/1202_item_cards_temporal_amulet_2$
+            CanUndo: False
+            Choose: 
+                Abilities:
+                    AAdjustPositive:
+                        AdjustInitiative: 30
+                        Filter: Enemy
+                        Range: 99
+                        Target: 1
+                        ActiveBonus:
+                            Duration: Round
+                            Behaviour: AdjustInitiative
+                            ValidAbilityType: AdjustInitiative
+                            ListLayoutOverride: [$FH/1202_item_cards_temporal_amulet_2$, Positive_Shield_Item]
+                            MiscVars:
+                                ApplyToAllOfSameClass: True
+                        PreviewEffectText: "+30"
+                    AAdjustNegative:
+                        AdjustInitiative: -30
+                        Filter: Enemy
+                        Range: 99
+                        Target: 1
+                        ActiveBonus:
+                            Duration: Round
+                            Behaviour: AdjustInitiative
+                            ValidAbilityType: AdjustInitiative
+                            ListLayoutOverride: [$FH/1202_item_cards_temporal_amulet_2$, Positive_Shield_Item]
+                            MiscVars:
+                                ApplyToAllOfSameClass: True
+                        PreviewEffectText: "-30"
+Layout: 
+    - Row: "$FH/1202_item_cards_temporal_amulet_2$"

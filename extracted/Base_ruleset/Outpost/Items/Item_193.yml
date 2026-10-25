@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 193
+ScenarioItemID: 1201
+Name: Mind-Thieving Helmet
+Quantity: 1
+GoldCost: 30
+Type: Head
+IsNewCharacterItem: False

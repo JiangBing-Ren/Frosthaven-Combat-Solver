@@ -1,0 +1,12 @@
+Parser: EnemyCard
+ID: 848
+Name: $Monster_Ability_CalculatedStrike$
+Initiative: 83
+Shuffle: False
+Data:
+    Abilities:
+        Move1:
+            Move: -2
+        Attack1:
+            Attack: 1
+            Filter: Enemy

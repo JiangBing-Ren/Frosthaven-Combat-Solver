@@ -1,0 +1,31 @@
+Parser: ItemCard
+ID: 1135
+StringID: ArmorbaneBowID
+Name: $FH/1135_item_cards_armorbane_bow_1$
+Art: Armorbane Bow
+TotalInGame: 2
+Cost: 30
+Slot: TwoHand
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        ABuffRangeAttack:
+            Filter: Self
+            Attack: 0
+            PreviewEffectText: "<sprite name=Pierce>3"
+            AttackEffect:
+                Type: BuffIfAttackIsRanged
+                Pierce: 3
+            ActiveBonus:
+                Behaviour: BuffAttack
+                Duration: Turn
+                MiscVars:
+                    IgnoreImpair: True
+Layout: 
+    - Active:
+        Ability: ABuffRangeAttack
+        Layout: "$FH/1135_item_cards_armorbane_bow_2$"
+        ListLayout: "$FH/1135_item_cards_armorbane_bow_2$"
+        Icon: "Positive_Pierce_AttackRanged_Item"        

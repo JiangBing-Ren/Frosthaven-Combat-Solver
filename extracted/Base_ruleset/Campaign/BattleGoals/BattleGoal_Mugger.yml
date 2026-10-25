@@ -1,0 +1,11 @@
+Parser: BattleGoal
+ID: BattleGoal_Mugger
+LocalisedName: FH/1318_battle_goals_mugger_1
+LocalisedDescription: FH/1318_battle_goals_mugger_2
+#Kill a monster and loot the money token it drops in the same turn. (compares loot position to killed actor position, loot targeting actor and kill targeting actor)
+PerkChecks: 1
+BattleGoalCondition:
+    - Targets:
+        Filter: LootTheKill
+        Value: 1
+        SubFilter: Scenario

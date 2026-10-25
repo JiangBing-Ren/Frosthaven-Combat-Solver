@@ -1,0 +1,15 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH90_FrozenCorpseIce
+ScenarioAbility:
+    AActive:
+        Filter: Self
+        SkipAnim: True
+        NullTargeting: True
+        ActiveBonus:
+            Duration: Persistent
+            ListLayoutOverride: [$FH_Scenario_Campaign_090_FROZEN_CORPSE_BUFF$, Negative_Unique_Campaign]            
+            Vars:
+                PersistentCasterVFX: "'S90FrozenCorpseIce'" #special vfx that also causes the Frozen Corpse's animation to stop
+            MiscVars:
+                ShowUnderHealthbar: True
+                HiddenInCombatLog: True

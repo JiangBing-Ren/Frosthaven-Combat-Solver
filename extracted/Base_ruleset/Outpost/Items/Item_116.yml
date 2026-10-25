@@ -1,0 +1,10 @@
+Parser: FHItem
+ID: 116
+ScenarioItemID: 1097
+Name: Plague Flask
+Quantity: 2
+Type: Small
+Brewing:
+    Herb1: Snowthistle
+    Herb2: Axenut
+    Herb3: Corpsecap

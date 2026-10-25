@@ -1,0 +1,83 @@
+Parser: Enemy
+ID: FlameDemonID
+LocKey: $FlameDemon$
+MonsterType: Monster
+StandeeLimit: 6
+Model: Flame Demon
+PredominantlyMelee: False
+AbilityCards: [546, 547, 548, 549, 550, 551, 552, 553]
+# Base Stats
+Level0:
+    Health: 2
+    Move: 3
+    Attack: 2
+    Range: 1
+    Target: 1
+    Flying: True
+    Shield: 2
+Level1:
+    Health: 2
+    Move: 3
+    Attack: 2
+    Range: 1
+    Target: 1
+    Flying: True
+    Shield: 3
+Level2:
+    Health: 3
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Flying: True
+    Shield: 3
+Level3:
+    Health: 3
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Flying: True
+    Shield: 3
+    Retaliate: 2
+    RetaliateRange: 2
+Level4:
+    Health: 3
+    Move: 4
+    Attack: 3
+    Range: 1
+    Target: 1
+    Flying: True
+    Shield: 3
+    Retaliate: 3
+    RetaliateRange: 2
+Level5:
+    Health: 4
+    Move: 4
+    Attack: 3
+    Range: 1
+    Target: 1
+    Flying: True
+    Shield: 4
+    Retaliate: 3
+    RetaliateRange: 2
+Level6:
+    Health: 4
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+    Flying: True 
+    Shield: 4
+    Retaliate: 4
+    RetaliateRange: 2
+Level7:
+    Health: 6
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+    Flying: True
+    Shield: 4
+    Retaliate: 5
+    RetaliateRange: 2

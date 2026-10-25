@@ -1,0 +1,25 @@
+Parser: BattleGoal
+ID: BattleGoal_Opener
+LocalisedName: FH/BATTLEGOAL_Opener
+LocalisedDescription: FH/BATTLEGOAL_Opener_Desc
+#Be the first to kill a monster during the scenario - 1
+# 0=no kills, 1=override kill, 2=other kill
+PerkChecks: 1
+BattleGoalCondition:
+    - Targets:
+        Filter: FirstKill
+        MonsterType: [Normal, Elite, Boss]
+        Targets: 1
+        Conditional:
+            Amount: "== 1"
+        Value: 1
+        SubFilter: Scenario
+BattleGoalFailCondition:
+    - Targets:
+        Filter: FirstKill
+        MonsterType: [Normal, Elite, Boss]
+        Targets: 1
+        Conditional:
+            Amount: "== 2"
+        Value: 1
+        SubFilter: Scenario

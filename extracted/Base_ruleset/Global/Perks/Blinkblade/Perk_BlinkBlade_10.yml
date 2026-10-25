@@ -1,0 +1,51 @@
+Parser: Perk
+ID: Blinkblade10
+Name: FH/PERK_Blinkblade_10_Name
+Description: FH/PERK_Blinkblade_10_Desc
+CharacterID: BlinkbladeID
+Available: 1
+Flags: [Passive, ApplyActiveBonusesAtScenarioStart]
+Abilities:
+    TActive:
+        Filter: Self
+        AutoTrigger: True
+        SkipAnim: True
+        AddActiveBonus:
+            Filter: Self
+            CanSkip: True
+            ConsumeItems: 1
+            NegativeAbilityIsOptional: True
+            Vars:
+                SpecificItems: ValidUnspentItems
+            SubAbilities:
+                RefreshOtherSpentItem:
+                    RefreshItems: 1
+                    Filter: Self
+                    Vars:
+                        SpecificItems: ParentAbility.VarsContext.GetVar("ValidSpentItems")
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringActionAbilityOnShortRest
+            Hidden: True
+            Vars:
+                # Copy-paste from below
+                # Used as context above for SpecificItems.
+                ValidUnspentItems: TriggerTarget.Inventory.AllItems.Where(obj.SlotState.ToString() == "Equipped" && obj.YMLData.Usage.ToString() == "Spent")    
+                ValidSpentItems: TriggerTarget.Inventory.AllItems.Where(obj.SlotState.ToString() == "Spent" && obj.YMLData.Usage.ToString() == "Spent")
+                
+            Requirements:
+                Vars:
+                    # not exactly sure if there's a proper way to compare enum types, had to resort to strings
+                    ValidUnspentItems: Actor.Inventory.AllItems.Where(obj.SlotState.ToString() == "Equipped" && obj.YMLData.Usage.ToString() == "Spent")
+                    ValidSpentItems: Actor.Inventory.AllItems.Where(obj.SlotState.ToString() == "Spent" && obj.YMLData.Usage.ToString() == "Spent")
+                    ValidateHasUnspentItem: ValidUnspentItems.Count > 0
+                    ValidateHasSpentItem: ValidSpentItems.Count > 0
+        AnimOverload: ChargeUp 
+        ConditionalOverrides:
+            COAnim_Slow:
+                Self: True
+                Requirement:
+                    RequiredAgility: Slow
+                AbilityOverrides:
+                    COAnim:
+                        AnimOverload: ChargeUpSlow

@@ -1,0 +1,30 @@
+Parser: ItemCard
+ID: 886
+StringID: TravelingCloakID
+Name: $FH/886_item_cards_traveling_cloak_1$
+Art: Traveling Cloak
+TotalInGame: 2
+Cost: 30
+Slot: Body
+Rarity: Rare
+Usage: Unrestricted
+Trigger: PassiveEffect
+ProsperityRequirement: 1
+Data:
+    Abilities:
+        AOverheal:
+            AllowOverheal: 1
+            Filter: Self
+            AutoTrigger: True
+            SkipAnim: True
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: AddAccumulativeOverhealAndHealIfMax
+                MiscVars:
+                    IgnoreImpair: True
+Layout: 
+    - Active:
+        Ability: AOverheal
+        ListLayout: $FH/886_item_cards_traveling_cloak_2$
+        Layout: $FH/886_item_cards_traveling_cloak_2$
+        Icon: "Positive_Health_Item"

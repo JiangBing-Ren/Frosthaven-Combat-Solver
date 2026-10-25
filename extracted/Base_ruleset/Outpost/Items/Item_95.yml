@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 95
+ScenarioItemID: 1055
+Name: Poison Vial
+Quantity: 2
+Type: Small
+Brewing:
+    Herb1: Snowthistle
+    Herb2: Corpsecap

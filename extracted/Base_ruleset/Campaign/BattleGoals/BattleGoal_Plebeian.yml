@@ -1,0 +1,23 @@
+Parser: BattleGoal
+ID: BattleGoal_Plebeian
+LocalisedName: FH/1327_battle_goals_plebeian_1
+LocalisedDescription: FH/1327_battle_goals_plebeian_2
+#Never kill an elite monster or boss.
+PerkChecks: 1
+CheckAtEndOfScenario: True
+BattleGoalCondition:
+    - Targets:
+        Filter: Kill
+        MonsterType: [Elite, Boss]
+        CharacterTypes:
+            Target: [Enemy,Enemy2]
+        Value: 0
+        SubFilter: Scenario
+BattleGoalFailCondition:
+    - Targets:
+        Filter: Kill
+        MonsterType: [Elite, Boss]
+        CharacterTypes:
+            Target: [Enemy,Enemy2]
+        Value: 1
+        SubFilter: Scenario

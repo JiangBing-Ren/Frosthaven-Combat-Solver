@@ -1,0 +1,14 @@
+Parser: AttackModifier
+Name: AMC_Heal2Trap_P0
+MathModifier: "+0"
+Abilities:
+    TrapAbility:   
+        Trap:
+            TrapName: TrapperTrap
+            Heal: 2
+        RangeIsBase: True
+        AnimOverload: TrapThrow
+        TileFilter: EmptyHex
+        Targeting: Custom
+        TargetingVars:
+            AddTilesInRange: GameState.GetTilesInRange(TargetActor, 1)

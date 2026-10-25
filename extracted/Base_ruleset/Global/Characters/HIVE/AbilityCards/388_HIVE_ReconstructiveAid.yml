@@ -1,0 +1,76 @@
+Parser: AbilityCard
+Name: $FH/388_character_ability_cards_hive_reconstructive_aid_1$
+Character: HIVEID
+ID: 388
+Level: 1
+Initiative: 90
+Discard: [Lost,Discard]
+Prefab: 388_HIVE_ReconstructiveAid
+Data:
+    Top:
+        XP: 2
+        Abilities:
+            TSummon:
+                Summon: RepairDroneID
+                AnimOverload: Summon
+        Mode:
+            BuffHeal:
+                AutoTrigger: True
+                AddActiveBonus:
+                    AutoTrigger: True
+                    Heal: 2
+                    Filter: Self
+                    IgnoreStun: True
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: StartTurnAbility
+            DebuffAttackRange:
+                AutoTrigger: True
+                Attack: 0
+                AttackEffect:
+                    Type: BuffIfAttackIsRanged
+                    Range: -1
+                Filter: Self
+                ActiveBonus:
+                    Behaviour: BuffAttack
+                    Duration: Persistent
+    Bottom:
+        Abilities:
+            BHeal:
+                Heal: 
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self
+                Conditions: Regenerate
+Layout:
+    Top:
+        - Active:
+              Ability: "TSummon"
+              Icon: "Positive_Heal"
+              Layout:
+                  - Summon:
+                        Ability: TSummon
+                        SummonName: $FH/388_character_ability_cards_hive_reconstructive_aid_2$
+                        SpecialText:
+                            - Row: "$FH/388_character_ability_cards_hive_reconstructive_aid_3$"
+        - Row:
+            - Column: "<sprite name=HIVEMode>"
+            - Column:
+                - Active:
+                    Ability: "BuffHeal"
+                    Icon: "Positive_HealSelf_HIVEMode"
+                    ListLayout: "$FH/388_character_ability_cards_hive_reconstructive_aid_4$ *BuffHeal*<sprite name=Heal> $target_self$"
+                    Layout: "$FH/388_character_ability_cards_hive_reconstructive_aid_4$"
+            - Column:
+                - Active:
+                    Ability: "DebuffAttackRange"
+                    Icon: "Negative_RangeMinus_HIVEMode"
+                    ListLayout: "$FH/388_character_ability_cards_hive_reconstructive_aid_5$"
+                    Layout: "$FH/388_character_ability_cards_hive_reconstructive_aid_5$"
+    Bottom:
+        - ColumnWidths: "20,30,30"
+        - Column:
+        - Column: "<b><size=130%><sprite name=Heal> *BHeal* @BHeal@"
+        - Column: "$FH/388_character_ability_cards_hive_reconstructive_aid_6$ "

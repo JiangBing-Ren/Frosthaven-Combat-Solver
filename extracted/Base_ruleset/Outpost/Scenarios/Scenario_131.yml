@@ -1,0 +1,13 @@
+Parser: FHScenario
+ID: 131
+Name: The Dancing Iceberg
+LevelID: FS_131_The_Dancing_Iceberg
+Chain: Other
+Location: TheBitingSea
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: AllCharactersGainExperience
+          Param1: 10
+        - Type: GainItem
+          Param1: 237

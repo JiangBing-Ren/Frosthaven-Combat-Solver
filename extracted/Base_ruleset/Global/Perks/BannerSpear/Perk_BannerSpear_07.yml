@@ -1,0 +1,8 @@
+Parser: Perk
+ID: BannerSpear07
+Name: FH/PERK_BannerSpear_07_Name
+Description: FH/PERK_BannerSpear_07_Desc
+CharacterID: BannerSpearID
+Available: 1
+CardsToRemove: [AMC_Basic_M1]
+Flags: [Passive, IgnoreMinusOneItemEffects]

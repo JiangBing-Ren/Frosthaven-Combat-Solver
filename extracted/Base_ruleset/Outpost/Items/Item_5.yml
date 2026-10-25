@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 5
+ScenarioItemID: 890
+Name: Crude Boots
+Quantity: 2
+Type: Feet
+CraftingCost:
+    Hide: 2

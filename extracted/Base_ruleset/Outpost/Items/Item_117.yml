@@ -1,0 +1,10 @@
+Parser: FHItem
+ID: 117
+ScenarioItemID: 1099
+Name: Inferno Flask
+Quantity: 2
+Type: Small
+Brewing:
+    Herb1: Snowthistle
+    Herb2: Axenut
+    Herb3: Flamefruit

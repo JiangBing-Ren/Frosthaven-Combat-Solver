@@ -1,0 +1,135 @@
+Parser: AbilityCard
+Name: $FH/037_character_ability_cards_blinkblade_power_leak_1$
+Character: BlinkbladeID
+ID: 37
+Level: 1
+Initiative: 17
+Discard: [Discard,Lost]
+Prefab: 37_Blinkblade_PowerLeak
+Data:
+    Top:
+        Abilities:
+            TPoison:
+                Poison: True
+                Target: -1
+                Filter: Self
+                SkipAnim: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Fast
+                    DoesntHaveNegativeCondition: Poison
+                    XP: 1
+                CanUndo: True
+                NegativeAbilityIsOptional: True
+                CanSkip: True
+            TAttack:
+                Attack: 4
+                Range: 1
+                Target: 1
+                Targeting: Range
+                Filter: Enemy
+                AnimOverload: AttackSlow
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                ConditionalOverrides:
+                    TAttackCO:
+                        Self: True
+                        Requirement:
+                            ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                            Vars:
+                                ValidateDoesntHaveTreatSlowAgilityAsFast: not TargetingActor.HasActiveBonusFlag(AbilityData.EActiveBonusFlag.TreatSlowAgilityAsFast)
+                            AbilityTypes: [Poison]
+                        AbilityOverrides:
+                            TAttack:
+                                Target: 1
+                                AnimOverload: Attack2
+                    TAttackCOSystemReboot:
+                        Self: True
+                        Requirement:
+                            ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                            Vars:
+                                ValidateHasTreatSlowAgilityAsFast: TargetingActor.HasActiveBonusFlag(AbilityData.EActiveBonusFlag.TreatSlowAgilityAsFast)
+                            AbilityTypes: [Poison]
+                        AbilityOverrides:
+                            TAttack:
+                                Target: 1
+                                AnimOverload: Attack2Slow
+            TMuddle:
+                Muddle: True
+                Target: -1
+                Filter: Self
+                CanSkip: False
+                SkipAnim: True
+                AutoTrigger: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Slow
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+                ConditionalOverrides:
+                    BMoveCO_Fast:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Fast
+                        AbilityOverrides:
+                            BMove:
+                                Strength: 4
+            BHeal:
+                Heal: 2
+                MiscVars:
+                    PrintedProperties: list("Heal", "Range")
+                Range: 1
+                Target: 99
+                Targeting: Range
+                Filter: [Self, Ally]
+                CanSkip: False
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Slow
+                AnimOverload: PowerUpSlow1HexAOE
+                MiscVars:
+                    AutoSelectValidTiles: True
+        XP: 1
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack*"
+        - Row: "<size=25%> "
+        - Row:
+            - ColumnWidths: "75,25"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "$FH/037_character_ability_cards_blinkblade_power_leak_2$"
+            - Column:
+        - Divider:
+        - Row:
+            - ColumnWidths: "50,50"
+            - Column:
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Text: "$FH/037_character_ability_cards_blinkblade_power_leak_3$"
+    Bottom:
+        - Row:
+            - ColumnWidths: "40,15,45"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "+4 <sprite name=Move>"
+            - Column:
+                - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+            - Column:
+        - Divider:
+        - Row:
+            - ColumnWidths: "35,65"
+            - Column:
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Text: "$FH/037_character_ability_cards_blinkblade_power_leak_4$"

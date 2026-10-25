@@ -1,0 +1,4 @@
+Parser: AttackModifier
+Name: Reduced_Randomness_Curse
+MathModifier: "-2"
+IsCurse: True

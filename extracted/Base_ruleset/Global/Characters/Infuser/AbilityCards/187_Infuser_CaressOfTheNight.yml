@@ -1,0 +1,120 @@
+Parser: AbilityCard
+Name: $FH/187_character_ability_cards_infuser_caress_of_the_night_1$
+Character: InfuserID
+ID: 187
+Level: 1
+Initiative: 87
+Discard: [Lost,Discard]
+Prefab: 187_Infuser_CaressOfTheNight
+Data:
+    Top:
+        Abilities:
+            ConsumeAbility:
+                Consume: 
+                    Elements: [Dark, Any]
+                    Abilities:
+                        CNull:
+                            Null: True
+                            AutoTrigger: True
+            TPassive:
+                Attack: 0
+                AttackEffect:
+                    Type: BuffIfAttackIsMelee
+                    Conditions: [Wound, Muddle]
+                AutoTrigger: True
+                Filter: Self
+                AnimOverload: GatherElements
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Consume]
+                Vars:
+                    ResetInfusionTurnRestriction: CustomAbility.ResetInfusionTurnRestriction()
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: BuffAttack
+                    ListLayoutOverride: [$FH/187_character_ability_cards_infuser_caress_of_the_night_2$, Positive_WoundMuddle_Attack]
+                    IsAura: True
+                    AuraFilter: [Self, OwnSummon]
+                    AuraTargeting: All
+                    MiscVars:
+                        InfusionBonus: True
+            TActive:
+                AddActiveBonus:
+                    HelpBoxTooltipLocKey: "$FH/185_character_ability_cards_infuser_boon_of_the_tempest_4$"
+                    Filter:
+                        TargetType: [Self,OwnSummon]
+                        PlayerClasses: [InfuserID]
+                        HeroSummonClasses: [SpiritboundFalchionID]
+                    Target: 1
+                    Targeting: All
+                    IgnoreLOS: True
+                    SkipAnim: True
+                    MiscVars:
+                        TreatThisAsParent: True
+                    PerformVars:
+                        ActorIsSelectingTargetingFocus:
+                            AutoSelSelf: CustomAbility.AutoControlSelfIfOnlyValidTarget(obj)
+                    ControlActor:
+                        ControlDurationType: ControlForOneAction
+                        Abilities:
+                            InfusedStrengthen:
+                                TreatAsNonSubAbility: True
+                                Strengthen: True
+                                CanUndo: False
+                                Filter: Self
+                Filter: Self
+                AutoTrigger: True
+                SkipAnim: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Consume]
+                MiscVars:
+                    Infusion: True
+                ActiveBonus:
+                    Duration: Persistent
+                    ListLayoutOverride: ["$185_character_ability_cards_infuser_boon_of_the_tempest_4$ <sprite name=Strengthen> $target_self$", Positive_StrenghtenSelf_Infusion]
+                    Behaviour: DuringTurnAbility
+                    Restriction: OncePerTurn
+                    TriggerOnCaster: True
+                    IsToggleBonus: True
+                    MiscVars:
+                        OverrideIcon: "'CaressOfTheNightTopInfusion'"
+                    Requirements:
+                        Vars:
+                            ValidateHasPlayedInfusion: CustomAbility.HasPlayedInfusion(Actor)
+        XP: 2
+    Bottom:
+        Abilities:
+            BAttack:
+                Attack: 3
+                MiscVars:
+                    PrintedProperties: list("Attack")
+        Consumes:
+            BCAttack:
+                PreviewEffectId: M1Attack
+                AbilityOverrides:
+                    BCAttackBuff:
+                        ParentName: BAttack
+                        Attack: -1
+                        SubAbilities:
+                            BInfuse:
+                                TreatAsNonSubAbility: True
+                                AutoTrigger: True
+                                Infuse: [Dark]
+                                SkipAnim: True
+                                XP: 1
+Layout:
+    Top:
+        - Row: "$FH/187_character_ability_cards_infuser_caress_of_the_night_4$"
+        - Row: "$FH/187_character_ability_cards_infuser_caress_of_the_night_2$"
+        - Row: "$FH/187_character_ability_cards_infuser_caress_of_the_night_3$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Attack> *BAttack*"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: BCAttack
+                    Text: "-1<sprite name=Attack>: <sprite name=CreateDark>, <sprite name=XP>"

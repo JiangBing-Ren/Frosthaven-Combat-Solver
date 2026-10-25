@@ -1,0 +1,112 @@
+Parser: AbilityCard
+Name: $FH/371_character_ability_cards_frozen_fist_draw_of_the_bedrock_1$
+Character: FrozenFistID
+ID: 371
+Level: 2
+ProgressionOrder: 11
+Initiative: 10
+Discard: [Discard,Discard]
+Prefab: 371_FrozenFist_DrawOfTheBedrock
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AnimOverload: Attack2
+            TShield:
+                Shield: 1
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                ActiveBonus:
+                    Duration: Round
+                AnimOverload: Heal
+        Consumes:
+            TCEarth:
+                Elements: Earth
+                AbilityOverrides:
+                    TCBrittle:
+                        ParentName: TAttack
+                        Conditions: Brittle
+                XP: 1
+            TCIce:
+                Elements: Ice
+                AbilityOverrides:
+                    TCShield:
+                        ParentName: TShield
+                        Strength: 1
+                        ActiveBonus:
+                            Duration: Round
+    Bottom:
+        Abilities:
+            BPull:
+                Pull:
+                    Amount: 3
+                    SquareEnhancements: 1
+                Range:
+                    Amount: 4
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Pull","Range")
+                AnimOverload: Heal
+            BConsume:
+                PreviewEffectText: "<sprite name=Immobilize>"
+                Consume:
+                    Elements: [Earth]
+                    Abilities:
+                        BImmobilize:
+                            Immobilize: True
+                            Range: 1
+                            MiscVars:
+                                PrintedProperties: list("Range")
+                            Filter: Enemy
+                            AnimOverload: PowerUp
+                    XP: 1
+            BRetaliate:
+                Retaliate: 2
+                MiscVars:
+                    PrintedProperties: list("Retaliatte")
+                ActiveBonus:
+                    Duration: Round
+                AnimOverload: Roar
+Layout:
+    Top:
+        # removed dividers because it couldn't fit into the window that way
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        # - Divider: 
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCEarth
+                    Text: "<b><size=130%> <sprite name=Brittle>, <sprite name=XP1>"
+        - Divider:
+        - Active:
+            Ability: TShield
+            Icon: Positive_Shield
+            ListLayout: "<sprite name=Shield> *TShield*"
+            Layout: "<sprite name=Shield> *TShield* @TShield@"
+        - Row: "<b><size=130%><sprite name=Shield> *TShield*"
+        # - Divider:
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCIce
+                    Text: "<b><size=130%> +1<sprite name=Shield>"
+    Bottom:
+        - Active:
+            Ability: BRetaliate
+            Icon: Positive_Retaliate
+            ListLayout: "<sprite name=Retaliate> *BRetaliate*"
+            Layout: "<sprite name=Retaliate> *BRetaliate*"
+        - Row:
+            - Column: "<b><size=130%><sprite name=Pull> *BPull* <size=100%><voffset=1>@BPull@"
+            - Column: "<b><size=130%><sprite name=Range> *BPull.Range* <size=100%><voffset=1>@BPull.Range@"
+        - Divider:     
+        - Conditional:
+            Layout:
+                - Row: "<b><size=130%><sprite name=ConsumeEarth>: <sprite name=Immobilize> <sprite name=Range>1, <sprite name=XP1>"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Retaliate> *BRetaliate*"

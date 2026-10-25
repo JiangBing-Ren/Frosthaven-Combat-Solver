@@ -1,0 +1,12 @@
+Parser: FHScenario
+ID: 17
+Name: Haunted Vault
+LevelID: FS_017_Haunted_Vault
+Chain: Algox1
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: AllCharactersAddPerkCheck
+          Param1: 2
+        - Type: UnlockScenario
+          Param1: 27

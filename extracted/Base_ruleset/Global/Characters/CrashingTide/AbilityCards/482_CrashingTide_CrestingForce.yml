@@ -1,0 +1,39 @@
+Parser: AbilityCard
+Name: $FH/482_character_ability_cards_crashing_tide_cresting_force_1$
+Character: CrashingTideID
+ID: 482
+Level: 1
+ProgressionOrder: 482
+Initiative: 87
+Discard: [Discard,Discard]
+Prefab: 482_CrashingTide_CrestingForce
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 0
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Range: 1
+                Target: 1
+                Targeting: Range
+                Filter: [Enemy]
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: Vars
+                        Vars:
+                            Value: CustomAbility.GetTideActiveBonuses(TargetingActor).Count
+        XP: 1
+    Bottom:
+        Abilities:
+            BLoot:
+                Loot: 1
+                MiscVars:
+                    PrintedProperties: list("Loot")
+                Target: -1
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> X"
+        - Row: "$FH/482_character_ability_cards_crashing_tide_cresting_force_2$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Loot> *BLoot*"

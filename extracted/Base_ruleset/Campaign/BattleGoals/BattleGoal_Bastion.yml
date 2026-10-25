@@ -1,0 +1,12 @@
+Parser: BattleGoal
+ID: BattleGoal_Bastion
+LocalisedName: FH/1305_battle_goals_bastion_1
+LocalisedDescription: FH/1305_battle_goals_bastion_2
+# end 1 round inside of a door, while adjacent to 2 or more enemies
+PerkChecks: 1
+BattleGoalCondition:
+    - Targets:
+        Filter: EndRoundInDoorAdjacentToXEnemies
+        Value: 1
+        CompareVal1: 2
+        SubFilter: Scenario

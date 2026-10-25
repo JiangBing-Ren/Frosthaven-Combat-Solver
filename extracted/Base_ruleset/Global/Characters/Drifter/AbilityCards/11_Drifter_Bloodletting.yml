@@ -1,0 +1,54 @@
+Parser: AbilityCard
+Name: $FH/011_character_ability_cards_drifter_bloodletting_1$
+Character: DrifterID
+ID: 11
+Level: 1
+ProgressionOrder: 10
+Initiative: 65
+Discard: [Discard,Discard]
+Prefab: 11_Drifter_Bloodletting
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Filter: [Enemy]
+                SubAbilities:
+                    TMoveTracker:
+                        Filter: Self
+                        MoveActiveBonusTracker: -1
+                        Vars:
+                            NumberOfCardsToSelect: 1
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateAnyActorDiedThisAction: CPhaseAction.ActorsKilledThisAction.Count > 0
+                        TreatAsNonSubAbility: True
+                        AnimOverload: PowerUp
+    Bottom:
+        Abilities:
+            BAttack:
+                Attack:
+                    Amount: 1
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Filter: [Enemy]
+                Conditions: [Wound]
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack*<size=100%><voffset=1>@TAttack@"
+        - Divider:
+        - Row: "$FH/011_character_ability_cards_drifter_bloodletting_2$"
+    Bottom:
+        - Row:
+            - ColumnWidths: "30,20,20,30"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Attack> *BAttack*<size=100%><voffset=1>@BAttack@"
+            - Column:
+                - AddedEffect: "<size=130%><sprite name=Wound></size>"
+            - Column:

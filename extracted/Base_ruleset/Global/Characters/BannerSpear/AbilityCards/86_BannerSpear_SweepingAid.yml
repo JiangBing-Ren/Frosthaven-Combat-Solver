@@ -1,0 +1,63 @@
+Parser: AbilityCard
+Name: $FH/086_character_ability_cards_banner_spear_sweeping_aid$
+#CustomImage: KRO_BANNER_SPEAR_AbilityCards_SweepingAid
+Character: BannerSpearID
+ID: 86
+Level: 8
+Initiative: 73
+Discard: [Discard,Discard]
+Prefab: 86_Bannerspear_SweepingAid
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 4
+                    DiamondEnhancements: 1
+                    Pierce: 2
+                MiscVars:
+                    PrintedProperties: list("Attack","Pierce")
+                AreaEffect: "0,0,G|2,0,B|3,1,R|3,-1,R|4,0,R"
+                MultiPassAttack: False
+                Conditions: [Immobilize]
+                AnimOverload: Summon_SpearsFromGround
+        XP: 1        
+    Bottom:
+        Abilities:
+            BHeal:
+                Heal: 2
+                Range: 2
+                Filter: [Self,Ally]
+                MiscVars:
+                    PrintedProperties: list("Heal","Range")
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BHealBottom:
+                Heal: 2
+                Range: 2
+                Filter: [Self,Ally]
+                MiscVars:
+                    PrintedProperties: list("Heal","Range")
+        XP: 0   
+Layout:
+    Top:
+        - ColumnWidths: "30,30,40"
+        - Column:
+            - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Row: "<size=100%> "
+            - Row: "<size=100%> "
+            - Row: "<size=70%> "
+        - Column:
+            - Row: "<size=100%><sprite name=Pierce> *TAttack.Pierce*, <sprite name=Immobilize>"
+        - Column:
+            - Row: "£Area£"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Heal> *BHeal.Amount* <sprite name=Range> *BHeal.Range*"
+        - Row: "<size=100%> "
+        - Row: "<b><size=130%><sprite name=Move> *BMove.Amount* <size=100%><voffset=1>@BMove@"
+        - Row: "<size=100%> "
+        - Row: "<b><size=130%><sprite name=Heal> *BHealBottom.Amount* <sprite name=Range> *BHealBottom.Range*"

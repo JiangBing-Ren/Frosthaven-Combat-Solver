@@ -1,0 +1,7 @@
+Parser: Perk
+ID: Frozenfist08
+Name: FH/PERK_Frozenfist_08_Name
+Description: FH/PERK_Frozenfist_08_Desc
+CharacterID: FrozenFistID
+Available: 3
+CardsToAdd: [AMC_Heal1_R_FrozenFist, AMC_Heal1_R_FrozenFist]

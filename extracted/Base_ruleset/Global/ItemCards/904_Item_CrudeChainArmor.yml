@@ -1,0 +1,20 @@
+Parser: ItemCard
+ID: 904
+StringID: CrudeChainArmorID
+Name: $FH/0904_item_cards_crude_chain_armor_1$
+Art: Crude Chain Armor
+TotalInGame: 2
+Cost: 0
+Rarity: Rare
+Slot: Body 
+Usage: Spent
+Trigger: OnAttacked
+ProsperityRequirement: 1
+Data:
+    ShieldValue: 2
+    CompareAbility:
+        AbilityType: Attack
+    AddModifiers:
+        - [AMC_Basic_M1, 1]
+Layout:
+    - Row: $FH/0904_item_cards_crude_chain_armor_2$

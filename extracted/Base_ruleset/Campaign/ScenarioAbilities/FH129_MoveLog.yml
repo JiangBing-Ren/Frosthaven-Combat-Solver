@@ -1,0 +1,57 @@
+Parser: ScenarioAbility
+ID: FH129_MoveLog
+ScenarioAbility:
+    MoveLog:
+        Filter: Self
+        SkipAnim: True
+        AddActiveBonus:
+            CanUndo: False
+            CanSkip: False
+            PreviewEffectText: "1 AP"
+            HelpBoxTooltipLocKey: "FH_Scenario_Campaign_129_SCENARIO_MODIFIER_4"
+            NullHex: True
+            Target: 1
+            Range: 99
+            TileFilter: Custom
+            IgnoreLOS: True
+            MiscVars:
+                IsValidTile: ScenarioScript_FH129.HasTwoHexDifficultTerrain(obj)
+                DontCancelIfNoTiles: True
+                DontPreviewDescription: True
+                SelectMultiHexProps: True
+                DontMoveCamera: True
+            PerformVars:
+                AnimateCharacter:
+                    SelectedTile: TilesSelected[0]
+                    Prop: ScenarioScript_FH129.FindTwoHexDifficultTerrain(SelectedTile)
+                    DestroyProp: Prop.DestroyPropFromAbility(obj)
+            SubAbilities:
+                CreateLogSub:
+                    CanUndo: False
+                    CanSkip: False
+                    TreatAsNonSubAbility: True
+                    CreateTerrain: Rubble
+                    Target: 2
+                    Range: 99
+                    IgnoreLOS: True
+                    TileFilter: EmptyHex
+                    AreaEffect: "0,0,R|2,0,R"
+                    AreaEffectLayoutOverride: "0,0,R|2,0,R"
+                    MiscVars:
+                        APCost: 1
+                        LinkProps: True
+                        HideInvalidTiles: True
+        ActiveBonus:
+            ListLayoutOverride: ["$FH/FH_Scenario_Campaign_129_SCENARIO_MODIFIER_4$", Empty]
+            Hidden: True
+            Behaviour: DuringTurnAbility
+            Duration: Persistent
+            ValidAbilityType: NullTargeting
+            IsToggleBonus: True
+            MiscVars:
+                OverrideIcon: "'Move_2_Hex_Difficult'"
+                OverrideLayoutName: "''"
+            Requirements:
+                Vars:
+                    CurrentAbility: PhaseManager.CurrentPhaseAction?.CurrentPhaseAbility?.m_Ability
+                    ValidateAbility: CurrentAbility != null && CurrentAbility.Name == "ChooseAPAbility"

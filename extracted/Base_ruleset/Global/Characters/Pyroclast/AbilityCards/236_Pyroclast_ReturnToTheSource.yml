@@ -1,0 +1,98 @@
+Parser: AbilityCard
+Name: $FH/236_character_ability_cards_pyroclast_return_to_the_source_1$
+Character: PyroclastID
+ID: 236
+Level: 6
+Initiative: 14
+Discard: [Discard,Discard]
+Prefab: 236_Pyroclast_ReturnToTheSource
+Data:
+    Top:
+        Infuse: [Fire]
+        Abilities:    
+            TAttack:
+                Attack:
+                    Amount: 3
+                    DiamondEnhancements: 1
+                Range: 4
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                AnimOverload: RangedAttack
+                SubAbilities:
+                    TPull:
+                        Pull: 3
+                        MiscVars:
+                            PrintedProperties: list("Pull")
+                        IsInlineSubAbility: True
+            TPreventDamageFromHazardous:
+                AutoTrigger: True
+                MiscVars: 
+                    MandatoryBonus: True
+                PreventDamage: 1
+                Filter: Self
+                AnimOverload: CastLava
+                ActiveBonus:
+                    Behaviour: PreventFirstDamage
+                    Duration: Persistent
+                    IsAura: True
+                    HiddenWhenAura: True
+                    ListLayoutOverride: [$FH/236_character_ability_cards_pyroclast_return_to_the_source_2$, Negative_DamagePrevent_Enemy_Hazard]
+                    DisplayAuraOnCaster: True
+                    AuraFilter: Enemy
+                    AuraTargeting: All
+                    XPTracker: [0]
+                    Requirements:
+                        Vars:
+                            ValidateDamageIsFromHazardous: GameState.CurrentDamageData != null && GameState.CurrentDamageData.IsTerrainDamage
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 4
+                    CircleEnhancements: 1
+                    IgnoreHazardousTerrain: True
+                MiscVars:
+                    PrintedProperties: list("Move")
+                SubAbilities:
+                    BHeal:
+                        TreatAsNonSubAbility: True
+                        Heal: 0
+                        MiscVars:
+                            PrintedProperties: list("Heal")
+                        Filter: Self    
+                        AnimOverload: Cast_CastLava      
+                        StatIsBasedOnX:
+                            Strength:
+                                BasedOn: Vars
+                                Vars:
+                                    Value: ParentAbility.TilesMoved.Select(ScenarioManager.GetTile(obj)).Where(obj.FindHazardousProp() != null).Distinct().Count                                   
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateAmount: Strength > 0
+
+Layout:
+    Top:
+        - Row:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column: " <mark=#80919922><size=100%><sprite name=Range>*TAttack.Range*, <sprite name=Pull>*TPull*</mark>"
+        - Divider:
+        - Row:
+            - Column:          
+                - Active:
+                    Ability: TPreventDamageFromHazardous
+                    ListLayout: "$FH/236_character_ability_cards_pyroclast_return_to_the_source_2$"
+                    Layout:
+                        - MandatoryTrigger: "$FH/236_character_ability_cards_pyroclast_return_to_the_source_2$"
+                    Icon: "Negative_DamagePrevent_Enemy_Hazard"
+            - Column:
+                - XPTracker: TPreventDamageFromHazardous     
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Fire]
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Row: "$FH/236_character_ability_cards_pyroclast_return_to_the_source_3$"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Heal> X <mark=#80919922><size=100%>$Self$</mark>"
+        - Row: "$FH/236_character_ability_cards_pyroclast_return_to_the_source_4$"

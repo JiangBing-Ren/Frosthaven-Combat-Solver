@@ -1,0 +1,150 @@
+Parser: AbilityCard
+Name: $FH/203_character_ability_cards_infuser_coalescing_darkness_1$
+Character: InfuserID
+ID: 203
+Level: 4
+Initiative: 85
+Discard: [Lost,Discard]
+Prefab: 203_Infuser_CoalescingDarkness
+Data:
+    Top:
+        Abilities:
+            ConsumeAbility:
+                Consume: 
+                    Elements: [Air, Dark]
+                    Abilities:
+                        CNull:
+                            Null: True
+                            AutoTrigger: True
+            TPassive:
+                AddActiveBonus:
+                    Curse: True
+                    Targeting: Attacker
+                    AutoTrigger: True
+                    IgnoreStun: True
+                AutoTrigger: True
+                Filter: Self
+                AnimOverload: GatherElements  
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Consume]
+                Vars:
+                    ResetInfusionTurnRestriction: CustomAbility.ResetInfusionTurnRestriction()
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: DuringActionAbilityOnAttacked
+                    ListLayoutOverride: [$FH/203_character_ability_cards_infuser_coalescing_darkness_2$, Positive_Curse_Enemy_Attack]
+                    IsAura: True
+                    AuraFilter: [Self, OwnSummon]
+                    Vars:
+                        EnemyAttacker: TriggerActor
+                        ValidateIsAttackerInRange: TriggerActor.IsInRangeOf(TriggerTarget, 1)
+                    AuraTargeting: All
+                    MiscVars:
+                        InfusionBonus: True
+            TActive:
+                AddActiveBonus:
+                    HelpBoxTooltipLocKey: "$FH/185_character_ability_cards_infuser_boon_of_the_tempest_4$"
+                    Filter:
+                        TargetType: [Self,OwnSummon]
+                        PlayerClasses: [InfuserID]
+                        HeroSummonClasses: [SpiritboundFalchionID]
+                    Target: 1
+                    Targeting: All
+                    IgnoreLOS: True
+                    SkipAnim: True
+                    MiscVars:
+                        TreatThisAsParent: True
+                    PerformVars:
+                        ActorIsSelectingTargetingFocus:
+                            AutoSelSelf: CustomAbility.AutoControlSelfIfOnlyValidTarget(obj)
+                    ControlActor:
+                        ControlDurationType: ControlForOneAction
+                        Abilities:
+                            InfusedDisarm:
+                                Disarm: True
+                                Range: 1
+                                MiscVars:
+                                    PrintedProperties: list("Range")
+                                TreatAsNonSubAbility: True
+                                Target: 1
+                                CanUndo: False
+                                Filter: Enemy
+                Filter: Self
+                AutoTrigger: True
+                SkipAnim: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Consume]
+                MiscVars:
+                    Infusion: True
+                ActiveBonus:
+                    Duration: Persistent
+                    ListLayoutOverride: ["$185_character_ability_cards_infuser_boon_of_the_tempest_4$ <sprite name=Disarm> <sprite name=Range>1", Positive_Disarm_Infusion]
+                    Behaviour: DuringTurnAbility
+                    Restriction: OncePerTurn
+                    TriggerOnCaster: True
+                    IsToggleBonus: True
+                    MiscVars:
+                        OverrideIcon: "'CoalescingDarknessTopInfusion'"
+                    Requirements:
+                        Vars:
+                            ValidateHasPlayedInfusion: CustomAbility.HasPlayedInfusion(Actor)
+        XP: 2
+    Bottom:
+        Abilities:
+            BPull:
+                Pull:
+                    Amount: 2
+                    SquareEnhancements: 1
+                Range:
+                    Amount: 3
+                    SquareEnhancements: 1
+                Target: 2
+                MiscVars:
+                    PrintedProperties: list("Pull","Target","Range")
+                Conditions: [Muddle]
+                Filter: Enemy
+                AnimOverload: Summon
+        Consumes:
+            BCAir:
+                PreviewEffectId: M1PullM1Range
+                AbilityOverrides:
+                    BCOPullAir:
+                        ParentName: BPull
+                        Strength: -1
+                        Range: -1
+                        SubAbilities:
+                            SubInfuse:
+                                Infuse: [Air]
+                                SkipAnim: True
+            BCDark:
+                PreviewEffectId: M1Target
+                AbilityOverrides:
+                    BCOAttackDark:
+                        ParentName: BPull
+                        Target: -1
+                        SubAbilities:
+                            SubInfuse:
+                                Infuse: [Dark]
+                                SkipAnim: True
+Layout:
+    Top:
+        - Row: "$FH/203_character_ability_cards_infuser_coalescing_darkness_4$"
+        - Row: "$FH/203_character_ability_cards_infuser_coalescing_darkness_2$"
+        - Row: "$FH/203_character_ability_cards_infuser_coalescing_darkness_3$"
+    Bottom:
+        - Row: "<b><size=100%><sprite name=Pull> *BPull* <size=100%><voffset=1>@BPull@"
+        - Row: "<b><size=100%><sprite name=Target> *BPull.Target*, <sprite name=Range> *BPull.Range* <size=100%><voffset=1>@BPull.Range@"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: BCAir
+                    Text: "-1 <sprite name=Pull>, -1 <sprite name=Range>: <sprite name=CreateAir>"
+                - Consume:
+                    Name: BCDark
+                    Text: "-1 <sprite name=Target>: <sprite name=CreateDark>"
+        

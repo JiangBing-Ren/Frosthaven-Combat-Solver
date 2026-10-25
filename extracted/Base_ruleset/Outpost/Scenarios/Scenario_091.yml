@@ -1,0 +1,12 @@
+Parser: FHScenario
+ID: 91
+Name: Shoreline Scramble
+LevelID: FS_091_Shoreline_Scramble
+Chain: JobPosting
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: GainLumber
+          Param1: 2
+        - Type: GainMorale
+          Param1: 1

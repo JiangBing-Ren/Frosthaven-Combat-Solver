@@ -1,0 +1,88 @@
+Parser: AbilityCard
+Name: $FH/460_character_ability_cards_deepwraith_crippling_terror_1$
+Character: DeepwraithID
+ID: 460
+Level: 3
+Initiative: 15
+Discard: [Lost,Discard]
+Prefab: 460_Deepwraith_CripplingTerror
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 4
+                    DiamondEnhancements: 1
+                Target: 2
+                MiscVars:
+                    PrintedProperties: list("Attack","Target")
+        Consumes:
+            TCTrophy:
+                Trophies: 1
+                PreviewEffectId: M1TrophyPushImmobilize
+                AbilityOverrides:
+                    TCTrohpyPushBuff:
+                        ParentName: TAttack
+                        SubAbilities:
+                            SubPush:
+                                Push: 2
+                                MiscVars:
+                                    PrintedProperties: list("Push")
+                                IsInlineSubAbility: True
+                    TCTrohpyImmobilizeBuff:
+                        ParentName: TAttack
+                        Conditions: [Immobilize]
+        Infuse: Dark
+        XP: 2
+    Bottom:
+        Abilities:
+            BTeleport:
+                Teleport2: 
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Teleport")
+                Filter: Self
+                AnimOverload: Teleport Into
+                AnimOverload2: Teleport Outof
+             BBuffAttack:
+                    Attack: 0
+                    AttackEffect:
+                        Type: BasedOnVarsCondition
+                        Pierce: 3
+                    MiscVars:
+                        PrintedProperties: list("PierceBuff")
+                    Filter: Self
+                    ActiveBonus:
+                        Duration: Round
+                        Behaviour: BuffAttack
+                        IsAura: True
+                        AuraFilter: [Self, Ally]
+                        AuraTargeting: All
+                        Vars:
+                            ActorBuffHolder: BespokeBehaviour.m_Actor
+                            ActorTarget: TriggerTarget
+                            ValidateActorTargetHasNegativeCondition: ActorTarget.Tokens.CountNegativeConditions() > 0
+                            ValidateActorTargetDistance: SharedAbilityTargeting.GetDistanceBetweenActorsInHexes(ActorBuffHolder, ActorTarget) <= 2
+                    AnimOverload: Persistent Buff
+Layout:
+    Top:
+        - Row: "<sprite name=Attack> *TAttack* @TAttack@"
+        - Row: "<sprite name=Target> *TAttack.Target*"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCTrophy
+                    Text: ": <sprite name=Push> 2, <sprite name=Immobilize>"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark
+    Bottom:
+        - Row: "<sprite name=Teleport> *BTeleport* @BTeleport@"
+        - Divider:
+        - Active:
+            Ability: BBuffAttack
+            Icon: Positive_Pierce_Aura
+            Layout: "$FH/460_character_ability_cards_deepwraith_crippling_terror_2$"
+            ListLayout: "$FH/460_character_ability_cards_deepwraith_crippling_terror_2$"

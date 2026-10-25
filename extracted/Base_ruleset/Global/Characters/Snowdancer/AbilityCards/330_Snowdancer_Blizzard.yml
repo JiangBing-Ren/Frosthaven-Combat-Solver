@@ -1,0 +1,51 @@
+Parser: AbilityCard
+Name: $FH/330_character_ability_cards_snowdancer_blizzard$
+Character: SnowdancerID
+ID: 330
+Level: 1
+Initiative: 71
+Discard: [Lost,Discard]
+Prefab: 330_Snowdancer_Blizzard
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 
+                    Amount: 2
+                    DiamondEnhancements: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                Conditions: [Muddle]
+                AreaEffect: "0,0,R|2,0,R|1,1,R|-1,1,R|-2,0,R|-1,-1,R|1,-1,R"
+                MultiPassAttack: False
+                AnimOverload: Vortex
+        Infuse: [Ice, Air]
+        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BPush:
+                Push: 2
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Push","Range")
+                CanUndo: False
+                AnimOverload: Push
+Layout:
+    Top:
+        - Row: "<size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Row: "<size=130%><sprite name=Range>*TAttack.Range* ,<sprite name=Muddle>"
+        - Row: "£Area£"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Ice, Air]
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Push> *BPush* <size=100%><sprite name=Range>*BPush.Range*"

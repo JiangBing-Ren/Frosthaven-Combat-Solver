@@ -1,0 +1,8 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_ConsumeSmallItem_Self
+ScenarioAbility:
+    AConsumeItem:
+        ConsumeItems: 1
+        SlotToConsume: SmallItem
+        Filter: Self
+        AutoTrigger: True

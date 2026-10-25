@@ -1,0 +1,12 @@
+Parser: EnemyCard
+ID: 99992
+Name: $Monster_Ability_S89_Faye_PushForward$
+Initiative: 11
+Shuffle: False
+Data:
+    Abilities:
+        AMove:
+            Move: 0
+        AAttack:
+            Attack: 0
+            Filter: [Enemy]

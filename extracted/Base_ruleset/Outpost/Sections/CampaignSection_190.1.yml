@@ -1,0 +1,12 @@
+Parser: CampaignSection
+ID: 190.1
+Name: All Challenges Complete
+Repeatable: True
+SkipCompletedNotification: True
+Effects:
+    - Type: AddProsperity
+      Param1: 1
+    - Type: GainGold
+      Param1: 20
+    - Type: GainRandomItemBlueprint
+    - Type: ResetChallengeDeck

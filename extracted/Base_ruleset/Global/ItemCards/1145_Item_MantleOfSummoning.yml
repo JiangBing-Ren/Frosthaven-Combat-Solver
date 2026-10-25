@@ -1,0 +1,35 @@
+Parser: ItemCard
+ID: 1145
+StringID: MantleOfSummoningID
+Name: $FH/1145_item_cards_mantle_of_summoning_1$
+Art: Mantle of Summoning
+TotalInGame: 2
+Cost: 40
+Slot: Body 
+Rarity: Rare
+Usage: Spent
+Trigger: DuringOwnTurn
+RoundBonus: True
+Data: 
+    ItemRequirements:
+        Vars: 
+            ValidateHasSummons: Actor.GetHeroSummonList().Count > 0
+    Abilities:
+        AGrantShield:
+            ControlActor:
+                Abilities:
+                    ASummonGrantShield:
+                        Shield: 2
+                        StrengthIsBase: True
+                        ActiveBonusDuration: Round
+                        AutoTrigger: True
+                        MiscVars:
+                            IgnoreImpair: True
+            Range: 99
+            Filter: OwnSummon 
+Layout: 
+    - Active:
+        Ability: ASummonGrantShield
+        ListLayout: $FH/1145_item_cards_mantle_of_summoning_2$
+        Layout: $FH/1145_item_cards_mantle_of_summoning_2$
+        Icon: "Positive_Shield_Item"

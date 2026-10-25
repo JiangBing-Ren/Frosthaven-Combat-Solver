@@ -1,0 +1,31 @@
+Parser: ItemCard
+ID: 1236
+StringID: UnfetterdArmID
+Name: $FH/1236_item_cards_unfetterd_arm_1$
+Art: Unfettered Arm
+TotalInGame: 2
+Cost: 20
+Slot: OneHand
+Rarity: Rare
+Usage: Spent
+Trigger: PassiveEffect
+Data: 
+    Abilities:
+        AModifyAttack:
+            ChangeAttackModifier:
+            MiscVars:
+                DoubleMathModifierValue: True
+                DoubleMathModifierIgnoreValues: "\"*0,*2\""
+            ActiveBonus:
+                XPTracker: [0]
+                IsToggleBonus: True
+                Duration: Persistent
+                Behaviour: AdjustWhenAttacking
+                Hidden: True
+Layout: 
+    - Active:
+        Ability: AModifyAttack
+        ListLayout: $FH/1236_item_cards_unfetterd_arm_2$
+        Layout: $FH/1236_item_cards_unfetterd_arm_2$
+        Icon: "Damage"
+    - Row: "<size=50%> "

@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 205
+ScenarioItemID: 1215
+Name: Harpoon
+Quantity: 1
+GoldCost: 30
+Type: TwoHandWeapon
+IsNewCharacterItem: False

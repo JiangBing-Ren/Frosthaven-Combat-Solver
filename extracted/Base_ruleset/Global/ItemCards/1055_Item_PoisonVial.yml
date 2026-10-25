@@ -1,0 +1,19 @@
+Parser: ItemCard
+ID: 1055
+StringID: PoisonVialID
+Name: $FH/1055_item_cards_poison_vial_1$
+Art: Poison Vial
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        APoison:
+            Filter: Enemy
+            Poison: True
+            Range: 1
+Layout: 
+    - Row: "$FH/1055_item_cards_poison_vial_2$"

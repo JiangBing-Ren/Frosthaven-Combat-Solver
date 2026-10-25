@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 128
+ScenarioItemID: 1121
+Name: Heater Shield
+Quantity: 2
+GoldCost: 15
+Type: OneHandWeapon
+IsNewCharacterItem: True

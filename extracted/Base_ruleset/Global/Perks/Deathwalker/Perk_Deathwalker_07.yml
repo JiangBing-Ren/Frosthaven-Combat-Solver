@@ -1,0 +1,7 @@
+Parser: Perk
+ID: Deathwalker07
+Name: FH/PERK_Deathwalker_07_Name
+Description: FH/PERK_Deathwalker_07_Desc
+CharacterID: DeathwalkerID
+Available: 2
+CardsToAdd: [AMC_Heal1_1Ally_R, AMC_Heal1_1Ally_R]

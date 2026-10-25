@@ -1,0 +1,6 @@
+Parser: CampaignSection
+ID: 171.4
+Name: Mail Call (171.4)
+SkipCompletedNotification: False
+Effects:
+    - Type: GainRandomItemBlueprint

@@ -1,0 +1,28 @@
+Parser: Mastery
+ID: Deathwalker_MASTERY_2
+LocalisedName: Deathwalker_MASTERY_2_Name
+LocalisedDescription: Deathwalker_MASTERY_2_Desc
+PerkPoints: 1
+CheckAtEndOfScenario: True
+BattleGoalCondition:
+    - Targets:
+        Filter: UseAbility
+        # each round
+        SubFilter: EveryRoundCharactersOnly
+        AbilityTypes: [CreateShadow,RemoveShadow]
+        HasHappened: True
+        StopCheckingAfterDeath: True
+        CharacterIDs: 
+            ActorID: DeathwalkerID
+        Value: 1
+BattleGoalFailCondition:
+    - Targets:
+        Filter: UseAbility
+        # each round
+        SubFilter: EveryRoundCharactersOnly
+        AbilityTypes: [CreateShadow,RemoveShadow]
+        HasHappened: True
+        StopCheckingAfterDeath: True
+        CharacterIDs: 
+            ActorID: DeathwalkerID
+        Value: 0

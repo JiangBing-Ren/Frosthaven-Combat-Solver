@@ -1,0 +1,39 @@
+Parser: Enemy
+ID: IceBlockID
+LocKey: $FH/FH_Scenario_Campaign_72_SCENARIO_OBJECT_1$
+MonsterType: Object
+Model: IceBlock
+StandeeLimit: 1
+# Base Stats
+Level0:
+    Health: 1
+    Invulnerable: True
+    #Immunities: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Bless, Invisible, Strengthen, StopFlying, Sleep, Regenerate, Ward, ControlActor]
+Level1:
+    Health: 1
+    Invulnerable: True
+    #Immunities: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Bless, Invisible, Strengthen, StopFlying, Sleep, Regenerate, Ward, ControlActor]
+Level2:
+    Health: 1
+    Invulnerable: True
+    #Immunities: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Bless, Invisible, Strengthen, StopFlying, Sleep, Regenerate, Ward, ControlActor]
+Level3:
+    Health: 1
+    Invulnerable: True
+    #Immunities: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Bless, Invisible, Strengthen, StopFlying, Sleep, Regenerate, Ward, ControlActor]
+Level4:
+    Health: 1
+    Invulnerable: True
+    #Immunities: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Bless, Invisible, Strengthen, StopFlying, Sleep, Regenerate, Ward, ControlActor]
+Level5:
+    Health: 1
+    Invulnerable: True
+    #Immunities: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Bless, Invisible, Strengthen, StopFlying, Sleep, Regenerate, Ward, ControlActor]
+Level6:
+    Health: 1
+    Invulnerable: True
+    #Immunities: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Bless, Invisible, Strengthen, StopFlying, Sleep, Regenerate, Ward, ControlActor]
+Level7:
+    Health: 1
+    Invulnerable: True
+    #Immunities: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Bless, Invisible, Strengthen, StopFlying, Sleep, Regenerate, Ward, ControlActor]

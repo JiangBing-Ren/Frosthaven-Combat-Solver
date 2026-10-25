@@ -1,0 +1,73 @@
+Parser: Enemy
+ID: LurkerSoldierEliteID
+LocKey: $FH/LurkerSoldierElite$
+MonsterType: Monster
+StandeeLimit: 6
+Model: LurkerSoldier Elite
+NonEliteVariant: LurkerSoldierID
+PredominantlyMelee: True
+AbilityCards: [674, 675, 676, 677, 678, 679, 680, 681]
+# Base Stats
+Level0:
+    Health: 7
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 2
+    Shield: 1
+Level1:
+    Health: 9
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 2
+    Shield: 1
+    Pierce: 1
+Level2:
+    Health: 11
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 2
+    Shield: 1
+    Pierce: 2
+Level3:
+    Health: 13
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 2
+    Shield: 1
+    Pierce: 2
+Level4:
+    Health: 13
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 2
+    Shield: 2
+    Pierce: 3
+Level5:
+    Health: 15
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 2
+    Shield: 2
+    Pierce: 3
+Level6:
+    Health: 19
+    Move: 4
+    Attack: 6
+    Range: 1
+    Target: 2
+    Shield: 2
+    Pierce: 3
+Level7:
+    Health: 27
+    Move: 4
+    Attack: 7
+    Range: 1
+    Target: 2
+    Shield: 2
+    Pierce: 3

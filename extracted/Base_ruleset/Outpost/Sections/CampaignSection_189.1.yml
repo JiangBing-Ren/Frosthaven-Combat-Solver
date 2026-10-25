@@ -1,0 +1,11 @@
+Parser: CampaignSection
+ID: 189.1
+Name: Town Hall Built
+SkipCompletedNotification: False
+Effects:
+    - Type: EnableEvent
+      Param1: SO-59
+    - Type: EnableEvent
+      Param1: SO-62
+    - Type: EnableEvent
+      Param1: SR-38

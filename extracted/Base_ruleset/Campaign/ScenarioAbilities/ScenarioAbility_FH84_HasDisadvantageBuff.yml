@@ -1,0 +1,18 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH84_HasDisadvantageBuff
+ScenarioAbility:
+    AddActiveBonus:
+        Attack: 0
+        AttackHasDisadvantage: True
+        AttackEffect:
+            Type: BasedOnVarsCondition
+        Filter: Self
+        # slime count, shown in bonus text
+        MiscVars:
+            ListLayoutParamVar0: ScenarioScript_FH084.GetPlayerSlimeCount(TargetingActor)
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: BuffAttack
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_084_SCENARIO_SLIME_EFFECT$, Negative_Slimed_Campaign]
+            MiscVars:
+                ShowUnderHealthbar: True

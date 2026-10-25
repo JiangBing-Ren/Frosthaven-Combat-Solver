@@ -1,0 +1,73 @@
+Parser: AbilityCard
+Name: $FH/029_character_ability_cards_drifter_inevitable_conclusion_1$
+Character: DrifterID
+ID: 29
+Level: 8
+ProgressionOrder: 28
+Initiative: 29
+Discard: [Lost,Discard]
+Prefab: 29_Drifter_InevitableConclusion
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 4
+                    DiamondEnhancements: 1
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                AreaEffect: "0,0,R|2,0,R|4,0,R|1,1,R|2,2,R|3,1,R"
+                AreaEffectLayoutOverride: "0,0,R|-1,1,R|1,1,R|-2,2,R|0,2,R|2,2,R"
+                MultiPassAttack: False
+                AnimOverload: RangedAttack_AOE
+        Consumes:
+            TCMoveTracker:
+                CostAbility:
+                    ParentName: TAttack
+                    MoveActiveBonusTracker: 1
+                    MiscVars:
+                        CheckCanBePerformedWhenAugment: True
+                    Vars:
+                        NumberOfCardsToSelect: 1
+                    Filter: Self
+                    CanSkip: False
+                AbilityOverrides:
+                    TCAttackBuff:
+                        ParentName: TAttack
+                        Conditions: [Immobilize]
+    Bottom:
+        Abilities:
+            BAttack:
+                Attack:
+                    Amount: 3
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Filter: [Enemy]
+                Conditions: [Poison]
+Layout:
+    Top:
+        - ColumnWidths: "50,50"
+        - Column:
+            - Row:
+                - ColumnWidths: "50,50"
+                - Column: "<b><size=130%><sprite name=Attack> *TAttack*<size=100%><voffset=1>@TAttack@"
+                - Column:
+                    - AddedEffect: "<sprite name=Range>2"
+            - Conditional:
+                Top: true
+                Layout:
+                    - Consume:
+                        Name: TCMoveTracker
+                        Text: "<size=70%>$FH/029_character_ability_cards_drifter_inevitable_conclusion_2$"
+        - Column:
+            - Row: "£Area£"
+    Bottom:
+        - Row:
+            - ColumnWidths: "30,20,20,30"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Attack> *BAttack*<size=100%><voffset=1>@BAttack@"
+            - Column:
+                - AddedEffect: "<size=130%><sprite name=Poison></size>"
+            - Column:

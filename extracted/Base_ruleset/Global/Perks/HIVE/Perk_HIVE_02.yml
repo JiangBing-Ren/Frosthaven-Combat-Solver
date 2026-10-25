@@ -1,0 +1,8 @@
+Parser: Perk
+ID: HIVE02
+Name: FH/PERK_HIVE_02_Name
+Description: FH/PERK_HIVE_02_Desc
+CharacterID: HIVEID
+Available: 3
+CardsToRemove: [AMC_Basic_M1]
+CardsToAdd: [AMC_P0_ControlSummonMove2]

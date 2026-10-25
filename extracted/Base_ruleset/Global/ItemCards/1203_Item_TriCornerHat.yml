@@ -1,0 +1,36 @@
+Parser: ItemCard
+ID: 1203
+StringID: TriCornerHatID
+Name: $FH/1203_item_cards_tricorner_hat_1$
+Art: Tri Corner Hat
+TotalInGame: 2
+Cost: 30
+Slot: Head 
+Rarity: Rare
+Usage: Spent
+Trigger: DuringOwnTurn
+Data:     
+    Abilities:
+        AAttack:
+            Filter: Self
+            Attack: 0
+            AttackEffect:
+                Type: FirstTargetOnly
+                Range: 1
+                Pierce: 1
+                AttackType: Ranged
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: BuffAttack
+                Hidden: True
+                XPTracker: [0]
+                Vars:
+                    ValidateHasAbility: TriggerAbility != null
+                    ValidateIsRanged: TriggerAbility.IsMeleeAttack == false
+Layout: 
+    - Active:
+        Ability: AAttack
+        Icon: "Range"
+        ListLayout: "$FH/1203_item_cards_tricorner_hat_2$"
+        Layout: "$FH/1203_item_cards_tricorner_hat_2$"
+

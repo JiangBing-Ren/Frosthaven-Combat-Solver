@@ -1,0 +1,159 @@
+Parser: AbilityCard
+Name: $FH/213_character_ability_cards_infuser_ancient_rites_of_power_1$
+Character: InfuserID
+ID: 213
+Level: 9
+Initiative: 94
+Discard: [Lost,Discard]
+Prefab: 213_Infuser_AncientRitesOfPower
+Data:
+    Top:
+        Abilities:
+            ConsumeAbility:
+                Consume: 
+                    Elements: [Air, Earth, Dark]
+                    Abilities:
+                        CNull:
+                            Null: True
+                            AutoTrigger: True
+            TPassive:
+                Attack: 0
+                AttackEffect:
+                    Type: BuffIfAttackIsMelee
+                    Target: 1
+                AutoTrigger: True
+                Filter: Self
+                AnimOverload: GatherElements  
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Consume]
+                Vars:
+                    ResetInfusionTurnRestriction: CustomAbility.ResetInfusionTurnRestriction()
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: BuffAttack
+                    ListLayoutOverride: [$FH/213_character_ability_cards_infuser_ancient_rites_of_power_2$, Positive_TargetPlus_Attack]
+                    IsAura: True
+                    AuraFilter: [Self, OwnSummon]
+                    AuraTargeting: All
+                    MiscVars:
+                        InfusionBonus: True
+            TActive:
+                AddActiveBonus:
+                    Filter:
+                        TargetType: [Self,OwnSummon]
+                        PlayerClasses: [InfuserID]
+                        HeroSummonClasses: [SpiritboundFalchionID]
+                    Target: 1
+                    Targeting: All
+                    IgnoreLOS: True
+                    SkipAnim: True
+                    MiscVars:
+                        TreatThisAsParent: True
+                    PerformVars:
+                        ActorIsSelectingTargetingFocus:
+                            AutoSelSelf: CustomAbility.AutoControlSelfIfOnlyValidTarget(obj)
+                    ControlActor:
+                        ControlDurationType: ControlForOneAction
+                        Abilities:
+                            InfusedBless:
+                                TreatAsNonSubAbility: True
+                                Bless: True
+                                Filter: Self
+                                Target: 1
+                                Range: 1
+                                CanUndo: False
+                Filter: Self
+                AutoTrigger: True
+                SkipAnim: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Consume]
+                MiscVars:
+                    Infusion: True
+                ActiveBonus:
+                    Duration: Persistent
+                    ListLayoutOverride: ["$185_character_ability_cards_infuser_boon_of_the_tempest_4$ <sprite name=Bless> $target_self$", Positive_BlessSelf_Infusion]
+                    Behaviour: DuringTurnAbility
+                    Restriction: OncePerTurn
+                    TriggerOnCaster: True
+                    IsToggleBonus: True
+                    MiscVars:
+                        OverrideIcon: "'AncientRitesOfPowerTopInfusion'"
+                    Requirements:
+                        Vars:
+                            ValidateHasPlayedInfusion: CustomAbility.HasPlayedInfusion(Actor)
+        XP: 2
+    Bottom:
+        Abilities:
+            BHeal:
+                Heal:
+                    Amount: 3
+                    DiamondPlusEnhancements: 1
+                Target: 3
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Heal","Target","Range")
+                Filter: [Self, Ally]
+                AnimOverload: RangedCast 
+        Consumes:
+            BCHeal:
+                PreviewEffectId: M1Heal
+                AbilityOverrides:
+                    BCHealBuff:
+                        ParentName: BHeal
+                        Strength: -1
+                        SubAbilities:
+                            BInfuse:
+                                TreatAsNonSubAbility: True
+                                AutoTrigger: True
+                                Infuse: [Dark]
+                                SkipAnim: True
+            BCTarget:
+                PreviewEffectId: M1Target
+                AbilityOverrides:
+                    BCHealBuff:
+                        ParentName: BHeal
+                        Target: -1
+                        SubAbilities:
+                            BInfuse:
+                                TreatAsNonSubAbility: True
+                                AutoTrigger: True
+                                Infuse: [Earth]
+                                SkipAnim: True
+            BCRange:
+                PreviewEffectId: M2Range
+                AbilityOverrides:
+                    BCHealBuff:
+                        ParentName: BHeal
+                        Range: -2
+                        SubAbilities:
+                            BInfuse:
+                                TreatAsNonSubAbility: True
+                                AutoTrigger: True
+                                Infuse: [Air]
+                                SkipAnim: True
+Layout:
+    Top:
+        - Row: "$FH/213_character_ability_cards_infuser_ancient_rites_of_power_4$"
+        - Row: "$FH/213_character_ability_cards_infuser_ancient_rites_of_power_2$"
+        - Row: "$FH/213_character_ability_cards_infuser_ancient_rites_of_power_3$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Heal> *BHeal* <size=100%><voffset=1>@BHeal@"
+        - Row: "<b><size=130%><sprite name=Target> *BHeal.Target*, <sprite name=Range> *BHeal.Range*"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: BCHeal
+                    Text: "-1<sprite name=Heal>: <sprite name=CreateDark>"
+                - Consume:
+                    Name: BCTarget
+                    Text: "-1<sprite name=Target>: <sprite name=CreateEarth>"
+                - Consume:
+                    Name: BCRange
+                    Text: "-2<sprite name=Range>: <sprite name=CreateAir>"
+
+        

@@ -1,0 +1,14 @@
+Parser: HeroSummon
+ID: StitchedAtrocityID
+LocKey: $FH/141_character_ability_cards_boneshaper_unforgivable_methods_2$
+Model: StitchedAtrocity
+Health:
+    Amount: 8
+    SquareEnhancements: 1
+Move:
+    Amount: 2
+    SquareEnhancements: 1
+Attack:
+    Amount: 3
+    SquareEnhancements: 1
+OnAttackConditions: Wound

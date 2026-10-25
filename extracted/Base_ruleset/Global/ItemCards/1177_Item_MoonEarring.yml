@@ -1,0 +1,27 @@
+Parser: ItemCard
+ID: 1177
+StringID: MoonEarringID
+Name: $FH/1177_item_cards_moon_earring_1$
+Art: Moon Earring
+TotalInGame: 2
+Cost: 20
+Slot: SmallItem
+Rarity: Rare
+Usage: Consumed
+Trigger: BeforeShortRest
+Data: 
+    ItemRequirements:
+        Vars:
+            SpecificItems: Actor.Inventory.AllItems.Where(obj.SlotState.ToString() == "Spent" && obj.YMLData.Usage.ToString() == "Spent")
+            ValidateHasItems: SpecificItems.Count > 0
+    Abilities:
+        ARefreshOtherSpentItem:
+            AutoTrigger: True
+            RefreshItems: 3
+            Filter: Self
+            MiscVars:
+                MaxSelectIsOptional: True
+            Vars:
+                SpecificItems: TargetingActor.Inventory.AllItems.Where(obj.SlotState.ToString() == "Spent" && obj.YMLData.Usage.ToString() == "Spent")
+Layout: 
+    - Row: "$FH/1177_item_cards_moon_earring_2$"

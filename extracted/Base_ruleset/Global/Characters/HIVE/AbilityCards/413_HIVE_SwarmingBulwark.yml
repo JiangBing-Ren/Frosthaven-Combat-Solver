@@ -1,0 +1,67 @@
+Parser: AbilityCard
+Name: $FH/413_character_ability_cards_hive_swarming_bulwark_1$
+Character: HIVEID
+ID: 413
+Level: 8
+Initiative: 96
+Discard: [Lost,Discard]
+Prefab: 413_HIVE_SwarmingBulwark
+Data:
+    Top:
+        XP: 2
+        Abilities:
+            TSummon:
+                Summon: ShieldSpiderID
+                AnimOverload: Summon
+        Mode:
+            BuffWard:
+                AutoTrigger: True
+                AddActiveBonus:
+                    AutoTrigger: True
+                    Ward: True
+                    Filter: Self
+                    IgnoreStun: True
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: StartTurnAbility
+    Bottom:
+        Abilities:
+            BMove1:
+                Move:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BModeTransfer:
+                Mode: Transfer
+            BMove2:
+                Move:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+Layout:
+    Top:
+        - Active:
+              Ability: "TSummon"
+              Icon: "Summon"
+              Layout:
+                  - Summon:
+                        Ability: TSummon
+                        SummonName: $FH/413_character_ability_cards_hive_swarming_bulwark_2$
+                        SpecialText:
+                            - Row: "$FH/388_character_ability_cards_hive_reconstructive_aid_3$ <sprite name=Ward> <sprite name=Range>4"
+        - Row:
+            - Column: "<sprite name=HIVEMode>"
+            - Column:
+                - Active:
+                    Ability: "BuffWard"
+                    Icon: "Positive_WardSelf_HIVEMode"
+                    ListLayout: "$FH/388_character_ability_cards_hive_reconstructive_aid_4$ <sprite name=Ward> $target_self$"
+                    Layout: "$FH/388_character_ability_cards_hive_reconstructive_aid_4$ <sprite name=Ward> $target_self$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove1* @BMove1@"
+        - Divider: 
+        - Row: "<b><size=130%><sprite name=HIVETransfer>"
+        - Divider: 
+        - Row: "<b><size=130%><sprite name=Move> *BMove2* @BMove2@"

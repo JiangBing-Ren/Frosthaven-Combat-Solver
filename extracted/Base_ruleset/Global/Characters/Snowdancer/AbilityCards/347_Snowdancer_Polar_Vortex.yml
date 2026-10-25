@@ -1,0 +1,87 @@
+Parser: AbilityCard
+Name: $FH/347_character_ability_cards_snowdancer_polar_vortex_1$
+Character: SnowdancerID
+ID: 347
+Level: 3
+Initiative: 61
+Discard: [Discard,Lost]
+Prefab: 347_Snowdancer_PolarVortex
+Data:
+    Top:
+        Abilities:
+            TPull:
+                Pull: 
+                    Amount: 2
+                    CircleEnhancements: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Pull","Range")
+                PullType: PullTowardsTile
+                Vars: 
+                    PullTowardsAnimOverload:  "'PolarVortex'"
+                Target: -1
+                SkipAnim: True
+    Bottom:
+        Abilities: 
+            BAttack:
+                Attack:
+                    Amount: 3
+                    DiamondEnhancements: 1
+                Target: 2
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Target","Range")
+                MultiPassAttack: False
+                Filter: [Enemy]
+                AnimOverload: PolarVortex
+        Consumes:
+            TCIce:
+                Elements: [Ice]
+                AbilityOverrides:
+                    BAttackBuffIce:
+                        ParentName: BAttack
+                        Strength: 1
+                XP: 1
+         Consumes:
+            TCAir:
+                Elements: [Air]
+                AbilityOverrides:
+                    BAttackBuffAir:
+                        ParentName: BAttack
+                        Strength: 1
+                XP: 1
+Layout:
+    Top:
+       - Row: "$FH/347_character_ability_cards_snowdancer_polar_vortex_2$"
+       - Row:
+            - ColumnWidths: "10,20,10,50,20"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Pull> *TPull* <size=100%><voffset=1>@TPull@"
+            - Column:
+            - Column:
+                - Row: "$FH/347_character_ability_cards_snowdancer_polar_vortex_3$"
+            - Column:
+       - Row: "$FH/347_character_ability_cards_snowdancer_polar_vortex_4$"
+    Bottom:
+        - Row:
+            - ColumnWidths: "20,30,30,20"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Attack> *BAttack* <size=100%><voffset=1>@BAttack@"
+            - Column:
+                - Row: "<mark=#80919922><size=100%><sprite name=Target>*BAttack.Target*,<sprite name=Range>*BAttack.Range*</mark>"
+            - Column:
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCIce
+                    Text: "+1<sprite name=Attack>,<sprite name=XP1>"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCAir
+                    Text: "+1<sprite name=Attack>,<sprite name=XP1>"
+

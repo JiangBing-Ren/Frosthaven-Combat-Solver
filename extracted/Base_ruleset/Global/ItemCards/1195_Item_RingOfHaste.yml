@@ -1,0 +1,22 @@
+Parser: ItemCard
+ID: 1195
+StringID: RingOfHasteID
+Name: $FH/1195_item_cards_ring_of_haste_1$
+Art: Ring of Haste
+TotalInGame: 2
+Cost: 40
+Slot: SmallItem
+Rarity: Rare
+Usage: Consumed
+Trigger: AtEndOfTurn
+Data: 
+    Abilities:
+        AConsume:
+            SelectAndPlayCard: 
+            Filter: Self
+            MiscVars:
+                IsActionValid: ActionType == "BottomAction"
+    Vars:
+        LogUseOnLocked: True
+Layout: 
+    - Row: "$FH/1195_item_cards_ring_of_haste_2$"

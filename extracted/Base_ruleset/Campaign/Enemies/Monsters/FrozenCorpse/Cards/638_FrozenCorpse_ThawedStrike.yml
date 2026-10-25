@@ -1,0 +1,29 @@
+Parser: EnemyCard
+ID: 638
+Name: $Monster_Ability_638_639_FrozenCorpse_ThawedStrike$
+Initiative: 68
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: -1
+            Vars:
+                ValidateIsActive: ScenarioScript_FH090.ValidateIsFrozenCorpseActive(TargetingActor)
+        Attack1:
+            Attack: 1
+            Filter: Enemy
+            Vars:
+                ValidateIsActive: ScenarioScript_FH090.ValidateIsFrozenCorpseActive(TargetingActor)
+    Consumes:
+        CFire:
+            Elements: Fire
+            AbilityOverrides:
+                CFireMove:
+                    ParentName: Move1
+                    Move: 2
+                    #TextOnly: True
+                    SubAbilities:
+                        CFireDamage:
+                            Damage: 2
+                            Filter: Self
+                    Text: "$FH/FrozenCorpse_Ability_Card_0638$"

@@ -1,0 +1,8 @@
+Parser: ScenarioAbility
+ID: CardsScript
+ScenarioAbility:
+    MoveScript:
+        Move: 0
+        ActiveBonus:
+            Behaviour: MoveScript
+            ArbitraryParams: [CardsScript]

@@ -1,0 +1,21 @@
+Parser: EnemyCard
+ID: 579
+Name: $Monster_Ability_579_NightDemon_IntoDarkness$
+Initiative: 37
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: 1
+        Attack1:
+            Attack: -2
+            Filter: Enemy
+        WaitAnimEnd:
+            Null: True
+        Invis1:
+            Consume: 
+                Elements: Dark
+                Abilities:
+                    CDarkInvis:
+                        Invisible: True
+                        Filter: Self

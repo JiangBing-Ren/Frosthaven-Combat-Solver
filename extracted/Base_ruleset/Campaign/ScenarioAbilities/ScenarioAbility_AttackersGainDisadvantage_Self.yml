@@ -1,0 +1,7 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_AttackersGainDisadvantage_Self
+ScenarioAbility:
+    ADisadvantage:
+        AttackersGainDisadvantage: 1
+        Filter: Self
+        ActiveBonusDuration: Persistent

@@ -1,0 +1,21 @@
+Parser: EnemyCard
+ID: 550
+Name: $Monster_Ability_550_FlameDemon_IntenseTorch$
+Initiative: 49
+Shuffle: False
+Data:
+    Abilities: 
+        Attack1:
+            Attack: 0
+            AreaEffect: "0,0,G|1,1,R|2,2,R"
+            Filter: Enemy
+            MultiPassAttack: False
+            AnimOverload: IntenseTorch
+    Consumes:
+        CFire:
+            Elements: Fire
+            AbilityOverrides:
+                CFireAttackBuff:
+                    ParentName: Attack1
+                    Strength: 1
+                    Conditions: Wound

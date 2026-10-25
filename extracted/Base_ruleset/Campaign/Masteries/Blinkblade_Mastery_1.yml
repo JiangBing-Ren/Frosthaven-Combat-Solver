@@ -1,0 +1,16 @@
+Parser: Mastery
+ID: Blinkblade_MASTERY_1
+LocalisedName: Blinkblade_MASTERY_1_Name
+LocalisedDescription: Blinkblade_MASTERY_1_Desc
+PerkPoints: 1
+BattleGoalCondition:
+    - Targets:
+        # check agility
+        Filter: FastAgilityXTurnsInARow
+        # x = 7 rounds in a row
+        # throughout the entire scenario
+        SubFilter: Scenario
+        # only for the blinkblade
+        CharacterIDs: 
+            ActorID: BlinkbladeID
+        Value: 7

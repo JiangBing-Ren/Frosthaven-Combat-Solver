@@ -1,0 +1,30 @@
+Parser: ScenarioAbility
+ID: FH092_SkipMove3ToLoot
+ScenarioAbility:
+    SkipMove3ToLoot:
+        PreviewEffectText: ""
+        Filter: Self
+        SkipAnim: True
+        NullTargeting: True
+        ActiveBonus:
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_092_SkipMove3ToLoot$, Loot]
+            Duration: Persistent
+            ValidAbilityType: Move
+            IsToggleBonus: True
+            Hidden: True
+            Requirements:
+                DoesntHaveNegativeCondition: [Stun, Immobilize]
+                Vars:
+                    ValidateHasEnoughMovePoints: CustomAbility.GetRemainingMoves() >= 3
+                    ValidateHasValidTargets: CustomAbility.GetResourceTilesInRange(Actor,"LootableCrate",1).Count > 0
+            CostAbility:
+                Loot: 1
+                Filter: Self
+                MiscVars:
+                    TreatAsNewStart: True
+                Vars:
+                    CacheActiveBonus: PhaseManager.CurrentPhaseAction.CurrentTriggeredActiveBonus
+                PerformVars:
+                    LootTiles:
+                        UntoggleBonus: CacheActiveBonus.ToggleActiveBonusFromVars(TargetingActor, true)
+                        PayMovement: CustomAbility.PayMovementPoints(3, TargetingActor, CacheActiveBonus)

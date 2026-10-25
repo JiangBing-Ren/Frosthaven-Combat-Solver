@@ -1,0 +1,21 @@
+Parser: FHScenario
+ID: 56
+Name: Call of the Harbinger
+LevelID: FS_056_Call_of_the_Harbinger
+Chain: Algox1
+Location: RadiantForest
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: GainMorale
+          Param1: 1
+        - Type: GainInspiration
+          Param1: 1
+        - Type: UnlockClass
+          Param1: FrozenFistID
+        - Type: EnableEvent
+          Param1: SO-51
+        - Type: AddTownGuardMod
+          Param1: +50
+        - Type: GainCampaignSticker
+          Param1: FriendOfTheIcespeakers

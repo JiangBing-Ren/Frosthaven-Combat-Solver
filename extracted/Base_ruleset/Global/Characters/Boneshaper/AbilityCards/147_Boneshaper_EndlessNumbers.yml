@@ -1,0 +1,72 @@
+Parser: AbilityCard
+Name: $FH/147_character_ability_cards_boneshaper_endless_numbers_1$
+Character: BoneshaperID
+ID: 147
+Level: 8
+Initiative: 86
+Discard: [Lost,Discard]
+Prefab: 147_Boneshaper_EndlessNumbers
+Data:
+    Top:
+        Abilities:
+            TSummon:
+                Summon: BoneHordeID
+                AnimOverload: Summon2
+        XP: 2
+    Bottom:
+        Abilities:
+            TAlly:
+                ControlActor:
+                    Abilities:
+                        BAllyMove:
+                            Move:
+                                Amount: 0
+                            MiscVars:
+                                PrintedProperties: list("Move")
+                    ControlActorType: Player
+                Range: 99
+                Target: 1
+                Filter: OwnSummon
+                AnimOverload: ControlSummon
+            TCDark:
+                Consume:
+                    Elements: Dark
+                    Abilities:
+                        TSummonAbility:
+                            ParentName: TCDarkAbility
+                            ControlActor:
+                                Abilities:
+                                    BAllyAttackWound:
+                                        Wound: True
+                                        Range: 1
+                                        MiscVars:
+                                            PrintedProperties: list("Range")
+                                        RangeIsBase: True
+                                        Target: 99
+                                        Filter: Enemy
+                                        MiscVars:
+                                            AutoSelectValidTiles: True
+                                ControlActorType: Player
+                            Range: 99
+                            Target: 1
+                            Filter: OwnSummon
+                            AnimOverload: ControlSummon
+Layout:
+    Top:
+        - Active:
+              Ability: "TSummon"
+              Icon: Positive_BoneShield
+              Layout:
+                  - Summon:
+                        Ability: TSummon
+                        SummonName: "$FH/147_character_ability_cards_boneshaper_endless_numbers_2$"
+                        SpecialText: "$FH/147_character_ability_cards_boneshaper_endless_numbers_3$"
+        - Row: "$FH/147_character_ability_cards_boneshaper_endless_numbers_4$"
+    Bottom:
+        - Row: "$FH/147_character_ability_cards_boneshaper_endless_numbers_5$"
+        - Divider:
+        - Row: "$FH/147_character_ability_cards_boneshaper_endless_numbers_6$"
+        - Conditional:
+            Layout:
+                - Row: "$FH/147_character_ability_cards_boneshaper_endless_numbers_7$"
+

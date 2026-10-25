@@ -1,0 +1,71 @@
+Parser: AbilityCard
+Name: $FH/391_character_ability_cards_hive_aimed_assault_1$
+Character: HIVEID
+ID: 391
+Level: 1
+Initiative: 88
+Discard: [Lost,Discard]
+Prefab: 391_HIVE_AimedAssault
+Data:
+    Top:
+        XP: 2
+        Abilities:
+            TSummon:
+                Summon: SniperTurretID
+                AnimOverload: Summon
+        Mode:
+            BuffAttackRange:
+                AutoTrigger: True
+                Attack: 0
+                AttackEffect:
+                    Type: BasedOnVarsCondition
+                    Range: 2
+                Filter: Self
+                ActiveBonus:
+                    Behaviour: BuffAttack
+                    Duration: Persistent
+                    Vars:
+                        ValidateIsMelee: TriggerAbility.IsMeleeAttack
+                        ValidateIsSingleTargetAttack: TriggerAbility.OriginalTargetCount == 1
+            BuffMove:
+                AutoTrigger: True
+                Move: -1
+                Filter: Self
+                ActiveBonus:
+                    Behaviour: BuffMove
+                    Duration: Persistent
+    Bottom:
+        Abilities:
+            BAttack:
+                Attack: 1
+                Range:
+                    Amount: 4
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                AnimOverload: RangedAttack
+Layout:
+    Top:
+        - Active:
+              Ability: "TSummon"
+              Icon: "Summon"
+              Layout:
+                  - Summon:
+                        Ability: TSummon
+                        SummonName: $FH/391_character_ability_cards_hive_aimed_assault_2$
+        - Row:
+            - Column: "<sprite name=HIVEMode>"
+            - Column:
+                - Active:
+                    Ability: "BuffAttackRange"
+                    Icon: "Positive_RangePlus_Attack_HIVEMode"
+                    ListLayout: "$FH/391_character_ability_cards_hive_aimed_assault_3$"
+                    Layout: "$FH/391_character_ability_cards_hive_aimed_assault_3$"
+            - Column:
+                - Active:
+                    Ability: "BuffMove"
+                    Icon: "Negative_MoveMinus_HIVEMode"
+                    ListLayout: "$FH/387_character_ability_cards_hive_plated_defense_3$"
+                    Layout: "$FH/387_character_ability_cards_hive_plated_defense_3$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Attack> *BAttack* <size=100%> <sprite name=Range>*BAttack.Range* @BAttack.Range@"

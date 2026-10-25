@@ -1,0 +1,62 @@
+Parser: AbilityCard
+Name: $FH/250_character_ability_cards_shattersong_sonic_shock_1$
+Character: ShattersongID
+ID: 250
+Level: 1
+Initiative: 58
+Discard: [Discard,Discard]
+Prefab: 250_Shattersong_SonicShock
+Data:
+    Top:
+        Abilities:            
+            TAttack:
+                Attack:
+                    Amount: 2
+                    SquareEnhancements: 1
+                Range:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")     
+                AnimOverload: RangedAttack
+        Consumes:
+            TCResonance:
+                Resonance: 1
+                Element: Air
+                AbilityOverrides:
+                    CBuffAttack:
+                        ParentName: TAttack
+                        Conditions: [Brittle]
+                        XP: 1
+                        AnimOverload: RangedAttackMedium
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")     
+            BToken:
+                NullTargeting:
+                Tokens: 1
+                Flags: [ModifiesResonanceTokens]
+                Filter: [Self]          
+                AnimOverload: Cast_Concentrate      
+                StartAbilityRequirements:
+                        Type: ThisAbility
+                        Vars:
+                            ValidateHasObstacleInRange: CustomAbility.GetAdjacentTiles(Actor.Tile).Where(CAbilityFilter.IsTileEmpty(obj)).Count >= 4
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Row: "<b><size=130%><sprite name=Range> *TAttack.Range* <size=100%><voffset=1>@TAttack.Range@"
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCResonance
+                    Text: "<size=100%><sprite name=Brittle>, <sprite name=XP1>"
+    Bottom:
+        - Row: "<sprite name=Move> *BMove* @BMove@"
+        - Divider:
+        - Row: "$FH/250_character_ability_cards_shattersong_sonic_shock_2$"

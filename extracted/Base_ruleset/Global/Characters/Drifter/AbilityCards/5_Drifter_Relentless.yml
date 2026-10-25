@@ -1,0 +1,43 @@
+Parser: AbilityCard
+Name: $FH/005_character_ability_cards_drifter_relentless_1$
+Character: DrifterID
+ID: 5
+Level: 1
+ProgressionOrder: 4
+Initiative: 89
+Discard: [Discard,Lost]
+Prefab: 5_Drifter_Relentless
+Data:
+    Top:
+        Abilities:
+            TMoveTracker:
+                Filter: Self
+                MoveActiveBonusTracker: -1
+                Vars:
+                    NumberOfCardsToSelect: 2
+                AnimOverload: PowerUp
+    Bottom:
+        Abilities:
+            BDamageAttacker:
+                Retaliate: 2
+                RetaliateRange: 2
+                MiscVars:
+                    PrintedProperties: list("Retaliate","Range","RetaliateRange")
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: Retaliate
+                    XPTracker: [1,0,1,0,1,0]
+                    Vars:
+                        ValidateWithinRange: TriggerTarget.GetDistanceTo(TriggerAbility.TargetingActor) <= 2
+                AnimOverload: Persistent Buff
+                Filter: Self
+Layout:
+    Top:
+        - Row: "$FH/005_character_ability_cards_drifter_relentless_2$"
+    Bottom:
+        - Active:
+            Ability: BDamageAttacker
+            Icon: Positive_Retaliate_Range
+            ListLayout: "$FH/005_character_ability_cards_drifter_relentless_3$"
+            Layout: "$FH/005_character_ability_cards_drifter_relentless_3$"
+        - XPTracker: BDamageAttacker

@@ -1,0 +1,18 @@
+Parser: FHScenario
+ID: 71
+Name: Invasion of the Dock
+LevelID: FS_071_Invasion_Of_The_Dock
+Chain: PersonalQuest
+Location: Frosthaven
+RequiresPersonalQuest: PQ_12
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: AllCharactersGainExperience
+          Param1: 10
+        - Type: WreckAnyOneEvenBuildingBetween
+          Param1: 71
+          Param2: 89
+        - Type: AddCalendarCampaignSection
+          Param1: 149.5
+          Param2: 5

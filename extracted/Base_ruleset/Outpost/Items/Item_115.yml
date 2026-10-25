@@ -1,0 +1,10 @@
+Parser: FHItem
+ID: 115
+ScenarioItemID: 1095
+Name: Infusion Potion
+Quantity: 2
+Type: Small
+Brewing:
+    Herb1: Axenut
+    Herb2: Corpsecap
+    Herb3: Flamefruit

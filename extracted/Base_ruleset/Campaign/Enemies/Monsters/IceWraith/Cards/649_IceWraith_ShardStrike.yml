@@ -1,0 +1,29 @@
+Parser: EnemyCard
+ID: 649
+Name: $Monster_Ability_649_IceWraith_ShardStrike$
+Initiative: 16
+Shuffle: False
+Data:
+    Abilities: 
+        Attack1:
+            Attack: 0
+            Text: $FH/0643_monster_ability_cards_ice_wraith_renewed_aggression_3$
+            ConditionalOverrides:
+                Attack1CO:
+                    Self: True
+                    Requirement:
+                        IsElite: False
+                    AbilityOverrides:
+                        Attack1:
+                            Range: 4
+                            RangeIsBase: True
+                            AnimOverload: RangedAttack
+    Consumes:
+        CIce:
+            Elements: Ice
+            Abilities:
+                CIceBuff:
+                    Retaliate: 2
+                    ActiveBonus:
+                        ListLayoutOverride: ["<sprite name=Retaliate> *CIceBuff*", Positive_Retaliate]
+                    Filter: Self

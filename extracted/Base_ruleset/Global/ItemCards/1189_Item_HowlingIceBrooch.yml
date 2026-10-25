@@ -1,0 +1,27 @@
+Parser: ItemCard
+ID: 1189
+StringID: HowlingIceBroochID
+Name: $FH/1189_item_cards_howling_ice_brooch_1$
+Art: Howling Ice Brooch
+TotalInGame: 2
+Cost: 40
+Slot: SmallItem
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    ItemRequirements:
+        Vars:
+            ValidateHasConsumes: CAbilityConsume.CanConsume(list(ElementInfusionBoardManager.EElement.Ice, ElementInfusionBoardManager.EElement.Air))
+    Abilities:
+        AConsume:
+            ShowElementPicker: True
+            Consume:
+                  Elements: [Ice, Air]
+                  Abilities:
+                    AAttackImmobilize:
+                        Attack: 3
+                        Conditions: Immobilize
+                        Range: 3
+Layout: 
+    - Row: "$FH/1189_item_cards_howling_ice_brooch_2$"

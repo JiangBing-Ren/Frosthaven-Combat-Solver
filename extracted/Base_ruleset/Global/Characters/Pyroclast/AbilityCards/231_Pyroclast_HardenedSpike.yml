@@ -1,0 +1,128 @@
+Parser: AbilityCard
+Name: $FH/231_character_ability_cards_pyroclast_hardened_spike_1$
+Character: PyroclastID
+ID: 231
+Level: 3
+Initiative: 80
+Discard: [Discard,Discard]
+Prefab: 231_Pyroclast_HardenedSpike
+Data:
+    Top:
+        Infuse: [Earth]
+        Abilities:    
+            TAttack:
+                Attack: 5    
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AnimOverload: RichSwipe     
+                ConditionalOverrides:
+                    TAttackCO:
+                        TargetRequirements:
+                            Vars:
+                                ValidateTargetOccupiesValidTerrain: Actor.Tile.FindHazardousProp() != null            
+                        AbilityOverrides:
+                            TTerrainBuff:
+                                Strength: 1
+                                AbilityXP: 1
+            TDamageSelf:
+                Filter: Self
+                AutoTrigger: True       
+                MiscVars: 
+                    MandatoryBonus: True
+                AddActiveBonus:
+                    Damage: 1
+                    MiscVars:
+                        PrintedProperties: list("Damage")
+                    Filter: Self       
+                    AutoTrigger: True     
+                AnimOverload: CastStone
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: StartTurnAbility
+                    XPTracker: [0,0]
+                SubAbilities:
+                    TDamageSelfNow:
+                        TreatAsNonSubAbility: True
+                        Damage: 1
+                        MiscVars:
+                            PrintedProperties: list("Damage")
+                        Filter: Self
+                        AutoTrigger: True
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BAttackBuff:
+                Attack: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Filter: Self
+                AnimOverload: Cast
+                ActiveBonus:
+                    Duration: Round
+                    Behaviour: BuffAttack
+                    XPTracker: [0]
+                    Filter:
+                        Vars:
+                            # range 1, exclude props with health
+                            Obstacles: CustomAbility.GetAdjacentProps(target, ScenarioManager.ObjectImportType.Obstacle, 1, true)
+                            ValidateTargetOccupiesValidTerrain: Obstacles > 0
+        Consumes:
+            BCEarth:
+                Elements: Earth
+                XP: 1
+                AbilityOverrides:
+                    BCEarthBuff:
+                        ParentName: BAttackBuff
+                        Strength: 2
+                        Filter: Self
+                        ActiveBonus:
+                            # alternative key, says 3 damage instead of the default 1
+                            ListLayoutOverride: [$FH/231_character_ability_cards_pyroclast_hardened_spike_7$, Damage_Icon]
+                            Duration: Round
+                            Behaviour: BuffAttack
+                            XPTracker: [0]
+                            Filter:
+                                Vars:
+                                    # range 1, exclude props with health
+                                    Obstacles: CustomAbility.GetAdjacentProps(target, ScenarioManager.ObjectImportType.Obstacle, 1, true)
+                                    ValidateTargetOccupiesValidTerrain: Obstacles > 0
+
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack*"
+        - Row: "$FH/231_character_ability_cards_pyroclast_hardened_spike_2$"
+        - Divider:
+        - Active:
+            Ability: TDamageSelf
+            Icon: Negative_DamageSelf
+            ListLayout: "$233_character_ability_cards_pyroclast_heat_wave_4$ <sprite name=Damage>1 $target_self$"
+            Layout:
+                - MandatoryTrigger: "$233_character_ability_cards_pyroclast_heat_wave_4$ <sprite name=Damage>1 $target_self$"
+            Icon: "Negative_DamageSelf"
+        - Row:
+            - ColumnWidths: "15,25,40"
+            - Column:
+            - Column:            
+                - MandatoryTrigger:
+                    Layout:
+                        - Infuse: [Earth]
+            - Column:
+                - XPTracker: TDamageSelf
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Active:
+            Ability: BAttackBuff
+            ListLayout: "$FH/231_character_ability_cards_pyroclast_hardened_spike_5$"
+            Layout: "$FH/231_character_ability_cards_pyroclast_hardened_spike_5$"
+            Icon: "Positive_AttackPlus_Enemy_Obstacle"
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: BCEarth
+                    Text: "$FH/231_character_ability_cards_pyroclast_hardened_spike_6$"

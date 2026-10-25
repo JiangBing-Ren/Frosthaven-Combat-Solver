@@ -1,0 +1,14 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_MirrorDamage
+ScenarioAbility:
+    AActive:
+        MirrorDamage: True
+        Target: 1
+        Range: 0
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: MirrorAll
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_038_SCENARIO_MODIFIER_4$, Positive_Unique_Campaign]
+            IsToggleBonus: False
+        AnimOverload: None
+        AutoTrigger: True

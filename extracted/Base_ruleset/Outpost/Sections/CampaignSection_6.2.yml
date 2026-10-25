@@ -1,0 +1,10 @@
+Parser: CampaignSection
+# this section is obsolete, merged with 113.1 into a custom event
+ID: 6.2
+Name: Puzzle Solution
+SkipCompletedNotification: True
+Effects:
+    - Type: UnlockScenario
+      Param1: 137
+    - Type: UnlockPuzzle
+      Param1: SynthesisDevice

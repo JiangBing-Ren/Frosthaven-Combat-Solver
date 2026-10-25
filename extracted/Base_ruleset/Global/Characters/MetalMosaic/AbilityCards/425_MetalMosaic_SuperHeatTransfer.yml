@@ -1,0 +1,97 @@
+Parser: AbilityCard
+Name: $FH/425_character_ability_cards_metal_mosaic_super_heat_transfer$
+Character: MetalMosaicID
+ID: 425
+Level: 1
+Initiative: 25
+Discard: [Discard,Discard]
+Prefab: 425_MetalMosaic_SuperHeatTransfer
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                PerformVars:
+                    PreActorIsAttacking:
+                        ChangePressureRegular: TargetingActor.Pressure.ToString() == 'Regular' && CustomAbility.PressureChange(TargetingActor, 1)
+                        ChangePressureLow: TargetingActor.Pressure.ToString() == 'Low' && CustomAbility.PressureChange(TargetingActor, 1)
+                StatIsBasedOnX:
+                    XP:
+                        BasedOn: Vars
+                        Vars:
+                            LowPressure: TargetingActor.Pressure.ToString() == 'Low'
+                            Value: LowPressure && 1 || 0
+                SubAbilities:
+                    BPressureChangeRegular:
+                        Null: True
+                        SkipAnim: True
+                        IgnoreStun: True
+                        PerformVars:
+                            NullBegin:
+                                ChangePressure: CustomAbility.PressureChange(TargetingActor, 1)
+        Consumes:
+            TCFire:
+                Elements: Fire
+                AbilityOverrides:
+                    TCAttackBuff:
+                        ParentName: TAttack
+                        Conditions: [Wound]
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 2
+                MiscVars:
+                    PrintedProperties: list("Move")
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: Vars
+                        AddTo: True
+                        Vars:
+                            RegularPressure: TargetingActor.Pressure.ToString() == 'Regular'
+                            HighPressure: TargetingActor.Pressure.ToString() == 'High'
+                            Value: RegularPressure && -1 || HighPressure && -1 || 0
+                SubAbilities:
+                    BPressureChangeRegular:
+                        Null: True
+                        SkipAnim: True
+                        IgnoreStun: True
+                        PerformVars:
+                            NullBegin:
+                                RegularPressure: TargetingActor.Pressure.ToString() == 'Regular'
+                                HighPressure: TargetingActor.Pressure.ToString() == 'High'
+                                ChangePressure: RegularPressure && CustomAbility.PressureChange(TargetingActor, -1) || HighPressure && CustomAbility.PressureChange(TargetingActor, 1)
+        Infuse: Ice
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack*"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCFire
+                    Text: "<sprite name=Wound>"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureRegular><size=100%> <sprite name=MMGainPressure>"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureLow><size=100%> <sprite name=XP1>, <sprite name=MMGainPressure>"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMGainPressure>"
+    Bottom:
+
+        - Row: "<b><size=130%><sprite name=Move> *BMove*"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureHigh><size=100%> -1 <sprite name=Move>, <sprite name=MMGainPressure>"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureRegular><size=100%> -1 <sprite name=Move>, <sprite name=MMLosePressure>"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Ice

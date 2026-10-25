@@ -1,0 +1,17 @@
+Parser: HeroSummon
+ID: ShamblingSkeletonID
+LocKey: $FH/120_character_ability_cards_boneshaper_life_in_death_2$
+Model: ShamblingSkeleton
+CanMoveOnActorClassID: BoneHordeID
+Health:
+    Amount: 3
+    SquareEnhancements: 1
+Move:
+    Amount: 2
+    SquareEnhancements: 1
+Attack:
+    Amount: 2
+    SquareEnhancements: 1
+
+Range:
+    Amount: 1

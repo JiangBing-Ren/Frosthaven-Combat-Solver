@@ -1,0 +1,8 @@
+Parser: Perk
+ID: Deathwalker04
+Name: FH/PERK_Deathwalker_04_Name
+Description: FH/PERK_Deathwalker_04_Desc
+CharacterID: DeathwalkerID
+Available: 3
+CardsToRemove: [AMC_Basic_P0]
+CardsToAdd: [AMC_Curse_P1]

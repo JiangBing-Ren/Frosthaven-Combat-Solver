@@ -1,0 +1,78 @@
+Parser: AbilityCard
+Name: $FH/209_character_ability_cards_infuser_diamondization_1$
+Character: InfuserID
+ID: 209
+Level: 7
+Initiative: 10
+Discard: [Discard,Lost]
+Prefab: 209_Infuser_Diamondization
+Data:
+    Top:
+        Abilities:
+            TShield:
+                Shield:
+                    Amount: 1
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: Vars
+                        AddTo: True
+                        Vars:
+                            Value: CustomAbility.GetNumberOfActiveInfusionPairs(TargetingActor)
+            TWard:
+                Ward: True
+                Filter: Self
+                SkipAnim: True
+            TInfuse:
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    Vars: 
+                        ValidateActionHasHappened: CustomAbility.HasPerformedAction(Ability) 
+                Infuse: [Earth, Dark]
+                ShowElementPicker: True
+                CanSkip: False
+    Bottom:
+        Abilities:
+            BDiamondizationBottom:
+                NullTargeting: True
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Range")
+                MiscVars: 
+                    IsNegative: True
+                Conditions: [Wound,Immobilize]
+                Filter: Enemy
+                AreaEffect: "0,0,R|2,0,R|4,0,R|1,1,R|3,1,R|2,2,R|1,-1,R|3,-1,R|2,-2,R"
+                AnimOverload: Diamondization
+            BInfuse:
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    Vars: 
+                        ValidateActionHasHappened: CustomAbility.HasPerformedAction(Ability) 
+                Infuse: [Earth, Dark]
+                ShowElementPicker: True
+                CanSkip: False
+        XP: 1
+Layout:
+    Top:
+        - Active:
+            Ability: TShield
+            Icon: Positive_Shield
+            ListLayout: "$209_character_ability_cards_infuser_diamondization_2$ <sprite name=Shield> *TShield*"
+            Layout: "<sprite name=Shield> *TShield* <size=100%><voffset=1>@TShield@"
+        - Row: "<b><size=130%><sprite name=Shield> *TShield* <size=100%><voffset=1>@TShield@"
+        - Row: "$FH/209_character_ability_cards_infuser_diamondization_2$"
+        - Divider:
+        - Row: "$FH/209_character_ability_cards_infuser_diamondization_3$"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<sprite name=CreateMixed-ED>"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Wound>, <sprite name=Immobilize> <sprite name=Range>*BDiamondizationBottom.Range*"
+        - Row: "£Area£"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<sprite name=CreateMixed-ED>"
+        

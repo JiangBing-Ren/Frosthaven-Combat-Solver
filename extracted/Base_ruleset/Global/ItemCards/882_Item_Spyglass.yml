@@ -1,0 +1,21 @@
+Parser: ItemCard
+ID: 882
+StringID: SpyglassID
+Name: $FH/882_item_cards_spyglass_1$
+Art: Spyglass
+TotalInGame: 2
+Cost: 30
+Slot: Head
+Rarity: Rare
+Usage: Spent
+Trigger: SingleTarget
+ProsperityRequirement: 1
+Data: 
+    Overrides:
+        OConditions:
+            AttackHasAdvantage: True
+    CompareAbility:
+        AbilityType: Attack
+        Filter: Enemy
+Layout: 
+    - Row: $FH/882_item_cards_spyglass_2$ # During your attack ability, gain advantage on one attack.

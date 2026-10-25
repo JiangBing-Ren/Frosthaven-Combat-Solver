@@ -1,0 +1,80 @@
+Parser: Enemy
+ID: FlamingBladespinnerEliteID
+LocKey: $FH/FlamingBladespinnerElite$
+MonsterType: Monster
+StandeeLimit: 6
+Model: FlamingBladespinner Elite
+NonEliteVariant: FlamingBladespinnerID
+PredominantlyMelee: True
+AbilityCards: [610, 611, 612, 613, 614, 615, 616, 617]
+# Base Stats
+Level0:
+    Health: 8
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 3
+    Immunities: [Wound]
+Level1:
+    Health: 10
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 3
+    Retaliate: 3
+    RetaliateRange: 1
+    Immunities: [Wound]
+Level2:
+    Health: 13
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 3
+    Retaliate: 3
+    RetaliateRange: 1
+    Immunities: [Wound]
+Level3:
+    Health: 15
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 3
+    Retaliate: 3
+    RetaliateRange: 1
+    Immunities: [Wound]
+Level4:
+    Health: 15
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 3
+    Retaliate: 4
+    RetaliateRange: 1
+    Immunities: [Wound]
+Level5:
+    Health: 18
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 3
+    Retaliate: 4
+    RetaliateRange: 1
+    Immunities: [Wound]
+Level6:
+    Health: 24
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 3
+    Retaliate: 5
+    RetaliateRange: 1
+    Immunities: [Wound]
+Level7:
+    Health: 32
+    Move: 4
+    Attack: 5
+    Range: 1
+    Target: 3
+    Retaliate: 5
+    RetaliateRange: 1
+    Immunities: [Wound]

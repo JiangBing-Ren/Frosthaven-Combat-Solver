@@ -1,0 +1,80 @@
+Parser: AbilityCard
+Name: $FH/083_character_ability_cards_banner_spear_bolstering_shout$
+#CustomImage: KRO_BANNER_SPEAR_AbilityCards_BolsteringShout
+Character: BannerSpearID
+ID: 83
+Level: 6
+Initiative: 75
+Discard: [Discard,Discard]
+Prefab: 83_Bannerspear_BolsteringShout
+Data:
+    Top:
+        Abilities:
+            THeal:
+                Heal: 3
+                Target: 1
+                MiscVars:
+                    PrintedProperties: list("Heal","Range")
+                Range:
+                    Amount: 3
+                    SquareEnhancements: 1
+                Filter: [Self, Ally]
+                Conditions: Regenerate
+        Consumes:
+            TCAir:
+                Elements: Air
+                AbilityOverrides:
+                    TCAirHealBuff:
+                        ParentName: THeal
+                        Target: 1
+                        MiscVars:
+                            PrintedProperties: list("Target")
+                XP: 1
+        XP: 0
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BPull:
+                Pull: 2
+                Target:
+                    Amount: 2
+                    SquareEnhancements: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Pull","Target","Range")
+                AnimOverload: SelfBuff
+        XP: 0
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "20,20,20,20,20"
+            - Column:
+            - Column: 
+                - Row: "<b><size=130%><sprite name=Heal> *THeal*"
+            - Column: 
+                - Row: "<b><size=130%><sprite name=Range> *THeal.Range* <voffset=1>@THeal.Range@"
+            - Column: 
+                - Row: "<size=130%>, <sprite name=Regenerate>"
+            - Column:
+        - Row: "<size=50%> "
+        - Consume:
+            Name: TCAir
+            Text: "+1 <sprite name=Target>, <sprite name=XP1>"
+    Bottom:
+        - Row: "<b><size=150%><sprite name=Move> *BMove.Amount* <size=100%><voffset=1>@BMove@"
+        - Row: "<size=100%> "
+        - Row: 
+            - ColumnWidths: "20,20,20,20,20"
+            - Column:
+            - Column: 
+                - Row: "<b><size=130%><sprite name=Pull> *BPull*"
+            - Column: 
+                - Row: "<b><size=130%><sprite name=Target> *BPull.Target* <size=100%><voffset=1>@BPull.Target@"
+            - Column: 
+                - Row: "<b><size=130%> <sprite name=Range> *BPull.Range*"
+            - Column:

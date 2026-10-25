@@ -1,0 +1,170 @@
+Parser: AbilityCard
+Name: $FH/433_character_ability_cards_metal_mosaic_energy_conversion_1$
+Character: MetalMosaicID
+ID: 433
+Level: 4
+Initiative: 23
+Discard: [Lost,Discard]
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 9
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AnimOverload: HeatedDrill
+        Consumes:
+            Consume1:
+                AbilityOverrides:
+                    TCAttackDebuff:
+                        ParentName: TAttack
+                        Strength: -1
+                        SubAbilities:
+                            CPressureChangeChoose:
+                                TreatAsNonSubAbility: True
+                                ParentName: TAttack
+                                HelpBoxTooltipLocKey: "$FH/GUI_SELECT_OPTION$"
+                                Filter: Self
+                                CanSkip: False
+                                CanUndo: False
+                                Choose:
+                                    Abilities:
+                                        PressureGain:
+                                            PreviewEffectText: "<sprite name=MMGainPressure>"
+                                            Null: True
+                                            SkipAnim: True
+                                            IgnoreStun: True
+                                            AutoTrigger: True
+                                            PerformVars:
+                                                NullBegin:
+                                                    ChangePressure: CustomAbility.PressureChange(TargetingActor, 1)
+                                        PressureLose:
+                                            PreviewEffectText: "<sprite name=MMLosePressure>"
+                                            Null: True
+                                            SkipAnim: True
+                                            IgnoreStun: True
+                                            AutoTrigger: True
+                                            PerformVars:
+                                                NullBegin:
+                                                    ChangePressure: CustomAbility.PressureChange(TargetingActor, -1)
+            Consume2:
+                AbilityOverrides:
+                    TCAttackDebuff2:
+                        ParentName: TAttack
+                        Strength: -1
+                        SubAbilities:
+                            CPressureChangeChoose2:
+                                TreatAsNonSubAbility: True
+                                ParentName: TAttack
+                                HelpBoxTooltipLocKey: "$FH/GUI_SELECT_OPTION$"
+                                Filter: Self
+                                CanSkip: False
+                                CanUndo: False
+                                Choose:
+                                    Abilities:
+                                        PressureGain:
+                                            PreviewEffectText: "<sprite name=MMGainPressure>"
+                                            Null: True
+                                            SkipAnim: True
+                                            IgnoreStun: True
+                                            AutoTrigger: True
+                                            PerformVars:
+                                                NullBegin:
+                                                    ChangePressure: CustomAbility.PressureChange(TargetingActor, 1)
+                                        PressureLose:
+                                            PreviewEffectText: "<sprite name=MMLosePressure>"
+                                            Null: True
+                                            SkipAnim: True
+                                            IgnoreStun: True
+                                            AutoTrigger: True
+                                            PerformVars:
+                                                NullBegin:
+                                                    ChangePressure: CustomAbility.PressureChange(TargetingActor, -1)
+            Consume3:
+                AbilityOverrides:
+                    TCAttackDebuff3:
+                        ParentName: TAttack
+                        Strength: -1
+                        SubAbilities:
+                            CPressureChangeChoose3:
+                                TreatAsNonSubAbility: True
+                                ParentName: TAttack
+                                HelpBoxTooltipLocKey: "$FH/GUI_SELECT_OPTION$"
+                                Filter: Self
+                                CanSkip: False
+                                CanUndo: False
+                                Choose:
+                                    Abilities:
+                                        PressureGain:
+                                            PreviewEffectText: "<sprite name=MMGainPressure>"
+                                            Null: True
+                                            SkipAnim: True
+                                            IgnoreStun: True
+                                            AutoTrigger: True
+                                            PerformVars:
+                                                NullBegin:
+                                                    ChangePressure: CustomAbility.PressureChange(TargetingActor, 1)
+                                        PressureLose:
+                                            PreviewEffectText: "<sprite name=MMLosePressure>"
+                                            Null: True
+                                            SkipAnim: True
+                                            IgnoreStun: True
+                                            AutoTrigger: True
+                                            PerformVars:
+                                                NullBegin:
+                                                    ChangePressure: CustomAbility.PressureChange(TargetingActor, -1)
+        XP: 2
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 1
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BBonus:
+                CanUndo: False
+                AnimOverload: CastNeutral
+                AddActiveBonus:
+                    Null: True
+                    SkipAnim: True
+                    IgnoreStun: True
+                    AutoTrigger: True
+                    PerformVars:
+                        NullBegin:
+                            ChangePressure: CustomAbility.PressureChange(TargetingActor, 1)
+                ActiveBonus:
+                    Duration: Round
+                    Behaviour: DuringActionAbilityOnAttacked
+                    ListLayoutOverride: [$FH/433_character_ability_cards_metal_mosaic_energy_conversion_3$, Positive_PressureUp_Enemy_Attack]
+        Consumes:
+            BCFire:
+                Elements: [Fire]
+                AbilityOverrides:
+                    BCMoveBuff:
+                        ParentName: BMove
+                        Strength: 2
+                Abilities:
+                    BCXP:
+                        GainXP: 1
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Conditional:
+            Top: True
+            Layout:
+                - Row: "$FH/433_character_ability_cards_metal_mosaic_energy_conversion_2$"
+                - Row: "$FH/433_character_ability_cards_metal_mosaic_energy_conversion_2$"
+                - Row: "$FH/433_character_ability_cards_metal_mosaic_energy_conversion_2$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: BCFire
+                    Text: "+2 <sprite name=Move>, <sprite name=XP1>"
+        - Divider:
+        - Row: "$FH/433_character_ability_cards_metal_mosaic_energy_conversion_3$"

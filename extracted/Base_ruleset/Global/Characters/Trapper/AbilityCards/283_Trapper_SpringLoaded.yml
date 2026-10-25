@@ -1,0 +1,78 @@
+Parser: AbilityCard
+Name: $FH/283_character_ability_cards_trapper_spring_loaded_1$
+Character: TrapperID
+ID: 283
+Level: X
+Initiative: 15
+Discard: [Lost,Discard]
+Prefab: 283_Trapper_Spring-Loaded
+Data:
+    Top:
+        Abilities:
+            TBuffMove:
+                AddActiveBonus:
+                    Null: True
+                    IgnoreStun: True
+                    MiscVars:
+                        InterruptCurrentAbility: True
+                        InterruptRegardlessOfStrength: True
+                    PerformVars:
+                        OnAbilityEnded:
+                            BuffMove: CustomAbility.ApplySpringLoadedBuff(CurrentMove)
+                AnimOverload: PowerUpStrong
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: GenericTrapActivated
+                    Vars:
+                        CurrentMove: CurrentAbility
+                        ValidateTriggerActor: AppliesTo(TriggerActor)
+                        ValidateTriggerActorAlive: not TriggerActor.IsDead
+                        ValidateMoveAbility: CurrentMove.AbilityType == "Move"
+                        ValidateCanApplyBonuses: CustomAbility.GetMiscVarBool(CurrentMove, "NoBonuses") == False
+                    TriggerOnCaster: true
+                    IsAura: True
+                    HiddenWhenAura: True
+                    AuraTargeting: All
+                    AuraFilter:
+                        TargetType: [Self,Ally]
+                        UseTargetOriginalType: True
+                    ListLayoutOverride: [$FH/283_character_ability_cards_trapper_spring_loaded_2$, Positive_MovePlus_Jump_Trap]
+        XP: 2
+    Bottom:
+        Abilities:
+            BActiveBonus:
+                AddActiveBonus:
+                    Null: True
+                ActiveBonus:
+                    Duration: Persistent
+                    ListLayoutOverride: [$FH/283_character_ability_cards_trapper_spring_loaded_4$, Negative_FlyingPrevent]
+                    MiscVars:
+                        OnFinishRemoveStopFly: ActiveBonus.Actor.RemoveNegativeConditionToken(CCondition.ENegativeCondition.StopFlying)
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Range")
+                RangeIsBase: True
+                AnimOverload: TrapProjectile
+                Filter:
+                    TargetType: Enemy
+                    Vars:
+                        ValidateIsFlying: target.Flying
+                SubAbilities:
+                    BStopFlying:
+                        Flags: [SubAbilityPreview]
+                        AutoTrigger: True
+                        IsInlineSubAbility: False
+                        StopFlying: True
+                        TreatAsNonSubAbility: True
+                        UseParentTargets: True
+                        SkipAnim: True
+Layout:
+    Top:
+        #- Row: $FH/283_character_ability_cards_trapper_spring_loaded_2$
+        - Active:
+            Ability: TBuffMove
+            Icon: Positive_MovePlus_Jump_Trap
+            ListLayout: $FH/283_character_ability_cards_trapper_spring_loaded_2$
+            Layout: $FH/283_character_ability_cards_trapper_spring_loaded_2$
+    Bottom:
+        - Row: $FH/283_character_ability_cards_trapper_spring_loaded_3$

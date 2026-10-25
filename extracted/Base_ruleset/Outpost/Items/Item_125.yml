@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 125
+ScenarioItemID: 1115
+Name: Boots of Speed
+Quantity: 2
+GoldCost: 30
+Type: Feet
+IsNewCharacterItem: True

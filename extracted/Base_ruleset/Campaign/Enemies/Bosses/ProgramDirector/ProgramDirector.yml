@@ -1,0 +1,138 @@
+Parser: Enemy
+ID: ProgramDirectorID
+LocKey: $FH/ProgramDirector$
+MonsterType: Boss
+Model: ProgramDirector
+StandeeLimit: 1
+PredominantlyMelee: True
+AbilityCards: [08822000, 08822001, 08822002, 08822003, 08822004, 08822005, 08822006, 08822007]
+# original health multipliers are commented out, the active ones are *1.5 higher
+# Base Stats
+Level0:
+    Health: 0
+    Move: 0
+    Attack: 0
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Stun]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 15
+            # Multiplier: 10
+        Attack:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 1
+            AddTo: True
+Level1:
+    Health: 0
+    Move: 0
+    Attack: 0
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Stun]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 18
+            # Multiplier: 12
+        Attack:
+            BasedOn: XAddedToInitialPlayerCharacterCount
+            Multiplier: 1
+            AddTo: True
+Level2:
+    Health: 0
+    Move: 0
+    Attack: 0
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Stun]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 22.5
+            # Multiplier: 15
+        Attack:
+            BasedOn: XAddedToInitialPlayerCharacterCount
+            Multiplier: 1
+            AddTo: True
+Level3:
+    Health: 0
+    Move: 0
+    Attack: 0
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Stun]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 27
+            # Multiplier: 18
+        Attack:
+            BasedOn: XAddedToInitialPlayerCharacterCount
+            Multiplier: 2
+            AddTo: True
+Level4:
+    Health: 0
+    Move: 0
+    Attack: 0
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Stun]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 34.5
+            # Multiplier: 23
+        Attack:
+            BasedOn: XAddedToInitialPlayerCharacterCount
+            Multiplier: 2    
+            AddTo: True
+Level5:
+    Health: 0
+    Move: 0
+    Attack: 0
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Stun]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 40.5
+            # Multiplier: 27
+        Attack:
+            BasedOn: XAddedToInitialPlayerCharacterCount
+            Multiplier: 3    
+            AddTo: True
+Level6:
+    Health: 0
+    Move: 0
+    Attack: 0
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Stun]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 60
+            # Multiplier: 40
+        Attack:
+            BasedOn: XAddedToInitialPlayerCharacterCount
+            Multiplier: 3    
+            AddTo: True
+Level7:
+    Health: 0
+    Move: 0
+    Attack: 0
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Stun]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 75
+            # Multiplier: 50
+        Attack:
+            BasedOn: XAddedToInitialPlayerCharacterCount
+            Multiplier: 4
+            AddTo: True

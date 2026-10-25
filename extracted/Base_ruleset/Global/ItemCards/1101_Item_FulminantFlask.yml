@@ -1,0 +1,19 @@
+Parser: ItemCard
+ID: 1101
+StringID: FulminantFlaskID
+Name: $FH/1101_item_cards_fulminant_flask_1$
+Art: Fulminant Flask
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        ADamage:
+            Filter: Enemy
+            Range: 2
+            Damage: 4
+Layout: 
+    - Row: "$FH/1101_item_cards_fulminant_flask_2$"

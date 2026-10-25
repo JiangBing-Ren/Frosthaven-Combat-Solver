@@ -1,0 +1,65 @@
+Parser: Enemy
+ID: AbaelScoutEliteID
+LocKey: $FH/AbaelScoutElite$
+MonsterType: Monster
+StandeeLimit: 6
+Model: AbaelScout Elite
+NonEliteVariant: AbaelScoutID
+PredominantlyMelee: True
+AbilityCards: [770,771,772,773,774,775,776,777]
+# Base Stats
+Level0:
+    Health: 5
+    Move: 4
+    Attack: 3
+    Range: 1
+    Target: 1
+Level1:
+    Health: 5
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+    Conditions: [Poison]
+Level2:
+    Health: 7
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+    Conditions: [Poison]
+Level3:
+    Health: 9
+    Move: 5
+    Attack: 4
+    Range: 1
+    Target: 1
+    Conditions: [Poison]
+Level4:
+    Health: 10
+    Move: 5
+    Attack: 5
+    Range: 1
+    Target: 1
+    Conditions: [Poison]
+Level5:
+    Health: 13
+    Move: 5
+    Attack: 5
+    Range: 1
+    Target: 1
+    Conditions: [Poison]
+Level6:
+    Health: 17
+    Move: 5
+    Attack: 6
+    Range: 1
+    Target: 1    
+    Conditions: [Poison]
+Level7:
+    Health: 23
+    Move: 5
+    Attack: 6
+    Range: 1
+    Target: 1    
+    Conditions: [Poison]

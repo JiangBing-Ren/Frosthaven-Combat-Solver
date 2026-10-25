@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 29
+ScenarioItemID: 938
+Name: Cleaving Axe
+Quantity: 2
+Type: TwoHandWeapon
+CraftingCost:
+    Lumber: 1
+    Metal: 2

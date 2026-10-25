@@ -1,0 +1,13 @@
+Parser: Mastery
+ID: Boneshaper_MASTERY_1
+LocalisedName: Boneshaper_MASTERY_1_Name
+LocalisedDescription: Boneshaper_MASTERY_1_Desc
+# Kill at least fifteen of your summons
+PerkPoints: 1
+BattleGoalCondition:
+    - Targets:
+        Filter: Kill
+        EnemyClasses: [BoneHordeID, RagingCorpseID, ShamblingSkeletonID, SkeletonSorcererID, StitchedAtrocityID, WraithID]
+        ExcludeCauseOfDeathTypes: [SummonActiveBonusCancelled, HazardousTerrain, Trap]
+        Value: 15
+        SubFilter: Scenario

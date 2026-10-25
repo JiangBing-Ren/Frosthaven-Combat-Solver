@@ -1,0 +1,21 @@
+Parser: ScenarioAbility
+ID: RFH005_HealAll
+ScenarioAbility:
+    AActive:
+        Target: -1
+        Filter: Self
+        AnimOverload: None
+        AutoTrigger: True
+        AddActiveBonus:
+            Heal: 1
+            Filter: Self
+            SkipAnim: True
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: StartTurnAbility
+            ListLayoutOverride: [$FH/RFH_Scenario_Campaign_005_SCENARIO_MODIFIER_1$, Positive_HealSelf_Campaign]
+            IsAura: True
+            AuraFilter: Ally
+            AuraTargeting: All
+            MiscVars:
+                HiddenInCombatLog: True

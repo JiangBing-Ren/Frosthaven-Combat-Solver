@@ -1,0 +1,11 @@
+Parser: HeroSummon
+ID: ShadowBeastID
+LocKey: $FH/092_character_ability_cards_deathwalker_sunless_apparition_2$
+Model: ShadowBeast
+Health:
+    Amount: 1
+    SquareEnhancements: 1
+Move:
+    Amount: 3
+Attack:
+    Amount: 3

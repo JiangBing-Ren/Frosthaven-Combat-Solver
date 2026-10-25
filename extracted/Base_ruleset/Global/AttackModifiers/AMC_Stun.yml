@@ -1,0 +1,7 @@
+Parser: AttackModifier
+Name: AMC_Stun
+MathModifier: "+0"
+AbilityOverrides:
+    NegCon:
+        ParentName: AMC_Stun
+        Conditions: [Stun]

@@ -1,0 +1,7 @@
+Parser: Perk
+ID: CrashingTide04
+Name: FH/PERK_CrashingTide_04_Name
+Description: FH/PERK_CrashingTide_04_Desc
+CharacterID: CrashingTideID
+Available: 2
+CardsToAdd: [AMC_P1_Or_P2_IfPlayedTideThisRound, AMC_P1_Or_P2_IfPlayedTideThisRound]

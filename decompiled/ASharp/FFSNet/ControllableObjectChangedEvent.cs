@@ -1,0 +1,3 @@
+namespace FFSNet;
+
+public delegate void ControllableObjectChangedEvent(NetworkControllable controllable, IControllable oldControllableObject, IControllable newControllableObject);

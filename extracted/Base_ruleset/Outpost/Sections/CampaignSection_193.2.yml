@@ -1,0 +1,8 @@
+Parser: CampaignSection
+ID: 193.2
+Name: Geminate Returns
+SkipCompletedNotification: False
+ShowAsUnknownInCalendar: True
+Effects:
+    - Type: GainCampaignSticker
+      Param1: IntoTheForest

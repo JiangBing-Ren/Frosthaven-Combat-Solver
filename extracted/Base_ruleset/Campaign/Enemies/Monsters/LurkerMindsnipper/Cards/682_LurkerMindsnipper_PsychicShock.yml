@@ -1,0 +1,32 @@
+Parser: EnemyCard
+ID: 682
+Name: $Monster_Ability_682_LurkerMindsnipper_PsychicShock$
+Initiative: 6
+Shuffle: True
+Data:
+    Abilities: 
+        Retaliate1:
+            Retaliate: 3
+            RetaliateRange: 3
+            Filter: Self
+            AnimOverload: PowerUp
+            ActiveBonus:
+                Duration: Round
+                ListLayoutOverride: ["<sprite name=Retaliate> *Retaliate1*", Positive_Retaliate]
+        Muddle1:
+            Muddle: True
+            Target: -1
+            TargetIsBase: True
+            Range: 3
+            RangeIsBase: True
+            ShowRange: False
+            Filter: Enemy
+            AnimOverload: InstillFear
+            Text: "$target_all$,<nobr> <sprite name=Range> 3</nobr>"
+    Consumes:
+        CDark:
+            Elements: Dark
+            AbilityOverrides:
+                CDarkBuff:
+                    ParentName: Retaliate1
+                    Strength: 2

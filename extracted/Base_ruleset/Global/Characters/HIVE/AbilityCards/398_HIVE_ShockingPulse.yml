@@ -1,0 +1,70 @@
+Parser: AbilityCard
+Name: $FH/398_character_ability_cards_hive_shocking_pulse_1$
+Character: HIVEID
+ID: 398
+Level: X
+Initiative: 86
+Discard: [Lost,Discard]
+Prefab: 398_HIVE_ShockingPulse
+Data:
+    Top:
+        XP: 2
+        Abilities:
+            TSummon:
+                Summon: ArcingGeneratorID
+                AnimOverload: Summon
+        Mode:
+            BuffPierce:
+                AutoTrigger: True
+                Attack: -1
+                AttackEffect:
+                    Type: StandardBuff
+                    Pierce: 5
+                Filter: Self
+                ActiveBonus:
+                    Behaviour: BuffAttack
+                    Duration: Persistent
+    Bottom:
+        Abilities:
+            BMuddle:
+                Muddle: True
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Target: 99
+                Filter: Enemy
+                AnimOverload: PowerUp
+                MiscVars:
+                    AutoSelectValidTiles: True
+            BDamage:
+                Damage: 1
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Range: 1
+                Target: -1
+                Filter:
+                    TargetType: [Ally,Enemy,OwnSummon]  
+                AnimOverload: CastAOE     
+Layout:
+    Top:
+        - Active:
+              Ability: "TSummon"
+              Icon: "Summon"
+              Layout:
+                  - Summon:
+                        Ability: TSummon
+                        SummonName: $FH/398_character_ability_cards_hive_shocking_pulse_2$
+                        SpecialText: 
+                            - Row: "$FH/098_character_ability_cards_deathwalker_lingering_rot_2$ \n<sprite name=Pierce>2"
+        - Row:
+            - Column: "<sprite name=HIVEMode>"
+            - Column:
+                - Active:
+                    Ability: "BuffPierce"
+                    Icon: "Negative_AttackMinus_HIVEMode"
+                    ListLayout: "$FH/398_character_ability_cards_hive_shocking_pulse_4$"
+                    Layout: "$FH/398_character_ability_cards_hive_shocking_pulse_4$"
+    Bottom:
+        - Row: "$FH/398_character_ability_cards_hive_shocking_pulse_5$"
+        - Divider: 
+        - Row: "$FH/398_character_ability_cards_hive_shocking_pulse_6$"

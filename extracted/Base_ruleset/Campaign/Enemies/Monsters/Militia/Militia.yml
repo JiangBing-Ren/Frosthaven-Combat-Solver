@@ -1,0 +1,57 @@
+Parser: Enemy
+ID: MilitiaID
+LocKey: $FH/Militia$
+MonsterType: Monster
+StandeeLimit: 12
+Model: Militia
+PredominantlyMelee: True
+AbilityCards: [13004]
+# Base Stats
+Level0:
+    Health: 2
+    Move: 3
+    Attack: 1
+    Range: 1
+    Target: 1
+Level1:
+    Health: 3
+    Move: 3
+    Attack: 1
+    Range: 1
+    Target: 1
+Level2:
+    Health: 3
+    Move: 3
+    Attack: 1
+    Range: 1
+    Target: 1
+ Level3:
+    Health: 4
+    Move: 3
+    Attack: 1
+    Range: 1
+    Target: 1
+ Level4:
+    Health: 4
+    Move: 3
+    Attack: 2
+    Range: 1
+    Target: 1
+ Level5:
+    Health: 5
+    Move: 3
+    Attack: 2
+    Range: 1
+    Target: 1
+ Level6:
+    Health: 5
+    Move: 3
+    Attack: 2
+    Range: 1
+    Target: 1
+ Level7:
+    Health: 6
+    Move: 3
+    Attack: 2
+    Range: 1
+    Target: 1

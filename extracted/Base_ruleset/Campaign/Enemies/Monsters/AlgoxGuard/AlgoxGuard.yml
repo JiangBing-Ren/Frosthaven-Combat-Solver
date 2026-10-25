@@ -1,0 +1,57 @@
+Parser: Enemy
+ID: AlgoxGuardID
+LocKey: $FH/AlgoxGuard$
+MonsterType: Monster
+StandeeLimit: 6
+Model: AlgoxGuard
+PredominantlyMelee: True
+AbilityCards: [746, 747, 748, 749, 750, 751, 752, 753]
+# Base Stats
+Level0:
+    Health: 6
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+Level1:
+    Health: 7
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+Level2:
+    Health: 10
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+Level3:
+    Health: 12
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+Level4:
+    Health: 15
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+Level5:
+    Health: 19
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+Level6:
+    Health: 25
+    Move: 4
+    Attack: 5
+    Range: 1
+    Target: 1    
+Level7:
+    Health: 33
+    Move: 5
+    Attack: 5
+    Range: 1
+    Target: 1

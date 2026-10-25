@@ -1,0 +1,109 @@
+Parser: AbilityCard
+Name: $FH/177_character_ability_cards_geminate_corrosive_acids_1$
+Character: GeminateID
+ID: 177
+Level: 6
+ProgressionOrder: 26
+Initiative: 28
+Discard: [Discard,Discard]
+RequiredForm: Melee
+Prefab: 177_Geminate_CorrosiveAcids
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AreaEffect: "0,0,G|-1,1,E|1,1,R|2,0,R|1,-1,R"
+                AreaEffectLayoutOverride: "0,0,G|-1,1,E|1,1,R|2,0,R|1,-1,R"
+                MultiPassAttack: false
+                AnimOverload: Attack_Melee_CorrosiveAcids
+        Consumes:
+            TCBrittle:
+                CostAbility:
+                    ParentName: TAttack
+                    Brittle: True
+                    Target: -1
+                    Filter: Self
+                    StartAbilityRequirements:
+                        Type: ThisAbility
+                        DoesntHaveNegativeCondition: [Disarm,Stun]
+                AbilityOverrides:
+                    TCBrittleDebuff:
+                        ParentName: TAttack
+                        Conditions: [Brittle]
+            TCImpair:
+                CostAbility:
+                    ParentName: TAttack
+                    Impair: True
+                    Target: -1
+                    Filter: Self
+                    StartAbilityRequirements:
+                        Type: ThisAbility
+                        DoesntHaveNegativeCondition: [Disarm,Stun]
+                AbilityOverrides:
+                    TCPoisonDebuff:
+                        ParentName: TAttack
+                        Conditions: [Poison]
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BShieldDebuff:
+                AutoTrigger: True
+                Shield: -2
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                Range: 1
+                Target: -1
+                Filter: Self
+                AnimOverload: Cast Negative
+                ActiveBonus:
+                    Duration: Round
+                    IsAura: True
+                    AuraTargeting: Range
+                    Behaviour: BuffShield
+                    AuraFilter:
+                        TargetType: [Ally,Enemy]
+            BTransformToRange:
+                Null: True
+                Flags: [SwitchFormMeleeToRange]
+                AutoTrigger: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Move,Shield]
+Layout:
+    Top:
+        - Column:
+            - Row: "<b><size=130%><sprite name=Attack>*TAttack* <size=100%><voffset=1>@TAttack@"         
+            - Row:
+                - Conditional:
+                    Layout:
+                        - Consume:
+                            Name: TCBrittle
+                            Text: "$FH/177_character_ability_cards_geminate_corrosive_acids_2$"
+                        - Consume:
+                            Name: TCImpair
+                            Text: "$FH/177_character_ability_cards_geminate_corrosive_acids_3$"
+        - Column:
+            - Row: "£Area£"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move>*BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Active:
+            Ability: BShieldDebuff
+            ListLayout: "$FH/177_character_ability_cards_geminate_corrosive_acids_4$"
+            Layout: "$FH/177_character_ability_cards_geminate_corrosive_acids_4$"
+            Icon: "Positive_ShieldMinus_Enemy_Aura"
+        
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=GMMeleeToRanged>"

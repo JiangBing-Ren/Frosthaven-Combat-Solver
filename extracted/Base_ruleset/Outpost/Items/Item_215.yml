@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 215
+ScenarioItemID: 1225
+Name: Befuddling Mug
+Quantity: 1
+GoldCost: 30
+Type: OneHandWeapon
+IsNewCharacterItem: False

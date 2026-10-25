@@ -1,0 +1,136 @@
+Parser: AbilityCard
+Name: $FH/359_character_ability_cards_snowdancer_snowblind_1$
+Character: SnowdancerID
+ID: 359
+Level: 9
+Initiative: 83
+Discard: [Discard,Lost]
+Prefab: 359_Snowdancer_Snowblind
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 
+                    Amount: 3
+                    DiamondEnhancements: 1
+                Conditions: [Disarm]
+                Range: 5
+                Target: 2
+                MiscVars:
+                    PrintedProperties: list("Attack","Range","Target")
+                MultiPassAttack: False
+                MiscVars:
+                    RecalculateTargetingOnTileSelection: True
+                Targeting: Custom
+                TargetingVars:
+                    AddTilesInRange: CustomAbility.GetActorsNextToTerrain(Ability).Select(Tile)
+                    AddValidActorsInRange: CustomAbility.GetActorsNextToTerrain(Ability)
+                AnimOverload: Whiteout 
+        Infuse: Ice
+        XP: 1
+    Bottom:
+        Abilities:
+            BBlessBonusShortRest:
+                AddActiveBonus:
+                    IgnoreStun: True
+                    ControlActor:
+                        #UseControllingActorPlayerControl: True
+                        Abilities:
+                            ShortRestBless:
+                                AutoTrigger: True
+                                IgnoreStun: True
+                                Bless: True
+                                Targeting: Custom
+                                TargetingVars:
+                                    AddTileInRange: TriggerTarget.Tile
+                                    AddValidActorInRange: TriggerTarget
+                                    AddActorToTarget: TriggerTarget
+                                    AddSelectedTile: TriggerTarget.Tile
+                    Target: -1
+                    AutoTrigger: True
+                    SkipAnim: True
+                    Filter: [Self, Ally]
+                    Targeting: Custom
+                    TargetingVars:
+                        AddTileInRange: TriggerTarget.Tile
+                        AddValidActorInRange: TriggerTarget
+                        AddActorToTarget: TriggerTarget
+                        AddSelectedTile: TriggerTarget.Tile
+                Target: 1
+                Range: 1
+                Filter: [Self]
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: DuringActionAbilityOnShortRest
+                    Restriction: OncePerRound
+                    RestrictPerActor: True
+                    IsAura: True
+                    AuraFilter:
+                        TargetType: [Self,Ally]
+                        ActorType: Player
+                    AuraTargeting: All
+            BBlessBonusLongRest:
+                AddActiveBonus:
+                    IgnoreStun: True
+                    ControlActor:
+                        #UseControllingActorPlayerControl: True
+                        Abilities:
+                            LongRestBless:
+                                AutoTrigger: True
+                                IgnoreStun: True
+                                Bless: True
+                                Targeting: Custom
+                                TargetingVars:
+                                    AddTileInRange: TriggerTarget.Tile
+                                    AddValidActorInRange: TriggerTarget
+                                    AddActorToTarget: TriggerTarget
+                                    AddSelectedTile: TriggerTarget.Tile
+                    Target: -1
+                    AutoTrigger: True
+                    SkipAnim: True
+                    Filter: [Self, Ally]
+                    Targeting: Custom
+                    TargetingVars:
+                        AddTileInRange: TriggerTarget.Tile
+                        AddValidActorInRange: TriggerTarget
+                        AddActorToTarget: TriggerTarget
+                        AddSelectedTile: TriggerTarget.Tile
+                Target: 1
+                Range: 1
+                Filter: [Self]
+                AutoTrigger: True
+                SkipAnim: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    DoesntHaveNegativeCondition: [Stun]
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: DuringActionAbilityOnLongRest
+                    IsAura: True
+                    AuraFilter:
+                        TargetType: [Self,Ally]
+                        ActorType: Player
+                    AuraTargeting: All
+                    Hidden: True
+
+        XP: 2
+Layout:
+    Top:
+        - Row: 
+            - ColumnWidths: "30,70"
+            - Column: "<sprite name=Attack> *TAttack* @TAttack@"
+            - Column: 
+                - Conditional:
+                    Layout:
+                        - Row: "$FH/359_character_ability_cards_snowdancer_snowblind_2$"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Ice]
+    Bottom:
+        - Active:
+            Ability: BBlessBonusShortRest
+            Icon: Positive_Bless_Rest
+            ListLayout: "$FH/359_character_ability_cards_snowdancer_snowblind_3$"
+            Layout: "$FH/359_character_ability_cards_snowdancer_snowblind_3$"
+

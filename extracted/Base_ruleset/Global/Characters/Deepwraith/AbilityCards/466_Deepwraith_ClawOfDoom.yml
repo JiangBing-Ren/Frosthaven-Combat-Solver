@@ -1,0 +1,40 @@
+Parser: AbilityCard
+Name: $FH/466_character_ability_cards_deepwraith_claw_of_doom$
+Character: DeepwraithID
+ID: 466
+Level: 6
+Initiative: 30
+Discard: [Discard,Discard]
+Prefab: 466_Deepwraith_ClawOfDoom
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount:  3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Conditions: [Stun]
+        Infuse: Dark
+        XP: 1
+    Bottom:
+        Abilities: 
+            BTeleport:
+                Teleport2: 
+                    Amount: 5
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Teleport")
+                Filter: Self
+                AnimOverload: Teleport Into
+                AnimOverload2: Teleport Outof
+Layout:
+    Top:
+        - Row: "<sprite name=Attack> *TAttack* @TAttack@"
+        - Row: "<sprite name=Stun>"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark
+    Bottom:
+        - Row: "<sprite name=Teleport> *BTeleport* @BTeleport@"

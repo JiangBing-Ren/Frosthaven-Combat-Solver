@@ -1,0 +1,50 @@
+Parser: EnemyCard
+ID: 0876000203
+Name: $Monster_Ability_Boss_TheTormentor_Special2$
+Initiative: 17
+Shuffle: True
+Data:
+    Abilities: 
+        Move1:
+            Move: -1
+        Attack1:
+            Attack: 0
+            Filter: Enemy
+            StatIsBasedOnX:
+                Strength:
+                    BasedOn: XAddedToInitialPlayerCharacterCount
+                    Multiplier: -5
+                    AddTo: True
+            Condition: Curse
+            AnimOverload: BlackTendrils
+            Text: "$FH/boss_special_the_tormentor_2_2$"
+        Dummy:
+          Null: True
+          Flags: [Special2]
+          TextOnly: True
+          AnimOverload: TerrainFormation
+          Text: "$FH/boss_special_the_tormentor_2_1$"
+        Dummy:
+          Null: True #wait for idle
+        Push1:
+            Push: 1
+            Range: 1
+            RangeIsBase: True
+            Target: -1
+            TargetIsBase: True
+            Filter: Enemy
+            AnimOverload: Push
+    Infuse: Dark
+    Consumes:
+        CAir:
+            Elements: Air
+            AbilityOverrides:
+                CAttackBuff:
+                    ParentName: Attack1
+                    Target: +1
+        CIce:
+            Elements: Ice
+            AbilityOverrides:
+                CPushBuff:
+                    ParentName: Push1
+                    Strength: +2

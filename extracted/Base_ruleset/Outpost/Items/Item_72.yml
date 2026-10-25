@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 72
+ScenarioItemID: 1009
+Name: Oak Staff
+Quantity: 2
+Type: TwoHandWeapon
+CraftingCost:
+    Lumber: 1
+RequiredCraftingItemIDs: [ 91 ]

@@ -1,0 +1,7 @@
+Parser: FHItem
+ID: 2030
+ScenarioItemID: 2030
+Name: Throwing Axe
+Quantity: 2
+Type: OneHandWeapon
+GoldCost: 35

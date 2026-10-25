@@ -1,0 +1,7 @@
+Parser: FHEnhancement
+ID: Retailate
+Name: Glossary_Enhancement_PlusRetaliate
+Cost: 60
+Mark: Square
+Effect: AddOne
+ForEffect: Retailate

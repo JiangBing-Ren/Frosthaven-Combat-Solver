@@ -1,0 +1,15 @@
+Parser: FHScenario
+ID: 67
+Name: Core Attunement
+LevelID: FS_067_Core_Attunement
+Chain: PersonalQuest
+RequiresPersonalQuest: PQ_7
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: GainMorale
+          Param1: 1
+        - Type: AddProsperity
+          Param1: 1
+        - Type: UnlockMandatoryScenario
+          Param1: 68

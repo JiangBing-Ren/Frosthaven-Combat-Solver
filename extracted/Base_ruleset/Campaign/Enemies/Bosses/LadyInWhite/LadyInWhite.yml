@@ -1,0 +1,114 @@
+Parser: Enemy
+ID: LadyInWhiteID
+LocKey: $FH/LadyInWhite$
+MonsterType: Boss
+StandeeLimit: 1
+Model: LadyInWhite
+CardsPoolClass: IceWraithID
+PredominantlyMelee: True
+MiniBoss: True
+AbilityCards: [642, 643, 644, 645, 646, 647, 648, 649]
+# Base Stats
+Level0:
+    Health: 0
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Flying: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 7
+    Shield: 1
+Level1:
+    Health: 0
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Flying: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 8
+    Shield: 2
+Level2:
+    Health: 0
+    Move: 3
+    Attack: 2
+    Range: 1
+    Target: 1
+    Flying: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 10
+    Shield: 2
+Level3:
+    Health: 0
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Flying: True
+    Conditions: [Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 10
+    Shield: 2
+Level4:
+    Health: 0
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Flying: True
+    Conditions: [Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 12
+    Shield: 2
+Level5:
+    Health: 0
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Flying: True
+    Conditions: [Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 16
+    Shield: 2
+Level6:
+    Health: 0
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Flying: True
+    Conditions: [Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 21
+    Shield: 2
+    Immunities: [Curse]
+Level7:
+    Health: 0
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    Flying: True
+    Conditions: [Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 27
+    Shield: 2
+    Immunities: [Curse]

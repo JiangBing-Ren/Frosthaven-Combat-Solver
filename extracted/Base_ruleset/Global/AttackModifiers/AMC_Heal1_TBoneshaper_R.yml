@@ -1,0 +1,16 @@
+Parser: AttackModifier
+Name: AMC_Heal1_TBoneshaper_R
+MathModifier: "+0"
+Rolling: True
+Abilities:
+    AHeal:
+        Heal: 1
+        Filter: [Self,Ally]
+        AutoTrigger: True
+        Targeting: Custom
+        TargetingVars:
+            # try to heal summoner, or if none exists, heal self
+            AddValidActorInRange: TargetingActor.Summoner || TargetingActor
+            AddTileInRange: AddValidActorInRange.Tile
+            AddActorToTarget: AddValidActorInRange
+            AddSelectedTile: AddValidActorInRange.Tile

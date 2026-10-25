@@ -1,0 +1,25 @@
+Parser: EnemyCard
+ID: 540
+Name: $Monster_Ability_540_ChaosDemon_SeismicPunch$
+Initiative: 67
+Shuffle: False
+Data:
+    Abilities: 
+        AMove:
+            Move: -2
+        AAttack:
+            Attack: 1
+            Filter: Enemy
+            AnimOverload: SeismicPunch
+            SubAbilities:
+                ASubPush:
+                    Push: 2
+                    IsInlineSubAbility: True
+    Consumes:
+        CEarth:
+            Elements: Earth
+            AbilityOverrides:
+                CEarthBuffs:
+                    ParentName: AAttack
+                    AreaEffect: "0,0,G|2,0,R|1,1,R"
+                    MultiPassAttack: False

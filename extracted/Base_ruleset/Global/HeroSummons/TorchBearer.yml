@@ -1,0 +1,15 @@
+Parser: HeroSummon
+ID: TorchBearerID
+LocKey: $FH/072_character_ability_cards_banner_spear_incendiary_throw_3$
+Model: TorchBearer
+PlayerControlled: False
+Health:
+    Amount: 5
+    SquareEnhancements: 1
+Move:
+    Amount: 2
+Attack:
+    Amount: 1
+    SquareEnhancements: 1
+Range: 1
+OnAttackConditions: Wound

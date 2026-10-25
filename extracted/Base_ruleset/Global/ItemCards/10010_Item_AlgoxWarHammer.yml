@@ -1,0 +1,29 @@
+Parser: ItemCard
+ID: 10010
+StringID: AlgoxWarHammerID
+Name: $FH/10010_item_cards_algox_war_hammer_1$
+Art: Algox War Hammer
+TotalInGame: 2
+Cost: 25
+Slot: TwoHand 
+Rarity: Rare
+Usage: Consumed
+Trigger: EntireAction
+ProsperityRequirement: 1
+Data:     
+    Overrides:
+        OStun:
+            Conditions: Stun
+            AttackEffect:
+                Type: StandardBuff
+                Strength: -1
+                # -1 strength if wilded by anyone other than algox/inox
+                TargetingActorFilter:
+                    PlayerClasses: [SnowdancerID, FrozenFistID, DrifterID]
+                    Invert: True
+    CompareAbility:
+        AbilityType: Attack
+        IsMelee: True
+        Filter: Enemy
+Layout: 
+    - Row: $FH/10010_item_cards_algox_war_hammer_2$

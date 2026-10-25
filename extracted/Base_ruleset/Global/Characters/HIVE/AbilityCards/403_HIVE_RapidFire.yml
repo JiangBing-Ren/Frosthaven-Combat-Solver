@@ -1,0 +1,89 @@
+Parser: AbilityCard
+Name: $FH/403_character_ability_cards_hive_rapid_fire_1$
+Character: HIVEID
+ID: 403
+Level: 3
+Initiative: 92
+Discard: [Lost,Discard]
+Prefab: 403_HIVE_RapidFire
+Data:
+    Top:
+        XP: 2
+        Abilities:
+            TSummon:
+                Summon: MachineBolterID
+                AnimOverload: Summon
+        Mode:
+            BuffAttackTarget:
+                AutoTrigger: True
+                Attack: 0
+                AttackEffect:
+                    Type: BuffIfAttackIsRanged
+                    Target: 1
+                Filter: Self
+                ActiveBonus:
+                    Behaviour: BuffAttack
+                    Duration: Persistent
+            DebuffAttackRange:
+                AutoTrigger: True
+                Attack: 0
+                AttackEffect:
+                    Type: BuffIfAttackIsRanged
+                    Range: -1
+                Filter: Self
+                ActiveBonus:
+                    Behaviour: BuffAttack
+                    Duration: Persistent
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BControl:
+                ControlActor:
+                    #UseControllingActorPlayerControl: True
+                    Abilities:
+                        BSummonMove:
+                            Move:
+                                Amount: 2
+                                SquareEnhancements: 1
+                            MiscVars:
+                                PrintedProperties: list("Move")
+                            StrengthIsBase: True
+                Range: 99
+                Filter: OwnSummon
+                AnimOverload: Grant
+                Target: 2
+Layout:
+    Top:
+        - Active:
+              Ability: "TSummon"
+              Icon: "Summon"
+              Layout:
+                  - Summon:
+                        Ability: TSummon
+                        SummonName: $FH/403_character_ability_cards_hive_rapid_fire_2$
+                        SpecialText:
+                            - Row: "<sprite name=Target>2"
+        - Row:
+            - Column: "<sprite name=HIVEMode>"
+            - Column:
+                - Active:
+                    Ability: "BuffAttackTarget"
+                    Icon: "Positive_TargetPlus_Range_HIVEMode"
+                    ListLayout: "$FH/403_character_ability_cards_hive_rapid_fire_3$"
+                    Layout: "$FH/403_character_ability_cards_hive_rapid_fire_3$"
+            - Column:
+                - Active:
+                    Ability: "DebuffAttackRange"
+                    Icon: "Negative_RangeMinus_AttackRanged_HIVEMode"
+                    ListLayout: "$FH/063_character_ability_cards_banner_spear_unbreakable_wall_2$"
+                    Layout: "$FH/063_character_ability_cards_banner_spear_unbreakable_wall_2$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* @BMove@"
+        - Divider:
+        - Row: "$FH/403_character_ability_cards_hive_rapid_fire_5$"
+        - Row: "<sprite name=Move> *BSummonMove* @BSummonMove@"

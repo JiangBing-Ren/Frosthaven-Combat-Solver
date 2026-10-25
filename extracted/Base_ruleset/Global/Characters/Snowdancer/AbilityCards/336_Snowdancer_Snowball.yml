@@ -1,0 +1,61 @@
+Parser: AbilityCard
+Name: $FH/336_character_ability_cards_snowdancer_snowball_1$
+Character: SnowdancerID
+ID: 336
+Level: 1
+Initiative: 23
+Discard: [Discard,Lost]
+Prefab: 336_Snowdancer_Snowball
+Data:
+    Top:
+        Abilities:
+            THeal:
+                Heal: 
+                    Amount: 2
+                    DiamondPlusEnhancements: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Heal","Range")
+                Filter: [Self,Ally]
+                Conditions: Regenerate
+                AnimOverload: Heal
+        Infuse: Ice
+    Bottom:
+        Abilities:
+            BBuffAttack:
+                Attack: 0
+                AttackEffect:
+                    Type: BasedOnActiveBonusVarsStrength
+                Filter: Self
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: BuffAttack
+                    IsSingleTargetBonus: True
+                    XPTracker: [0,1,0,0,1]
+                    AlwaysBuff: True
+                    Vars:
+                        Strength: obj.TrackerIndex + TargetSelectionNumber - 1
+                    ListLayoutOverride: [$FH/336_character_ability_cards_snowdancer_snowball_2$, Positive_AttackPlus]
+                AnimOverload: Persistent Buff
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "20,20,20,20,20"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Heal> *THeal* <size=100%><voffset=1>@THeal@"
+            - Column:
+                - Row: "<mark=#80919922><size=100%><sprite name=Range>*THeal.Range*</mark>"
+            - Column:
+                - Row: "<mark=#80919922><sprite name=Regenerate></mark>"
+            - Column:
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Ice]
+    Bottom:
+        - Active:
+            Ability: BBuffAttack
+            Icon: Positive_AttackPlus
+            ListLayout: "$FH/336_character_ability_cards_snowdancer_snowball_2$"
+            Layout: "$FH/336_character_ability_cards_snowdancer_snowball_2$"
+        - XPTracker: BBuffAttack

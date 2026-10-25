@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 176
+ScenarioItemID: 1269
+Name: Blinking Cape
+Quantity: 1
+GoldCost: 50
+Type: Body
+IsNewCharacterItem: False

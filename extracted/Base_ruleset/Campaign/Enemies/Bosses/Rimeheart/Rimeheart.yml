@@ -1,0 +1,135 @@
+Parser: Enemy
+ID: RimeheartID
+LocKey: $FH/Rimeheart$
+MonsterType: Boss
+StandeeLimit: 1
+Model: Rimeheart
+PredominantlyMelee: True
+MiniBoss: True
+AbilityCards: [642, 643, 644, 645, 646, 647, 648, 649]
+# Base Stats
+Level0:
+    Health: 3
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            Multiplier: 3.5
+            AddTo: True
+    Flying: True
+    Immunities: [Disarm, Stun]
+    Shield: 1
+Level1:
+    Health: 3
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            Multiplier: 4
+            AddTo: True
+    Flying: True
+    Immunities: [Disarm, Stun]
+    Shield: 2
+Level2:
+    Health: 3
+    Move: 3
+    Attack: 2
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            Multiplier: 5
+            AddTo: True
+    Flying: True
+    Immunities: [Disarm, Stun]
+    Shield: 2
+Level3:
+    Health: 3
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            Multiplier: 5
+            AddTo: True
+    Flying: True
+    Shield: 2
+    Immunities: [Disarm, Stun]
+    Conditions: [Curse]
+Level4:
+    Health: 3
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            Multiplier: 6
+            AddTo: True
+    Flying: True
+    Shield: 2
+    Immunities: [Disarm, Stun]
+    Conditions: [Curse]
+Level5:
+    Health: 3
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            Multiplier: 8
+            AddTo: True
+    Flying: True
+    Shield: 2
+    Immunities: [Disarm, Stun]
+    Conditions: [Curse]
+Level6:
+    Health: 3
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            Multiplier: 10.5
+            AddTo: True
+    Flying: True
+    Shield: 2
+    Conditions: [Curse]
+    Immunities: [Disarm, Stun, Curse]
+Level7:
+    Health: 3
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            Multiplier: 13.5
+            AddTo: True
+    Flying: True
+    Shield: 2
+    Conditions: [Curse]
+    Immunities: [Disarm, Stun, Curse]

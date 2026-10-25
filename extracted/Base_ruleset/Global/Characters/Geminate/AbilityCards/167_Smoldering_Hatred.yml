@@ -1,0 +1,85 @@
+﻿Parser: AbilityCard
+Name: $FH/167_character_ability_cards_geminate_smoldering_hatred_1$
+Character: GeminateID
+ID: 167
+Level: X
+ProgressionOrder: 16
+Initiative: 32
+Discard: [Discard,Lost]
+RequiredForm: Range
+Prefab: 167_Geminate_SmolderingHatred
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                Range: 5
+                MinRange: 4
+                AnimOverload: RangedAttack
+        Consumes:
+            TCMuddle:
+                CostAbility:
+                    ParentName: TAttack
+                    Muddle: True
+                    Target: 1
+                    Range: 0
+                    Filter: Self
+                AbilityOverrides:
+                    TCAttackBuff:
+                        ParentName: TAttack
+                        Strength: 2
+            TCCurse:
+                CostAbility:
+                    ParentName: TAttack
+                    Curse: True
+                    Target: 1
+                    Range: 0
+                    Filter: Self
+                AbilityOverrides:
+                    TCAttackBuff:
+                        ParentName: TAttack
+                        PreviewEffectText: "<size=130%><sprite name=BSRedHex><sprite name=BSRedHex>"
+                        AreaEffect: "0,0,R|2,0,R"
+                        MultiPassAttack: False
+    Bottom:
+        Abilities:
+            BPin:
+                Immobilize: True
+                Target: 2
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Target","Range")
+                Filter: Enemy
+                RangeIsBase: True
+                TargetIsBase: True
+                AnimOverload: Cast Negative
+            BMove:
+                Move:
+                    Amount: 4
+                    SquareEnhancements: 1
+                    Jump: True
+                MiscVars:
+                    PrintedProperties: list("Move")
+        XP: 1
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@ $FH/167_character_ability_cards_geminate_smoldering_hatred_2$"
+        - Row: "<size=50%> "
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCMuddle
+                    Text: "$FH/167_character_ability_cards_geminate_smoldering_hatred_3$"
+                - Consume:
+                    Name: TCCurse
+                    Text: "$FH/167_character_ability_cards_geminate_smoldering_hatred_4$ <sprite name=BSRedHex><sprite name=BSRedHex>"
+                #- Row: "£Area£"
+        - Row: "<size=20%> "
+    Bottom:
+        - Row: "<sprite name=Immobilize> <sprite name=Target> 2, <sprite name=Range> 1"
+        - Row: "<size=20%> "
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <sprite name=Jump>"

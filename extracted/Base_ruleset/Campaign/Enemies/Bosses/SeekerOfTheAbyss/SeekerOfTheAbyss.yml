@@ -1,0 +1,97 @@
+Parser: Enemy
+ID: SeekerOfTheAbyssID
+LocKey: $FH/SeekerOfTheAbyss$
+MonsterType: Boss
+Model: SeekerOfTheAbyss
+StandeeLimit: 1
+PredominantlyMelee: True
+AbilityCards: [087100087, 087200088, 087300089, 087400090, 087500091, 087600092, 087700093, 087800094]
+# Base Stats
+Level0:
+    Health: 0
+    Move: 2
+    Attack: 5
+    Range: 1
+    Target: 2
+    Immunities: [Poison, Disarm, Stun, Curse, Muddle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 13
+Level1:
+    Health: 0
+    Move: 3
+    Attack: 6
+    Range: 1
+    Target: 2
+    Immunities: [Poison, Disarm, Stun, Curse, Muddle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 16
+Level2:
+    Health: 0
+    Move: 3
+    Attack: 7
+    Range: 1
+    Target: 2
+    Immunities: [Poison, Disarm, Stun, Curse, Muddle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 18
+Level3:
+    Health: 0
+    Move: 3
+    Attack: 8
+    Range: 1
+    Target: 2
+    Immunities: [Poison, Disarm, Stun, Curse, Muddle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 21
+Level4:
+    Health: 0
+    Move: 3
+    Attack: 9
+    Range: 1
+    Target: 2
+    Immunities: [Poison, Disarm, Stun, Curse, Muddle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 24
+Level5:
+    Health: 0
+    Move: 4
+    Attack: 10
+    Range: 1
+    Target: 2
+    Immunities: [Poison, Disarm, Stun, Curse, Muddle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 27
+Level6:
+    Health: 0
+    Move: 4
+    Attack: 11
+    Range: 1
+    Target: 2
+    Immunities: [Poison, Disarm, Stun, Curse, Muddle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 37
+Level7:
+    Health: 0
+    Move: 4
+    Attack: 12
+    Range: 1
+    Target: 2
+    Immunities: [Poison, Disarm, Stun, Curse, Muddle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 48

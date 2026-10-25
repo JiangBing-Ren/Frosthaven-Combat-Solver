@@ -1,0 +1,11 @@
+Parser: CampaignSection
+ID: 128.5
+Name: Old Coin (128.5)
+SkipCompletedNotification: True
+Effects:
+    - Type: AddAncientCoin
+    - Type: RemoveAdditionalLootCard
+      Param1: 1419
+    - Type: AddCalendarCampaignSection
+      Param1: 185.2
+      Param2: 1

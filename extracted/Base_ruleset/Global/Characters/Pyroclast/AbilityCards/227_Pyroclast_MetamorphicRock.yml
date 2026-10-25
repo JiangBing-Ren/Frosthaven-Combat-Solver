@@ -1,0 +1,64 @@
+Parser: AbilityCard
+Name: $FH/227_character_ability_cards_pyroclast_metamorphic_rock_1$
+Character: PyroclastID
+ID: 227
+Level: X
+Initiative: 68
+Discard: [Lost,Discard]
+Prefab: 227_Pyroclast_MetamorphicRock
+Data:
+    Top:
+        XP: 2
+        Abilities:    
+            TShield:
+                Shield: 1
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                Filter: Self          
+                ActiveBonus:
+                    Duration: Persistent
+                AnimOverload: Cast_CastStone
+            TRetaliate:
+                Retaliate: 1
+                MiscVars:
+                    PrintedProperties: list("Retaliate")
+                Filter: Self
+                ActiveBonus:
+                    Duration: Persistent
+                AnimOverload: Cast_CastLava
+        Infuse: [Earth]
+    Bottom:
+        Abilities:
+            BMoveTrackerForward:
+                MoveActiveBonusTracker: 1
+                Vars:
+                    NumberOfCardsToSelect: 1
+                Filter: Self
+                AnimOverload: Cast
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+
+Layout:
+    Top:
+        - Active:
+            Ability: TShield
+            ListLayout: "<sprite name=Shield> *TShield*"
+            Layout: "<sprite name=Shield> *TShield*"
+            Icon: "Positive_Shield"
+        - Divider: 
+        - Active:
+            Ability: TRetaliate
+            ListLayout: "<sprite name=Retaliate> *TRetaliate*"
+            Layout: "<sprite name=Retaliate> *TRetaliate*"
+            Icon: "Positive_Retaliate"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Earth]
+    Bottom:
+        - Row: "$FH/227_character_ability_cards_pyroclast_metamorphic_rock_2$"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"

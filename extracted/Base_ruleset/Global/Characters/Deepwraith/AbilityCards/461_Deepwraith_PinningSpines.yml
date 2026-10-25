@@ -1,0 +1,61 @@
+Parser: AbilityCard
+Name: $FH/461_character_ability_cards_deepwraith_pinning_spines_1$
+Character: DeepwraithID
+ID: 461
+Level: 3
+Initiative: 25
+Discard: [Discard,Lost]
+Prefab: 461_Deepwraith_PinningSpines
+Data:
+    Top:
+        Abilities:
+            TAttack1:
+                Attack:
+                    Amount: 1
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Conditions: [Disarm]
+            TAttack2:
+                Attack:
+                    Amount: 1
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Conditions: [Immobilize]
+    Bottom:
+        XP: 1
+        Abilities:
+            BImmobilize:
+                Immobilize: True 
+                Range: 5
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Target: 99
+                Filter: Enemy
+                AnimOverload: Intimidate_AOE
+                MiscVars:
+                    AutoSelectValidTiles: True
+            BDamage:
+                Damage: 2
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Target: -1
+                Range: 99
+                AnimOverload: Intimidate_AOE
+                IgnoreLOS: True
+                Filter:
+                    TargetType: Enemy
+                    Vars:
+                        ValidateImmobilize: target.Tokens.HasKey(CCondition.ENegativeCondition.Immobilize)
+Layout:
+    Top:
+        - Row: "<sprite name=Attack> *TAttack1* @TAttack1@"
+        - Row: "<sprite name=Disarm>"
+        - Divider:
+        - Row: "<sprite name=Attack> *TAttack2* @TAttack2@"
+        - Row: "<sprite name=Immobilize>"
+    Bottom:
+        - Row: "$FH/461_character_ability_cards_deepwraith_pinning_spines_2$"
+        - Divider:
+        - Row: "$FH/461_character_ability_cards_deepwraith_pinning_spines_3$"

@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 49
+ScenarioItemID: 978
+Name: Cruel Dagger
+Quantity: 2
+Type: OneHandWeapon
+CraftingCost:
+    Metal: 1
+RequiredCraftingItemIDs: [ 111, 145 ]

@@ -1,0 +1,65 @@
+Parser: AbilityCard
+Name: $FH/376_character_ability_cards_frozen_fist_packed_solid_1$
+Character: FrozenFistID
+ID: 376
+Level: 4
+ProgressionOrder: 16
+Initiative: 55
+Discard: [Discard,Discard]
+Prefab: 376_FrozenFist_PackedSolid
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 4
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AnimOverload: Attack2
+        Consumes:
+            TCEarth:
+                Elements: Earth
+                AbilityOverrides:
+                    TCStun:
+                        ParentName: TAttack
+                        Conditions: Stun
+                XP: 1
+    Bottom:
+        Abilities:
+            BShield:
+                Shield:
+                    Amount: 1
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                ActiveBonus:
+                    Duration: Round
+                    ListLayoutOverride: ["<sprite name=Shield> *BShield*", Positive_Shield]
+                AnimOverload: Heal
+            BRetaliate:
+                Retaliate: 
+                    Amount: 1
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Retaliate")
+                ActiveBonus:
+                    Duration: Round
+                    ListLayoutOverride: ["<sprite name=Retaliate> *BRetaliate*", Positive_Retaliate]
+                AnimOverload: Roar
+        Infuse: Earth
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack*"
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCEarth
+                    Text: "<sprite name=Stun>, <sprite name=XP1>"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Shield> *BShield* <size=100%><voffset=1>@BShield@"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Retaliate> *BRetaliate* <size=100%><voffset=1>@BRetaliate@"
+        - Row:
+            - MandatoryTrigger:
+                Layout:
+                    - Infuse: [Earth]

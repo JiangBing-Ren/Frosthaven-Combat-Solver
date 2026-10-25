@@ -1,0 +1,21 @@
+Parser: AbilityCard
+Name: $FH/Tutorial1_BannerSpear_Move3$
+Character: Tutorial1_BannerSpearID
+ID: 9013
+Level: 1
+Initiative: 6
+Discard: [Discard,Discard]
+Data:
+    Top:
+        Abilities:
+            TNull:
+                Null: True
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 3
+Layout:
+    Top:
+        - Row: "$FH/Tutorial1_Do_Nothing$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove*"

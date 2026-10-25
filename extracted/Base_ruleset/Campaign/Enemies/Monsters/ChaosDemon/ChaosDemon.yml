@@ -1,0 +1,66 @@
+Parser: Enemy
+ID: ChaosDemonID
+LocKey: $FH/ChaosDemon$
+MonsterType: Monster
+StandeeLimit: 6
+Model: Chaos Demon
+PredominantlyMelee: True
+AbilityCards: [538, 539, 540, 541, 542, 543, 544, 545]
+# Base Stats
+Level0:
+    Health: 7
+    Move: 3
+    Attack: 2
+    Range: 1
+    Target: 1
+    Conditions: [Muddle]
+Level1:
+    Health: 8
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Conditions: [Muddle]
+Level2:
+    Health: 11
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Conditions: [Muddle]
+Level3:
+    Health: 12
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Conditions: [Muddle]
+Level4:
+    Health: 14
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+    Conditions: [Muddle]
+Level5:
+    Health: 16
+    Move: 4
+    Attack: 5
+    Range: 1
+    Target: 1
+    Conditions: [Muddle]
+Level6:
+    Health: 20
+    Move: 4
+    Attack: 6
+    Range: 1
+    Target: 1
+    Conditions: [Muddle]
+Level7:
+    Health: 25
+    Move: 4
+    Attack: 7
+    Range: 1
+    Target: 1
+    Conditions: [Muddle]
+    Immunities: [Curse]

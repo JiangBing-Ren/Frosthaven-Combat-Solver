@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 231
+ScenarioItemID: 1241
+Name: Skinning Knife
+Quantity: 1
+GoldCost: 15
+Type: OneHandWeapon
+IsNewCharacterItem: False

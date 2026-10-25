@@ -1,0 +1,61 @@
+Parser: AbilityCard
+Name: $FH/074_character_ability_cards_banner_spear_meat_grinder$
+#CustomImage: KRO_BANNER_SPEAR_AbilityCards_MeatGrinder
+Character: BannerSpearID
+ID: 74
+Level: 2
+Initiative: 62
+Discard: [Discard,Discard]
+Prefab: 74_Bannerspear_MeatGrinder
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 4
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AreaEffect: "0,0,G|1,1,R|2,0,R|3,1,B"
+                AreaEffectLayoutOverride: "0,0,G|-1,1,R|1,1,R|0,2,B"
+                MultiPassAttack: False
+                Conditions: Wound
+                AnimOverload: Attack2
+        XP: 1        
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 3
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BHeal:
+                Heal:
+                    Amount: 1
+                    CircleEnhancements: 1
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Heal", "Range")
+                Targeting: Range
+                Filter: [Self, Ally]
+                Conditions: Regenerate
+Layout:
+    Top:
+        - ColumnWidths: "40,20,40"
+        - Column:
+            - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Row: "<size=20%> "
+        - Column:
+            - AddedEffect: "<size=130%><sprite name=Wound>"
+        - Column:
+            - Row: "£Area£"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove.Amount*"
+        - Divider: 
+        - Row: 
+            - ColumnWidths: "20,30,30,20"
+            - Column:
+            - Column: 
+                - Row: "<b><size=130%><sprite name=Heal> *BHeal* <size=100%><voffset=1>@BHeal@"
+            - Column: 
+                - Row: "<mark=#FCD06E22><b><size=130%><sprite name=Range> *BHeal.Range*, <sprite name=Regenerate></mark>"
+            - Column:

@@ -1,0 +1,23 @@
+Parser: ItemCard
+ID: 1243
+StringID: DeadRavenID
+Name: $FH/1243_item_cards_dead_raven_1$
+Art: Dead Raven
+TotalInGame: 1
+Cost: 30
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: OnAttackTargetOneByOne
+Data: 
+    ItemRequirements:
+        Vars:
+            ValidateCasterIsAlly: CustomAbility.IsAlly(Ability.TargetingActor, Actor)
+    Overrides:
+        OMuddle:
+            Conditions: [Muddle, Curse]
+    CompareAbility:
+        AbilityType: Attack
+        IsRanged: True
+Layout: 
+    - Row: "$FH/1243_item_cards_dead_raven_2$"

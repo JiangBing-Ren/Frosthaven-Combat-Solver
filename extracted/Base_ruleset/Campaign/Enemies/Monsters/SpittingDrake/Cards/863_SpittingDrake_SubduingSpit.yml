@@ -1,0 +1,14 @@
+Parser: EnemyCard
+ID: 863
+Name: $Monster_Ability_863_SpittingDrake_SubduingSpit$
+Initiative: 89
+Shuffle: False
+Data:
+    Abilities:
+        Attack1:
+            Attack: -2
+            Conditions: Stun
+            Filter: Enemy
+            Range: 4
+            RangeIsBase: True
+            AnimOverload: RangedAttack

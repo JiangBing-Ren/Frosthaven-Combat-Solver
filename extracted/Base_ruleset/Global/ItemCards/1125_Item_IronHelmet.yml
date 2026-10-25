@@ -1,0 +1,29 @@
+Parser: ItemCard
+ID: 1125
+StringID: IronHelmetID
+Name: $FH/1125_item_cards_iron_helmet_1$
+Art: Iron Helmet
+TotalInGame: 2
+Cost: 20
+Slot: Head 
+Rarity: Rare
+Usage: Unrestricted
+ProsperityRequirement: 1
+Trigger: PassiveEffect
+Data: 
+    AddModifiers:
+        - [AMC_Basic_M1, 1]
+    Abilities:
+        AModifyAttack:
+            ChangeAttackModifier:
+            ReplaceModifiers: "*2"
+            ReplaceWithModifier: "+0"
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: AdjustWhenAttacked
+Layout:
+    - Active:
+        Ability: AModifyAttack
+        ListLayout: $FH/1125_item_cards_iron_helmet_2$
+        Layout: $FH/1125_item_cards_iron_helmet_2$
+        Icon: Positive_2X_Enemy-Attack_Item

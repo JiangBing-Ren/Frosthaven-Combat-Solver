@@ -1,0 +1,30 @@
+Parser: EnemyCard
+ID: 869
+Name: $Monster_Ability_869_Ooze_PlasmaWard$
+Initiative: 85
+Shuffle: False
+Data:
+    Abilities:
+        TPush1Anim:
+            Null: True
+            AnimOverload: Push
+            Text: "<size=130%><b><nobr>$Push$ <sprite name=Push> 1</nobr> $and$ <nobr>$Poison$ <sprite name=Poison></nobr></b></size><br>$Target_AllAdjacentEnemies$"
+            TextOnly: True
+            SubAbilities:
+                TPush:
+                    Push: 1
+                    Range: 1
+                    Target: -1
+                    Condition: Poison
+                    Filter: Enemy
+                    RangeIsBase: True
+                    TargetIsBase: True
+                   # ShowRange: False
+                    #ShowArea: False
+                    TreatAsNonSubAbility: True
+                    SkipAnim: True
+        Attack1:
+            Attack: 1
+            Range: 1
+            Filter: Enemy
+            AnimOverload: RangedAttack

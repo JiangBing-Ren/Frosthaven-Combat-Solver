@@ -1,0 +1,40 @@
+Parser: AbilityCard
+Name: $FH/400_character_ability_cards_hive_reassemble_1$
+Character: HIVEID
+ID: 400
+Level: X
+Initiative: 27
+Discard: [Discard,Permanently Lost]
+Prefab: 400_HIVE_Reassemble
+Data:
+    Top:
+        Abilities:
+            TModeTransfer:
+                Mode: 
+                    Usage: Transfer
+                    DontSummon: True
+    Bottom:
+        Abilities:
+            BSummonFromDiscard:
+                SelectAndPlayCard: 
+                    CardPile: Lost
+                MiscVars:
+                    IsActionValid: Action.Abilities.Any(obj.AbilityType == CAbility.EAbilityType.Summon)
+            BModeTransfer:
+                Mode: Transfer
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=HIVETransfer>"
+        - Row: "$FH/400_character_ability_cards_hive_reassemble_2$"
+    Bottom:
+        - Row: "$FH/400_character_ability_cards_hive_reassemble_3$"
+        - Divider: 
+        - Row: "<b><size=130%><sprite name=HIVETransfer>"
+        - Divider: 
+        - Row: "<b><size=130%><sprite name=Move> *BMove* @BMove@"

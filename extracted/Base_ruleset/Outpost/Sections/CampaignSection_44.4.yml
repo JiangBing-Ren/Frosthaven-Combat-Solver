@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 44.4
+Name: Tome of Elements
+SkipCompletedNotification: True
+Effects:
+    - Type: ChooseNextCampaignSection
+      Param1: "Event_44.4_Choice" 
+      Param2: 104.3
+      Param3: 163.1

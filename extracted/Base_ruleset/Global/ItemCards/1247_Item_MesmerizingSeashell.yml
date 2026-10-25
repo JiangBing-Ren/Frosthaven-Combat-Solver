@@ -1,0 +1,27 @@
+Parser: ItemCard
+ID: 1247
+StringID: MesmerizingSeashellID
+Name: $FH/1247_item_cards_mesmerizing_seashell_1$
+Art: Mesmerizing Seashell
+TotalInGame: 1
+Cost: 45
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+# important info: this item uses copy pasted code from CScenarioModifierMoveActorsInDirections, which is primarily used in scenario 48
+# this item DOES NOT USE PUSH ABILITES
+# instead it manually moves all the actors, and tells the choreographer that we've pushed them so they still kind of do a correct animation
+# also, it's pushing them 1 tile at a time, so the push animation might not be perfect
+Data: 
+    Abilities:
+        AChooseDirection:
+            NullHex: True
+            Range: 1
+            PerformVars:
+                AnimateCharacter:
+                    # every actor in a range of 2 from the targeting actor, move them in the directon (selected tiel - targeting actor tile) twice
+                    # furthest actors are moved first, at the very least because if a player goes first, he might land on a trap, trigger damage, damage panel shows up, threads freeze, other actors that are supposed to get pushed are now stuck waiting
+                    MovePartyTowardsTile: CustomAbility.MoveActorsInDirection(TargetingActor, TilesSelected[0], 2, 2)
+Layout: 
+    - Row: "$FH/1247_item_cards_mesmerizing_seashell_2$"

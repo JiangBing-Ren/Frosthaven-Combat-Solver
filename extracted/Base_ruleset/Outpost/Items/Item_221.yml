@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 221
+ScenarioItemID: 1231
+Name: Ice Shiv
+Quantity: 1
+GoldCost: 30
+Type: OneHandWeapon
+IsNewCharacterItem: False

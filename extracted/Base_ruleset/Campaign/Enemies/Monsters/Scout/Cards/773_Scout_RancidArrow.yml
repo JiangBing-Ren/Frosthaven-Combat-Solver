@@ -1,0 +1,16 @@
+Parser: EnemyCard
+ID: 773
+Name: $Monster_Ability_773_Scout_RancidArrow$
+Initiative: 54
+Shuffle: False
+Data:
+    Abilities: 
+        AMove:
+            Move: -2
+        AAttack:
+            Attack: 0
+            Range: 3
+            RangeIsBase: True
+            Condition: [Poison]
+            AnimOverload: RangedAttack
+            

@@ -1,0 +1,76 @@
+Parser: AbilityCard
+Name: $FH/297_character_ability_cards_trapper_spike_strip_1$
+Character: TrapperID
+ID: 297
+Level: 8
+Initiative: 67
+Discard: [Discard,Discard]
+Prefab: 297_Trapper_SpikeStrip
+Data:
+    Top:
+        Abilities:
+            TTrap:
+                HelpBoxTooltipLocKey: "$FH/297_character_ability_cards_trapper_spike_strip_4$"
+                Trap:
+                    TrapName: TrapperTrap
+                    Damage: 2
+                Range: 4
+                MiscVars:
+                    PrintedProperties: list("Damage","Range")
+                RangeIsBase: True
+                AnimOverload: TrapThrow
+                Vars:
+                    ClearLastTrapTile: TargetingActor.SetTempVar("SpikeStripLastTrapTile", null)
+                PerformVars:
+                    SpawnTrap:
+                        SetLastTrapTile: TargetingActor.SetTempVar("SpikeStripLastTrapTile", TilesSelected.First)
+            TExtraTrap:
+                HelpBoxTooltipLocKey: "$FH/297_character_ability_cards_trapper_spike_strip_5$"
+                Trap:
+                    TrapName: TrapperTrap
+                    Damage: 2
+                SkipAnim: True
+                Vars:
+                    LastTrapTile: TargetingActor.SpikeStripLastTrapTile
+                    ValidateLastTrapTile: "!!LastTrapTile"
+                    ClearLastTrapTile: TargetingActor.SetTempVar("SpikeStripLastTrapTile", null)
+                    NextTiles: CustomAbility.GetLastEmptyTilesOnDirectPaths(TargetingActor.Tile, LastTrapTile)
+                    ValidateNextTiles: "!!NextTiles?.First"
+                Targeting: Custom
+                TargetingVars:
+                    AddTilesInRange: NextTiles
+                PerformVars:
+                    SpawnTrap:
+                        SetLastTrapTile: TargetingActor.SetTempVar("SpikeStripLastTrapTile", TilesSelected.First)                        
+                        RepeatAbility: CustomAbility.RepeatAbility(CurrentAbility)
+        XP: 1
+    Bottom:
+        Abilities:
+            BSpikeStripMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+            BTrap:
+                Trap:
+                    TrapName: TrapperTrap
+                    Conditions: Immobilize
+                AnimOverload: CreateTrap
+                Vars:
+                    MoveAbility: CustomAbility.FindAbilityInPhaseByName("BSpikeStripMove")
+                    TilesMoved: MoveAbility?.TilesMoved?.Select(ScenarioManager.GetTile(obj))
+                    ValidateTilesMoved: "!!TilesMoved?.First"
+                    TilesLeft: list(MoveAbility.StartTile).Append(TilesMoved.Except(TilesMoved.Last)).Where(IsEmpty)
+                Target: -1
+                Targeting: Custom
+                TargetingVars:
+                    AddTilesInRange: TilesLeft
+                    AddSelectedTiles: TilesLeft
+                AutoTrigger: true
+
+Layout:
+    Top:
+        - Row: $FH/297_character_ability_cards_trapper_spike_strip_2$
+    Bottom:
+        - Row: "<b><size=130%>$Move$ <sprite name=Move> *BSpikeStripMove* <size=100%><voffset=1>@BSpikeStripMove@"
+        - Row: "<size=20%> "
+        - Row: $FH/297_character_ability_cards_trapper_spike_strip_3$

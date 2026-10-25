@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 35
+ScenarioItemID: 950
+Name: Kite Shield
+Quantity: 2
+Type: OneHandWeapon
+CraftingCost:
+    Metal: 1
+    Lumber: 2

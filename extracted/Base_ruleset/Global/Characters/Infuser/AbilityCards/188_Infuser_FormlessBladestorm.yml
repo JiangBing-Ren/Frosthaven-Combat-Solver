@@ -1,0 +1,96 @@
+Parser: AbilityCard
+Name: $FH/188_character_ability_cards_infuser_formless_bladestorm_1$
+Character: InfuserID
+ID: 188
+Level: 1
+Initiative: 33
+Discard: [Lost,Discard]
+Prefab: 188_Infuser_FormlessBladestorm
+Data:
+    Top:
+        Abilities:
+            TFormlessBladestormAttack:
+                Attack: 3
+                Pierce: 2
+                MiscVars:
+                    PrintedProperties: list("Attack","Pierce")
+                AreaEffect: "0,0,G|2,0,R|4,0,R|6,0,R"
+                AreaEffectLayoutOverride: "0,0,G|2,0,R|4,0,R|6,0,R"
+                MultiPassAttack: False
+                AnimOverload: FormlessBladestorm
+                SubAbilities:
+                    TTeleport:
+                        TreatAsNonSubAbility: True
+                        Teleport2: 6
+                        Range: 6
+                        Target: -1
+                        Filter: Self
+                        #Targeting: Custom
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                            AbilityTypes: [ Attack ]
+                            DoesntHaveNegativeCondition: [Stun]   
+                        Vars:
+                            ValidTiles: CustomAbility.GetAdjacentTiles(ParentAbility.ActorsToTarget[ParentAbility.ActorsToTarget.Count-1].Tile)
+                        MiscVars:
+                            IsValidTeleportTile: ValidTiles.Contains(tile)
+            TInfuse:
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    Vars: 
+                        ValidateActionHasHappened: CustomAbility.HasPerformedAction(Ability) 
+                Infuse: [Air, Dark]
+                ShowElementPicker: True
+                CanSkip: False
+        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BPull:
+                Pull: 2
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Pull","Range")
+                Filter: Enemy
+                AnimOverload: Summon
+        Consumes:
+            BCPull:
+                PreviewEffectId: M1PullM1Range
+                AbilityOverrides:
+                    BCPullBuff:
+                        ParentName: BPull
+                        Range: -1
+                        Pull: -1
+                        SubAbilities:
+                            TInfuse:
+                                TreatAsNonSubAbility: True
+                                AutoTrigger: True
+                                ParentName: BPull
+                                Infuse: [Air]
+                                SkipAnim: True
+
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TFormlessBladestormAttack* <size=100%><voffset=1>@TFormlessBladestormAttack@"
+        - Row: "£Area£"
+        - Divider:
+        - Row: "$FH/188_character_ability_cards_infuser_formless_bladestorm_2$"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<sprite name=CreateMixed-AD>"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Pull> *BPull* <sprite name=Range> *BPull.Range*"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: BCPull
+                    Text: "-1<sprite name=Pull>,-1<sprite name=Range>: <sprite name=CreateAir>"

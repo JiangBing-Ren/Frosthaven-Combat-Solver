@@ -1,0 +1,75 @@
+Parser: AbilityCard
+Name: $FH/304_character_ability_cards_pain_conduit_the_agony_of_others_1$
+Character: PainConduitID
+ID: 304
+Level: 1
+Initiative: 78
+Discard: [Discard,Lost]
+Prefab: 304_PainConduit_TheAgonyOfOthers
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Attack", "Range")
+                AnimOverload: CastGivingPain
+        Consumes:
+            TCFire:
+                XP: 1
+                Elements: Fire
+                AbilityOverrides:
+                    TCAFireAttackBuff:
+                        ParentName: TAttack
+                        Vars:
+                            Strength: TargetingActor.Tokens.CountNegativeConditions()
+    Bottom:
+        Abilities:
+            BActive:
+                AddActiveBonus:
+                    Damage: 0
+                    Target: 1
+                    Range: 3
+                    Filter: [Enemy]
+                    AnimOverload: CastGivingPain
+                    IgnoreStun: True
+                    StatIsBasedOnX:
+                        Strength:
+                            BasedOn: Vars
+                            Vars: 
+                                Value: DamageAmount
+                AnimOverload: Cast
+                ActiveBonus:
+                    Duration: Persistent
+                    XPTracker: [1,1,1]
+                    Behaviour: DuringActionAbilityOnDamaged
+                    TriggerAbilitiesImmediately: True
+                    Vars:
+                        EnemyFilter: CAbilityFilterContainer.CreateDefaultEnemyFilter()
+                        ValidateHasEnemiesInRange: GameState.GetActorsInRange(TriggerActor, TriggerActor, 3, null, EnemyFilter, null, null, true).Count > 0
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "20,30,30"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column:
+                - Row: "<mark=#80919922><size=100%><sprite name=Range>*TAttack.Range*</mark>"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCFire
+                    Text: "$FH/304_character_ability_cards_pain_conduit_the_agony_of_others_2$"
+    Bottom:
+        - Active:
+            Ability: BActive
+            Icon: Positive_Thorns_Range
+            ListLayout: "$FH/304_character_ability_cards_pain_conduit_the_agony_of_others_3$"
+            Layout: "$FH/304_character_ability_cards_pain_conduit_the_agony_of_others_3$"
+        - XPTracker: BActive
+

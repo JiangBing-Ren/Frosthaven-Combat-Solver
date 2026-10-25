@@ -1,0 +1,17 @@
+Parser: EnemyCard
+ID: 777
+Name: $Monster_Ability_777_Scout_Greed$
+Initiative: 35
+Shuffle: True
+Data:
+    Abilities: 
+        AMove:
+            Move: 1
+            Jump: True
+        AAttack:
+            Loot: 1
+            Target: -1
+            AnimOverload: Loot
+            RangeIsBase: True
+            TargetIsBase: True
+            

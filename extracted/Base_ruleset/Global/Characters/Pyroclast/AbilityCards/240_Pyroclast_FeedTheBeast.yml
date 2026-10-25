@@ -1,0 +1,135 @@
+Parser: AbilityCard
+Name: $FH/240_character_ability_cards_pyroclast_feed_the_beast_1$
+Character: PyroclastID
+ID: 240
+Level: 8
+Initiative: 27
+Discard: [Discard,Discard]
+Prefab: 240_Pyroclast_FeedTheBeast
+Data:
+    Top:
+        XP: 1
+        Abilities:    
+            TDestroyHazardous:
+                NullHex: True
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Range")
+                TileFilter: Custom
+                SkipAnim: True
+                MiscVars:
+                    IsValidTile: obj.FindHazardousProp() != null
+                    DontCancelIfNoTiles: True
+                    DontPreviewDescription: True
+                    HelpTextWhenCancelled: "'FH/240_character_ability_cards_pyroclast_feed_the_beast_4'"
+                    includeCasterTile: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    Vars:
+                        ValidateHasObstacleInRange: CustomAbility.GetAdjacentTiles(Actor.Tile).Where(obj.FindObstacleProp(true, true) != null).Count > 0
+                SubAbilities:
+                    TDestroyObstacle:
+                        TreatAsNonSubAbility: True                    
+                        NullHex: True
+                        Range: 1
+                        TileFilter: Custom
+                        MiscVars:
+                            IsValidTile: obj.FindObstacleProp(true, true) != null
+                            DontCancelIfNoTiles: True
+                            DontPreviewDescription: True
+                            AllowUndoAfterFirst: True          
+                            SelectMultiHexProps: True
+                        PerformVars:
+                            Perform:
+                                SelectedTile: TilesSelected[0]
+                                Prop: SelectedTile.FindObstacleProp(true, true)
+                                DestroyProp: Prop.DestroyPropFromAbility(obj)
+                                # since nested subabilities aren't supported by default
+                                StackSubAbilities: CustomAbility.StackNonInlineSubabilities(obj)
+                        AnimOverload: ObstacleDestruction
+                        SubAbilities:
+                            TCreateHazardous240:
+                                UseParentTargets: False
+                                Target: 2
+                                CreateLimitedHazardousTerrain: True
+                                Vars:
+                                    OverridePropName: "'PyroclastHazardTerrain'"
+                                MiscVars:
+                                    includeCasterTile: True
+                                TileFilter: FeaturelessHex
+                                Targeting: Custom
+                                TargetingVars:
+                                    DesignatedHex: ParentAbility.ParentAbility.TilesSelected[0]
+                                    AddTilesInRange: CustomAbility.GetAdjacentTiles(DesignatedHex)
+                                AnimOverload: FeedTheBeast
+                            TDealDamage:
+                                UseParentTargets: False
+                                Damage: 5
+                                MiscVars:
+                                    PrintedProperties: list("Damage")
+                                Filter: Enemy
+                                AutoTrigger: True
+                                Target: -1
+                                Targeting: Custom
+                                SkipAnim: True
+                                TargetingVars:
+                                    DesignatedHex: ParentAbility.ParentAbility.TilesSelected[0]
+                                    AddValidActorsInRange: list(DesignatedHex).Select(obj.LivingActor).Where(obj != null)
+                                    PrevAbility: CustomAbility.FindAbilityInPhaseByName("TCreateHazardous240")
+                                    PrevAbilityTiles: PrevAbility?.CachedSpawnTiles
+                                    AddValidActorsInRange: PrevAbilityTiles?.Select(obj.LivingActor)?.Where(obj != null)
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BDestroyObstacle:
+                TreatAsNonSubAbility: True                    
+                NullHex: True
+                Range: 1
+                TileFilter: Custom
+                MiscVars:
+                    IsValidTile: obj.FindHazardousProp() != null          
+                    includeCasterTile: True        
+                PerformVars:
+                    Perform:
+                        SelectedTile: TilesSelected[0]
+                        Prop: SelectedTile.FindHazardousProp()
+                        DestroyProp: Prop.DestroyPropFromAbility(obj)
+                AnimOverload: TerrainFormation
+                SubAbilities:
+                    TWaitForIdle:
+                        Null: True
+                        TreatAsNonSubAbility: True
+                        AutoTrigger: True
+                    BBuffAttack:
+                        Filter: Self
+                        AnimOverload: Cast
+                        AddActiveBonus:
+                            Damage: 0
+                            StatIsBasedOnX:
+                                Strength:
+                                    BasedOn: ScenarioHazardousTerrainDamage
+                            AutoTrigger: True
+                            Filter: Enemy
+                            Targeting: Custom
+                            TargetingVars:
+                                AddValidActorInRange: TriggerTarget
+                        ActiveBonus:
+                            Behaviour: DuringActionAbilityOnAttackFinished
+                            Duration: Round
+                            XPTracker: [0]
+Layout:
+    Top:
+        - Row: "$FH/240_character_ability_cards_pyroclast_feed_the_beast_2$"
+    Bottom:
+        - Row: "<b><size=130%>$Move$ <sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Active:
+            Ability: BBuffAttack
+            ListLayout: "$FH/240_character_ability_cards_pyroclast_feed_the_beast_5$"
+            Layout: "$FH/240_character_ability_cards_pyroclast_feed_the_beast_3$"
+            Icon: "Positive_Hazard_Attack"

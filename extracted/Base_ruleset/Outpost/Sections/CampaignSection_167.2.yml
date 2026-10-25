@@ -1,0 +1,7 @@
+Parser: CampaignSection
+ID: 167.2
+Name: Job Posting (167.2)
+SkipCompletedNotification: True
+Effects:
+    - Type: UnlockScenario
+      Param1: 78

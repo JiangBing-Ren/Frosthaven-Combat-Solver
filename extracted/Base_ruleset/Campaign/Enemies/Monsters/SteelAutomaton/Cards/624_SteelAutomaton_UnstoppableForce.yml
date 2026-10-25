@@ -1,0 +1,16 @@
+Parser: EnemyCard
+ID: 624
+Name: $Monster_Ability_624_SteelAutomaton_UnstoppableForce$
+Initiative: 45
+Shuffle: False
+Data:
+    Abilities: 
+        AMove:
+            Move: 1
+        AAttack:
+            Attack: -1
+            SubAbilities:
+                AAttackSubPush:
+                    Push: 3
+                    IsInlineSubAbility: True
+                    SkipAnim: True

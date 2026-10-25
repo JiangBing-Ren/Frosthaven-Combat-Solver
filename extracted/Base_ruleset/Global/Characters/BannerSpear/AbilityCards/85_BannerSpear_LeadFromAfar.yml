@@ -1,0 +1,60 @@
+Parser: AbilityCard
+Name: $FH/085_character_ability_cards_banner_spear_lead_from_afar_1$
+#CustomImage: KRO_BANNER_SPEAR_AbilityCards_LeadFromAfar
+Character: BannerSpearID
+ID: 85
+Level: 7
+Initiative: 80
+Discard: [Discard,Lost]
+Prefab: 85_Bannerspear_LeadFromAfar
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                Range: 4
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                AnimOverload: RangedAttack
+                ConditionalOverrides:
+                    TAttackCO:
+                        Filter:
+                            TargetType: Enemy
+                            TargetAdjacentAllies: "> 0"
+                        AbilityOverrides:
+                            TAdjAllyBuff:
+                                StatIsBasedOnX:
+                                    Strength:
+                                        BasedOn: TargetAdjacentAllies
+                                        AddTo: True
+                                        Multiplier: 2
+        XP: 0
+    Bottom:
+        Abilities:
+            BSummon:
+                Summon: LongbowmanID
+                AnimOverload: Summon
+        XP: 2
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "25,25,25,25"
+            - Column:
+            - Column: 
+                - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column: 
+                - Row: "<b><size=130%><sprite name=Range> *TAttack.Range*"
+            - Column:
+        - Row: "<size=50%> "
+        - Row: "$FH/085_character_ability_cards_banner_spear_lead_from_afar_2$"
+    Bottom:
+        - Active:
+            Ability: "BSummon"
+            Icon: "Summon"
+            Layout:
+                - Summon:
+                    Ability: BSummon
+                    SummonName: $FH/085_character_ability_cards_banner_spear_lead_from_afar_3$
+                    SpecialText: "<size=150%><sprite name=Muddle>"

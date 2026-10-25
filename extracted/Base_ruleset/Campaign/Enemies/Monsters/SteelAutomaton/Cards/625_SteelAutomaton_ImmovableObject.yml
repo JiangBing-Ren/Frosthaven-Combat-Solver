@@ -1,0 +1,11 @@
+Parser: EnemyCard
+ID: 625
+Name: $Monster_Ability_625_SteelAutomaton_ImmovableObject$
+Initiative: 10
+Shuffle: True
+Data:
+    Abilities:
+        Shield4:
+            Shield: 4
+            ActiveBonus:
+                ListLayoutOverride: ["<sprite name=Shield> *Shield4*", Positive_Shield]

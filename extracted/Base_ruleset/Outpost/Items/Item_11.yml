@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 11
+ScenarioItemID: 902
+Name: Simple Charm
+Quantity: 2
+Type: Head
+CraftingCost:
+    Metal: 2

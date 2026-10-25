@@ -1,0 +1,10 @@
+Parser: FHItem
+ID: 55
+ScenarioItemID: 1290
+Name: Biting Gauntlet
+Quantity: 2
+Type: OneHandWeapon
+CraftingCost:
+    Metal: 1
+    Hide: 1
+RequiredCraftingItemIDs: [ 94 ]

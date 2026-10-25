@@ -1,0 +1,22 @@
+Parser: ItemCard
+ID: 1279
+StringID: WildGrowthSeedsID
+Name: $FH/1279_item_cards_wild_growth_seeds_1$
+Art: Wild Growth Seeds
+TotalInGame: 1
+Cost: 20
+Slot: SmallItem 
+Rarity: Relic
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        ASpawnIce:
+            Filter: Self
+            PreviewEffectText: "$OBSTACLE_TOOLTIP$"
+            Create: OneHexObstacle
+            TileFilter: EmptyHex
+            Vars:
+                OverridePropName: "'ItemWildGrowthSeedsObstacle'"
+Layout:
+    - Row: "$FH/1279_item_cards_wild_growth_seeds_2$"

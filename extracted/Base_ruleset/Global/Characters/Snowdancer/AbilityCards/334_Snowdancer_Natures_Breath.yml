@@ -1,0 +1,40 @@
+Parser: AbilityCard
+Name: $FH/334_character_ability_cards_snowdancer_natures_breath_1$
+Character: SnowdancerID
+ID: 334
+Level: 1
+Initiative: 90
+Discard: [Lost,Discard]
+Prefab: 334_Snowdancer_NaturesBreath
+Data:
+    Top:
+        Abilities:
+            TSummon:
+                Summon: SnowFoxID
+                AnimOverload: Summon
+        XP: 2
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    SquareEnhancements: 1
+                    Jump: True
+                MiscVars:
+                    PrintedProperties: list("Move")
+        Infuse: Air
+Layout:
+    Top:
+        - Active:
+              Ability: "TSummon"
+              Icon: "Positive_Summon"
+              Layout:
+                  - Summon:
+                        Ability: TSummon
+                        SummonName: "$FH/334_character_ability_cards_snowdancer_natures_breath_2$"
+        - Row: "$FH/334_character_ability_cards_snowdancer_natures_breath_3$"
+    Bottom:
+        - Row: "<b><size=130%> <sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@ <sprite name=Jump>"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Air]

@@ -1,0 +1,7 @@
+Parser: AttackModifier
+Name: AMC_Earth_R
+MathModifier: "+0"
+Rolling: True
+Abilities:
+    InfuseAbility:
+        Infuse: [Earth]

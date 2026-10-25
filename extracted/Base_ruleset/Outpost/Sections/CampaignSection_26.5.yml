@@ -1,0 +1,13 @@
+Parser: CampaignSection
+ID: 26.5
+Name: Puzzle Solution
+# no text here, just goes to the other sections
+SkipNarration: True
+SkipCompletedNotification: True
+Effects:
+    - Type: IfScenarioActivateCampaignSection
+      Param1: 9
+      Param2: 124.1
+    - Type: IfScenarioActivateCampaignSection
+      Param1: 20
+      Param2: 127.1

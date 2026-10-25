@@ -1,0 +1,12 @@
+Parser: CampaignSection
+ID: 31.3
+Name: Jeweler Built
+SkipCompletedNotification: False
+Effects:
+    - Type: EnableEvent
+      Param1: WO-77
+    - Type: EnableEvent
+      Param1: SR-37
+    - Type: AddItemsToShop
+      Param1: 156
+      Param2: 159

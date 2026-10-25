@@ -1,0 +1,26 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH46_Harvest
+ScenarioAbility:
+    AActive:
+        AddActiveBonus:
+            DestroyObstacle: True
+            DestroyObstacleData:
+                CanTargetEmptyHexes: True
+                TargetPrefabName: "HarvestSnow"
+            Target: 1
+            CanUndo: True
+            Flags: [FromScenarioModifier]
+        Filter: Self
+        ActiveBonus:
+            Duration: Persistent
+            IsToggleBonus: True
+            Behaviour: DuringTurnAbility
+            Restriction: OncePerTurn
+            Requirements:
+                ForgoTopAction: True
+                Vars:
+                    ValidateHasSnowInRange: CustomAbility.GetAdjacentVFXProps(Actor, "HarvestSnow") > 0
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_046_HarvestAbility$, AA_Kill]
+            Hidden: True
+        AnimOverload: None
+        AutoTrigger: True

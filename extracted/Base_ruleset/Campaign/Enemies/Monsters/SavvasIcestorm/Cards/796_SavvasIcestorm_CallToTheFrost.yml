@@ -1,0 +1,15 @@
+Parser: EnemyCard
+ID: 796
+Name: $Monster_Ability_796_SavvasIcestorm_CallToTheFrost$
+Initiative: 98
+Shuffle: False
+Data:
+    Abilities:
+        Summon1:
+            Summon: FrostDemonID
+            Target: 1
+            TargetIsBase: True
+            AnimOverload: Summon
+            Text: "$FH/0796_monster_ability_cards_savvas_icestorm_call_to_the_frost_2$"
+            TextOnly: True
+    Infuse: Ice 

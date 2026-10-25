@@ -1,0 +1,17 @@
+Parser: EnemyCard
+ID: 860
+Name: $Monster_Ability_860_SpittingDrake_SplashingBile$
+Initiative: 57
+Shuffle: True
+Data:
+    Abilities: 
+        Move1:
+            Move: 0
+        Attack1:
+            Attack: -1
+            Filter: Enemy
+            AreaEffect: "0,0,R|2,0,R|1,1,R"
+            MultiPassAttack: False
+            AnimOverload: SpittingBile
+            Range: 3
+            RangeIsBase: True

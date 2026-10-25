@@ -1,0 +1,29 @@
+Parser: EnemyCard
+ID: 674
+Name: $Monster_Ability_674_LurkerSoldier_DefensiveClaws$
+Initiative: 11
+Shuffle: True
+Data:
+    Abilities: 
+        Wound1:
+            Wound: True
+            Filter: Enemy
+            Target: -1
+            TargetIsBase: True
+            Range: 1
+            RangeIsBase: True
+            AnimOverload: AOEAttack
+        Shield1:
+            Shield: 1
+            Filter: Self
+            AnimOverload: PowerUp  
+            ActiveBonus:
+                Duration: Round
+                ListLayoutOverride: ["<sprite name=Shield> *Shield1*", Positive_Shield]
+    Consumes:
+        CIce:
+            Elements: Ice
+            AbilityOverrides:
+                CDarkAttack:
+                    ParentName: Shield1
+                    Strength: 1

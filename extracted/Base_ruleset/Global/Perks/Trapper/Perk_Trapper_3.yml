@@ -1,0 +1,8 @@
+Parser: Perk
+ID: Trapper03
+Name: FH/PERK_Trapper_03_Name
+Description: FH/PERK_Trapper_03_Desc
+CharacterID: TrapperID
+Available: 3
+CardsToRemove: [AMC_Basic_M1]
+CardsToAdd: [AMC_Damage1Trap_P0]

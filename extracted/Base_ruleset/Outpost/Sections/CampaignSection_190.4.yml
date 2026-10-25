@@ -1,0 +1,7 @@
+Parser: CampaignSection
+ID: 190.4
+Name: Puzzle Book
+SkipCompletedNotification: True
+Effects:
+    - Type: UnlockPuzzle
+      Param1: Numbers

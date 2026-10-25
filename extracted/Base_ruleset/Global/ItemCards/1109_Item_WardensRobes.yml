@@ -1,0 +1,43 @@
+Parser: ItemCard
+ID: 1109
+StringID: WardensRobesID
+Name: $FH/1109_item_cards_wardens_robes_1$
+#TODO change art
+Art: Robes of Summoning
+TotalInGame: 2
+Cost: 30
+Rarity: Rare
+Slot: Body 
+Usage: Spent
+Trigger: PassiveEffect
+ProsperityRequirement: 1
+Data:  
+    ShieldValue: 2
+    Abilities:
+        AShield:
+            Shield: 2
+            Filter: Self
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: ShieldIncomingAttacks
+                XPTracker: [0]
+                ToggleIsOptional: True
+                IsToggleBonus: True
+                IsAura: True
+                Hidden: True
+                AuraFilter: OwnSummon
+                AuraTargeting: All
+                ValidAbilityType: Attack
+                Requirements:
+                    Vars:
+                        ValidateSummoner: Actor.Summoner
+                        ValidateCanUseItems: Actor.Summoner.Tokens.HasKey(CCondition.ENegativeCondition.Impair) == false && Actor.Summoner.Tokens.HasKey(CCondition.ENegativeCondition.Stun) == false
+    CompareAbility:
+        AbilityType: Attack
+Layout:
+    - Active:
+        Ability: AShield
+        ListLayout: $FH/1109_item_cards_wardens_robes_2$
+        Layout: $FH/1109_item_cards_wardens_robes_2$
+        Icon: "Positive_Shield"
+    - Row: "<size=50%> "

@@ -1,0 +1,34 @@
+Parser: ItemCard
+ID: 902
+StringID: SimpleCharmID
+Name: $FH/0902_item_cards_simple_charm_1$
+Art: Simple Charm
+TotalInGame: 2
+Cost: 0
+Slot: Head
+Rarity: Rare
+UsedWhenEquipped: true
+Usage: Unrestricted
+Trigger: PassiveEffect
+#TODO this proerty needs to be moved to outpost yaml in the future
+#ProsperityRequirement: 1
+Data: 
+    # Fake ability to use active bouns description indicator
+    Abilities:
+        AMove:
+            Move:
+                Amount: 0
+            Filter: Self
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: BuffMove
+                Hidden: True
+    RemoveModifiers:
+        - [AMC_Basic_M1, 1]
+Layout: 
+    #- Row: $FH/0902_item_cards_simple_charm_2$
+    - Active:
+        Ability: AMove
+        ListLayout: $FH/0902_item_cards_simple_charm_2$
+        Layout: $FH/0902_item_cards_simple_charm_2$
+        Icon: "Shield"

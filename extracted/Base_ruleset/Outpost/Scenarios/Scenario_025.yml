@@ -1,0 +1,18 @@
+Parser: FHScenario
+ID: 25
+Name: Rusted Tunnels
+LevelID: FS_025_Rusted_Tunnels
+Chain: Unfettered
+Location: CrystalFields
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: GainLumber
+          Param1: 2
+        - Type: GainMetal
+          Param1: 2
+        - Type: AddCalendarCampaignSection
+          Param1: 128.2
+          Param2: 4
+        - Type: LockScenario
+          Param1: 26

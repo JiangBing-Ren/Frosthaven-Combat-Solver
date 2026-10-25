@@ -1,0 +1,57 @@
+Parser: Enemy
+ID: VillagerID
+LocKey: $Villager$
+MonsterType: Monster
+StandeeLimit: 12
+Model: [Villager 01, Villager 02]
+PredominantlyMelee: True
+AbilityCards: [12004]
+# Base Stats
+Level0:
+    Health: 3
+    Move: 3
+    Attack: 0
+    Range: 1
+    Target: 1
+Level1:
+    Health: 4
+    Move: 3
+    Attack: 0
+    Range: 1
+    Target: 1
+Level2:
+    Health: 5
+    Move: 3
+    Attack: 0
+    Range: 1
+    Target: 1
+Level3:
+    Health: 6
+    Move: 3
+    Attack: 0
+    Range: 1
+    Target: 1
+Level4:
+    Health: 7
+    Move: 3
+    Attack: 0
+    Range: 1
+    Target: 1
+Level5:
+    Health: 8
+    Move: 3
+    Attack: 0
+    Range: 1
+    Target: 1
+Level6:
+    Health: 9
+    Move: 3
+    Attack: 0
+    Range: 1
+    Target: 1
+Level7:
+    Health: 10
+    Move: 3
+    Attack: 0
+    Range: 1
+    Target: 1

@@ -1,0 +1,24 @@
+Parser: EnemyCard
+ID: 600
+Name: $Monster_Ability_600_RuinedMachine_SignalJam$
+Initiative: 56
+Shuffle: True
+Data:
+    Abilities: 
+        Move1:
+            Move: 0
+        Muddle1: 
+            Muddle: True
+            Target: -1
+            TargetIsBase: True
+            Range: 2
+            RangeIsBase: True
+            ShowRange: False
+            Filter: Enemy
+            Text: "$FH/0600_1$"
+        Damage1: 
+            Damage: 1        
+            Filter: Self
+            AutoTrigger: True
+            Text: "$FH/0600_2$"
+            TextOnly: True

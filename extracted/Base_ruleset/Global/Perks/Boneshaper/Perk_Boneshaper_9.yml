@@ -1,0 +1,7 @@
+Parser: Perk
+ID: Boneshaper09
+Name: FH/PERK_Boneshaper_09_Name
+Description: FH/PERK_Boneshaper_09_Desc
+CharacterID: BoneshaperID
+Available: 2
+CardsToAdd: [AMC_Heal1_TBoneshaper_R, AMC_Heal1_TBoneshaper_R, AMC_Heal1_TBoneshaper_R]

@@ -1,0 +1,28 @@
+Parser: ItemCard
+ID: 1083
+StringID: MajorRenewingPotionID
+Name: $FH/1083_item_cards_major_renewing_potion_1$
+Art: Major Renewing Potion
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    ItemRequirements:
+        Vars:
+            ValidPotionIDs: CustomAbility.AllTwoHerbPotionIDs()
+            SpecificItems: Actor.Inventory.AllItems.Where(obj.SlotState.ToString() == "Consumed" && obj.YMLData.Usage.ToString() == "Consumed" && ValidPotionIDs.Contains(obj.YMLData.ID))
+            ValidateHasItems: SpecificItems.Count > 0
+    Abilities:
+        ARefreshOtherSpentItem:
+            RefreshItems: 1
+            Filter: Self
+            MiscVars:
+                MaxSelectIsOptional: True
+            Vars:
+                ValidPotionIDs: CustomAbility.AllTwoHerbPotionIDs()
+                SpecificItems: TargetingActor.Inventory.AllItems.Where(obj.SlotState.ToString() == "Consumed" && obj.YMLData.Usage.ToString() == "Consumed" && ValidPotionIDs.Contains(obj.YMLData.ID))
+Layout: 
+    - Row: "$FH/1083_item_cards_major_renewing_potion_2$"

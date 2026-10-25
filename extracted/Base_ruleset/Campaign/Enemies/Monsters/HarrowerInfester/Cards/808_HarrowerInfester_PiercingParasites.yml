@@ -1,0 +1,32 @@
+Parser: EnemyCard
+ID: 808
+Name: $Monster_Ability_808_HarrowerInfester_PiercingParasites$
+Initiative: 30
+Shuffle: False
+Data:
+    Abilities:
+        Move1:
+            Move: -1
+        Attack1:
+            Attack: 0
+            AreaEffect: "0,0,G|1,-1,R|2,-2,R|3,-3,R"
+            MultiPassAttack: False
+            Filter: Enemy
+            AnimOverload: PiercingParasites
+    Consumes:
+        CDark:
+            Elements: Dark
+            AbilityOverrides:
+                CDarkHeal:
+                    ParentName: Attack1
+                    SubAbilities:
+                        CDarkSubHeal:
+                            Heal: 0
+                            Filter: Self
+                            StatIsBasedOnX:
+                                Strength:
+                                    BasedOn: TargetsActuallyDamagedByPreviousAttackThisTurn
+                                    Multiplier: 2
+                            AnimOverload:  PowerUp Potent
+                    Text: "$10347_T$"
+                    TextOnly: True

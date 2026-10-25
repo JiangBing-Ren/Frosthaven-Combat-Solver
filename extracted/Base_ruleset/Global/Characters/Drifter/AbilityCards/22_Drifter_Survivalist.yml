@@ -1,0 +1,76 @@
+Parser: AbilityCard
+Name: $FH/022_character_ability_cards_drifter_survivalist_1$
+Character: DrifterID
+ID: 22
+Level: 5
+ProgressionOrder: 21
+Initiative: 91
+Discard: [Lost,Discard]
+Prefab: 22_Drifter_Survivalist
+Data:
+    Top:
+        Abilities:
+            TBuffHeal:
+                AddActiveBonus:
+                    AddCondition: True
+                    Condition: Ward
+                    AutoTrigger: True
+                    SkipAnim: True
+                    Target: -1
+                    Targeting: Custom
+                    TargetingVars:
+                        AddValidActorInRange: ActorTarget
+                        AddTileInRange: ActorTarget.Tile
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: GenericHealFinished
+                    XPTracker: [1,0,1,0,1,0]
+                    Flags: [EnhancedEffects]
+                    Vars:
+                        Caster: TriggerActor
+                        ValidateCasterIsDrifter: Caster.Class.ID == "DrifterID"
+                        ActorTarget: TriggerTarget
+                        ValidateTargetDoesntHaveWard: ActorTarget.Tokens.HasKey(CCondition.EPositiveCondition.Ward) == false
+                AnimOverload: Persistent Buff
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BLoot:
+                Loot: 1
+                MiscVars:
+                    PrintedProperties: list("Loot")
+                Target: -1
+            BHeal:
+                Heal: 0
+                Filter: Self
+                TreatAsNonSubAbility: True
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Vars:
+                    LootCount: CustomAbility.TilesLootedInPreviousAbility(obj)
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: Vars
+                        Vars:
+                            Value: LootCount * 2
+                AnimOverload: Heal
+            
+Layout:
+    Top:
+        - Active:
+            Ability: TBuffHeal
+            Icon: Positive_Ward
+            ListLayout: "$FH/022_character_ability_cards_drifter_survivalist_2$"
+            Layout: "$FH/022_character_ability_cards_drifter_survivalist_2$"
+        - XPTracker: TBuffHeal
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove*<size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Loot> *BLoot*"
+        - Divider:        
+        - Row: "$FH/022_character_ability_cards_drifter_survivalist_3$"

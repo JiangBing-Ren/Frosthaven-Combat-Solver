@@ -1,0 +1,10 @@
+Parser: FHItem
+ID: 79
+ScenarioItemID: 1023
+Name: Roasted Fowl
+Quantity: 2
+Type: Small
+CraftingCost:
+    Hide: 2
+    Flamefruit: 1
+    Snowthistle: 1

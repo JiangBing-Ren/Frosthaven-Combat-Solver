@@ -1,0 +1,23 @@
+Parser: EnemyCard
+ID: 549
+Name: $Monster_Ability_549_FlameDemon_FireSpout$
+Initiative: 8
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: -1
+        Trap1:
+            Trap:
+                TrapName: BearTrap
+                Damage: 4
+            SpawnDelay: 1.57            
+            Range: 1
+            RangeIsBase: True
+            AnimOverload: LayTrap
+            Text: "$10635$"
+            TextOnly: True
+    Consumes:
+        CAny:
+            Elements: Any
+            Infuse: Fire

@@ -1,0 +1,18 @@
+Parser: EnemyCard
+ID: 9059
+Name: $Monster_Ability_Tutorial3Deathwalker_ShadowBolt$
+Initiative: 88
+Shuffle: False
+Data:
+    Abilities:
+        AAttack:
+            Attack: 1
+            Range: 5
+    Consumes:
+        CDark:
+            Elements: Dark
+            AbilityOverrides:
+                CAttackBuff:
+                    ParentName: AAttack
+                    Strength: 3
+                        

@@ -1,0 +1,15 @@
+Parser: Perk
+ID: Deathwalker09
+Name: FH/PERK_Deathwalker_09_Name
+Description: FH/PERK_Deathwalker_09_Desc
+CharacterID: DeathwalkerID
+Available: 1
+Flags: [Passive, ExecuteAbilitiesAfterLongRest]
+Abilities:
+    TMoveShadow:
+        MoveShadow:
+        Target: 1
+        Range: 3
+        CanUndo: False
+        Filter: All
+        AnimOverload: Shadow Manipulation

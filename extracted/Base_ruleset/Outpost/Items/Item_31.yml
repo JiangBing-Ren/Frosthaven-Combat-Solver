@@ -1,0 +1,7 @@
+Parser: FHItem
+ID: 31
+ScenarioItemID: 942
+Name: Deathproof Charm
+Quantity: 2
+Type: Head
+RequiredCraftingItemIDs: [ 11, 106 ]

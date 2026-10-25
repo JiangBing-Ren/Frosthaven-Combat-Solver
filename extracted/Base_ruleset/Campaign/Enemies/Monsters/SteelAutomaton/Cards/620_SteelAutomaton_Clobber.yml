@@ -1,0 +1,11 @@
+Parser: EnemyCard
+ID: 620
+Name: $Monster_Ability_620_SteelAutomaton_Clobber$
+Initiative: 76
+Shuffle: False
+Data:
+    Abilities:
+        Clobber:
+            Attack: 1
+            Condition: Stun
+            

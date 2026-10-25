@@ -1,0 +1,17 @@
+Parser: EnemyCard
+ID: 08770020
+Name: $Monster_Ability_Boss_Snowdancer_Special1$
+Initiative: 85
+Shuffle: True
+Data:
+    Abilities:
+        Move0:
+            Move: 1
+        Attack1:
+            Attack: -1
+            Range: 3
+            RangeIsBase: True
+            AreaEffect: "0,0,R|2,0,R|1,1,R|-1,1,R|-2,0,R|-1,-1,R|1,-1,R"
+            MultiPassAttack: False
+            Conditions: [Muddle]
+            AnimOverload: RangedAttack_Vortex

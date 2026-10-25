@@ -1,0 +1,23 @@
+Parser: HeroSummon
+ID: SpiritboundFalchionID
+LocKey: $FH/211_character_ability_cards_infuser_untether_the_shackles_2$
+Model: SpiritboundFalchion
+Health:
+    Amount: 6
+    SquareEnhancements: 1
+Move:
+    Amount: 3
+    SquareEnhancements: 1
+Attack: 4
+Flying: True
+Shield: 1
+OnSummonAbilities:
+    ADoInfusionsInsteadOfSummoner:
+        NullTargeting: True
+        Filter: Self
+        AutoTrigger: True
+        SkipAnim: True
+        ActiveBonus:
+            Duration: Persistent
+            ListLayoutOverride: [$FH/211_character_ability_cards_infuser_untether_the_shackles_3$, Positive_Infusion]
+            TriggerOnCaster: True

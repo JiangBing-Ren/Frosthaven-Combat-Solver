@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 56
+ScenarioItemID: 1291
+Name: Scavenger's Magnet
+Quantity: 2
+Type: OneHandWeapon
+CraftingCost:
+    Metal: 1
+    Lumber: 1

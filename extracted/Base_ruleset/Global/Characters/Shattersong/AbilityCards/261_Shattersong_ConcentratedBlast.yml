@@ -1,0 +1,80 @@
+Parser: AbilityCard
+Name: $FH/261_character_ability_cards_shattersong_concentrated_blast_1$
+Character: ShattersongID
+ID: 261
+Level: 4
+Initiative: 38
+Discard: [Discard,Discard]
+Prefab: 261_Shattersong_ConcentratedBlast
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 2
+                    SquareEnhancements: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")     
+                Filter: [Enemy]
+                AnimOverload: RangedAttack
+        Consumes:
+            TCResonanceTarget:
+                Resonance: 1
+                AbilityOverrides:
+                    CBuffTarget:
+                        ParentName: TAttack
+                        Target: 1
+                        MiscVars:
+                            PrintedProperties: list("Target")     
+            TCResonanceStun:
+                Resonance: 2
+                XP: 1 
+                AbilityOverrides:
+                    CBuffStun:
+                        ParentName: TAttack
+                        Conditions: Stun
+                        AnimOverload: RangedAttackMedium
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")     
+            BConsume:
+                Consume:
+                    Resonance: 1
+                    Abilities:
+                        BDamage:
+                            Damage: 2
+                            MiscVars:
+                                PrintedProperties: list("Damage")     
+                            Filter: Enemy
+                            Range: 1
+                            AnimOverload: NegativeCast
+        Infuse: Air
+Layout:
+    Top:
+        - Row:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column: "<mark=#FCD06E22><b><size=130%><sprite name=Range> *TAttack.Range*</mark>"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCResonanceTarget
+                    Text: "<size=100%>+1 <sprite name=Target>"
+                - Consume:
+                    Name: TCResonanceStun
+                    Text: "<size=100%><sprite name=Stun>, <sprite name=XP1>"
+    Bottom:
+        - Row: "<sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Conditional:
+            Layout:
+                - Row: "$FH/261_character_ability_cards_shattersong_concentrated_blast_2$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Air

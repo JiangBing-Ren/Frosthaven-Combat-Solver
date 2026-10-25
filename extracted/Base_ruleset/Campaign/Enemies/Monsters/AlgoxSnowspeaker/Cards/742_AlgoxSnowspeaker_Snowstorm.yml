@@ -1,0 +1,27 @@
+Parser: EnemyCard
+ID: 742
+Name: $Monster_Ability_742_AlgoxSnowspeaker_Snowstorm$
+Initiative: 6
+Shuffle: True
+Data:
+    Abilities:
+        Damage1:
+            Text: "$FH/0742_monster_ability_cards_algox_snowspeaker_snowstorm_2$"
+            TextOnly: True
+            Damage: 2
+            Range: 3
+            RangeIsBase: True
+            Target: -1
+            TargetIsBase: True
+            Filter: [Enemy]
+            AnimOverload: Snowstorm
+        Push1:
+            Text: "<size=130%><sprite name=Push> 2 $FH/target_all$, <sprite name=Range> 3"
+            TextOnly: True
+            Push: 2
+            Target: -1
+            TargetIsBase: True
+            Range: 3
+            RangeIsBase: True
+            SkipAnim: True
+    Infuse: [Ice, Air]

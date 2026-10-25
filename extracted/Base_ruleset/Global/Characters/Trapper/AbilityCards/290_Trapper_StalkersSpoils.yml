@@ -1,0 +1,54 @@
+Parser: AbilityCard
+Name: $FH/290_character_ability_cards_trapper_stalkers_spoils_1$
+Character: TrapperID
+ID: 290
+Level: 4
+Initiative: 10
+Discard: [Discard,Discard]
+Prefab: 290_Trapper_StalkersSpoils
+Data:
+    Top:
+        Abilities:
+            TTrap:
+                Trap:
+                    TrapName: TrapperTrap
+                    Heal: 3                    
+                Range:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Heal","Range")
+                RangeIsBase: True
+                Target: 2
+                TargetIsBase: True
+                AnimOverload: TrapThrow
+        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 2
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BLoot:
+                Loot: 1
+                MiscVars:
+                    PrintedProperties: list("Loot")
+                Target: -1
+                AnimOverload: Loot
+            BHeal:
+                Heal: 0
+                Filter: Self
+                Vars:
+                    LootAbility: CustomAbility.FindAbilityInPhaseByName("BLoot")
+                    LootCount: LootAbility?.LootTokenCount or 0
+                    Strength: LootCount + 1
+Layout:
+    Top:
+        - Row: "$FH/290_character_ability_cards_trapper_stalkers_spoils_2$"
+        - Row: "$FH/290_character_ability_cards_trapper_stalkers_spoils_3$ @TTrap.Range@"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%>"
+        - Row: "<size=20%> "
+        - Row: "<b><size=130%><sprite name=Loot> *BLoot* <size=100%>"
+        - Row: "<size=20%> "
+        - Row: "$FH/290_character_ability_cards_trapper_stalkers_spoils_4$"

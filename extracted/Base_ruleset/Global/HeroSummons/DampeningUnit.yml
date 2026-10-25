@@ -1,0 +1,31 @@
+Parser: HeroSummon
+ID: DampeningUnitID
+LocKey: $FH/401_character_ability_cards_hive_force_field_2$
+Model: DampeningUnit
+Health:
+    Amount: 5
+    SquareEnhancements: 1
+Move:
+    Amount: 2
+    SquareEnhancements: 1
+Attack: 1
+Range:
+    Amount: 2
+    SquareEnhancements: 1
+OnSummonAbilities:
+    AShieldAura:
+        Shield: 1
+        Range: 1
+        Target: -1
+        Filter: Self
+        ActiveBonus:
+            Behaviour: BuffShield
+            Duration: Persistent
+            IsAura: True
+            AuraFilter: [Ally]
+            HiddenWhenAura: True
+            Hidden: True
+            ListLayoutOverride: [$FH/401_character_ability_cards_hive_force_field_3$, Positive_Shield_Aura]
+        Text: $FH/401_character_ability_cards_hive_force_field_3$
+        SkipAnim: True
+

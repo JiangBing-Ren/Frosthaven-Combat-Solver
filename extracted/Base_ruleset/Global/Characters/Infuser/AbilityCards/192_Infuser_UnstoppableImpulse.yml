@@ -1,0 +1,106 @@
+Parser: AbilityCard
+Name: $FH/192_character_ability_cards_infuser_unstoppable_impulse$
+Character: InfuserID
+ID: 192
+Level: 1
+Initiative: 56
+Discard: [Discard,Discard]
+Prefab: 192_Infuser_UnstoppableImpulse
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 4
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Target: 1
+                Range: 1
+                Filter: Enemy
+        Consumes:
+            TCAttack:
+                PreviewEffectId: M1Attack
+                AbilityOverrides:
+                    TCAttackBuff:
+                        ParentName: TAttack
+                        Attack: -1
+                        SubAbilities:
+                            TInfuse:
+                                TreatAsNonSubAbility: True
+                                AutoTrigger: True
+                                Infuse: [Dark]
+                                SkipAnim: True
+            
+    Bottom:
+        Abilities:
+            ConsumeAbility:
+                Consume: 
+                    Elements: [Air, Dark]
+                    Abilities:
+                        CNull:
+                            Null: True
+                            AutoTrigger: True
+            BPush1:
+                Push: 2
+                Target: 1
+                MiscVars:
+                    PrintedProperties: list("Pull","Range")
+                Range: 1
+                Filter: Enemy
+                AnimOverload: Summon
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Consume]
+            BMove1:
+                Move: 2
+                MiscVars:
+                    PrintedProperties: list("Move")
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Consume]
+            BPush2:
+                Push: 2
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Push","Range")
+                Target: 1
+                Filter: Enemy
+                AnimOverload: Summon
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Consume]
+            BMove2:
+                Move:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Consume]
+        XP: 1
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCAttack
+                    Text: "-1<sprite name=Attack>: <sprite name=CreateDark>"
+    Bottom:
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<sprite name=ConsumeAir>, <sprite name=ConsumeDark>:"
+        - Row: "<b><size=130%><sprite name=Push> *BPush1* <sprite name=Range> *BPush1.Range*"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Move> *BMove1*"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Push> *BPush2* <sprite name=Range> *BPush2.Range*"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Move> *BMove2* <size=100%><voffset=1>@BMove2@"

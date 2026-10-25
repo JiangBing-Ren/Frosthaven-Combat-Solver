@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 97
+ScenarioItemID: 1059
+Name: Explosive Vial
+Quantity: 2
+Type: Small
+Brewing:
+    Herb1: Snowthistle
+    Herb2: Axenut

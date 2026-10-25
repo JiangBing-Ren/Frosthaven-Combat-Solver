@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 214
+ScenarioItemID: 1224
+Name: Cup of Ventillion
+Quantity: 1
+GoldCost: 30
+Type: OneHandWeapon
+IsNewCharacterItem: False

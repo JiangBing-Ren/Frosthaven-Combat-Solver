@@ -1,0 +1,131 @@
+Parser: AbilityCard
+Name: $FH/326_character_ability_cards_pain_conduit_wave_of_anguish_1$
+Character: PainConduitID
+ID: 326
+Level: 8
+Initiative: 68
+Discard: [Discard,Discard]
+Prefab: 326_PainConduit_WaveOfAnguish
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Filter: Enemy
+                Attack:
+                    Amount: 4
+                    DiamondEnhancements: 1
+                Range:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                AnimOverload: RangedAttack
+                PerformVars:
+                    OnAbilityEnded:
+                        Targets: ActorsTargeted
+                        DamageDealt: CustomAbility.GetDamageDealt(obj)
+                        NumNegativeTokens: TargetingActor.Tokens.CountNegativeConditions(true)
+                        NumConditionsToRemove: min(NumNegativeTokens, DamageDealt / 2)
+                        PerformXTimes: CustomAbility.InjectActiveBonusAbilityXTimes(NumConditionsToRemove, ActiveBonusData, TargetingActor, thisContext)
+                ActiveBonus:
+                    AbilityData:
+                        Filter: Self
+                        HasCondition: True
+                        HelpBoxTooltipLocKey: "$FH/326_character_ability_cards_pain_conduit_wave_of_anguish_2$"
+                        PreviewEffectText: "$FH/326_character_ability_cards_pain_conduit_wave_of_anguish_2$"
+                        MiscVars:
+                            DontPreviewDescription: True
+                        SkipAnim: True
+                        Choose:
+                            Conditions: [Wound, Brittle, Bane, Poison, Immobilize, Disarm, Impair, Stun, Muddle, Curse]
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ParentContext: VarsContext?.parentContext
+                                Targets: ParentContext.Targets
+                                ValidateStillHasLivingTarget: Targets.Any(!obj.IsDead)
+                        SubAbilities:
+                            TRemoveCondition:
+                                SkipAnim: True
+                                AutoTrigger: True
+                                Filter: Self
+                                Flags: [SubAbilityPreview]
+                                TreatAsNonSubAbility: True
+                                RemoveConditions: 1
+                                Vars: 
+                                    ValidateRemovedCondition: ParentAbility?.ChosenAbility != null
+                                    AddNegativeConditions: ParentAbility.ChosenAbility.GetAllNegativeConditions()
+                                MiscVars: 
+                                    PreviewAddNegativeConditionsVar: True
+                            TAddCondition:
+                                Flags: [SubAbilityPreview]
+                                Filter: Enemy
+                                AutoTrigger: True
+                                TreatAsNonSubAbility: True
+                                NullTargeting: True
+                                AnimOverload: CastGivingPain
+                                Vars: 
+                                    ValidateRemovedCondition: ParentAbility?.ChosenAbility != null
+                                    AddNegativeConditions: ParentAbility.ChosenAbility.GetAllNegativeConditions()
+                                MiscVars: 
+                                    PreviewAddNegativeConditionsVar: True
+                                Target: -1
+                                Targeting: Custom
+                                TargetingVars: 
+                                    ParentContext: ParentAbility?.VarsContext?.parentContext
+                                    AddValidActorsInRange: ParentContext.Targets
+                                StartAbilityRequirements:
+                                    Type: ThisAbility
+                                    Vars:
+                                        ParentContext: ParentAbility?.VarsContext?.parentContext
+                                        ValidateHasParentContext: ParentContext != null
+                                        ValidateHasTarget: ParentContext.Targets.Count > 0
+
+        Consumes:
+            TCAir:
+                Elements: Air
+                XP: 1
+                AbilityOverrides:
+                    TCFireHealBuff:
+                        ParentName: TAttack
+                        Strength: 2
+    Bottom:
+        Infuse: Fire
+        Abilities:
+            BMove:
+                Move: 5
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BWoundSelf:
+                CanSkip: False
+                Filter: Self
+                Wound:
+                    DiamondEnhancements: 1
+                AnimOverload: Hit
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "20,30,30"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column:
+                - Row: "<mark=#80919922><size=100%><sprite name=Range>*TAttack.Range* @TAttack.Range@</mark>"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCAir
+                    Text: "+2 <sprite name=Attack>, <sprite name=XP1>"
+        - Row: "$FH/326_character_ability_cards_pain_conduit_wave_of_anguish_2$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove*"
+        - Divider:
+        - MandatoryTrigger:
+            Layout:
+                - Row:
+                    - Column: "<sprite name=Wound> @BWoundSelf@"
+                    - Column: "<mark=#80919922>$Self$</mark>"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Fire

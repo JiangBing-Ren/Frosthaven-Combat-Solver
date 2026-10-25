@@ -1,0 +1,7 @@
+Parser: FHItem
+ID: 66
+ScenarioItemID: 997
+Name: Amulet of Eternal Life
+Quantity: 2
+Type: Head
+RequiredCraftingItemIDs: [ 109, 120 ]

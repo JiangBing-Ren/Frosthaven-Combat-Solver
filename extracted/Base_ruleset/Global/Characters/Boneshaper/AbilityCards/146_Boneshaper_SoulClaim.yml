@@ -1,0 +1,73 @@
+Parser: AbilityCard
+Name: $FH/146_character_ability_cards_boneshaper_soul_claim_1$
+Character: BoneshaperID
+ID: 146
+Level: 7
+Initiative: 23
+Discard: [Discard,Discard]
+Prefab: 146_Boneshaper_SoulClaim
+Data:
+    Top:
+        Abilities:
+            TCurseOnDeath:
+                Range: 3
+                AddActiveBonus:
+                    Curse: True
+                    AutoTrigger: True
+                    Targeting: Custom
+                    AnimOverload: CastNegative
+                    TargetingVars: 
+                        AddValidActorInRange: TriggerActor
+                ActiveBonus:
+                    TriggerOnCaster: True
+                    Duration: Persistent
+                    Behaviour: DuringActionAbilityAfterDeath
+                    TriggerAbilitiesImmediately: True
+                    XPTracker: [0,0,1]
+                    IsAura: True
+                    AuraFilter: Enemy
+                    AuraTargeting: Range
+                    HiddenWhenAura: True
+        Infuse: Dark
+    Bottom:
+        Abilities:
+            BSummonOnDeath:
+                AddActiveBonus:
+                    Filter: Self
+                    SelectAndPlayCard:       
+                        CardPile: Discarded  
+                    MiscVars:
+                        IsActionValid: Action.Abilities.Any(obj.AbilityType == CAbility.EAbilityType.Summon)
+                        ReduceNextDamage: 2
+                        OverridePosition: TileAtTimeOfDeath
+                ActiveBonus:
+                    Duration: Round
+                    Behaviour: DuringActionAbilityOnDeath
+                    TriggerAbilitiesImmediately: True
+                    IsAura: True
+                    AuraFilter: Enemy
+                    AuraTargeting: All
+                    TriggerOnCaster: true
+                    HiddenWhenAura: True
+                    Restriction: OncePerRound
+                    Vars:
+                        TileAtTimeOfDeath: TriggerActor.Tile
+Layout:
+    Top:
+        - Active:
+            Ability: TCurseOnDeath
+            ListLayout: "$FH/146_character_ability_cards_boneshaper_soul_claim_2$"
+            Layout: "$FH/146_character_ability_cards_boneshaper_soul_claim_2$"
+            Icon: Positive_Curse_Enemy_Death
+        - Row: "<size=50%> "
+        - XPTracker: TCurseOnDeath
+        - Row: "<size=20%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark
+    Bottom:
+        - Active:
+            Ability: BSummonOnDeath
+            ListLayout: "$FH/146_character_ability_cards_boneshaper_soul_claim_3$"
+            Layout: "$FH/146_character_ability_cards_boneshaper_soul_claim_3$"
+            Icon: Positive_Cards_Enemy_Death

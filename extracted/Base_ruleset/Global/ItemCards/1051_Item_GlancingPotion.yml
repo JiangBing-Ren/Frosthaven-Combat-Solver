@@ -1,0 +1,28 @@
+Parser: ItemCard
+ID: 1051
+StringID: GlancingPotionID
+Name: $FH/1051_item_cards_glancing_potion_1$
+Art: Glancing Potion
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: PassiveEffect
+Data: 
+    Abilities:
+        AModifyAttack:
+            ChangeAttackModifier:
+            ReplaceModifiers: "*0"
+            ReplaceWithModifiers: ["+0"]
+            ActiveBonus:
+                XPTracker: [0]
+                Duration: Persistent
+                Behaviour: AdjustWhenAttacking
+                IsToggleBonus: True
+Layout: 
+    - Active:
+        Ability: AModifyAttack
+        Icon: "Positive_0x_Item"
+        ListLayout: "$FH/1051_item_cards_glancing_potion_2$"
+        Layout: "$FH/1051_item_cards_glancing_potion_2$"

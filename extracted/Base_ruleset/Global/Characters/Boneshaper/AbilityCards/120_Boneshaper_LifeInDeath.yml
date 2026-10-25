@@ -1,0 +1,51 @@
+Parser: AbilityCard
+Name: $FH/120_character_ability_cards_boneshaper_life_in_death_1$
+Character: BoneshaperID
+ID: 120
+Level: 1
+Initiative: 91
+Discard: [Discard,Lost]
+Prefab: 120_Boneshaper_LifeInDeath
+Data:
+    Top:
+        Abilities:
+            TSummon:
+                Summon: ShamblingSkeletonID
+                AnimOverload: Summon     
+                SubAbilities:
+                    Damage1:
+                        Damage: 2
+                        MiscVars:
+                            PrintedProperties: list("Damage")
+                        Filter: Self
+                        TextOnly: True
+                        AutoTrigger: True
+                        #Suffer animation triggers from the self damage, no animation overload needed
+        XP: 1
+    Bottom:
+        Abilities:
+            BPrevent:
+                PreventDamage: 3
+                ActiveBonus:
+                    Duration: Persistent
+                    XPTracker: [0,0,1]
+                AnimOverload: PowerUp
+Layout:
+    Top:
+        - Active:
+              Ability: "TSummon"
+              Icon: "Summon"
+              Layout:
+                  - Summon:
+                        Ability: TSummon
+                        SummonName: $FH/120_character_ability_cards_boneshaper_life_in_death_2$
+        - Row: "<size=20%> "
+        - MandatoryTrigger: "$FH/120_character_ability_cards_boneshaper_life_in_death_3$"
+    Bottom:
+        - Active:
+            Ability: BPrevent
+            ListLayout: "$FH/120_character_ability_cards_boneshaper_life_in_death_4$"
+            Layout: "$FH/120_character_ability_cards_boneshaper_life_in_death_4$"
+            Icon: Positive_DamagePrevent
+        - Row: "<size=50%> "
+        - XPTracker: BPrevent

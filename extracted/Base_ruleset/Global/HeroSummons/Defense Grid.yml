@@ -1,0 +1,25 @@
+Parser: HeroSummon
+ID: DefenseGridID
+LocKey: $296_character_ability_cards_trapper_foxhole_4$
+Model: DefenseGrid
+Health: 8
+Move: 0
+Attack: 2
+Range: 3
+OnSummonAbilities:
+    ABuffAttackAura:
+        AutoTrigger: True
+        Filter: Self
+        SkipAnim: True
+        AddActiveBonus:
+            Trap:
+                TrapName: TrapperTrap
+                Damage: 2
+            Range: 1
+            RangeIsBase: True
+            AnimOverload: Place Trap
+            TileFilter: Empty
+        ActiveBonus:
+            Behaviour: EndTurnAbility
+            Duration: Persistent
+            ListLayoutOverride: [$FH/296_character_ability_cards_trapper_foxhole_5$, Positive_TrapCreate]

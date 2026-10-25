@@ -1,0 +1,82 @@
+Parser: AbilityCard
+Name: $FH/331_character_ability_cards_snowdancer_enticing_breeze_1$
+Character: SnowdancerID
+ID: 331
+Level: 1
+Initiative: 76
+Discard: [Discard,Discard]
+Prefab: 331_Snowdancer_EnticingBreeze
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 1
+                    DiamondEnhancements: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                AnimOverload: RangedAttack
+                SubAbilities:
+                    SubPull:
+                        Pull: 2
+                        PullType: PullTowardsAlly
+                        IsInlineSubAbility: True
+                        CanUndo: False
+        Consumes:
+            TCAir:
+                Elements: Air
+                AbilityOverrides:
+                    TCAirAttackBuff:
+                        ParentName: TAttack
+                        Strength: 2
+                XP: 1
+    Bottom:
+        Abilities:
+            BPull:
+                NullTargeting:
+                Filter:
+                    TargetType: Enemy
+                    EnemyType: [Normal, Elite, Boss, Object]
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Pull","Range")
+                AnimOverload: WhiteWinds
+                AreaEffect: "0,0,R|2,0,R|1,1,R|-1,1,R|-2,0,R|-1,-1,R|1,-1,R|4,0,R|3,1,R|3,-1,R"
+                SkipAnim: True
+                SubAbilities:
+                    BPullSub:
+                        Pull:
+                            Amount: 1
+                            SquareEnhancements: 1
+                        TreatAsNonSubAbility: True
+                        Target: -1
+                        Targeting: Custom
+                        TargetingVars:
+                            AddValidActorsInRange: ParentAbility.ActorsTargeted
+                        MiscVars:
+                            NoAreaEffectExplicit: True
+Layout:
+    Top:
+        - Row: 
+            - ColumnWidths: "10,40,40,10"
+            - Column:
+            - Column: "<size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column: "<size=100%><sprite name=Range> *TAttack.Range*, <sprite name=Pull> 2"
+            - Column:
+        - Row: "<size=70%> "
+        - Row: "$FH/331_character_ability_cards_snowdancer_enticing_breeze_2$"
+        - Row: "<size=70%> "
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCAir
+                    Text: "<size=100%>+2 <sprite name=Attack>, <sprite name=XP1>"
+    Bottom: 
+        - Row: 
+            - ColumnWidths: "20,30,30,20"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Pull> *BPullSub* <size=100%><voffset=1>@BPullSub@"
+            - Column: "<b><size=100%><sprite name=Range> 2"
+            - Column:
+        - Row: "£Area£"

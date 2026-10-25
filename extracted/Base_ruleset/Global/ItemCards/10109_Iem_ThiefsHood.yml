@@ -1,0 +1,20 @@
+Parser: ItemCard
+StringID: ThiefsHoodID
+Name: $FH/10109_item_cards_thiefs_hood_1$
+Art: Thiefs Hood
+ID: 10109
+TotalInGame: 1
+Cost: 20
+Slot: Head 
+Usage: Consumed
+Rarity: Rare
+Trigger: SingleAbility
+Data: 
+    Overrides:
+        ALoot:
+            Range: 1
+    CompareAbility:
+        AbilityType: Loot
+        Range: 1
+Layout:
+    - Row: "$FH/10109_item_cards_thiefs_hood_2$"

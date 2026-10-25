@@ -1,0 +1,32 @@
+Parser: ScenarioAbility
+ID: FH119_InfuserDustConsume
+ScenarioAbility:
+    AEndTurnControlInfuser:
+        Filter: Self
+        SkipAnim: True
+        AddActiveBonus:
+            Filter: Self
+            SkipAnim: True
+            AutoTrigger: True
+            # players choose what infuser should do
+            ControlActor:
+                #UseControllingActorPlayerControl: True
+                Abilities:
+                    AChooseInfuserDust:
+                        SkipAnim: True
+                        Filter: Self
+                        HelpBoxTooltipLocKey: "$FH_Scenario_Campaign_119_Activate_Dust_Ability_1$"
+                        PreviewEffectText: "FH_Scenario_Campaign_119_Activate_Dust_Ability_1"
+                        CanUndo: False
+                        MiscVars: 
+                            OverrideIcon: "'Ability_Infuser_Icon'"
+                        NullTargeting: True
+                        MiscVars:
+                            # can either be skipped, or you can perform one of the available bonuses
+                            NoReadyButton: True
+        ActiveBonus:
+            Behaviour: EndTurnAbility
+            Requirements:
+                Vars:
+                    ValidateDusts: ScenarioScript_FH119.current.GetNumDusts() > 0
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_119_Activate_Dust_Ability_1$<br>$FH/FH_Scenario_Campaign_119_Activate_Dust_Ability_2_Move$<br>$FH/FH_Scenario_Campaign_119_Activate_Dust_Ability_3_Heal$<br>$FH/FH_Scenario_Campaign_119_Activate_Dust_Ability_4_Control$, Positive_Infuser]

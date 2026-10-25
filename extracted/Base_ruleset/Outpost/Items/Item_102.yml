@@ -1,0 +1,10 @@
+Parser: FHItem
+ID: 102
+ScenarioItemID: 1069
+Name: Major Element Potion
+Quantity: 2
+Type: Small
+Brewing:
+    Herb1: Arrowvine
+    Herb2: Axenut
+    Herb3: Flamefruit

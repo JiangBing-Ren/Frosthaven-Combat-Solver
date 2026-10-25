@@ -1,0 +1,27 @@
+Parser: ItemCard
+ID: 936
+StringID: SturdyBootsID
+Name: $FH/0936_item_cards_sturdy_boots_1$
+Art: Sturdy Boots
+TotalInGame: 2
+Cost: 0
+Slot: Legs 
+Rarity: Rare
+Usage: Spent
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        ABuffMove:
+            Move: 
+                Amount: 1
+                IgnoreDifficultTerrain: True
+            Filter: Self
+            ActiveBonus:
+                Behaviour: BuffMove
+                Duration: Turn
+Layout: 
+    - Active:
+        Ability: ABuffMove
+        ListLayout: $FH/0936_item_cards_sturdy_boots_2$
+        Layout: $FH/0936_item_cards_sturdy_boots_2$
+        Icon: Positive_MovePlus_IgnoreDifficultTerrain_Item

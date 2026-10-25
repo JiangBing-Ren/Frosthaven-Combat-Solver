@@ -1,0 +1,99 @@
+Parser: Enemy
+ID: MoonshardID
+LocKey: $FH/Moonshard$
+MonsterType: Monster
+StandeeLimit: 1
+Model: Moonshard
+PredominantlyMelee: True
+AbilityCards: [13002]
+# afaik this yml is only for scenario 61 - change freely
+# Base Stats
+Level0:
+    Health: 0
+    Move: 3
+    Attack: 1
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersTimesXPlusLevelTimesY
+            xVariable: 2
+            yVariable: 2
+            MinLValue: 1
+Level1:
+    Health: 2
+    Move: 3
+    Attack: 2
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersTimesXPlusLevelTimesY
+            xVariable: 2
+            yVariable: 2
+Level2:
+    Health: 4
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersTimesXPlusLevelTimesY
+            xVariable: 2
+            yVariable: 2
+ Level3:
+    Health: 6
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersTimesXPlusLevelTimesY
+            xVariable: 2
+            yVariable: 2
+ Level4:
+    Health: 8
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersTimesXPlusLevelTimesY
+            xVariable: 2
+            yVariable: 2
+ Level5:
+    Health: 10
+    Move: 3
+    Attack: 6
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersTimesXPlusLevelTimesY
+            xVariable: 2
+            yVariable: 2
+ Level6:
+    Health: 12
+    Move: 3
+    Attack: 7
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersTimesXPlusLevelTimesY
+            xVariable: 2
+            yVariable: 2
+ Level7:
+    Health: 14
+    Move: 3
+    Attack: 8
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersTimesXPlusLevelTimesY
+            xVariable: 2
+            yVariable: 2

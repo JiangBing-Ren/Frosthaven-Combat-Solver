@@ -1,0 +1,26 @@
+Parser: EnemyCard
+ID: 554
+Name: $Monster_Ability_554_FrostDemon_GatherTheFrost$
+Initiative: 18
+Shuffle: False
+Data:
+    Abilities: 
+        Immo1:
+            Immobilize: True
+            Range: 2
+            RangeIsBase: True
+            ShowRange: False
+            Target: -1
+            TargetIsBase: True
+            ShowTarget: False
+            Filter: Enemy
+            AnimOverload: Debuff
+            Text: "$Target_AllEnemiesWithin$ <nobr>$Range$ <sprite name=Range> 2</nobr>"
+    Consumes:
+        CIce:
+            Elements: Ice
+            Abilities:
+                CIceHeal:
+                    Heal: 3
+                    Filter: Self
+                    AnimOverload: PowerUp

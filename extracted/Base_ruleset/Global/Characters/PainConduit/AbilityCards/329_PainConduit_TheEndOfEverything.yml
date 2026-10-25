@@ -1,0 +1,67 @@
+Parser: AbilityCard
+Name: $FH/329_character_ability_cards_pain_conduit_the_end_of_everything_1$
+Character: PainConduitID
+ID: 329
+Level: 9
+Initiative: 99
+Discard: [Lost,Discard]
+Prefab: 329_PainConduit_TheEndOfEverything
+Data:
+    Top:
+        XP: 2
+        Abilities:
+            TDamageAnyEnemyOnDamaged:
+                Filter: Self
+                AddActiveBonus:
+                    Attack: 5
+                    Target: 5
+                    Range: 5
+                    MiscVars:
+                        PrintedProperties: list("Attack","Target","Range")
+                    MultiPassAttack: False
+                    Filter: Enemy
+                    AnimOverload: TheEndOfEverything
+                    CanUndo: False
+                AnimOverload: Cast
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: DuringActionAbilityOnDeath
+                    TriggerAbilitiesImmediately: True
+                    Restriction: OncePerRound
+                    MiscVars:
+                        DontCancelOnDeath: True
+    Bottom:
+        Abilities:
+            BIgnoreConditions:
+                IgnoreStun: True
+                Filter: Self
+                NullTargeting: True
+                AnimOverload: Cast
+                MiscVars:
+                    IgnoreNegativeConditions: True
+                ActiveBonus:
+                    Duration: Round
+            BMove:
+                Move: 4
+                MiscVars:
+                    PrintedProperties: list("Move")
+Layout:
+    Top:
+        - Active:
+            Ability: TDamageAnyEnemyOnDamaged
+            Icon: Positive_Attack_PainConduit_Death
+            ListLayout: "$FH/329_character_ability_cards_pain_conduit_the_end_of_everything_2$ \n<sprite name=Attack>5 <sprite name=Target>5, <sprite name=Range>5"
+            Layout:
+                - Row: "$FH/329_character_ability_cards_pain_conduit_the_end_of_everything_2$"
+                - Row: "<b><size=130%><sprite name=Attack>5 </b><mark=#80919922><size=100%><sprite name=Target>5, <sprite name=Range>5</mark>"
+    Bottom:      
+        - Row: "$FH/329_character_ability_cards_pain_conduit_the_end_of_everything_3$"
+        - Active:
+            Ability: BIgnoreConditions
+            Icon: Positive_PainConduit
+            ListLayout: "$FH/329_character_ability_cards_pain_conduit_the_end_of_everything_4$"
+            Layout: "$FH/329_character_ability_cards_pain_conduit_the_end_of_everything_4$"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Move>*BMove*"
+
+

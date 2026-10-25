@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 242
+ScenarioItemID: 1252
+Name: Lucky Dice
+Quantity: 1
+GoldCost: 30
+Type: Small
+IsNewCharacterItem: False

@@ -1,0 +1,80 @@
+Parser: AbilityCard
+Name: $FH/454_character_ability_cards_deepwraith_tumultuous_panic_1$
+Character: DeepwraithID
+ID: 454
+Level: 1
+Initiative: 66
+Discard: [Discard,Lost]
+Prefab: 454_Deepwraith_TumultuousPanic
+Data:
+    Top:
+        Abilities:
+            TAttack1:
+                Attack:
+                    Amount: 1
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+            TMove:
+                Move:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            TAttack2:
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+    Bottom:
+        Abilities:
+            BTeleport1:
+                Teleport2: 
+                    Amount: 4
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Teleport")
+                Filter: Self
+                AnimOverload: Teleport Into
+                AnimOverload2: Teleport Outof
+            BImmobilize:
+                Immobilize: True
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Filter: Enemy
+                Target: 99
+                AnimOverload: Intimidate_AOE
+            BTeleport2:
+                Teleport2: 
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Target")
+                Filter: Self
+                AnimOverload: Teleport Into
+                AnimOverload2: Teleport Outof
+            BDisarm:
+                Disarm: True
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Filter: Enemy
+                AnimOverload: Intimidate
+        XP: 1
+Layout:
+    Top:
+        - Row: "<sprite name=Attack> *TAttack1* @TAttack1@"
+        - Divider:
+        - Row: "<sprite name=Move> *TMove* @TMove@"
+        - Divider:
+        - Row: "<sprite name=Attack> *TAttack2* @TAttack2@"
+    Bottom:
+        - Row: "<sprite name=Teleport> *BTeleport1* @BTeleport1@"
+        - Divider:
+        - Row: "$FH/454_character_ability_cards_deepwraith_tumultuous_panic_2$"
+        - Divider:
+        - Row: "<sprite name=Teleport> *BTeleport2* @BTeleport2@"
+        - Divider:
+        - Row: "<sprite name=Disarm> <sprite name=Range> *BDisarm.Range*"

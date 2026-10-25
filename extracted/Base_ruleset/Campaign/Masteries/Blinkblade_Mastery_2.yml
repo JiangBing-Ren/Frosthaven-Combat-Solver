@@ -1,0 +1,32 @@
+Parser: Mastery
+ID: Blinkblade_MASTERY_2
+LocalisedName: Blinkblade_MASTERY_2_Name
+LocalisedDescription: Blinkblade_MASTERY_2_Desc
+PerkPoints: 1
+CheckAtEndOfScenario: True
+BattleGoalCondition:
+    - Targets:
+        # check abilities
+        Filter: TargetedForAttacks
+        # specifically attack ones
+        AbilityTypes: [Attack]
+        # throughout the entire scenario
+        SubFilter: Scenario
+        # only ones targeting the blinkblade
+        CharacterIDs: 
+            ActorID: BlinkbladeID
+        # have to have 0 in order to successd
+        Value: 0
+BattleGoalFailCondition:
+    - Targets:
+        # check abilities
+        Filter: TargetedForAttacks
+        # specifically attack ones
+        AbilityTypes: [Attack]
+        # throughout the entire scenario
+        SubFilter: Scenario
+        # only ones targeting the blinkblade
+        CharacterIDs: 
+            ActorID: BlinkbladeID
+        # fail if you're attacked even once
+        Value: 1

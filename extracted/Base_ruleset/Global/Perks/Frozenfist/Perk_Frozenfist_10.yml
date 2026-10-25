@@ -1,0 +1,20 @@
+Parser: Perk
+ID: Frozenfist10
+Name: FH/PERK_Frozenfist_10_Name
+Description: FH/PERK_Frozenfist_10_Desc
+CharacterID: FrozenFistID
+Available: 1
+Flags: [Passive, ExecuteAbilitiesAfterLongRest]
+Abilities:
+    AHeal:
+        StartAbilityRequirements:
+            Type: ThisAbility
+            DoesntHaveNegativeCondition: [Stun]
+        ShowElementPicker: True
+        Consume:
+              Elements: [Ice, Earth]
+              Abilities:
+                  THeal:
+                      Heal: 2
+                      Filter: Self
+                      AnimOverload: Heal

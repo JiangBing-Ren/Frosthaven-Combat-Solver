@@ -1,0 +1,13 @@
+Parser: FHScenario
+ID: 89
+Name: A Contained Fire
+LevelID: FS_089_A_Contained_Fire
+Chain: JobPosting
+Location: CopperneckMountaions
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: GainRockroot
+          Param1: 2
+        - Type: GainLumber
+          Param1: 2

@@ -1,0 +1,78 @@
+Parser: AbilityCard
+Name: $FH/154_character_ability_cards_geminate_changelings_boon_1$
+Character: GeminateID
+ID: 154
+Level: 1
+ProgressionOrder: 3
+Initiative: 40
+Discard: [Discard,Lost]
+RequiredForm: Melee
+Prefab: 154_Geminate_ChangelingsBoon
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AnimOverload: Attack_Melee
+            TAttack2:
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AnimOverload: Attack_Melee
+    Bottom:
+        Abilities:
+            BBless:
+                Bless:
+                    DiamondPlusEnhancements: 1
+                Filter: Self 
+            BInfuse:
+                AutoTrigger: True
+                AddActiveBonus:
+                    IgnoreStun: True
+                    Consume:
+                        Elements: Any
+                        Abilities:
+                            CAInfuse:
+                                IgnoreStun: True
+                                Infuse: [Light, Fire]
+                                SkipAnim: True
+                                ShowElementPicker: True
+                    Filter: Self
+                Filter: Self
+                ActiveBonus:
+                    Behaviour: EndTurnAbility
+                    Duration: Persistent
+                    ValidAbilityType: Consume
+                    Restriction: OncePerAction
+            TSwitchFormMeleeToRange:
+                Null: True
+                Flags: [SwitchFormMeleeToRange]
+                AutoTrigger: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Bless]
+        XP: 1
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack2* <size=100%><voffset=1>@TAttack2@"
+    Bottom:
+        - Row: "<size=150%><sprite name=Bless> <size=100%>@BBless@ $Self$"
+        - Row: "<size=50%> "
+        - Active:
+           Ability: BInfuse
+           ListLayout: "$FH/154_character_ability_cards_geminate_changelings_boon_3$"
+           Layout: "$FH/154_character_ability_cards_geminate_changelings_boon_3$"
+           Icon: "Positive_FireLightInfuse_Wild"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=200%><sprite name=GMMeleeToRanged>"

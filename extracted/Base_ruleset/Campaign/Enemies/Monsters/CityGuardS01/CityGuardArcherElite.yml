@@ -1,0 +1,58 @@
+Parser: Enemy
+ID: CityGuardArcherEliteID
+LocKey: $FH/CityGuardArcher$
+MonsterType: Monster
+StandeeLimit: 6
+Model: City Archer Elite
+NonEliteVariant: CityGuardArcherID
+PredominantlyMelee: True
+AbilityCards: [754, 755, 756, 757, 758, 759, 760, 761]
+# Base Stats
+Level0:
+    Health: 6
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+Level1:
+    Health: 8
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+Level2:
+    Health: 11
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+Level3:
+    Health: 12
+    Move: 2
+    Attack: 5
+    Range: 1
+    Target: 1
+Level4:
+    Health: 16
+    Move: 2
+    Attack: 5
+    Range: 1
+    Target: 1
+Level5:
+    Health: 18
+    Move: 2
+    Attack: 6
+    Range: 1
+    Target: 1
+Level6:
+    Health: 28
+    Move: 2
+    Attack: 6
+    Range: 1
+    Target: 1    
+Level7:
+    Health: 33
+    Move: 2
+    Attack: 7
+    Range: 1
+    Target: 1

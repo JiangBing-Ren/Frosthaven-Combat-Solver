@@ -1,0 +1,34 @@
+Parser: Perk
+ID: Geminate07
+Name: FH/PERK_Geminate_07_Name
+Description: FH/PERK_Geminate_07_Desc
+CharacterID: GeminateID
+Available: 1
+Flags: [Passive, ApplyActiveBonusesAtScenarioStart]
+Cost: 2
+Abilities:
+    TActive:
+        AutoTrigger: True
+        AddActiveBonus:
+            DiscardCards: 1
+            NegativeAbilityIsOptional: True
+            HelpBoxTooltipLocKey: "FH/PERK_Geminate_07_Desc"
+            SubAbilities:
+                ARecoverDiscardedCards:
+                    RecoverDiscardedCards: 1
+                    IsInlineSubAbility: True
+                    CanSkip: False
+                    Vars:
+                        DiscardedAbilityCards: TargetingActor.CharacterClass.DiscardedAbilityCards
+                        CardLevel: DiscardedAbilityCards[DiscardedAbilityCards.Length - 1].Level
+            Filter: [Self]
+            ActiveBonus:
+                Duration: Round
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringActionAbilityOnActionEnded
+            Restriction: OncePerAction
+            Vars:
+                LastPerformedAbility: TriggerActor.LastAbilityPerformed
+                ValidateDidLoseCard: LastPerformedAbility?.GetAbilityBaseCard()?.SelectedAction?.CardPile == "Lost"
+            Hidden: True

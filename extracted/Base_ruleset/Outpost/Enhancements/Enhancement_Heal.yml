@@ -1,0 +1,7 @@
+Parser: FHEnhancement
+ID: Heal
+Name: Glossary_Enhancement_PlusHeal
+Cost: 30
+Mark: Square
+Effect: AddOne
+ForEffect: Heal

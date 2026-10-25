@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 53.3
+Name: Deathwalker Retires
+SkipNarration: True
+SkipCompletedNotification: False
+Effects:
+    - Type: AddCalendarCampaignSectionNextSummer
+      Param1: 176.4
+      Param2: 2

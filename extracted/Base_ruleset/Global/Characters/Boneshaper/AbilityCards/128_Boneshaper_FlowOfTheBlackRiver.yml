@@ -1,0 +1,54 @@
+Parser: AbilityCard
+Name: $FH/128_character_ability_cards_boneshaper_flow_of_the_black_river_1$
+Character: BoneshaperID
+ID: 128
+Level: 1
+Initiative: 18
+Discard: [Discard,Discard]
+Prefab: 128_Boneshaper_FlowOfTheBlackRiver
+Data:
+    Top:
+        Abilities:
+            THeal:
+                Heal:
+                    Amount: 1
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                StatIsBasedOnX:
+                    Strength:
+                        AddTo: True
+                        BasedOn: ActorCount
+                        Filter: [OwnSummon]
+                Filter: Self
+                AnimOverload: PowerUp
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BAlly:
+                ControlActor:
+                    #UseControllingActorPlayerControl: True
+                    Abilities:
+                        BAllyMove:
+                            Move:
+                                Amount: 2
+                                SquareEnhancements: 1
+                            MiscVars:
+                                PrintedProperties: list("Move")
+                            StrengthIsBase: True
+                Range: 99
+                Filter: OwnSummon
+                AnimOverload: ControlSummon      
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Heal>X+1 <mark=#6EBE4922>$FH/127_character_ability_cards_boneshaper_fell_remedy_3$</mark>"
+        - Row: "$FH/128_character_ability_cards_boneshaper_flow_of_the_black_river_2$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move>2 @BMove@"
+        - Divider:
+        - Row: "$FH/128_character_ability_cards_boneshaper_flow_of_the_black_river_3$"
+        - Row: "<b><size=130%><sprite name=Move>2 @BAllyMove@"

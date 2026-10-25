@@ -1,0 +1,23 @@
+public enum AWScreenName
+{
+	title,
+	run_setup,
+	tutorial_options,
+	load_guildmaster,
+	pause,
+	settings,
+	destination_selection_map,
+	guildmaster_merchant,
+	guildmaster_trainer,
+	guildmaster_temple,
+	guildmaster_enchanter,
+	character_select,
+	card_selection,
+	equipment_selection,
+	perk_selection,
+	loadout_screen,
+	results_screen,
+	rewards_screen,
+	battle_goal_selection,
+	town_records
+}

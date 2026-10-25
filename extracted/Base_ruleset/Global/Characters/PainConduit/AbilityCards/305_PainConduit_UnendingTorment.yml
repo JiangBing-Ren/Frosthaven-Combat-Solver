@@ -1,0 +1,76 @@
+Parser: AbilityCard
+Name: $FH/305_character_ability_cards_pain_conduit_unending_torment_1$
+Character: PainConduitID
+ID: 305
+Level: 1
+Initiative: 29
+Discard: [Discard,Discard]
+Prefab: 305_PainConduit_UnendingTorment
+Data:
+    Top:
+        Abilities:
+            THeal:
+                Heal: 
+                    Amount: 5
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self
+                AnimOverload: Heal
+            TImmobilizeSelf:
+                Immobilize: True
+                Filter: Self
+                CanUndo: True
+                NegativeAbilityIsOptional: True
+                CanSkip: True
+                SubAbilities:
+                    TInfuse:
+                        Infuse: Fire
+                        XP: 1
+    Bottom:
+        Abilities:
+            BHeal:
+                Heal: 
+                    Amount: 5
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self
+                AnimOverload: Heal
+            BMuddleSelf:
+                Muddle: True
+                Filter: Self
+                CanUndo: True
+                NegativeAbilityIsOptional: True
+                CanSkip: True
+                SubAbilities:
+                    TInfuse:
+                        Infuse: Air
+                        XP: 1
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "20,30,30"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Heal> *THeal* <size=100%><voffset=1>@THeal@"
+            - Column:
+                - Row: "<mark=#80919922>$Self$</mark>"
+        - Divider:        
+        - Conditional:
+            Layout:
+                - Row: "<sprite name=Immobilize> $Self$: <sprite name=CreateFire>, <sprite name=XP1>"
+
+    Bottom:
+        - Row:
+            - ColumnWidths: "20,30,30"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Heal> *BHeal* <size=100%><voffset=1>@BHeal@"
+            - Column:
+                - Row: "<mark=#80919922>$Self$</mark>"
+        - Divider:
+        - Conditional:
+            Layout:
+                - Row: "<sprite name=Muddle> $Self$: <sprite name=CreateAir>, <sprite name=XP1>"
+

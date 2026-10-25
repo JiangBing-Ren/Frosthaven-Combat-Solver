@@ -1,0 +1,190 @@
+Parser: AbilityCard
+Name: $FH/263_character_ability_cards_shattersong_shrieking_chakram_1$
+Character: ShattersongID
+ID: 263
+Level: 5
+Initiative: 8
+Discard: [Lost,Discard]
+Prefab: 263_Shattersong_ShriekingChakram
+Data:
+    Top:
+        XP: 2
+        Infuse: Air
+        Abilities:
+            TWaveAttack:
+                Filter: Self          
+                HelpBoxTooltipLocKey: "$FH/GUI_CHOOSE_RESONANCE_TOKEN_COUNT$"
+                PreviewEffectText: "<sprite name=Attack>4 <sprite name=Target> X, <sprite name=Range> 4"           
+                MiscVars:
+                    # doing the chosen ability as a sub ability so we can preview the effect
+                    DontPerformChosenAbility: True              
+                    OverrideIcon: "'Ability_Shattersong_Icon'"
+                Choose:
+                    Choices:
+                        D1:
+                            PreviewEffectText: "1"
+                            Strength: 1
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 1
+                        D2:
+                            PreviewEffectText: "2"
+                            Strength: 2
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 2
+                        D3:
+                            PreviewEffectText: "3"
+                            Strength: 3
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 3
+                        D4:
+                            PreviewEffectText: "4"
+                            Strength: 4
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 4
+                        D5:
+                            PreviewEffectText: "5"
+                            Strength: 5
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 5
+                PerformVars:
+                    ApplyToActors:
+                        Resonance: ChosenAbility?.Strength || 0
+                        Tokens: Resonance * -1
+                Flags: [ModifiesResonanceTokens]
+                SubAbilities:
+                    TAttack:
+                        Flags: [SubAbilityPreview]
+                        TreatAsNonSubAbility: True
+                        UseParentTargets: False
+                        Filter: Enemy
+                        Attack: 4
+                        Range: 4
+                        MiscVars:
+                            PrintedProperties: list("Attack","Range","Target")     
+                        Target: 0
+                        AnimOverload: Shrieking Chakram
+                        StatIsBasedOnX:
+                            Target:
+                                BasedOn: Vars
+                                Vars:
+                                    Strength: ParentAbility.ChosenAbility?.Strength || 0
+                                    Value: max(1, Strength)
+                        PerformVars:
+                            OnAbilityEnded:
+                                StackSubAbilities: obj.AbilityHasHappened && CustomAbility.StackNonInlineSubabilities(obj)
+                        SubAbilities:
+                            TFinishWave:
+                                NullTargeting: True
+                                Filter: Self
+                                SkipAnim: True
+                                AutoTrigger: True
+                                TreatAsNonSubAbility: True
+                                Flags: [Wave]
+        XP: 2
+    Bottom:
+        Abilities:
+            BWaveMove:
+                Filter: Self          
+                HelpBoxTooltipLocKey: "$FH/GUI_CHOOSE_RESONANCE_TOKEN_COUNT$"
+                PreviewEffectText: "<sprite name=Move> X, <sprite name=Damage> 2"           
+                MiscVars:
+                    # doing the chosen ability as a sub ability so we can preview the effect
+                    DontPerformChosenAbility: True          
+                Choose:
+                    Choices:
+                        D1:
+                            PreviewEffectText: "1"
+                            Strength: 1
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 1
+                        D2:
+                            PreviewEffectText: "2"
+                            Strength: 2
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 2
+                        D3:
+                            PreviewEffectText: "3"
+                            Strength: 3
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 3
+                        D4:
+                            PreviewEffectText: "4"
+                            Strength: 4
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 4
+                        D5:
+                            PreviewEffectText: "5"
+                            Strength: 5
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 5
+                PerformVars:
+                    ApplyToActors:
+                        ClearDamagedActorList: CustomAbility.GetListFromActor(TargetingActor, "Damaged_263").Clear()
+                        Resonance: ChosenAbility?.Strength || 0
+                        Tokens: Resonance * -1
+                        PerformXTimes: CustomAbility.InjectActiveBonusAbilityXTimes(Resonance, ActiveBonusData, TargetingActor, thisContext)
+                Flags: [ModifiesResonanceTokens]
+                ActiveBonus:
+                    AbilityData:
+                        Move: 1
+                        MiscVars:
+                            PrintedProperties: list("Move")     
+                        SubAbilities:
+                            BDamage:
+                                TreatAsNonSubAbility: True
+                                Damage: 2
+                                MiscVars:
+                                    PrintedProperties: list("Damage")     
+                                Range: 1
+                                AnimOverload: Shrieking Chakram
+                                Filter: 
+                                    TargetType: Enemy
+                                    Vars: 
+                                        DamagedActorList: CustomAbility.GetListFromActor(TargetingActor, "Damaged_263")
+                                        ValidateHasntBeenDamaged: DamagedActorList.Contains(target) == False
+                                PerformVars:
+                                    ActorBeenDamaged:
+                                        Target: ActorsToTarget[0]
+                                        AddToList: CustomAbility.AddObjectToList(TargetingActor, "Damaged_263", Target)
+                # necessary for Feedback bonus to give 1 resonance token AT THE END of this action, not before any of the moves
+                SubAbilities:
+                    TFinishWave:
+                        NullTargeting: True
+                        Filter: Self
+                        SkipAnim: True
+                        AutoTrigger: True
+                        TreatAsNonSubAbility: True
+                        Flags: [Wave]
+
+Layout:
+    Top:
+        - Row: "$FH/character_ability_cards_shattersong_wave$"
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <mark=#FCD06E22><b><size=130%><sprite name=Target> X, <sprite name=Range> *TAttack.Range*</mark>"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Air
+    Bottom:
+        - Row: "$FH/character_ability_cards_shattersong_wave$"
+        - Row: "$FH/263_character_ability_cards_shattersong_shrieking_chakram_2$"
+        - Row: "<sprite name=Move> 1"
+        - Row: "$FH/263_character_ability_cards_shattersong_shrieking_chakram_3$"

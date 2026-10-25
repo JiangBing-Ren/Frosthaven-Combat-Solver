@@ -1,0 +1,28 @@
+Parser: ItemCard
+ID: 1299
+StringID: DetonatorID
+Name: $FH/1299_item_cards_detonator_1$
+Art: Detonator
+TotalInGame: 2
+Cost: 0
+Slot: OneHand
+Rarity: Rare
+Usage: Consumed
+Trigger: OnSummonKilled
+Data:
+    Abilities:
+        ARetaliate:
+            CanUndo: False
+            Damage: 2
+            Conditions: Wound
+            Filter: Enemy
+            Target: -1
+            Vars:
+                ActorsInRangeOfTarget: GameState.GetActorsInRange(AppliedActor, AppliedActor, 1, null, obj.AbilityFilter, null, null, true)
+                TilesInRange: GameState.GetTilesInRange(AppliedActor, 1, CAbility.EAbilityTargeting.Range, false)
+            Targeting: Custom
+            TargetingVars:               
+                AddValidActorsInRange: ActorsInRangeOfTarget
+                AddTilesInRange: TilesInRange
+Layout:
+    - Row: $FH/1299_item_cards_detonator_2$

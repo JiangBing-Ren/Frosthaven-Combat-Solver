@@ -1,0 +1,67 @@
+Parser: AbilityCard
+Name: $FH/072_character_ability_cards_banner_spear_incendiary_throw_1$
+#CustomImage: KRO_BANNER_SPEAR_AbilityCards_IncendiaryThrow
+Character: BannerSpearID
+ID: 72
+Level: X
+Initiative: 22
+Discard: [Discard,Lost]
+Prefab: 72_Bannerspear_IncendiaryThrow
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 1
+                    DiamondEnhancements: 1
+                Range:
+                    Amount: 3
+                MiscVars:
+                    PrintedProperties: list("Attack", "Range")
+                SubAbilities:
+                    TCSubWoundAdjacent:
+                        Wound: True
+                        TreatAsNonSubAbility: True
+                        AutoTrigger: True
+                        Range: 1
+                        Target: -1
+                        Filter: [Enemy]
+                        Flags: [SubAbilityPreview]
+                        AllTargetsAdjacentToParentTargets: True
+                        SkipAnim: True
+                        UseParentTargets: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateDidDamage: GameState.TargetsActuallyDamagedInPrevAttackThisTurn > 0
+                AnimOverload: RangedAttack_IncendiaryThrow               
+        Infuse: Fire
+    Bottom:
+        Abilities:
+            BSummon:
+                Summon: TorchBearerID
+                AnimOverload: Summon
+        XP: 2
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "15,30,20,15"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column: "<mark=#FCD06E22><sprite name=Range> *TAttack.Range*</mark>"
+            - Column:
+        - Row: "$FH/072_character_ability_cards_banner_spear_incendiary_throw_2$"
+        - Row: "<size=20%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Fire
+    Bottom:
+        - Active:
+            Ability: "BSummon"
+            Icon: "Summon"
+            Layout:
+                - Summon:
+                    Ability: BSummon
+                    SummonName: $FH/072_character_ability_cards_banner_spear_incendiary_throw_3$
+                    SpecialText:
+                        - Row: "<size=150%><sprite name=Wound>"

@@ -1,0 +1,51 @@
+Parser: AbilityCard
+Name: $FH/219_character_ability_cards_pyroclast_lava_bomb_1$
+Character: PyroclastID
+ID: 219
+Level: 1
+Initiative: 53
+Discard: [Discard,Discard]
+Prefab: 219_Pyroclast_LavaBomb
+Data:
+    Top:
+        Infuse: [Fire]
+        Abilities:
+            TAttack:    
+                Attack:
+                    Amount: 2
+                    SquareEnhancements: 1
+                Range: 
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                AnimOverload: RangedAttack
+                SubAbilities:
+                    TCreateHazardousTerrain:
+                        IsInlineSubAbility: True
+                        CreateLimitedHazardousTerrain: True
+                        Vars:
+                            OverridePropName: "'PyroclastHazardTerrain'"
+                        TileFilter: FeaturelessHex
+                        AnimOverload: TerrainFormation
+                        AutoTrigger: True
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 4
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+Layout:
+    Top:
+        - Row:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column: "<mark=#80919922><size=100%><sprite name=Range> *TAttack.Range* <voffset=1>@TAttack.Range@</mark>"
+        - Divider: 
+        - Row: "$FH/219_character_ability_cards_pyroclast_lava_bomb_2$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Fire]
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"

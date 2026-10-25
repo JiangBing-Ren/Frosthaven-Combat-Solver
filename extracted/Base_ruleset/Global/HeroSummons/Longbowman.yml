@@ -1,0 +1,17 @@
+Parser: HeroSummon
+ID: LongbowmanID
+LocKey: $FH/085_character_ability_cards_banner_spear_lead_from_afar_3$
+Model: Longbowman
+PlayerControlled: False
+Health:
+    Amount: 4
+    SquareEnhancements: 1
+Move:
+    Amount: 2
+    SquareEnhancements: 1
+Attack:
+    Amount: 2
+Range:
+    Amount: 4
+    SquareEnhancements: 1
+OnAttackConditions: Muddle

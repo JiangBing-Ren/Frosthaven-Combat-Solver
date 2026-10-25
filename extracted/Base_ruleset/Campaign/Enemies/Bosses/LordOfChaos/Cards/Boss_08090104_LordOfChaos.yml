@@ -1,0 +1,27 @@
+Parser: EnemyCard
+ID: 08090104
+Name: $Monster_Ability_Boss_LordOfChaos_Special1$
+Initiative: 85
+Shuffle: True
+Data:
+    Abilities:  
+        Dummy:
+          Null: True
+          Flags: [Special1]
+          TextOnly: True
+          Text: "$FH/boss_stat_cards_lord_of_chaos_2$"
+          AnimOverload: Summon
+        Dummy2:
+          Null: True #wait for idle
+        Attack1:
+          Attack: -2
+          Range: 5
+          RangeIsBase: True
+          Conditions: [Immobilize]
+          Target: 1
+          TargetIsBase: True
+          AnimOverload: RangedAttack
+          StatIsBasedOnX:
+            Target:
+                BasedOn: InitialPlayerCharacterCount
+                AddTo: False

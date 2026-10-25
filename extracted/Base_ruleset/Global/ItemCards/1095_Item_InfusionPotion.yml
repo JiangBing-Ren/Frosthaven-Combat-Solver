@@ -1,0 +1,21 @@
+Parser: ItemCard
+ID: 1095
+StringID: InfusionPotionID
+Name: $FH/1095_item_cards_infusion_potion_1$
+Art: Infusion Potion
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        AInfuse:
+            ShowElementPicker: True
+            Infuse: Any
+            Filter: Self
+            MiscVars:
+                InfuseAsStrong: True
+Layout: 
+    - Row: "$FH/1095_item_cards_infusion_potion_2$"

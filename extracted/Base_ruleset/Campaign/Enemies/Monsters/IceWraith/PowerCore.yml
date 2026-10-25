@@ -1,0 +1,112 @@
+Parser: Enemy
+ID: PowerCoreID
+LocKey: $FH/PowerCore$
+MonsterType: Monster
+StandeeLimit: 1
+Model: ThePowerCore
+PredominantlyMelee: False
+AbilityCards: [642, 643, 644, 645, 646, 647, 648, 649]
+# Base Stats
+Level0:
+    Health: 7
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Flying: True
+    Shield: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 3.5    
+Level1:
+    Health: 8
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Flying: True
+    Shield: 2
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 4
+Level2:
+    Health: 10
+    Move: 3
+    Attack: 2
+    Range: 1
+    Target: 1
+    Flying: True
+    Shield: 2
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 5
+Level3:
+    Health: 10
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Flying: True
+    Shield: 2
+    Conditions: [Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 5
+Level4:
+    Health: 12
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Flying: True
+    Shield: 2
+    Conditions: [Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 6
+Level5:
+    Health: 16
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Flying: True
+    Shield: 2
+    Conditions: [Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 8
+Level6:
+    Health: 21
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Flying: True
+    Shield: 2
+    Conditions: [Curse]
+    Immunities: [Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 10.5
+Level7:
+    Health: 27
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    Flying: True
+    Shield: 2
+    Conditions: [Curse]
+    Immunities: [Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 13.5

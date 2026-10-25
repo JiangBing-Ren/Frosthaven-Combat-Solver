@@ -1,0 +1,7 @@
+Parser: Perk
+ID: Pyroclast09
+Name: FH/PERK_Pyroclast_09_Name
+Description: FH/PERK_Pyroclast_09_Desc
+CharacterID: PyroclastID
+Available: 1
+Flags: [Passive, IgnoreNegativeScenarioEffects]

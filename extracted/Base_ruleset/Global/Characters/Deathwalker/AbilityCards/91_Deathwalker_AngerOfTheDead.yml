@@ -1,0 +1,104 @@
+Parser: AbilityCard
+Name: $FH/091_character_ability_cards_deathwalker_anger_of_the_dead_1$
+Character: DeathwalkerID
+ID: 91
+Level: 1
+Initiative: 14
+Discard: [Discard,Discard]
+Prefab: 91_Deathwalker_AngerOfTheDead
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                AnimOverload: RangedAttack
+        Consumes:
+            TCBuffAttack:
+                CostAbility:
+                    ParentName: TAttack
+                    RemoveShadow:
+                    Target: 99
+                    Range: 3
+                    Vars:
+                        TargetsUpTo: True
+                        SendBuffProjectiles: True
+                    StartAbilityRequirements:
+                        Type: ThisAbility
+                        Vars:
+                            ValidateHasValidTargets: ScenarioManager.CurrentScenarioState.ShadowProps.Count > 0
+                    AnimOverload: Shadow Manipulation
+                AbilityOverrides:
+                    TCAttackBuff:
+                        ParentName: TAttack
+                        StatIsBasedOnX:
+                            Strength:
+                                AddTo: True
+                                BasedOn: ObstaclesDestroyedThisAction
+                                Multiplier: 1
+                            Range:
+                                AddTo: True
+                                BasedOn: ObstaclesDestroyedThisAction
+                                Multiplier: 1
+                            Pierce:
+                                BasedOn: ObstaclesDestroyedThisAction
+                                Multiplier: 1
+                            XP:
+                                BasedOn: ObstaclesDestroyedThisAction
+                                Multiplier: 1
+    Bottom:
+        Abilities:
+            BWound:
+                Wound: True
+                Filter: Enemy
+                Target: 99
+                MiscVars:
+                    AutoSelectValidTiles: True
+                Targeting: Custom
+                TargetingVars:
+                    AddTilesInRange: ScenarioManager.CurrentScenarioState.ShadowProps.Select(PropTile)
+                    AddValidActorsInRange: CustomAbility.GetValidActorsOnShadows(TargetingActor)
+                AnimOverload: Debuff
+            BActiveWound:
+                AddActiveBonus:
+                    Wound: True
+                    SkipAnim: True
+                    Filter: Self
+                    SkipAnim: True
+                CanUndo: False
+                Filter: Self
+                Range: 99
+                Target: -1
+                ActiveBonus:
+                    Duration: Round
+                    Behaviour: DuringActionAbilityOnMoved
+                    IsAura: True
+                    AuraTargeting: All
+                    AuraFilter: Enemy
+                    Vars:
+                        Tile: TriggerActor.Tile
+                        ValidateSteppedOnShadow: CustomAbility.SteppedOnShadow(Tile)
+                AnimOverload: PowerUp
+Layout:
+    Top:
+        - Row: "<b><size=130%> <sprite name=Attack> *TAttack* <size=130%><voffset=1> @TAttack@"
+        - Row: "<sprite name=Range> *TAttack.Range*"
+        - Row: "<size=20%> "
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCBuffAttack
+                    Text: "$FH/091_character_ability_cards_deathwalker_anger_of_the_dead_2$"
+    Bottom:
+        - Row: "$FH/091_character_ability_cards_deathwalker_anger_of_the_dead_3$"
+        - Divider:
+        - Row: "<size=20%> "
+        - Active:
+            Ability: BActiveWound
+            Icon: Positive_Wound_Enemy_Shadow
+            ListLayout: "$FH/091_character_ability_cards_deathwalker_anger_of_the_dead_4$"
+            Layout: "$FH/091_character_ability_cards_deathwalker_anger_of_the_dead_4$"

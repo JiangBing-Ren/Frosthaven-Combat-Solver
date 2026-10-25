@@ -1,0 +1,88 @@
+Parser: AbilityCard
+Name: $FH/426_character_ability_cards_metal_mosaic_processing_1$
+Character: MetalMosaicID
+ID: 426
+Level: X
+Initiative: 95
+Discard: [Discard,Discard]
+Prefab: 426_MetalMosaic_Processing
+Data:
+    Top:
+        Abilities:
+            TPlayThreeCardsBonus:
+                AddActiveBonus:
+                    Filter: Self
+                    AutoTrigger: True
+                    SkipAnim: True
+                    # doing this as a control ability so that the bonus is a dummy, the processing card should be in the discard pile, explicitly mentioned as such in the card text
+                    ControlActor: 
+                        Abilities:
+                            TPlayThreeCardsRoundBonus:
+                                AutoTrigger: true
+                                Filter: Self
+                                NullTargeting: True
+                                SkipAnim: True
+                                ActiveBonus:
+                                    Duration: Round
+                                    ListLayoutOverride: [$FH/426_character_ability_cards_metal_mosaic_processing_3$, Positive_Cards]
+                                    Vars:
+                                        ExtraRoundCards: 1
+                Filter: Self
+                AnimOverload: CastNeutral
+                ActiveBonus:
+                    Duration: Persistent
+                    ListLayoutOverride: [$FH/426_character_ability_cards_metal_mosaic_processing_2$, Positive_Cards]
+                    Behaviour: StartRoundAbility
+                    TriggerOnCaster: True
+                    XPTracker: [0]
+                SubAbilities:
+                    SubXP:
+                        GainXP: 1
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Low
+                    BPressureChangeLow:
+                        Null: True
+                        SkipAnim: True
+                        IgnoreStun: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Low
+                        PerformVars:
+                            NullBegin:
+                                ChangePressure: CustomAbility.PressureChange(TargetingActor, 1)
+                    BPressureChangeRegular:
+                        Null: True
+                        SkipAnim: True
+                        IgnoreStun: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Regular
+                        PerformVars:
+                            NullBegin:
+                                ChangePressure: CustomAbility.PressureChange(TargetingActor, 1)
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BLoot:
+                Loot: 1
+                MiscVars:
+                    PrintedProperties: list("Loot")
+                Target: -1
+Layout:
+    Top:
+        - Row: "$FH/426_character_ability_cards_metal_mosaic_processing_2$"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureRegular><size=100%> <sprite name=MMGainPressure>"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureLow><size=100%> <sprite name=XP1>, <sprite name=MMGainPressure>"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove*"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Loot> *BLoot*"

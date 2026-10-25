@@ -1,0 +1,61 @@
+Parser: AbilityCard
+Name: $FH/111_character_ability_cards_deathwalker_dominate_1$
+Character: DeathwalkerID
+ID: 111
+Level: 5
+Initiative: 29
+Discard: [Discard,Discard]
+Prefab: 111_Deathwalker_Dominate
+Data:
+    Top:
+        Abilities:
+            TPerformAttackFromShadow:
+                PerformFromShadow:
+                    RemoveWhenDone: True
+                    Abilities:
+                        PFSAttack:
+                            Attack:
+                                Amount: 6
+                                DiamondEnhancements: 1
+                            MiscVars:
+                                PrintedProperties: list("Attack")
+                            Range: 1
+                Range: 99
+                Target: 1
+                AnimOverload: ShadowAttack
+                # xp should be awarded only if the attack went through
+                MiscVars:
+                    ExplicitlyDoesNothing: True
+        Consumes:
+            TCDark:
+                Elements: Dark
+                AbilityOverrides:
+                    TCDarkBuff:
+                        ParentName: PFSAttack
+                        Conditions: [Disarm]
+        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 4
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+        Infuse: Dark
+Layout:
+    Top:
+        - Row: "<b><size=130%> <sprite name=Attack> *PFSAttack* <b><size=100%> @PFSAttack@"
+        - Row: "<size=20%> "
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCDark
+                    Text: "<nobr> <sprite name=Disarm></nobr>"
+        - Row: "$FH/111_character_ability_cards_deathwalker_dominate_2$"
+    Bottom:
+        - Row: "<sprite name=Move> *BMove* @BMove@"
+        - Row: "<size=100%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark

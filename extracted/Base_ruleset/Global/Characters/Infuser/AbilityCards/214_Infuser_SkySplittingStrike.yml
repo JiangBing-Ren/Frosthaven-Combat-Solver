@@ -1,0 +1,108 @@
+Parser: AbilityCard
+Name: $FH/214_character_ability_cards_infuser_skysplitting_strike_1$
+Character: InfuserID
+ID: 214
+Level: 9
+Initiative: 50
+Discard: [Discard,Lost]
+Prefab: 214_Infuser_Sky-SplittingStrike
+Data:
+    Top:
+        Abilities:
+           TAttack:
+                Attack:
+                    Amount: 6
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Target: 1
+                Range: 1
+                Filter: Enemy
+                AnimOverload: Sky-SplittingStrike
+        Consumes:
+            BCAir:
+                Elements: Air
+                AbilityOverrides:
+                    BCAttackBuff:
+                        ParentName: TAttack
+                        Pierce: 5
+                        MiscVars:
+                            PrintedProperties: list("Pierce")
+                Abilities:
+                    BXP:
+                        GainXP: 1
+            BCEarth:
+                Elements: Earth
+                AbilityOverrides:
+                    BCAttackBuff:
+                        ParentName: TAttack
+                        Strength: 1
+                        Conditions: [Wound]
+            BCDark:
+                Elements: Dark
+                AbilityOverrides:
+                    BCAttackBuff:
+                        ParentName: TAttack
+                        Conditions: [Disarm]
+    Bottom:
+        Abilities:
+            BSkySplittingCreateObstacle:
+                Create: RockTriple
+                Range: 4
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Target: 1
+                TileFilter: EmptyHex
+                AnimOverload: CreateObstacle
+                AreaEffect: "0,0,R|-1,1,R|1,1,R"
+                AreaEffectLayoutOverride: "0,0,R|2,0,R|1,1,R"
+                Vars:
+                    OverridePropName: "'Infuser3HObstacle'"
+            BObstacleDamage:
+                Damage: 4
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Conditions: [Stun]
+                Target: -1
+                Range: 1
+                SkipAnim: True
+                Filter: Enemy
+                Targeting: Custom
+                Vars:
+                    Parent: CustomAbility.FindAbilityInPhaseByName("BSkySplittingCreateObstacle")
+                TargetingVars:
+                    AddTilesInRange: CustomAbility.GetAdjacentTiles(Parent.TilesSelected)
+                    AddValidActorsInRange: CustomAbility.GetActorsWithAdjacentObstacles(Ability, 1, Parent.TilesSelected)
+                    AddActorsToTarget: CustomAbility.GetActorsWithAdjacentObstacles(Ability, 1, Parent.TilesSelected)
+                    AddSelectedTiles: CustomAbility.GetActorsWithAdjacentObstacles(Ability, 1, Parent.TilesSelected).Select(obj.Tile)
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [ Create ]
+                    DoesntHaveNegativeCondition: [Stun]
+        Infuse: [Air, Earth, Dark]
+        XP: 1
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: BCAir
+                    Text: "<sprite name=Pierce> 5, <sprite name=XP1>"
+                - Consume:
+                    Name: BCEarth
+                    Text: "+1<sprite name=Attack>, <sprite name=Wound>"
+                - Consume:
+                    Name: BCDark
+                    Text: "<sprite name=Disarm>"
+    Bottom:
+        - Row: "$FH/214_character_ability_cards_infuser_skysplitting_strike_2$"
+        - Divider:
+        - Row: "$FH/214_character_ability_cards_infuser_skysplitting_strike_3$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Earth, Air, Dark]
+
+        

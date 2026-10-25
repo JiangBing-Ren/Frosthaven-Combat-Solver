@@ -1,0 +1,46 @@
+Parser: ItemCard
+ID: 1015
+StringID: RoseGauntletID
+Name: $FH/1015_item_cards_rose_gauntlet_1$
+Art: Rose Gauntlet
+TotalInGame: 2
+Cost: 0
+Slot: OneHand
+Rarity: Rare
+Usage: Consumed
+Trigger: AfterAttackedIgnoringDamageTaken
+Data: 
+    ItemRequirements:
+        Vars:
+            ActorBeingAttacked: Ability.VarsContext.parentContext.ActorBeingAttacked
+            ItemOwner: Ability.VarsContext.parentContext.ItemOwner
+            ValidateIsAlly: CustomAbility.IsAlly(ActorBeingAttacked, ItemOwner)
+            ValidateInRange: ActorBeingAttacked.GetDistanceTo(ItemOwner) <= 2
+            ValidateIsAlive: ActorBeingAttacked.IsDead == false
+            ValidateSufferedDamage: GameState.LastTargetSummary.ActualDamageTaken > 0
+            ValidateCanUseItems: ItemOwner.Tokens.HasKey(CCondition.ENegativeCondition.Impair) == false && ItemOwner.Tokens.HasKey(CCondition.ENegativeCondition.Stun) == false  
+    Abilities:
+        ARemoveConditions:        
+            RemoveConditions: "All"
+            Conditions: [Wound,Brittle,Bane,Poison,Immobilize,Disarm,Impair,Stun,Muddle,StopFlying] 
+            Filter: Ally
+            PreviewEffectText: "$FH/RemoveNegativeConditions$"
+            Target: -1
+            Targeting: Custom
+            TargetingVars:
+                AddValidActorInRange: ActorBeingAttacked
+        AHeal:
+            Heal: 3 
+            Filter: Ally
+            Target: -1
+            Targeting: Custom
+            TargetingVars:
+                AddValidActorInRange: ActorBeingAttacked
+        APull:
+            Pull: 1 
+            Filter: Ally
+            Vars:
+                TargetThisActorAutomatically: ActorBeingAttacked
+            Target: -1
+Layout: 
+    - Row: $FH/1015_item_cards_rose_gauntlet_2$

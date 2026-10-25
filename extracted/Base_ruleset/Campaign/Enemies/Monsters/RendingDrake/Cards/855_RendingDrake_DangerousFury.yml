@@ -1,0 +1,14 @@
+Parser: EnemyCard
+ID: 855
+Name: $Monster_Ability_855_RendingDrake_DangerousFury$
+Initiative: 59
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: -2
+        Attack1:
+            Attack: +1
+            Target: 2
+            TargetIsBase: True
+            Filter: Enemy

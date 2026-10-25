@@ -1,0 +1,9 @@
+Parser: EnemyCard
+ID: 13001
+Name: $Monster_Ability_Advance$
+Initiative: 50
+Shuffle: True
+Data:
+    Abilities: 
+        Move1:
+            Move: 0

@@ -1,0 +1,115 @@
+Parser: AbilityCard
+Name: $FH/140_character_ability_cards_boneshaper_flesh_shield_1$
+Character: BoneshaperID
+ID: 140
+Level: 4
+Initiative: 16
+Discard: [Discard,Discard]
+Prefab: 140_Boneshaper_FleshShield
+Data:
+    Top:
+        Abilities:
+            TControl:
+                ControlActor:
+                    Abilities:
+                        TShield:
+                            Shield: 1
+                            MiscVars:
+                                PrintedProperties: list("Shield")
+                            ActiveBonus:
+                                Duration: Round
+                                ListLayoutOverride: [<sprite name=Shield> *TShield*, Positive_Shield]
+                            Target: Self
+                            SkipAnim: True
+                            SubAbilities:
+                                TRetaliate:
+                                    Filter: Self
+                                    TreatAsNonSubAbility: True
+                                    Retaliate:
+                                        Amount: 1
+                                        DiamondPlusEnhancements: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Retaliate")
+                                    ActiveBonus:
+                                        Duration: Round
+                                        ListLayoutOverride: ["<sprite name=Retaliate> *TRetaliate*", Positive_Retaliate]
+                                    SkipAnim: True
+                                    AutoTrigger: True
+                    ControlActorType: Player
+                Range: 3
+                Target: 1
+                Filter: Ally
+                AnimOverload: PowerUp
+        Consumes:
+            TCEarth:
+                Elements: Earth
+                AbilityOverrides:
+                    TCEarthShieldBuff:
+                        ParentName: TShield
+                        Strength: 1
+            TCDark: # Consume on shield, but give bonus only to retaliate
+                Elements: Dark
+                AbilityOverrides:
+                    TCDarkActivate:
+                        ParentName: TShield 
+                        Vars:
+                            DontLog: True
+                    TCDarkRetaliateBuff:
+                        ParentName: TRetaliate
+                        Strength: 1
+                XP: 1
+    Bottom:
+        Abilities:
+            BSelfDamage:
+                CanUndo: True
+                NegativeAbilityIsOptional: True
+                Damage: 2
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Filter: Self
+                TextOnly: True
+                CanSkip: False
+                #Suffer animation triggers from the self damage, no animation overload needed
+            BPrevent:
+                PreventDamage: 1
+                Target: -1
+                Targeting: All
+                Filter: Self
+                AutoTrigger: True
+                ActiveBonus:
+                    Duration: Persistent
+                    XPTracker: [0]
+                    IsAura: True
+                    AuraTargeting: All
+                    AuraFilter: OwnSummon
+                AnimOverload: PowerUpPotent
+                
+Layout:
+    Top:
+        - Row: "$FH/140_character_ability_cards_boneshaper_flesh_shield_2$"
+        - Row: "<size=20%> "
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCEarth
+                    Text: "+1<sprite name=Shield>"
+        - Row: "<size=50%> "
+        - Row: "<b><size=130%><sprite name=Retaliate><size=100%> 1 @TRetaliate@"
+        - Row: "<size=20%> "
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCDark
+                    Text: "+1 <sprite name=Retaliate>, <sprite name=XP1>"
+    Bottom:
+        - MandatoryTrigger: "<sprite name=Damage>2 self"
+        - Divider:
+        - Active:
+            Ability: BPrevent
+            ListLayout: $FH/140_character_ability_cards_boneshaper_flesh_shield_3$
+            Layout: $FH/140_character_ability_cards_boneshaper_flesh_shield_3$
+            Icon: Positive_DamagePrevent_Summon
+        - Row: "<size=50%> "
+        - XPTracker: BPrevent

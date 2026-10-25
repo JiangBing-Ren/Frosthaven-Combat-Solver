@@ -1,0 +1,16 @@
+Parser: FHScenario
+ID: 26
+Name: Quatryl Library
+LevelID: FS_026_Quatryl_Library
+Chain: Unfettered
+Location: CrystalFields
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: AllCharactersGainExperience
+          Param1: 10
+        - Type: AddCalendarCampaignSection
+          Param1: 169.3
+          Param2: 4
+        - Type: LockScenario
+          Param1: 25

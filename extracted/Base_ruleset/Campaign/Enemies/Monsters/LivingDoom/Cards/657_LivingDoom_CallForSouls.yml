@@ -1,0 +1,19 @@
+Parser: EnemyCard
+ID: 657
+Name: $Monster_Ability_657_LivingDoom_CallForSouls$
+Initiative: 78
+Shuffle: True
+Data:
+    Abilities:
+        Summon1:
+            Summon: LivingSpiritID
+            Target: 1
+            TargetIsBase: True
+            StatIsBasedOnX:
+                Target:
+                    BasedOn: CurrentHPOverXMaxY
+                    Multiplier: 5
+                    SecondVariable: 3
+            Text: "$FH/0657_monster_ability_cards_living_doom_call_for_souls_2$"
+            TextOnly: True
+            AnimOverload: Summon

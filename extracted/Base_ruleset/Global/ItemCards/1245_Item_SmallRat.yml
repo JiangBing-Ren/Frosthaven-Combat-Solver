@@ -1,0 +1,22 @@
+Parser: ItemCard
+ID: 1245
+StringID: SmallRatID
+Name: $FH/1245_item_cards_small_rat_1$
+Art: Small Rat
+TotalInGame: 1
+Cost: 10
+Slot: SmallItem
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data:    
+    Abilities:
+        TLoot:
+            Filter: Self
+            Loot: 1
+            LootData:
+                LootableObjectImportTypes: MoneyToken
+            Target: 1
+            Range: 2
+Layout: 
+    - Row: "$FH/1245_item_cards_small_rat_2$"

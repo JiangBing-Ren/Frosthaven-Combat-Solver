@@ -1,0 +1,73 @@
+Parser: AbilityCard
+Name: $FH/183_character_ability_cards_geminate_harbinger_of_ruin_1$
+Character: GeminateID
+ID: 183
+Level: 9
+ProgressionOrder: 32
+Initiative: 11
+Discard: [Lost, Discard]
+RequiredForm: Melee
+Prefab: 183_Geminate_HarbingerOfRuin
+Data:
+    Top:
+        Abilities:
+            TWard:
+                Filter: Self
+                AddActiveBonus:
+                    # triggered after the attack finishes, kind of like retaliate
+                    Damage: 5
+                    MiscVars:
+                        PrintedProperties: list("Damage")
+                    IgnoreStun: True
+                    AutoTrigger: True
+                    SkipAnim: True
+                    Targeting: Custom
+                    TargetingVars:
+                        AddValidActorInRange: Attacker
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: GenericAfterConfirmShields
+                    XPTracker: [0,1,0,1]
+                    ValidAbilityType: Attack
+                    TriggerOnCaster: True
+                    MiscVars:
+                        ProcessIfDead: True
+                    Vars:
+                        Attacker: TriggerActor
+                        ValidateCasterIsAttacked: TriggerTarget == Caster
+                        ValidateIsMelee: TriggerAbility.Range <= 1
+                        ValidateWillDoDamage: TargetSummary.FinalAttackStrength > 0
+                        AddHalfDamageModifier: CustomAbility.AddHalfDamageModifier(TargetSummary)
+    Bottom:
+        Abilities:
+            BAttack:
+                Attack: 4
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Conditions: Immobilize
+                AnimOverload: Attack_Melee
+            BRetaliate:
+                Retaliate:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Retaliate")
+                AutoTrigger: True
+Layout:
+    Top:
+        - Active:
+            Ability: TWard
+            ListLayout: "$FH/183_character_ability_cards_geminate_harbinger_of_ruin_2$"
+            Layout: "$FH/183_character_ability_cards_geminate_harbinger_of_ruin_2$"
+            Icon: "Positive_Geminate_Ward_Damage"
+        - Row: "<size=50%> "
+        - XPTracker: TWard
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Attack> *BAttack* <size=100%><sprite name=Immobilize>"
+        - Divider:
+        - Row:
+            - Active:
+               Ability: BRetaliate
+               ListLayout: "<sprite name=Retaliate> *BRetaliate*"
+               Layout: "<sprite name=Retaliate> *BRetaliate* @BRetaliate@"
+               Icon: "Positive_Retaliate"

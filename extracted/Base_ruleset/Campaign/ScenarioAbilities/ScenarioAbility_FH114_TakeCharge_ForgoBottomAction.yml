@@ -1,0 +1,27 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH114_TakeCharge_ForgoBottomAction
+ScenarioAbility:
+    AActive:
+        AddActiveBonus:
+            NullTargeting: True
+            Target: 1
+            Filter: Self
+            CanSkip: False
+            PerformVars:
+                ApplyToActors:
+                    TakeDetonationCharge: ScenarioScript_FH114.current.TakeDetonationCharge(TargetingActor)
+            AnimOverload: Loot
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringTurnAbility
+            IsToggleBonus: True
+            Hidden: True
+            Requirements:
+                ForgoBottomAction: True
+                Vars:
+                    Actor: obj.Actor
+                    ValidateNotCarryingCharge: Actor.CarriedQuestItems.Count == 0
+                    ValidateNextToDispenser: CustomAbility.GetAdjacentTiles(2, 8, true).Contains(Actor.Tile) || CustomAbility.GetAdjacentTiles(2, 2, true).Contains(Actor.Tile)
+                    ValidateCanForgoAction: CustomAbility.AnyForgoneAction() == False
+                    ValidateInRightPhase: (GameState.IsPerformingCardOutOfPhase || Actor.IsTakingExtraTurn) == False
+            ListLayoutOverride: [$FH/ScenarioAbility_FH114_TakeCharge_ForgoBottomAction$, Positive_Unique_Campaign]

@@ -1,0 +1,20 @@
+Parser: ItemCard
+ID: 890
+StringID: CrudeBootsID
+Name: $FH/890_item_cards_crude_boots_1$
+Art: Crude Boots
+TotalInGame: 2
+Cost: 30
+Slot: Legs
+Rarity: Rare
+Usage: Spent
+Trigger: SingleAbility
+ProsperityRequirement: 1
+Data:    
+    Overrides:
+        OMove:
+            Strength: 1
+    CompareAbility:
+        AbilityType: Move
+Layout: 
+    - Row: $FH/890_item_cards_crude_boots_2$

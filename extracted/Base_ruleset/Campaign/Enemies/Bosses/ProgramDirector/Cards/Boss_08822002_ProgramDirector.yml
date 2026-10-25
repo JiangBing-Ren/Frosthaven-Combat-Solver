@@ -1,0 +1,28 @@
+Parser: EnemyCard
+ID: 08822002
+Name: $Monster_Ability_Boss_ProgramDirector_Special2$
+Initiative: 17
+Shuffle: True
+Data:
+    Abilities:
+        ABossSpecial2Teleport:
+            Flags: [Special2]
+            Teleport2: 99
+            Filter: Self
+            Vars:
+                ValidteValidTile: ScenarioScript.current.GetSpecial2TeleportTile() != null
+            MiscVars:
+                TeleportToTile: ScenarioScript.current.GetSpecial2TeleportTile()
+            AnimOverload: Teleport Into
+            AnimOverload2: Teleport Outof
+            Text: "$FH/boss_stat_cards_program_director_2_1$"
+            TextOnly: True
+        Attack1:
+            Attack: -2
+            Target: -1
+            TargetIsBase: True
+            Range: 1
+            RangeIsBase: True
+            Filter: Enemy
+            MultiPassAttack: False
+            AnimOverload: Attack AOE

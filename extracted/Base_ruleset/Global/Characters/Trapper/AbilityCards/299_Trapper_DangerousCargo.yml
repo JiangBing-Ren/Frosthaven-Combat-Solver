@@ -1,0 +1,78 @@
+Parser: AbilityCard
+Name: $FH/299_character_ability_cards_trapper_dangerous_cargo_1$
+Character: TrapperID
+ID: 299
+Level: 9
+Initiative: 23
+Discard: [Lost,Discard]
+Prefab: 299_Trapper_DangerousCargo
+Data:
+    Top:
+        Abilities:
+            TTrapAfterMove:
+                AddActiveBonus:
+                    Trap:
+                        TrapName: TrapperTrap
+                        Damage: 3
+                    MiscVars:
+                        PrintedProperties: list("Damage")
+                    HelpBoxTooltipLocKey: "$FH/299_character_ability_cards_trapper_dangerous_cargo_2$"
+                    Targeting: Custom
+                    TargetingVars:
+                        AddTilesInRange: TilesLeft
+                    AnimOverload: TrapThrow
+                    PerformVars:
+                        SpawnTrap:
+                            RestrictActiveBonus: ActiveBonus.RestrictActiveBonus(TargetingActor, true)
+                AnimOverload: PowerUpStrong
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: DuringActionAbilityOnFinishedMovement
+                    Restriction: OncePerRound
+                    Flags: [ManualRestrict]
+                    TriggerOnCaster: True
+                    Vars:
+                        MoveAbility: TriggerAbility
+                        #TilesMoved: MoveAbility?.TilesMoved?.Select(ScenarioManager.GetTile(obj))
+                        ValidateTilesMoved: "!!TilesMoved?.First"
+                        TilesLeft: list(MoveAbility.StartTile).Append(TilesMoved.Except(TilesMoved.Last)).Where(IsEmpty)
+        XP: 2
+    Bottom:
+        Abilities:
+            BDangerousCargoMove:
+                Move:
+                    Amount: 4
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+                Vars:
+                    TrapsToMove: TargetingActor.SetTempVar("DangerousCargoTrapsToMove", AllTraps.Where(TargetingActor.GetDistanceTo(PropTile) <= 3))
+                    AddDesignatedTilesHighlight: TrapsToMove.Select(PropTile)
+            BMoveTrap:
+                MoveTrap:
+                HelpBoxTooltipLocKey: 299_character_ability_cards_trapper_dangerous_cargo_4
+                Target: -1
+                TargetIsBase: True                    
+                MoveTrapRange: 1
+                AnimOverload: FishingRodTrap
+                Vars:
+                    ClearMovedTrap: TargetingActor.SetTempVar("DangerousCargoMovedTrap", null)
+                    TrapsToMove: TargetingActor.DangerousCargoTrapsToMove
+                    ValidateTrapsToMove: "!!TrapsToMove?.First"
+                Targeting: Custom
+                TargetingVars:
+                    AddTilesInRange: TrapsToMove?.Select(PropTile)
+
+Layout:
+    Top:
+        - Active:
+              Ability: TTrapAfterMove
+              ListLayout: "$FH/299_character_ability_cards_trapper_dangerous_cargo_2$ <sprite name=Damage>3"
+              Layout: "$FH/299_character_ability_cards_trapper_dangerous_cargo_2$"
+              Icon: "Positive_TrapCreate_Move"
+    Bottom:
+        - Row: $FH/299_character_ability_cards_trapper_dangerous_cargo_3$
+        - Row: "<size=20%> "
+        - Row: "<b><size=130%><sprite name=Move> *BDangerousCargoMove* <size=100%><voffset=1>@BDangerousCargoMove@"
+        - Row: "<size=20%> "
+        - Row: $FH/299_character_ability_cards_trapper_dangerous_cargo_4$

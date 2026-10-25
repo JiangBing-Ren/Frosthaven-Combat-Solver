@@ -1,0 +1,22 @@
+Parser: ItemCard
+ID: 1227
+StringID: TomeOfTimeID
+Name: $FH/1227_item_cards_tome_of_time_1$
+Art: Tome of Time
+TotalInGame: 1
+Cost: 50
+Slot: OneHand
+Rarity: Rare
+Usage: Consumed
+Trigger: AfterMonsterCardsRevealed
+Data: 
+    Abilities:
+        ARedraw:
+            NullTargeting:
+            Filter: Self
+            AutoTrigger: True
+            PerformVars:
+                ApplyToActors:
+                    RedrawMonsterCards: CustomAbility.RedrawMonsterCards()
+Layout: 
+    - Row: "$FH/1227_item_cards_tome_of_time_2$"

@@ -1,0 +1,136 @@
+Parser: AbilityCard
+Name: $FH/432_character_ability_cards_metal_mosaic_electrical_discharge_1$
+Character: MetalMosaicID
+ID: 432
+Level: 3
+Initiative: 26
+Discard: [Discard,Discard]
+Prefab: 432_MetalMosaic_ElectricalDischarge
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Conditions: [Stun]
+                AnimOverload: ElectricalDischarge_Attack
+                PerformVars:
+                    PreActorIsAttacking:
+                        ChangePressureHigh: TargetingActor.Pressure.ToString() == 'High' && CustomAbility.PressureChange(TargetingActor, -1)
+                        ChangePressureOver: TargetingActor.Pressure.ToString() == 'Over' && CustomAbility.PressureChange(TargetingActor, -1)
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: Vars
+                        AddTo: True
+                        Vars:
+                            OverPressure: TargetingActor.Pressure.ToString() == 'Over'
+                            HighPressure: TargetingActor.Pressure.ToString() == 'High'
+                            Value: OverPressure && 3 || HighPressure && 1 || 0
+                    XP:
+                        BasedOn: Vars
+                        Vars:
+                            OverPressure: TargetingActor.Pressure.ToString() == 'Over'
+                            Value: OverPressure && 1 || 0
+                SubAbilities:
+                    SubSelfDamage:
+                        Damage: 2
+                        MiscVars:
+                            PrintedProperties: list("Damage")
+                        AutoTrigger: True
+                        Filter: Self
+                        SkipAnim: True
+                        MiscVars:
+                            MetalMosaicSelfDamage: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Over
+            TPressureChangeLose:
+                Null: True
+                SkipAnim: True
+                IgnoreStun: True
+                PerformVars:
+                    NullBegin:
+                        ChangePressure: CustomAbility.PressureChange(TargetingActor, -1)
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    Vars: 
+                        ValidateActionHasHappened: CustomAbility.HasPerformedAction(Ability) 
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 4
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BStun:
+                Stun: True
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Target: 1
+                Filter: Enemy
+                AnimOverload: ElectricalDischarge_Control 
+            BStunSelfOver:
+                Stun: True
+                Filter: Self
+                AnimOverload: ElectricalDischarge_SelfHurt
+                AutoTrigger: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredPressure: Over
+            BStunSelfHigh:
+                Stun: True
+                Filter: Self
+                AnimOverload: ElectricalDischarge_SelfHurt
+                AutoTrigger: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredPressure: High
+            BStunSelfRegular:
+                Stun: True
+                Filter: Self
+                AnimOverload: ElectricalDischarge_SelfHurt
+                AutoTrigger: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredPressure: Regular
+            BPressureChangeLose:
+                Null: True
+                SkipAnim: True
+                IgnoreStun: True
+                PerformVars:
+                    NullBegin:
+                        ChangePressure: CustomAbility.PressureChange(TargetingActor, -1)
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    Vars: 
+                        ValidateActionHasHappened: CustomAbility.HasPerformedAction(Ability) 
+
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Row: "<sprite name=Stun>"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureOver><size=100%> +3 <sprite name=Attack>, <sprite name=XP1>, 2 <sprite name=MMSelfDamage>, <sprite name=MMLosePressure>"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureHigh><size=100%> +1 <sprite name=Attack>, <sprite name=MMLosePressure>"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMLosePressure>"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Stun> <sprite name=Range> 1"
+        - Divider:
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureOver><sprite name=MMPressureHigh><sprite name=MMPressureRegular><size=100%> <sprite name=Stun> $Self$"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<sprite name=MMLosePressure>"

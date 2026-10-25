@@ -1,0 +1,16 @@
+Parser: ItemCard
+ID: 1259
+StringID: KeyCardID
+Name: $FH/1259_item_cards_key_card_1$
+Art: Key Card
+TotalInGame: 1
+Cost: 0
+Slot: QuestItem
+Rarity: Rare
+Usage: Unrestricted
+Trigger: PassiveEffect
+Data: 
+    Vars:
+        DontDoAnything: True
+Layout:
+    - Row:

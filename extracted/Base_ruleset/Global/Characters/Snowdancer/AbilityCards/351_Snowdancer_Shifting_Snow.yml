@@ -1,0 +1,69 @@
+Parser: AbilityCard
+Name: $FH/351_character_ability_cards_snowdancer_shifting_snow_1$
+Character: SnowdancerID
+ID: 351
+Level: 5
+Initiative: 17
+Discard: [Discard,Discard]
+Prefab: 351_Snowdancer_ShiftingSnow
+Data:
+    Top:
+        Abilities:
+            TMoveTerrain:
+                MoveTerrain:
+                Range: 4
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Target: 2
+                MoveObstacleRange: 1
+                TerrainTypes: [TerrainThorns, TerrainHotCoals]
+                AnimOverload: Control
+                SubAbilities:
+                    TDamage:
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateParentAbility: ParentAbility
+                                TilesSelected: ParentAbility.TilesSelected
+                                ValidateTargetedActors: TilesSelected.Count > 0 && TilesSelected[0].Actors.Count > 0
+                        Damage: 0
+                        StatIsBasedOnX:
+                            Strength:
+                                BasedOn: ScenarioHazardousTerrainDamage
+                        Conditions: [Muddle]
+                        IsInlineSubAbility: True
+                        Target: 1
+                        Targeting: Custom
+                        SkipAnim: True
+                        TargetingVars:
+                            AddActorToTarget: ParentAbility.TilesSelected[0].Actors[0]
+                        Flags: [SubAbilityPreview]
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+             BCreateHazzard:
+                CreateTerrain: Thorns
+                TileFilter: FeaturelessHex
+                Target: 1
+                Range: 1
+                Vars:
+                    OverridePropName: "'SnowdancerHazardTerrain'"
+                MiscVars:
+                    includeCasterTile: True
+                AnimOverload: TerrainFormation
+        Infuse: Ice
+Layout:
+    Top:
+        - Row: "$FH/351_character_ability_cards_snowdancer_shifting_snow_2$"
+    Bottom:
+        - Row: "<b><size=130%> <sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "$FH/351_character_ability_cards_snowdancer_shifting_snow_3$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Ice]

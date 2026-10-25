@@ -1,0 +1,13 @@
+Parser: EnemyCard
+ID: 836
+Name: $Monster_Ability_836_PolarBear_FullForce$
+Initiative: 29
+Shuffle: False
+Data:
+    Abilities: 
+        Attack1:
+            Attack: 1
+            Filter: Enemy
+            Conditions: Impair
+            Vars:
+                ValidateIsNotTrapped: ScenarioScript_FH117.ValidateIsPolarBearNotTrapped(TargetingActor)

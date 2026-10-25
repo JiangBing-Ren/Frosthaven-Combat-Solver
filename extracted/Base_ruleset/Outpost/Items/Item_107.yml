@@ -1,0 +1,10 @@
+Parser: FHItem
+ID: 107
+ScenarioItemID: 1079
+Name: Vigor Potion
+Quantity: 2
+Type: Small
+Brewing:
+    Herb1: Arrowvine
+    Herb2: Rockroot
+    Herb3: Corpsecap

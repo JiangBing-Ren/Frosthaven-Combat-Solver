@@ -1,0 +1,14 @@
+Parser: FHScenario
+ID: 100
+Name: Inside the Swarm
+LevelID: FS_100_Inside_The_Swarm
+Chain: JobPosting
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: AllCharactersGainGold
+          Param1: 5
+        - Type: AllCharactersGainExperience
+          Param1: 10
+        - Type: UnlockScenario
+          Param1: 101

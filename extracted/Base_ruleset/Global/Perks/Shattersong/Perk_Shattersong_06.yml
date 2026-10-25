@@ -1,0 +1,7 @@
+Parser: Perk
+ID: Shattersong06
+Name: FH/PERK_Shattersong_06_Name
+Description: FH/PERK_Shattersong_06_Desc
+CharacterID: ShattersongID
+Available: 2
+CardsToAdd: [AMC_Heal2BlessAlly_P0_R]

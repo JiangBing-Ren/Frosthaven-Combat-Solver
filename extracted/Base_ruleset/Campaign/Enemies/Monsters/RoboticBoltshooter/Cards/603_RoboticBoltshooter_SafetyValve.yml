@@ -1,0 +1,19 @@
+Parser: EnemyCard
+ID: 603
+Name: $Monster_Ability_603_RoboticBoltshooter_SafetyValve$
+Initiative: 22
+Shuffle: True
+Data:
+    Abilities:
+        AMove:
+            Move: -1
+        AAttack:
+            Attack: -1
+            Range: 4
+            RangeIsBase: True
+            AnimOverload: Ranged Attack Multiple Targets
+            MultiPassAttack: False
+        AShield:
+            Shield: 2
+            ActiveBonus:
+                ListLayoutOverride: ["<sprite name=Shield> *AShield*", Positive_Shield]

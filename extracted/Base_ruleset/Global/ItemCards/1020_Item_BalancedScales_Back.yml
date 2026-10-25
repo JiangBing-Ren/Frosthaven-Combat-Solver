@@ -1,0 +1,23 @@
+Parser: ItemCard
+ID: 1020
+StringID: BalancedScales2ID
+Name: $FH/1021_item_cards_balanced_scales_1$
+Art: Balanced Scales
+TotalInGame: 2
+Cost: 0
+Slot: OneHand
+Rarity: Rare
+Usage: Flip
+FlipItemID: 1021
+FlipItemSide: Back
+FlipEndOfTurn: True
+Trigger: SingleTarget
+Data: 
+    Overrides:
+        OConditions:
+            AttackHasDisadvantage: True
+    CompareAbility:
+        AbilityType: Attack
+        Filter: Enemy
+Layout: 
+    - Row: $FH/1021_item_cards_balanced_scales_3$

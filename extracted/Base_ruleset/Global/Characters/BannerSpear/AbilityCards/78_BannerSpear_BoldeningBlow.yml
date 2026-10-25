@@ -1,0 +1,105 @@
+Parser: AbilityCard
+Name: $FH/078_character_ability_cards_banner_spear_boldening_blow_1$
+Character: BannerSpearID
+ID: 78
+Level: 4
+Initiative: 72
+Discard: [Discard,Discard]
+Prefab: 78_Bannerspear_BoldeningBlow
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                NullTargeting:
+                AreaEffect: "0,0,G|-2,0,B|2,0,R|-1,1,R|1,1,R|-1,-1,B|1,-1,R"
+                Filter:
+                    ActorType: [Enemy, Enemy2]
+                    EnemyType: [Normal, Elite, Boss, Object]
+                SkipAnim: True
+                MiscVars:
+                    ExplicitlyDoesNothing: True
+                SubAbilities:
+                    TSubAttack:
+                        Attack: 4
+                        Target: 1
+                        MiscVars:
+                            PrintedProperties: list("Attack", "Target")
+                        TreatAsNonSubAbility: True
+                        Conditions: [Disarm]
+                        Filter: [Enemy]
+                        Targeting: Custom
+                        TargetingVars:
+                            AddTilesInRange: CustomAbility.ActorsOnRedHexes(ParentAbility, false).Select(Tile)
+                            AddValidActorsInRange: CustomAbility.ActorsOnRedHexes(ParentAbility, false)
+                        MiscVars:
+                            AllowUndoAfterFirst: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateHasHappened: Ability?.ParentAbility != null && Ability.ParentAbility.AbilityHasHappened
+                    TBless:
+                        AutoTrigger: True
+                        Bless: True
+                        TreatAsNonSubAbility: True
+                        Filter: [Ally]
+                        Target: -1
+                        Targeting: Custom
+                        TargetingVars:
+                            AddTilesInRange: CustomAbility.ActorsOnBlueHexes(ParentAbility, false).Select(Tile)
+                            AddValidActorsInRange: CustomAbility.ActorsOnBlueHexes(ParentAbility, false)     
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateHasHappened: Ability?.ParentAbility != null && Ability.ParentAbility.AbilityHasHappened       
+        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BAlly:
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Target: 2
+                Targeting: Range
+                Filter: Ally
+                ControlActor:
+                    Abilities:
+                        BAllyMove:
+                            Move:
+                                Amount: 3
+                                SquareEnhancements: 1
+                            MiscVars:
+                                PrintedProperties: list("Move")
+                            StrengthIsBase: True
+                AnimOverload: Grant
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "60, 40"
+            - Column:
+                - Row:
+                    - ColumnWidths: "30, 70"
+                    - Column:
+                        - Row: "<b><size=130%><sprite name=Attack> 4"
+                    - Column:
+                        - AddedEffect: "$FH/078_character_ability_cards_banner_spear_boldening_blow_2$"
+                - Divider:
+                - Row:
+                    - ColumnWidths: "30, 70"
+                    - Column:
+                        - Row: "<b><size=130%><sprite name=Bless>"
+                    - Column:
+                        - AddedEffect: "$FH/078_character_ability_cards_banner_spear_boldening_blow_3$"
+            - Column:
+                - Row: "£Area£"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove.Amount* <size=100%><voffset=1>@BMove@"
+        - Row: "<size=50%> "
+        - Row: $FH/078_character_ability_cards_banner_spear_boldening_blow_4$
+        - Row: "<size=20%> "
+        - Row: "<b><size=130%><sprite name=Move> *BAllyMove* <size=100%><voffset=1>@BAllyMove@"

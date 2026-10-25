@@ -1,0 +1,77 @@
+Parser: AbilityCard
+Name: $FH/424_character_ability_cards_metal_mosaic_memory_drive_1$
+Character: MetalMosaicID
+ID: 424
+Level: 1
+Initiative: 64
+Discard: [Discard,Discard]
+Prefab: 424_MetalMosaic_MemoryDrive
+Data:
+    Top:
+        Abilities:
+            TRecoverCards:
+                RecoverDiscardedCards: 1
+                MiscVars:
+                    PrintedProperties: list("RecoverCard")
+                Filter: Self
+                AnimOverload: CastNeutral
+                Vars:
+                    CardLevel: 1
+                PerformVars:
+                    ApplyToActors:
+                        ChangePressureLow: TargetingActor.Pressure.ToString() == 'Low' && CustomAbility.PressureChange(TargetingActor, 1)
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: Vars
+                        AddTo: True
+                        Vars:
+                            LowPressure: TargetingActor.Pressure.ToString() == 'Low'
+                            Value: LowPressure && 1 || 0
+                    XP:
+                        BasedOn: Vars
+                        Vars:
+                            LowPressure: TargetingActor.Pressure.ToString() == 'Low'
+                            Value: LowPressure && 1 || 0
+        Consumes:
+            TCIce:
+                Elements: Ice
+                Requirements:
+                    Type: ThisAbility
+                    RequiredPressure: Regular
+                AbilityOverrides:
+                    TCRecoverBuff:
+                        Filter: Self
+                        ParentName: TRecoverCards
+                        Strength: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: Vars
+                        AddTo: True
+                        Vars:
+                            Value: TargetingActor.CharacterClass.DiscardedAbilityCards.Count / 2
+Layout:
+    Top:
+        - Row: "$FH/424_character_ability_cards_metal_mosaic_memory_drive_2$"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureRegular>"
+                - Consume:
+                    Name: TCIce
+                    Text: "+1 <sprite name=RecoverIcon>"
+                #- Row: "<size=130%><sprite name=MMPressureRegular><size=100%> <sprite name=XP1>, <sprite name=MMSelfDamage>, <sprite name=MMLosePressure><sprite name=MMLosePressure>"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureLow><size=100%> +1 <sprite name=RecoverIcon>, <sprite name=XP1>, <sprite name=MMGainPressure>"
+    Bottom:
+
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Row: "$FH/424_character_ability_cards_metal_mosaic_memory_drive_3$"

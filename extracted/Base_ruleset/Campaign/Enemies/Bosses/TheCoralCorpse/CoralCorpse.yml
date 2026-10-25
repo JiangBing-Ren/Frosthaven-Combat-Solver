@@ -1,0 +1,127 @@
+Parser: Enemy
+ID: TheCoralCorpseID
+LocKey: $FH/TheCoralCorpse$
+MonsterType: Boss
+Model: CoralCorpse
+StandeeLimit: 1
+MiniBoss: True
+PredominantlyMelee: True
+AbilityCards: [20634, 20635, 20636, 20637, 20638, 20639, 20640, 20641]
+# Base Stats
+Level0:
+    Health: 0
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Immunities: [Immobilize, Disarm, Stun]
+    Conditions: [Brittle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 10
+Level1:
+    Health: 0
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Shield: 1
+    Retaliate: 1
+    RetaliateRange: 1
+    Immunities: [Immobilize, Disarm, Stun]
+    Conditions: [Brittle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 10
+Level2:
+    Health: 0
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 1
+    Retaliate: 1
+    RetaliateRange: 1
+    Immunities: [Immobilize, Disarm, Stun]
+    Conditions: [Brittle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 11
+Level3:
+    Health: 0
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 1
+    Retaliate: 2
+    RetaliateRange: 1
+    Immunities: [Immobilize, Disarm, Stun]
+    Conditions: [Brittle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 14
+Level4:
+    Health: 0
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 1
+    Retaliate: 2
+    RetaliateRange: 1
+    Immunities: [Immobilize, Disarm, Stun]
+    Conditions: [Brittle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 17
+Level5:
+    Health: 0
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 1
+    Retaliate: 3
+    RetaliateRange: 1
+    Immunities: [Immobilize, Disarm, Stun]
+    Conditions: [Brittle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 20
+Level6:
+    Health: 0
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    Shield: 2
+    Retaliate: 3
+    RetaliateRange: 1
+    Immunities: [Immobilize, Disarm, Stun]
+    Conditions: [Brittle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 24
+Level7:
+    Health: 0
+    Move: 4
+    Attack: 6
+    Range: 1
+    Target: 1
+    Shield: 2
+    Retaliate: 3
+    RetaliateRange: 1
+    Immunities: [Immobilize, Disarm, Stun]    
+    Conditions: [Brittle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 31

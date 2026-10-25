@@ -1,0 +1,96 @@
+Parser: AbilityCard
+Name: $FH/107_character_ability_cards_deathwalker_ritual_sacrifice_1$
+Character: DeathwalkerID
+ID: 107
+Level: 3
+Initiative: 13
+Discard: [Discard,Discard]
+Prefab: 107_Deathwalker_RitualSacrifice
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Range: 1
+                Target: 1
+                ConditionalOverrides:
+                    TAttackCO:
+                        Filter:
+                            TargetType: Enemy
+                            Vars:
+                                AdjacentShadows: CustomAbility.GetAdjacentShadows(target)
+                                ValidateAdjacentShadows: AdjacentShadows > 0
+                        AbilityOverrides:
+                            TAdjAllyBuff:
+                                StatIsBasedOnX:
+                                    Strength:
+                                        BasedOn: Vars
+                                        AddTo: True
+                                        Vars:
+                                            Value: CustomAbility.GetAdjacentShadows(TargetActor)
+    Bottom:
+        Abilities:
+            BRemoveShadow:
+                RemoveShadow:
+                Target: 99
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Vars:
+                    TargetsUpTo: True
+                    SendBuffProjectiles: True
+                AnimOverload: Shadow Manipulation
+            BShield:
+                CanSkip: False
+                CanUndo: False
+                Filter: [Ally, Self]
+                Target: 1
+                ControlActor:
+                    Abilities:
+                        COShield:
+                            Shield: 1
+                            MiscVars:
+                                PrintedProperties: list("Shield")
+                            Filter: Self
+                Vars:
+                    MultipleApplyToOneActor: True
+                Range: 99
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ObstaclesDestroyedThisAction: "> 0"
+                StatIsBasedOnX:
+                    NumberOfTargets:
+                        #AddTo: True
+                        BasedOn: ObstaclesDestroyedThisAction
+                        Multiplier: 1
+                    XP:
+                        #AddTo: True
+                        BasedOn: ObstaclesDestroyedThisAction
+                        Multiplier: 1
+                AnimOverload: PowerUp
+            BMove:
+                Move:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+        Infuse: Dark
+Layout:
+    Top:
+        - Row: "<b><size=130%> <sprite name=Attack> *TAttack*<b><size=130%> @TAttack@"
+        - Row: "<size=20%> "
+        - Row: "$FH/107_character_ability_cards_deathwalker_ritual_sacrifice_2$"
+    Bottom:
+        - Conditional:
+            Layout:
+                - Row: "$FH/107_character_ability_cards_deathwalker_ritual_sacrifice_3$"
+        - Row: "<size=20%> "
+        - Row: "<sprite name=Move> *BMove* @BMove@"
+        - Row: "<size=20%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark

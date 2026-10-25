@@ -1,0 +1,107 @@
+Parser: Enemy
+ID: TheInfuserID
+LocKey: $FH/TheInfuser$
+MonsterType: Monster
+StandeeLimit: 1
+Model: TheInfuser
+PredominantlyMelee: True
+AbilityCards: [99995]
+# Base Stats
+# for scenario 119
+Level0:
+    Health: 0
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    Shield: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            xVariable: 5
+            yVariable: 3
+            MinLValue: 1
+Level1:
+    Health: 0
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    Shield: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            xVariable: 5
+            yVariable: 3 
+Level2:
+    Health: 0
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    Shield: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            xVariable: 5
+            yVariable: 3
+Level3:
+    Health: 0
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    Shield: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            xVariable: 5
+            yVariable: 3    
+Level4:
+    Health: 0
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    Shield: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            xVariable: 5
+            yVariable: 3    
+Level5:
+    Health: 0
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    Shield: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            xVariable: 5
+            yVariable: 3    
+Level6:
+    Health: 0
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    Shield: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            xVariable: 5
+            yVariable: 3   
+Level7:
+    Health: 0
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    Shield: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            xVariable: 5
+            yVariable: 3  

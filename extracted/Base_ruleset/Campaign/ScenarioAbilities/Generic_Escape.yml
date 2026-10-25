@@ -1,0 +1,9 @@
+Parser: ScenarioAbility
+ID: Generic_Escape
+ScenarioAbility:
+    EscapeAbility:
+        RemoveActorFromMap: True
+        Filter: Self
+        IgnoreStun: True
+        AutoTrigger: True
+# Write here scenarios that this is being used in...

@@ -1,0 +1,84 @@
+Parser: AbilityCard
+Name: $FH/411_character_ability_cards_hive_mortar_shells_1$
+Character: HIVEID
+ID: 411
+Level: 7
+Initiative: 85
+Discard: [Lost,Discard]
+Prefab: 411_HIVE_MortarShells
+Data:
+    Top:
+        XP: 2
+        Abilities:
+            TSummon:
+                Summon: BombardierID
+                AnimOverload: Summon
+        Mode:
+            DebuffTakeDamage:
+                AutoTrigger: True
+                AddActiveBonus:
+                    Damage: 1
+                    Target: 1
+                    Range: 1
+                    Filter: [Ally]
+                    IgnoreStun: True
+                    CanSkip: False
+                    StartAbilityRequirements:
+                        Type: ThisAbility
+                        Vars:
+                            ActorsInRangeOfTarget: GameState.GetActorsInRange(TargetingActor, TargetingActor, Range, null, AbilityFilter, null, null, true)
+                            ValidateHasTargets: ActorsInRangeOfTarget.Count > 0
+                ActiveBonus:
+                    Duration: Round
+                    Behaviour: DuringActionAbilityOnDamaged
+                    TriggerAbilitiesImmediately: True
+            BuffPush:
+                AutoTrigger: True
+                Filter: Self
+                Attack: 0
+                AttackEffect:
+                    Type: StandardBuff
+                    SubAbilities:
+                        BuffPushAbility:
+                            Push: 2
+                            IsInlineSubAbility: True
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: BuffAttack
+    Bottom:
+        Abilities:
+            BAttack:
+                Attack: 2
+                Range:
+                    Amount: 4
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                AnimOverload: RangedAttack
+Layout:
+    Top:
+        - Active:
+              Ability: "TSummon"
+              Icon: "Summon"
+              Layout:
+                  - Summon:
+                        Ability: TSummon
+                        SummonName: $FH/411_character_ability_cards_hive_mortar_shells_2$
+                        SpecialText:
+                            - Row: "$FH/409_character_ability_cards_hive_spinning_blades_3$"
+        - Row:
+            - Column: "<sprite name=HIVEMode>"
+            - Column:
+                - Active:
+                    Ability: "DebuffTakeDamage"
+                    Icon: "Negative_Thorns_Ally_HIVEMode"
+                    ListLayout: "$FH/411_character_ability_cards_hive_mortar_shells_3$"
+                    Layout: "$FH/411_character_ability_cards_hive_mortar_shells_3$"
+            - Column:
+                - Active:
+                    Ability: "BuffPush"
+                    Icon: "Positive_Push_Attack_HIVEMode"
+                    ListLayout: "$FH/411_character_ability_cards_hive_mortar_shells_4$"
+                    Layout: "$FH/411_character_ability_cards_hive_mortar_shells_4$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Attack> *BAttack* <sprite name=Range> *BAttack.Range*"

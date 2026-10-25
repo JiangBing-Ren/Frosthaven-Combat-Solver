@@ -1,0 +1,10 @@
+Parser: FHItem
+ID: 106
+ScenarioItemID: 1077
+Name: Stonewall Potion
+Quantity: 2
+Type: Small
+Brewing:
+    Herb1: Arrowvine
+    Herb2: Rockroot
+    Herb3: Axenut

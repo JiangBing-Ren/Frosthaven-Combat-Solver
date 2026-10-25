@@ -1,0 +1,12 @@
+Parser: FHScenario
+ID: 110
+Name: Guardians Temple
+LevelID: FS_110_Guardians_Temple
+RequiresClimbingGear: true
+Chain: RandomScenario
+Location: ImperialMountains
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: GainItemBlueprint
+          Param1: 75

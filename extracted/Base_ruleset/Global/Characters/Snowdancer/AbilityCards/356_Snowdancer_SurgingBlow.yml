@@ -1,0 +1,102 @@
+Parser: AbilityCard
+Name: $FH/356_character_ability_cards_snowdancer_surging_blow_1$
+Character: SnowdancerID
+ID: 356
+Level: 8
+Initiative: 73
+Discard: [Discard,Discard]
+Prefab: 356_Snowdancer_SurgingBlow
+Data:
+    Top:
+        Abilities:
+            TAttack1:
+                Attack: 3
+                Range: 
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                Target: 1
+                AnimOverload: RangedAttack
+                SubAbilities:
+                    TSubPush:
+                        Push:
+                            Amount: 2
+                            SquareEnhancements: 1
+                        MiscVars:
+                            PrintedProperties: list("Push")
+                        IsInlineSubAbility: True
+                        Target: -1
+                        UseParentTargets: True
+            TAttack2:
+                Attack: 3
+                Range: 
+                    Amount: 4
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                Target: 1
+                AnimOverload: RangedAttack
+                SubAbilities:
+                    TSubPush2:
+                        Push:
+                            Amount: 2
+                            SquareEnhancements: 1
+                        MiscVars:
+                            PrintedProperties: list("Push")
+                        IsInlineSubAbility: True
+                        Target: -1
+                        UseParentTargets: True
+        Infuse: Air
+    Bottom:
+        Abilities:
+            BHeal:
+                Heal:
+                    Amount: 3
+                    DiamondPlusEnhancements: 1
+                Target: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Target","Range")
+                Filter: Ally
+                Conditions: [Strengthen]
+                AnimOverload: Heal
+                SubAbilities:
+                    BSubPush:
+                        Push:
+                            Amount: 3
+                        MiscVars:
+                            PrintedProperties: list("Push")
+                        IsInlineSubAbility: True
+                        Target: -1
+                        UseParentTargets: True
+Layout:
+    Top:
+        - Row: 
+            - ColumnWidths: "20,30,30,20"
+            - Column:
+            - Column: "<sprite name=Attack> *TAttack1* <sprite name=Range> *TAttack1.Range* <voffset=1> @TAttack1.Range@"
+            - Column: ", <sprite name=Push> *TSubPush* @TSubPush@"
+            - Column:
+        - Divider: 
+        - Row: 
+            - ColumnWidths: "20,30,30,20"
+            - Column:
+            - Column:
+                - Row: "<sprite name=Attack> *TAttack2* <sprite name=Range> *TAttack2.Range* <voffset=1> @TAttack2.Range@"
+            - Column: 
+                - Row: ", <sprite name=Push> *TSubPush2* @TSubPush2@"
+            - Column:
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Air]
+    Bottom:
+        - ColumnWidths: "5,20,70,5"
+        - Column:
+        - Column: 
+            - Row: "<sprite name=Heal> *BHeal* <voffset=1>@BHeal@"
+        - Column: 
+            - Row: "$FH/356_character_ability_cards_snowdancer_surging_blow_2$"
+        - Column: 
+

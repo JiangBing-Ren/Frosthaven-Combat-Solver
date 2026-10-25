@@ -1,0 +1,7 @@
+Parser: FHEnhancement
+ID: Attack
+Name: Glossary_Enhancement_PlusAttack
+Cost: 50
+Mark: Square
+Effect: AddOne
+ForEffect: Attack

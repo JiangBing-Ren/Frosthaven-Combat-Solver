@@ -1,0 +1,89 @@
+Parser: AbilityCard
+Name: $FH/360_character_ability_cards_drifter_one_with_the_mountain_1$
+Character: FrozenFistID
+ID: 360
+Level: 1
+ProgressionOrder: 0
+Initiative: 83
+Discard: [Lost,Discard]
+Prefab: 360_FrozenFist_OneWithTheMountain
+Data:
+    Top:
+        Abilities:
+            TActive:
+                AddActiveBonus:
+                    RecoverDiscardedCards: 1
+                    Filter: [Self]
+                    Flags: [FrozenFistMechanic]
+                    AutoTrigger: True
+                    AnimOverload: FootStomp
+                    SubAbilities:
+                        TDamage:
+                            Damage: 0
+                            Filter: [Self]
+                            AutoTrigger: True
+                            Flags: [SubAbilityPreview]
+                            #SkipAnim: Hit
+                            Vars:
+                                Drifter: obj.TargetingActor
+                                RecoveredCardLevel: 1
+                                RecoveredCards: Drifter.CharacterClass.LastRecoveredAbilityCards
+                                ValidateAnyRecoveredCard: RecoveredCards != null and RecoveredCards.Count > 0
+                                RecoveredCardLevel: Drifter.CharacterClass.LastRecoveredAbilityCards[0].Level
+                            StatIsBasedOnX:
+                                Strength:
+                                    BasedOn: Vars
+                                    Vars:
+                                        Value: 2 + (RecoveredCardLevel / 2)
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: EndRoundAbility
+                    Flags: [FrozenFistMechanic]
+                    ListLayoutOverride: [$FH/360_character_ability_cards_drifter_one_with_the_mountain_2$<br><br>$FH/360_character_ability_cards_drifter_one_with_the_mountain_3$, Positive_FrozenFist_Recover_Cards_Damage_Regenerate]
+                    Requirements:
+                        Vars:
+                            ValidateIsntLongResting: Actor.IsLongRestSelected == False
+                Filter: [Self]
+                AnimOverload: FistsSparks
+                SubAbilities:
+                    TRegenerate:
+                        AutoTrigger: True
+                        Vars:
+                            ValidateParentHappened: ParentAbility.AbilityHasHappened
+                        TreatAsNonSubAbility: True
+                        Regenerate:
+                            DecrementTrigger: WhenFrozenFistMechanicActiveBonusEnds
+                        Filter: [Self]
+                        Flags: [SubAbilityPreview]
+                        AnimOverload: Heal
+        XP: 2
+    Bottom:
+        Abilities:
+            BHeal:
+                Heal:
+                    Amount: 4
+                    DiamondPlusEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: [Self]
+                Conditions: [Ward]
+                AnimOverload: Heal
+        Infuse: [Ice, Earth]
+Layout:
+    Top:
+        - Row: "$FH/360_character_ability_cards_drifter_one_with_the_mountain_2$"
+        - Divider:
+        - Row: "$FH/360_character_ability_cards_drifter_one_with_the_mountain_3$"
+    Bottom:
+        - Row:
+            - ColumnWidths: "20,30,30,20"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Heal> *BHeal*<size=100%><voffset=1>@BHeal@"
+            - Column:
+                - AddedEffect: "$FH/target_self$, <sprite name=Ward>"
+            - Column:
+        - Divider:
+        - Row:
+            - MandatoryTrigger:
+                Layout:
+                    - Infuse: [Ice, Earth]

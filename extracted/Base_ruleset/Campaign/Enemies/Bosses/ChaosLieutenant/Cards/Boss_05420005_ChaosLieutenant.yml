@@ -1,0 +1,21 @@
+Parser: EnemyCard
+ID: 05420005
+Name: $Monster_Ability_542_ChaosDemon_WhiteClaws$
+Initiative: 42
+Shuffle: False
+Data:
+    Abilities: 
+        AMove:
+            Move: 0
+        AAttack:
+            Attack: 0
+            AttackHasAdvantage: True
+            Filter: Enemy
+            Text: "$Advantage$"
+    Consumes:
+        CLight:
+            Elements: Light
+            Abilities:
+                AHeal:
+                    Heal: 4
+                    Filter: Self

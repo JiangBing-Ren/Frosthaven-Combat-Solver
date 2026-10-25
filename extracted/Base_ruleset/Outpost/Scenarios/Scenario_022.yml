@@ -1,0 +1,17 @@
+Parser: FHScenario
+ID: 22
+Name: Ice Floes
+LevelID: FS_022_Ice_Floes
+RequiresBoat: true
+Chain: Lurker
+Location: TheBitingSea
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: FS22ConclusionEffect
+          Param1: 1
+        - Type: AllCharactersGainExperience
+          Param1: 15
+        - Type: AddCalendarCampaignSection
+          Param1: 62.2
+          Param2: 1

@@ -1,0 +1,19 @@
+Parser: Mastery
+ID: Drifter_MASTERY_1
+LocalisedName: Drifter_MASTERY_1_Name
+LocalisedDescription: Drifter_MASTERY_1_Desc
+PerkPoints: 1
+# check if you finished scenario with 4 persistant abilities at their last xp tracker index
+# CheckAtEndOfScenario: True
+BattleGoalCondition:
+    - Targets:
+        FailIfDead: True
+        # check how many active bonuses you have at their last exp tracker index
+        Filter: XAbilitiesFinalXPTracker
+        # only the last round the specific characters were alive in
+        SubFilter: LastActiveRound
+        # only for the drifter
+        CharacterIDs: 
+            ActorID: DrifterID
+        # 4 active bonuses in such a state
+        Value: 4

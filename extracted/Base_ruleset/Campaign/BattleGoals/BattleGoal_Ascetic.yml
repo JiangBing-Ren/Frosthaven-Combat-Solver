@@ -1,0 +1,13 @@
+Parser: BattleGoal
+ID: BattleGoal_Ascetic
+LocalisedName: FH/1303_battle_goals_ascetic_1
+LocalisedDescription: FH/1303_battle_goals_ascetic_2
+#Collect fewer money tokens than any other player.
+PerkChecks: 1
+CheckAtEndOfScenario: True
+BattleGoalCondition:
+    - Targets:
+        Filter: LootLeast
+        LootType: MoneyToken
+        Value: 1
+        SubFilter: Scenario

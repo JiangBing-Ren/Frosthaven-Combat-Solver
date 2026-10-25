@@ -1,0 +1,90 @@
+Parser: AbilityCard
+Name: $FH/481_character_ability_cards_crashing_tide_cleansing_swell_1$
+Character: CrashingTideID
+ID: 481
+Level: 1
+ProgressionOrder: 481
+Initiative: 45
+Discard: [Discard,Discard]
+Prefab: 481_CrashingTide_CleansingSwell
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 1
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AreaEffect: "0,0,G|1,-1,R|2,0,R"
+                AreaEffectLayoutOverride: "0,0,G|2,0,R|1,1,R"
+                MultiPassAttack: False
+                AnimOverload: MeleeSwing
+                SubAbilities:
+                    TAttackSubPush:
+                        Push: 2
+                        MiscVars:
+                            PrintedProperties: list("Push")
+                        IsInlineSubAbility: True
+        Consumes:
+            TCLight:
+                Elements: [Light]
+                AbilityOverrides:
+                    TCAttackBuff:
+                        ParentName: TAttackSubPush
+                        Push: 1
+                XP: 1
+    Bottom:
+        Abilities:
+            BOnRestHeal:
+                AddActiveBonus:
+                    Heal: 0
+                    MiscVars:
+                        PrintedProperties: list("Heal")
+                    Filter: [Self]
+                    StatIsBasedOnX:
+                        Strength:
+                            BasedOn: Vars
+                            Vars:
+                                Value: TargetingActor.TideActiveBonusesCountBeforeRest
+                Filter: [Self]
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: [DuringActionAbilityOnShortRest, DuringActionAbilityOnLongRest]
+                    Flags: [Tide, PreRestBonus]
+                    Restriction: OncePerRound
+                AnimOverload: Tide
+        Infuse: Dark
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "60,40"
+            - Column:
+                - Row:
+                    - ColumnWidths: "50,50"
+                    - Column: "<b><size=130%><sprite name=Attack> *TAttack*<size=100%><voffset=1>@TAttack@"
+                    - Column:
+                        - AddedEffect: "<sprite name=Push>2"
+                - Conditional:
+                    Top: True
+                    Layout:
+                        - Consume:
+                            Name: TCLight
+                            Text: "+1<sprite name=Push>, <sprite name=XP1>"
+            - Column:
+                - Row: "£Area£"
+    Bottom:
+        - Row:
+            - ColumnWidths: "34,33,33"
+            - Column: "$FH/CrashingTide_Tide$"
+            - Column:
+            - Column:
+        - Active:
+            Ability: BOnRestHeal
+            Icon: Positive_HealSelf_Rest_Tide
+            Layout: "$481_character_ability_cards_crashing_tide_cleansing_swell_2aa$ <sprite name=Heal>X $target_self$. $FH/481_character_ability_cards_crashing_tide_cleansing_swell_2b$"
+            ListLayout: "$481_character_ability_cards_crashing_tide_cleansing_swell_2aa$ <sprite name=Heal>X $target_self$. $FH/481_character_ability_cards_crashing_tide_cleansing_swell_2b$"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark

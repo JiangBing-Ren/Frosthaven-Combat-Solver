@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 85
+ScenarioItemID: 1035
+Name: Power Potion
+Quantity: 2
+Type: Small
+Brewing:
+    Herb1: Arrowvine
+    Herb2: Axenut

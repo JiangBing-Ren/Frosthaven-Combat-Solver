@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 145
+ScenarioItemID: 1155
+Name: Versatile Dagger
+Quantity: 2
+GoldCost: 25
+Type: OneHandWeapon
+IsNewCharacterItem: False

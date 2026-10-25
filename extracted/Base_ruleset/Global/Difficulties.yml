@@ -1,0 +1,43 @@
+Parser: Difficulty
+
+Campaign:
+    FreeLongRest:
+        Text: "$DIFFICULTY_FREE_LONG_REST$"
+        FreeLongRest: True
+        ActiveOn: [Story]
+        PositiveEffect: True
+    MinusOneLevelModifier:
+        Text: "$DIFFICULTY_MINUS_ONE_LEVEL_MODIFIER$"
+        ScenarioLevelModifier: -1
+        ActiveOn: [Story, Normal]
+        PositiveEffect: True 
+    FreeShortRestButMuddle:
+        #Text: "$DIFFICULTY_FREE_SHORT_REST_MUDDLE$" 
+        FreeShortRestButMuddle: True
+        ActiveOn: [Story]
+        PositiveEffect: True
+    HeroHealth:
+        # Text: "$DIFFICULTY_HERO_AND_SUMMONS_DOUBLE_HEALTH$"
+        HeroHealth: 2
+        ActiveOn: [Story]
+        PositiveEffect: True
+    SummonHealth:
+        #Text: "$DIFFICULTY_HEALTHY$"
+        SummonHealth: 2
+        ActiveOn: [Story]
+        PositiveEffect: True
+    PlusOneLevelModifier:
+        Text: "$DIFFICULTY_PLUS_ONE_LEVEL_MODIFIER$"
+        ScenarioLevelModifier: 1
+        ActiveOn: [Hard]
+        PositiveEffect: False
+    PlusTwoLevelModifier:
+        Text: "$DIFFICULTY_PLUS_TWO_LEVEL_MODIFIER$"
+        ScenarioLevelModifier: 2
+        ActiveOn: [Brutal]
+        PositiveEffect: False
+    PlusThreeLevelModifier:
+        Text: "$DIFFICULTY_PLUS_THREE_LEVEL_MODIFIER$"
+        ScenarioLevelModifier: 3
+        ActiveOn: [Unfair]
+        PositiveEffect: False

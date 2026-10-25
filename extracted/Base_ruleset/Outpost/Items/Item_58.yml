@@ -1,0 +1,7 @@
+Parser: FHItem
+ID: 58
+ScenarioItemID: 1293
+Name: Slippery Sword
+Quantity: 2
+Type: OneHandWeapon
+RequiredCraftingItemIDs: [ 14, 85, 90 ]

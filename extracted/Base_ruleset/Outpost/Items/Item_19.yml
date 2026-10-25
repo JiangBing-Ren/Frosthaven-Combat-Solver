@@ -1,0 +1,10 @@
+Parser: FHItem
+ID: 19
+ScenarioItemID: 918
+Name: Ringing Hammer
+Quantity: 2
+Type: OneHandWeapon
+CraftingCost:
+    Lumber: 1
+    Metal: 1
+    Axenut: 1

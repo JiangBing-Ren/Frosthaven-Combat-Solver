@@ -1,0 +1,58 @@
+Parser: AbilityCard
+Name: $FH/004_character_ability_cards_drifter_continuous_health_1$
+Character: DrifterID
+ID: 4
+Level: 1
+ProgressionOrder: 3
+Initiative: 61
+Discard: [Discard,Lost]
+Prefab: 4_Drifter_ContinuousHealth
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                Targeting: Range  
+                AnimOverload: RangedAttack
+            TMoveTracker:
+                Filter: Self
+                MoveActiveBonusTracker: -1
+                Vars:
+                    NumberOfCardsToSelect: 1
+                AnimOverload: PowerUp
+    Bottom:
+        Abilities:
+            TBuffHeal:
+                AddHeal: 2
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: BuffHealPerActor
+                    XPTracker: [1,0,1,0,1,0]
+                    Flags: [EnhancedEffects]
+                AnimOverload: Persistent Buff
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "30,20,20,30"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack*<size=100%><voffset=1>@TAttack@"
+            - Column:
+                - AddedEffect: "<sprite name=Range>2"
+            - Column:
+        - Divider:
+        - Row: "$004_character_ability_cards_drifter_continuous_health_2$"
+    Bottom:
+        - Active:
+            Ability: TBuffHeal
+            Icon: Positive_HealPlus
+            ListLayout: "$FH/004_character_ability_cards_drifter_continuous_health_3$"
+            Layout: "$FH/004_character_ability_cards_drifter_continuous_health_3$"
+        - XPTracker: TBuffHeal

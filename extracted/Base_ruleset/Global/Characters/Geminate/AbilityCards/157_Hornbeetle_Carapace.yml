@@ -1,0 +1,72 @@
+Parser: AbilityCard
+Name: $FH/157_character_ability_cards_geminate_hornbeetle_carapace_1$
+Character: GeminateID
+ID: 157
+Level: 1
+ProgressionOrder: 6
+Initiative: 20
+Discard: [Lost,Discard]
+RequiredForm: Melee
+Prefab: 157_Geminate_HornbeetleCarapace
+Data:
+    Top:
+        Abilities:
+            TBuffAttack:
+                Attack: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AttackEffect:
+                    Type: BuffIfFormIsRanged
+                    Strength: 1
+                Filter: Self
+                ActiveBonus:
+                    Duration: Persistent
+                    IsSingleTargetBonus: True
+                    Behaviour: BuffAttack
+                    XPTracker: [0,1,0,1]
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 1
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BShield:
+                Shield: 1
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                ActiveBonusDuration: Round
+        Consumes:
+            BCIce:
+                Elements: [Ice]
+                AbilityOverrides:
+                    BShieldBuff:
+                        ParentName: BShield
+                        Strength: 1
+                        Filter: Self
+                        ActiveBonus:
+                            Duration: Round
+                            ListLayoutOverride: ["<sprite name=Shield> *BShieldBuff*", Positive_Shield]
+                XP: 1
+Layout:
+    Top:
+        - Active:
+            Ability: TBuffAttack
+            Icon: Positive_AttackPlus_Geminate
+            ListLayout: "$FH/157_character_ability_cards_geminate_hornbeetle_carapace_2$"
+            Layout: "$FH/157_character_ability_cards_geminate_hornbeetle_carapace_2$"
+        - XPTracker: TBuffAttack
+    Bottom:
+        - Active:
+            Ability: BShield
+            Icon: Positive_Shield
+            ListLayout: "<sprite name=Shield> *BShield*"
+            Layout: "<sprite name=Shield> *BShield*"
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Row: "<b><size=130%><sprite name=Shield> *BShield*"
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: BCIce
+                    Text: "<nobr>+1 <sprite name=Shield></nobr>, <nobr><sprite name=XP1></nobr>"

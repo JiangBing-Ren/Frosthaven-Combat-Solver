@@ -1,0 +1,22 @@
+Parser: ItemCard
+ID: 1097
+StringID: PlagueFlaskID
+Name: $FH/1097_item_cards_plague_flask_1$
+Art: Plague Flask
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        APoison:
+            Filter: Enemy
+            Poison: True
+            Range: 1
+            AreaEffect: "0,0,R|2,0,R|1,1,R"
+            TreatAsRange: True
+Layout: 
+    - Column: "$FH/1097_item_cards_plague_flask_2$"
+    - Column: "£APoison.Area£"

@@ -1,0 +1,28 @@
+Parser: ScenarioAbility
+ID: FH075_EndTurnWaterDamage
+ScenarioAbility:
+    DamageAbility:
+        StartAbilityRequirements:
+            Type: ThisAbility
+            Vars:
+                ValidateLevelIsHigherThanZero: ScenarioManager.CurrentScenarioState.Level > 0
+        AddActiveBonus:
+            AutoTrigger: True
+            Damage: 0
+            Filter: Self
+            StatIsBasedOnX:
+                Strength:
+                    BasedOn: LevelTimesXPlusY
+                    Multiplier: 0.5
+                    SecondVariable: 0
+                    RoundingType: ToCeil
+        ActiveBonus:
+            # shown as scenario modifier
+            Hidden: True
+            Behaviour: EndTurnAbility
+            ArbitraryParams: [ScenarioScript_FH075]
+            Duration: Persistent
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_075_SCENARIO_MODIFIER_1$, Damage_Icon]
+            Requirement:
+                Vars: 
+                    ValidateIsInWater: Actor.IsInWaterTile

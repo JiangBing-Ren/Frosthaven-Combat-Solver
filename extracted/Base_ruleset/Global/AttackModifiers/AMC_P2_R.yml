@@ -1,0 +1,4 @@
+Parser: AttackModifier
+Name: AMC_P2_R
+MathModifier: "+2"
+Rolling: True

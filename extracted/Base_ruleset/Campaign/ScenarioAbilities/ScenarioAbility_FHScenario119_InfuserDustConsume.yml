@@ -1,0 +1,92 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH119_InfuserDustConsume
+ScenarioAbility:
+    AControl:
+        Filter: Self
+        SkipAnim: True
+        StartAbilityRequirements:
+            Type: ThisAbility
+            Vars:
+                ValidateDusts: ScenarioScript_FH119.current.GetNumDusts() > 0
+        ControlActor:
+            #UseControllingActorPlayerControl: True
+            Abilities:
+                AChoose:
+                    SkipAnim: True
+                    Filter: Self
+                    HelpBoxTooltipLocKey: "$FH_Scenario_Campaign_119_Activate_Dust_Ability_1$"
+                    PreviewEffectText: "FH_Scenario_Campaign_119_Activate_Dust_Ability_1"
+                    CanUndo: False
+                    MiscVars: 
+                        OverrideIcon: "'Ability_Infuser_Icon'"
+                    Choose:
+                        Abilities:
+                            CMove:
+                                Move: 2
+                                IgnoreDifficultTerrain: True
+                                StrengthIsBase: True
+                                PreviewEffectText: "FH_Scenario_Campaign_119_Activate_Dust_Ability_2_Move"
+                                MiscVars: 
+                                    PreviewEffectTextWhenSelected: "'<sprite name=Move>2'"
+                                SubAbilities:
+                                    CConsume:
+                                        TreatAsNonSubAbility: True
+                                        Null: True
+                                        AutoTrigger: true
+                                        PerformVars:
+                                            NullBegin:
+                                                ConsumeDust: ScenarioScript_FH119.current.ModifyNumDusts(-1)
+                                StartAbilityRequirements:
+                                    Type: ThisAbility
+                                    Vars:
+                                        ValidateDusts: ScenarioScript_FH119.current.GetNumDusts() >= 1
+                            CHeal:
+                                Heal: 0
+                                StrengthIsBase: True
+                                Filter: Self
+                                StatIsBasedOnX:
+                                    Strength:
+                                        BasedOn: XAddedToYTimesLevel
+                                        Multiplier: 2
+                                        SecondVariable: 1
+                                PreviewEffectText: "FH_Scenario_Campaign_119_Activate_Dust_Ability_3_Heal"
+                                MiscVars: 
+                                    PreviewEffectTextWhenSelected: "'<sprite name=Heal>{L+2}'"
+                                PerformVars:
+                                    ApplyToActors:
+                                        ConsumeDust: ScenarioScript_FH119.current.ModifyNumDusts(-2)
+                                StartAbilityRequirements:
+                                    Type: ThisAbility
+                                    Vars:
+                                        ValidateDusts: ScenarioScript_FH119.current.GetNumDusts() >= 2
+                            CConvert:
+                                ChangeAllegiance:
+                                    ChangeToType: Ally
+                                Range: 2
+                                Filter: Enemy
+                                AnimOverload: NegativeCast
+                                PreviewEffectText: "FH_Scenario_Campaign_119_Activate_Dust_Ability_4_Control"
+                                PerformVars:
+                                    ApplyToActors:
+                                        ConsumeDust: ScenarioScript_FH119.current.ModifyNumDusts(-5)
+                                MiscVars: 
+                                    PreviewEffectTextWhenSelected: "'<sprite name=Enemy>'"
+                                SubAbilities:
+                                    CConvertPrevious:
+                                        ChangeAllegiance:
+                                            ChangeToType: Enemy
+                                        AutoTrigger: True
+                                        SkipAnim: True
+                                        TreatAsNonSubAbility: True
+                                        Targeting: Custom
+                                        Filter: Ally
+                                        TargetingVars:
+                                            AddValidActorInRange: ScenarioScript_FH119.current.GetPreviousConveredActor()
+                                StartAbilityRequirements:
+                                    Type: ThisAbility
+                                    Vars:
+                                        ValidateDusts: ScenarioScript_FH119.current.GetNumDusts() >= 5
+                                        ValidateHasEnemyInRange: GameState.GetAllEnemiesInRange(Actor, Actor.ArrayIndex, 2).Count > 0
+                        
+  
+    

@@ -1,0 +1,14 @@
+Parser: BattleGoal
+ID: BattleGoal_Tormentor
+LocalisedName: FH/1341_battle_goals_tormentor_1
+LocalisedDescription: FH/1341_battle_goals_tormentor_2
+PerkChecks: 1
+BattleGoalCondition:
+    - Targets:
+        Filter: ApplyNewConditionWhileTargetHasOtherNegativeCondition
+        MonsterType: [Normal, Elite, Boss]
+        CharacterTypes:
+            Target: [Enemy,Enemy2]
+        Value: 1
+        ScenarioResult: Win
+        SubFilter: Scenario

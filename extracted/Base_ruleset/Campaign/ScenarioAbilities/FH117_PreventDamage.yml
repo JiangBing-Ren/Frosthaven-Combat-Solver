@@ -1,0 +1,21 @@
+Parser: ScenarioAbility
+ID: FH117_PreventDamage
+# copied from ScenarioAbility_PreventDamage
+ScenarioAbility:
+    AActive:
+        PreventDamage: -1
+        Target: -1
+        Filter: Self
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: PreventDamageByDiscardingPlayerCards
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_117_SCENARIO_MODIFIER_1$, Prevent]
+            IsToggleBonus: False
+            Hidden: True
+            Requirements:
+                Vars:
+                    IsSpecialPush: CustomAbility.AbilityHasFlag(CurrentAbility, CAbility.EAbilityFlag.Special2)
+                    IsPlayer: CurrentAbility != null && CurrentAbility.TargetingActor.OriginalType == CActor.EType.Player
+                    ValidateAbility: (IsPlayer == false) || IsSpecialPush
+        AnimOverload: None
+        AutoTrigger: True

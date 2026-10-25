@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 155.4
+Name: Hall of Revelry Built (2)
+SkipCompletedNotification: True
+Effects:
+    - Type: UnlockPersonalQuest
+      Param1: PQ_23
+    - Type: EnableEvent
+      Param1: WR-40

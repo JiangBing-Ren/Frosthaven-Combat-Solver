@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 61
+ScenarioItemID: 1296
+Name: Spiked Shell
+Quantity: 2
+Type: Body
+CraftingCost:
+    Metal: 1
+RequiredCraftingItemIDs: [ 32, 105 ]

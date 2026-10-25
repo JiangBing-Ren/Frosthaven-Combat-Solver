@@ -1,0 +1,7 @@
+Parser: FHEnhancement
+ID: Move
+Name: Glossary_Enhancement_PlusMove
+Cost: 30
+Mark: Square
+Effect: AddOne
+ForEffect: Move

@@ -1,0 +1,13 @@
+Parser: BattleGoal
+ID: BattleGoal_Overachiever
+LocalisedName: FH/1353_battle_goals_overachiever_1
+LocalisedDescription: FH/1353_battle_goals_overachiever_2
+PerkChecks: 2
+BattleGoalCondition:
+    - Targets:
+        Filter: KillAndOpenDoor
+        MonsterType: [Normal, Elite, Boss]
+        CharacterTypes:
+            Target: [Enemy,Enemy2]
+        Value: 1
+        SubFilter: Round

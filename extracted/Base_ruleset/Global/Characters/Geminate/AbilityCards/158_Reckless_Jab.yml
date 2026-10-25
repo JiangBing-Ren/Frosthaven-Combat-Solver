@@ -1,0 +1,104 @@
+Parser: AbilityCard
+Name: $FH/158_character_ability_cards_geminate_reckless_jab_1$
+Character: GeminateID
+ID: 158
+Level: X
+ProgressionOrder: 14
+Initiative: 38
+Discard: [Discard,Lost]
+RequiredForm: Melee
+Prefab: 158_Geminate_RecklessJab
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Target: 1
+                AnimOverload: Attack_Melee
+        Consumes:
+            TCWound:
+                CostAbility:
+                    ParentName: TAttack
+                    Wound: True
+                    Filter: Self
+                    Target: 1
+                    #AutoTrigger: True
+                    StartAbilityRequirements:
+                        Type: ThisAbility
+                        DoesntHaveNegativeCondition: Wound
+                AbilityOverrides:
+                    TCAttackBuff:
+                        ParentName: TAttack
+                        Conditions: [Disarm]
+            TCPoison:
+                CostAbility:
+                    ParentName: TAttack
+                    Poison: True
+                    Filter: Self
+                    Target: 1
+                    #AutoTrigger: True
+                    StartAbilityRequirements:
+                        Type: ThisAbility
+                        DoesntHaveNegativeCondition: Poison
+                AbilityOverrides:
+                    TCAttackBuff:
+                        ParentName: TAttack
+                        Strength: 2
+    Bottom:
+        Abilities:
+            BAttack:
+                Attack:
+                    Amount: 4
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AnimOverload: Attack_Melee
+        Consumes:
+            TCIce:
+                PreviewEffectText: "<size=130%><sprite name=Stun>, <sprite name=XP1>"
+                Elements: [Ice]
+                ConsumeOnlyOneElement: True
+                AbilityOverrides:
+                    TCIceBuff:
+                        ParentName: BAttack
+                        Conditions: [Stun]
+                XP: 1
+            TCLight:
+                PreviewEffectText: "<size=130%><sprite name=Stun>, <sprite name=XP1>"
+                Elements: [Light]
+                ConsumeOnlyOneElement: True
+                AbilityOverrides:
+                    TCLightBuff:
+                        ParentName: BAttack
+                        Conditions: [Stun]
+                XP: 1
+        XP: 1
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Row: "<size=20%> "
+
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCWound
+                    Text: "<nobr><size=130%>$FH/158_character_ability_cards_geminate_reckless_jab_2$</nobr>"
+                - Consume:
+                    Name: TCPoison
+                    Text: "<nobr><size=130%>$FH/158_character_ability_cards_geminate_reckless_jab_3$</nobr>"
+    Bottom:
+        
+        - Row: "<b><size=130%><sprite name=Attack> *BAttack* <size=100%><voffset=1>@BAttack@"
+        - Row: "<size=20%> "
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCIce
+                    Text: "<size=150%><nobr><sprite name=Stun></nobr>, <nobr><sprite name=XP1></nobr>"
+                - Consume:
+                    Name: TCLight
+                    Text: "<size=150%><nobr><sprite name=Stun></nobr>, <nobr><sprite name=XP1></nobr>"

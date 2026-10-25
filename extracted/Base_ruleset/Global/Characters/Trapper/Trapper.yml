@@ -1,0 +1,26 @@
+Parser: Character
+ID: TrapperID
+LocKey: $Trapper$
+Model: Trapper
+DefaultSkin: 1
+Race: Vermling
+Traits: [ Nimble, Outcast, Resourceful ]
+# PlayerLevel:  [  1,   2,   3,   4,   5,   6,   7,   8,   9 ]
+HealthTable:    [  6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+NumberAbilityCardsInBattle: 9
+Role: $Trapper_ROLE$
+Description: $Trapper_DESCRIPTION$
+Difficulty: $DIFFICULTY_HIGH$
+Strengths: $Trapper_STRENGTHS$
+Weaknesses: $Trapper_WEAKNESSES$
+Adventure_Description: $Trapper_ADVENTURE_DESCRIPTION$
+Complexity: 4
+MasteryIDs: [ Trapper_MASTERY_1, Trapper_MASTERY_2 ]
+RetireCampaignSection: 56.5
+HeroStats:
+    Melee: 2
+    Ranged: 4
+    Mobility: 4
+    Support: 4
+    Defense: 2
+    Control: 5

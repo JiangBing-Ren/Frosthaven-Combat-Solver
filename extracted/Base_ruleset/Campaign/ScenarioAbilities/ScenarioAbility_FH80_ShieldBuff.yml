@@ -1,0 +1,17 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH80_ShieldBuff
+ScenarioAbility:
+    AddActiveBonus:
+        Filter: Self
+        AutoTrigger: True
+        Shield: 0
+        StatIsBasedOnX:
+            Strength:
+                BasedOn: XAddedToYTimesLevel
+                Multiplier: 1
+                SecondVariable: 0.5
+                RoundingType: ToCeil
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: BuffShield
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_080_SCENARIO_MODIFIER_3$, Positive_Shield_Campaign]

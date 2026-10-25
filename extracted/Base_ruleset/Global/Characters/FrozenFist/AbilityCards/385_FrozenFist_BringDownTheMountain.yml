@@ -1,0 +1,105 @@
+Parser: AbilityCard
+Name: $FH/385_character_ability_cards_frozen_fist_bring_down_the_mountain_1$
+Character: FrozenFistID
+ID: 385
+Level: 9
+ProgressionOrder: 25
+Initiative: 09
+Discard: [Discard,Discard]
+Prefab: 385_FrozenFist_BringDowntheMountain
+Data:
+    Top:
+        Abilities:
+            TCreateObstacle:
+                # to be changed with a more appropriate prop later
+                Create: OneHexObstacle
+                Range: 4
+                MiscVars:
+                    PrintedProperties: list("Range")
+                TileFilter: EmptyHex
+                Target: 3
+                AnimOverload: BringDownTheMountain
+                Vars:
+                    OverridePropName: "'FrozenFistObstacle'"
+                SubAbilities:
+                    TAttack:
+                        TreatAsNonSubAbility: True
+                        Attack: 
+                            Amount: 2
+                            SquareEnhancements: 1
+                        MiscVars:
+                            PrintedProperties: list("Attack")
+                        Target: 99
+                        TreatAsMelee: True
+                        MiscVars:
+                            AutoSelectValidTiles: True
+                        AnimOverload: CrystalBurst
+                        Targeting: Custom
+                        TargetingVars:
+                            AddTilesInRange: CustomAbility.GetAdjacentTiles(ParentAbility.TilesSelected)
+                            AddValidActorsInRange: AddTilesInRange.Where(obj.LivingActor != null).Select(obj.LivingActor)
+        Infuse: Earth
+        Consumes:
+            TCEarth:
+                Elements: Earth
+                AbilityOverrides:
+                    BCEarthAttackBuff:
+                        ParentName: TAttack
+                        Strength: 1
+                XP: 1    
+    Bottom:
+        Abilities:
+            BShield:
+                Shield:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                ActiveBonus:
+                    Duration: Round
+                    ListLayoutOverride: [<sprite name=Shield> *BShield*, Positive_Shield]
+                AnimOverload: Heal
+            BRetaliate:
+                Retaliate: 
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Retaliate")
+                ActiveBonus:
+                    Duration: Round
+                    ListLayoutOverride: [<sprite name=Retaliate> *BRetaliate*, Positive_Retaliate]
+                AnimOverload: Roar
+        Infuse: Earth
+        Consumes:
+            BCEarth:
+                Elements: Earth
+                AbilityOverrides:
+                    BCEarthRetaliateBuff:
+                        ParentName: BRetaliate
+                        Strength: 2
+                XP: 1   
+Layout:
+    Top:
+        - Row: "$FH/385_character_ability_cards_frozen_fist_bring_down_the_mountain_2$"
+        - Divider:
+        - Row: "$FH/385_character_ability_cards_frozen_fist_bring_down_the_mountain_3$"   
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCEarth
+                    Text: "+1<sprite name=Attack>, <sprite name=XP1>"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Earth]
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Shield> *BShield* <size=100%><voffset=1>@BShield@"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Retaliate> *BRetaliate* <size=100%><voffset=1>@BRetaliate@"
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: BCEarth
+                    Text: "+2<sprite name=Retaliate>, <sprite name=XP1>"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Earth]

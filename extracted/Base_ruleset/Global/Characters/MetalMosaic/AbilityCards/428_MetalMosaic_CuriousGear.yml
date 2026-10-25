@@ -1,0 +1,102 @@
+Parser: AbilityCard
+Name: $FH/428_character_ability_cards_metal_mosaic_curious_gear_1$
+Character: MetalMosaicID
+ID: 428
+Level: X
+Initiative: 12
+Discard: [Discard,Discard]
+Prefab: 428_MetalMosaic_CuriousGear
+Data:
+    Top:
+        Abilities:
+            BPickTrap:
+                NullHex: True
+                Range: 3
+                HelpBoxTooltipLocKey: "$FH/428_character_ability_cards_metal_mosaic_curious_gear_2$"
+                RangeIsBase: True
+                TileFilter: Trap
+                MiscVars:
+                    PrintedProperties: list("Range")
+                    ExplicitlyDoesNothing: True
+                    DontCancelIfNoTiles: True
+                Targeting: Custom
+                TargetingVars:
+                    TrapsInRange: AllTraps.Where(TargetingActor.GetDistanceTo(obj.PropTile) <= 3)
+                    TrapsWithAdjacentEnemies: TrapsInRange.Where(GameState.GetTilesInRange(obj.ArrayIndex.ToPoint(), 1).Where(obj.LivingActor != null && CustomAbility.IsEnemy(TargetingActor, obj.LivingActor)).Count > 0)
+                    AddTilesInRange: TrapsWithAdjacentEnemies.Select(obj.PropTile)
+                SkipAnim: True
+                Vars:
+                    ClearTrapTile: TargetingActor.SetTempVar("CuriousGear_TrapTile", null)
+                    ClearTrapToSpring: TargetingActor.SetTempVar("CuriousGear_Trap", null)                    
+                PerformVars:
+                    AnimateCharacter:
+                        SetTrapTile: TargetingActor.SetTempVar("CuriousGear_TrapTile", TilesSelected.First)
+                        SetTrapToSpring: TargetingActor.SetTempVar("CuriousGear_Trap", TilesSelected.First?.Trap)
+                SubAbilities:
+                    BSpringTrap:
+                        TreatAsNonSubAbility: True
+                        NullTargeting: True
+                        HelpBoxTooltipLocKey: "$FH/428_character_ability_cards_metal_mosaic_curious_gear_2$"
+                        Vars:
+                            ValidateTrap: "!!TargetingActor.CuriousGear_Trap"
+                        Targeting: Custom
+                        TargetingVars:
+                            AddTilesInRange: GameState.GetTilesInRange(TargetingActor.CuriousGear_TrapTile.m_ArrayIndex, 1)
+                            AddValidActorsInRange: GameState.GetActorsOnTiles(AddTilesInRange).Where(obj != null)
+                        MiscVars:
+                            includeCasterTile: False
+                        Filter: Enemy
+                        AnimOverload: Control
+                        PerformVars:
+                            ApplyToActors:
+                                ApplyTrapEffects: TargetingActor.CuriousGear_Trap.ForceActivate(ActorsToTarget[0])
+                            OnAbilityEnded:
+                                ChangePressure: AbilityHasHappened && CustomAbility.PressureChange(TargetingActor, 1)
+        XP: 1
+    Bottom:
+        Abilities:
+            BControlEnemy:
+                ControlActor:
+                    Abilities:
+                        ControlMove:
+                            Move: 1
+                            MiscVars:
+                                PrintedProperties: list("Move")
+                            StrengthIsBase: True
+                            StatIsBasedOnX:
+                                Strength:
+                                    BasedOn: Vars
+                                    AddTo: True
+                                    Vars:
+                                        actor: ??ControllingActor
+                                        OverPressure: ControllingActor.Pressure.ToString() == 'Over'
+                                        Value: OverPressure && 1 || 0
+                    ControlActorType: Player
+                Range: 4
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Target: 1
+                AnimOverload: Control
+                Filter: Enemy
+                AnimOverload: Control
+                SubAbilities:
+                    BPressureChangeOver:
+                        Null: True
+                        SkipAnim: True
+                        IgnoreStun: True
+                        PerformVars:
+                            NullBegin:
+                                OverPressure: TargetingActor.Pressure.ToString() == 'Over'
+                                ChangePressure: OverPressure && CustomAbility.PressureChange(TargetingActor, -1)
+        Infuse: Ice
+Layout:
+    Top:
+        - Row: "$FH/428_character_ability_cards_metal_mosaic_curious_gear_2$"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMGainPressure>"
+    Bottom:
+        - Row: "$FH/428_character_ability_cards_metal_mosaic_curious_gear_3$"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureOver><size=100%> +1 <sprite name=Move>, <sprite name=MMLosePressure>"

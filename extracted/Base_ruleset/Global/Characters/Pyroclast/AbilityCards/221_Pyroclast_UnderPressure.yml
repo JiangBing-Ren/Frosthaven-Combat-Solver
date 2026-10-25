@@ -1,0 +1,56 @@
+Parser: AbilityCard
+Name: $FH/221_character_ability_cards_pyroclast_under_pressure_1$
+Character: PyroclastID
+ID: 221
+Level: 1
+Initiative: 85
+Discard: [Discard,Discard]
+Prefab: 221_Pyroclast_UnderPressure
+Data:
+    Top:
+        Abilities:    
+            TAttack:
+                Attack:
+                    Amount: 3
+                    DiamondEnhancements: 1 
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AnimOverload: SteamCloud_Attack        
+                ConditionalOverrides:
+                    TAttackCO:
+                        TargetRequirements:
+                            Vars:
+                                Obstacles: CAbilityFilter.ObstacleIsAdjacent(Actor)
+                                Walls: CAbilityFilter.GetAdjacentWallCount(Actor)
+                                ValidateTargetOccupiesValidTerrain: (Obstacles + Walls) >= 2               
+                        AbilityOverrides:
+                            TTerrainBuff:
+                                Strength: 2
+                                AbilityXP: 1
+    Bottom:
+        Infuse: [Earth]
+        Abilities:
+            BDamage:
+                Damage: 1
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Filter: Enemy
+                Range: 1
+                Target: -1
+                AnimOverload: SteamCloud_CastLava
+            BLoot:
+                Loot: 1
+                MiscVars:
+                    PrintedProperties: list("Loot")
+                Target: -1
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Row: "$FH/221_character_ability_cards_pyroclast_under_pressure_2$"
+    Bottom:
+        - Row: "$FH/221_character_ability_cards_pyroclast_under_pressure_3$"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Loot> *BLoot*"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Earth]

@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 160.3
+Name: Geminate Retires
+SkipNarration: True
+SkipCompletedNotification: False
+Effects:
+    - Type: AddCalendarCampaignSection
+      Param1: 193.2
+      Param2: 4

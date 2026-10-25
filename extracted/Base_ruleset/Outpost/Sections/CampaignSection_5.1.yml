@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 5.1
+Name: Vermling Siege (5.1)
+SkipNarration: True
+SkipCompletedNotification: True
+Effects:
+    - Type: ActivateEvent
+      Param1: "CustomEvent_5.1"
+    - Type: SkipNextOutpostEvent

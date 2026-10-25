@@ -1,0 +1,17 @@
+Parser: ItemCard
+ID: 1241
+StringID: SkinningKnifeID
+Name: $FH/1241_item_cards_skinning_knife_1$
+Art: Skinning Knife
+TotalInGame: 1
+Cost: 15
+Slot: OneHand
+Rarity: Rare
+Usage: Consumed
+Trigger: OnLootFromDeck
+Data:    
+    Vars:
+        Hide: 3
+        StopLoot: True
+Layout: 
+    - Row: "$FH/1241_item_cards_skinning_knife_2$"

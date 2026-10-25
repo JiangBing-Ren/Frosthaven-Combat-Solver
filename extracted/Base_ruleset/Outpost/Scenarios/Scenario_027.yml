@@ -1,0 +1,16 @@
+Parser: FHScenario
+ID: 27
+Name: Depths of Delirium
+LevelID: FS_027_Depths_of_Delirium
+Chain: Algox1
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: AllCharactersGainExperience
+          Param1: 10
+        - Type: AllCharactersAddPerkCheck
+          Param1: 1
+        - Type: AddCoralShard
+        # - Type: AddCalendarCampaignSection
+        #   Param1: 36.7
+        #   Param2: 1

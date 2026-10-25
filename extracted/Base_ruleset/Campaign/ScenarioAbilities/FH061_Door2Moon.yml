@@ -1,0 +1,13 @@
+Parser: ScenarioAbility
+ID: FH061_Door2Moon
+ScenarioAbility:
+    AAttackBuffRanged:
+        Attack: 1
+        ActiveBonus:
+            Hidden: True
+            Duration: Persistent
+            Behaviour: BuffAttack
+            GroupID: "Moonshard"
+        AnimOverload: None
+        Filter: Self
+        AutoTrigger: True

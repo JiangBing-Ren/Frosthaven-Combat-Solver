@@ -1,0 +1,18 @@
+Parser: EnemyCard
+ID: 06520003
+Name: $Monster_Ability_652_LivingDoom_ArrestingAdvance$
+Initiative: 32
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: +1
+        Attack1:
+            Attack: -1
+    Consumes:
+        CIce:
+            Elements: Ice
+            AbilityOverrides:
+                CAttack1:
+                    ParentName: Attack1
+                    Conditions: Immobilize

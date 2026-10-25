@@ -1,0 +1,125 @@
+Parser: AbilityCard
+Name: $FH/186_character_ability_cards_infuser_bounty_of_the_earth_1$
+Character: InfuserID
+ID: 186
+Level: 1
+Initiative: 23
+Discard: [Discard,Lost]
+Prefab: 186_Infuser_BountyOfTheEarth
+Data:
+    Top:
+        Abilities:
+            TShield:
+                Shield: 2
+                MiscVars:
+                    PrintedProperties: list("Shield")
+        Consumes:
+            TCShield:
+                PreviewEffectId: M1Shield
+                AbilityOverrides:
+                    TCShieldBuff:
+                        ParentName: TShield
+                        Strength: -1
+                        SubAbilities:
+                            TInfuse:
+                                TreatAsNonSubAbility: True
+                                AutoTrigger: True
+                                Infuse: [Earth]
+                                SkipAnim: True
+                                XP: 1
+    Bottom:
+        Abilities:
+            ConsumeAbility:
+                Consume: 
+                    Elements: [Earth, Any]
+                    Abilities:
+                        CNull:
+                            Null: True
+                            AutoTrigger: True
+            TPassive:
+                Retaliate: 1
+                RetaliateRange: 2
+                AutoTrigger: True
+                Filter: Self
+                AnimOverload: GatherElements
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Consume]
+                Vars:
+                    ResetInfusionTurnRestriction: CustomAbility.ResetInfusionTurnRestriction()
+                ActiveBonus:
+                    Duration: Persistent
+                    ListLayoutOverride: ["<sprite name=Retaliate> 1 <sprite name=Range> 2", Positive_Retaliate_Range]
+                    IsAura: True
+                    AuraFilter: [Self, OwnSummon]
+                    AuraTargeting: All
+                    MiscVars:
+                        InfusionBonus: True
+            TActive:
+                AddActiveBonus:
+                    HelpBoxTooltipLocKey: "$FH/185_character_ability_cards_infuser_boon_of_the_tempest_4$"
+                    Filter:
+                        TargetType: [Self,OwnSummon]
+                        PlayerClasses: [InfuserID]
+                        HeroSummonClasses: [SpiritboundFalchionID]
+                    Target: 1
+                    Targeting: All
+                    IgnoreLOS: True
+                    SkipAnim: True
+                    MiscVars:
+                        TreatThisAsParent: True
+                    PerformVars:
+                        ActorIsSelectingTargetingFocus:
+                            AutoSelSelf: CustomAbility.AutoControlSelfIfOnlyValidTarget(obj)
+                    ControlActor:
+                        ControlDurationType: ControlForOneAction
+                        Abilities:
+                            InfusedHeal:
+                                Heal: 3
+                                MiscVars:
+                                    PrintedProperties: list("Heal")
+                                TreatAsNonSubAbility: True
+                                Filter: Self
+                                Target: 1
+                                CanUndo: False
+                Filter: Self
+                AutoTrigger: True
+                SkipAnim: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Consume]
+                MiscVars:
+                    Infusion: True
+                ActiveBonus:
+                    Duration: Persistent
+                    ListLayoutOverride: ["$185_character_ability_cards_infuser_boon_of_the_tempest_4$ <sprite name=Heal> 3 $target_self$", Positive_HealSelf_Infusion]
+                    Behaviour: DuringTurnAbility
+                    Restriction: OncePerTurn
+                    TriggerOnCaster: True
+                    IsToggleBonus: True
+                    MiscVars:
+                        OverrideIcon: "'BountyOfTheEarthBottomInfusion'"
+                    Requirements:
+                        Vars:
+                            ValidateHasPlayedInfusion: CustomAbility.HasPlayedInfusion(Actor)
+        XP: 2
+Layout:
+    Top:
+        - Active:
+            Ability: TShield
+            Icon: Positive_Shield
+            ListLayout: "<sprite name=Shield> *TShield*"
+            Layout: "<sprite name=Shield> *TShield*"
+        - Row: "<sprite name=Shield> *TShield*"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCShield
+                    Text: "-1<sprite name=Shield>: <sprite name=CreateEarth>, <sprite name=XP1>"
+    Bottom:
+        - Row: "$FH/186_character_ability_cards_infuser_bounty_of_the_earth_3$"
+        - Row: "<sprite name=Retaliate> 1 <sprite name=Range> 2"
+        - Row: "$FH/186_character_ability_cards_infuser_bounty_of_the_earth_2$"

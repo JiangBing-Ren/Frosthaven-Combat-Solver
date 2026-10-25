@@ -1,0 +1,48 @@
+Parser: EnemyCard
+ID: 08780045
+Name: $Monster_Ability_Boss_Render_Special1$
+Initiative: 79
+Shuffle: False
+Data:
+    Abilities:
+        ATeleportToFarthestWindCarving:
+            Teleport2: 99
+            Filter: Self
+            Vars:
+                Carving: ScenarioScript.current.GetFartherstWindCarving()
+            MiscVars:
+                TeleportToTile: ScenarioScript.current.GetFartherstWindCarvingTeleportTile()
+            Text: "$FH/boss_stat_cards_render_2$"
+            AnimOverload: Teleport Into
+            AnimOverload2: Teleport Outof
+            SubAbilities:
+                DestroyWindCarving:
+                    NullHex: True
+                    AutoTrigger: True
+                    Targeting: Custom
+                    Vars:
+                        Carving: ParentAbility.GetVar("Carving")
+                        CarvingTile: Carving.PropTile
+                    TargetingVars:
+                        AddTileInRange: CarvingTile
+                        AddSelectedTile: AddTileInRange
+                    AnimOverload: AttackAOE NoVFX
+                    PerformVars:
+                        Perform:
+                            PlaceCharge: ScenarioScript.current.RemoveWindCarvingAt(CarvingTile.m_ArrayIndex.X, CarvingTile.m_ArrayIndex.Y)
+        WaitForIdle:
+            Null: True
+        AAttack:
+            Attack: 2
+            Range: 5
+            RangeIsBase: True
+            Text: "$FH/boss_stat_cards_render_3$"
+            TextOnly: True
+            AnimOverload: RangedAttack
+            SubAbilities:
+                TSubPush:
+                    Push:
+                        Amount: 2
+                    IsInlineSubAbility: True
+                    Target: -1
+                    UseParentTargets: True

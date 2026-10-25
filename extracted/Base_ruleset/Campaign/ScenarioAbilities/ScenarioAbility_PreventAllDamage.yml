@@ -1,0 +1,15 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_PreventAllDamage
+ScenarioAbility:
+    AActive:
+        Invulnerability: True
+        Target: -1
+        Filter: Self
+        MiscVars:      
+            ListLayoutParamVar0: ActiveBonus.Actor.ActorLocKey()
+        ActiveBonus:
+            Duration: Persistent
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_121_SCENARIO_MODIFIER_5$, Prevent]
+            IsToggleBonus: False
+        AnimOverload: None
+        AutoTrigger: True

@@ -1,0 +1,8 @@
+Parser: CampaignSection
+ID: 46.3
+Name: Icespeakers in Trouble
+ShowAsUnknownInCalendar: True
+SkipCompletedNotification: False
+Effects:
+    - Type: UnlockScenario
+      Param1: 39

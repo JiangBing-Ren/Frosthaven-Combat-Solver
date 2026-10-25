@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 12
+ScenarioItemID: 904
+Name: Crude Chain Armor
+Quantity: 2
+Type: Body
+CraftingCost:
+    Metal: 1

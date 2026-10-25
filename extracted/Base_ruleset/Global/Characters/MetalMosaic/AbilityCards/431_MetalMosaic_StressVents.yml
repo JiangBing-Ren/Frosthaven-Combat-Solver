@@ -1,0 +1,139 @@
+Parser: AbilityCard
+Name: $FH/431_character_ability_cards_metal_mosaic_stress_vents_1$
+Character: MetalMosaicID
+ID: 431
+Level: 3
+Initiative: 15
+Discard: [Discard,Discard]
+Prefab: 431_MetalMosaic_StressVents
+Data:
+    Top:
+        Abilities:
+            BDamageAttacker:
+                AddActiveBonus:
+                    Damage: 3
+                    MiscVars:
+                        PrintedProperties: list("Damage")
+                    Targeting: Custom
+                    HelpBoxTooltipLocKey: "$FH/431_character_ability_cards_metal_mosaic_stress_vents_2$"
+                    TargetingVars:
+                        AddValidActorInRange: EnemyAttacker
+                        AddActorToTarget: EnemyAttacker
+                        AddTileInRange: EnemyAttacker.Tile
+                    PerformVars:
+                        ActorBeenDamaged:
+                            ChangePressure: CustomAbility.PressureChange(TargetingActor, -1)
+                    IgnoreStun: True
+                    CanUndo: False
+                    CanSkip: True
+                    AnimOverload: RangedAttack
+                    MiscVars:
+                        InterruptCurrentAbility: True
+                        StackNextToCurrent: True
+                    Vars:
+                        CanClearTargets: False
+                AnimOverload: CastNeutral
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: DuringActionAbilityOnAttacked
+                    ListLayoutOverride: [$FH/431_character_ability_cards_metal_mosaic_stress_vents_2$, Positive_Thorns_Ranged_PressureDown]
+                    Vars:
+                        EnemyAttacker: TriggerActor
+                        ValidateIsAttackerInRange: TriggerActor.IsInRangeOf(TriggerTarget, 2)
+                MiscVars:
+                    FinishPressure: Low
+                Filter: Self
+            BPressureChangeGain:
+                Null: True
+                SkipAnim: True
+                IgnoreStun: True
+                PerformVars:
+                    NullBegin:
+                        ChangePressure: CustomAbility.PressureChange(TargetingActor, 1)
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    Vars: 
+                        ValidateActionHasHappened: CustomAbility.HasPerformedAction(Ability) 
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BRetaliate:
+                Retaliate: 1
+                MiscVars:
+                    PrintedProperties: list("Retaliate")
+                Filter: Self
+                CanUndo: False
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: Vars
+                        Vars:
+                            OverPressure: TargetingActor.Pressure.ToString() == 'Over'
+                            HighPressure: TargetingActor.Pressure.ToString() == 'High'
+                            Value: OverPressure && 3 || HighPressure && 2 || 1
+                    XP:
+                        BasedOn: Vars
+                        Vars:
+                            OverPressure: TargetingActor.Pressure.ToString() == 'Over'
+                            Value: OverPressure && 1 || 0
+                SubAbilities:
+                    SubSelfDamage:
+                        Damage: 1
+                        MiscVars:
+                            PrintedProperties: list("Damage")
+                        AutoTrigger: True
+                        Filter: Self
+                        SkipAnim: True
+                        MiscVars:
+                            MetalMosaicSelfDamage: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Over
+                    SubPressureChangeOver:
+                        Null: True
+                        SkipAnim: True
+                        IgnoreStun: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Over
+                        PerformVars:
+                            NullBegin:
+                                ChangePressure: CustomAbility.PressureChange(TargetingActor, -1)
+                    SubPressureChangeHigh:
+                        Null: True
+                        SkipAnim: True
+                        IgnoreStun: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: High
+                        PerformVars:
+                            NullBegin:
+                                ChangePressure: CustomAbility.PressureChange(TargetingActor, -1)
+
+Layout:
+    Top:
+        - Row: "$FH/431_character_ability_cards_metal_mosaic_stress_vents_2$"
+        - Row: "$FH/431_character_ability_cards_metal_mosaic_stress_vents_3$"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMGainPressure>"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row:
+            - Active:
+                Ability: BRetaliate
+                Icon: Positive_Retaliate
+                ListLayout: "<sprite name=Retaliate> *BRetaliate*"
+                Layout: "<sprite name=Retaliate> *BRetaliate*"
+        - Row: "<b><size=130%><sprite name=Retaliate> *BRetaliate*"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureOver><size=100%> +2 <sprite name=Retaliate>, <sprite name=XP1>, <sprite name=MMSelfDamage>, <sprite name=MMLosePressure>"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureHigh><size=100%> +1 <sprite name=Retaliate>, <sprite name=MMLosePressure>"

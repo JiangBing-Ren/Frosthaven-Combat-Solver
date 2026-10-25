@@ -1,0 +1,26 @@
+Parser: ItemCard
+ID: 1297
+StringID: EverlastingBootsID
+Name: $FH/1297_item_cards_everlasting_boots_1$
+Art: Everlasting Boots
+TotalInGame: 2
+Cost: 30
+Slot: Legs
+Rarity: Rare
+Usage: Spent
+Trigger: SingleAbility
+ProsperityRequirement: 1
+Data:    
+    Overrides:
+        OMove:
+            Strength: 1
+            SubAbilities:
+                RegenAbility:
+                    Regenerate: True
+                    Filter: Self
+                    TreatAsNonSubAbility: True
+                    Flags: [SubAbilityPreview]
+    CompareAbility:
+        AbilityType: Move
+Layout: 
+    - Row: $FH/1297_item_cards_everlasting_boots_2$

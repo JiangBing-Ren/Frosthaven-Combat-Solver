@@ -1,0 +1,9 @@
+Parser: AttackModifier
+Name: AMC_PNumNegativeConditions
+MathModifier: "+0"
+CustomCombatLogDescriptionLocKey: "FH/AMC_PNumNegativeConditions_Desc"
+AbilityOverrides:
+    NegCon:
+        ParentName: AMC_PNumNegativeConditions
+        Vars: 
+            Strength: TargetingActor.Tokens.CountNegativeConditions()

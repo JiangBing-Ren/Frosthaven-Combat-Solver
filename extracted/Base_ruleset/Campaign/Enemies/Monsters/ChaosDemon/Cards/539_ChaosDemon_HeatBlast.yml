@@ -1,0 +1,22 @@
+Parser: EnemyCard
+ID: 539
+Name: $Monster_Ability_539_ChaosDemon_HeatBlast$
+Initiative: 1
+Shuffle: False
+Data:
+    Abilities: 
+        AMove:
+            Move: 1
+        AAttack:
+            Attack: -1
+            Range: 1
+            Targeting: Range
+            Filter: Enemy
+            AnimOverload: RangedAttack
+    Consumes:
+        CFire:
+            Elements: Fire
+            AbilityOverrides:
+                CFireBuffs:
+                    ParentName: AAttack
+                    Conditions: [Wound]

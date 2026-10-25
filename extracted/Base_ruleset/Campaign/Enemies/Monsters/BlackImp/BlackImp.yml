@@ -1,0 +1,64 @@
+Parser: Enemy
+ID: BlackImpID
+LocKey: $BlackImp$
+MonsterType: Monster
+StandeeLimit: 10
+Model: Black Imp
+PredominantlyMelee: False
+AbilityCards: [826002, 827002, 828002, 829002, 830002, 831002, 832002, 833002]
+# Base Stats
+Level0:
+    Health: 3
+    Move: 1
+    Attack: 1
+    Range: 1
+    Target: 1    
+Level1:
+    Health: 3
+    Move: 1
+    Attack: 1
+    Range: 1
+    Target: 1
+    Conditions: [Poison]
+Level2:
+    Health: 4
+    Move: 1
+    Attack: 1
+    Range: 1
+    Target: 1
+    Conditions: [Poison]
+Level3:
+    Health: 4
+    Move: 1
+    Attack: 2
+    Range: 1
+    Target: 1
+    Conditions: [Poison]
+Level4:
+    Health: 5
+    Move: 1
+    Attack: 2
+    Range: 1
+    Target: 1
+    Conditions: [Poison]
+Level5:
+    Health: 7
+    Move: 1
+    Attack: 2
+    Range: 1
+    Target: 1
+    Conditions: [Poison]
+Level6:
+    Health: 9
+    Move: 1
+    Attack: 3
+    Range: 1
+    Target: 1    
+    Conditions: [Poison]
+Level7:
+    Health: 13
+    Move: 1
+    Attack: 3
+    Range: 1
+    Target: 1    
+    Conditions: [Poison]

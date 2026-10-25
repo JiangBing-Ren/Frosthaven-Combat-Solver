@@ -1,0 +1,73 @@
+Parser: AbilityCard
+Name: $FH/307_character_ability_cards_pain_conduit_scarred_effigy_1$
+Character: PainConduitID
+ID: 307
+Level: 1
+Initiative: 19
+Discard: [Lost,Discard]
+Prefab: 307_PainConduit_ScarredEffigy
+Data:
+    Top:
+        Abilities:
+            TSummon:
+                Summon: FleshFiendID
+                AnimOverload: Summon
+                SubAbilities:
+                    TPreventDamage:
+                        SkipAnim: True
+                        AutoTrigger: True
+                        TreatAsNonSubAbility: True
+                        # reduce damage taken by 0 so caster takes the full damage
+                        PreventDamage: 0 
+                        Filter: OwnSummon
+                        Targeting: Custom
+                        TargetingVars:
+                            AddValidActorInRange: ParentAbility.SummonedActors[0]
+                        ActiveBonus:
+                            Duration: Persistent
+                            Behaviour: PreventAndApplyToActiveBonusCaster
+                            MiscVars:
+                                RedirectAnim: "'CastTakingPain'"
+                            ToggleIsOptional: True
+                            IsToggleBonus: True
+        XP: 2
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BRetaliate:
+                Retaliate: 
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Retaliate")
+                Filter: Self
+                ActiveBonusDuration: Round
+                AnimOverload: Cast
+Layout:
+    Top:
+        - Active:
+              Ability: "TSummon"
+              Icon: "Summon"
+              Layout:
+                  - Summon:
+                        Ability: TSummon
+                        SummonName: "$FH/307_character_ability_cards_pain_conduit_scarred_effigy_2$"
+                        SpecialText: "$FH/307_character_ability_cards_pain_conduit_scarred_effigy_3$"
+
+        - Active:
+              Ability: "TPreventDamage"
+              Icon: "Negative_Redirect_Summon_Damage"
+              Layout: "$FH/307_character_ability_cards_pain_conduit_scarred_effigy_4$"
+              ListLayout: "$FH/307_character_ability_cards_pain_conduit_scarred_effigy_4$"
+    Bottom:
+        - Row: "<size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Active:
+            Ability: BRetaliate
+            Icon: Positive_Retaliate
+            ListLayout: "<sprite name=Retaliate> *BRetaliate*"
+            Layout: "<size=130%><sprite name=Retaliate> *BRetaliate* <size=100%><voffset=1>@BRetaliate@"

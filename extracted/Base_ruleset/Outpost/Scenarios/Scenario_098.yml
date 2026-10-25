@@ -1,0 +1,10 @@
+Parser: FHScenario
+ID: 98
+Name: Collapsing Vent
+LevelID: FS_098_Collapsing_Vent
+Chain: JobPosting
+Difficulty: 1
+Conclusions:
+    - Effects:
+        - Type: AddProsperity
+          Param1: 1

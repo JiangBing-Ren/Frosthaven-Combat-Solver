@@ -1,0 +1,21 @@
+Parser: ItemCard
+ID: 1160
+StringID: CircletOfSanctity2ID
+Name: $FH/1161_item_cards_circlet_of_sanctity_1$
+Art: Circlet of Sanctity
+TotalInGame: 2
+Cost: 45
+Slot: Head 
+Rarity: Rare
+Usage: Flip
+FlipItemID: 1161
+FlipItemSide: Back
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        AWard:
+            Ward: True
+            Range: 3
+            Filter: [Self,Ally,OwnSummon]
+Layout: 
+    - Row: "$FH/1161_item_cards_circlet_of_sanctity_3$"

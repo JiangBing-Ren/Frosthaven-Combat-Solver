@@ -1,0 +1,24 @@
+Parser: EnemyCard
+ID: 8850016
+Name: $Monster_Ability_TwinShots$
+Initiative: 52
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: -1
+            Text: "$FH_Scenario_Campaign_058_The_Orphan_MOVE_Abilities$"
+            StartAbilityRequirements:
+                Type: ThisAbility
+                ValidActorsInRangeOfRequirementRange: "< 1"
+                RequirementRange: 99
+                RequirementActorFilter:
+                    ObjectClasses: [HulkingPillarID]
+        Attack1:
+            Attack: -1
+            Range: 3
+            RangeIsBase: True
+            Target: 2
+            TargetIsBase: True
+            Filter: Enemy
+            AnimOverload: RangedAttack

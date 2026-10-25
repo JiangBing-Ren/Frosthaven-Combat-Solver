@@ -1,0 +1,10 @@
+Parser: CampaignSection
+ID: 45.2
+Name: Relic Abandonment
+ShowAsUnknownInCalendar: True
+SkipCompletedNotification: False
+Effects:
+    - Type: LoseMorale
+      Param1: 4
+    - Type: UnlockScenario
+      Param1: 80

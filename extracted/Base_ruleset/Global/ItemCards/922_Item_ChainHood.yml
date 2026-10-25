@@ -1,0 +1,37 @@
+Parser: ItemCard
+ID: 922
+StringID: ChainHoodID
+Name: $FH/0922_item_cards_chain_hood_1$
+Art: Chain Hood
+TotalInGame: 2
+Cost: 0
+Slot: Head 
+Rarity: Rare
+Usage: Unrestricted
+ProsperityRequirement: 1
+Trigger: PassiveEffect
+Data: 
+    AddModifiers:
+        - [AMC_Basic_M1, 1]
+    Abilities:
+        AShieldBuff:
+            Shield: 1
+            Range: 1
+            Target: -1
+            Filter: Self
+            SkipAnim: True
+            AutoTrigger: True
+            ActiveBonus:
+                Duration: Persistent
+                IsAura: True
+                Behaviour: BuffShield
+                AuraFilter:
+                    TargetType: [Self]
+                    Vars:
+                        ValidateHasThreeOrMoreEnemiesAdjacent: GameState.GetAdjacentEnemies(target, target.ArrayIndex).Count >= 3
+Layout:
+    - Active:
+        Ability: AShieldBuff
+        ListLayout: $FH/0922_item_cards_chain_hood_2$
+        Layout: $FH/0922_item_cards_chain_hood_2$
+        Icon: Positive_Shield_Enemy_Item

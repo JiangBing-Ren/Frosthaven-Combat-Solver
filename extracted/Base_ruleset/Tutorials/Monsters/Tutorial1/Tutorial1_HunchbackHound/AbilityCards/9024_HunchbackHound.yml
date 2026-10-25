@@ -1,0 +1,8 @@
+Parser: EnemyCard
+ID: 9024
+Initiative: 99
+Shuffle: False
+Data:
+    Abilities:
+        Move1:
+            Move: 1

@@ -1,0 +1,62 @@
+Parser: AbilityCard
+Name: $FH/457_character_ability_cards_deepwraith_haunting_brutality_1$
+Character: DeepwraithID
+ID: 457
+Level: X
+Initiative: 23
+Discard: [Discard,Lost]
+Prefab: 457_Deepwraith_HauntingBrutality
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+        Consumes:
+            TCDark:
+                Element: Dark
+                AbilityOverrides:
+                    CAttackBuff:
+                        ParentName: TAttack
+                        Conditions: [Wound, Poison]
+                XP: 1
+    Bottom:
+        Abilities:
+            BTeleport:
+                Teleport2: 
+                    Amount: 6
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Teleport")
+                Filter: Self
+                AnimOverload: Teleport Into
+                AnimOverload2: Teleport Outof
+            BAOEDamage:
+                Damage: 2
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Filter: Enemy
+                Range: 1
+                Target: -1
+                AnimOverload: Attack AOE
+        XP: 1
+        Infuse: Dark
+Layout:
+    Top:
+        - Row: "<sprite name=Attack> *TAttack* @TAttack@"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCDark
+                    Text: "<sprite name=Wound>, <sprite name=Poison>, <sprite name=XP1>"
+    Bottom:
+        - Row: "<sprite name=Teleport> *BTeleport* @BTeleport@"
+        - Divider:
+        - Row: "$FH/457_character_ability_cards_deepwraith_haunting_brutality_2$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark

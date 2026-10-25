@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 103.4
+Name: MetalMosaic Retires
+SkipNarration: True
+SkipCompletedNotification: False
+Effects:
+    - Type: AddCalendarCampaignSection
+      Param1: 165.4
+      Param2: 10

@@ -1,0 +1,23 @@
+Parser: BattleGoal
+ID: BattleGoal_Duelist
+LocalisedName: FH/1349_battle_goals_duelist_1
+LocalisedDescription: FH/1349_battle_goals_duelist_2
+#Never leave a hex adjacent to a monster, except through forced movement
+PerkChecks: 2
+CheckAtEndOfScenario: True
+BattleGoalCondition:
+    - Targets:
+        Filter: LostAdjacency
+        ExcludeForced: True
+        Conditional:
+            Amount: "== 0"
+        Value: 1
+        SubFilter: Scenario
+BattleGoalFailCondition:
+    - Targets:
+        Filter: LostAdjacency
+        ExcludeForced: True
+        Conditional:
+            Amount: "> 0"
+        Value: 1
+        SubFilter: Scenario

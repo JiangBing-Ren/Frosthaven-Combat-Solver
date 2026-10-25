@@ -1,0 +1,58 @@
+Parser: Enemy
+ID: VermlingScout94ID
+# Vermling scout that was released from it's cage and is running towards the exit.
+LocKey: $VermlingScout$
+MonsterType: Monster
+StandeeLimit: 8
+Model: Vermling Scout Elite
+PredominantlyMelee: True
+AbilityCards: [99996]
+# Base Stats
+Level0:
+    Health: 5
+    Move: 3
+    Attack: 2
+    Range: 1
+    Target: 1
+Level1:
+    Health: 5
+    Move: 3
+    Attack: 2
+    Range: 1
+    Target: 1
+Level2:
+    Health: 5
+    Move: 4
+    Attack: 3
+    Range: 1
+    Target: 1
+Level3:
+    Health: 7
+    Move: 4
+    Attack: 3
+    Range: 1
+    Target: 1
+Level4:
+    Health: 8
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+Level5:
+    Health: 11
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+Level6:
+    Health: 16
+    Move: 5
+    Attack: 4
+    Range: 1
+    Target: 1
+Level7:
+    Health: 23
+    Move: 5
+    Attack: 4
+    Range: 1
+    Target: 1

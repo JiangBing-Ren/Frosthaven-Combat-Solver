@@ -1,0 +1,62 @@
+Parser: AbilityCard
+Name: $FH/235_character_ability_cards_pyroclast_magma_orbs_1$
+Character: PyroclastID
+ID: 235
+Level: 5
+Initiative: 82
+Discard: [Discard,Discard]
+Prefab: 235_Pyroclast_MagmaOrbs
+Data:
+    Top:
+        Abilities:    
+            TAttack:
+                Attack:
+                    Amount: 3
+                    SquareEnhancements: 1
+                Target: 2
+                Range:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack","Target","Range")
+                MultiPassAttack: False
+                AnimOverload: MagmaOrbs
+        Consumes:
+            TCFireEarth:
+                XP: 1
+                Elements: [Fire, Earth]
+                AbilityOverrides:
+                    TCFireEarthTargetBuff:
+                        ParentName: TAttack
+                        Target: 1
+    Bottom:
+        Abilities:
+            BCreateHazardous:              
+                Target: 1
+                Range: 1
+                CreateLimitedHazardousTerrain: True
+                Vars:
+                    OverridePropName: "'PyroclastHazardTerrain'"
+                TileFilter: EmptyHex
+                AnimOverload: TerrainFormation
+            BPull:
+                Pull: 1
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Pull","Range")
+                AnimOverload: Push
+Layout:
+    Top:
+        - Row:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column: " <mark=#80919922><size=100%><sprite name=Target>*TAttack.Target*, <sprite name=Range>*TAttack.Range*<voffset=1>@TAttack.Range@</mark>"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCFireEarth
+                    Text: "+1 <sprite name=Target>, <sprite name=XP1>"
+    Bottom:
+        - Row: "$FH/235_character_ability_cards_pyroclast_magma_orbs_2$"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Pull> *BPull* <mark=#80919922><size=100%><sprite name=Range>*BPull.Range*</mark>"

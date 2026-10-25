@@ -1,0 +1,7 @@
+Parser: FHItem
+ID: 47
+ScenarioItemID: 974
+Name: Robes of Doom
+Quantity: 2
+Type: Body
+RequiredCraftingItemIDs: [ 27, 119, 162 ]

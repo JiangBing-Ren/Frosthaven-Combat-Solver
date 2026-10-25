@@ -1,0 +1,17 @@
+Parser: FHScenario
+ID: 28
+Name: Summit Meeting
+LevelID: FS_028_Summit_Meeting
+Chain: Algox2
+Location: CopperneckMountaions
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: LoseMorale
+          Param1: 1
+        - Type: LockScenario
+          Param1: 29
+        - Type: LockScenario
+          Param1: 30
+        - Type: UnlockScenario
+          Param1: 38

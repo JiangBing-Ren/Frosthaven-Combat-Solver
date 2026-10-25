@@ -1,0 +1,19 @@
+Parser: Mastery
+ID: Deepwraith_MASTERY_2
+LocalisedName: Deepwraith_MASTERY_2_Name
+LocalisedDescription: Deepwraith_MASTERY_2_Desc
+PerkPoints: 1
+CheckAtEndOfScenario: True
+# infuse dark each round, fail if you dont
+BattleGoalCondition:
+    - Targets:
+        Filter: Infuse
+        Elements: Dark
+        SubFilter: EveryRoundCharactersOnly
+        Value: 1
+BattleGoalFailCondition:
+    - Targets:
+        Filter: Infuse
+        Elements: Dark
+        SubFilter: EveryRoundCharactersOnly
+        Value: 0

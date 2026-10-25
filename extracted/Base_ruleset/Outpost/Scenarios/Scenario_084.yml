@@ -1,0 +1,12 @@
+Parser: FHScenario
+ID: 84
+Name: 
+LevelID: FS_084_Here_There_Be_Oozes
+Chain: JobPosting
+Location: ImperialMountains
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: GainItem
+          Param1: 234
+        - Type: AddBrummix

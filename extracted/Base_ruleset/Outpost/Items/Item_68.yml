@@ -1,0 +1,7 @@
+Parser: FHItem
+ID: 68
+ScenarioItemID: 1001
+Name: Scaled Armor
+Quantity: 2
+Type: Body
+RequiredCraftingItemIDs: [ 89, 123 ]

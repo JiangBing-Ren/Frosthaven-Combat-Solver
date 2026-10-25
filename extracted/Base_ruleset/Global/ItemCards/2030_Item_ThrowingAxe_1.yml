@@ -1,0 +1,25 @@
+Parser: ItemCard
+ID: 2030
+StringID: ThrowingAxeID
+Name: $FH/2030_item_cards_throwing_axe_1$
+Art: Throwing Axe
+TotalInGame: 2
+Cost: 35
+Slot: OneHand
+Rarity: Rare
+Usage: Consumed
+Trigger: EntireAction
+Data:     
+    Overrides:
+        ORangeBuff:
+            Range: 3
+            TreatAsMelee: False
+            AnimOverload: RangedAttack
+    CompareAbility:
+        AbilityType: Attack
+        Target: 1
+        IsMelee: True
+        Filter: Enemy
+        HasAreaEffect: False
+Layout: 
+    - Row: $FH/2030_item_cards_throwing_axe_2$

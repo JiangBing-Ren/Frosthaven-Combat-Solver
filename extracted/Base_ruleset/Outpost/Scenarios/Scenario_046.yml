@@ -1,0 +1,17 @@
+Parser: FHScenario
+ID: 46
+Name: Dead Pass
+LevelID: FS_046_Dead_Pass
+RequiresSled: true
+Chain: Algox2
+Location: CopperneckMountaions
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: AllCharactersGainExperience
+          Param1: 10
+        - Type: GainMorale
+          Param1: 1
+        - Type: UnlockScenarioIfScenarioComplete
+          Param1: 52
+          Param2: 45

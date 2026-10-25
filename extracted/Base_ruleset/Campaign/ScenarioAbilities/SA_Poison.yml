@@ -1,0 +1,6 @@
+Parser: ScenarioAbility
+ID: SA_Poison
+ScenarioAbility:
+    APoison:
+        Poison: True
+        Filter: Self

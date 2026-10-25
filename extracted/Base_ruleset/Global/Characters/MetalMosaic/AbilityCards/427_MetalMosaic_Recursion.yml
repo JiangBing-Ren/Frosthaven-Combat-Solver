@@ -1,0 +1,66 @@
+Parser: AbilityCard
+Name: $FH/427_character_ability_cards_metal_mosaic_recursion_1$
+Character: MetalMosaicID
+ID: 427
+Level: X
+Initiative: 50
+Discard: [Discard,Discard]
+Prefab: 427_MetalMosaic_Recursion
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Filter: Enemy
+            TDoubleGainBonus:
+                NullTargeting: True
+                AnimOverload: CastNeutral
+                Target: 1
+                Range: -1
+                Filter: Self
+                CanUndo: False
+                ActiveBonus:
+                    Duration: Persistent
+                    ListLayoutOverride: [$FH/427_character_ability_cards_metal_mosaic_recursion_2$, Positive_PressureUp]
+                    TriggerOnCaster: True
+                    XPTracker: [0]
+                MiscVars:
+                    DoubleGainPressure: True
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BDoubleLoseBonus:
+                NullTargeting: True
+                AnimOverload: CastNeutral
+                Target: 1
+                Range: -1
+                Filter: Self
+                CanUndo: False
+                ActiveBonus:
+                    Duration: Persistent
+                    ListLayoutOverride: [$FH/427_character_ability_cards_metal_mosaic_recursion_3$, Positive_PressureDown]
+                    TriggerOnCaster: True
+                    XPTracker: [0]
+                MiscVars:
+                    DoubleLosePressure: True
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Divider:
+        - Row: "$FH/427_character_ability_cards_metal_mosaic_recursion_2$"
+        - XPTracker: TDoubleGainBonus
+        
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "$FH/427_character_ability_cards_metal_mosaic_recursion_3$"
+        - XPTracker: BDoubleLoseBonus

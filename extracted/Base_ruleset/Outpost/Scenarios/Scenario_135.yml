@@ -1,0 +1,16 @@
+Parser: FHScenario
+ID: 135
+Name: Belara's Keep
+LevelID: FS_135_Belaras_Keep
+Chain: Other
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: GainItem
+          Param1: 220
+        - Type: GainMorale
+          Param1: 2
+        - Type: AddProsperity
+          Param1: 2
+        - Type: GainInspiration
+          Param1: 1

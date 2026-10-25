@@ -1,0 +1,13 @@
+Parser: BattleGoal
+ID: BattleGoal_Egoist
+LocalisedName: FH/BATTLEGOAL_Egoist
+LocalisedDescription: FH/BATTLEGOAL_Egoist_Desc
+#Collect more money tokens than any other player.
+PerkChecks: 1
+CheckAtEndOfScenario: True
+BattleGoalCondition:
+    - Targets:
+        Filter: LootMost
+        LootType: MoneyToken
+        Value: 1
+        SubFilter: Scenario

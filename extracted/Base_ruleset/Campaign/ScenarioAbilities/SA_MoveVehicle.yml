@@ -1,0 +1,22 @@
+Parser: ScenarioAbility
+ID: SA_MoveVehicle
+ScenarioAbility:
+    AActive:
+        Move: 0
+        Filter: Self
+        PreviewEffectText: ""
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: BuffMove
+            ValidAbilityType: Move
+            IsToggleBonus: True
+            Hidden: True
+            ListLayoutOverride: [$FH_Scenario_Campaign_073_SCENARIO_MODIFIER_1$, Move]
+            MiscVars:
+                MoveVehicle: True
+                OnBonusToggled: CustomAbility.ToggleVehicle(CurrentAbility, ActiveBonus, IsOn)
+            Requirements:
+                Vars:
+                    Actor: obj.Actor
+                    Vehicle: CustomAbility.GetVehicle(Actor.ArrayIndex)
+                    ValidateIsOnVehicle: Vehicle != null

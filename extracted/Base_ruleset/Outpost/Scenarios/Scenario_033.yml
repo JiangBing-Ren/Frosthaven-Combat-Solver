@@ -1,0 +1,17 @@
+Parser: FHScenario
+ID: 33
+Name: Thawed Wood
+LevelID: FS_033_Thawed_Wood
+Chain: Lurker
+Location: RadiantForest
+Difficulty: 3
+# RequiresSticker: IntoTheForest
+Conclusions:
+    - Effects:
+        - Type: FS33ConclusionEffect
+          Param1: 5
+        - Type: GainItem
+          Param1: 244
+        - Type: AddCalendarCampaignSection
+          Param1: 135.1
+          Param2: 3

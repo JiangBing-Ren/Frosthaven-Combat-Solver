@@ -1,0 +1,80 @@
+Parser: Enemy
+ID: ForestImpEliteID
+LocKey: $ForestImpElite$
+MonsterType: Monster
+StandeeLimit: 10
+Model: Forest Imp Elite
+NonEliteVariant: ForestImpID
+PredominantlyMelee: False
+AbilityCards: [826, 827, 828, 829, 830, 831, 832, 833]
+# Base Stats
+Level0:
+    Health: 4
+    Move: 3
+    Attack: 1
+    Range: 1
+    Target: 1
+    Flying: True
+    Shield: 1
+Level1:
+    Health: 5
+    Move: 3
+    Attack: 2
+    Range: 1
+    Target: 1
+    Flying: True
+    Shield: 1
+Level2:
+    Health: 6
+    Move: 3
+    Attack: 2
+    Range: 1
+    Target: 1
+    Conditions: [Curse]
+    Flying: True
+    Shield: 1
+Level3:
+    Health: 7
+    Move: 4
+    Attack: 2
+    Range: 1
+    Target: 1
+    Conditions: [Curse]
+    Flying: True
+    Shield: 1
+Level4:
+    Health: 7
+    Move: 4
+    Attack: 2
+    Range: 1
+    Target: 1
+    Conditions: [Curse]
+    Flying: True
+    Shield: 2
+Level5:
+    Health: 8
+    Move: 4
+    Attack: 3
+    Range: 1
+    Target: 1
+    Conditions: [Curse]
+    Flying: True
+    Shield: 2
+Level6:
+    Health: 10
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1    
+    Conditions: [Curse]
+    Flying: True
+    Shield: 2
+Level7:
+    Health: 14
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1    
+    Conditions: [Curse]
+    Flying: True
+    Shield: 2

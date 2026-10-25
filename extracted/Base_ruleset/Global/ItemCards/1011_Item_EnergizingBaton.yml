@@ -1,0 +1,36 @@
+Parser: ItemCard
+ID: 1011
+StringID: EnergizingBatonID
+Name: $FH/1011_item_cards_energizing_baton_1$
+Art: Energizing Baton
+TotalInGame: 2
+Cost: 0
+Slot: OneHand 
+Rarity: Rare
+Usage: Spent
+Trigger: OnPositiveConditionGlobal
+Data: 
+    ItemRequirements:
+        Vars:
+            ValidateConditionCastByItemOwner: AppliedCondition.TargetingActor == ItemOwner
+            FriendlyFilter: CAbilityFilterContainer.CreateDefaultFriendlyFilter()
+            ValidateAppliedActorIsntOwner: AppliedActor != ItemOwner && CustomAbility.IsAlly(AppliedActor, ItemOwner)
+            ActorsInRangeOfTarget: GameState.GetActorsInRange(AppliedActor, AppliedActor, 3, null, FriendlyFilter, null, null, true)
+            ValidateHasOtherAlliesInRange: ActorsInRangeOfTarget.Where(obj != ItemOwner && obj != AppliedActor).Count > 0
+    Abilities:
+        ACopyCondition:
+            NullTargeting: True
+            Vars:    
+                ConditionFromAbility: CCondition.PositiveConditionFromAbility(AppliedCondition.AbilityType)         
+                AddPositiveConditions: list(ConditionFromAbility)
+                ActorsInRangeOfTarget: GameState.GetActorsInRange(AppliedActor, AppliedActor, 3, null, obj.AbilityFilter, null, null, true)
+                TilesInRange: GameState.GetTilesInRange(AppliedActor, 3, CAbility.EAbilityTargeting.Range, false)
+            CanUndo: False
+            CanSkip: False
+            Filter: Ally
+            Targeting: Custom
+            TargetingVars:
+                AddValidActorsInRange: ActorsInRangeOfTarget
+                AddTilesInRange: TilesInRange
+Layout: 
+    - Row: "$FH/1011_item_cards_energizing_baton_2$"

@@ -1,0 +1,79 @@
+Parser: AbilityCard
+Name: $FH/216_character_ability_cards_pyroclast_quenched_rage_1$
+Character: PyroclastID
+ID: 216
+Level: 1
+Initiative: 30
+Discard: [Discard,Discard]
+Prefab: 216_Pyroclast_QuenchedRage
+Data:
+    Top:
+        Abilities:    
+            TPush:
+                Push:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Push")
+                AnimOverload: Push
+        Consumes:
+            TCEarth:
+                Elements: Earth
+                XP: 1
+                AbilityOverrides:
+                    TCEarthDoubleDamage:
+                        ParentName: TPush
+                        AdditionalPushEffect: DoubleHazardousDamageAndReplaceHazardousWithOneHexObstacle
+    Bottom:
+        Infuse: [Earth]
+        Abilities:
+            BAttackDeBuff216:
+                Attack: -1
+                Filter: Self
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: BuffAttack
+                    IsSingleTargetBonus: True
+                    ListLayoutOverride: ["*BAttackDeBuff216*<sprite name=Attack>", Negative_AttackMinus]
+                    XPTracker: [0,0,0]
+                    Hidden: True
+                AnimOverload: CastStone
+            BAttackBuff:
+                StartAbilityRequirements:
+                    Vars:
+                        PrevAbility: CustomAbility.FindAbilityInPhaseByName("BAttackDeBuff216")
+                        ValidateDesroyedOneHexObstacle: PrevAbility != null && PrevAbility.AbilityHasHappened
+                AutoTrigger: True
+                SkipAnim: True
+                Attack: 2
+                Filter: Self
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: BuffAttack
+                    StrengthIsScalar: True
+                    IsSingleTargetBonus: True
+                    AlwaysBuff: True
+                    Vars:
+                        ValidOnTrackerIndex: 3
+                    XPTracker: [0,0,0,1]
+
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Push> *TPush* <size=100%><voffset=1>@TPush@"
+        - Divider: 
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCEarth
+                    Text: "<size=50%>$FH/216_character_ability_cards_pyroclast_quenched_rage_2$"
+    Bottom:
+        - Active:
+            Ability: BAttackBuff
+            ListLayout: "$FH/216_character_ability_cards_pyroclast_quenched_rage_3$"
+            Layout: "$FH/216_character_ability_cards_pyroclast_quenched_rage_3$"
+            Icon: "Positive_AttackMinus_Pyroclast"
+        - XPTracker: BAttackBuff
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Earth]

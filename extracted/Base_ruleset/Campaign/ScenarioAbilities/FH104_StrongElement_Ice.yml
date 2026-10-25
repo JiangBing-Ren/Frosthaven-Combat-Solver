@@ -1,0 +1,8 @@
+Parser: ScenarioAbility
+ID: FH104_StrongElement_Ice
+ScenarioAbility:
+    FH104_StrongElement_Ice:
+        Null:
+        ActiveBonus:
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_104_IceBuff$, Positive_Ice_Campaign]
+            Duration: Persistent

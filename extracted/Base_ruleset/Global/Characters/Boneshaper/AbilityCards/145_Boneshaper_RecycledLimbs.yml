@@ -1,0 +1,87 @@
+Parser: AbilityCard
+Name: $FH/145_character_ability_cards_boneshaper_recycled_limbs_1$
+Character: BoneshaperID
+ID: 145
+Level: 7
+Initiative: 52
+Discard: [Lost, Discard]
+Prefab: 145_Boneshaper_RecycledLimbs
+Data:
+    Top:
+        Abilities:
+            TCEarthDarkAbility:
+                Consume:
+                    Elements: [Earth, Dark]
+                    Abilities:
+                        TSummonAbility:
+                            ParentName: TCEarthDarkAbility
+                            SelectAndPlayCard:       
+                                CardPile: Discarded  
+                            MiscVars:
+                                IsActionValid: Action.Abilities.Any(obj.AbilityType == CAbility.EAbilityType.Summon)
+            TAlly:
+                ControlActor:
+                    Abilities:
+                        TAllyMove:
+                            Move: +0
+                            MiscVars:
+                                PrintedProperties: list("Move")
+                        TAllyAttack:
+                            Attack: +1
+                            Range: +0
+                            MiscVars:
+                                PrintedProperties: list("Attack")
+                Target: -1
+                Range: 99
+                Filter:
+                    TargetType: OwnSummon
+                AnimOverload: ControlSummon
+        XP: 2
+    Bottom:
+        Abilities:
+            BHealAlly:
+                AddActiveBonus:
+                    Heal: 2
+                    Filter: Ally
+                    Range: 3
+                    Target: 1
+                    MiscVars:
+                        PrintedProperties: list("Heal","Target","Range")
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: DuringActionAbilityAfterDeath
+                    TriggerAbilitiesImmediately: True
+                    TriggerOnCaster: True
+                    XPTracker: [0,0,1]
+                    IsAura: True
+                    AuraFilter: All
+                    AuraTargeting: All
+                    HiddenWhenAura: True
+                    Vars:
+                        ValidateCasterIsAlive: TriggerTarget != null && (TriggerTarget.IsDead == False)
+                        ValidateTargetIsDead: TriggerActor != null && TriggerActor.IsDead
+                        ValidateTargetCauseOfDeath: TriggerActor.CauseOfDeath == "Damage" || TriggerActor.CauseOfDeath == "KillAbility" || TriggerActor.CauseOfDeath == "Trap" || TriggerActor.CauseOfDeath == "Suicide" || TriggerActor.CauseOfDeath == "HazardousTerrain"
+                        ValidateTargetNotObject: CustomAbility.IsObjectActor(TriggerActor) == False
+                Range: 1
+                Target: -1
+                Filter: Self
+        Infuse: Dark
+Layout:
+    Top:
+        - Conditional:
+            Layout:
+                - Row: "<size=200%><sprite name=ConsumeMixed-ED>"
+                - Row: "$FH/145_character_ability_cards_boneshaper_recycled_limbs_2$"
+        - Divider:
+        - Row: "$FH/145_character_ability_cards_boneshaper_recycled_limbs_3$"
+    Bottom:
+        - Active:
+            Ability: BHealAlly
+            ListLayout: "$FH/145_character_ability_cards_boneshaper_recycled_limbs_4$ <br><sprite name=Heal> *BHealAlly* <sprite name=Target> *BHealAlly.Target* <sprite name=Allies> <sprite name=Range> *BHealAlly.Range*"
+            Layout: "$FH/145_character_ability_cards_boneshaper_recycled_limbs_4$ <br><sprite name=Heal> *BHealAlly* <sprite name=Target> *BHealAlly.Target* <sprite name=Allies> <sprite name=Range> *BHealAlly.Range*"
+            Icon: Positive_Heal_Death
+        - Row: "<size=50%> "
+        - XPTracker: BHealAlly
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark

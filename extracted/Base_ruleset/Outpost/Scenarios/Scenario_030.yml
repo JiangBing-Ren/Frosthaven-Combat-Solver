@@ -1,0 +1,21 @@
+Parser: FHScenario
+ID: 30
+Name: War of the Sprie B
+LevelID: FS_030_War_Of_The_Spire_B
+Chain: Algox3
+Location: CrystalFields
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: GainMorale
+          Param1: 3
+        - Type: EnableEvent
+          Param1: WO-69
+        - Type: GainCampaignSticker
+          Param1: DestroyerOfTheSnowspeakers
+        - Type: AddCalendarCampaignSection
+          Param1: 34.2
+          Param2: 5
+        - Type: LockScenario
+          Param1: 28
+        - Type: RemoveAlgoxEvents

@@ -1,0 +1,31 @@
+Parser: ItemCard
+ID: 1270
+StringID: BootsOfTransferenceID
+Name: $FH/1270_item_cards_boots_of_transference_1$
+Art: Boots of Transference
+TotalInGame: 1
+Cost: 40
+Slot: Legs
+Rarity: Relic
+Usage: Consumed
+Trigger: OnAutomaticActivateProp
+Data:    
+    ItemRequirements:
+        Vars:
+            ValidateIsTrap: TriggerProp.ObjectType == "Trap"
+            ItemAbility: Item.YMLData.Data.Abilities[0]
+            ValidateHasTargets: CustomAbility.GetActorsInRangeForAbility(Actor, ItemAbility).Count > 0
+    Abilities:
+        ARetarget:
+            CanSkip: False
+            NullTargeting: True
+            Filter: [Ally,Enemy,OwnSummon]
+            Range: 3
+            PerformVars:
+                ApplyToActors:
+                    NewTarget: ActorsToTarget[0]
+                    ActivatePropOnNewTarget: TriggerProp.ForceActivate(NewTarget, TargetingActor)
+    Vars: 
+        StopPropActivate: True
+Layout: 
+    - Row: "$FH/1270_item_cards_boots_of_transference_2$"

@@ -1,0 +1,67 @@
+Parser: AbilityCard
+Name: $FH/492_character_ability_cards_crashing_tide_endless_cycle_1$
+Character: CrashingTideID
+ID: 492
+Level: 3
+ProgressionOrder: 492
+Initiative: 8
+Discard: [Lost,Discard]
+Prefab: 492_CrashingTide_EndlessCycle
+Data:
+    Top:
+        Abilities:
+            TRecoverDiscardedCards:
+                RecoverDiscardedCards: 0
+                Filter: [Self]
+                AnimOverload: Tide
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: Vars
+                        AddTo: True
+                        Vars:
+                            Value: CustomAbility.GetTideActiveBonuses(TargetingActor).Count
+                MiscVars:
+                    HelpTextWhenCancelled: "'492_character_ability_cards_crashing_tide_endless_cycle_4'"
+                    DontCancelIfNoValid: True
+        Consumes:
+            TCDark:
+                Elements: [Dark]
+                AbilityOverrides:
+                    TCRecoverDiscardedCardsBuff:
+                        ParentName: TRecoverDiscardedCards
+                        Strength: 2
+                XP: 1
+        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 3
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BShield:
+                Shield: 1
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                Filter: [Self]
+                ActiveBonus:
+                    Duration: Round
+                    ListLayoutOverride: [<sprite name=Shield> *BShield*, Positive_Shield]
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    Vars:
+                        ValidateActorType: Actor.Tile.IsWater
+Layout:
+    Top:
+        - Row: "$FH/492_character_ability_cards_crashing_tide_endless_cycle_2$"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCDark
+                    Text: "+2<sprite name=RecoverIcon>,<sprite name=XP1>"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "$FH/492_character_ability_cards_crashing_tide_endless_cycle_3$"
+        - Row: "<size=50%> "
+        - Row: "<b><size=130%><sprite name=Shield> *BShield*"

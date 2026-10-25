@@ -1,0 +1,18 @@
+Parser: FHScenario
+ID: 205
+Name: Tutorial 5
+LevelID: RFS_05_The_Lumberjack_Camp
+Chain: RoadToFrosthaven
+Location: Frosthaven
+CanNotReturnToOutpost: True
+CanNotBeReplayed: True
+Difficulty: 2
+Conclusions:
+    - Effects:
+         - Type: UnlockScenario
+           Param1: 206
+         - Type: RFS005ConclusionEffect
+           Param1: 2
+         - Type: AllCharactersGainExperience
+           Param1: 45
+         - Type: EnableLevelUp

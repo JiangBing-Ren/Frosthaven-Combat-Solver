@@ -1,0 +1,13 @@
+Parser: EnemyCard
+ID: 692
+Name: $Monster_Ability_692_LurkerClawcrusher_CripplingClaw$
+Initiative: 44
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: 0
+        Attack1:
+            Attack: -1
+            Filter: Enemy
+            Conditions: [Poison]

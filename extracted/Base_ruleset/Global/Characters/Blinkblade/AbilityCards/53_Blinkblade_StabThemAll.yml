@@ -1,0 +1,166 @@
+Parser: AbilityCard
+Name: $FH/53_character_ability_cards_blinkblade_stab_them_all_1$
+Character: BlinkbladeID
+ID: 53
+Level: 6
+Initiative: 4
+Discard: [Discard,Discard]
+Prefab: 53_Blinkblade_StabThemAll
+Data:
+    Top:
+        Abilities:
+            TAttack1:
+                Attack: 2
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                ConditionalOverrides:
+                    COAnim_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            COAnim:
+                                AnimOverload: AttackSlow
+            TMove1:
+                Move: 2        
+                MiscVars:
+                    PrintedProperties: list("Move")
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Fast
+            TAttack2:
+                Attack:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                ConditionalOverrides:
+                    COAnim_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            COAnim:
+                                AnimOverload: AttackSlow
+            TMove2:
+                Move: 2        
+                MiscVars:
+                    PrintedProperties: list("Move")
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Fast
+            TAttack3:
+                Attack:
+                    Amount: 1
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                ConditionalOverrides:
+                    COAnim_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            COAnim:
+                                AnimOverload: AttackSlow
+        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 3        
+                MiscVars:
+                    PrintedProperties: list("Move")
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Fast
+            BWard:
+                Ward: True 
+                Filter: Self
+                AnimOverload: PowerUpSlow
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Slow
+            BAttackAdjacent:          
+                AddActiveBonus:
+                    Attack: 2
+                    MiscVars:
+                        PrintedProperties: list("Attack")
+                    Filter:
+                        TargetType: Enemy
+                    Vars:
+                        EnemyMover: ActorWhoFinishedMove
+                    Targeting: Custom
+                    TargetingVars:
+                        AddValidActorInRange: EnemyMover
+                        AddTilesInRange: EnemyMover.TilesInRange(1)
+                    ConditionalOverrides:
+                        COAnim_Slow:
+                            Self: True
+                            Requirement:
+                                RequiredAgility: Slow
+                            AbilityOverrides:
+                                COAnim:
+                                    AnimOverload: AttackSlow
+                ActiveBonus:
+                    TriggerOnCaster: True
+                    Duration: Round
+                    Behaviour: DuringActionAbilityOnFinishedMovement
+                    Restriction: OncePerTurn
+                    RestrictPerActor: True
+                    Flags: NotInRangeToInRangeMove
+                    IsAura: True
+                    AuraTargeting: Range
+                    HiddenWhenAura: True
+                    AuraFilter:
+                        TargetType: Enemy                        
+                        UseTargetOriginalType: True
+                    Vars:
+                        ActorWhoFinishedMove: TriggerActor
+                Range: 1
+                Target: -1
+                Filter: Self  
+                AnimOverload: PowerUp
+                AutoTrigger: True
+                ConditionalOverrides:
+                    COAnim_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            COAnim:
+                                AnimOverload: PowerUpSlow
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack1* <size=100%><voffset=1>@TAttack1@"
+        - Divider:
+        - Row:
+            - ColumnWidths: "50"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "<sprite name=Move> *TMove1*"
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack2* <size=100%><voffset=1>@TAttack2@"
+        - Row:
+            - ColumnWidths: "50"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "<sprite name=Move> *TMove2*"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack3* <size=100%><voffset=1>@TAttack3@"
+    Bottom:
+        - Row:
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "<sprite name=Move> *BMove*"
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Text: "$FH/053_character_ability_cards_blinkblade_stab_them_all_2$ <sprite name=BBSlow>"
+        - Divider:
+        - Active:
+            Ability: BAttackAdjacent
+            Icon: Positive_Attack_Enemy_Move
+            ListLayout: "$FH/053_character_ability_cards_blinkblade_stab_them_all_3$ *BAttackAdjacent* <sprite name=Attack> <sprite name=Target> $053_character_ability_cards_blinkblade_stab_them_all_3a$"
+            Layout: "$FH/053_character_ability_cards_blinkblade_stab_them_all_3$ *BAttackAdjacent* <sprite name=Attack> <sprite name=Target> $053_character_ability_cards_blinkblade_stab_them_all_3a$"

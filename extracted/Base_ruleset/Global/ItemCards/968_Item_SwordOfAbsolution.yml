@@ -1,0 +1,27 @@
+Parser: ItemCard
+ID: 968
+StringID: SwordOfAbsolutionID
+Name: $FH/0968_item_cards_sword_of_absolution_1$
+Art: Sword of Absolution
+TotalInGame: 2
+Cost: 0
+Slot: OneHand
+Rarity: Rare
+Usage: Spent
+# specifically using OnNegativeConditionGlobal instead of OnNegativeConditionFromEnemy since this item is supposed to work even on poison cast by yourself
+Trigger: OnNegativeConditionGlobal
+Data:
+    ItemRequirements:
+        Vars:
+            ValidateIsPoisonOrCurse: Ability.AbilityType == "Poison" || Ability.AbilityType == "Curse"
+            ValidateHasParentContext: Ability?.VarsContext?.parentContext != null
+            ValidateAppliedActorIsItemOwner: Ability.VarsContext.parentContext.AppliedActor == Ability.VarsContext.parentContext.ItemOwner
+    Abilities:
+        ABless:
+            Bless: True
+            AutoTrigger: True
+            Filter: Self
+    Vars:
+        PreventCondition: True
+Layout:
+    - Row: "$FH/0968_item_cards_sword_of_absolution_2$"

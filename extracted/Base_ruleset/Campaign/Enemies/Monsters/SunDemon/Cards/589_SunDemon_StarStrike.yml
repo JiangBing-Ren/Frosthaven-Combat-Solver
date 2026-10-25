@@ -1,0 +1,13 @@
+Parser: EnemyCard
+ID: 589
+Name: $Monster_Ability_589_SunDemon_StarStrike$
+Initiative: 68
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: 0
+        Attack1:
+            Attack: 1
+            Filter: Enemy
+    Infuse: Light

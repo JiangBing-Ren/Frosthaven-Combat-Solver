@@ -1,0 +1,22 @@
+Parser: ItemCard
+ID: 1117
+StringID: WeightedNetID
+Name: $FH/1117_item_cards_weighted_net_1$
+Art: Weighted Net
+TotalInGame: 2
+Cost: 20
+Slot: TwoHand 
+Rarity: Rare
+Usage: Spent
+Trigger: SingleTarget
+ProsperityRequirement: 2
+Data: 
+    Overrides:
+        OImmobilize:
+            Conditions: Immobilize
+    CompareAbility:
+        AbilityType: Attack
+        IsRanged: True
+        Filter: Enemy
+Layout: 
+    - Row: $FH/1117_item_cards_weighted_net_2$

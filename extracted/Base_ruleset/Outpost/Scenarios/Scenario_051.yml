@@ -1,0 +1,17 @@
+Parser: FHScenario
+ID: 51
+Name: Orphan's Halls
+LevelID: FS_051_Orphan's_Halls
+Chain: Unfettered
+Location: CrystalFields
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: AllCharactersGainExperience
+          Param1: 10
+        - Type: GainItemBlueprint
+          Param1: 74
+        - Type: ChooseUnlockMandatoryScenario
+          Param1: "UnfetteredQuest_44_51_ChooseUnlockMandatoryQuestion"
+          Param2: 59
+          Param3: 58

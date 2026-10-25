@@ -1,0 +1,43 @@
+Parser: AbilityCard
+Name: $FH/088_character_ability_cards_banner_spear_take_no_prisoners_1$
+#CustomImage: KRO_BANNER_SPEAR_AbilityCards_TakeNoPrisoners
+Character: BannerSpearID
+ID: 88
+Level: 9
+Initiative: 85
+Discard: [Discard,Lost]
+Prefab: 88_Bannerspear_TakeNoPrisoners
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 3
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AreaEffect: "-2,0,B|-1,-1,B|0,0,G|2,0,R|4,0,R|1,-1,R|3,-1,R|1,1,R|3,1,R|2,2,R|0,2,R|-1,1,R"
+                MultiPassAttack: False
+                Conditions: [Poison]
+                AnimOverload: Attack2_TakeNoPrisoners 
+        XP: 1        
+    Bottom:
+        Abilities:
+            BSummon:
+                Summon: BannerOfDoomID
+                AnimOverload: Summon
+        XP: 2 
+Layout:
+    Top:
+        - ColumnWidths: "40,60"
+        - Column:
+            - Row: "<b><size=130%><sprite name=Attack> *TAttack* <sprite name=Poison>"
+        - Column:
+            - Row: "£Area£"
+    Bottom:
+        - Active:
+            Ability: "BSummon"
+            Icon: Positive_Damage_Enemy_Aura
+            Layout:
+                - Summon:
+                    Ability: BSummon
+                    SummonName: $FH/088_character_ability_cards_banner_spear_take_no_prisoners_2$
+                    SpecialText: $FH/088_character_ability_cards_banner_spear_take_no_prisoners_3$

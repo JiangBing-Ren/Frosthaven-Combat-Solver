@@ -1,0 +1,15 @@
+Parser: ScenarioAbility
+ID: FH118_AmuletOfProtection
+ScenarioAbility:
+    AmuletOfProtection:
+        Shield: 3
+        Target: 1
+        Filter: Self
+        ActiveBonus:
+            Duration: Persistent
+            Vars:
+                PersistentCasterVFX: "'AmuletProtectionVFX'"
+            MiscVars:
+                Amulet: True
+                Protection: True
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_118_SCENARIO_OBJECT_1$, Positive_Shield_Campaign]

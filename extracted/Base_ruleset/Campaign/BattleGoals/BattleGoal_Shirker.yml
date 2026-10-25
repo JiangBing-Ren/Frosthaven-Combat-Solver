@@ -1,0 +1,16 @@
+Parser: BattleGoal
+ID: BattleGoal_Shirker
+LocalisedName: FH/BATTLEGOAL_Shirker
+LocalisedDescription: FH/BATTLEGOAL_Shirker_Desc
+#Kill a monster not adjacent to you while you are adjacent to another monster.
+PerkChecks: 1
+BattleGoalCondition:
+    - Targets:
+        Filter: KillNonAdjacentTarget
+        MonsterType: [Normal, Elite, Boss]
+        CharacterTypes:
+            Target: [Enemy,Enemy2]
+        AdjacentTo: Enemy
+        Targets: 1
+        Value: 1
+        SubFilter: Scenario

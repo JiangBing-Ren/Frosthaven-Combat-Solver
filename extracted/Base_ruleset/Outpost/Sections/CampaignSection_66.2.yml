@@ -1,0 +1,7 @@
+Parser: CampaignSection
+ID: 66.2
+Name: The Pass is Ready
+SkipCompletedNotification: False
+Effects:
+    - Type: UnlockScenario
+      Param1: 116

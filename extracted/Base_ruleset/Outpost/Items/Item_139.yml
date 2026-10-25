@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 139
+ScenarioItemID: 1143
+Name: Horned Helm
+Quantity: 2
+GoldCost: 35
+Type: Head
+IsNewCharacterItem: False

@@ -1,0 +1,84 @@
+Parser: AbilityCard
+Name: $FH/60_character_ability_cards_blinkblade_fractured_timeline_1$
+Character: BlinkbladeID
+ID: 60
+Level: 9
+Initiative: 55
+Discard: [Lost,Discard]
+Prefab: 60_Blinkblade_FracturedTimeline
+Data:
+    Top:
+        Abilities:
+            TSelectEnemy:
+                NullTargeting: True
+                SkipAnim: True
+                Filter:
+                    TargetType: Enemy
+                    EnemyType: Normal
+                    Vars:
+                        ValidateStandeeCount: CustomAbility.HasRemainingStandees(target)
+                MiscVars:
+                    ValidateStandeeCountInvalidText: "'60_character_ability_cards_blinkblade_fractured_timeline_4'"
+                SubAbilities:
+                    TSubSpawn:
+                        Summon: BlinkbladeID
+                        CanSkip: False
+                        CanUndo: True
+                        TreatAsNonSubAbility: True
+                        Vars:
+                            ActorToCopy: TargetingActor.LastAbilityPerformed.ActorsToTarget[0]
+                        AnimOverload: FracturedTimeline
+                        ConditionalOverrides:
+                            COAnim_Slow:
+                                Self: True
+                                Requirement:
+                                    RequiredAgility: Slow
+                                AbilityOverrides:
+                                    COAnim:
+                                        AnimOverload: FracturedTimelineSlow
+
+        XP: 2
+
+    Bottom:
+        Abilities:
+            BTeleport:
+                Teleport2:
+                    Amount: 7
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Teleport")
+                Range: 1
+                Target: -1
+                Filter: Self
+                AnimOverload: Teleport Into
+                AnimOverload2: Teleport Outof
+            BDamage_Slow:
+                Damage: 2
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Filter: Self
+                CanSkip: False
+                AutoTrigger: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Slow
+Layout:
+    Top:
+        #- Row: "$FH/060_character_ability_cards_blinkblade_fractured_timeline_2$"
+        - Active:
+            Ability: "TSubSpawn"
+            Icon: "Summon"
+            ListLayout: "$FH/060_character_ability_cards_blinkblade_fractured_timeline_2$"
+            Layout: "$FH/060_character_ability_cards_blinkblade_fractured_timeline_2$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Teleport> *BTeleport* <size=100%><voffset=1>@BTeleport@"
+        - Divider:
+        - Row:
+            - ColumnWidths: "50,50"
+            - Column:
+                - Row: "<size=50%>"
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Text: "$FH/060_character_ability_cards_blinkblade_fractured_timeline_3$"
+

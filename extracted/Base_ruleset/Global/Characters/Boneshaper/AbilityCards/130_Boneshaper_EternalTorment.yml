@@ -1,0 +1,73 @@
+Parser: AbilityCard
+Name: $FH/130_character_ability_cards_boneshaper_eternal_torment_1$
+Character: BoneshaperID
+ID: 130
+Level: 1
+Initiative: 70
+Discard: [Discard,Discard]
+Prefab: 130_Boneshaper_EternalTorment
+Data:
+    Top:
+        Abilities:
+            TCurse:
+                Curse: True
+                AnimOverload: CastNegative
+                Filter: Enemy
+                Range: 5
+                MiscVars:
+                    PrintedProperties: list("Range")
+                SubAbilities:
+                    TSubAlly:
+                        ControlActor:
+                            Abilities:
+                                TAllyAttack:
+                                    Attack: +0
+                                    Range: +0
+                                    MiscVars:
+                                        PrintedProperties: list("Attack")
+                            ControlActorType: Player
+                        Target: 1
+                        Vars:
+                            Tiles: CustomAbility.GetAdjacentTiles(Ability.ParentAbility.TilesSelected).Where(CActor.HaveLOS( TargetingActor.Tile, obj))
+                            Actors: Tiles.Select(LivingActor).Where(obj != null)
+                        Targeting: Custom
+                        TargetingVars:
+                            AddTilesInRange: Tiles
+                            AddValidActorsInRange: Actors
+                            AddActorsToTarget: Actors
+                            AddSelectedTiles: Actors.Select(Tile)
+                        Filter: OwnSummon
+                        TreatAsNonSubAbility: True
+                        AnimOverload: ControlSummon
+                        Flags: DontPreview
+            
+        Infuse: Dark
+    Bottom:
+        Abilities:
+            BAlly:
+                ControlActor:
+                    #UseControllingActorPlayerControl: True
+                    Abilities:
+                        BAllyLoot:
+                            Loot: 1
+                            MiscVars:
+                                PrintedProperties: list("Loot")
+                            Target: -1
+                            RangeIsBase: True
+                    ControlActorType: Player
+                Filter: OwnSummon
+                Range: 99
+                AnimOverload: ControlSummon
+Layout:
+    Top:
+       - Row: "<b><size=130%><sprite name=Curse> <mark=#6EBE4922><size=100%><sprite name=Range> 5</mark>"
+       - Divider:
+       - Row: "$FH/130_character_ability_cards_boneshaper_eternal_torment_2$"
+       - Row: "<b><size=130%><sprite name=Attack> +0"
+       - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark
+    Bottom:
+       - Row: "$FH/128_character_ability_cards_boneshaper_flow_of_the_black_river_3$ "
+       - Row: "<b><size=130%> <sprite name=Loot> 1"
+       - Row: "$FH/130_character_ability_cards_boneshaper_eternal_torment_3$"

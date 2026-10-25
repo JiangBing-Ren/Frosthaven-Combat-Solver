@@ -1,0 +1,54 @@
+Parser: AbilityCard
+Name: $FH/162_character_ability_cards_geminate_firefly_swarm_1$
+Character: GeminateID
+ID: 162
+Level: 1
+ProgressionOrder: 9
+Initiative: 76
+Discard: [Lost,Discard]
+RequiredForm: Range
+Prefab: 162_Geminate_FireflySwarm
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                AreaEffect: "0,0,R|1,-1,R|2,0,R"
+                AreaEffectLayoutOverride: "0,0,R|1,-1,R|2,0,R"
+                MultiPassAttack: False
+                Range: 4
+                MinRange: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                AnimOverload: RangedAttack_FireflySwarm
+        Consumes:
+            TCFire:
+                Elements: [Fire]
+                AbilityOverrides:
+                    BShieldBuff:
+                        ParentName: TAttack
+                        Strength: 1
+                XP: 1
+        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 4
+                StrengthIsBase: True
+                MiscVars:
+                    PrintedProperties: list("Move")
+Layout:
+    Top:
+        - ColumnWidths: "70,30"
+        - Column:
+            - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%> $FH/162_character_ability_cards_geminate_firefly_swarm_2$"
+            - Row: "<size=50%> "
+            - Conditional:
+                Layout:
+                    - Consume:
+                        Name: TCFire
+                        Text: "<nobr>+1 <sprite name=Attack></nobr>, <nobr><sprite name=XP1></nobr>"
+        - Column: "£Area£"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%>"

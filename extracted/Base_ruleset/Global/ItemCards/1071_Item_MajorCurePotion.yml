@@ -1,0 +1,24 @@
+Parser: ItemCard
+ID: 1071
+StringID: MajorCurePotionID
+Name: $FH/1071_item_cards_major_cure_potion_1$
+Art: Major Cure Potion
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+IgnoreImpair: True
+Data: 
+    ItemRequirements:
+        Vars:
+            ValidateHasAnyCondition: Actor.Tokens.CountNegativeConditions(true) > 0
+    Abilities:
+        ACleanse:
+            IgnoreStun: True
+            Filter: Self
+            RemoveConditions: "All"
+            Conditions: [Wound,Brittle,Bane,Poison,Immobilize,Disarm,Impair,Stun,Muddle,StopFlying] 
+Layout: 
+    - Row: "$FH/1071_item_cards_major_cure_potion_2$"

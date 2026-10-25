@@ -1,0 +1,38 @@
+Parser: ItemCard
+ID: 1268
+StringID: MirroredArmorID
+Name: $FH/1268_item_cards_mirrored_armor_1$
+Art: Mirrored Armor
+TotalInGame: 1
+Cost: 35
+Slot: Body
+Rarity: Relic
+Usage: Consumed
+Trigger: AfterAttackedIgnoringDamageTaken
+Data:    
+    ItemRequirements:
+        Vars:
+            ActorBeingAttacked: Ability.VarsContext.parentContext.ActorBeingAttacked
+            ItemOwner: Ability.VarsContext.parentContext.ItemOwner
+            ValidateIsOwner: ActorBeingAttacked == ItemOwner
+            ValidateTookDamage: Ability.VarsContext.parentContext.DamageTaken > 0
+    Abilities:
+        DamageX:
+            AutoTrigger: True
+            Targeting: Custom
+            TargetingVars:
+                AddValidActorInRange: ActorAttacking
+            Damage: 0
+            StatIsBasedOnX:
+                Strength:
+                    BasedOn: Vars
+                    Vars:
+                        Value: DamageTaken
+    CompareAbility:
+        AbilityType: Attack
+        Filter: Enemy
+        AbilityActorHealth: 1
+    AddModifiers:
+        - [AMC_Basic_M1, 2]
+Layout: 
+    - Row: $FH/1268_item_cards_mirrored_armor_2$

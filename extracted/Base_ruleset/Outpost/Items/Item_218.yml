@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 218
+ScenarioItemID: 1228
+Name: Tome of Life
+Quantity: 1
+GoldCost: 50
+Type: OneHandWeapon
+IsNewCharacterItem: False

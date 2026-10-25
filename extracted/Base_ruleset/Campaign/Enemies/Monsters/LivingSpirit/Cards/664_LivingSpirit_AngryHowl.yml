@@ -1,0 +1,19 @@
+Parser: EnemyCard
+ID: 664
+Name: $Monster_Ability_664_LivingSpirit_AngryHowl$
+Initiative: 55
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: 0
+        Curse1:
+            Curse: True
+            Target: 3
+            TargetIsBase: True
+            Range: 2
+            RangeIsBase: True
+            Filter: Enemy
+            AnimOverload: AngryHowl
+            MultiPassAttack: False
+    Infuse: Ice

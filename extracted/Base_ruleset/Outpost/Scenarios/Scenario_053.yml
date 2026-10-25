@@ -1,0 +1,15 @@
+Parser: FHScenario
+ID: 53
+Name: Underwater Throne
+LevelID: FS_053_Underwater_Throne
+RequiresBoat: true
+Chain: Lurker
+Location: TheBitingSea
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: AllCharactersAddPerkCheck
+          Param1: 2
+        - Type: AddCoralShard
+        - Type: UnlockScenario
+          Param1: 60

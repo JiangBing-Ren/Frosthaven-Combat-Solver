@@ -1,0 +1,24 @@
+Parser: ItemCard
+ID: 1260
+StringID: TrainersNetID
+Name: $FH/1260_item_cards_trainers_net_1$
+Art: Trainers Net
+TotalInGame: 1
+Cost: 10
+Slot: OneHand 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        ACapture:
+            # capture enemies with 2 health or less
+            Capture: 2
+            Range: 1
+            Filter: Enemy
+            PerformVars:
+                ApplyToActors: 
+                    VFX: TargetingActor.PlayVFXTowards(ActorsToTarget[0],"ItemTrainersNetEffect")
+
+Layout: 
+    - Row: "$FH/1260_item_cards_trainers_net_2$"

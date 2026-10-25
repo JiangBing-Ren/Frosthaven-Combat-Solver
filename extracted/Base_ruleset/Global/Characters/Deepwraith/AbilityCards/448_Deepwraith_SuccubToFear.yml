@@ -1,0 +1,60 @@
+Parser: AbilityCard
+Name: $FH/448_character_ability_cards_deepwraith_succumb_to_fear_1$
+Character: DeepwraithID
+Prefab: 448_Deepwraith_SuccumbToFear
+ID: 448
+Level: 1
+Initiative: 20
+Discard: [Discard,Discard]
+Prefab: 448_Deepwraith_SuccumbToFear
+Data:
+    Top:
+        Abilities:
+            TConsume:
+                PreviewEffectText: "<sprite name=DWRTrophy>"
+                MiscVars: 
+                    CanConsume: CustomAbility.GetAdjacentTiles(TargetingActor.Tile).Select(LivingActor).Where(obj != null && not obj.IsBoss  && CActor.AreActorsEnemies(obj.Type, CActor.EType.Player, obj, null) && obj.Tokens.GetAllNegativeConditions().Count >= 3).Count > 0
+                Consume:
+                    Trophies: 1
+                    Description: "$448_character_ability_cards_deepwraith_succumb_to_fear_2$"
+                    PreviewEffectId: M1TrophyBane
+                    Abilities:
+                        TBane:
+                            Bane: True
+                            MiscVars:
+                                PrintedProperties: list("Target")
+                            AnimOverload: Intimidate
+                            Filter:
+                                TargetType: Enemy
+                                Vars:
+                                    ValidateConditions: target.Tokens.CountNegativeConditions() >= 3
+                                    ValidateNonBoss: not target.IsBoss   
+        XP: 1
+    Bottom:
+        Abilities:
+            BTeleport:
+                Teleport2: 
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Teleport")
+                Filter: Self
+                AnimOverload: Teleport Into
+                AnimOverload2: Teleport Outof
+            BMuddle:
+                Muddle: True
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Target: 99
+                Filter: Enemy
+                AnimOverload: Intimidate_AOE
+                MiscVars:
+                    AutoSelectValidTiles: True
+Layout:
+    Top:
+        - Row: "$FH/448_character_ability_cards_deepwraith_succumb_to_fear_2$"
+    Bottom:
+        - Row: "<sprite name=Teleport> *BTeleport* @BTeleport@"
+        - Divider:
+        - Row: "$FH/448_character_ability_cards_deepwraith_succumb_to_fear_3$"

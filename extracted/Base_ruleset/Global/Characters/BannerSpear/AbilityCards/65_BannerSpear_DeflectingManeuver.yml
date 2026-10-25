@@ -1,0 +1,75 @@
+Parser: AbilityCard
+Name: $FH/065_character_ability_cards_banner_spear_deflecting_maneuver_1$
+#CustomImage: KRO_BANNER_SPEAR_AbilityCards_DeflectingManeuver
+Character: BannerSpearID
+ID: 65
+Level: 1
+Initiative: 15
+Discard: [Discard,Discard]
+Prefab: 65_Bannerspear_DeflectingManeuver
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AnimOverload: Attack
+            TDisadvantage:
+                AttackersGainDisadvantage: 1
+                Range: 0
+                Target: -1
+                Filter: Self
+                AutoTrigger: True
+                ActiveBonus:
+                    Duration: Round        
+                AnimOverload: SelfBuff
+
+        Consumes:
+            TCAir:
+                Elements: Air
+                AbilityOverrides:
+                    BCAirAttackBuff:
+                        ParentName: TAttack
+                        Strength: 1
+                        AttackHasAdvantage: True
+                XP: 1
+    Bottom:
+        Abilities:
+            BShield:
+                Shield:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                ActiveBonus:
+                    Flags: ShieldRanged
+                    Duration: Round
+                AnimOverload: SelfBuff
+Layout:
+    Top:
+        
+        - Row: "<b><size=130%> <sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Row: "<size=20%> "
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCAir
+                    Text: "+1 <sprite name=Attack>, $Advantage$, <sprite name=XP1>"
+        - Divider:
+        - Active:
+            Ability: TDisadvantage
+            Icon: Positive_Disadvantage_Enemy
+            ListLayout: "$FH/065_character_ability_cards_banner_spear_deflecting_maneuver_3$"
+            Layout: "$FH/065_character_ability_cards_banner_spear_deflecting_maneuver_3$"
+    Bottom:
+        - Active:
+            Ability: BShield
+            Icon: Positive_ShieldRanged
+            ListLayout: "<sprite name=ShieldRangedAttack> *BShield*"
+            Layout:
+                - Row: "<b><size=130%><sprite name=Shield> *BShield* <size=100%><voffset=1>@BShield@"
+                - Row: "$FH/065_character_ability_cards_banner_spear_deflecting_maneuver_4$"

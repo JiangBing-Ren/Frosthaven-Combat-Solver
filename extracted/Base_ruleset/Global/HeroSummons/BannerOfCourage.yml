@@ -1,0 +1,24 @@
+Parser: HeroSummon
+ID: BannerOfCourageID
+LocKey: $FH/076_character_ability_cards_banner_spear_let_them_come_3$
+Model: BannerOfCourage
+Health:
+    Amount: 7
+    SquareEnhancements: 1
+Move: 0
+Attack: 0
+Range: 0
+OnSummonAbilities:
+    AShieldAura:
+        Shield: 1
+        Range: 1
+        Target: -1
+        Filter: Self
+        ActiveBonus:
+            Behaviour: BuffShield
+            Duration: Persistent
+            IsAura: True
+            AuraFilter: [Ally]
+            ListLayoutOverride: [$FH/076_character_ability_cards_banner_spear_let_them_come_4$, Positive_Shield_Ally_Aura]
+        Text: $FH/076_character_ability_cards_banner_spear_let_them_come_4$
+        AnimOverload: None

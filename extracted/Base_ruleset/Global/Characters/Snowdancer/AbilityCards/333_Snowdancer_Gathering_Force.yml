@@ -1,0 +1,67 @@
+Parser: AbilityCard
+Name: $FH/333_character_ability_cards_snowdancer_gathering_force_1$
+Character: SnowdancerID
+ID: 333
+Level: 1
+Initiative: 89
+Discard: [Lost,Discard]
+Prefab: 333_Snowdancer_GatheringForce
+Data:
+    Top:
+        Abilities:
+            TActiveInfuse:
+                AddActiveBonus:
+                    IgnoreStun: False
+                    Infuse: [Ice, Air]
+                    ShowElementPicker: True
+                    CanSkip: True
+                Filter: Self
+                ActiveBonus:
+                    Behaviour: EndTurnAbility
+                    Duration: Persistent
+                    ValidAbilityType: Infuse
+                SubAbilities:
+                    TActiveReducePush:
+                        TreatAsNonSubAbility: True
+                        Move: 1
+                        Filter: Self
+                        AutoTrigger: True
+                        SkipAnim: True
+                        ActiveBonus:
+                            Hidden: True
+                            Duration: Persistent
+                            Behaviour: BuffForcedMovement
+                            ValidAbilityTypes: [Push, Pull, ControlActor]
+                            Vars:
+                                BuffValue: -1
+        XP: 1
+    Bottom:
+        Abilities:
+            BLoot:
+                Loot: 1
+                MiscVars:
+                    PrintedProperties: list("Loot")
+                Target: -1
+            BAdvantage:
+                Advantage:
+                    DecrementTrigger: First
+                Filter: Self
+                ActiveBonus:
+                    Duration: Round
+                AnimOverload: PowerUp
+                AutoTrigger: True
+Layout:
+    Top:
+        - Active:
+            Ability: TActiveInfuse
+            Icon: Positive_IceAir_Snowdancer
+            ListLayout: "$FH/333_character_ability_cards_snowdancer_gathering_force_2$: <sprite name=CreateMixed-IA>. $FH/333_character_ability_cards_snowdancer_gathering_force_2a$"
+            Layout: "$FH/333_character_ability_cards_snowdancer_gathering_force_2$: <sprite name=CreateMixed-IA>. $FH/333_character_ability_cards_snowdancer_gathering_force_2a$"
+    Bottom:
+        - Row: "<size=130%><sprite name=Loot> *BLoot*"
+        - Divider:
+        - Active:
+            Ability: BAdvantage
+            Icon: Positive_Advantage_Attack
+            ListLayout: "$FH/333_character_ability_cards_snowdancer_gathering_force_3$"
+            Layout: "$FH/333_character_ability_cards_snowdancer_gathering_force_3$"

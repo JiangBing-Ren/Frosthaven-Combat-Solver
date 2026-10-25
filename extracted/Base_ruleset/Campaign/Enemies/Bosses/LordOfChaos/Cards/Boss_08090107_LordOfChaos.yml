@@ -1,0 +1,10 @@
+Parser: EnemyCard
+ID: 08090107
+Name: $Monster_Ability_BasicAttack$
+Initiative: 36
+Shuffle: False
+Data:
+    Abilities: 
+        Attack1:
+            Attack: 0
+            Filter: Enemy

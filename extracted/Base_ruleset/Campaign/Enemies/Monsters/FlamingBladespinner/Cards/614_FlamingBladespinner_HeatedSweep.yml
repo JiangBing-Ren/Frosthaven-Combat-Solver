@@ -1,0 +1,19 @@
+Parser: EnemyCard
+ID: 614
+Name: $Monster_Ability_614_FlamingBladespinner_HeatedSweep$
+Initiative: 58
+Shuffle: False
+Data:
+    Abilities:
+        Move1:
+            Move: +0
+        Attack1:
+            Attack: +0
+    Consumes:
+        CFire1:
+            Elements: Fire
+            AbilityOverrides:
+                AttackBuff:
+                    ParentName: Attack1
+                    Strength: 1
+                    Conditions: Wound

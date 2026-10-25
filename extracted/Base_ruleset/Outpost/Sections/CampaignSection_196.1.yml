@@ -1,0 +1,7 @@
+Parser: CampaignSection
+ID: 196.1
+Name: Hall of Revelry Built (1-B)
+SkipCompletedNotification: True
+Effects:
+    - Type: ActivateCampaignSection
+      Param1: 155.4

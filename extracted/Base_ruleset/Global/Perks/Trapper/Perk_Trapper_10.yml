@@ -1,0 +1,28 @@
+Parser: Perk
+ID: Trapper10
+Name: FH/PERK_Trapper_10_Name
+Description: FH/PERK_Trapper_10_Desc
+CharacterID: TrapperID
+Available: 1
+Flags: [Passive, ApplyActiveBonusesAtScenarioStart]
+Abilities:       
+  CreateTrapAbility: 
+    Filter: Self
+    AutoTrigger: True
+    SkipAnim: True
+    AddActiveBonus:
+      Trap:
+        TrapName: TrapperTrap
+        Damage: 2                    
+      Range:
+        Amount: 1
+      RangeIsBase: True
+      Target: 1
+      TargetIsBase: True
+      AnimOverload: CreateTrap
+    ActiveBonus:
+      Duration: Persistent
+      Behaviour: PreCalcInitiativeAbility
+      Restriction: OncePerRound
+      Hidden: True
+      XPTracker: [0]

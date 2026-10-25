@@ -1,0 +1,198 @@
+Parser: AbilityCard
+Name: $FH/035_character_ability_cards_blinkblade_kinetic_transfer_1$
+Character: BlinkbladeID
+ID: 35
+Level: 1
+Initiative: 36
+Discard: [Discard,Discard]
+Prefab: 35_Blinkblade_KineticTransfer
+Data:
+    Top:
+        Abilities:
+            TMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+                ConditionalOverrides:
+                    TMoveCO_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            TMove:
+                                Strength: -1
+            TAttack:
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Range: 1
+                Target: 1
+                Targeting: Range
+                Filter: [Enemy]
+                AnimOverload: Attack
+                ConditionalOverrides:
+                    TAttackCO_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            TAttack:
+                                Range: 1      
+                                AnimOverload: RangedAttackSlow
+                                MiscVars:
+                                    PrintedProperties: list("Range")
+                    AttackCO_SlowBuffed:
+                        Self: True
+                        Requirement:
+                            Vars: 
+                                hasIgnoreSlowEffects: TargetingActor.HasActiveBonusFlag(AbilityData.EActiveBonusFlag.IgnoreSlowEffects)
+                                hasTreatSlowAgilityAsFast: TargetingActor.HasActiveBonusFlag(AbilityData.EActiveBonusFlag.TreatSlowAgilityAsFast)
+                                ValidateHasValidTargets: hasIgnoreSlowEffects || hasTreatSlowAgilityAsFast
+                        AbilityOverrides:
+                            TOverloadAnim:
+                                AnimOverload: AttackSlow
+                    TAttackCO_Fast:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Fast
+                        AbilityOverrides:
+                            TAttack:
+                                SubAbilities:
+                                    BSubPush:
+                                        Push: 3
+                                        IsInlineSubAbility: True
+                                        MiscVars:
+                                            PrintedProperties: list("Push")
+            TInfuseFire:
+                Infuse: [Fire]
+                SkipAnim: True
+                AutoTrigger: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Fast
+            TInfuseIce:
+                Infuse: [Ice]
+                SkipAnim: True
+                AutoTrigger: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Slow
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 4
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+                ConditionalOverrides:
+                    BMoveCO_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            BMove:
+                                Strength: -1
+            BDamage:                
+                Damage: 1
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Range: 1
+                Target: -1
+                Targeting: Range
+                Filter: [Ally, Enemy]
+                CanSkip: False
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Fast
+                AnimOverload: PowerUp1HexAOE
+            BPush:
+                Choose:
+                    Abilities:
+                        CPush:
+                            Push: 3
+                            MiscVars:
+                                PrintedProperties: list("Push", "Range")
+                            Range: 1
+                            Target: -1
+                            Targeting: Range
+                            Filter: [Enemy]
+                            AnimOverload: ChargeUp
+                            ConditionalOverrides:
+                                COAnim_Slow:
+                                    Self: True
+                                    Requirement:
+                                        RequiredAgility: Slow
+                                    AbilityOverrides:
+                                        COAnim:
+                                            AnimOverload: ChargeUpSlow
+                Filter: Self
+                Tokens: -1
+                Flags: [ModifiesTimeTokens]
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    TimeTokens: ">= 1"
+                HelpBoxTooltipLocKey: "$FH/035_character_ability_cards_blinkblade_kinetic_transfer_3$"
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "33,34,33"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Move> *TMove* <size=100%><voffset=1>@TMove@"
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Text: "-1 <sprite name=Move>"
+        - Divider:
+        - Row:
+            - ColumnWidths: "33,34,33"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "<sprite name=Push> 3"
+            - Column:
+                - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Text: "+1 <sprite name=Range>"
+        - Row: "<size=25%> "
+        - Row:
+            - ColumnWidths: "50,50"
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Layout:
+                        - Infuse: Fire
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Layout:
+                        - Infuse: Ice
+    Bottom:
+        - Row:
+            - ColumnWidths: "33,34,33"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Text: "-1 <sprite name=Move>"
+        - Divider:
+        - Row:
+            - ColumnWidths: "80,20"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "$FH/035_character_ability_cards_blinkblade_kinetic_transfer_2$"
+            - Column:    
+        - Row: "<size=25%> "
+        - Conditional:
+            Top: false
+            Text: "$FH/035_character_ability_cards_blinkblade_kinetic_transfer_3$"

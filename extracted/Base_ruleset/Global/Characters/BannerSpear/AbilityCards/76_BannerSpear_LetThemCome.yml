@@ -1,0 +1,74 @@
+Parser: AbilityCard
+Name: $FH/076_character_ability_cards_banner_spear_let_them_come_1$
+#CustomImage: KRO_BANNER_SPEAR_AbilityCards_LetThemCome
+Character: BannerSpearID
+ID: 76
+Level: 3
+Initiative: 24
+Discard: [Discard,Lost]
+Prefab: 76_Bannerspear_LetThemCome
+Data:
+    Top:
+        Abilities:
+            TLetThemComeAttack:
+                Attack:
+                    Amount: 2
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Conditions: Poison
+                AreaEffect: "0,0,G|2,0,R|4,0,R|3,-1,R|1,1,B"                
+                AreaEffectLayoutOverride: "0,0,G|-1,1,R|-2,2,R|0,2,R|-2,0,B"
+                MultiPassAttack: False
+                AnimOverload: Attack2
+            TSubHeal:
+                Heal:
+                    Amount: 2
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Target: 2
+                Targeting: Custom
+                Vars:
+                    Parent: CustomAbility.FindAbilityInPhaseByName("TLetThemComeAttack")
+                TargetingVars:
+                    AddTilesInRange: CustomAbility.ActorsOnBlueHexes(Parent, true).Select(Tile)
+                    AddValidActorsInRange: CustomAbility.ActorsOnBlueHexes(Parent, true)
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [ Attack ]
+                    DoesntHaveNegativeCondition: [Stun]
+                Filter: [Ally, Self]
+                MiscVars:
+                    AutoSelectValidTiles: True
+        XP: 1
+    Bottom:
+        Abilities:
+            BSummon:
+                Summon: BannerOfCourageID
+                AnimOverload: Summon
+        XP: 2
+Layout:
+    Top:
+        - ColumnWidths: "60,40"
+        - Column:
+            - Row: 
+                - ColumnWidths: "20,30,30,20"
+                - Column: 
+                - Column: "<b><size=130%><sprite name=Attack> *TAttack*"
+                - Column:
+                    - AddedEffect: "<sprite name=Poison>"
+                - Column: 
+            - Divider: 
+            - Row: $FH/076_character_ability_cards_banner_spear_let_them_come_2$
+            - Row: "<size=50%> "
+        - Column:
+            - Row: "£Area£"
+    Bottom:
+        - Active:
+            Ability: "BSummon"
+            Icon: Positive_Shield_Ally_Aura
+            Layout:
+                - Summon:
+                    Ability: BSummon
+                    SummonName: $FH/076_character_ability_cards_banner_spear_let_them_come_3$
+                    SpecialText: $FH/076_character_ability_cards_banner_spear_let_them_come_4$

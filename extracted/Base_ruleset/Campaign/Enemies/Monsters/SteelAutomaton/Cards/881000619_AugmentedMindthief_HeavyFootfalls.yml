@@ -1,0 +1,60 @@
+Parser: EnemyCard
+ID: 881000619
+Name: $Monster_Ability_619_SteelAutomaton_HeavyFootfalls$
+Initiative: 48
+Shuffle: False
+Data:
+    Abilities:
+        DamageAdjacent1:
+            Damage: 1
+            Range: 0
+            Target: -1
+            TargetIsBase: True
+            Targeting: Range
+            Filter: Enemy
+            Text: "$FH/619_1$"
+            TextOnly: True
+            AnimOverload: HeavyAttack
+        Move1:
+            Move: 2
+        AdjacentHazardousDamage1:
+            Damage: 0
+            StatIsBasedOnX:
+                Strength:
+                    BasedOn: ScenarioHazardousTerrainDamage
+            Range: 0
+            Target: -1
+            TargetIsBase: True
+            Targeting: Range            
+            Filter: Enemy
+            Text: "$FH/619_2$"
+            TextOnly: True
+            AnimOverload: HeavyAttack
+        Control1:
+            Filter:
+                TargetType: Enemy
+                ActorType: [Player,Summon]
+            Range: 3
+            RangeIsBase: True
+            AnimOverload: Control
+            ControlActor:
+                Abilities:
+                    ControlMove:
+                        Move: 2
+                        StrengthIsBase: True
+                    ControlAttack:
+                        Attack: 0
+                        StrengthIsBase: True
+                        Range: 1
+                        RangeIsBase: True
+                        ShowRange: False
+                        Target: 1
+                        TargetIsBase: True
+                        ShowTarget: False
+                        StatIsBasedOnX:
+                            Strength:
+                                BasedOn: Vars
+                                Vars:
+                                    Value: MonsterClassManager.Find("AugmentedMindthiefID")?.CurrentMonsterStat?.Attack || 0
+                ControlDurationType: ControlForOneAction
+                ControlActorType: Enemy

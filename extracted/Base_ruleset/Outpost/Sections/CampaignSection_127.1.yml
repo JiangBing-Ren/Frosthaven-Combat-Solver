@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 127.1
+Name: Puzzle Soution
+SkipCompletedNotification: True
+Effects:
+    - Type: UnlockScenario
+      Param1: 31
+    - Type: UnlockPuzzle
+      Param1: MetalMosaic

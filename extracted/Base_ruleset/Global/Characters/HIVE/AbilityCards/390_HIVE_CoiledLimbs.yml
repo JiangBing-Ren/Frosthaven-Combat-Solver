@@ -1,0 +1,55 @@
+Parser: AbilityCard
+Name: $FH/390_character_ability_cards_hive_coiled_limbs_1$
+Character: HIVEID
+ID: 390
+Level: 1
+Initiative: 82
+Discard: [Lost,Discard]
+Prefab: 390_HIVE_CoiledLimbs
+Data:
+    Top:
+        XP: 2
+        Abilities:
+            TSummon:
+                Summon: LeaperID
+                AnimOverload: Summon
+        Mode:
+            BuffMoveJump:
+                AutoTrigger: True
+                Move:
+                    Amount: 0
+                    Jump: True
+                Filter: Self
+                ActiveBonus:
+                    Behaviour: BuffMove
+                    Duration: Persistent
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 
+                    Amount: 4
+                    CircleEnhancements: 1
+                    Jump: True
+                MiscVars:
+                    PrintedProperties: list("Move")
+Layout:
+    Top:
+        - Active:
+              Ability: "TSummon"
+              Icon: "Summon"
+              Layout:
+                  - Summon:
+                        Ability: TSummon
+                        SummonName: $FH/390_character_ability_cards_hive_coiled_limbs_2$
+                        SpecialText:
+                            - Row: "$FH/390_character_ability_cards_hive_coiled_limbs_3$"
+        - Row:
+            - Column: "<sprite name=HIVEMode>"
+            - Column:
+                - Active:
+                    Ability: "BuffMoveJump"
+                    Icon: "Positive_Jump_HIVEMode"
+                    ListLayout: "$FH/390_character_ability_cards_hive_coiled_limbs_4$"
+                    Layout: "$FH/390_character_ability_cards_hive_coiled_limbs_4$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%> @BMove@ <sprite name=Jump>"

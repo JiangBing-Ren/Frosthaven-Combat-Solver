@@ -1,0 +1,24 @@
+Parser: ItemCard
+ID: 966
+StringID: KickingBootsID
+Name: $FH/0966_item_cards_kicking_boots_1$
+Art: Kicking Boots
+TotalInGame: 2
+Cost: 0
+Slot: Legs 
+Rarity: Rare
+Usage: Spent
+Trigger: SingleTarget
+Data:
+    Overrides:
+        OPush:
+            SubAbilities:
+                AttackSubPush:
+                    Push: 2
+                    IsInlineSubAbility: True
+    CompareAbility:
+        AbilityType: Attack
+        IsMelee: True
+        Filter: Enemy
+Layout: 
+    - Row: $FH/0966_item_cards_kicking_boots_2$

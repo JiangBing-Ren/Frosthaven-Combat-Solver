@@ -1,0 +1,15 @@
+Parser: FHScenario
+ID: 206
+Name: Tutorial 6
+LevelID: RFS_06_On_Thin_Ice
+Chain: RoadToFrosthaven
+Location: ImperialMountains
+CanNotReturnToOutpost: True
+CanNotBeReplayed: True
+Difficulty: 2
+Conclusions:
+    - Effects:
+         - Type: UnlockMandatoryScenario
+           Param1: 207
+         - Type: AllCharactersAddPerkCheck
+           Param1: 3

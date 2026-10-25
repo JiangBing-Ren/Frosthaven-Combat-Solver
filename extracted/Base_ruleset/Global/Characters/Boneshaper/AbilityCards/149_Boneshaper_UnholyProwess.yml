@@ -1,0 +1,88 @@
+Parser: AbilityCard
+Name: $FH/149_character_ability_cards_boneshaper_unholy_prowess_1$
+Character: BoneshaperID
+ID: 149
+Level: 9
+Initiative: 97
+Discard: [Lost,Lost]
+Prefab: 149_Boneshaper_UnholyProwess
+Data:
+    Top:
+        Abilities:
+            TSummon:
+                Summon: SkeletonSorcererID
+                AnimOverload: Summon2
+            AHealthBuff:
+                AutoTrigger: True
+                AllowOverheal: 1
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                ActiveBonus:
+                    Duration: Persistent
+                    IsAura: True
+                    AuraTargeting: All
+                    Behaviour: AddAccumulativeOverhealAndHeal
+                    AuraFilter:
+                        HeroSummonClasses: [ShamblingSkeletonID]
+                    ListLayoutOverride: [$FH/149_character_ability_cards_boneshaper_unholy_prowess_3$, Positive_HealthPlus_Summon]
+                Text: "$FH/149_character_ability_cards_boneshaper_unholy_prowess_3$"
+                TextOnly: True
+                SkipAnim: True
+            AOnSummonKillInfusion:
+                AutoTrigger: True
+                AddActiveBonus:
+                    Infuse: [Earth, Dark]
+                    ShowElementPicker: True
+                    CanUndo: False
+                SkipAnim: True
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: DuringActionAbilityOnKill
+                    Vars:
+                        Boneshaper: ActiveBonus.Actor
+                        ValidateHasAbility: TriggerAbility != null
+                        ValidateItsAttackAbility: TriggerAbility.AbilityType == CAbility.EAbilityType.Attack
+                        ValidateItsRangeAbility: TriggerAbility.Range > 1
+                        ValidateIsDeathFromSummon: TriggerAbility.TargetingActor.Summoner == Boneshaper
+                    IsAura: True
+                    TriggerOnCaster: True
+                    AuraFilter: OwnSummon
+                    AuraTargeting: All
+                    HiddenWhenAura: True
+                    ListLayoutOverride: ["$FH/149_character_ability_cards_boneshaper_unholy_prowess_4$ <size=125%><sprite name=Mixed-ED>", Positive_EarthDarkInfuse_Boneshaper]
+                Text: "$FH/149_character_ability_cards_boneshaper_unholy_prowess_4$ <size=125%><sprite name=Mixed-ED><size=100%>"   
+                TextOnly: True
+        XP: 2
+    Bottom:
+        Abilities:
+            AImmunity:
+                ImmunityToSelfDamage: True
+                Filter: Self
+                ActiveBonus:
+                    Duration: Persistent            
+                    ListLayoutOverride: [$FH/149_character_ability_cards_boneshaper_unholy_prowess_5$, Positive_DamagePrevent_DamageSelf]
+        Infuse: [Earth, Dark]
+        XP: 1
+Layout:
+    Top:
+        - Active:
+              Ability: "TSummon"
+              Icon: "Summon"
+              Layout:
+                  - Summon:
+                        Ability: TSummon
+                        SummonName: $FH/149_character_ability_cards_boneshaper_unholy_prowess_2$
+        - Row: "<size=20%> "
+        - Row: "$FH/149_character_ability_cards_boneshaper_unholy_prowess_3$"
+        - Row: "<size=20%> "
+        - Row: "$FH/149_character_ability_cards_boneshaper_unholy_prowess_4$"
+    Bottom:
+        - Active:
+            Ability: AImmunity
+            ListLayout: "$FH/149_character_ability_cards_boneshaper_unholy_prowess_5$"
+            Layout: "$FH/149_character_ability_cards_boneshaper_unholy_prowess_5$"
+            Icon: Positive_DamagePrevent_DamageSelf
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Earth, Dark]

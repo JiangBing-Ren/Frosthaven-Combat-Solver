@@ -1,0 +1,81 @@
+Parser: AbilityCard
+Name: $FH/031_character_ability_cards_drifter_use_every_part_1$
+Character: DrifterID
+ID: 31
+Level: 9
+ProgressionOrder: 30
+Initiative: 18
+Discard: [Discard,Discard]
+Prefab: 31_Drifter_UseEveryPart
+Data:
+    Top:
+        Abilities:
+            TAttack_UseEveryPart:
+                Attack:
+                    Amount: 4
+                    DiamondEnhancements: 1
+                Range: 4
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                AnimOverload: RangedAttack
+            THeal:
+                Heal: 4
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Target: 99
+                Filter: [Ally]
+                CanUndo: False
+                Vars:
+                    AttackAbility: CustomAbility.FindAbilityInPhaseByName("TAttack_UseEveryPart")
+                    ValidateAttackAbility: "!!AttackAbility"
+                    EnemiesTargeted: AttackAbility.ActorsTargeted
+                    ActorsToTarget: CustomAbility.GetActorsAdjacentToActors(EnemiesTargeted).Where(CActor.AreActorsAllied(obj.Type, CActor.EType.Player, obj, null))
+                Targeting: Custom
+                TargetingVars:
+                    AddValidActorsInRange: ActorsToTarget
+                    AddTilesInRange: ActorsToTarget.Select(obj.Tile)
+                AnimOverload: Heal
+    Bottom:
+        Abilities:
+            BMoveForAttack:
+                Move: 3
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BAttack:
+                Attack: 0
+                Range: 1
+                Targeting: Custom
+                TargetingVars:
+                    Drifter: CurrentAbility.TargetingActor
+                    TilesInRange: GameState.GetTilesInRange(Drifter, CurrentAbility.Range)
+                    EnemyActorsInRange: CustomAbility.GetActorsOnTiles(TilesInRange).Where(!CActor.AreActorsAllied(obj.Type, CActor.EType.Player, obj, null))
+                    AddValidActorsInRange: EnemyActorsInRange
+                    AddTilesInRange: TilesInRange
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: Vars
+                        Vars:
+                            MoveAbility: CustomAbility.FindAbilityInPhaseByName("BMoveForAttack")
+                            ValidateMove: MoveAbility != null
+                            TilesMovedCount: MoveAbility.TilesMoved.Count
+                            Value: TilesMovedCount         
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "20,30,30,20"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack_UseEveryPart*<size=100%><voffset=1>@TAttack_UseEveryPart@"
+            - Column:
+                - AddedEffect: "<sprite name=Range>4"
+            - Column:
+        - Divider:
+        - Row:
+            - ColumnWidths: "30,70"
+            - Column: "<b><size=130%><sprite name=Heal> *THeal*"
+            - Column:
+                - AddedEffect: "<size=90%>$FH/031_character_ability_cards_drifter_use_every_part_2$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove*"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Attack> X"
+        - Row: "$FH/031_character_ability_cards_drifter_use_every_part_3$"

@@ -1,0 +1,39 @@
+Parser: ItemCard
+ID: 1143
+StringID: HornedHelmID
+Name: $FH/1143_item_cards_horned_helm_1$
+Art: Horned Helm
+TotalInGame: 2
+Cost: 35
+Slot: Head
+Rarity: Rare
+Usage: Unrestricted
+Trigger: PassiveEffect
+Data:
+    Abilities:
+        ABuffAttack:
+            Filter: Self
+            AddActiveBonus:
+                AutoTrigger: True
+                Attack: 1
+                Filter: Self
+                ActiveBonus:
+                    ListLayoutOverride: [$FH/1143_item_cards_horned_helm_3$, Positive_AttackPlus_Item]
+                    Behaviour: BuffAttack
+                    XPTracker: [0]
+                    Duration: Turn
+                    AttackType: Melee
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: DuringActionAbilityOnMoved
+                Restriction: OncePerTurn
+                Target: 4
+                ListLayoutOverride: [$FH/1143_item_cards_horned_helm_2$, Positive_AttackPlus_Move_Item]
+                Requirements:
+                    OnYourTurn: True
+Layout:
+    - Active:
+        Ability: ABuffAttack
+        ListLayout: $FH/1143_item_cards_horned_helm_2$
+        Layout: $FH/1143_item_cards_horned_helm_2$
+        Icon: "Positive_AttackPlus_Move_Item"

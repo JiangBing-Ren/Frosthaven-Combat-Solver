@@ -1,0 +1,74 @@
+Parser: Enemy
+ID: Tutorial1_HunchbackHoundID
+LocKey: $FH/HunchbackHound$
+MonsterType: Monster
+StandeeLimit: 6
+Model: HobblingHound
+OnlyValidInLevels: RFS_01_The_Running_Course
+PredominantlyMelee: True
+AbilityCards: [9021, 9022, 9023, 9024, 9025, 9026, 9027, 9028]
+# Base Stats
+Level0:
+    Health: 4
+    Move: 2
+    Attack: 1
+    Range: 1
+    Target: 1
+    Retaliate: 0
+    RetaliateRange: 0
+Level1:
+    Health: 4
+    Move: 2
+    Attack: 1
+    Range: 1
+    Target: 1
+    Retaliate: 0
+    RetaliateRange: 0
+Level2:
+    Health: 4
+    Move: 2
+    Attack: 1
+    Range: 1
+    Target: 1
+    Retaliate: 0
+    RetaliateRange: 0
+Level3:
+    Health: 4
+    Move: 2
+    Attack: 1
+    Range: 1
+    Target: 1
+    Retaliate: 0
+    RetaliateRange: 0
+Level4:
+    Health: 4
+    Move: 2
+    Attack: 1
+    Range: 1
+    Target: 1
+    Retaliate: 0
+    RetaliateRange: 0
+Level5:
+    Health: 4
+    Move: 2
+    Attack: 1
+    Range: 1
+    Target: 1
+    Retaliate: 0
+    RetaliateRange: 0
+Level6:
+    Health: 4
+    Move: 2
+    Attack: 1
+    Range: 1
+    Target: 1
+    Retaliate: 0
+    RetaliateRange: 0
+Level7:
+    Health: 4
+    Move: 2
+    Attack: 1
+    Range: 1
+    Target: 1
+    Retaliate: 0
+    RetaliateRange: 0

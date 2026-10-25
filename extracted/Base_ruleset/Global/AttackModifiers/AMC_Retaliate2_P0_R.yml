@@ -1,0 +1,8 @@
+Parser: AttackModifier
+Name: AMC_Retaliate2_P0_R
+MathModifier: "+0"
+CustomCombatLogDescriptionLocKey: "<sprite name=Retaliate>2 <sprite name=Rolling>"
+Rolling: True
+Abilities:
+    RetaliateAbility:
+        Retaliate: 2

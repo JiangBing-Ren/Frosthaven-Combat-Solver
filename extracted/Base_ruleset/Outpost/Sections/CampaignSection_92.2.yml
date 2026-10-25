@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 92.2
+Name: Infuser Retires
+SkipNarration: True
+SkipCompletedNotification: False
+Effects:
+      - Type: AddCalendarCampaignSection
+        Param1: 42.2
+        Param2: 6

@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 39.4
+Name: PuzzleSolution
+SkipCompletedNotification: True
+Effects:
+    - Type: UnlockPuzzle
+      Param1: Pets
+    - Type: OpenEnvelope
+      Param1: 88

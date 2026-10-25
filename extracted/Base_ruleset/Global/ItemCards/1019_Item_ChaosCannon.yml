@@ -1,0 +1,120 @@
+\Parser: ItemCard
+ID: 1019
+StringID: ChaosCannonID
+Name: $FH/1019_item_cards_chaos_cannon_1$
+Art: Chaos Cannon
+TotalInGame: 2
+Cost: 0
+Slot: OneHand
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data:    
+    ItemRequirements:
+        Vars:
+            TilesInRange: GameState.GetTilesInRange(Actor, 2).Where((obj.FindTerrainProp(true) != null || obj.FindPropOfTypes(EPropType.OneHexObstacle, true) != null) && obj.LivingActor == null)
+            ValidateHasTiles: TilesInRange.Count > 0
+    Abilities:
+        TDestroyObstacles:
+            NullHex: true
+            HelpBoxTooltipLocKey: $FH/1019_item_cards_chaos_cannon_3$
+            Range: 2
+            RangeIsBase: true
+            TileFilter: Custom
+            MiscVars:
+                IsValidTile: (obj.FindTerrainProp(true) != null || obj.FindPropOfTypes(EPropType.OneHexObstacle, true) != null) && obj.LivingActor == null
+                DontCancelIfNoTiles: True
+                DontPreviewDescription: True
+                DontCopy: True           
+                SelectMultiHexProps: True
+            PerformVars:
+                Perform:
+                    SelectedTile: TilesSelected[0]
+                    Prop: SelectedTile.FindTerrainProp(true) || SelectedTile.FindPropOfTypes(EPropType.OneHexObstacle, true)
+                    TypeChosen: Prop.PropType
+                    PerformActiveBonusAbility: CustomAbility.PerformActiveBonusAbility(ActiveBonusData, TargetingActor, thisContext)
+            ActiveBonus:        
+                AbilityData:
+                    Filter: Self
+                    CanUndo: False
+                    CanSkip: False
+                    HelpBoxTooltipLocKey: "$FH/GUI_CHOOSE_TERRAIN_TYPE_TO_SPAWN$"
+                    Vars: 
+                        PreviewTiles: list(VarsContext.parentContext.SelectedTile)                        
+                    MiscVars:
+                        InterruptCurrentAbility: False
+                    PerformVars:
+                        ApplyToActors:
+                            Prop: VarsContext.parentContext.Prop
+                            DestroyProp: Prop.DestroyPropFromAbility(obj)
+                            VFX: CustomAbility.PlayVFX("ItemChaosCannonEffect", VarsContext.parentContext.SelectedTile.m_ArrayIndex)
+                    Choose:
+                        Abilities:
+                            ASpawnOneHexObstacle:
+                                SkipAnim: True
+                                PreviewEffectText: "$OBSTACLE_TOOLTIP$"
+                                AutoTrigger: True
+                                Create: OneHexObstacle
+                                TileFilter: EmptyHex
+                                MiscVars:
+                                    HideChooseTooltip: True
+                                    OverrideIcon: "'ObstacleHex'"
+                                Targeting: Custom
+                                TargetingVars:
+                                    AddTileInRange: VarsContext.parentContext.parentContext.SelectedTile
+                                StartAbilityRequirements:
+                                    Type: ThisAbility
+                                    Vars:
+                                        ValidateType: VarsContext.parentContext.parentContext.TypeChosen.ToString() != "OneHexObstacle"
+                            ASpawnIce:
+                                SkipAnim: True
+                                PreviewEffectText: "$FH/ICE_TERRAIN_TOOLTIP$"
+                                AutoTrigger: True
+                                CreateTerrain: Ice
+                                TileFilter: EmptyHex
+                                MiscVars:
+                                    HideChooseTooltip: True
+                                    OverrideIcon: "'IceHex'"
+                                Targeting: Custom
+                                TargetingVars:
+                                    AddTileInRange: VarsContext.parentContext.parentContext.SelectedTile
+                                StartAbilityRequirements:
+                                    Type: ThisAbility
+                                    Vars:
+                                        ValidateType: VarsContext.parentContext.parentContext.TypeChosen.ToString() != "TerrainIce"
+                            ASpawnDifficultTerrain:
+                                SkipAnim: True
+                                PreviewEffectText: "$DIFFICULT_TERRAIN_TOOLTIP$"
+                                AutoTrigger: True
+                                CreateTerrain: Rubble
+                                TileFilter: EmptyHex
+                                MiscVars:
+                                    HideChooseTooltip: True
+                                    OverrideIcon: "'DifficultHex'"
+                                Targeting: Custom
+                                TargetingVars:
+                                    AddTileInRange: VarsContext.parentContext.parentContext.SelectedTile
+                                StartAbilityRequirements:
+                                    Type: ThisAbility
+                                    Vars:
+                                        ValidateType: VarsContext.parentContext.parentContext.TypeChosen.ToString() != "TerrainRubble"
+                            ASpawnHazardousTerrain:
+                                SkipAnim: True
+                                PreviewEffectText: "$HAZARDOUS_TERRAIN_TOOLTIP$"
+                                AutoTrigger: True
+                                CreateTerrain: Thorns
+                                TileFilter: EmptyHex
+                                MiscVars:
+                                    HideChooseTooltip: True
+                                    OverrideIcon: "'HazardHex'"
+                                Targeting: Custom
+                                TargetingVars:
+                                    AddTileInRange: VarsContext.parentContext.parentContext.SelectedTile
+                                StartAbilityRequirements:
+                                    Type: ThisAbility
+                                    Vars:
+                                        ValidateType: VarsContext.parentContext.parentContext.TypeChosen.ToString() != "TerrainThorns"
+
+
+Layout: 
+    - Row: $FH/1019_item_cards_chaos_cannon_2$

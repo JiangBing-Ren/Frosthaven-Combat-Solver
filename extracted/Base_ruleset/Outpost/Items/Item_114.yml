@@ -1,0 +1,10 @@
+Parser: FHItem
+ID: 114
+ScenarioItemID: 1093
+Name: Foresight Potion
+Quantity: 2
+Type: Small
+Brewing:
+    Herb1: Snowthistle
+    Herb2: Corpsecap
+    Herb3: Flamefruit

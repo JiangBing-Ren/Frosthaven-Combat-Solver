@@ -1,0 +1,20 @@
+Parser: ItemCard
+ID: 1255000002
+StringID: AncientCoin2ID
+Name: $FH/1255_item_cards_ancient_coin_1$
+Art: Ancient Coin
+TotalInGame: 4
+Cost: 0
+Slot: QuestItem
+Rarity: Rare
+Usage: Unrestricted
+Trigger: PassiveEffect
+Data: 
+    ItemRequirements:
+        Vars:
+            ValidateNEVER: false
+    Overrides:
+        ODummy:
+            Strength: 1
+Layout:
+    - Row:

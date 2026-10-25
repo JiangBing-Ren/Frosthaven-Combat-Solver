@@ -1,0 +1,75 @@
+Parser: AbilityCard
+Name: $FH/270_character_ability_cards_shattersong_feedback_1$
+Character: ShattersongID
+ID: 270
+Level: 8
+Initiative: 24
+Discard: [Lost,Discard]
+Prefab: 270_Shattersong_Feedback
+Data:
+    Top:
+        XP: 2
+        Abilities:
+            TBuff:
+                Filter: Self
+                AddActiveBonus:
+                    Filter: Self
+                    AutoTrigger: True
+                    NullTargeting: True
+                    AnimOverload: Cast_Concentrate
+                    Tokens: 1
+                    Flags: [ModifiesResonanceTokens]
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: DuringActionAbilityOnAbilityEnded
+                    TriggerOnCaster: True
+                    Vars:
+                        ValidateAbilityHappened: TriggerAbility.AbilityHasHappened
+                        ValidateTraps: CustomAbility.AbilityHasFlag(TriggerAbility, CAbility.EAbilityFlag.Wave)
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")     
+            BMuddle:
+                Muddle: True
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Range")     
+                Target: 99
+                Filter: Enemy
+                AnimOverload: Cast_Negative AOE 2hex
+                MiscVars:
+                    AutoSelectValidTiles: True
+        Consumes:
+            BCResonance:
+                Resonance: 1
+                AbilityOverrides:
+                    CBuffRange:
+                        ParentName: BMuddle
+                        Range: 3
+                        AnimOverload: Cast_Negative AOE 5hex
+        Infuse: Air
+Layout:
+    Top:
+        - Active:
+            Ability: TBuff
+            Icon: Positive_Resonance
+            ListLayout: "$FH/270_character_ability_cards_shattersong_feedback_2$"
+            Layout: "$FH/270_character_ability_cards_shattersong_feedback_2$"
+    Bottom:
+        - Row: "<sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Muddle> <mark=#FCD06E22><size=100%>$FH/270_character_ability_cards_shattersong_feedback_3$</mark>"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: BCResonance
+                    Text: "<size=100%>+3<sprite name=Range>"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Air

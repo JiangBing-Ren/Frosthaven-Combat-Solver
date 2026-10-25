@@ -1,0 +1,16 @@
+Parser: EnemyCard
+ID: 881000504
+Name: $Monster_Ability_MirroredCharacter111Simplified_Confusion$
+Initiative: 22
+Shuffle: False
+Data:
+    Abilities:
+        Move1:
+            Move: 0
+        Muddle1:
+            Muddle: True
+            Filter: Enemy
+            Range: 2
+            RangeIsBase: True
+            Target: -1
+            TargetIsBase: True

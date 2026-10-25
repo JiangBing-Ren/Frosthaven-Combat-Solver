@@ -1,0 +1,14 @@
+Parser: FHScenario
+ID: 201
+Name: Tutorial 1
+LevelID: RFS_01_The_Running_Course
+Chain: Introduction
+Location: Frosthaven
+NoIntroOutro: True
+Difficulty: 1
+Conclusions:
+    - Effects:
+         - Type: LockScenario
+           Param1: 201
+         - Type: UnlockMandatoryScenario
+           Param1: 202

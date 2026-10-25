@@ -1,0 +1,28 @@
+Parser: EnemyCard
+ID: 591
+Name: $Monster_Ability_591_SunDemon_Supernova$
+Initiative: 95
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: -1
+        Attack1:
+            Attack: 0
+            Range: 3
+            RangeIsBase: True
+            Filter: Enemy
+            AnimOverload: RangedAttack  
+    Consumes:
+        CLight:
+            Elements: Light
+            AbilityOverrides:
+                CLightTargetAll:
+                    ParentName: Attack1
+                    Target: -1
+                    TargetIsBase: True
+                    MultiPassAttack: False
+                    AnimOverload: SuperNova 
+                    Text: "$Target_AllEnemiesWithinRange$"
+                    TextOnly: True
+

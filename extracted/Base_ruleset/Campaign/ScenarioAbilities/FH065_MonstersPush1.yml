@@ -1,0 +1,39 @@
+Parser: ScenarioAbility
+ID: FH065_MonstersPush1
+ScenarioAbility:
+    BAttackBuff1:
+        StartAbilityRequirements:
+            Type: ThisAbility
+            Vars:
+                ScenarioLevel: ScenarioManager.CurrentScenarioState.Level
+                ValidateLevelIsLow: ScenarioLevel < 4
+        Filter: Self
+        Attack: 0
+        AttackEffect:
+            Type: StandardBuff
+            SubAbilities:
+                BuffPushAbility:
+                    Push: 1
+                    IsInlineSubAbility: True
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: BuffAttack
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_065_SCENARIO_MODIFIER_PUSH_STRENGTH_1$, Positive_Push_Attack_Campaign]
+    BAttackBuff2:
+        StartAbilityRequirements:
+            Type: ThisAbility
+            Vars:
+                ScenarioLevel: ScenarioManager.CurrentScenarioState.Level
+                ValidateLevelIsLow: ScenarioLevel >= 4
+        Filter: Self
+        Attack: 0
+        AttackEffect:
+            Type: StandardBuff
+            SubAbilities:
+                BuffPushAbility:
+                    Push: 2
+                    IsInlineSubAbility: True
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: BuffAttack
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_065_SCENARIO_MODIFIER_PUSH_STRENGTH_2$, Push]

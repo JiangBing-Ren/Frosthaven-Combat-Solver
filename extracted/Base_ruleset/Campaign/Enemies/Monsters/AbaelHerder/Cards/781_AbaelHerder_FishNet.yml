@@ -1,0 +1,20 @@
+Parser: EnemyCard
+ID: 781
+Name: $Monster_Ability_781_AbaelHerder_FishNet$
+Initiative: 20
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: 0
+        Attack1:
+            Attack: 0
+            Range: 3
+            Condition: Immobilize
+            RangeIsBase: True
+            AnimOverload: RangedAttack
+            SubAbilities:
+                    AttackSubPush:
+                        Pull:
+                            Amount: 2
+                        IsInlineSubAbility: True

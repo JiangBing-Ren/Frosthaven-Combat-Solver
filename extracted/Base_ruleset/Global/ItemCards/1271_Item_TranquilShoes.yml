@@ -1,0 +1,34 @@
+Parser: ItemCard
+ID: 1271
+StringID: TranquilShoesID
+Name: $FH/1271_item_cards_tranquil_shoes_1$
+Art: Tranquil Shoes
+TotalInGame: 1
+Cost: 40
+Slot: Legs
+Rarity: Rare
+UsedWhenEquipped: True
+Usage: Unrestricted
+Trigger: PassiveEffect
+ProsperityRequirement: 1
+Data: 
+    Abilities:
+        AHeal:
+            AddActiveBonus:
+                Heal: 1
+                Filter: Self
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: StartTurnAbility
+                Requirements:
+                    Type: ThisAbility
+                    InitiativeIs: ">= 60"
+                    IsLongRest: False
+                    AbilityTypes: [Heal]
+
+Layout: 
+    - Active:
+        Ability: AHeal
+        ListLayout: "$FH/1271_item_cards_tranquil_shoes_2$"
+        Layout: "$FH/1271_item_cards_tranquil_shoes_2$"
+        Icon: "Positive_HealthSelf_Item"

@@ -1,0 +1,76 @@
+Parser: AbilityCard
+Name: $FH/340_character_ability_cards_snowdancer_cold_therapy_1$
+Character: SnowdancerID
+ID: 340
+Level: 1
+Initiative: 20
+Discard: [Discard,Lost]
+Prefab: 340_Snowdancer_ColdTherapy
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 1
+                    DiamondEnhancements: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                Conditions: Muddle
+                AnimOverload: RangedAttack_IceProjectile 
+        Consumes:
+            TCIce:
+                Elements: Ice
+                AbilityOverrides:
+                    TCIceAttackBuff:
+                        ParentName: TAttack
+                        Strength: 2
+                XP: 1        
+    Bottom:
+        Abilities:
+            BActive:
+                AddActiveBonus:
+                    IgnoreStun: False
+                    Consume:
+                        Elements: [Ice, Air]
+                        Abilities:
+                            CAHeal:
+                                IgnoreStun: False
+                                Heal: 2
+                                Range: 2
+                                MiscVars:
+                                    PrintedProperties: list("Heal","Range")
+                                Filter: [Self, Ally]
+                                AnimOverload: Heal
+                    ShowElementPicker: True
+                Filter: Self
+                ActiveBonus:
+                    Behaviour: StartTurnAbility
+                    Duration: Persistent
+                    ValidAbilityType: Consume
+                    Restriction: OncePerRound
+        XP: 2
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "20,20,20,20,20"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column:
+                - Row: "<mark=#80919922><size=100%><sprite name=Range>*TAttack.Range*</mark>"
+            - Column:
+                - Row: "<mark=#80919922><sprite name=Muddle></mark>"
+            - Column:
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCIce
+                    Text: "+2<sprite name=Attack>,<sprite name=XP1>"
+    Bottom:
+         - Active:
+            Ability: BActive
+            Icon: Positive_Heal_IceAirConsume
+            ListLayout: "$FH/340_character_ability_cards_snowdancer_cold_therapy_2$"
+            Layout: "$FH/340_character_ability_cards_snowdancer_cold_therapy_2$"

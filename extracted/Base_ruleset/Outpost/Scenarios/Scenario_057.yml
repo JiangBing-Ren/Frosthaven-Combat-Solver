@@ -1,0 +1,22 @@
+Parser: FHScenario
+ID: 57
+Name: Sanctuary of Snow
+LevelID: FS_057_Sanctuary_of_Snow
+RequiresBoat: true
+Chain: Algox3
+Location: TheBitingSea
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: GainMorale
+          Param1: 1
+        - Type: GainInspiration
+          Param1: 1
+        - Type: UnlockClass
+          Param1: SnowdancerID
+        - Type: EnableEvent
+          Param1: WO-68
+        - Type: AddTownGuardMod
+          Param1: +50
+        - Type: GainCampaignSticker
+          Param1: FriendOfTheSnowspeakers

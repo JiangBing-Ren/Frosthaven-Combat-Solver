@@ -1,0 +1,88 @@
+﻿Parser: AbilityCard
+Name: $FH/161_character_ability_cards_geminate_into_my_embrace_1$
+Character: GeminateID
+ID: 161
+Level: 1
+ProgressionOrder: 8
+Initiative: 36
+Discard: [Discard,Lost]
+RequiredForm: Range
+Prefab: 161_Geminate_IntoMyEmbrace
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                    DiamondEnhancements: 1
+                Range: 4
+                MinRange: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                SubAbilities:
+                    TAttackSubPull:
+                        IsInlineSubAbility: True
+                        Pull:
+                            Amount: 2
+                        MiscVars:
+                            PrintedProperties: list("Pull")
+                AnimOverload: RangedAttack
+            TSwitchFormMeleeToRange:
+                Null: True
+                Flags: [SwitchFormRangeToMelee]
+                AutoTrigger: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Attack]
+    Bottom:
+        Abilities:
+            BHeal:
+                Heal:
+                    Amount: 4
+                    DiamondPlusEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self
+                Conditions: [Regenerate]
+        Consumes:
+            TCFire:
+                PreviewEffectText: "<size=130%><sprite name=Strengthen>, <sprite name=XP1>"
+                Elements: [Fire]
+                ConsumeOnlyOneElement: True
+                AbilityOverrides:
+                    TCFireBuff:
+                        ParentName: BHeal
+                        Conditions: [Strengthen]
+                XP: 1
+            TCLight:
+                PreviewEffectText: "<size=130%><sprite name=Strengthen>, <sprite name=XP1>"
+                Elements: [Light]
+                ConsumeOnlyOneElement: True
+                AbilityOverrides:
+                    TCLightBuff:
+                        ParentName: BHeal
+                        Conditions: [Strengthen]
+                XP: 1
+        XP: 1
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack.Attack* <size=100%><voffset=1>@TAttack@ $FH/161_character_ability_cards_geminate_into_my_embrace_2$"
+        - Row: "<size=20%> "
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=GMRangedToMelee>"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Heal> *BHeal* <size=100%><voffset=1>@BHeal@ $FH/161_character_ability_cards_geminate_into_my_embrace_3$"
+        - Row: "<size=50%> "
+        #- Conditional:
+        #    Layout:
+        #        - Row: "<size=150%><nobr><sprite name=ConsumeMixed-FL> <sprite name=Strengthen></nobr>, <nobr><sprite name=XP1></nobr>"
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCFire
+                    Text: "<size=150%><nobr><sprite name=Strengthen></nobr>, <nobr><sprite name=XP1></nobr>"
+                - Consume:
+                    Name: TCLight
+                    Text: "<size=150%><nobr><sprite name=Strengthen></nobr>, <nobr><sprite name=XP1></nobr>"

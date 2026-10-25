@@ -1,0 +1,8 @@
+Parser: CampaignSection
+ID: 184.3
+Name: Rumor of Vengeance
+ShowAsUnknownInCalendar: True
+SkipCompletedNotification: True
+Effects:
+    - Type: GainInspiration
+      Param1: 3

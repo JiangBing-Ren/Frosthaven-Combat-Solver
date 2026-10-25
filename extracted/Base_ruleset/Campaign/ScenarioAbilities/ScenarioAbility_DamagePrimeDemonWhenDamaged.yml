@@ -1,0 +1,14 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_DamagePrimeDemonWhenDamaged
+ScenarioAbility:
+    TActive:
+        Damage: 1
+        Filter: Self
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DamageOnReceivedDamage        
+            Filter:
+                EnemyClasses: [PrimeDemon21ID]
+            ListLayoutOverride: [$ScenarioAbility_DamagePrimeDemonWhenDamaged$, Immune]
+        AnimOverload: None
+        AutoTrigger: True

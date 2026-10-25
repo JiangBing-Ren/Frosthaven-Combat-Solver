@@ -1,0 +1,34 @@
+Parser: AttackModifier
+Name: AMC_Pressure_P0
+MathModifier: "+0"
+Abilities:
+    TPressureChange:
+        Filter: Self
+        SkipAnim: True
+        HelpBoxTooltipLocKey: $FH/GUI_CHOOSE_INCREASE_DECREASE_PRESSURE_HELPBOX$
+        Choose:         
+            Abilities:
+                IncreasePressure:
+                    AutoTrigger: True
+                    PreviewEffectText: "<sprite name=MMGainPressure>"
+                    Null: True
+                    SkipAnim: True
+                    PerformVars:
+                        NullBegin:
+                            ChangePressure: CustomAbility.PressureChange(TargetingActor, 1)
+                    # StartAbilityRequirements:
+                    #     Type: ThisAbility
+                    #     Vars:
+                    #         ValidateValidPressure: Actor.Pressure != "Over"
+                LowerPressure:
+                    AutoTrigger: True
+                    PreviewEffectText: "<sprite name=MMLosePressure>"
+                    Null: True
+                    SkipAnim: True
+                    PerformVars:
+                        NullBegin:
+                            ChangePressure: CustomAbility.PressureChange(TargetingActor, -1)
+                    # StartAbilityRequirements:
+                    #     Type: ThisAbility
+                    #     Vars:
+                    #         ValidateValidPressure: Actor.Pressure != "Low"

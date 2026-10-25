@@ -1,0 +1,26 @@
+Parser: ItemCard
+ID: 998
+StringID: ConvergingLenses2ID
+Name: $FH/0999_item_cards_converging_lenses_1$
+Art: Converging Lenses
+TotalInGame: 2
+Cost: 0
+Slot: Head
+Rarity: Rare
+Usage: Flip
+FlipItemID: 999
+FlipItemSide: Back
+Trigger: SingleTarget
+Data: 
+    CompareAbility:
+        AbilityType: Attack
+        Filter: Enemy
+    Overrides:
+        OAttackModifierOverrideBonus:
+            AttackEffect:
+                Type: SkipAttackModifiers
+        OStrength:
+            Strength: 1
+
+Layout: 
+    - Row: $FH/0999_item_cards_converging_lenses_3$

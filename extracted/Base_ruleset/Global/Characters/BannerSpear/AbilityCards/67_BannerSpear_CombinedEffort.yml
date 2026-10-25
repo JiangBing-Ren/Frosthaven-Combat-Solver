@@ -1,0 +1,62 @@
+Parser: AbilityCard
+Name: $FH/067_character_ability_cards_banner_spear_combined_effort_1$
+#CustomImage: KRO_BANNER_SPEAR_AbilityCards_CombinedEffort
+Character: BannerSpearID
+ID: 67
+Level: 1
+Initiative: 32
+Discard: [Discard,Discard]
+Prefab: 67_Bannerspear_CombinedEffort
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AreaEffect: "0,0,G|1,-1,B|2,0,R"
+                AreaEffectLayoutOverride: "0,0,G|2,0,B|1,1,R"
+                MultiPassAttack: False
+                Conditions: [Wound]
+        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BAlly:
+                ControlActor:
+                    #UseControllingActorPlayerControl: True
+                    Abilities:
+                        BAllyMove:
+                            Move:
+                                Amount: 2
+                                SquareEnhancements: 1
+                            MiscVars:
+                                PrintedProperties: list("Move")
+                            StrengthIsBase: True
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Target: 2
+                Filter: Ally
+                AnimOverload: Grant        
+Layout:
+    Top:
+        - ColumnWidths: "40,20,40"
+        - Column: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Column:
+            - AddedEffect: "<sprite name=Wound>"
+        - Column:
+            - Row: "£Area£"
+    Bottom:
+        - Row: "<b><size=130%> <sprite name=Move> *BMove* @BMove@"
+        - Divider:
+        - Row: "$FH/067_character_ability_cards_banner_spear_combined_effort_2$"
+        - Row: "<size=20%> "
+        - Row: "<b><size=130%> <sprite name=Move> *BAllyMove* <size=100%><voffset=1>@BAllyMove@"

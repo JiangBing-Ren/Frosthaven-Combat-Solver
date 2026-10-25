@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 192
+ScenarioItemID: 1285
+Name: Enticing Bell
+Quantity: 1
+GoldCost: 25
+Type: Small
+IsNewCharacterItem: False

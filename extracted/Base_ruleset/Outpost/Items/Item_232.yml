@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 232
+ScenarioItemID: 1242
+Name: Orchid Wand
+Quantity: 1
+GoldCost: 20
+Type: OneHandWeapon
+IsNewCharacterItem: False

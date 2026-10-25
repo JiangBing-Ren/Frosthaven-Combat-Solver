@@ -1,0 +1,34 @@
+Parser: ItemCard
+ID: 1157
+StringID: HookedChainID
+Name: $FH/1157_item_cards_hooked_chain_1$
+Art: Hooked Chain
+TotalInGame: 2
+Cost: 35
+Slot: TwoHand 
+Rarity: Rare
+Usage: Spent
+Trigger: DuringOwnTurn
+Data:     
+    Abilities:
+        ABuffPull:
+            Filter: Self
+            PreviewEffectText: "<sprite name=Pull> 2"
+            Attack: 0
+            AttackEffect:
+                Type: StandardBuff
+                AttackType: Ranged
+                SubAbilities:
+                    BuffPushAbility:
+                        CanUndo: False
+                        Pull: 2
+                        IsInlineSubAbility: True
+            ActiveBonus:
+                Duration: Turn
+                Behaviour: BuffAttack
+Layout: 
+    - Active:
+        Ability: "ABuffPull"
+        Icon: "Positive_Pull_AttackRanged_Item"
+        ListLayout: "$FH/1157_item_cards_hooked_chain_2$"
+        Layout: "$FH/1157_item_cards_hooked_chain_2$"

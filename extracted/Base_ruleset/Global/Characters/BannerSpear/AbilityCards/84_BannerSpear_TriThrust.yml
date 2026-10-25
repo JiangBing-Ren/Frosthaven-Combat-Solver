@@ -1,0 +1,76 @@
+Parser: AbilityCard
+Name: $FH/084_character_ability_cards_banner_spear_tri-thrust_1$
+#CustomImage: KRO_BANNER_SPEAR_AbilityCards_TriThrust
+Character: BannerSpearID
+ID: 84
+Level: 7
+Initiative: 27
+Discard: [Discard,Discard]
+Prefab: 84_Bannerspear_TriThrust
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 7
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AreaEffect: "0,0,G|2,0,R|3,1,B|3,-1,B"
+                AreaEffectLayoutOverride: "0,0,G|1,1,R|0,2,B|3,1,B"
+                MultiPassAttack: False
+                Conditions: [Stun]
+                AnimOverload: Tri-Trust
+        XP: 1        
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BAttack:
+                CanUndo: False
+                Attack:
+                    Amount: 1
+                    SquareEnhancements: 1
+                Target: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Target")
+                Range: 1
+                Vars:
+                    DontReduceRange: True
+                TreatAsMelee: True
+                AnimOverload: Attack2
+        Consumes:
+            BCAir:
+                Elements: Air
+                AbilityOverrides:
+                    BCAirAttackBuff:
+                        ParentName: BAttack
+                        Range: 1
+                XP: 1
+Layout:
+    Top:
+        - ColumnWidths: "40,20,40"
+        - Column:
+            - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Column:
+            - Row: "<size=130%><sprite name=Stun>"
+        - Column:
+            - Row: "£Area£"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove.Amount* <size=100%><voffset=1>@BMove@"
+        - Row: "<size=100%> "
+        - Row: 
+            - ColumnWidths: "25,25,25,25"
+            - Column:
+            - Column: 
+                - Row: "<b><size=130%><sprite name=Attack> *BAttack* <size=100%><voffset=1>@BAttack@"
+            - Column: 
+                - Row: "<b><size=130%><sprite name=Target> *BAttack.Target*"
+            - Column:
+        - Consume:
+            Name: BCAir
+            Text: "$FH/084_character_ability_cards_banner_spear_tri-thrust_2$"

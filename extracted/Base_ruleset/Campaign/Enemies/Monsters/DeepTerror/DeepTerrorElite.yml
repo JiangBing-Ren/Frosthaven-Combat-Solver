@@ -1,0 +1,74 @@
+Parser: Enemy
+ID: DeepTerrorEliteID
+LocKey: $DeepTerrorElite$
+MonsterType: Monster
+StandeeLimit: 10
+Model: Deep Terror Elite
+NonEliteVariant: DeepTerrorID
+PredominantlyMelee: False
+AbilityCards: [722, 723, 724, 725, 726, 727, 728, 729]
+# Base Stats
+Level0:
+    Health: 5
+    Move: 0
+    Attack: 3
+    Range: 1
+    Target: 1
+    Retaliate: 0
+    RetaliateRange: 0
+Level1:
+    Health: 6
+    Move: 0
+    Attack: 3
+    Range: 1
+    Target: 1
+    Retaliate: 1
+    RetaliateRange: 1
+Level2:
+    Health: 7
+    Move: 0
+    Attack: 4
+    Range: 1
+    Target: 1
+    Retaliate: 1
+    RetaliateRange: 1
+Level3:
+    Health: 8
+    Move: 0
+    Attack: 4
+    Range: 1
+    Target: 1
+    Retaliate: 2
+    RetaliateRange: 1
+Level4:
+    Health: 9
+    Move: 0
+    Attack: 5
+    Range: 1
+    Target: 1
+    Retaliate: 2
+    RetaliateRange: 1
+Level5:
+    Health: 11
+    Move: 0
+    Attack: 5
+    Range: 1
+    Target: 1
+    Retaliate: 3
+    RetaliateRange: 1
+Level6:
+    Health: 13
+    Move: 0
+    Attack: 6
+    Range: 1
+    Target: 1
+    Retaliate: 3
+    RetaliateRange: 1
+Level7:
+    Health: 16
+    Move: 0
+    Attack: 6
+    Range: 1
+    Target: 1
+    Retaliate: 4
+    RetaliateRange: 1

@@ -1,0 +1,68 @@
+Parser: AbilityCard
+Name: $FH/471_character_ability_cards_deepwraith_rip_from_the_bone_1$
+Character: DeepwraithID
+ID: 471
+Level: 8
+Initiative: 11
+Discard: [Discard,Discard]
+Prefab: 471_Deepwraith_RipFromTheBone
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Filter: Enemy
+                Conditions: [Wound]
+                MultiPassAttack: False
+                AnimOverload:  Attack AOE
+                Target: 99
+                MiscVars:
+                    AutoSelectValidTiles: True
+                SubAbilities:
+                    BTrophy:
+                        NullTargeting:
+                        Tokens: 0
+                        Flags: [ModifiesTrophyTokens]
+                        Filter: [Self]
+                        TreatAsNonSubAbility: True
+                        AutoTrigger: True
+                        AnimOverload: Loot
+                        Vars:
+                            AttackAbility: CurrentAbility.ParentAbility
+                            AttackCount: AttackAbility.ActorsTargeted.Count
+                        StatIsBasedOnX:
+                            Tokens:
+                                BasedOn: Vars
+                                Vars:
+                                    Value: AttackCount
+    Bottom:
+        Abilities: 
+            BTeleport:
+                Teleport2: 
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Teleport")
+                Filter: Self
+                AnimOverload: Teleport Into
+                AnimOverload2: Teleport Outof
+            BDisarm:
+                Disarm: True
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Filter: Enemy
+                AnimOverload: Intimidate
+Layout:
+    Top:
+        - Row: "$FH/471_character_ability_cards_deepwraith_rip_from_the_bone_2$"
+        - Divider:
+        - Row: "$FH/471_character_ability_cards_deepwraith_rip_from_the_bone_3$"
+    Bottom:
+        - Row: "<sprite name=Teleport> *BTeleport* @BTeleport@"
+        - Divider:
+        - Row: "<sprite name=Disarm> <sprite name=Range> 1"

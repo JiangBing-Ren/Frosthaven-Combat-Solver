@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 204
+ScenarioItemID: 1214
+Name: Severed Claw
+Quantity: 1
+GoldCost: 35
+Type: OneHandWeapon
+IsNewCharacterItem: False

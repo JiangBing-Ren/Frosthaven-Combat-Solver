@@ -1,0 +1,114 @@
+Parser: Enemy
+ID: ReluctantGhostAID
+LocKey: $ReluctantGhost$
+MonsterType: Monster
+StandeeLimit: 1
+Model: ReluctantGhost
+PredominantlyMelee: False
+MiniBoss: True
+AbilityCards: [658, 659, 660, 661, 662, 663, 664, 665]
+# Base Stats
+Level0:
+    Health: 0
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 2
+    Flying: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToCeil
+            Multiplier: 1.5
+Level1:
+    Health: 0
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 3
+    Flying: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToCeil
+            Multiplier: 1.5
+Level2:
+    Health: 0
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 3
+    Flying: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToCeil
+            Multiplier: 1.5
+Level3:
+    Health: 0
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 3
+    Flying: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToCeil
+            Multiplier: 2
+Level4:
+    Health: 0
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 4
+    Flying: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToCeil
+            Multiplier: 2
+Level5:
+    Health: 0
+    Move: 2
+    Attack: 5
+    Range: 1
+    Target: 1
+    Shield: 4
+    Flying: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToCeil
+            Multiplier: 2.5
+Level6:
+    Health: 0
+    Move: 2
+    Attack: 5
+    Range: 1
+    Target: 1
+    Shield: 4
+    Flying: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToCeil
+            Multiplier: 4
+Level7:
+    Health: 0
+    Move: 2
+    Attack: 6
+    Range: 1
+    Target: 1
+    Shield: 4
+    Flying: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToCeil
+            Multiplier: 5

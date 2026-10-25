@@ -1,0 +1,21 @@
+Parser: ItemCard
+ID: 1261
+StringID: CircletOfEyesID
+Name: $FH/1261_item_cards_circlet_of_eyes_1$
+Art: Circlet of Eyes
+TotalInGame: 1
+Cost: 50
+Slot: Head 
+Rarity: Relic
+Usage: Consumed
+Trigger: SingleAbility
+Data:     
+    Overrides:
+        OTarget:
+            Target: 1
+    CompareAbility:
+        AbilityType: Attack
+        IsRanged: True
+        Filter: Enemy
+Layout: 
+    - Row: $FH/1261_item_cards_circlet_of_eyes_2$

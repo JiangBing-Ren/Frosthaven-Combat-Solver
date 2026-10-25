@@ -1,0 +1,30 @@
+Parser: EnemyCard
+ID: 813
+Name: $Monster_Ability_813_ShrikeFiend_AngryCloud$
+Initiative: 9
+Shuffle: False
+Data:
+    Abilities: 
+        ADamage:
+            Damage: 2
+            Range: 3
+            RangeIsBase: True
+            Target: -1
+            TargetIsBase: True
+            Filter: Enemy
+            TextOnly: True
+            Text: "$FH/813_ShrikeFiend_AngryCloud_0$"
+            AnimOverload: FlockAttack
+        ARetaliate:
+            Retaliate: 2
+            RetaliateRange: 3
+            Filter: Self
+            ActiveBonus:
+                Duration: Round
+                ListLayoutOverride: ["<sprite name=Retaliate> *ARetaliate*", Positive_Retaliate]
+            AnimOverload: PowerUp
+        AInfuse:
+            Infuse: [Dark]
+            TextOnly: True
+            Text: "<size=200%><sprite name=Dark></size>"
+            SkipAnim: true

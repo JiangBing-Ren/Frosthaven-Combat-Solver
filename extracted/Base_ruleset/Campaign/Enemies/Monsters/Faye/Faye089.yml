@@ -1,0 +1,97 @@
+Parser: Enemy
+ID: Faye089ID
+LocKey: $FH/Faye$
+MonsterType: Monster
+StandeeLimit: 6
+Model: Faye
+PredominantlyMelee: True
+AbilityCards: [99992,99993,99994]
+# Base Stats
+Level0:
+    Health: 1 
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            Multiplier: 8
+            SecondVariable: 3
+Level1:
+    Health: 1
+    Move: 2
+    Attack: 1
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            Multiplier: 8
+            SecondVariable: 3
+Level2:
+    Health: 1
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            Multiplier: 8
+            SecondVariable: 3
+Level3:
+    Health: 1
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            Multiplier: 8
+            SecondVariable: 3
+Level4:
+    Health: 1
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            Multiplier: 8
+            SecondVariable: 3
+Level5:
+    Health: 1
+    Move: 2
+    Attack: 5
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            Multiplier: 8
+            SecondVariable: 3
+Level6:
+    Health: 1
+    Move: 2
+    Attack: 6
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            Multiplier: 8
+            SecondVariable: 3
+Level7:
+    Health: 1
+    Move: 2
+    Attack: 7
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            Multiplier: 8
+            SecondVariable: 3

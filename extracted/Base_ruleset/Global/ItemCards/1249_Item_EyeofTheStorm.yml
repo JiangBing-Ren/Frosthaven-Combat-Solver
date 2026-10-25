@@ -1,0 +1,23 @@
+Parser: ItemCard
+ID: 1249
+StringID: EyeOfTheStormID
+Name: $FH/1249_item_cards_eye_of_the_storm_1$
+Art: Eye Of The Storm
+TotalInGame: 1
+Cost: 40
+Slot: Head
+Rarity: Rare
+Usage: Spent
+Trigger: DuringOwnTurn
+ProsperityRequirement: 1
+Data: 
+    Abilities:
+        ADamage:
+            Damage: 1
+            Range: 2
+            RangeIsBase: True
+            Target: -1
+            TargetIsBase: True
+            Filter: [Enemy, Ally]
+Layout: 
+    - Row: $FH/1249_item_cards_eye_of_the_storm_2$

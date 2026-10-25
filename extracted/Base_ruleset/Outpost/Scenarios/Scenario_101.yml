@@ -1,0 +1,15 @@
+Parser: FHScenario
+ID: 101
+Name: Harrower Library
+LevelID: FS_101_Harrower_Library
+Chain: JobPosting
+Location: RadiantForest
+Difficulty: 1
+Conclusions:
+    - Effects:
+        - Type: AllCharactersAddPerkCheck
+          Param1: 1
+        - Type: AllCharactersGainExperience
+          Param1: 10
+        - Type: UnlockScenario
+          Param1: 102

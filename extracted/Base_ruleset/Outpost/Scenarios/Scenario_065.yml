@@ -1,0 +1,18 @@
+Parser: FHScenario
+ID: 65
+Name: A strong Foundation
+LevelID: FS_065_A_Strong_Foundation
+Chain: PersonalQuest
+RequiresFinishedPrologue: True
+InvalidWhileChainActive: RoadToFrosthaven
+RequiresPersonalQuest: PQ_7
+Difficulty: 1
+Conclusions:
+    - Effects:
+        - Type: GainLumber
+          Param1: 2
+        - Type: GainMetal
+          Param1: 2
+        - Type: AddCalendarCampaignSection
+          Param1: 95.4
+          Param2: 6

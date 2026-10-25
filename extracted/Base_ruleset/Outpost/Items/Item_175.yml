@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 175
+ScenarioItemID: 1268
+Name: Mirrored Armor
+Quantity: 1
+GoldCost: 35
+Type: Body
+IsNewCharacterItem: False

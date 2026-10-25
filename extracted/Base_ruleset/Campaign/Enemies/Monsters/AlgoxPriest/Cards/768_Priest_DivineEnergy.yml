@@ -1,0 +1,22 @@
+Parser: EnemyCard
+ID: 768
+Name: $Monster_Ability_768_Priest_DivineEnergy$
+Initiative: 89
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: -1
+        Heal1:
+            Heal: 1
+            Range: 1
+            RangeIsBase: True
+            Target: -1
+            TargetIsBase: True
+            Filter: [Ally]
+            AnimOverload: Cast Negative
+            Text: "$Target_AllAdjacentAllies$"
+        Bless1:
+            Bless: True
+            Filter: Self
+            AnimOverload: PowerUp

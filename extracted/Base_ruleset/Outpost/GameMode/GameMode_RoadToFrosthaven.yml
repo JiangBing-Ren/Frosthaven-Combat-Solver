@@ -1,0 +1,74 @@
+Parser: GameMode
+Name: RoadToFrosthaven
+PartyMarkerLocation: IntroOutpost
+OutpostMarkerLocation: CampOutpost
+StartingMorale: 0
+StartingProsperity: 0
+StartingCharacterGold: 30
+MoraleToDefenseTable:
+    - Morale: 0
+      Defense: -10
+    - Morale: 2
+      Defense: -10
+    - Morale: 4
+      Defense: -5
+    - Morale: 7
+      Defense: 0
+    - Morale: 10
+      Defense: 5
+    - Morale: 13
+      Defense: 10
+    - Morale: 19
+      Defense: 15
+    - Morale: 20
+      Defense: 15
+ProsperityTable: [ 0, 5, 8, 11, 14, 17, 20, 23, 26 ]
+StartingItems: [ 120, 121, 122, 123, 124, 125, 126, 127, 128]
+CharacterExperienceTable: [ 0, 45, 95, 150, 210, 275, 345, 420, 500 ]
+StartingScenarios: [ 204 ]
+StartingPersonalQuests: [PQ_1, PQ_2, PQ_3, PQ_4, PQ_5, PQ_6, PQ_7, PQ_8, PQ_9, PQ_10]
+StartingBuildings: 
+    - ID: 201
+      Level: 1
+    - ID: 202
+      Level: 1
+StartingEvents: [CustomEvent_WatchTower, SR-30]
+UnlockedClasses: [ BannerSpearID, BoneshaperID, DrifterID, DeathwalkerID, BlinkbladeID, GeminateID]
+# these are only disabled at the start, they start being enabled one by one later on
+NoBattleGoals: True
+NoLevelUp: True
+NoRetire: True
+NoMerchant: True
+ScenarioLevels:
+    - BonusExperience: 4
+      GoldConversion: 2
+      TrapDamage: 2
+      HazardousTerrainDamage: 1
+    - BonusExperience: 6
+      GoldConversion: 2
+      TrapDamage: 3
+      HazardousTerrainDamage: 2
+    - BonusExperience: 8
+      GoldConversion: 3
+      TrapDamage: 4
+      HazardousTerrainDamage: 2
+    - BonusExperience: 10
+      GoldConversion: 3
+      TrapDamage: 5
+      HazardousTerrainDamage: 2
+    - BonusExperience: 12
+      GoldConversion: 4
+      TrapDamage: 6
+      HazardousTerrainDamage: 3
+    - BonusExperience: 14
+      GoldConversion: 4
+      TrapDamage: 7
+      HazardousTerrainDamage: 3
+    - BonusExperience: 16
+      GoldConversion: 5
+      TrapDamage: 8
+      HazardousTerrainDamage: 4
+    - BonusExperience: 18
+      GoldConversion: 6
+      TrapDamage: 9
+      HazardousTerrainDamage: 4

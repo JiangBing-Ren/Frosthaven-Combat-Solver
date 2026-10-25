@@ -1,0 +1,56 @@
+Parser: AbilityCard
+Name: $FH/453_character_ability_cards_deepwraith_black_scythe_1$
+Character: DeepwraithID
+ID: 453
+Level: 1
+Initiative: 45
+Discard: [Discard,Discard]
+Prefab: 453_Deepwraith_BlackScythe
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Target: 1
+                Range: 1
+                Filter: Enemy
+         Consumes:
+            TCDark:
+                Element: Dark
+                AbilityOverrides:
+                    CAttackBuff:
+                        ParentName: TAttack
+                        Strength: 1
+                        Conditions: [Curse]
+                XP: 1
+    Bottom:
+        Abilities:
+            BLoot:
+                Loot: 1
+                MiscVars:
+                    PrintedProperties: list("Loot")
+                Range: 1
+                Target: -1
+            BToken:
+                NullTargeting:
+                Tokens: 1
+                Flags: [ModifiesTrophyTokens]
+                Filter: [Self]
+                AnimOverload: Loot
+Layout:
+    Top:
+        - Row: "<sprite name=Attack> *TAttack* @TAttack@"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCDark
+                    Text: "+1 <sprite name=Attack>,<sprite name=Curse>, <sprite name=XP1>"
+    Bottom:
+        - Row: "<sprite name=Loot> *BLoot*"
+        - Divider:
+        - Row: "$FH/453_character_ability_cards_deepwraith_black_scythe_2$"

@@ -1,0 +1,12 @@
+Parser: FHScenario
+ID: 203
+Name: Tutorial 3
+LevelID: RFS_03_Foul_Rivals
+Chain: Introduction
+Location: Frosthaven
+NoIntroOutro: True
+Difficulty: 2
+Conclusions:
+    - Effects:
+         - Type: LockScenario
+           Param1: 203

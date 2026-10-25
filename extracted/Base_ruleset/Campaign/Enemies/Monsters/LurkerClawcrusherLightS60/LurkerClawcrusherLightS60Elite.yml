@@ -1,0 +1,75 @@
+Parser: Enemy
+ID: LurkerClawcrusherLightS60EliteID
+LocKey: $FH/LurkerClawcrusherS60Elite$
+MonsterType: Monster
+StandeeLimit: 1
+Model: FracturedLieutenantClawcrusher Light Elite
+NonEliteVariant: LurkerClawcrusherLightS60ID
+PredominantlyMelee: True
+AbilityCards: [690, 691, 692, 693, 694, 695, 696, 697]
+# Base Stats
+Level0:
+    Health: 10
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 2
+    Shield:  1
+Level1:
+    Health: 10
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 2
+    Shield: 2
+    Conditions: [Impair]
+Level2:
+    Health: 13
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 2
+    Shield: 2
+    Conditions: [Impair]
+Level3:
+    Health: 14
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 2
+    Shield: 2
+    Conditions: [Impair]
+Level4:
+    Health: 18
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 2
+    Shield: 2
+    Conditions: [Impair]
+Level5:
+    Health: 21
+    Move: 3
+    Attack: 6
+    Range: 1
+    Target: 2
+    Shield: 2
+    Conditions: [Impair]
+Level6:
+    Health: 22
+    Move: 3
+    Attack: 7
+    Range: 1
+    Target: 2
+    Shield: 3
+    Conditions: [Impair]
+    Immunities: [Stun]
+Level7:
+    Health: 29
+    Move: 3
+    Attack: 8
+    Range: 1
+    Target: 2
+    Shield: 3
+    Conditions: [Impair]
+    Immunities: [Stun]

@@ -1,0 +1,11 @@
+Parser: EnemyCard
+ID: 0880000307
+Name: $0706_monster_ability_cards_lightning_eel_nothing_special$
+Initiative: 36
+Shuffle: False
+Data:
+    Abilities:
+        ANull:
+            Null: True
+            Text: "$FH/0706_monster_ability_cards_lightning_eel_nothing_special$"
+            TextOnly: True

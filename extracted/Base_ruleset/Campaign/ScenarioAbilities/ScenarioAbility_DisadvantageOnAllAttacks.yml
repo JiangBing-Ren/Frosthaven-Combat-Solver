@@ -1,0 +1,12 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_DisadvantageOnAllAttacks
+ScenarioAbility:
+    ADisadvantage:
+        Attack: 0
+        Filter: Self
+        ActiveBonus:
+            Behaviour: BuffAttack
+            Duration: Persistent
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_111_SCENARIO_MODIFIER_6$, Disadvantage]
+        AttackHasDisadvantage: True
+        AutoTrigger: True

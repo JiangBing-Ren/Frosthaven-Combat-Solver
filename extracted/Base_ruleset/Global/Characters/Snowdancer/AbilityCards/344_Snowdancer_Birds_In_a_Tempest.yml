@@ -1,0 +1,65 @@
+Parser: AbilityCard
+Name: $FH/344_character_ability_cards_snowdancer_birds_in_a_tempest_1$
+Character: SnowdancerID
+ID: 344
+Level: 2
+Initiative: 18
+Discard: [Lost,Discard]
+Prefab: 344_Snowdancer_BirdsInATempest
+Data:
+    Top:
+        Abilities:
+            TSummon1:
+                Summon: WhiteOwlID
+                AnimOverload: Summon
+                Target: 2
+        Infuse: Air
+        XP: 2
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BActive:
+                Move: 2
+                MiscVars:
+                    PrintedProperties: list("Move")
+                Jump: True
+                AutoTrigger: True
+                ActiveBonus:                    
+                    Duration: Round
+                    Behaviour: BuffMove
+                    ValidAbilityType: Move
+                    IsAura: True
+                    AuraTargeting: Range
+                    AuraFilter:
+                        TargetType: Ally
+                Range: 99
+                Target: -1
+                Filter: Self
+                AnimOverload: BirdsInATempest
+Layout:
+    Top:
+        - Active:
+              Ability: "TSummon1"
+              Icon: "Summon"
+              Layout:
+                  - Summon:
+                        Ability: TSummon1
+                        SummonName: "<sprite name=Summon> 2x $FH/344_character_ability_cards_snowdancer_birds_in_a_tempest_2$"
+                        SpecialText: "<sprite name=Flying>"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Air]
+    Bottom:
+        - Row: "<size=100%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Active:
+            Ability: BActive
+            Icon: Positive_MovePlus_Ally_Jump_Aura
+            ListLayout: "$FH/344_character_ability_cards_snowdancer_birds_in_a_tempest_3$"
+            Layout: "<size=90%>$FH/344_character_ability_cards_snowdancer_birds_in_a_tempest_3$"
+

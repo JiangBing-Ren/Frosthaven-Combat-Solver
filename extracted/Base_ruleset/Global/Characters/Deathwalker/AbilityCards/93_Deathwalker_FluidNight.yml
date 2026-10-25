@@ -1,0 +1,100 @@
+Parser: AbilityCard
+Name: $FH/093_character_ability_cards_deathwalker_fluid_night_1$
+Character: DeathwalkerID
+ID: 93
+Level: 1
+Initiative: 24
+Discard: [Discard,Discard]
+Prefab: 93_Deathwalker_FluidNight
+Data:
+    Top:
+        Abilities:
+            TPerformAttackFromShadow:
+                PerformFromShadow:
+                    RemoveWhenDone: True
+                    Abilities:
+                        PFSAttack:
+                            Filter: Enemy
+                            Attack:
+                                Amount: 5
+                                DiamondEnhancements: 1
+                            MiscVars:
+                                PrintedProperties: list("Attack")
+                            Range: 1
+                            Target: 1
+                Range: 99
+                Target: 1
+                AnimOverload: ShadowAttack
+                # xp should be awarded only if the attack went through
+                MiscVars:
+                    ExplicitlyDoesNothing: True
+        Infuse: Dark
+        XP: 1
+    Bottom:
+        Abilities:
+            BPreventDamage:
+                PreventDamage: 99
+                Range: 1
+                Target: -1
+                Filter: Self
+                MiscVars:
+                    DontPreviewDescription: True
+                AnimOverload: PowerUp
+                ActiveBonus:
+                    Requirements:
+                        Vars:
+                            ValidateAvailableTeleportTiles: CustomAbility.HasFreeShadows(Actor)
+                            ValidateIsPlayer: Actor.Type == "Player"
+                    Vars:
+                        PerformActiveBonusAbility: CustomAbility.PerformActiveBonusAbility(TriggerBehaviour.ActiveBonus)
+                        Finish: ActiveBonus.Finish()
+                    Behaviour: PreventFirstDamage
+                    Restriction: OncePerScenario
+                    Duration: Persistent
+                    IsToggleBonus: True
+                    ToggleIsOptional: True
+                    AbilityData:
+                        AutoTrigger: True
+                        Filter: Self
+                        MiscVars:
+                            DontPreviewDescription: True
+                        Target: 1
+                        IgnoreStun: True
+                        ControlActor:
+                            #UseControllingActorPlayerControl: True
+                            Abilities:
+                                SubTeleport:
+                                    Teleport2: 99
+                                    Range: 1
+                                    Target: -1
+                                    Filter: Self
+                                    CanSkip: False
+                                    IgnoreStun: True
+                                    Vars:
+                                        TargetShadows: True
+                                    SubAbilities:
+                                        SubRemoveShadow:
+                                            RemoveShadow:
+                                            IgnoreStun: True
+                                            Target: 1
+                                            Targeting: Custom
+                                            AutoTrigger: True
+                                            SkipAnim: True
+                                            TargetingVars:
+                                                AddTileInRange: Ability.TargetingActor.Tile
+                                                AddSelectedTile: Ability.TargetingActor.Tile
+Layout:
+    Top:
+        - Row: "<b><size=130%> <sprite name=Attack> *PFSAttack* @PFSAttack@"
+        - Row: "<size=20%> "
+        - Row: "$FH/093_character_ability_cards_deathwalker_fluid_night_2$"
+        - Row: "<size=20%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark
+    Bottom:
+        - Active:
+            Ability: BPreventDamage
+            Icon: Positive_DamagePrevent_Shadow_Teleport
+            ListLayout: "$FH/093_character_ability_cards_deathwalker_fluid_night_3$"
+            Layout: "$FH/093_character_ability_cards_deathwalker_fluid_night_3$"

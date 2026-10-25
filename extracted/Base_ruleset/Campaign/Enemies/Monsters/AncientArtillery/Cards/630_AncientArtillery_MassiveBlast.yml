@@ -1,0 +1,27 @@
+Parser: EnemyCard
+ID: 630
+Name: $Monster_Ability_630_AncientArtillery_MassiveBlast$
+Initiative: 57
+Shuffle: False
+Data:
+    Abilities:
+        Push1:
+            Push: 1
+            Range: 1
+            Target: -1
+            RangeIsBase: True
+            TargetIsBase: True
+            Filter: Enemy
+            ShowRange: False
+            ShowArea: False
+            Text: "$Target_AllAdjacentEnemies$"
+            AnimOverload: Push
+        Attack1:
+            Attack: -1
+            Range: 3
+            RangeIsBase: True
+            AreaEffect: "0,0,R|2,0,R|1,1,R|-1,1,R|-2,0,R|-1,-1,R|1,-1,R"
+            AreaEffectSymmetrical: true
+            Filter: Enemy
+            MultiPassAttack: False
+            AnimOverload: AOEAttack

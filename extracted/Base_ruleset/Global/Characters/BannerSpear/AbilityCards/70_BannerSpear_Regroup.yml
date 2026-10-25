@@ -1,0 +1,51 @@
+Parser: AbilityCard
+Name: $FH/070_character_ability_cards_banner_spear_regroup_1$
+#CustomImage: KRO_BANNER_SPEAR_AbilityCards_Regroup
+Character: BannerSpearID
+ID: 70
+Level: 1
+Initiative: 25
+Discard: [Discard,Discard]
+Prefab: 70_Bannerspear_Regroup
+Data:
+    Top:
+        Abilities:
+            THeal:
+                Heal:
+                    Amount: 2
+                    DiamondPlusEnhancements: 1
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Heal", "Range")
+                Filter: [Self, Ally]
+                Conditions: [Regenerate]
+    Bottom:
+        Abilities:
+            BAlly:
+                ControlActor:
+                    #UseControllingActorPlayerControl: True
+                    Abilities:
+                        BAllyMove:
+                            Move:
+                                Amount: 3
+                                SquareEnhancements: 1
+                            MiscVars:
+                                PrintedProperties: list("Move")
+                            StrengthIsBase: True
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Target: 2
+                Filter: Ally
+                AnimOverload: Grant        
+Layout:
+    Top:
+        - ColumnWidths: "30,20,30,20"
+        - Column: 
+        - Column: "<b><size=130%><sprite name=Heal> *THeal* <size=100%><voffset=1>@THeal@" 
+        - Column: "<mark=#FCD06E22><sprite name=Range> *THeal.Range* <sprite name=Regenerate></mark>"
+        - Column: 
+    Bottom:
+        - Row: "$FH/070_character_ability_cards_banner_spear_regroup_2$"
+        - Row: "<size=20%> "
+        - Row: "<b><size=130%><sprite name=Move> *BAllyMove* <size=100%><voffset=1>@BAllyMove@"

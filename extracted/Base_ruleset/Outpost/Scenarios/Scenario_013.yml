@@ -1,0 +1,14 @@
+Parser: FHScenario
+ID: 13
+Name: Frozen Fjord
+LevelID: FS_013_Frozen_Fjord
+Chain: Lurker
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: GainItem
+          Param1: 233
+        - Type: UnlockScenario
+          Param1: 21
+        - Type: UnlockScenario
+          Param1: 32

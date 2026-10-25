@@ -1,0 +1,65 @@
+Parser: AbilityCard
+Name: $FH/338_character_ability_cards_snowdancer_cross_winds_1$
+Character: SnowdancerID
+ID: 338
+Level: 1
+Initiative: 32
+Discard: [Discard,Discard]
+Prefab: 338_Snowdancer_CrossWinds
+Data:
+    Top:
+        Abilities:
+            TGrantAlly:
+                Target: 1
+                Targeting: Range
+                Range: 99
+                Filter: Ally
+                AnimOverload: Control
+                ControlActor:
+                    Abilities:
+                        TAllyMove:
+                            Move:
+                                Amount: 2
+                                SquareEnhancements: 1
+                            MiscVars:
+                                PrintedProperties: list("Move")
+                            StrengthIsBase: True
+                        TAllyAttack:
+                            Attack:
+                                Amount: 3
+                                SquareEnhancements: 1
+                            MiscVars:
+                                PrintedProperties: list("Attack")
+                            StrengthIsBase: True
+                            Range: 1
+                            RangeIsBase: True
+                            Target: 1
+                            TargetIsBase: True
+    Bottom:
+        Abilities:
+            BPull:
+                Pull: 3
+                Target: 1
+                Range: 4
+                MiscVars:
+                    PrintedProperties: list("Pull","Target","Range")
+                Filter: [Ally, Enemy]
+                AnimOverload: Pull
+            BMove:
+                Move:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+Layout:
+    Top:
+        - Row: "$FH/338_character_ability_cards_snowdancer_cross_winds_2$"
+        - Row: "<size=100%> "
+        - Row: "<size=130%><sprite name=Move> *TAllyMove* <size=100%><voffset=1>@TAllyMove@"
+        - Row: "<size=130%><sprite name=Attack> *TAllyAttack* <size=100%><voffset=1>@TAllyAttack@"
+    Bottom:
+        - Row: "$FH/338_character_ability_cards_snowdancer_cross_winds_3$"
+        - Row: "<size=100%> "
+        - Divider:
+        - Row: "<size=100%> "
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"

@@ -1,0 +1,26 @@
+Parser: EnemyCard
+ID: 548
+Name: $Monster_Ability_548_FlameDemon_ExplosiveBlast$
+Initiative: 46
+Shuffle: True
+Data:
+    Abilities: 
+        Attack1:
+            Attack: 0
+            Range: 4
+            RangeIsBase: True
+            Filter: Enemy
+            AnimOverload: RangedAttack
+    Consumes:
+        CFire:
+            Elements: Fire
+            AbilityOverrides:
+                CAirAttackDebuff:
+                    ParentName: Attack1
+                    Range: 3
+                    RangeIsBase: True
+                    MultiPassAttack: False            
+                    #AreaEffect: "0,0,R|2,0,R|1,1,R|3,1,R|4,0,R|3,-1,R|1,-1,R"
+                    AreaEffect: "0,0,R|2,0,R|1,1,R|-1,1,R|-2,0,R|-1,-1,R|1,-1,R"
+                    AreaEffectSymmetrical: true
+                    AnimOverload: ExplosiveBlast

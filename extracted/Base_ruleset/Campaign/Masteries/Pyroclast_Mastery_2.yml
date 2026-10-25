@@ -1,0 +1,16 @@
+Parser: Mastery
+ID: Pyroclast_MASTERY_2
+LocalisedName: Pyroclast_MASTERY_2_Name
+LocalisedDescription: Pyroclast_MASTERY_2_Desc
+PerkPoints: 1
+BattleGoalCondition:
+    - Targets:
+        # cause actor to move
+        Filter: CauseActorToMoveThrough
+        # count number of activated props that you spawned which, only the ones activatd in the same round by the same ability guid as the one that caused a movementt
+        PropTypes: [TerrainHotCoals, TerrainThorns]
+        # in a single round
+        SubFilter: Round
+        CharacterIDs: 
+            ActorID: PyroclastID
+        Value: 6

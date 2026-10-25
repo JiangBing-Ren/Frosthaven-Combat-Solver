@@ -1,0 +1,7 @@
+Parser: Perk
+ID: Blinkblade01
+Name: FH/PERK_Blinkblade_01_Name
+Description: FH/PERK_Blinkblade_01_Desc
+CharacterID: BlinkbladeID
+Available: 1
+CardsToRemove: [AMC_Basic_M2]

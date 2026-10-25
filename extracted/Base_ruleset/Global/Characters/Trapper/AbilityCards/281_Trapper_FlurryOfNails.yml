@@ -1,0 +1,148 @@
+Parser: AbilityCard
+Name: $FH/281_character_ability_cards_trapper_flurry_of_nails_1$
+Character: TrapperID
+ID: 281
+Level: 1
+Initiative: 68
+Discard: [Discard,Discard]
+Prefab: 281_Trapper_FlurryOfNails
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                SubAbilities:
+                    TAttackSubPush:
+                        Push:
+                            Amount: 2
+                            SquareEnhancements: 1
+                        IsInlineSubAbility: True
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                    Jump: true
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BImproveTrap1:
+                NullHex: true
+                HelpBoxTooltipLocKey: $FH/281_character_ability_cards_trapper_flurry_of_nails_3$
+                SkipAnim: True
+                Vars:
+                    TilesMoved: CAbilityMove.AllPlayerArrayIndexOnPath.Select(ScenarioManager.GetTile(obj))
+                    TrapTiles: TilesMoved.Where(!!Trap)
+                Targeting: Custom
+                TargetingVars:
+                    AddTilesInRange: TrapTiles
+                PerformVars:
+                    AnimateCharacter:
+                        SetSelectedTrap: TargetingActor.SetTempVar("LastSelectedTrap", TilesSelected[0].Trap)
+                SubAbilities:
+                    ChooseHealOrDamageAbility:
+                        Filter: Self
+                        HelpBoxTooltipLocKey: $FH/281_character_ability_cards_trapper_flurry_of_nails_5$
+                        PreviewEffectText: "<size=100%><sprite name=Damage>1 / <sprite name=Heal>1</size>"
+                        IsInlineSubAbility: true
+                        CanUndo: False
+                        UseParentTargets: False
+                        Targeting: Custom
+                        TargetingVars:
+                            AddTileInRange: TargetingActor.LastSelectedTrap.PropTile
+                            AddSelectedTile: TargetingActor.LastSelectedTrap.PropTile
+                        Choose:
+                            Abilities:
+                                ImproveDamage:
+                                    CanUndo: False
+                                    PreviewEffectText: "<sprite name=Damage>1"
+                                    Null:
+                                    AnimOverload: EnhanceTrap_Tinker
+                                    Vars:
+                                        SelectedTrap: TargetingActor.LastSelectedTrap
+                                        TargetedTilesForVFX: list(SelectedTrap.PropTile)
+                                    PerformVars:
+                                        NullPerform:
+                                            SetLastImprovedTrap: TargetingActor.SetTempVar("LastImprovedTrap", SelectedTrap)
+                                            ImproveTrap: CustomAbility.AddTrapDamage(SelectedTrap, 1)
+                                ImproveHeal:
+                                    CanUndo: False
+                                    PreviewEffectText: "<sprite name=Heal>1"
+                                    Null:
+                                    AnimOverload: EnhanceTrap_Tinker
+                                    Vars:
+                                        SelectedTrap: TargetingActor.LastSelectedTrap
+                                        TargetedTilesForVFX: list(SelectedTrap.PropTile)
+                                    PerformVars:
+                                        NullPerform:
+                                            SetLastImprovedTrap: TargetingActor.SetTempVar("LastImprovedTrap", SelectedTrap)
+                                            ImproveTrap: CustomAbility.AddTrapHeal(SelectedTrap, 1)
+            BImproveTrap2:
+                NullHex: true
+                HelpBoxTooltipLocKey: $FH/281_character_ability_cards_trapper_flurry_of_nails_4$
+                SkipAnim: True
+                Vars:
+                    ValidateImprovedTrap: "!!TargetingActor.LastImprovedTrap"
+                    TilesMoved: CAbilityMove.AllPlayerArrayIndexOnPath.Select(ScenarioManager.GetTile(obj))
+                    TrapTiles: TilesMoved.Where(!!Trap).Except(TargetingActor.LastImprovedTrap.PropTile)
+                Targeting: Custom
+                TargetingVars:
+                    AddTilesInRange: TrapTiles
+                PerformVars:
+                    AnimateCharacter:
+                        SetSelectedTrap: TargetingActor.SetTempVar("LastSelectedTrap", TilesSelected[0].Trap)
+                SubAbilities:
+                    ChooseHealOrDamageAbility:
+                        Filter: Self
+                        HelpBoxTooltipLocKey: $FH/281_character_ability_cards_trapper_flurry_of_nails_5$
+                        PreviewEffectText: "<size=100%><sprite name=Damage>1 / <sprite name=Heal>1</size>"
+                        IsInlineSubAbility: true
+                        CanUndo: False
+                        UseParentTargets: False
+                        Targeting: Custom
+                        TargetingVars:
+                            AddTileInRange: TargetingActor.LastSelectedTrap.PropTile
+                            AddSelectedTile: TargetingActor.LastSelectedTrap.PropTile
+                        Choose:
+                            Abilities:
+                                ImproveDamage:
+                                    CanUndo: False
+                                    PreviewEffectText: "<sprite name=Damage>1"
+                                    Null:
+                                    AnimOverload: EnhanceTrap_Tinker
+                                    Vars:
+                                        SelectedTrap: TargetingActor.LastSelectedTrap
+                                        TargetedTilesForVFX: list(SelectedTrap.PropTile)
+                                    PerformVars:
+                                        NullPerform:
+                                            ImproveTrap: CustomAbility.AddTrapDamage(SelectedTrap, 1)
+                                ImproveHeal:
+                                    CanUndo: False
+                                    PreviewEffectText: "<sprite name=Heal>1"
+                                    Null:
+                                    AnimOverload: EnhanceTrap_Tinker
+                                    Vars:
+                                        SelectedTrap: TargetingActor.LastSelectedTrap
+                                        TargetedTilesForVFX: list(SelectedTrap.PropTile)
+                                    PerformVars:
+                                        NullPerform:
+                                            ImproveTrap: CustomAbility.AddTrapHeal(SelectedTrap, 1)
+Layout:
+    Top:
+        - ColumnWidths: "20,30,30,20"
+        - Column:
+        - Column: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Column: "<sprite name=Push>*TAttackSubPush* @TAttackSubPush@"
+        - Column:
+    Bottom:
+        - Row:
+            - ColumnWidths: "20,30,30,20"
+            - Column:
+            - Column: "<b><size=130%> <sprite name=Move> *BMove* <b><size=100%> @BMove@"
+            - Column: "<b><size=130%> <sprite name=Jump>"
+            - Column:
+        - Row: $FH/281_character_ability_cards_trapper_flurry_of_nails_2$

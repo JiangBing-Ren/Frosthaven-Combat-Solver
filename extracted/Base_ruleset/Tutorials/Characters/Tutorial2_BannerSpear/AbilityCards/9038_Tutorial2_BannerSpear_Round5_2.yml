@@ -1,0 +1,24 @@
+Parser: AbilityCard
+Name: $FH/Tutorial2_BannerSpear_Round5_2_Name$
+Character: Tutorial2_BannerSpearID
+ID: 9038
+Level: 1
+Initiative: 1
+Discard: [Discard,Discard]
+Data:
+    Top:
+        Abilities:
+            TBane:
+                Bane: True
+                Filter: Enemy
+    Bottom:
+        Abilities:
+            BPull:
+                Pull: 1
+                Range: 2
+                Filter: Enemy
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Bane>"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Pull> *BPull* <mark=#80919922><size=100%><sprite name=Range> *BPull.Range*</mark>"

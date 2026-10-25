@@ -1,0 +1,8 @@
+Parser: CampaignSection
+ID: 166.5
+Name: Black Memories (Conclusion 2)
+SkipCompletedNotification: True
+Effects:
+    - Type: AddCalendarCampaignSection
+      Param1: 184.3
+      Param2: 6

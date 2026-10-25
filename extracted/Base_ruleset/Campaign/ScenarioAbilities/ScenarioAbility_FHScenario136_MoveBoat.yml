@@ -1,0 +1,38 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FHScenario136_MoveBoat
+ScenarioAbility:
+    AMoveBoatBuff:
+        AddActiveBonus:
+            NullHex: True
+            MiscVars:
+                # SelectedTiles passed as var when calculating PreviewPath
+                PreviewPath: CustomAbility.GetPushTilesForPreview(Ability, MouseoverTile)
+                IsValidTile: ScenarioScript_FH136.CanMoveBoatOnTile(obj)
+                SelectionValid: ScenarioScript_FH136.CanConfirmBoatMovement (obj)
+                MoveBoat: True
+            TileFilter: Custom
+            # 2 targets as in 2 tiles that form a path
+            Target: 2
+            Targeting: Custom
+            SkipAnim: True         
+            IgnoreStun: True           
+            TargetingVars:
+                CalcTilesInRange: CustomAbility.RecalcValidTilesToFormPath(parentContext.obj)
+            PerformVars:                
+                SelectHexPositions:
+                    CalcTilesInRange: CustomAbility.RecalcValidTilesToFormPath(obj)
+                OnTileDeselected:
+                    RemoveFurtherTiles: CustomAbility.RemoveRemovedTilesToFormPath(obj)
+                OnAbilityEnded:
+                    MoveBoat: ScenarioScript_FH136.MoveBoatOnPath(obj)
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringTurnAbility
+            IsToggleBonus: True
+            Hidden: True
+            ListLayoutOverride: [$FH_Scenario_Campaign_136_SCENARIO_MODIFIER_2$, Move]
+            Requirements:
+                ForgoBottomAction: True #due to OfferMoveBoat canceling the null ability, the consumption of the bottom action is made from the scenario script
+                Vars:
+                    ValidateIsOnBoat: ScenarioScript_FH136.IsOnBoat(Actor)
+

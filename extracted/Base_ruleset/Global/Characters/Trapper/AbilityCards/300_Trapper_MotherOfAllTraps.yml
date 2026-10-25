@@ -1,0 +1,92 @@
+Parser: AbilityCard
+Name: $FH/300_character_ability_cards_trapper_mother_of_all_traps_1$
+Character: TrapperID
+ID: 300
+Level: 9
+Initiative: 86
+Discard: [Discard,Discard]
+Prefab: 300_Trapper_MotherOfAllTraps
+Data:
+    Top:
+        Abilities:
+            TDestroyTrap:
+                DisarmTrap: true
+                Target: 3
+                TargetIsBase: true
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Range")
+                RangeIsBase: true
+                MiscVars:
+                    MinTargets: 3
+                AnimOverload: DisassembleTrap_FishingRod
+            TTrap:
+                Trap:
+                    TrapName: TrapperTrap
+                    Damage: 9
+                    SquareEnhancements: 1
+                    Conditions: [Wound, Poison, Stun]
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Damage","Range")
+                RangeIsBase: True
+                AnimOverload: TrapThrow
+                Vars:
+                    DestroyTrapAbility: CustomAbility.FindAbilityInPhaseByName("TDestroyTrap")
+                    ValidateDisarmedTraps: "!!DestroyTrapAbility"
+        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+                PerformVars:
+                    ActorIsSelectingMoveTile:
+                        WillMove: m_PlayerDestination != null
+                        NotBuffed: CustomAbility.FindActiveBonusOnActor(TargetingActor, "MotherOfAllTrapsMoveBonus") == null
+                        PerformActiveBonusAbility: WillMove && NotBuffed && CustomAbility.PerformActiveBonusAbility(ActiveBonusData, TargetingActor, VarsContext, true)
+                ActiveBonus:
+                    AbilityData:
+                        MiscVars:
+                            MotherOfAllTrapsMoveBonus: True
+                        AutoTrigger: True
+                        SkipAnim: True
+                        AddActiveBonus:
+                            NullTargeting:
+                            HelpBoxTooltipLocKey: "$FH/300_character_ability_cards_trapper_mother_of_all_traps_5$"
+                            CanSkip: False
+                            SkipAnim: True
+                            MiscVars:
+                                InterruptCurrentAbility: True
+                                includeCasterTile: True
+                            Targeting: Custom
+                            TargetingVars:
+                                AddValidActorsInRange: TargetActors
+                            PerformVars:
+                                ApplyToActors:
+                                    TargetActor: ActorsToTarget[0]
+                                    SpringTrap: SprungTrap.ForceActivate(TargetActor)
+                        ActiveBonus:
+                            Hidden: True
+                            Duration: Ability
+                            Behaviour: GenericTrapActivating
+                            TriggerOnCaster: true
+                            Vars:
+                                ValidateIsOwnMove: TriggerAbility?.AbilityType == "Move" and TriggerAbility.TargetingActor == Caster 
+                                SprungTrap: trap
+                                TargetTiles: GameState.GetTilesInRange(SprungTrap.ArrayIndex.ToPoint(), 1)
+                                TargetActors: GameState.GetActorsOnTiles(TargetTiles).Where(obj != null)
+                                ValidateHasExtraTargets: TargetActors.Count > 1
+                                PreventTrapActivation: SprungTrap.set_SkipThisActivation(true)
+
+Layout:
+    Top:
+        - Row: $FH/300_character_ability_cards_trapper_mother_of_all_traps_2$
+        - Row: "<sprite name=Damage>*TTrap* @TTrap@"
+        - Row: $FH/300_character_ability_cards_trapper_mother_of_all_traps_3$
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Row: $FH/300_character_ability_cards_trapper_mother_of_all_traps_4$

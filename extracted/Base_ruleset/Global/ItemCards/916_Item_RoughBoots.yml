@@ -1,0 +1,25 @@
+Parser: ItemCard
+ID: 916
+StringID: RoughBootsID
+Name: $FH/0916_item_cards_rough_boots_1$
+Art: Rough Boots
+TotalInGame: 2
+Cost: 0
+Slot: Legs 
+Rarity: Rare
+Usage: Spent
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        ABuffAttackRange:
+            Move: 1
+            Filter: Self
+            ActiveBonus:
+                Behaviour: BuffMove
+                Duration: Turn
+Layout: 
+    - Active:
+        Ability: ABuffAttackRange
+        ListLayout: $FH/0916_item_cards_rough_boots_2$
+        Layout: $FH/0916_item_cards_rough_boots_2$
+        Icon: Positive_MovePlus_Item

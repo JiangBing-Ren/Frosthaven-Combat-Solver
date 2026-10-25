@@ -1,0 +1,107 @@
+Parser: AbilityCard
+Name: $FH/291_character_ability_cards_trapper_lure_of_the_snare_1$
+Character: TrapperID
+ID: 291
+Level: 5
+Initiative: 59
+Discard: [Discard,Discard]
+Prefab: 291_Trapper_LureOfTheSnare
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                    DiamondEnhancements: 1
+                Range: 
+                    Amount: 4
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                RangeIsBase: True
+                AnimOverload: RangedAttack
+                SubAbilities:
+                    TAttackSubPull:
+                        Pull:
+                            Amount: 3
+                            SquareEnhancements: 1
+                        MiscVars:
+                            PrintedProperties: list("Push")
+                        IsInlineSubAbility: True
+    Bottom:
+        Abilities:
+            BPickTrap:
+                NullHex: True
+                HelpBoxTooltipLocKey: "$FH/291_character_ability_cards_trapper_lure_of_the_snare_4$"
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Range")
+                RangeIsBase: True
+                TileFilter: Trap
+                SkipAnim: True
+                Vars:
+                    ClearTrapTile: TargetingActor.SetTempVar("LureOfTheSnare_TrapTile", null)
+                    ClearTrapToSpring: TargetingActor.SetTempVar("LureOfTheSnare_Trap", null)       
+                MiscVars:
+                    includeCasterTile: True             
+                PerformVars:
+                    AnimateCharacter:
+                        SetTrapTile: TargetingActor.SetTempVar("LureOfTheSnare_TrapTile", TilesSelected.First)
+                        SetTrapToSpring: TargetingActor.SetTempVar("LureOfTheSnare_Trap", TilesSelected.First?.Trap)
+            BSpringTrap:
+                NullTargeting: True
+                HelpBoxTooltipLocKey: "$FH/291_character_ability_cards_trapper_lure_of_the_snare_5$"
+                Vars:
+                    ValidateTrap: "!!TargetingActor.LureOfTheSnare_Trap"
+                Targeting: Custom
+                TargetingVars:
+                    AddTilesInRange: CustomAbility.GetAdjacentTiles(TargetingActor.LureOfTheSnare_TrapTile, true)
+                    AddValidActorsInRange: GameState.GetActorsOnTiles(AddTilesInRange).Where(obj != null)
+                MiscVars:
+                    includeCasterTile: True
+                TileFilter: Actor
+                AnimOverload: FishingRod
+                PerformVars:
+                    ApplyToActors:
+                        ApplyTrapEffects: TargetingActor.LureOfTheSnare_Trap.ForceActivate(ActorsToTarget.First)
+            BDestroyTrapIfNoFigureWasAffected:
+                DisarmTrap: true
+                Vars:
+                    ValidateTrapToSpring: "!!TargetingActor.LureOfTheSnare_Trap and !TargetingActor.LureOfTheSnare_Trap.Activated"
+                Targeting: Custom
+                TargetingVars:
+                    AddTileInRange: TargetingActor.LureOfTheSnare_TrapTile
+                    AddSelectedTile: TargetingActor.LureOfTheSnare_TrapTile
+                AutoTrigger: True
+                AnimOverload: DisassembleTrap_FishingRod
+            BMove:
+                Move:
+                    Amount: 3
+                    SquareEnhancements: 1
+                    Jump: True
+                MiscVars:
+                    PrintedProperties: list("Move")
+                Vars:
+                    ValidateTrapTile: "!!TargetingActor.LureOfTheSnare_TrapTile"
+                    MustEndOnSpecificTiles: CustomAbility.GetAdjacentTiles(TargetingActor.LureOfTheSnare_TrapTile).Append(TargetingActor.LureOfTheSnare_TrapTile)
+                MoveRestrictionType: MustEndOnSpecificTiles
+Layout:
+    Top:
+        - ColumnWidths: "30,30,30,10"
+        - Column:
+            - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Column:
+            - Row: " <sprite name=Range>*TAttack.Range* @TAttack.Range@"
+        - Column:
+            - Row: ", <sprite name=Pull>*TAttackSubPull* @TAttackSubPull@"
+        - Column:
+    Bottom:
+        - Row: $FH/291_character_ability_cards_trapper_lure_of_the_snare_2$
+        - Row: "<size=20%> "
+        - Row:
+            - ColumnWidths: "20,30,30,20"
+            - Column:
+            - Column: "<b><size=130%> <sprite name=Move> *BMove* <b><size=100%> @BMove@"
+            - Column: "<b><size=130%> <sprite name=Jump>"
+            - Column:
+        - Row: $FH/291_character_ability_cards_trapper_lure_of_the_snare_3$

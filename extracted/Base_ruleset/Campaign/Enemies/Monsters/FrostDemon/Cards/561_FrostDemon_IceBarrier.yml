@@ -1,0 +1,25 @@
+Parser: EnemyCard
+ID: 561
+Name: $Monster_Ability_561_FrostDemon_IceBarrier$
+Initiative: 18
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: 1
+        Shield1:
+            Shield: 2
+            Filter: Self
+            AnimOverload: Buff
+            ActiveBonus:
+                Duration: Round
+                ListLayoutOverride: ["<sprite name=Shield> *Shield1*", Positive_Shield]
+    Consumes:
+        CFire:
+            Elements: Fire
+            Abilities:
+                CFireDamage:
+                    Damage: 1
+                    Filter: Self
+                    Text: "$10627$"
+                    TextOnly: True

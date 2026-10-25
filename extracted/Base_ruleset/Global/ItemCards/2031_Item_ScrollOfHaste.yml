@@ -1,0 +1,36 @@
+Parser: ItemCard
+ID: 2031
+StringID: ScrollOfHasteID
+Name: $FH/2031_item_cards_scroll_of_haste_1$
+Art: Scroll of Haste
+TotalInGame: 2
+Cost: 30
+Slot: SmallItem
+Rarity: Rare
+Usage: Consumed
+Trigger: PassiveEffect
+Data:     
+    Abilities:
+        ABuffMoveAura:
+            Move: 2
+            ActiveBonus:                    
+                Duration: Persistent
+                Behaviour: BuffMove
+                ValidAbilityType: Move
+                IsAura: True
+                IsToggleBonus: True
+                Hidden: True
+                AuraTargeting: All
+                AuraFilter:
+                    TargetType: Ally
+                XPTracker: [0]
+            Target: -1
+            Filter: Self
+            CanSkip: False
+            AutoTrigger: True
+Layout: 
+    - Active:
+        Ability: ABuffMoveAura
+        ListLayout: $FH/2031_item_cards_scroll_of_haste_2$
+        Layout: $FH/2031_item_cards_scroll_of_haste_2$
+        Icon: "Move"

@@ -1,0 +1,90 @@
+Parser: Enhancements
+#Class Persistent Properties
+ClassPersistentEnhancements:
+      # Name: BaseCost
+      Poison: 75
+      Wound: 75
+      Muddle: 50
+      Immobilize: 100
+      Disarm: 150
+      Curse: 75
+      Strengthen: 50
+      Bless: 50
+      Jump: 50
+      Fire: 100
+      Ice: 100
+      Air: 100
+      Earth: 100
+      Light: 100
+      Dark: 100
+      AnyElement: 150
+      Area: 200  # This value is divided by the number of hexes on the ability
+      SummonMove: 100
+      SummonAttack: 100
+      SummonRange: 50
+      SummonHP: 50
+      PlusMove: 30
+      PlusAttack: 50
+      PlusRange: 30
+      PlusShield: 100
+      PlusPush: 30
+      PlusPull: 30
+      PlusPierce: 30
+      PlusRetaliate: 100
+      PlusHeal: 30
+      PlusTarget: 50
+      PlusRetaliateRange: 50
+      PlusDamage: 50
+      Regenerate: 40
+      Ward: 75
+      PlusTeleport: 50
+ClassPersistentLevelOfAbilityCardCost: [0, 25, 50, 75, 100, 125, 150, 175, 200]
+ClassPersistentNumberOfPreviousEnhancementsCost: [0, 75, 150, 225]
+ClassPersistentMultiTargetMultiplier: 2
+ClassPersistentSellPricePercentage: 0
+ClassPersistentAllowSell: False
+
+#Character Persistent Properties
+CharacterPersistentEnhancements:
+      # Name: BaseCost
+      Poison: 30
+      Wound: 45
+      Muddle: 25
+      Immobilize: 100
+      Disarm: 150
+      Curse: 100
+      Strengthen: 100
+      Bless: 50
+      Jump: 35
+      Fire: 60
+      Ice: 60
+      Air: 60
+      Earth: 60
+      Light: 60
+      Dark: 60
+      AnyElement: 90
+      Area: 150  # This value is divided by the number of hexes on the ability
+      SummonMove: 40
+      SummonAttack: 60
+      SummonRange: 40
+      SummonHP: 30
+      PlusMove: 20
+      PlusAttack: 35
+      PlusRange: 20
+      PlusShield: 60
+      PlusPush: 20
+      PlusPull: 15
+      PlusPierce: 15
+      PlusRetaliate: 40
+      PlusHeal: 20
+      PlusTarget: 40
+      PlusRetaliateRange: 40
+      PlusDamage: 35
+      Regenerate: 40
+      Ward: 75
+      PlusTeleport: 50
+CharacterPersistentLevelOfAbilityCardCost: [0, 10, 20, 30, 40, 50, 60, 70, 80]
+CharacterPersistentNumberOfPreviousEnhancementsCost: [0, 20, 40, 60]
+CharacterPersistentMultiTargetMultiplier: 2
+CharacterPersistentSellPricePercentage: 0.75
+CharacterPersistentAllowSell: True

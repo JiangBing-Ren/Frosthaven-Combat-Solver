@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 83
+ScenarioItemID: 1031
+Name: Healing Potion
+Quantity: 2
+Type: Small
+Brewing:
+    Herb1: Arrowvine
+    Herb2: Rockroot

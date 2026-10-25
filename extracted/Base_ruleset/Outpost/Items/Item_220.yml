@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 220
+ScenarioItemID: 1230
+Name: Belara's Quill
+Quantity: 1
+GoldCost: 50
+Type: OneHandWeapon
+IsNewCharacterItem: False

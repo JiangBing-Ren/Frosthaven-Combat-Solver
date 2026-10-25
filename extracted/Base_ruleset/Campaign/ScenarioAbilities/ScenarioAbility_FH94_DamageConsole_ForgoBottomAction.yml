@@ -1,0 +1,44 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH94_DamageConsole_ForgoBottomAction
+ScenarioAbility:
+    AActive:
+        AddActiveBonus:
+            Filter: Self
+            CanSkip: False
+            NullTargeting: True
+            SubAbilities:
+                TDamageConsole:
+                    AnimOverload: UseItem
+                    Filter:
+                        ActorType: Neutral
+                        EnemyType: Object
+                    Target: 1
+                    Targeting: Custom
+                    TargetingVars:
+                        CentralConsole: CustomAbility.GetPropOnHex(6, 8).RuntimeAttachedActor
+                        AddTileInRange: CentralConsole.Tile
+                        AddValidActorInRange: CentralConsole
+                        AddActorToTarget: CentralConsole
+                        AddSelectedTile: CentralConsole.Tile
+                    Damage: 1
+                    StatIsBasedOnX:
+                        Strength:
+                            BasedOn: Vars
+                            AddTo: False
+                            Vars:
+                                ValidateHappened: ParentAbility.AbilityHasHappened
+                                Value: CustomAbility.GetCardInitiativeAdjusted(ParentAbility.TargetingActor, ParentAbility.TargetingActor.LastForegoneCard) / 10
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringTurnAbility
+            IsToggleBonus: True
+            Hidden: True
+            Requirements:
+                ForgoBottomAction: True
+                Vars:
+                    Actor: obj.Actor
+                    CentralConsole: CustomAbility.GetPropOnHex(6, 8)
+                    ValidateIsConsoleAlive: CentralConsole.RuntimeAttachedActor.IsDead == False
+                    ValidateIsNextToConsole: CustomAbility.IsActorNextToProp(Actor, CentralConsole)
+                    ValidateCanForgoAction: CustomAbility.AnyForgoneAction() == False
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_094_DamageConsole_ForgoBottomAction$, Positive_Unique_Campaign]

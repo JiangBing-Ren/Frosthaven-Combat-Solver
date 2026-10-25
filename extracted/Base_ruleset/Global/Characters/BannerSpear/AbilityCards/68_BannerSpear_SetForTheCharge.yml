@@ -1,0 +1,59 @@
+Parser: AbilityCard
+Name: $FH/068_character_ability_cards_banner_spear_set_for_the_charge_1$
+#CustomImage: KRO_BANNER_SPEAR_AbilityCards_SetForTheCharge
+Character: BannerSpearID
+ID: 68
+Level: 1
+Initiative: 6
+Discard: [Discard,Discard]
+Prefab: 68_Bannerspear_SetForTheCharge
+Data:
+    Top:
+        Abilities:
+            TActive:
+                AddActiveBonus:
+                    Damage: 2
+                    MiscVars:
+                        PrintedProperties: list("Damage")
+                    Filter: Enemy
+                    AutoTrigger: True
+                    Targeting: Custom
+                    TargetingVars:
+                        AddValidActorInRange: TriggerActor
+                    MiscVars:
+                        PlayActorBeenDamagedVFX: AbilityHasHappened || TargetingActor.PlayVFX("BannerSpearSetForTheChargeImpact")
+                        InterruptCurrentAbility: True
+                        StackNextToCurrent: True
+                ActiveBonus:
+                    #TODO - must work with teleport as well
+                    Duration: Round
+                    Behaviour: DuringActionAbilityOnMoved
+                    Flags: NotInRangeToInRangeMove
+                    IsAura: True
+                    HiddenWhenAura: True
+                    TriggerOnCaster: True
+                    AuraTargeting: Range
+                    AuraFilter:
+                        TargetType: Enemy                        
+                        UseTargetOriginalType: True
+                    Vars:
+                        PersistentCasterVFX: "'BannerSpearSetForTheCharge'"
+                Range: 1
+                Target: -1
+                Filter: Self                
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 4
+                MiscVars:
+                    PrintedProperties: list("Move")
+Layout:
+    Top:
+       - Active:
+            Ability: TActive
+            Icon: Positive_Damage_Enemy_Move
+            ListLayout: "$FH/068_character_ability_cards_banner_spear_set_for_the_charge_2$"
+            Layout: "$FH/068_character_ability_cards_banner_spear_set_for_the_charge_2$"
+    Bottom:
+       - Row: "<b><size=130%><sprite name=Move> *BMove*"

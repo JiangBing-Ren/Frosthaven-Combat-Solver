@@ -1,0 +1,22 @@
+Parser: ScenarioAbility
+ID: FH130_DropSunAgateDuringTurnAndMove
+ScenarioAbility:
+    DropSunAgateDuringMove:
+        PreviewEffectText: ""
+        Filter: Self
+        SkipAnim: True
+        AddActiveBonus:
+            Null: True
+        ActiveBonus:
+            ListLayoutOverride: ["$FH/FH_Scenario_Campaign_130_SCENARIO_SCENARIO_MODIFIER_2$", Loot]
+            Duration: Persistent
+            Behaviour: DuringTurnAbility
+            ValidAbilityType: Move
+            IsToggleBonus: True
+            Hidden: True
+            MiscVars:
+                OnBonusToggled: IsOn && ScenarioScript_FH130.OverrideDropSunAgateAbility(ActiveBonus.Actor, ActiveBonus)
+            Requirements:
+                DoesntHaveNegativeCondition: [Stun, Immobilize]
+                Vars:
+                    ValidateHasValidTargets: ScenarioScript_FH130.GetSunAgates(GameState.CurrentActor) > 0

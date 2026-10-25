@@ -1,0 +1,36 @@
+Parser: ScenarioAbility
+ID: FH129_CreateSnowdrift
+ScenarioAbility:
+    CreateSnowdrift:
+        Filter: Self
+        SkipAnim: True
+        AddActiveBonus:
+            CanUndo: False
+            CanSkip: False
+            PreviewEffectText: "1 AP"
+            HelpBoxTooltipLocKey: "FH_Scenario_Campaign_129_SCENARIO_MODIFIER_8"
+            MiscVars:
+                APCost: 1
+                DontMoveCamera: True
+            CreateTerrain: Rubble
+            TileFilter: EmptyHex
+            IgnoreLOS: True
+            Target: 1
+            Range: 99
+        ActiveBonus:
+            ListLayoutOverride: ["$FH/FH_Scenario_Campaign_129_SCENARIO_MODIFIER_8$", Empty]
+            Hidden: True
+            Behaviour: DuringTurnAbility
+            Duration: Persistent
+            ValidAbilityType: NullTargeting
+            IsToggleBonus: True
+            MiscVars:
+                OverrideIcon: "'Create_1_Hex_Difficult'"
+                OverrideLayoutName: "''"
+                ShowCounter: (6 - ScenarioScript_FH129.CountSnowdrift())
+            Requirements:
+                Vars:
+                    CurrentAbility: PhaseManager.CurrentPhaseAction?.CurrentPhaseAbility?.m_Ability
+                    ValidateAbility: CurrentAbility != null && CurrentAbility.Name == "ChooseAPAbility"
+                    ValidateMaxCount: ScenarioScript_FH129.CountSnowdrift() < 6
+

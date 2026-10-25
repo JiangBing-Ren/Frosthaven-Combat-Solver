@@ -1,0 +1,21 @@
+Parser: ItemCard
+ID: 928
+StringID: CorruptedBladeID
+Name: $FH/0928_item_cards_corrupted_blade_1$
+Art: Corrupted Blade
+TotalInGame: 2
+Cost: 0
+Slot: OneHand 
+Rarity: Rare
+Usage: Consumed
+Trigger: SingleTarget
+Data:     
+    Overrides:
+        OStun:
+            Conditions: [Wound,Poison,Muddle]
+    CompareAbility:
+        AbilityType: Attack
+        IsMelee: True
+        Filter: Enemy
+Layout: 
+    - Row: $FH/0928_item_cards_corrupted_blade_2$

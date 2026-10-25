@@ -1,0 +1,12 @@
+Parser: EnemyCard
+ID: 99999
+Name: $Monster_Ability_Advance$
+Initiative: 99
+Shuffle: True
+Data:
+    Abilities:
+        AMove:
+            Move: 2
+            StrengthIsBase: True
+            RangeIsBase: True
+            TargetIsBase: True

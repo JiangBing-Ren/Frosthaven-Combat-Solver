@@ -1,0 +1,56 @@
+Parser: AbilityCard
+Name: $FH/135_character_ability_cards_boneshaper_unearthed_horror_1$
+Character: BoneshaperID
+ID: 135
+Level: 2
+Initiative: 94
+Discard: [Lost,Discard]
+Prefab: 135_Boneshaper_UnearthedHorror
+Data:
+    Top:
+        Abilities:
+            TSummon:
+                Summon: RagingCorpseID
+                AnimOverload: Summon2
+        Infuse: Earth
+        XP: 2
+    Bottom:
+        Abilities:
+            BAlly:
+                ControlActor:
+                    Abilities:
+                        BAllyAttackPoison:
+                            Poison: True
+                            Range: 1
+                            RangeIsBase: True
+                            Target: 99
+                            Filter: Enemy
+                            MiscVars:
+                                AutoSelectValidTiles: True
+                    ControlActorType: Player
+                Range: 99
+                Target: 1
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Filter: OwnSummon
+                AnimOverload: CastNegative
+        Infuse: Earth
+Layout:
+    Top:
+        - Active:
+              Ability: "TSummon"
+              Icon: "Summon"
+              Layout:
+                  - Summon:
+                        Ability: TSummon
+                        SummonName: $FH/135_character_ability_cards_boneshaper_unearthed_horror_2$
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Earth
+    Bottom:
+        - Row: $FH/135_character_ability_cards_boneshaper_unearthed_horror_3$
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Earth

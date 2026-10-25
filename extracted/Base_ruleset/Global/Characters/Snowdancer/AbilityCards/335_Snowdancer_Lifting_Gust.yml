@@ -1,0 +1,53 @@
+Parser: AbilityCard
+Name: $FH/335_character_ability_cards_snowdancer_lifting_gust$
+Character: SnowdancerID
+ID: 335
+Level: 1
+Initiative: 27
+Discard: [Discard,Lost]
+Prefab: 335_Snowdancer_LiftingGust
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 1
+                    DiamondEnhancements: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                AnimOverload: RangedAttack
+                SubAbilities:
+                    SubPush:
+                        Push: 4
+                        MiscVars:
+                            PrintedProperties: list("Push")
+                        IsInlineSubAbility: True
+        Infuse: Air
+        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 8
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+                Jump: True
+        Infuse: Ice
+        XP: 1
+Layout:
+    Top:
+        - Row: "<size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Row: "<size=50%> "
+        - Row: "<sprite name=Range> *TAttack.Range*, <sprite name=Push> 4"
+        - Row: "<size=100%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Air
+    Bottom:
+        - Row: "<size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@ <sprite name=Jump>"
+        - Row: "<size=100%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Ice

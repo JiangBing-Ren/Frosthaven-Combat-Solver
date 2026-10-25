@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 65
+ScenarioItemID: 1300
+Name: Rust Powder
+Quantity: 2
+Type: Small
+CraftingCost:
+    Corpsecap: 1
+RequiredCraftingItemIDs: [ 157 ]

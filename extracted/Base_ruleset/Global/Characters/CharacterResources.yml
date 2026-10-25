@@ -1,0 +1,69 @@
+Parser: CharacterResources
+
+MovableCorpse:
+    ID: "MovableCorpse"
+    Sprite: "Empty"
+    LocKey: "$FH/MovableCorpse$"
+    Hidden: True
+MovableCorpse:
+    ID: "SoilSample"
+    Sprite: "Empty"
+    LocKey: "$FH_Scenario_Campaign_069_SCENARIO_OBJECT_1$"
+TreasurePiece:
+    ID: "TreasurePiece"
+    Sprite: "Empty"
+    LocKey: "$FH_Scenario_Campaign_090_SCENARIO_OBJECT_1$"
+ElementalCore:
+    ID: "ElementalCore"
+    Sprite: "Empty"
+    LocKey: "$ElementalCore$"
+LootableCrate:
+    ID: "LootableCrate"
+    Sprite: "Empty"
+    LocKey: "$FH/LootableCrate$"
+    StayActiveAfterLooted: True
+LootableCrateLarge:
+    ID: "LootableCrateLarge"
+    Sprite: "Empty"
+    LocKey: "$FH/LootableCrate$"
+    StayActiveAfterLooted: True
+RadiantDust:
+    ID: "RadiantDust"
+    Sprite: "Empty"
+    LocKey: "$RadiantDust$"
+CatIdol:
+    ID: "CatIdol"
+    Sprite: "HoverRelic"
+    LocKey: "$FH/FH_Scenario_Campaign_132_CatIdol$"
+CatIdolToken:
+    ID: "CatIdolSpeedToken"
+    Sprite: "Empty"
+    LocKey: ""
+    Hidden: True
+LootableCrate127:
+    ID: "LootableCrate127"
+    Sprite: "Empty"
+    LocKey: "$FH/LootableCrate127$"
+FH_Scenario_Campaign_126_SCENARIO_OBJECT_1:
+    ID: "FH_Scenario_Campaign_126_SCENARIO_OBJECT_1"
+    Sprite: "HoverRelic"
+    LocKey: "$FH/FH_Scenario_Campaign_126_SCENARIO_OBJECT_1$"
+    ResourceModel: "FH_Scenario_Campaign_126_SCENARIO_OBJECT_1"
+    DropOnDeath: True
+    CanLootFilter: 
+        ActorType: Player
+# sun agates
+FH_Scenario_Campaign_130_SCENARIO_OBJECT_1:
+    ID: "FH_Scenario_Campaign_130_SCENARIO_OBJECT_1"
+    # can't get the sprite to work correctly while moving, because it's tied to the tile, not the prop
+    Sprite: "Empty"
+    LocKey: "$FH/FH_Scenario_Campaign_130_SCENARIO_OBJECT_1_TOOLTIP$"
+    ResourceModel: "SunAgate"
+    DropOnDeath: True
+    Hidden: True
+    CanLootFilter: 
+        ActorType: Player
+LumberPile:
+    ID: "LumberPile"
+    Sprite: "Empty"
+    LocKey: "$LumberPile_TOOLTIP$"

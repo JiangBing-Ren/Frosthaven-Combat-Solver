@@ -1,0 +1,17 @@
+Parser: EnemyCard
+ID: 635
+Name: $Monster_Ability_BasicAttack$
+Initiative: 71
+Shuffle: True
+Data:
+    Abilities: 
+        Move1:
+            Move: 0
+            Vars:
+                ValidateIsActive: ScenarioScript_FH090.ValidateIsFrozenCorpseActive(TargetingActor)
+        Attack1:
+            Attack: 0
+            Filter: Enemy
+            Vars:
+                ValidateIsActive: ScenarioScript_FH090.ValidateIsFrozenCorpseActive(TargetingActor)
+    Infuse: Ice

@@ -1,0 +1,18 @@
+Parser: EnemyCard
+ID: 722
+Name: $Monster_Ability_722_DeepTerror_HorribleGlare$
+Initiative: 65
+Shuffle: False
+Data:
+    Abilities:
+        Attack1:
+            Attack: -1
+            Range: 3
+            RangeIsBase: True
+            Target: 3
+            TargetIsBase: True
+            Conditions: Curse
+            Filter: Enemy
+            MultiPassAttack: True
+            AnimOverload: RangedAttack
+            

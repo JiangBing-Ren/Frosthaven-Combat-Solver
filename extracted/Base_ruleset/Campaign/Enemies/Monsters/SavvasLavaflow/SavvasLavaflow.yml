@@ -1,0 +1,64 @@
+Parser: Enemy
+ID: SavvasLavaflowID
+LocKey: $SavvasLavaflow$
+MonsterType: Monster
+StandeeLimit: 4
+Model: Savvas Lavaflow
+PredominantlyMelee: True
+AbilityCards: [786, 787, 788, 789, 790, 791, 792, 793]
+# Base Stats
+Level0:
+    Health: 8
+    Move: 3
+    Attack: 2
+    Range: 1
+    Target: 1
+Level1:
+    Health: 9
+    Move: 3
+    Attack: 2
+    Range: 1
+    Target: 1
+    Conditions: [Poison]
+Level2:
+    Health: 11
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Conditions: [Poison]
+Level3:
+    Health: 14
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Conditions: [Poison]
+Level4:
+    Health: 16
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Conditions: [Poison]
+Level5:
+    Health: 20
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Conditions: [Poison]
+Level6:
+    Health: 28
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1    
+    Conditions: [Poison]
+Level7:
+    Health: 35
+    Move: 4
+    Attack: 5
+    Range: 1
+    Target: 1    
+    Conditions: [Poison]

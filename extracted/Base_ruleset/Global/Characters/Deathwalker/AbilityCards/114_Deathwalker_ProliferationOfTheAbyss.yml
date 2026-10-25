@@ -1,0 +1,93 @@
+Parser: AbilityCard
+Name: $FH/114_character_ability_cards_deathwalker_proliferation_of_the_abyss_1$
+Character: DeathwalkerID
+ID: 114
+Level: 7
+Initiative: 38
+Discard: [Discard,Discard]
+Prefab: 114_Deathwalker_ProliferationOfTheAbyss
+Data:
+    Top:
+        Abilities:
+            TConsume:
+                Consume:
+                    Elements: [Dark]
+                    Abilities:
+                        TCreateShadow:
+                            CreateShadow:
+                            HelpBoxTooltipLocKey: "FH/GUI_PLACE_SHADOWS_HELPBOX"
+                            Range: 1
+                            MinRange: 1
+                            Target: 1
+                            AnimOverload: Shadow Manipulation
+            TPreventDamageBuff:
+                PreventDamage: 99
+                Range: 1
+                Target: -1
+                Filter: Self
+                ActiveBonus:
+                    Vars:
+                        PerformActiveBonusAbility: CustomAbility.PerformActiveBonusAbility(TriggerBehaviour.ActiveBonus, thisContext)
+                        Finish: ActiveBonus.Finish()
+                    Behaviour: PreventFirstDamage
+                    Restriction: OncePerScenario
+                    Duration: Persistent
+                    IsToggleBonus: True
+                    ToggleIsOptional: True
+                    IsAura: True
+                    AuraTargeting: All
+                    AuraFilter: 
+                        TargetType: [Self,Ally]                     
+                        Vars:
+                            ValidateActorOnOrAdjacentToTile: CustomAbility.GetShadowTilesInRange(target, 1).Count > 0
+                    AbilityData:
+                        Filter: Self
+                        RemoveShadow:
+                        XP: 1
+                        CanUndo: False
+                        CanSkip: False
+                        Target: 1
+                        Targeting: Custom
+                        TargetingVars:
+                            AddTilesInRange: CustomAbility.GetShadowTilesInRange(TriggerTarget, 1)
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BMoveShadows:
+                MoveShadow:
+                Target: 2
+                Range:
+                    Amount: 4
+                    SquareEnhancements: 1
+                AnimOverload: Shadow Manipulation
+        Consumes:
+            BCDark:
+                Elements: Dark
+                AbilityOverrides:
+                    TCDarkBuff:
+                        ParentName: BMove
+                        Strength: 2
+Layout:
+    Top:
+        - AddedEffect: "$FH/114_character_ability_cards_deathwalker_proliferation_of_the_abyss_2$"
+        - Divider:       
+        - Active:
+            Ability: TPreventDamageBuff
+            ListLayout: "$FH/114_character_ability_cards_deathwalker_proliferation_of_the_abyss_3$"
+            Layout:  "$FH/114_character_ability_cards_deathwalker_proliferation_of_the_abyss_3$"
+            Icon: Positive_DamagePrevent_Shadow
+    Bottom:     
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@ "
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: BCDark
+                    Text: "+2 <sprite name=Move>"
+        - Divider:
+        - Row: "$FH/114_character_ability_cards_deathwalker_proliferation_of_the_abyss_4$"

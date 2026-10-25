@@ -1,0 +1,17 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH32_Retaliate
+ScenarioAbility:
+    AActive:
+        Retaliate:
+            Amount: 0
+        StatIsBasedOnX:
+            Strength:
+                BasedOn: LevelPlusYTimesX
+                Multiplier:  0.33
+                SecondVariable: 1
+                RoundingType: ToCeil
+                AddTo: True
+        RetaliateRange: 10
+        BypassImmunity: True
+        ActiveBonus:
+            Duration: Persistent

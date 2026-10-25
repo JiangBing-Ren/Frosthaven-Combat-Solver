@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 28
+ScenarioItemID: 936
+Name: Sturdy Boots
+Quantity: 2
+Type: Feet
+CraftingCost:
+    Hide: 1
+RequiredCraftingItemIDs: [ 18 ]

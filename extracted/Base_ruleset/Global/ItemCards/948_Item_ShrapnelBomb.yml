@@ -1,0 +1,34 @@
+Parser: ItemCard
+ID: 948
+StringID: ShrapnelBombID
+Name: $FH/0948_item_cards_shrapnel_bomb_1$
+Art: Shrapnel Bomb
+TotalInGame: 2
+Cost: 0
+Slot: OneHand
+Rarity: Rare
+Usage: Consumed
+Trigger: OnAttackTargetOneByOne
+Data:
+    ItemRequirements:
+        Vars:
+            ValidateAttackerIsItemOwner: Ability.TargetingActor == Actor
+            ValidateHasTargets: GameState.GetAdjacentEnemies(Ability.TargetingActor, AppliedActor.ArrayIndex).Count > 0
+    Abilities:
+        ODamage:
+            Damage: 2
+            Target: -1
+            Filter: Enemy
+            AutoTrigger: True
+            Targeting: Custom
+            TargetingVars:
+                AddValidActorsInRange: GameState.GetAdjacentEnemies(TargetingActor, AppliedActor.ArrayIndex)
+            StartAbilityRequirements:
+                Type: ThisAbility
+                Vars:
+                    ValidateHasTarget: AppliedActor != null
+    CompareAbility:
+        AbilityType: Attack
+        IsRanged: True
+Layout: 
+    - Row: $FH/0948_item_cards_shrapnel_bomb_2$

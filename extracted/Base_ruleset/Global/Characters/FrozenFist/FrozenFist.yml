@@ -1,0 +1,27 @@
+Parser: Character
+ID: FrozenFistID
+LocKey: $FH/FS_Character_FrozenFist$
+Model: Frozenfist
+DefaultSkin: 1
+Race: Algox
+Traits: [ Intimidating, Persuasive, Strong ]
+# PlayerLevel:  [  1,   2,   3,   4,   5,   6,   7,   8,   9 ]
+HealthTable:    [  10,  12,  14,  16,  18,  20,  22,  24,  26 ]
+NumberAbilityCardsInBattle: 8
+Role: $FrozenFist_ROLE$
+Description: $FrozenFist_DESCRIPTION$
+Difficulty: $DIFFICULTY_HIGH$
+Strengths: $FrozenFist_STRENGTHS$
+Weaknesses: $FrozenFist_WEAKNESSES$
+Adventure_Description: $FrozenFist_ADVENTURE_DESCRIPTION$
+RetireCampaignSection: 120.3
+Complexity: 2
+ElementalAffinities: [Ice, Earth]
+MasteryIDs: [ FrozenFist_MASTERY_1, FrozenFist_MASTERY_2]
+HeroStats:
+    Melee: 5
+    Ranged: 1
+    Mobility: 4
+    Support: 3
+    Defense: 5
+    Control: 1

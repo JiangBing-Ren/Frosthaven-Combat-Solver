@@ -1,0 +1,16 @@
+Parser: EnemyCard
+ID: 770
+Name: $Monster_Ability_770_Scout_CruelBow$
+Initiative: 29
+Shuffle: True
+Data:
+    Abilities: 
+        AMove:
+            Move: -1
+        AAttack:
+            Attack: -1
+            Range: 3
+            RangeIsBase: True
+            Condition: [Impair]
+            AnimOverload: RangedAttack
+            

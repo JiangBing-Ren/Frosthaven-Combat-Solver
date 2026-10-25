@@ -1,0 +1,10 @@
+Parser: FHScenario
+ID: 9
+Name: Glowing Catacombs
+LevelID: FS_009_Glowing_Catacombs
+Chain: Algox1
+Difficulty: 1
+Conclusions:
+    - Effects:
+        - Type: GainCorpsecap
+          Param1: 2

@@ -1,0 +1,34 @@
+Parser: Perk
+ID: Pyroclast11
+Name: FH/PERK_Pyroclast_11_Name
+Description: FH/PERK_Pyroclast_11_Desc
+CharacterID: PyroclastID
+Available: 1
+Flags: [Passive, ApplyActiveBonusesAtScenarioStart]
+Abilities:
+    TActive:
+        Filter: Self
+        AutoTrigger: True
+        SkipAnim: True
+        AddActiveBonus:
+            Consume: 
+                Elements: Fire
+                Abilities:
+                    AWound:
+                        Wound: True
+                        Target: 1
+                        Targeting: All
+                        AnimOverload: LivingMagma
+                        Filter: 
+                            TargetType: Enemy
+                            Vars: 
+                                ValidateHazardous: GameState.GetTilesInRange(target, 1).Where(obj.FindHazardousProp() != null).Count > 0
+
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringActionAbilityOnShortRest
+            Hidden: True
+            Requirements:
+                Vars:
+                    ValidateHasElements: ElementInfusionBoardManager.GetAvailableElements().Contains(ElementInfusionBoardManager.EElement.Fire)
+                    ValidateEnemiesInRange: AllEnemyMonsters.Where(GameState.GetTilesInRange(obj, 1).Where(obj.FindHazardousProp() != null).Count > 0).Count > 0

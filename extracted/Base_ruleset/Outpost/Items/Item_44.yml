@@ -1,0 +1,7 @@
+Parser: FHItem
+ID: 44
+ScenarioItemID: 968
+Name: Sword of Absolution
+Quantity: 2
+Type: OneHandWeapon
+RequiredCraftingItemIDs: [ 24, 108 ]

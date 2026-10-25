@@ -1,0 +1,47 @@
+Parser: ItemCard
+ID: 1206
+StringID: AestherDiademID
+Name: $FH/1206_item_cards_aesther_diadem_1$
+Art: Aesther Diadem
+TotalInGame: 1
+Cost: 30
+Slot: Head
+Rarity: Rare
+Usage: Consumed
+Trigger: AtStartOfTurn
+Data:    
+    ItemRequirements:
+        Vars:
+            ValidateIsOwner: AppliedActor == ItemOwner
+            ValidateHasRoundCards: CustomAbility.GetCardPileList(AppliedActor, CBaseCard.ECardPile.Hand).Count > 0
+            ValidateHasDiscardedCards: CustomAbility.GetCardPileList(AppliedActor, CBaseCard.ECardPile.Round).Count > 0
+    Abilities:
+        TDiscard:
+            AutoTrigger: True
+            Filter: Self
+            SelectAndMoveCard:
+                PileToMoveFrom: Hand
+                PileToMoveTo: Round
+                Amount: 1
+            PerformVars:
+                Swap:
+                    SelectedCards: CustomAbility.GetCardPileList(TargetingActor, CBaseCard.ECardPile.SelectedAbilityCardsOutOfPhase)
+                    RememberCards: TargetingActor.SetTempVar("CardsDiscardedForAestherDiadem", SelectedCards)
+            SubAbilities:
+                TAddToHand:
+                    CanSkip: False
+                    AutoTrigger: True
+                    Filter: Self
+                    SelectAndMoveCard:
+                        PileToMoveFrom: Round
+                        PileToMoveTo: Hand
+                        Amount: 1
+                    MiscVars:
+                        IsCardValid: TargetingActor.CardsDiscardedForAestherDiadem.Contains(AbilityCard) == false
+                    StartAbilityRequirements:
+                        Type: ThisAbility
+                        Vars:
+                            ValidateNotSkipped: "!!TargetingActor.CardsDiscardedForAestherDiadem"
+                            ValidateDiscardedCards: TargetingActor.CardsDiscardedForAestherDiadem.Count > 0
+Layout: 
+    - Row: "$FH/1206_item_cards_aesther_diadem_2$"

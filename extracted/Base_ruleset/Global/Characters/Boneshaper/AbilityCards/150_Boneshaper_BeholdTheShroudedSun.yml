@@ -1,0 +1,76 @@
+Parser: AbilityCard
+Name: $FH/150_character_ability_cards_boneshaper_behold_the_shrouded_sun_1$
+Character: BoneshaperID
+ID: 150
+Level: 9
+Initiative: 10
+Discard: [Discard,Discard]
+Prefab: 150_Boneshaper_BeholdTheShroudedSun
+Data:
+    Top:
+        Abilities:
+            TBaneOnSummonKill:
+                AddActiveBonus:
+                    Bane: True
+                    Filter: Enemy
+                    Targeting: Attacker
+                    StartAbilityRequirements:
+                        Type: ThisAbility
+                        ActorsTargetedByAbility: ">= 1"
+                ActiveBonus:
+                    Duration: Round
+                    Behaviour: DuringActionAbilityOnDeath
+                    Vars:
+                        ValidateIsDeathFromAttackAbility: TriggerAbility != null && TriggerAbility.AbilityType == CAbility.EAbilityType.Attack
+                    XPTracker: [0]
+                    IsAura: True
+                    AuraFilter: OwnSummon
+                    AuraTargeting: All
+                    ListLayoutOverride: [$FH/150_character_ability_cards_boneshaper_behold_the_shrouded_sun_2$, Positive_Bane_Summon_Death]
+                Range: 1
+                Target: -1
+                Filter: Self
+                Text: "$FH/150_character_ability_cards_boneshaper_behold_the_shrouded_sun_2$"
+                TextOnly: True
+                AnimOverload: DarkSun
+        Infuse: Dark
+    Bottom:
+        Abilities:
+            BDamageSelf:
+                Damage: 2
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Filter: Self
+                TextOnly: True
+                AutoTrigger: True
+            BDamageEnemies:
+                Damage: 1
+                Range: 5
+                MiscVars:
+                    PrintedProperties: list("Damage","Range")
+                Target: -1
+                Filter: Enemy
+                AnimOverload: DarkSun
+        Consumes:
+            BCDark:
+                Elements: [Earth, Dark]
+                AbilityOverrides:
+                    TCDarkBuff:
+                        ParentName: BDamageEnemies
+                        Strength: 1
+Layout:
+    Top:
+        - Row: "$FH/150_character_ability_cards_boneshaper_behold_the_shrouded_sun_2$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark
+    Bottom:
+        - MandatoryTrigger: "$FH/150_character_ability_cards_boneshaper_behold_the_shrouded_sun_4$"
+        - Divider:
+        - Row: "$FH/150_character_ability_cards_boneshaper_behold_the_shrouded_sun_3$"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: BCDark
+                    Text: "+1 <sprite name=Damage>"

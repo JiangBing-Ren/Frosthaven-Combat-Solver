@@ -1,0 +1,17 @@
+Parser: HeroSummon
+ID: WraithID
+LocKey: $FH/126_character_ability_cards_boneshaper_angry_spirits_2$
+Model: Wraith
+Health:
+    Amount: 1
+    SquareEnhancements: 1
+Move:
+    Amount: 2
+    SquareEnhancements: 1
+Attack:
+    Amount: 1
+Range:
+    Amount: 3
+    SquareEnhancements: 1
+Shield: 2
+Flying: True

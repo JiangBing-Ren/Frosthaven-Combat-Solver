@@ -1,0 +1,77 @@
+Parser: AbilityCard
+Name: $FH/218_character_ability_cards_pyroclast_eruption_1$
+Character: PyroclastID
+ID: 218
+Level: 1
+Initiative: 47
+Discard: [Lost,Discard]
+Prefab: 218_Pyroclast_Eruption
+Data:
+    Top:
+        XP: 2
+        Infuse: [Fire, Earth]
+        Abilities:
+            TCreateOneHexObstacle218:            
+                PreviewEffectText: "$OBSTACLE_TOOLTIP$"
+                Create: OneHexObstacle
+                Vars:
+                    OverridePropName: "'PyroclastObstacle'"
+                TileFilter: EmptyHex
+                Range: 5
+                MiscVars:
+                    PrintedProperties: list("Range")
+                AnimOverload: TerrainFormation
+                SubAbilities:
+                    TWaitForIdle:
+                        Null: True
+                    TCreateHazardousTerrain:
+                        Target: -1
+                        TreatAsNonSubAbility: True
+                        CreateLimitedHazardousTerrain: True
+                        Vars:
+                            OverridePropName: "'PyroclastHazardTerrain'"
+                        CanUndo: False
+                        TileFilter: [FeaturelessHex,Actor]
+                        Targeting: Custom
+                        TargetingVars:
+                            ParentTile: ParentAbility.m_TilesSelected[0]
+                            AddTilesInRange: GameState.GetTilesInRange(ParentTile.m_ArrayIndex, 1)
+                        AnimOverload: ViolentHazardousTerrainFormation
+                        PerformVars:
+                            OnAbilityEnded:
+                                TriggerSubAbility: CustomAbility.StackNonInlineSubabilities(obj)
+                        SubAbilities:
+                            TDealDamage:
+                                Flags: [SubAbilityPreview]
+                                Damage: 4
+                                MiscVars:
+                                    PrintedProperties: list("Damage")
+                                TreatAsNonSubAbility: True
+                                AutoTrigger: True
+                                Target: -1
+                                Targeting: Custom
+                                TargetingVars:
+                                    AddValidActorsInRange: CustomAbility.GetTargetedOrPotentialTiles(ParentAbility).Select(obj.LivingActor).Where(obj != null)
+    Bottom:
+        Infuse: [Fire]
+        Abilities:
+            BAttack:
+                Attack:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AnimOverload: FireSwipe
+Layout:
+    Top:
+        - Row: "$FH/218_character_ability_cards_pyroclast_eruption_2$"
+        - Divider: 
+        - Row: "$FH/218_character_ability_cards_pyroclast_eruption_3$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Fire,Earth]
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Attack> *BAttack* <size=100%><voffset=1>@BAttack@"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Fire]

@@ -1,0 +1,18 @@
+Parser: EnemyCard
+ID: 28770001
+Name: $Monster_Ability_Boss_Render_Special2$
+Initiative: 11
+Shuffle: False
+Data:
+    Abilities: 
+        THeal:
+            Heal: 2
+            Target: -1
+            TargetIsBase: True
+            Range: 2
+            RangeIsBase: True
+            Filter: [Ally]
+            StartAbilityRequirements:
+                Type: ThisAbility
+                Vars:
+                     ValidateCanUseAbility: ScenarioScript_FH087.ShouldBrotherUseAbility2(TargetingActor)

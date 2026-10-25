@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 35.1
+Name: Ancient Technology Solution
+SkipCompletedNotification: True
+Effects:
+    - Type: UnlockClass
+      Param1: MetalMosaicID
+    - Type: UnlockPuzzle
+      Param1: Peninsulas

@@ -1,0 +1,90 @@
+Parser: AbilityCard
+Name: $FH/289_character_ability_cards_trapper_dangerous_ground_1$
+Character: TrapperID
+ID: 289
+Level: 4
+Initiative: 31
+Discard: [Discard,Lost]
+Prefab: 289_Trapper_DangerousGround
+Data:
+    Top:
+        Abilities:
+            TTrap:
+                Trap:
+                    TrapName: TrapperTrap
+                    Damage: 3                    
+                Range:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Damage","Range")
+                RangeIsBase: True
+                Target: 2
+                TargetIsBase: True
+                AnimOverload: TrapThrow
+        XP: 1
+    Bottom:
+        Abilities:
+            BPickTrapToSpring:
+                NullHex: True
+                HelpBoxTooltipLocKey: $FH/289_character_ability_cards_trapper_dangerous_ground_5$
+                SkipAnim: True
+                Targeting: Custom
+                TargetingVars:
+                    AddTilesInRange: AllTraps.Select(PropTile)
+                Vars:
+                    ClearTrapToSpring: TargetingActor.SetTempVar("DangerousGround_Trap", null)
+                    ClearTrapTarget: TargetingActor.SetTempVar("DangerousGround_TrapTarget", null)
+                MiscVars:
+                    SkipPlayerFocus: True
+                    DontCancelIfNoValid: True
+                PerformVars:
+                    AnimateCharacter:
+                        SetTrapToSpring: TargetingActor.SetTempVar("DangerousGround_Trap", TilesSelected.First?.Trap)                
+            BPickFigureToAffect:
+                NullTargeting: True
+                HelpBoxTooltipLocKey: $FH/289_character_ability_cards_trapper_dangerous_ground_6$
+                Vars:
+                    ValidateTrapToSpring: "!!TargetingActor.DangerousGround_Trap"
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Targeting: Custom
+                TargetingVars:
+                    AddTilesInRange: GameState.GetTilesInRange(TargetingActor.DangerousGround_Trap.ArrayIndex.ToPoint(), Range)
+                    AddValidActorsInRange: GameState.GetActorsOnTiles(AddTilesInRange).Where(obj != null)
+                NegativeAbilityIsOptional: True
+                MiscVars:
+                    includeCasterTile: True
+                    SkipPlayerFocus: True
+                    IsNegative: True
+                    PreviewSpringTrap: TargetingActor.DangerousGround_Trap
+                PerformVars:
+                    ApplyToActors:
+                        SetTrapTarget: TargetingActor.SetTempVar("DangerousGround_TrapTarget", ActorsToTarget[0])
+                        ApplyTrapEffects: SetTrapTarget and TargetingActor.DangerousGround_Trap.ForceActivate(SetTrapTarget)
+                AnimOverload: FishingRod
+            BDestroyTrapIfNoFigureWasAffected:
+                DisarmTrap: true
+                Vars:
+                    ValidateTrapToSpring: "!!TargetingActor.DangerousGround_Trap"
+                    ValidateNoTrapTarget: "!TargetingActor.DangerousGround_TrapTarget"
+                Targeting: Custom
+                TargetingVars:
+                    AddTileInRange: TargetingActor.DangerousGround_Trap?.PropTile
+                    AddSelectedTile: TargetingActor.DangerousGround_Trap?.PropTile
+                AutoTrigger: True
+                AnimOverload: FishingRod
+            BRepeatUntilNoTrapWasPicked:
+                Null: True
+                SkipAnim: True
+                Vars:
+                    ValidateTrapToSpring: "!!TargetingActor.DangerousGround_Trap"
+                    RepeatAction: PhaseManager.CurrentPhaseAction.StackNextAbilities(CurrentAbility.GetAction().Abilities, TargetingActor, false, true)
+        XP: 2
+Layout:
+    Top:
+        - Row: "$FH/289_character_ability_cards_trapper_dangerous_ground_2$"
+        - Row: "$FH/289_character_ability_cards_trapper_dangerous_ground_3$ @TTrap.Range@"
+    Bottom:
+        - Row: "$FH/289_character_ability_cards_trapper_dangerous_ground_4$"

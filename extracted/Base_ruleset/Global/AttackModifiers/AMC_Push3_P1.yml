@@ -1,0 +1,7 @@
+Parser: AttackModifier
+Name: AMC_Push3_P1
+MathModifier: "+1"
+Abilities:
+    PushAbility:
+        Push: 3
+        AnimOverload: Cast Negative #the card is currently for geminate only, if you need different overload split the perk into different ones

@@ -1,0 +1,111 @@
+Parser: AbilityCard
+Name: $FH/434_character_ability_cards_metal_mosaic_magnetic_field_1$
+Character: MetalMosaicID
+ID: 434
+Level: 4
+Initiative: 21
+Discard: [Discard,Discard]
+Prefab: 434_MetalMosaic_MagneticField
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+            TLoot:
+                Loot: 1
+                MiscVars:
+                    PrintedProperties: list("Loot")
+                Target: -1
+            TConsumeIce:
+                Consume:
+                    Elements: [Ice]
+                    Abilities:
+                        CHeal:
+                            Heal: 2
+                            MiscVars:
+                                PrintedProperties: list("Heal")
+                            Filter: Self
+            THeal:
+                Heal: 3
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                CanSkip: False
+                Filter: Self
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredPressure: Low
+                StatIsBasedOnX:
+                    XP:
+                        BasedOn: Vars
+                        AddTo: True
+                        Vars:
+                            LowPressure: TargetingActor.Pressure.ToString() == 'Low'
+                            Value: LowPressure && 1 || 0
+                SubAbilities:
+                    SubPressureChangeLow:
+                        Null: True
+                        SkipAnim: True
+                        IgnoreStun: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Low
+                        PerformVars:
+                            NullBegin:
+                                ChangePressure: CustomAbility.PressureChange(TargetingActor, 1)
+    Bottom:
+        Abilities:
+            BPull1:
+                Pull: 1
+                Range: 5
+                MiscVars:
+                    PrintedProperties: list("Pull","Range")
+                Target: 99
+                Filter: Enemy
+                AnimOverload: Control_Blank
+            BPull2:
+                Pull: 1
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Pull","Range")
+                Target: 99
+                Filter: Enemy
+                AnimOverload: Control_Blank
+            BShield:
+                Shield: 1
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                Filter: Self
+                CanSkip: False
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredPressure: Over
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Divider:
+        - Row: "<sprite name=Loot> 1"
+        - Divider:
+        - Conditional:
+            Layout:
+                - Row: "<sprite name=ConsumeIce>: <size=100%><sprite name=Heal> 2, $Self$"
+        - Divider:
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureLow><size=100%><sprite name=Heal> 3, $Self$, <sprite name=XP1>, <sprite name=MMGainPressure>"
+    Bottom:
+        - Row: "$FH/434_character_ability_cards_metal_mosaic_magnetic_field_4$"
+        - Divider:
+        - Row: "$FH/434_character_ability_cards_metal_mosaic_magnetic_field_5$"
+        - Divider:
+        - Active:
+            Ability: BShield
+            Icon: Positive_Shield
+            ListLayout: "<sprite name=Shield> *BShield*"
+            Layout: "<sprite name=Shield> *BShield*"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureOver><size=100%> <sprite name=Shield> 1 $Self$"

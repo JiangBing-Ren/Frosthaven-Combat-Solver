@@ -1,0 +1,12 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH87_ImmunityToMove
+ScenarioAbility:
+    AActive:
+        ImmunityTo: [Push, Pull, Teleport2, Move]
+        AutoTrigger: True
+        Filter: Self
+        ActiveBonus:
+            Duration: Persistent
+            Hidden: True
+            ListLayoutOverride: [$ImmunityToMove$, Negative_MovePrevent_Campaign]
+        SkipAnim: True

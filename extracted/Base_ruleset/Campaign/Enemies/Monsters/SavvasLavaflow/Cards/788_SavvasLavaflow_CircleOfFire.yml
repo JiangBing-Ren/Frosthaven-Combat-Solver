@@ -1,0 +1,32 @@
+Parser: EnemyCard
+ID: 788
+Name: $Monster_Ability_788_SavvasLavaflow_CircleOfFire$
+Initiative: 22
+Shuffle: False
+Data:
+    Abilities:
+        Move1:
+            Move: +1
+        Attack1:
+            Attack: -1
+            Range: 1
+            Target: -1
+            RangeIsBase: True
+            TargetIsBase: True
+            ShowRange: False
+            Filter: Enemy
+            AnimOverload: CircleOfFire
+            MultiPassAttack: False
+            Text: "$Target_AllAdjacentEnemies$"
+    Consumes:
+        CFire:
+            Elements: Fire
+            Abilities:
+                Retaliate1:
+                    Retaliate: 3
+                    Filter: Self
+                    AnimOverload: FireBuff      
+                    ActiveBonus:
+                        Duration: Round
+                        ListLayoutOverride: ["<sprite name=Retaliate> *Retaliate1*", Positive_Retaliate]
+            

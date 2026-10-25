@@ -1,0 +1,22 @@
+Parser: ItemCard
+ID: 972
+StringID: DoubleLensGogglesID
+Name: $FH/0972_item_cards_doublelens_goggles_1$
+Art: Double Lens Goggles
+TotalInGame: 2
+Cost: 0
+Slot: Head
+Rarity: Rare
+Usage: Spent
+Trigger: SingleAbility
+Data: 
+    Overrides:
+        OConditions:
+            AttackHasAdvantage: True
+            ReplaceModifiers: ["+0", "-1"]
+            ReplaceWithModifiers: ["+1"]
+    CompareAbility:
+        AbilityType: Attack
+        Filter: Enemy
+Layout: 
+    - Row: "$FH/0972_item_cards_doublelens_goggles_2$"

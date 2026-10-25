@@ -1,0 +1,60 @@
+Parser: AbilityCard
+Name: $FH/368_character_ability_cards_frozen_fist_shard_launch_1$
+Character: FrozenFistID
+ID: 368
+Level: X
+ProgressionOrder: 8
+Initiative: 52
+Discard: [Discard,Discard]
+Prefab: 368_FrozenFist_ShardLaunch
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 2
+                Range: 
+                    Amount: 3
+                    SquareEnhancements: 1
+                Target: 2
+                MiscVars:
+                    PrintedProperties: list("Attack","Target","Range")
+                MultiPassAttack: False
+                AnimOverload: Spikes
+        Infuse: Ice
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    Jump: True
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BImmobilize:
+                NullTargeting:
+                Conditions: Immobilize
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Filter: Enemy
+                AnimOverload: Attack2
+                SubAbilities:
+                    BDamage:
+                        IsInlineSubAbility: True
+                        Damage: 1
+                        MiscVars:
+                            PrintedProperties: list("Damage")
+                        Range: 1
+                        UseParentTargets: True
+                        Flags: [SubAbilityPreview]
+                        SkipAnim: True
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%> <sprite name=Target>2, <sprite name=Range>*TAttack.Range*<voffset=1>@TAttack.Range@"
+        - Row:
+            - MandatoryTrigger:
+                Layout:
+                    - Infuse: [Ice]
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><sprite name=Jump>"
+        - Divider:
+        - Row: "$FH/368_character_ability_cards_frozen_fist_shard_launch_2$"

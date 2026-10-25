@@ -1,0 +1,19 @@
+Parser: ItemCard
+ID: 1175
+StringID: WallShieldID
+Name: $FH/1175_item_cards_wall_shield_1$
+Art: Wall Shield
+TotalInGame: 2
+Cost: 50
+Rarity: Rare
+Slot: TwoHand 
+Usage: Spent
+Trigger: OnAttacked
+Data:
+    ShieldValue: 4
+    CompareAbility:
+        AbilityType: Attack
+    AddModifiers:
+        - [AMC_Basic_M1, 2]
+Layout:
+    - Row: $FH/1175_item_cards_wall_shield_2$

@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 229
+ScenarioItemID: 1239
+Name: Exquisite Map
+Quantity: 1
+GoldCost: 30
+Type: OneHandWeapon
+IsNewCharacterItem: False

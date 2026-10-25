@@ -1,0 +1,11 @@
+Parser: FHScenario
+ID: 112
+Name: Raised by Wolves
+LevelID: FS_112_Raised_By_Wolves
+Chain: RandomScenario
+Location: Frosthaven
+Difficulty: 1
+Conclusions:
+    - Effects:
+        - Type: AllCharactersGainExperience
+          Param1: 15

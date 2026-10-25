@@ -1,0 +1,12 @@
+Parser: EnemyCard
+ID: 623
+Name: $Monster_Ability_623_SteelAutomaton_MortarShell$
+Initiative: 64
+Shuffle: False
+Data:
+    Abilities: 
+        Attack1:
+            Attack: -1
+            Range: 2
+            Pierce: 3
+            AnimOverload: RangedAttack

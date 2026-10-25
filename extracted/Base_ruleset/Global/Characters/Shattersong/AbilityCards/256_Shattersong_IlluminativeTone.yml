@@ -1,0 +1,76 @@
+Parser: AbilityCard
+Name: $FH/256_character_ability_cards_shattersong_illuminative_tone_1$
+Character: ShattersongID
+ID: 256
+Level: X
+Initiative: 72
+Discard: [Discard,Lost]
+Prefab: 256_Shattersong_IlluminativeTone
+Data:
+    Top:
+        Abilities:            
+            TAttack:
+                Attack: 
+                    Amount: 3
+                    DiamondEnhancements: 1
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")     
+                Filter: [Enemy]
+                AnimOverload: RangedAttack
+                SubAbilities:
+                    TToken:
+                        NullTargeting:
+                        Tokens: 1
+                        Flags: [ModifiesResonanceTokens]
+                        Filter: [Self]
+                        AutoTrigger: true
+                        SkipAnim: True
+                        StartAbilityRequirements:
+                            Type: SubAbility
+                            ActorsTargetedByAbility: "> 1"
+        Consumes:
+            TCLight:
+                Element: Light
+                AbilityOverrides:
+                    CBuffAttack:
+                        ParentName: TAttack
+                        Strength: 1
+                        AttackHasAdvantage: True
+                        AnimOverload: RangedAttackMedium
+                        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")     
+            BAttack:
+                Attack:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")     
+                Target: 99
+                Filter: [Enemy]
+                MultiPassAttack: False
+                AnimOverload: AOE_Swipe
+                MiscVars:
+                    AutoSelectValidTiles: True
+
+
+Layout:
+    Top:
+        - Row: "<sprite name=Attack> *TAttack* @TAttack@"
+        - Row: "<sprite name=Range> *TAttack.Range*"
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCLight
+                    Text: "$FH/256_character_ability_cards_shattersong_illuminative_tone_2$"
+    Bottom:
+        - Row: "<sprite name=Move> *BMove* @BMove@"
+        - Divider:
+        - Row: "$FH/256_character_ability_cards_shattersong_illuminative_tone_3$"

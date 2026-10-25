@@ -1,0 +1,92 @@
+Parser: AbilityCard
+Name: $FH/119_character_ability_cards_deathwalker_black_lance_1$
+Character: DeathwalkerID
+ID: 119
+Level: 9
+Initiative: 16
+Discard: [Discard,Discard]
+Prefab: 119_Deathwalker_BlackLance
+Data:
+    Top:
+        Abilities:
+            # the name here should be pretty specific, since we're checking lists of phase abilities
+            # Don't want to get it confused with some randomly inserted ability
+            TMoveOverShadows:
+                Move: 3
+                MiscVars:
+                    PrintedProperties: list("Move")
+            TAttack:
+                Attack: 4
+                MiscVars:
+                    PrintedProperties: list("Attack")
+        Consumes:
+            TCBuffAttack:
+                CostAbility:
+                    ParentName: TAttack
+                    Vars:
+                        CanClearTargets: True
+                    CanUndo: False
+                    CanSkip: False
+                    RemoveShadow:
+                    Vars:
+                        TargetsUpTo: True
+                        SendBuffProjectiles: True
+                    Target: 99
+                    Targeting: Custom
+                    TargetingVars:
+                        AddTilesInRange: CustomAbility.FindAbilityInPhaseByName("TMoveOverShadows").TilesMoved.Select(ScenarioManager.GetTile(obj)).Where(CustomAbility.SteppedOnShadow(obj))
+                    AnimOverload: Shadow Manipulation
+                    StartAbilityRequirements:
+                        Type: ThisAbility
+                        Vars:
+                            MoveAbility: CustomAbility.FindAbilityInPhaseByName("TMoveOverShadows")
+                            ValidateMoved: MoveAbility != null && MoveAbility.AbilityHasHappened
+                            ValidateHasValidTargets: MoveAbility.TilesMoved.Select(ScenarioManager.GetTile(obj)).Any(CustomAbility.SteppedOnShadow(obj))
+                AbilityOverrides:
+                    TCAttackBuff:
+                        ParentName: TAttack
+                        Strength: 0
+                        StatIsBasedOnX:
+                            Strength:
+                                AddTo: true
+                                BasedOn: Vars
+                                Vars:
+                                    RemovedShadowAbility: CustomAbility.FindAbilityInPhaseByName("TCBuffAttackCostAbility")
+                                    Value: 3 * (RemovedShadowAbility?.TilesSelected?.Count || 0)
+                            XP:
+                                AddTo: true
+                                BasedOn: Vars
+                                Vars:
+                                    RemovedShadowAbility: CustomAbility.FindAbilityInPhaseByName("TCBuffAttackCostAbility")
+                                    Value: (RemovedShadowAbility?.TilesSelected?.Count || 0)
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 4
+                    CircleEnhancements: 1
+                    Jump: True
+                MiscVars:
+                    PrintedProperties: list("Move")
+                AllTargetsOnMovePath: True
+                Conditions: Curse
+        Infuse: Dark
+Layout:
+    Top:
+        - Row: "<b><size=130%> <sprite name=Move> *TMoveOverShadows*"
+        - Divider:
+        - Row: "<b><size=130%> <sprite name=Attack> *TAttack*"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCBuffAttack
+                    Text: "$FH/119_character_ability_cards_deathwalker_black_lance_2$"
+    Bottom:
+        - Row:
+            - Column: "<b><size=130%> <sprite name=Move> *BMove* <b><size=100%> @BMove@"
+            - Column: "<b><size=130%> <sprite name=Jump>"
+        - Row: "$FH/119_character_ability_cards_deathwalker_black_lance_3$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Dark]

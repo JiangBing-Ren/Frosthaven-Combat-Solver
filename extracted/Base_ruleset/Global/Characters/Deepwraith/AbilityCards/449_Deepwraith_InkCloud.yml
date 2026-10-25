@@ -1,0 +1,50 @@
+Parser: AbilityCard
+Name: $FH/449_character_ability_cards_deepwraith_ink_cloud_1$
+Character: DeepwraithID
+ID: 449
+Level: 1
+Initiative: 28
+Discard: [Discard,Lost]
+Prefab: 449_Deepwraith_InkCloud
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Range: 1
+                Target: 99
+                MultiPassAttack: False
+                MiscVars:
+                    AutoSelectValidTiles: True
+                AnimOverload: InkCloud
+        Infuse: Dark
+    Bottom:
+        Abilities:
+            Invisible:
+                Invisible: True
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Filter: [Self, Ally]
+                Target: 99
+                MiscVars:
+                    includeCasterTile: True
+                    AutoSelectValidTiles: True
+                AnimOverload: InkCloud
+        XP: 1
+        Infuse: Dark
+Layout:
+    Top:
+        - Row: "$FH/449_character_ability_cards_deepwraith_ink_cloud_2$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark
+    Bottom:
+        - Row: "$FH/449_character_ability_cards_deepwraith_ink_cloud_3$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark

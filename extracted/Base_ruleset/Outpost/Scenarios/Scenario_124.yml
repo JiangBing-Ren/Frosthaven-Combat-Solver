@@ -1,0 +1,13 @@
+Parser: FHScenario
+ID: 124
+Name: A Growing Problem
+LevelID: FS_124_A_Growing_Problem
+Chain: Other
+Location: Frosthaven
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: AllCharactersGainExperience
+          Param1: 15
+        - Type: UnlockScenario
+          Param1: 125

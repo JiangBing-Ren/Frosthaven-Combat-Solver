@@ -1,0 +1,65 @@
+Parser: AbilityCard
+Name: $FH/152_character_ability_cards_geminate_draining_pincers_1$
+Character: GeminateID
+ID: 152
+Level: 1
+ProgressionOrder: 1
+Initiative: 72
+Discard: [Lost,Discard]
+RequiredForm: Melee
+Prefab: 152_Geminate_DrainingPincers
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AreaEffect: "0,0,G|2,0,R|4,0,R|6,0,R"
+                AreaEffectLayoutOverride: "0,0,G|2,0,R|4,0,R|6,0,R"
+                MultiPassAttack: False
+                AnimOverload: Attack_Melee_DrainingPincers
+        Consumes:
+            TCLight:
+                Elements: Light
+                AbilityOverrides:
+                    TAttackBuff:
+                        ParentName: TAttack
+                        AttackHasAdvantage: True
+                XP: 1
+        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+                Jump: True
+            TSwitchFormMeleeToRange:
+                Null: True
+                Flags: [SwitchFormMeleeToRange]
+                AutoTrigger: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Move]
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Row: "£Area£"
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCLight
+                    Text: "<nobr>$Advantage$</nobr>, <nobr><sprite name=XP1></nobr>"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Row: "<sprite name=Jump>"
+        - Row: "<size=100%> "
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=GMMeleeToRanged>"

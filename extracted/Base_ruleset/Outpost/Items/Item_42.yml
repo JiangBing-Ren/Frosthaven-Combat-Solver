@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 42
+ScenarioItemID: 964
+Name: Ornate Armor
+Quantity: 2
+Type: Body
+CraftingCost:
+    Metal: 3
+RequiredCraftingItemIDs: [ 112 ]

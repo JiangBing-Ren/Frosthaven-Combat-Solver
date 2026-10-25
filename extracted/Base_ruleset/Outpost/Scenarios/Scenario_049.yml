@@ -1,0 +1,16 @@
+Parser: FHScenario
+ID: 49
+Name: Beneath Sean and Stone
+LevelID: FS_049_Beneath_Sea_and_Stone
+RequiresBoat: true
+Chain: Lurker
+Location: TheBitingSea
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: AllCharactersGainExperience
+          Param1: 5
+        - Type: GainInspiration
+          Param1: 1
+        - Type: UnlockMandatoryScenario
+          Param1: 53

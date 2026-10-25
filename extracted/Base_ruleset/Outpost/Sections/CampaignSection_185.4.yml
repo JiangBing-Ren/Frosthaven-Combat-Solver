@@ -1,0 +1,8 @@
+Parser: CampaignSection
+ID: 185.4
+Name: Letter from Frozenfist
+SkipCompletedNotification: False
+ShowAsUnknownInCalendar: True
+Effects:
+    - Type: GainAxenut
+      Param1: 3

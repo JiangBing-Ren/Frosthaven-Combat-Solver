@@ -1,0 +1,20 @@
+Parser: EnemyCard
+ID: 605
+Name: $Monster_Ability_605_RoboticBoltshooter_RetractedAssault$
+Initiative: 48
+Shuffle: False
+Data:
+    Abilities:
+        AMove:
+            Move: -1
+        AAttack:
+            Attack: +0
+            Range: 4
+            RangeIsBase: True
+            AnimOverload: Ranged Attack Multiple Targets
+            MultiPassAttack: False
+        AShield:
+            Shield: 1
+            ActiveBonus:
+                Duration: Round
+                ListLayoutOverride: ["<sprite name=Shield> *Shield1*", Positive_Shield]

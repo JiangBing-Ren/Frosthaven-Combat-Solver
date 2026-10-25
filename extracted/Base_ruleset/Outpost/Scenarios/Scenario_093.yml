@@ -1,0 +1,16 @@
+Parser: FHScenario
+ID: 93
+Name: Midwinter Brawl
+LevelID: FS_093_Midwinter_Brawl_A
+AlternativeLevelID: FS_093_Midwinter_Brawl_B
+LevelCondition: FS93
+Chain: JobPosting
+Location: WhitefireWood
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: GainItem
+          Param1: 235
+    - Effects:
+        - Type: GainItemBlueprint
+          Param1: 79

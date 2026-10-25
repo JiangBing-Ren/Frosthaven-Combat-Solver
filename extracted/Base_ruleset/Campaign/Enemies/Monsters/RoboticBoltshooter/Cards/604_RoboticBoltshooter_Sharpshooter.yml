@@ -1,0 +1,16 @@
+Parser: EnemyCard
+ID: 604
+Name: $Monster_Ability_604_RoboticBoltshooter_Sharpshooter$
+Initiative: 44
+Shuffle: False
+Data:
+    Abilities:
+        AMove:
+            Move: +1
+        AAttack:
+            Attack: -1
+            Range: 5
+            RangeIsBase: True
+            Pierce: 2
+            AnimOverload: Ranged Attack Multiple Targets
+            MultiPassAttack: False

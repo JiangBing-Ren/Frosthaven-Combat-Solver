@@ -1,0 +1,15 @@
+Parser: EnemyCard
+ID: 08800031
+Name: $Monster_Ability_BasicAttack$
+Initiative: 36
+Shuffle: False
+Data:
+    Abilities: 
+        #Move1:
+        #    Move: 0
+        Attack1:
+            Attack: 0            
+            Filter: Enemy
+            TreatAsMelee: True
+            Vars:
+                RangeDependentAnim: True   

@@ -1,0 +1,18 @@
+Parser: EnemyCard
+ID: 05440007
+Name: $Monster_Ability_544_ChaosDemon_ArcaneExplosion$
+Initiative: 77
+Shuffle: True
+Data:
+    Abilities: 
+        AMove:
+            Move: 0
+        AAttack:
+            Attack: 0
+            Filter: Enemy
+            AnimOverload: ArcaneExplosion
+        AInfuse:
+            Infuse: [Fire, Ice, Air, Earth, Light, Dark]
+            TextOnly: True
+            SkipAnim: True
+            Text: "<size=200%><sprite name=Fire><sprite name=Ice><sprite name=Air><sprite name=Earth><sprite name=Light><sprite name=Dark>"

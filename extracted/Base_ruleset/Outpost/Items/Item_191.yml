@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 191
+ScenarioItemID: 1284
+Name: Corrupted Scroll
+Quantity: 1
+GoldCost: 25
+Type: Small
+IsNewCharacterItem: False

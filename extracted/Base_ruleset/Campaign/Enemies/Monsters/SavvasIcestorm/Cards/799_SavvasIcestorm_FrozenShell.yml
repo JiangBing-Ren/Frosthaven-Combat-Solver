@@ -1,0 +1,36 @@
+Parser: EnemyCard
+ID: 799
+Name: $Monster_Ability_799_SavvasIcestorm_FrozenShell$
+Initiative: 14
+Shuffle: False
+Data:
+    Abilities:
+        Shield1:
+            Shield: 4
+            Filter: Self
+            ActiveBonus:
+                Duration: Round
+                ListLayoutOverride: ["<sprite name=Shield> *Shield1*", Positive_Shield]
+            AnimOverload: PowerUp     
+        Heal1:
+            Heal: 2
+            Range: 3
+            RangeIsBase: True
+            Filter: [Self, Ally]
+            AnimOverload: PowerUp_Wind
+    Consumes:
+        CIce:
+            Elements: Ice
+            AbilityOverrides:
+                CLightTargetAll:
+                    ParentName: Heal1
+                    Strength: 3
+        CAir:
+            Elements: Air
+            Abilities:
+                CAirAttack:
+                    Attack: -1
+                    Range: 3
+                    RangeIsBase: True
+                    Filter: Enemy
+                    AnimOverload: RangedAttack_Wind     

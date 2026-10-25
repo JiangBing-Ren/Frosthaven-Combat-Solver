@@ -1,0 +1,11 @@
+Parser: AttackModifier
+Name: AMC_ConsumeInfuseWild
+MathModifier: "+0"
+Abilities:
+    ConsumeAbility:
+        Consume: 
+            Elements: Any
+            Abilities:
+                TInfuse:
+                    Infuse: [Any]
+                    ShowElementPicker: True

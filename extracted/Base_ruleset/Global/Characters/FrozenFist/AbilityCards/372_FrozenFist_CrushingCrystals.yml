@@ -1,0 +1,76 @@
+Parser: AbilityCard
+Name: $FH/372_character_ability_cards_frozen_fist_crushing_crystals_1$
+Character: FrozenFistID
+ID: 372
+Level: 2
+ProgressionOrder: 12
+Initiative: 67
+Discard: [Discard,Discard]
+Prefab: 372_FrozenFist_CrushingCrystals
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 2
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AreaEffect: "0,0,G|2,0,R|1,1,R"
+                AreaEffectLayoutOverride: "0,0,G|2,0,R|1,1,R"
+                MultiPassAttack: False
+                AnimOverload: Swipe
+        Consumes:
+            TCIce:
+                Elements: Ice
+                AbilityOverrides:
+                    TCWound:
+                        ParentName: TAttack
+                        Conditions: Disarm
+                XP: 1
+    Bottom:
+        Abilities:
+            BConsume:
+                Consume:
+                    Elements: [Ice]
+                    Abilities:
+                        BCreateTerrain:
+                            CreateTerrain: Ice
+                            TileFilter: FeaturelessHex
+                            Target: 1
+                            Range: 1
+                            AnimOverload: TerrainFormation
+                            MiscVars:
+                                includeCasterTile: True
+                    XP: 1
+            BMove:
+                Move:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BHeal:
+                Heal: 2
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self
+                AnimOverload: Heal
+Layout:
+    Top:
+        - Row:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Attack> *TAttack*"
+                - Divider:
+                - Conditional:
+                    Layout:
+                        - Consume:
+                            Name: TCIce
+                            Text: "<b><size=130%> <sprite name=Disarm>, <sprite name=XP1>"
+            - Column:
+                - Row: "£TAttack.Area£"
+    Bottom:
+        - Conditional:
+            Layout:
+                - Row: "$FH/372_character_ability_cards_frozen_fist_crushing_crystals_2$"
+        - Divider:
+        - Row: "<size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "<size=130%>$FH/372_character_ability_cards_frozen_fist_crushing_crystals_3$"

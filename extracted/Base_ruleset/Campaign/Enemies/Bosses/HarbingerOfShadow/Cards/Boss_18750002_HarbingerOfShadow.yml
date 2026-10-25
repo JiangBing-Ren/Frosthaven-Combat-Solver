@@ -1,0 +1,30 @@
+Parser: EnemyCard
+ID: 18750002
+Name: $Monster_Ability_Boss_HarbingerOfShadow_Special2$
+Initiative: 14
+Shuffle: False
+Data:
+    Abilities: 
+        ANull1:
+            Null: True
+            Text: "$FH/boss_harbinger_of_shadow_boss_special_2_1$"
+            TextOnly: True
+        Move1:
+            Move: 0
+            StartAbilityRequirements:
+                Type: ThisAbility
+                # Harbinger of Shadow 2
+                ActorGuids: ["64d3e79c-f257-039a-41d7-135ab78d0c04"]
+        Attack1:
+            Attack: +1
+            Filter: Enemy
+            Conditions: [Curse]
+            AnimOverload: CursedAttack
+            StartAbilityRequirements:
+                Type: ThisAbility
+                # Harbinger of Shadow 2
+                ActorGuids: ["64d3e79c-f257-039a-41d7-135ab78d0c04"]
+        ANull2:
+            Null: True
+            Text: "$FH/boss_harbinger_of_shadow_boss_special_2_2$"
+            TextOnly: True

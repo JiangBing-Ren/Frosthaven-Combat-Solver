@@ -1,0 +1,16 @@
+Parser: FHScenario
+ID: 40
+Name: Relief Effort
+LevelID: FS_040_Relief_Effort
+Chain: Algox3
+Location: CopperneckMountaions
+Difficulty: 2
+Conclusions:
+    - Effects:
+        #	gain 2 loot cards each is handled in scenario script 40 now
+        # - Type: FS39ConclusionEffect
+        #   Param1: 2
+        - Type: LoseInspiration
+          Param1: 1
+        - Type: UnlockScenario
+          Param1: 48

@@ -1,0 +1,11 @@
+Parser: EnemyCard
+ID: 881000503
+Name: $Monster_Ability_MirroredCharacter111Simplified_ShatteringBlow$
+Initiative: 77
+Shuffle: False
+Data:
+    Abilities:
+        Move1:
+            Move: 1
+        Attack1:
+            Attack: 1

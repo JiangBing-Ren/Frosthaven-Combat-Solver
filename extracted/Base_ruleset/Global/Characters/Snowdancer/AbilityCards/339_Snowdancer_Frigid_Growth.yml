@@ -1,0 +1,56 @@
+Parser: AbilityCard
+Name: $FH/339_character_ability_cards_snowdancer_frigid_growth_1$
+Character: SnowdancerID
+ID: 339
+Level: 1
+Initiative: 70
+Discard: [Discard,Discard]
+Prefab: 339_Snowdancer_FrigidGrowth
+Data:
+    Top:
+        Abilities:
+            TCreateHazzard:
+                CreateTerrain: Thorns
+                TileFilter: FeaturelessHex
+                Target: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Range")
+                AnimOverload: TerrainFormation
+                MiscVars:
+                    includeCasterTile: True
+                Vars:
+                    OverridePropName: "'SnowdancerHazardTerrain'"
+                SubAbilities:
+                    TSubAlly:
+                        Strengthen: True
+                        Targeting: Range
+                        Target: 1
+                        Range: 1
+                        Filter: Ally
+                        AllTargetsAdjacentToParentTargets: True
+                        TreatAsNonSubAbility: True
+        Infuse: Ice
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+                Jump: True
+        Infuse: Ice
+Layout:
+    Top:
+        - Row: "$FH/339_character_ability_cards_snowdancer_frigid_growth_2$"
+        - Divider:
+        - Row: "$FH/339_character_ability_cards_snowdancer_frigid_growth_3$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Ice]
+    Bottom:
+        - Row: "<b><size=130%> <sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@ <sprite name=Jump>"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Ice]

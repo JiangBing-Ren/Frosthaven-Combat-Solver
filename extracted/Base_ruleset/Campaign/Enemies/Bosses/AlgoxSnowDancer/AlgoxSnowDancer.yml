@@ -1,0 +1,138 @@
+Parser: Enemy
+ID: AlgoxSnowDancerID
+LocKey: $FH/boss_stat_cards_snowdancer$
+MonsterType: Boss
+Model: AlgoxSnowdancer
+StandeeLimit: 1
+PredominantlyMelee: True
+AbilityCards: [08740017, 08750018, 08760019, 08770020, 08780021, 08790022, 08800023, 08810024]
+# Base Stats
+Level0:
+    Health: 0
+    Move: 3
+    Attack: 0
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Disarm, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 10
+        Attack:
+            BasedOn: XAddedToInitialPlayerCharacterCount
+            Multiplier: 0
+            IncludeUnrevealed: True
+            AddTo: True
+
+Level1:
+    Health: 0
+    Move: 3
+    Attack: 0
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Disarm, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 12 
+        Attack:
+            BasedOn: XAddedToInitialPlayerCharacterCount
+            Multiplier: 1
+            IncludeUnrevealed: True
+            AddTo: True
+Level2:
+    Health: 0
+    Move: 3
+    Attack: 0
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Disarm, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 15
+        Attack:
+            BasedOn: XAddedToInitialPlayerCharacterCount
+            Multiplier: 1
+            IncludeUnrevealed: True
+            AddTo: True
+Level3:
+    Health: 0
+    Move: 3
+    Attack: 0
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Disarm, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 17
+        Attack:
+            BasedOn: XAddedToInitialPlayerCharacterCount
+            Multiplier: 2
+            IncludeUnrevealed: True
+            AddTo: True
+Level4:
+    Health: 0
+    Move: 3
+    Attack: 0
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Disarm, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 22
+        Attack:
+            BasedOn: XAddedToInitialPlayerCharacterCount
+            Multiplier: 2
+            IncludeUnrevealed: True
+            AddTo: True     
+Level5:
+    Health: 0
+    Move: 3
+    Attack: 0
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Disarm, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 25
+        Attack:
+            BasedOn: XAddedToInitialPlayerCharacterCount
+            Multiplier: 3
+            IncludeUnrevealed: True
+            AddTo: True
+Level6:
+    Health: 0
+    Move: 3
+    Attack: 0
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Disarm, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 35
+        Attack:
+            BasedOn: XAddedToInitialPlayerCharacterCount
+            Multiplier: 4
+            IncludeUnrevealed: True
+            AddTo: True
+Level7:
+    Health: 0
+    Move: 3
+    Attack: 0
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Disarm, Stun, Curse]    
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 45
+        Attack:
+            BasedOn: XAddedToInitialPlayerCharacterCount
+            Multiplier: 5
+            IncludeUnrevealed: True
+            AddTo: True

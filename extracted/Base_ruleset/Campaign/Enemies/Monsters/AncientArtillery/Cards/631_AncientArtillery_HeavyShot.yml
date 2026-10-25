@@ -1,0 +1,13 @@
+Parser: EnemyCard
+ID: 631
+Name: $Monster_Ability_631_AncientArtillery_HeavyShot$
+Initiative: 95
+Shuffle: False
+Data:
+    Abilities:
+        Attack1:
+            Attack: +1
+            Filter: Enemy
+            Range: 5
+            RangeIsBase: True
+            AnimOverload: RangedAttack

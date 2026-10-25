@@ -1,0 +1,7 @@
+Parser: FHEnhancement
+ID: Shield
+Name: Glossary_Enhancement_PlusShield
+Cost: 80
+Mark: Square
+Effect: AddOne
+ForEffect: Shield

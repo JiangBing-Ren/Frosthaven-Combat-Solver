@@ -1,0 +1,63 @@
+Parser: AbilityCard
+Name: $FH/126_character_ability_cards_boneshaper_angry_spirits_1$
+Character: BoneshaperID
+ID: 126
+Level: 1
+Initiative: 76
+Discard: [Lost,Discard]
+Prefab: 126_Boneshaper_AngrySpirits
+Data:
+    Top:
+        Abilities:
+            TSummon:
+                Summon: WraithID
+                AnimOverload: Summon2
+        Infuse: Dark
+        XP: 2
+    Bottom:
+        Abilities:
+            BDamageAttacker:
+                AddActiveBonus:
+                    Damage: 2
+                    MiscVars:
+                        PrintedProperties: list("Danage")
+                    Filter: Enemy
+                    Targeting: Attacker
+                    StartAbilityRequirements:
+                        Type: ThisAbility
+                        ActorsTargetedByAbility: ">= 1"
+                    SkipAnim: True
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: DuringActionAbilityOnDeath
+                    Vars:
+                        ValidateIsDeathFromAttackAbility: TriggerAbility != null && TriggerAbility.AbilityType == CAbility.EAbilityType.Attack
+                    XPTracker: [0]
+                    IsAura: True
+                    AuraFilter: OwnSummon
+                    AuraTargeting: All
+                Range: 1
+                Target: -1
+                Filter: Self
+          
+Layout:
+    Top:
+        - Active:
+              Ability: "TSummon"
+              Icon: "Summon"
+              Layout:
+                  - Summon:
+                        Ability: TSummon
+                        SummonName: "$FH/126_character_ability_cards_boneshaper_angry_spirits_2$"
+                        SpecialText: "<size=130%><sprite name=Flying><br><br><sprite name=Shield> 2</size>"
+        - Row: "<size=20%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark
+    Bottom:
+        - Active:
+              Ability: BDamageAttacker
+              ListLayout: "$FH/126_character_ability_cards_boneshaper_angry_spirits_4$"
+              Layout: "$FH/126_character_ability_cards_boneshaper_angry_spirits_4$"
+              Icon: Positive_Damage_Summon_Death
+        - Row: "<size=20%> "

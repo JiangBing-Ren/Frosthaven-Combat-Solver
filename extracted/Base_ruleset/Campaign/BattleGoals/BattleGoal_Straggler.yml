@@ -1,0 +1,22 @@
+Parser: BattleGoal
+ID: BattleGoal_Straggler
+LocalisedName: BATTLEGOAL_Straggler
+LocalisedDescription: BATTLEGOAL_Straggler_Desc
+#Take only long rests during the scenario - Fail
+PerkChecks: 1
+CheckAtEndOfScenario: True
+BattleGoalCondition:
+    - Targets:
+        Filter: UseAbility
+        AbilityTypes: ShortRest
+        Conditional:
+            Amount: "== 0"
+        Value: 1
+        SubFilter: Scenario
+BattleGoalFailCondition:
+    - Targets:
+        Filter: UseAbility
+        AbilityTypes: ShortRest
+        Value: 1
+        SubFilter: Scenario
+TreasureTables: [TT_Battle_Goals_1]

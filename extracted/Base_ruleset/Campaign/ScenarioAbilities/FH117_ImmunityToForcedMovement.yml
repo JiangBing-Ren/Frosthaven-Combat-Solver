@@ -1,0 +1,14 @@
+Parser: ScenarioAbility
+ID: FH117_ImmunityToForcedMovement
+ScenarioAbility:
+    AImmunity:
+        ImmunityTo: [Push, Pull, ControlActor, Move]
+        AutoTrigger: True
+        Filter: Self
+        Flags: [FromScenarioModifier]
+        ActiveBonus:
+            Duration: Persistent            
+            ListLayoutOverride: [$FH_Scenario_Campaign_117_SCENARIO_MODIFIER_3$, Negative_Unique_Campaign]
+            MiscVars:
+                OverrideLayoutName: "'$FH_117_ImmunityToForcedMovementBuffName$'"
+                ImmunityToForcedMovement: True

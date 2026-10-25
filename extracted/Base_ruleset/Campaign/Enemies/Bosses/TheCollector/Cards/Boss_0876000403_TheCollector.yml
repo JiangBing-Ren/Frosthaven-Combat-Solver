@@ -1,0 +1,48 @@
+wParser: EnemyCard
+ID: 0876000403
+Name: $Monster_Ability_Boss_TheCollector_Special2$
+Initiative: 17
+Shuffle: True
+Data:
+    Abilities: 
+        AMove:
+            Move: +1
+        AAttack: 
+            Attack: +0
+            Filter: [Enemy]
+            AnimOverload: Attack
+    Consumes:
+        TCAir:
+            Elements: Air
+            AbilityOverrides:
+                BCAirAttackBuff:
+                    ParentName: AAttack
+                    Target: 1
+        TCFire:
+            Elements: Fire
+            AbilityOverrides:
+                BCAirAttackBuff:
+                    ParentName: AAttack
+                    Conditions: [Wound]
+        CEarth:
+            Elements: Earth
+            Abilities:
+                AHeal:
+                    Heal: 0
+                    Filter: [Self]
+                    AnimOverload: Cast
+                    StatIsBasedOnX:
+                        Strength:
+                            BasedOn: InitialPlayerCharacterCount
+                            Multiplier: 1   
+                            AddTo: True
+        CLight:
+            Elements: Light
+            Abilities:
+                AShield:
+                    Shield: 1
+                    AnimOverload: PowerUp
+                    Filter: [Self]
+                    ActiveBonus:
+                        ListLayoutOverride: ["<sprite name=Shield> *AShield*", Positive_Shield]
+    Infuse: [Fire, Ice, Air, Dark]

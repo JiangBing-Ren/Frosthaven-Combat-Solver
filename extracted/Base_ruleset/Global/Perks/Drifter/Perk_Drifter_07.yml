@@ -1,0 +1,7 @@
+Parser: Perk
+ID: Drifter07
+Name: FH/PERK_Drifter_07_Name
+Description: FH/PERK_Drifter_07_Desc
+CharacterID: DrifterID
+Available: 2
+CardsToAdd: [AMC_Immobilize_P2]

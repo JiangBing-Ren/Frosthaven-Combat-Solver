@@ -1,0 +1,70 @@
+Parser: Enemy
+ID: SavvasIcestormID
+LocKey: $SavvasIcestorm$
+MonsterType: Monster
+StandeeLimit: 4
+Model: Savvas Icestorm
+PredominantlyMelee: False
+AbilityCards: [794, 795, 796, 797, 798, 799, 800, 801]
+# Base Stats
+Level0:
+    Health: 7
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Pierce: 3
+Level1:
+    Health: 10
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Pierce: 3
+Level2:
+    Health: 12
+    Move: 3
+    Attack: 2
+    Range: 1
+    Target: 1
+    Pierce: 3
+Level3:
+    Health: 12
+    Move: 3
+    Attack: 2
+    Range: 1
+    Target: 1
+    Shield: 1
+    Pierce: 3
+Level4:
+    Health: 13
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 1
+    Pierce: 3
+Level5:
+    Health: 15
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 1
+    Pierce: 3
+Level6:
+    Health: 16
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 2
+    Pierce: 3    
+Level7:
+    Health: 20
+    Move: 4
+    Attack: 5
+    Range: 1
+    Target: 1    
+    Shield: 2
+    Pierce: 3

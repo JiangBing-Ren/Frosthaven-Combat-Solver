@@ -1,0 +1,44 @@
+Parser: ItemCard
+ID: 1199
+StringID: AttractiveBraceletID
+Name: $FH/1199_item_cards_attractive_bracelet_1$
+Art: Attractive Bracelet
+TotalInGame: 2
+Cost: 40
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: AtStartOfTurn
+Data: 
+    Vars:
+        LogUse: True
+    ItemRequirements:
+        Vars:
+            ValidateIsEnemy: CActor.AreActorsEnemies(AppliedActor.Type, ItemOwner.Type, AppliedActor, ItemOwner)
+            Dist: AppliedActor.GetDistanceTo(ItemOwner)
+            ValidateInRange: Dist > 1 && Dist <= 5
+    Abilities:
+        TPull:
+            Pull: 4
+            Range: 5
+            Filter: Enemy
+            Targeting: Custom
+            TargetingVars:
+                AddValidActorInRange: AppliedActor
+            CanUndo: False
+            Vars:
+                TargetThisActorAutomatically: AppliedActor
+            PreviewEffectText: "4<sprite name=Pull>\n5<sprite name=Range>, <sprite name=Muddle>"
+        TMuddle:
+            Muddle: True
+            Range: 5
+            Filter: Enemy
+            Targeting: Custom
+            TargetingVars:
+                AddValidActorInRange: AppliedActor
+            AutoTrigger: True
+            MiscVars:
+                DontPreviewDescription: True
+
+Layout: 
+    - Row: "$FH/1199_item_cards_attractive_bracelet_2$"

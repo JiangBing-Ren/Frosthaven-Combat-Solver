@@ -1,0 +1,48 @@
+Parser: AbilityCard
+Name: $FH/109_character_ability_cards_deathwalker_pulled_across_1$
+Character: DeathwalkerID
+ID: 109
+Level: 4
+Initiative: 77
+Discard: [Lost,Discard]
+Prefab: 109_Deathwalker_PulledAcross
+Data:
+    Top:
+        Abilities:
+            TBane:
+                Bane: True
+                Target: 1
+                Filter:
+                    ActorType: Enemy
+                    EnemyType: [Normal, Elite]
+                Targeting: Custom
+                TargetingVars:
+                    AddTilesInRange: CustomAbility.GetValidActorsOnShadows(TargetingActor).Select(Tile)
+                    AddValidActorsInRange: CustomAbility.GetValidActorsOnShadows(TargetingActor)
+                AnimOverload: Debuff
+
+        XP: 1        
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BInvisibility:
+                Invisible: True
+                Filter: Self
+                AnimOverload: PowerUp
+        Infuse: Dark
+Layout:
+    Top:
+        - Row: "$FH/109_character_ability_cards_deathwalker_pulled_across_2$"
+    Bottom:
+        - Row: "<sprite name=Move> *BMove* @BMove@"
+        - Divider:
+        - Row: "$FH/109_character_ability_cards_deathwalker_pulled_across_3$"
+        - Row: "<size=100%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark

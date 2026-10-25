@@ -1,0 +1,170 @@
+Parser: AbilityCard
+Name: $FH/253_character_ability_cards_shattersong_devastating_shout_1$
+Character: ShattersongID
+ID: 253
+Level: 1
+Initiative: 68
+Discard: [Discard,Discard]
+Prefab: 253_Shattersong_DevastatingShout
+Data:
+    Top:
+        Abilities:            
+            TWaveAttack:
+                Filter: Self          
+                HelpBoxTooltipLocKey: "$FH/GUI_CHOOSE_RESONANCE_TOKEN_COUNT$"
+                PreviewEffectText: "<sprite name=Attack>X+1"           
+                MiscVars:
+                    # doing the chosen ability as a sub ability so we can preview the effect
+                    DontPerformChosenAbility: True              
+                    OverrideIcon: "'Ability_Shattersong_Icon'"
+                Choose:
+                    Choices:
+                        D1:
+                            PreviewEffectText: "1"
+                            Strength: 1
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 1
+                        D2:
+                            PreviewEffectText: "2"
+                            Strength: 2
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 2
+                        D3:
+                            PreviewEffectText: "3"
+                            Strength: 3
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 3
+                        D4:
+                            PreviewEffectText: "4"
+                            Strength: 4
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 4
+                        D5:
+                            PreviewEffectText: "5"
+                            Strength: 5
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 5
+                PerformVars:
+                    ApplyToActors:
+                        Resonance: ChosenAbility?.Strength || 0
+                        Tokens: Resonance * -1
+                Flags: [ModifiesResonanceTokens]
+                SubAbilities:
+                    TAttack:
+                        Flags: [SubAbilityPreview]
+                        TreatAsNonSubAbility: True
+                        UseParentTargets: False
+                        Filter: Enemy
+                        Attack: 
+                            Amount: 0
+                        Range:
+                            Amount: 3
+                            SquareEnhancements: 1
+                        MiscVars:
+                            PrintedProperties: list("Attack","Range")     
+                        Vars:
+                            ParentStrength: ParentAbility.ChosenAbility?.Strength || 0
+                            AnimOverload: ((ParentStrength == 1 || ParentStrength == 2) && "RangedAttack") ||
+                                          ((ParentStrength == 3 || ParentStrength == 4) && "RangedAttackMedium") ||
+                                          ((ParentStrength == 5) && "RangedAttackStrong")  
+                        StatIsBasedOnX:
+                            Strength:
+                                BasedOn: Vars
+                                Vars:
+                                    Value: 1 + (ParentAbility.ChosenAbility?.Strength  || 0)
+
+                        PerformVars:
+                            OnAbilityEnded:
+                                StackSubAbilities: obj.AbilityHasHappened && CustomAbility.StackNonInlineSubabilities(obj)
+                        SubAbilities:
+                            TFinishWave:
+                                NullTargeting: True
+                                Filter: Self
+                                SkipAnim: True
+                                AutoTrigger: True
+                                TreatAsNonSubAbility: True
+                                Flags: [Wave]
+        XP: 1
+        Infuse: Air
+    Bottom:
+        Abilities:
+            BConsumeDestroy1:
+                PreviewEffectText: "<sprite name=SSResonance>"
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    Vars:
+                        AdjacentProps: CustomAbility.GetAdjacentTiles(TargetingActor.Tile).Where(CustomAbility.FindTrapOrObstacle(obj) != null)
+                        ValidateHasTargets: AdjacentProps.Count > 0
+                Consume:
+                    Resonance: 1
+                    Abilities:
+                        BDestroy1:
+                            NullHex: True
+                            Target: 1
+                            Targeting: Custom
+                            AnimOverload: PowerUp
+                            TargetingVars:
+                                AddTilesInRange: CustomAbility.GetAdjacentTiles(TargetingActor.Tile)
+                                                .Where(CustomAbility.FindTrapOrObstacle(obj) != null)
+                            PerformVars:
+                                Perform:
+                                    SelectedTile: TilesSelected[0]
+                                    Prop: CustomAbility.FindTrapOrObstacle(SelectedTile)
+                                    DestroyProp: Prop == null || Prop.DestroyPropFromAbility(obj)
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")     
+            BConsumeBDestroy2:
+                PreviewEffectText: "<sprite name=SSResonance>"
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    Vars:
+                        AdjacentProps: CustomAbility.GetAdjacentTiles(TargetingActor.Tile).Where(CustomAbility.FindTrapOrObstacle(obj) != null)
+                        ValidateHasTargets: AdjacentProps.Count > 0
+                Consume:
+                    Resonance: 1
+                    Abilities:
+                        BDestroy2:
+                            NullHex: True
+                            Target: 1
+                            Targeting: Custom
+                            AnimOverload: PowerUp
+                            TargetingVars:
+                                AddTilesInRange: CustomAbility.GetAdjacentTiles(TargetingActor.Tile)
+                                                .Where(CustomAbility.FindTrapOrObstacle(obj) != null)
+                            PerformVars:
+                                Perform:
+                                    SelectedTile: TilesSelected[0]
+                                    Prop: CustomAbility.FindTrapOrObstacle(SelectedTile)
+                                    DestroyProp: Prop == null || Prop.DestroyPropFromAbility(obj)
+Layout:
+    Top:
+        - Row: "$FH/character_ability_cards_shattersong_wave$"
+        - Row: "<sprite name=Attack>X+1"
+        - Row: "<sprite name=Range> *TAttack.Range* @TAttack.Range@"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Air
+    Bottom:
+        - Conditional:
+            Layout:
+                - Row: "$FH/253_character_ability_cards_shattersong_devastating_shout_2$"
+        - Divider:
+        - Row: "<sprite name=Move> *BMove* @BMove@"
+        - Divider:
+        - Conditional:
+            Layout:
+                - Row: "$FH/253_character_ability_cards_shattersong_devastating_shout_2$"

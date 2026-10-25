@@ -1,0 +1,22 @@
+Parser: ItemCard
+ID: 1099
+StringID: InfernoFlaskID
+Name: $FH/1099_item_cards_inferno_flask_1$
+Art: Inferno Flask
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        AWound:
+            Filter: Enemy
+            Wound: True
+            Range: 1
+            AreaEffect: "0,0,R|2,0,R|1,1,R"
+            TreatAsRange: True
+Layout: 
+    - Column: "$FH/1099_item_cards_inferno_flask_2$"
+    - Column: "£AWound.Area£"

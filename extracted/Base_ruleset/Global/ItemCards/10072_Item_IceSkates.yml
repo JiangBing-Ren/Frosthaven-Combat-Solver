@@ -1,0 +1,29 @@
+Parser: ItemCard
+ID: 10072
+StringID: IceSkatesID
+Name: $FH/10072_item_cards_ice_skates_1$
+Art: Ice Skates
+TotalInGame: 2
+Cost: 50
+Slot: Legs 
+Rarity: Rare
+Usage: Unrestricted
+Trigger: PassiveEffect
+Data: 
+    Abilities:
+        TActive:
+            AddActiveBonus:
+                GainXP: 1
+            ActiveBonus:
+                Duration: Persistent
+                Restriction: OncePerTurn
+                Behaviour: DuringActionAbilityOnMoved
+                Target: 7
+                ValidAbilityType: Move
+Layout: 
+    - Active:
+        Ability: TActive
+        ListLayout: "$FH/10072_item_cards_ice_skates_2$"
+        Layout: "$FH/10072_item_cards_ice_skates_2$"
+        Icon: "Positive_XP_Move_Item"
+    - Row: "<size=50%> "

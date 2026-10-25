@@ -1,0 +1,15 @@
+Parser: EnemyCard
+ID: 803
+Name: $Monster_Ability_803_HarrowerInfester_CentipedeStrike$
+Initiative: 07
+Shuffle: False
+Data:
+    Abilities:
+        Move1:
+            Move: 0
+        Attack1:
+            Attack: -1
+            Filter: Enemy
+            Condition: Poison
+            AnimOverload: HeavyAttack
+    Infuse: Dark

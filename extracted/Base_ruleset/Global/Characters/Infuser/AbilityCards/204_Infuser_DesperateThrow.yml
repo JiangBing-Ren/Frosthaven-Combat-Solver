@@ -1,0 +1,79 @@
+Parser: AbilityCard
+Name: $FH/204_character_ability_cards_infuser_desperate_throw_1$
+Character: InfuserID
+ID: 204
+Level: 4
+Initiative: 16
+Discard: [Discard,Discard]
+Prefab: 204_Infuser_DesperateThrow
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 5
+                    DiamondEnhancements: 1
+                Target: 1
+                MiscVars:
+                    PrintedProperties: list("Attack","Target")
+                Range: 4
+                TreatAsMelee: True
+                Filter: Enemy
+                AnimOverload: DesperateThrow 
+            TDisarm:
+                Disarm:
+                    DiamondPlusEnhancements: 1
+                Filter: Self
+                SkipAnim: True
+        Consumes:
+            TCEarth:
+                PreviewEffectId: M1Attack
+                AbilityOverrides:
+                    BCOPullAir:
+                        ParentName: TAttack
+                        Strength: -1
+                        SubAbilities:
+                            SubInfuse:
+                                Infuse: [Earth]
+                                SkipAnim: True
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BLoot:
+                Loot: 1
+                MiscVars:
+                    PrintedProperties: list("Loot")
+                Target: -1
+            BInfuseWaning:
+                Infuse: [Air, Earth, Fire, Light, Dark, Ice]
+                SkipAnim: True
+                AnimOverload: GatherElements  
+                MiscVars:
+                    InfuseOnlyWaning: True
+Layout:
+    Top:
+        - Row: "<b><size=100%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Row: "$FH/204_character_ability_cards_infuser_desperate_throw_2$"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCEarth
+                    Text: "-1 <sprite name=Attack>: <sprite name=CreateEarth>"
+        - Divider:
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<sprite name=Disarm> <size=100%><voffset=1>@TDisarm@"
+                - Row: "$Self$"
+    Bottom:
+        - Row: "<b><size=100%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "<b><size=100%><sprite name=Loot> *BLoot*"
+        - Divider:
+        - Row: "$FH/204_character_ability_cards_infuser_desperate_throw_4$"
+        

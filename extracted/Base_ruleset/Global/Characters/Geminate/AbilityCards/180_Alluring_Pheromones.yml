@@ -1,0 +1,107 @@
+Parser: AbilityCard
+Name: $FH/180_character_ability_cards_geminate_alluring_pheromonones_1$
+Character: GeminateID
+ID: 180
+Level: 7
+ProgressionOrder: 29
+Initiative: 49
+Discard: [Discard, Lost]
+RequiredForm: Range
+Prefab: 180_Geminate_AlluringPheromones
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                Range: 5
+                MinRange: 4
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                SubAbilities:
+                    TAttackSubPull:
+                        Pull:
+                            Amount: 2
+                        MiscVars:
+                            PrintedProperties: list("Pull")
+                        IsInlineSubAbility: True
+                AreaEffect: "0,0,R|1,1,R|0,2,R|-1,1,E"
+                AreaEffectLayoutOverride: "0,0,R|1,1,R|0,2,R|-1,1,E"
+                MultiPassAttack: False
+                AnimOverload: RangedAttack_AlluringPheromones
+            TConsume:
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    DoesntHaveNegativeCondition: [Stun]
+                Consume: 
+                    Elements: Any
+                    Abilities:
+                        TInfuse:
+                            Infuse: [Fire, Light]
+    Bottom:
+        Abilities:
+            BHeal:
+                Heal: 2
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Conditions: [Regenerate, Bless]
+                Filter: Ally
+                AreaEffect: "0,0,G|2,0,R|4,0,R|1,1,R|3,1,R|2,2,R"
+                AreaEffectLayoutOverride: "0,0,G|2,0,R|4,0,R|1,1,R|3,1,R|2,2,R"
+        Consumes:
+            BCFire:
+                Elements: Fire
+                AbilityOverrides:
+                    BCFireStrengthen:
+                        ParentName: BHeal
+                        Conditions: [Strengthen]
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            DoesntHaveNegativeCondition: [Stun]
+            BCLight:
+                Elements: Light
+                AbilityOverrides:
+                    BCFireStrengthen:
+                        ParentName: BHeal
+                        Conditions: [Bless]
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            DoesntHaveNegativeCondition: [Stun]
+                XP: 1
+        XP: 1
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "60,40"
+            - Column:
+                - Row: "$FH/180_character_ability_cards_geminate_alluring_pheromones_2$"
+                - Divider:
+                - Conditional:
+                    Layout:
+                        - Row:
+                            - ColumnWidths: "40,10,40"
+                            - Column:
+                                - Row: "<sprite name=ConsumeWild>"
+                            - Column:
+                            - Column:
+                                - Row:
+                                    - MandatoryTrigger:
+                                        Layout:
+                                            - Row: "<sprite name=CreateFire> <sprite name=CreateLight>"
+            - Column:
+                - Row: "£TAttack.Area£"
+    Bottom:
+        - Row:
+            - Column:
+                - Row: "<size=130%><sprite name=Heal>*BHeal* <sprite name=Regenerate>, <sprite name=Bless>"
+                - Conditional:
+                    Layout:
+                        - Consume:
+                            Name: BCFire
+                            Text: "<nobr><sprite name=Strengthen></nobr>"
+                        - Consume:
+                            Name: BCLight
+                            Text: "<nobr><sprite name=Bless>, <sprite name=XP1></nobr>"
+
+            - Column:
+                - Row: "£BHeal.Area£"

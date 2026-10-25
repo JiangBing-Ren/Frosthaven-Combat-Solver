@@ -1,0 +1,18 @@
+Parser: ItemCard
+ID: 1003
+StringID: FeatheredCloakID
+Name: $FH/1003_item_cards_feathered_cloak_1$
+Art: Feathered Cloak
+TotalInGame: 2
+Cost: 0
+Slot: Body 
+Rarity: Rare
+Usage: Spent
+Trigger: OnAttacked
+Consumes: Air
+Data: 
+    ShieldValue: 3
+    CompareAbility:
+        AbilityType: Attack
+Layout: 
+    - Row: "$FH/1003_item_cards_feathered_cloak_2$"

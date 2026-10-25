@@ -1,0 +1,22 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH94_ReleaseScouts
+ScenarioAbility:
+    AActive:
+        AddActiveBonus:
+            DestroyObstacle: True
+            DestroyObstacleData:
+                BypassOverrideDisallowDestroyAndMove: true
+                TargetPrefabName: "CagedVermlingScout"
+            Target: 1
+            CanUndo: True
+            HelpBoxTooltipLocKey: $FH/FH_Scenario_Campaign_094_ReleaseScouts$
+            #Flags: [FromScenarioModifier]
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: EndTurnAbility
+            Hidden: True
+            Requirements:
+                Vars:
+                    Actor: obj.Actor
+                    ValidateAdjacentProp: CustomAbility.GetAdjacentSpecificPropsCount(Actor, ESpecificPropType.CagedVermlingScout) > 0
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_094_ReleaseScouts$, Positive_Unique_Campaign]

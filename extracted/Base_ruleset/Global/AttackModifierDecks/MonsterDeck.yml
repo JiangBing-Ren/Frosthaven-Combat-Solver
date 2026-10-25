@@ -1,0 +1,11 @@
+Parser: AttackModifierDeck
+Name: MonsterDeck
+IsMonsterDeck: True
+AttackModifierCards:
+    - [AMC_Basic_P0, 6]
+    - [AMC_Basic_P1, 5]
+    - [AMC_Basic_P2, 1]
+    - [AMC_Basic_M1, 5]
+    - [AMC_Basic_M2, 1]
+    - [AMC_Basic_T0, 1]
+    - [AMC_Basic_T2, 1]

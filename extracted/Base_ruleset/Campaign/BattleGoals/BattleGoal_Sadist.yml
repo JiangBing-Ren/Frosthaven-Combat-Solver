@@ -1,0 +1,13 @@
+Parser: BattleGoal
+ID: BattleGoal_Sadist
+LocalisedName: FH/BATTLEGOAL_Sadist
+LocalisedDescription: FH/BATTLEGOAL_Sadist_Desc
+PerkChecks: 1
+BattleGoalCondition:
+    - Targets:
+        Filter: Kill
+        MonsterType: [Normal, Elite, Boss]
+        CharacterTypes:
+            Target: [Enemy,Enemy2]
+        Value: 5
+        SubFilter: Scenario

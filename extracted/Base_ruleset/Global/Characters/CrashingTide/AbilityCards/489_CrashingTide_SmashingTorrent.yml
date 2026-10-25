@@ -1,0 +1,72 @@
+Parser: AbilityCard
+Name: $FH/489_character_ability_cards_crashing_tide_smashing_torrent_1$
+Character: CrashingTideID
+ID: 489
+Level: 2
+ProgressionOrder: 489
+Initiative: 79
+Discard: [Discard,Discard]
+Prefab: 489_CrashingTide_SmashingTorrent
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 2
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Range: 1
+                Target: 1
+                Targeting: Range
+                Filter: [Enemy]
+        Consumes:
+            TCLight:
+                Elements: [Light]
+                AbilityOverrides:
+                    TCLightAttack1Buff:
+                        ParentName: TAttack
+                        Conditions: [Stun]
+                XP: 1
+    Bottom:
+        Abilities:
+            BBuffMove:
+                AddActiveBonus:
+                    Damage: 1
+                    MiscVars:
+                        PrintedProperties: list("Damage")
+                    Target: -1
+                    Targeting: Range
+                    Filter: [Enemy]
+                    AnimOverload: MeleeSwing
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: DuringActionAbilityOnFinishedMovement
+                    Restriction: OncePerTurn
+                    Flags: [Tide]
+                    MiscVars:
+                        RestrictionAffectedByOtherTides: True
+                AnimOverload: Tide
+        Infuse: Dark
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack*"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCLight
+                    Text: "<sprite name=Stun>, <sprite name=XP1>"
+    Bottom:
+        - Row:
+            - ColumnWidths: "34,33,33"
+            - Column: "$FH/CrashingTide_Tide$"
+            - Column:
+            - Column:
+        - Active:
+            Ability: BBuffMove
+            Icon: Positive_Damage_Move
+            Layout: "$FH/489_character_ability_cards_crashing_tide_smashing_torrent_2$"
+            ListLayout: "$FH/489_character_ability_cards_crashing_tide_smashing_torrent_2$"
+        - Row: "<size=100%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark

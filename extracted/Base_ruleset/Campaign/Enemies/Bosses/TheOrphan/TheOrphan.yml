@@ -1,0 +1,145 @@
+Parser: Enemy
+ID: TheOrphanID
+LocKey: $FH/TheOrphan$
+MonsterType: Boss
+Model: TheOrphan
+StandeeLimit: 1
+PredominantlyMelee: True
+AbilityCards: [8850009, 8850010, 8850011, 8850012, 8850013, 8850014, 8850015, 8850016]
+# Base Stats
+Level0:
+    Health: 0
+    Move: 3
+    Attack: 0
+    Range: 0
+    Target: 1
+    Immunities: [Wound, Brittle, Poison, Disarm, Immobilize, Curse, Push, Pull, Swap, Teleport2]
+    ImmuneToForcedMovement: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 7
+        Attack:
+            BasedOn: XAddedToInitialPlayerCharacterCount
+            Multiplier: 0
+            IncludeUnrevealed: False
+            AddTo: True
+Level1:
+    Health: 0
+    Move: 3
+    Attack: 0
+    Range: 0
+    Target: 1
+    Immunities: [Wound, Brittle, Poison, Disarm, Immobilize, Curse, Push, Pull, Swap, Teleport2]
+    ImmuneToForcedMovement: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 9
+        Attack:
+            BasedOn: XAddedToInitialPlayerCharacterCount
+            Multiplier: 1
+            IncludeUnrevealed: False
+            AddTo: True        
+Level2:
+    Health: 0
+    Move: 3
+    Attack: 0
+    Range: 0
+    Target: 1
+    Immunities: [Wound, Brittle, Poison, Disarm, Immobilize, Curse, Push, Pull, Swap, Teleport2]
+    ImmuneToForcedMovement: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 12
+        Attack:
+            BasedOn: XAddedToInitialPlayerCharacterCount
+            Multiplier: 1
+            IncludeUnrevealed: False
+            AddTo: True    
+Level3:
+    Health: 0
+    Move: 3
+    Attack: 0
+    Range: 0
+    Target: 1
+    Immunities: [Wound, Brittle, Poison, Disarm, Immobilize, Curse, Push, Pull, Swap, Teleport2]
+    ImmuneToForcedMovement: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 15
+        Attack:
+            BasedOn: XAddedToInitialPlayerCharacterCount
+            Multiplier: 2
+            IncludeUnrevealed: False
+            AddTo: True
+Level4:
+    Health: 0
+    Move: 3
+    Attack: 0
+    Range: 0
+    Target: 1
+    Immunities: [Wound, Brittle, Poison, Disarm, Immobilize, Curse, Push, Pull, Swap, Teleport2]
+    ImmuneToForcedMovement: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 20
+        Attack:
+            BasedOn: XAddedToInitialPlayerCharacterCount
+            Multiplier: 3
+            IncludeUnrevealed: False
+            AddTo: True
+Level5:
+    Health: 0
+    Move: 3
+    Attack: 0
+    Range: 0
+    Target: 1
+    Immunities: [Wound, Brittle, Poison, Disarm, Immobilize, Curse, Push, Pull, Swap, Teleport2]
+    ImmuneToForcedMovement: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 24
+        Attack:
+            BasedOn: XAddedToInitialPlayerCharacterCount
+            Multiplier: 4
+            IncludeUnrevealed: False
+            AddTo: True
+Level6:
+    Health: 0
+    Move: 3
+    Attack: 0
+    Range: 0
+    Target: 1
+    Immunities: [Wound, Brittle, Poison, Disarm, Immobilize, Curse, Push, Pull, Swap, Teleport2]
+    ImmuneToForcedMovement: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 36
+        Attack:
+            BasedOn: XAddedToInitialPlayerCharacterCount
+            Multiplier: 4
+            IncludeUnrevealed: False
+            AddTo: True       
+Level7:
+    Health: 0
+    Move: 3
+    Attack: 0
+    Range: 0
+    Target: 1
+    Immunities: [Wound, Brittle, Poison, Disarm, Immobilize, Curse, Push, Pull, Swap, Teleport2]
+    ImmuneToForcedMovement: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 45
+        Attack:
+            BasedOn: XAddedToInitialPlayerCharacterCount
+            Multiplier: 5
+            IncludeUnrevealed: False
+            AddTo: True

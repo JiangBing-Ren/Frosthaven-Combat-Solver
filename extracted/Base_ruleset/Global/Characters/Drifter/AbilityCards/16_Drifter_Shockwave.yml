@@ -1,0 +1,76 @@
+Parser: AbilityCard
+Name: $FH/016_character_ability_cards_drifter_shockwave_1$
+Character: DrifterID
+ID: 16
+Level: 2
+ProgressionOrder: 15
+Initiative: 17
+Discard: [Lost,Discard]
+Prefab: 16_Drifter_Shockwave
+Data:
+    Top:
+        Abilities:
+            TActive:
+                AddActiveBonus:
+                    Damage: 2
+                    MiscVars:
+                        PrintedProperties: list("Damage")
+                    Filter: [Enemy]
+                    Target: 1
+                    Vars:
+                        ActorsToTarget: EnemiesAdjacentToTarget.Where(IsDead == false)
+                    Targeting: Custom
+                    TargetingVars:
+                        AddValidActorsInRange: ActorsToTarget
+                        AddTilesInRange: ActorsToTarget.SelectMany(obj.GetTilesCanAttackFrom())
+                    SkipAnim: True
+                Filter: Self
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: DuringActionAbilityOnAttackFinished
+                    AttackType: Melee
+                    XPTracker: [1,0,1,0,1,0]
+                    Flags: [DrifterShockWaveAttack]
+                    Vars:
+                        AttackAbility: TriggerAbility
+                        ValidateIsMeleeAttack: AttackAbility.IsMeleeAttack
+                        Drifter: TriggerActor
+                        EnemyTarget: TriggerTarget
+                        ActorsKilledThisAction: CPhaseAction.ActorsKilledThisAction.Where(KilledByActor == Drifter)
+                        AliveAndKilledActors: AllAliveActors.Append(ActorsKilledThisAction)
+                        EnemiesAdjacentToTarget: AliveAndKilledActors.Where(obj != EnemyTarget && obj.IsAdjacentTo(EnemyTarget) && CActor.AreActorsEnemies(obj.Type, Drifter.Type, obj, Drifter))
+                        ValidateAnyEnemiesAdjacentToTarget: EnemiesAdjacentToTarget.Count > 0
+                AnimOverload: Persistent Buff
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 3
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BShield:
+                Shield:
+                    Amount: 1
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                Filter: Self
+                ActiveBonus:
+                    Duration: Round
+                AnimOverload: PowerUp
+Layout:
+    Top:
+        - Active:
+            Ability: TActive
+            Icon: Positive_Damage_Enemy_Attack
+            ListLayout: "$FH/016_character_ability_cards_drifter_shockwave_2$"
+            Layout: "$FH/016_character_ability_cards_drifter_shockwave_2$"
+        - XPTracker: TActive
+    Bottom:
+        - Active:
+            Ability: BShield
+            Icon: Positive_Shield
+            ListLayout: "<sprite name=Shield> *BShield*"
+            Layout: "<sprite name=Shield> *BShield*"
+        - Row: "<b><size=130%><sprite name=Move> *BMove*"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Shield> *BShield*<size=100%><voffset=1>@BShield@"

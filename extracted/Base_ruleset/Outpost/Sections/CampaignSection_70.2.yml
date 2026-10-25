@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 70.2
+Name: Boneshaper Retires
+SkipNarration: True
+SkipCompletedNotification: False
+Effects:
+    - Type: AddCalendarCampaignSection
+      Param1: 89.3
+      Param2: 6

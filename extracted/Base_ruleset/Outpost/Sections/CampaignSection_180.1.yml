@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 180.1
+Name: Great Dallum
+SkipCompletedNotification: True
+Effects:
+    - Type: ChooseNextCampaignSection
+      Param1: "Event_180.1_Choice" 
+      Param2: 122.4
+      Param3: 120.5

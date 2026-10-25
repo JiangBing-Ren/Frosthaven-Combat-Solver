@@ -1,0 +1,14 @@
+Parser: Perk
+ID: Drifter11
+Name: FH/PERK_Drifter_11_Name
+Description: FH/PERK_Drifter_11_Desc
+CharacterID: DrifterID
+Available: 1
+Flags: [Passive, ExecuteAbilitiesAfterLongRest]
+Cost: 2
+Abilities:
+    AMoveTracker:
+        Filter: Self
+        MoveActiveBonusTracker: -1
+        Vars:
+            NumberOfCardsToSelect: 1

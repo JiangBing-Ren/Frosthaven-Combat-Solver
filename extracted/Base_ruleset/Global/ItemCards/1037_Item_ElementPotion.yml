@@ -1,0 +1,19 @@
+Parser: ItemCard
+ID: 1037
+StringID: ElementPotionID
+Name: $FH/1037_item_cards_element_potion_1$
+Art: Element Potion
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        AInfuse:
+            ShowElementPicker: True
+            Infuse: Any
+            Filter: Self
+Layout: 
+    - Row: "$FH/1037_item_cards_element_potion_2$"

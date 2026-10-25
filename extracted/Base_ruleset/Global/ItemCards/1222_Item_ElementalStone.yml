@@ -1,0 +1,93 @@
+Parser: ItemCard
+ID: 1222
+StringID: ElementalStoneID
+Name: $FH/1222_item_cards_elemental_stone_1$
+Art: Elemental Stone
+TotalInGame: 1
+Cost: 30
+Slot: OneHand
+Rarity: Rare
+Usage: Spent
+Trigger: BeforeInitiativeCalc
+Data: 
+    Abilities:
+        AChooseElement:
+            CanUndo: False
+            Filter: Self
+            HelpBoxTooltipLocKey: $FH/1222_item_cards_elemental_stone_2$
+            Choose:
+                Abilities: 
+                    AFire:
+                        AutoTrigger: True   
+                        PreviewEffectText: "<sprite name=Fire>"       
+                        NullTargeting: True
+                        Filter: Self
+                        MiscVars: 
+                            ForbiddenMonsterElement: ElementInfusionBoardManager.EElement.Fire
+                        ActiveBonus:
+                            Duration: Round
+                            ListLayoutOverride: [$FH/1222_item_cards_elemental_stone_3$ <sprite name=Fire>, Negative_Wild_Item]
+                            MiscVars:
+                                IgnoreImpair: True
+                    AAir:         
+                        AutoTrigger: True   
+                        PreviewEffectText: "<sprite name=Air>"       
+                        NullTargeting: True
+                        Filter: Self
+                        MiscVars: 
+                            ForbiddenMonsterElement: ElementInfusionBoardManager.EElement.Air
+                        ActiveBonus:
+                            Duration: Round
+                            ListLayoutOverride: [$FH/1222_item_cards_elemental_stone_3$ <sprite name=Air>, Negative_Wild_Item]
+                            MiscVars:
+                                IgnoreImpair: True
+                    AIce:        
+                        AutoTrigger: True    
+                        PreviewEffectText: "<sprite name=Ice>"       
+                        NullTargeting: True
+                        Filter: Self
+                        MiscVars: 
+                            ForbiddenMonsterElement: ElementInfusionBoardManager.EElement.Ice
+                        ActiveBonus:
+                            Duration: Round
+                            ListLayoutOverride: [$FH/1222_item_cards_elemental_stone_3$ <sprite name=Ice>, Negative_Wild_Item]
+                            MiscVars:
+                                IgnoreImpair: True
+                    AEarth:        
+                        AutoTrigger: True    
+                        PreviewEffectText: "<sprite name=Earth>"       
+                        NullTargeting: True
+                        Filter: Self
+                        MiscVars: 
+                            ForbiddenMonsterElement: ElementInfusionBoardManager.EElement.Earth
+                        ActiveBonus:
+                            Duration: Round
+                            ListLayoutOverride: [$FH/1222_item_cards_elemental_stone_3$ <sprite name=Earth>, Negative_Wild_Item]
+                            MiscVars:
+                                IgnoreImpair: True
+                    ALight:       
+                        AutoTrigger: True     
+                        PreviewEffectText: "<sprite name=Light>"       
+                        NullTargeting: True
+                        Filter: Self
+                        MiscVars: 
+                            ForbiddenMonsterElement: ElementInfusionBoardManager.EElement.Light
+                        ActiveBonus:
+                            Duration: Round
+                            ListLayoutOverride: [$FH/1222_item_cards_elemental_stone_3$ <sprite name=Light>, Negative_Wild_Item]
+                            MiscVars:
+                                IgnoreImpair: True
+                    ADark:       
+                        AutoTrigger: True     
+                        PreviewEffectText: "<sprite name=Dark>"       
+                        NullTargeting: True
+                        Filter: Self
+                        MiscVars: 
+                            ForbiddenMonsterElement: ElementInfusionBoardManager.EElement.Dark
+                        ActiveBonus:
+                            Duration: Round
+                            ListLayoutOverride: [$FH/1222_item_cards_elemental_stone_3$ <sprite name=Dark>, Negative_Wild_Item]
+                            MiscVars:
+                                IgnoreImpair: True
+Layout: 
+    - Row: "$FH/1222_item_cards_elemental_stone_2$"

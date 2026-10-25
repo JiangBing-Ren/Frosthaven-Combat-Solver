@@ -1,0 +1,23 @@
+Parser: EnemyCard
+ID: 746
+Name: $Monster_Ability_746_Guard_ParryAndThrust$
+Initiative: 15
+Shuffle: True
+Data:
+    Abilities: 
+        Shield1:
+            Shield: 1
+            Filter: Self
+            AnimOverload: PowerUp         
+            ActiveBonus:
+                Duration: Round
+                ListLayoutOverride: ["<sprite name=Shield> *Shield1*", Positive_Shield]
+        Retaliate1:
+            Retaliate: 2
+            Filter: Self
+            AnimOverload: PowerUp       
+            ActiveBonus:
+                Duration: Round
+                ListLayoutOverride: ["<sprite name=Retaliate> *Retaliate1*", Positive_Retaliate]
+            SkipAnim: True
+            

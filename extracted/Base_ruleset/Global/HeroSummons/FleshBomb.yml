@@ -1,0 +1,42 @@
+Parser: HeroSummon
+ID: FleshBombID
+LocKey: $FH/312_character_ability_cards_hive_unstable_effigy_2$
+Model: FleshBomb
+Health:
+    Amount: 3
+    SquareEnhancements: 1
+Move:
+    Amount: 3
+    SquareEnhancements: 1
+Attack:
+    Amount: 2
+    SquareEnhancements: 1
+OnSummonAbilities:
+    AOnDeath:
+        AutoTrigger: True
+        Filter: Self
+        SkipAnim: True
+        AddActiveBonus:
+            Range: 2
+            Target: -1
+            Filter: [Self, Enemy]
+            MultiPassAttack: False
+            Attack: 2
+            AnimOverload: Death
+            TreatAsMelee: True
+            PerformVars:
+                OnAbilityEnded:
+                    StackSubAbilities: CustomAbility.StackNonInlineSubabilities(obj)
+            SubAbilities:
+                AInfuseFire:
+                    Infuse: Fire
+                    TreatAsNonSubAbility: True
+                    IsInlineSubAbility: False
+        ActiveBonus:           
+            Duration: Persistent
+            Behaviour: DuringActionAbilityOnDeath
+            TriggerAbilitiesImmediately: True
+            ListLayoutOverride: ["$OnDeath$ <sprite name=Attack>2 <sprite name=Target> $GUI_CARD_ALL$ <sprite name=Enemy> <sprite name=Range>2", Positive_Attack_Death]
+            Requirement:
+                Vars:
+                    ValidateIsFirstRound: CheckingBonus.Actor.CauseOfDeath != "SummonerDied" && CheckingBonus.Actor.CauseOfDeath != "SummonActiveBonusCancelled" && CheckingBonus.Actor.CauseOfDeath != "ActorRemovedFromMap"

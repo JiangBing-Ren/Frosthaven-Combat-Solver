@@ -1,0 +1,17 @@
+Parser: BattleGoal
+ID: BattleGoal_Dynamo
+LocalisedName: FH/BATTLEGOAL_Dynamo
+LocalisedDescription: FH/BATTLEGOAL_Dynamo_Desc
+#Kill a monster during the scenario by causing
+#at least 4 more points of damage to it than necessary - 1 time
+PerkChecks: 1
+BattleGoalCondition:
+    - Targets:
+        Filter: Kill
+        CauseOfDeath: Damage
+        MonsterType: [Normal, Elite, Boss]
+        CharacterTypes:
+            Target: [Enemy,Enemy2]
+        Overkill: 4
+        Value: 1
+        SubFilter: Scenario

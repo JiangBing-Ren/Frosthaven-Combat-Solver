@@ -1,0 +1,60 @@
+Parser: AbilityCard
+Name: $FH/232_character_ability_cards_pyroclast_hand_of_flame_1$
+Character: PyroclastID
+ID: 232
+Level: 4
+Initiative: 29
+Discard: [Discard,Discard]
+Prefab: 232_Pyroclast_HandOfFlame
+Data:
+    Top:
+        XP: 1
+        Infuse: Fire
+        Abilities:    
+            TAttack:
+                Attack:
+                    Amount: 4
+                    DiamondEnhancements: 1       
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Conditions: Muddle  
+                AnimOverload: RichSwipe
+                SubAbilities:
+                    TCreateHazardous:        
+                        AutoTrigger: True          
+                        Target: 1
+                        TreatAsNonSubAbility: True
+                        CreateLimitedHazardousTerrain: True
+                        Vars:
+                            OverridePropName: "'PyroclastHazardTerrain'"
+                        TileFilter: FeaturelessHex
+                        Targeting: Custom
+                        SkipAnim: True
+                        TargetingVars:
+                            AddTilesInRange: ParentAbility.TilesSelected
+                        PerformVars:
+                            CreateProp: 
+                                VFX: CustomAbility.PlayVFX("PyroclastTerrainFormationVFX", ParentAbility.TilesSelected)
+    Bottom:
+        Abilities:
+            BAttack:
+                Attack:
+                    Amount: 2
+                    SquareEnhancements: 1       
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Conditions: Wound 
+                AnimOverload: FireSwipe 
+Layout:
+    Top:
+        - Row:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column: "<mark=#80919922><sprite name=Muddle></mark>"
+        - Row: "$FH/232_character_ability_cards_pyroclast_hand_of_flame_2$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Fire]
+    Bottom:
+        - Row:
+            - Column: "<b><size=130%><sprite name=Attack> *BAttack* <size=100%><voffset=1>@BAttack@"
+            - Column: "<mark=#80919922><sprite name=Wound></mark>"

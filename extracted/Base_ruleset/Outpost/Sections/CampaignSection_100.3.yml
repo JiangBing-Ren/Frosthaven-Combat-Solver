@@ -1,0 +1,8 @@
+Parser: CampaignSection
+ID: 100.3
+Name: Business Proposal
+ShowAsUnknownInCalendar: True
+SkipCompletedNotification: False
+Effects:
+    - Type: UnlockScenario
+      Param1: 129

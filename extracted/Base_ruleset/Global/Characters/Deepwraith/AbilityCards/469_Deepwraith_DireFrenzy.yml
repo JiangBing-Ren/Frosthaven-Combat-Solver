@@ -1,0 +1,73 @@
+Parser: AbilityCard
+Name: $FH/469_character_ability_cards_deepwraith_dire_frenzy_1$
+Character: DeepwraithID
+ID: 469
+Level: 7
+Initiative: 26
+Discard: [Discard,Discard]
+Prefab: 469_Deepwraith_DireFrenzy
+Data:
+    Top:
+        Abilities:
+            TAttack1:
+                Attack: 2
+                Filter: Enemy
+                MiscVars:
+                    PrintedProperties: list("Attack")
+            TMove1:
+                Move: 2
+                MiscVars:
+                    PrintedProperties: list("Move")
+            TAttack2:
+                Attack:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+            TMove2:
+                Move: 2
+                MiscVars:
+                    PrintedProperties: list("Move")
+            TAttack3:
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+    Bottom:
+        Abilities: 
+            BMove:
+                Move: 
+                    Amount: 4
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BPoison:
+                Poison: True
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Target: 99
+                Filter: Enemy
+                AnimOverload: Attack AOE Poison
+                MiscVars:
+                    AutoSelectValidTiles: True
+                StartAbilityRequirements:
+                        Type: ThisAbility
+                        Vars:
+                            ValidateHasInvisibility: TargetingActor.Tokens.HasKey(CCondition.EPositiveCondition.Invisible)
+Layout:
+    Top:
+        - Row: "<sprite name=Attack> *TAttack1*"
+        - Divider:
+        - Row: "<sprite name=Move> *TMove1*"
+        - Divider:
+        - Row: "<sprite name=Attack> *TAttack2* @TAttack2@"
+        - Divider:
+        - Row: "<sprite name=Move> *TMove2*"
+        - Divider:
+        - Row: "<sprite name=Attack> *TAttack3* @TAttack3@"
+    Bottom:
+        - Row: "<sprite name=Move> *BMove* @BMove@"
+        - Divider:
+        - Row: "$FH/469_character_ability_cards_deepwraith_dire_frenzy_2$"

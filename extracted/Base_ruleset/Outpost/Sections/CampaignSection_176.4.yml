@@ -1,0 +1,8 @@
+Parser: CampaignSection
+ID: 176.4
+Name: Funeral for the Winter Fallen
+SkipCompletedNotification: False
+ShowAsUnknownInCalendar: True
+Effects:
+    - Type: GainMorale
+      Param1: 2

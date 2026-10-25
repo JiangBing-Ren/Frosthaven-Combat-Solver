@@ -1,0 +1,14 @@
+Parser: AttackModifier
+Name: AMC_CreateIce_P2
+MathModifier: "+2"
+Abilities:
+    CreateIceAbility:
+        CreateTerrain: Ice
+        TileFilter: FeaturelessHex
+        Target: 1
+        Targeting: Custom
+        AnimOverload: TerrainFormation
+        MiscVars:
+            includeCasterTile: True
+        TargetingVars:       
+            AddTilesInRange: CustomAbility.GetAdjacentTiles(TargetActor.Tile)

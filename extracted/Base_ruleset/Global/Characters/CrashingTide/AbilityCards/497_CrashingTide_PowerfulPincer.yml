@@ -1,0 +1,86 @@
+Parser: AbilityCard
+Name: $FH/497_character_ability_cards_crashing_tide_powerful_pincer_1$
+Character: CrashingTideID
+ID: 497
+Level: 6
+ProgressionOrder: 497
+Initiative: 70
+Discard: [Discard,Discard]
+Prefab: 497_CrashingTide_PowerfulPincer
+Data:
+    Top:
+        Abilities:
+            TBuffAttack:
+                Attack: 0
+                Conditions: [Disarm]
+                Filter: [Self]
+                AnimOverload: Tide
+                ActiveBonus:
+                    Behaviour: BuffSingleAttack
+                    Duration: Persistent
+                    Flags: [Tide]
+                    ValidAbilityType: Attack
+                    IsToggleBonus: True
+                    IsSingleTargetBonus: True
+                    Requirements:
+                        Vars:
+                            ValidateCanConsume: CustomAbility.IsElementInfused(ElementInfusionBoardManager.EElement.Light) && CustomAbility.IsElementInfused(ElementInfusionBoardManager.EElement.Dark)
+                    CostAbility:
+                        Consume:
+                            Elements: [Light, Dark]
+                            Abilities:
+                                TDummy:
+                                    Null: True
+                                    Filter: [Self]
+                                    SkipAnim: True
+                        MiscVars:
+                            PreSelect: True
+                        XP: 1
+        Infuse: Light
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BConsume:
+                Consume:
+                    Elements: [Light]
+                    Abilities:
+                        BImmobilize:
+                            Immobilize: True
+                            Range: 1
+                            MiscVars:
+                                PrintedProperties: list("Range")
+                            Target: 99
+                            Targeting: Range
+                            Filter: [Enemy]
+                            AnimOverload: MeleeSwing
+                            MiscVars:
+                                AutoSelectValidTiles: True
+                    XP: 1
+                PreviewEffectText: "<sprite name=Immobilize>"
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "34,33,33"
+            - Column: "$FH/CrashingTide_Tide$"
+            - Column:
+            - Column:
+        - Active:
+            Ability: TBuffAttack
+            Icon: Positive_Disarm_Attack
+            Layout: "$FH/497_character_ability_cards_crashing_tide_powerful_pincer_2$ <sprite name=ConsumeLight><sprite name=ConsumeDark>:$497_character_ability_cards_crashing_tide_powerful_pincer_3$"
+            ListLayout: "$FH/497_character_ability_cards_crashing_tide_powerful_pincer_2$ <sprite name=ConsumeLight><sprite name=ConsumeDark>:$497_character_ability_cards_crashing_tide_powerful_pincer_3$"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Light
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove*<size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Conditional:
+            Layout:
+                - Row: "<size=130%><sprite name=ConsumeLight>:</size> $FH/497_character_ability_cards_crashing_tide_powerful_pincer_3$"

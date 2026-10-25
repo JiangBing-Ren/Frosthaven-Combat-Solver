@@ -1,0 +1,85 @@
+Parser: AbilityCard
+Name: $FH/241_character_ability_cards_pyroclast_cinder_lance_1$
+Character: PyroclastID
+ID: 241
+Level: 8
+Initiative: 90
+Discard: [Discard,Discard]
+Prefab: 241_Pyroclast_CinderLance
+Data:
+    Top:
+        Abilities:    
+            TAttack:
+                Attack:
+                    Amount: 4
+                    DiamondEnhancements: 1     
+                MiscVars:
+                    PrintedProperties: list("Attack") 
+                AnimOverload: FireSwipe             
+        Consumes:
+            TCFire:
+                XP: 1
+                Elements: Fire
+                AbilityOverrides:
+                    TCFireAttackBuff:
+                        ParentName: TAttack
+                        Strength: 2
+                        AnimOverload: RichSwipe
+                        SubAbilities:
+                            TDamageSelf:
+                                TreatAsNonSubAbility: True
+                                Damage: 2
+                                MiscVars:
+                                    PrintedProperties: list("Damage")
+                                Filter: Self
+                                AutoTrigger: True
+            TCEarh:
+                XP: 1
+                Elements: Earth
+                AbilityOverrides:
+                    TCEarthAttackBuff:
+                        ParentName: TAttack
+                        Strength: 2
+                        AnimOverload: RichSwipe
+                        SubAbilities:
+                            TDamageSelf:
+                                TreatAsNonSubAbility: True
+                                Damage: 1
+                                MiscVars:
+                                    PrintedProperties: list("Damage")
+                                Filter: Self
+                                AutoTrigger: True
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 2
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BAttack:
+                Attack:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AreaEffect: "0,0,G|2,0,R|4,0,R"
+                MultiPassAttack: False
+                AnimOverload: FlowingFire
+
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCFire
+                    Text: "+2 <sprite name=Attack>, $FH/241_character_ability_cards_pyroclast_cinder_lance_2$, <sprite name=XP1>"
+                - Consume:
+                    Name: TCEarh
+                    Text: "+2 <sprite name=Attack>, $FH/241_character_ability_cards_pyroclast_cinder_lance_3$, <sprite name=XP1>"
+    Bottom:
+        - Row: "<b><size=130%>$Move$ <sprite name=Move> *BMove*"
+        - Divider:
+        - Row:
+            - Column: "<b><size=130%><sprite name=Attack> *BAttack* <size=100%><voffset=1>@BAttack@"
+            - Column: "£Area£"

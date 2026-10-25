@@ -1,0 +1,56 @@
+Parser: AbilityCard
+Name: $FH/456_character_ability_cards_deepwraith_morbid_camouflage_1$
+Character: DeepwraithID
+ID: 456
+Level: X
+Initiative: 31
+Discard: [Discard,Discard]
+Prefab: 456_Deepwraith_MorbidCamouflage
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                SubAbilities:
+                    TInvisibility:
+                        Invisible: True
+                        Filter: Self
+                        Flags: [SubAbilityPreview]
+                        XP: 1
+                        StartAbilityRequirements:
+                            Type: SubAbility
+                            ActorsKilledByAbility: "> 0"
+                            RequirementActorFilter:
+                                TargetType: Enemy
+                                EnemyType: [Normal,Elite,Boss]
+                        SkipAnim: True            
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+                SubAbilities:
+                    TInvisibility:
+                        Invisible: True
+                        Filter: Self
+                        Flags: [SubAbilityPreview]
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateHasLoot: TargetingActor.Tile.FindProp(ScenarioManager.ObjectImportType.MoneyToken) != null
+                        SkipAnim: True
+
+Layout:
+    Top:
+        - Row: "<sprite name=Attack> *TAttack* @TAttack@"
+        - Row: "$FH/456_character_ability_cards_deepwraith_morbid_camouflage_2$"
+    Bottom:
+        - Row: "<sprite name=Move> *BMove* @BMove@"
+        - Row: "$FH/456_character_ability_cards_deepwraith_morbid_camouflage_3$"

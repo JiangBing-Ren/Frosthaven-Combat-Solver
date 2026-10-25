@@ -1,0 +1,72 @@
+Parser: PetCard
+ID: 368
+StringID: OozePetID
+Name: $FH/368_pet_cards_ooze_1$
+Description: $FH/368_pet_cards_ooze_2$
+Art: Ooze
+Usage: Consumed
+Trigger: DuringOwnTurn
+PetUnlockedBy: OozeID
+Cost: 0
+Data: 
+    Abilities:
+        АChooseAreaSize:
+            Filter: Self
+            HelpBoxTooltipLocKey: "$368_pet_cards_ooze_3$"
+            PreviewEffectText: ""
+            Choose:
+                Abilities:
+                    BCAbilityIce:
+                        PreviewEffectText: "1"
+                        Create: PetOoze1HObstacle
+                        Target: 1
+                        Range: 99
+                        TileFilter: EmptyHex
+                        IgnoreLOS: True
+                        AnimOverload: UseItem
+                        MiscVars:
+                            PropLocKey: "'OneHexObstacle'"
+                        PerformVars:
+                            CreateObstacles:
+                                VFX: CustomAbility.PlayVFX("PetOozeTargetEffect", TilesSelected)
+                            CreatingObstacles:
+                                VFX: TargetingActor.PlayVFX("PetOozeEffect")
+                    BCAbilityEarth:
+                        PreviewEffectText: "2"
+                        Create: PetOoze2HObstacle
+                        Target: 1
+                        Range: 99
+                        TileFilter: EmptyHex
+                        AnimOverload: PowerUp
+                        AreaEffect: "0,0,R|-1,1,R"
+                        AreaEffectLayoutOverride: "0,0,R|2,0,R"
+                        IgnoreLOS: True
+                        AnimOverload: UseItem
+                        MiscVars:
+                            PropLocKey: "'TwoHexObstacle'"
+                        PerformVars:
+                            CreateObstacles:
+                                VFX: CustomAbility.PlayVFX("PetOozeTargetEffect", TilesSelected)
+                            CreatingObstacles:
+                                VFX: TargetingActor.PlayVFX("PetOozeEffect")
+                    BCAbilityFire:
+                        PreviewEffectText: "3"
+                        Create: PetOoze3HObstacle
+                        Target: 1
+                        Range: 99
+                        TileFilter: EmptyHex
+                        AnimOverload: PowerUp
+                        AreaEffect: "0,0,R|-1,1,R|1,1,R|CantFlip"
+                        AreaEffectLayoutOverride: "0,0,R|2,0,R|1,1,R|CantFlip"
+                        IgnoreLOS: True
+                        AnimOverload: UseItem
+                        MiscVars:
+                            PropLocKey: "'ThreeHexObstacle'"
+                        PerformVars:
+                            CreateObstacles:
+                                VFX: CustomAbility.PlayVFX("PetOozeTargetEffect", TilesSelected)
+                            CreatingObstacles:
+                                VFX: TargetingActor.PlayVFX("PetOozeEffect")
+               
+Layout: 
+    - Row: "$FH/368_pet_cards_ooze_2$"

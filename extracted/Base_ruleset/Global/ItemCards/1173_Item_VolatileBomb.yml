@@ -1,0 +1,30 @@
+Parser: ItemCard
+ID: 1173
+StringID: VolatileBombID
+Name: $FH/1173_item_cards_volatile_bomb_1$
+Art: Volatile Bomb
+TotalInGame: 2
+Cost: 50
+Slot: TwoHand 
+Rarity: Rare
+Usage: Consumed
+Trigger: SingleAbility
+Data:     
+    Overrides:
+        OAoE:
+            AreaEffect: "0,0,R|2,0,R|1,1,R"
+            # tested with bannerspear, if i leave it true, the second target throws an error and doesn't visually throw a spear
+            # idk what to do there
+            MultiPassAttack: False
+            PerformVars:
+                ActorBeenAttacked: 
+                    VFX: CustomAbility.PlayVFX("ItemVolatileBombEffect",ValidTilesInAreaAffected)
+    CompareAbility:
+        AbilityType: Attack
+        Target: 1
+        IsRanged: True
+        Filter: Enemy
+Layout: 
+    - Row: "<size=100%>$FH/1173_item_cards_volatile_bomb_2$"
+    - Row: "<size=100%> "
+    - Row: "£Area£"

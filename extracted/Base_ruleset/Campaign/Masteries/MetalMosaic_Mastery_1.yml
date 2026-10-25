@@ -1,0 +1,28 @@
+Parser: Mastery
+ID: MetalMosaic_MASTERY_1
+LocalisedName: MetalMosaic_MASTERY_1_Name
+LocalisedDescription: MetalMosaic_MASTERY_1_Desc
+PerkPoints: 1
+CheckAtEndOfScenario: True
+HideCounter: True
+# fail if you ever attack
+BattleGoalCondition:
+    - Targets: 
+        Filter: UseAbility
+        AbilityTypes: [Attack]
+        HasHappened: True
+        SubFilter: Scenario
+        # only for the infuser
+        CharacterIDs: 
+            ActorID: MetalMosaicID
+        Value: 0
+BattleGoalFailCondition:
+    - Targets: 
+        Filter: UseAbility
+        AbilityTypes: [Attack]
+        HasHappened: True
+        SubFilter: Scenario
+        # only for the infuser
+        CharacterIDs: 
+            ActorID: MetalMosaicID
+        Value: 1

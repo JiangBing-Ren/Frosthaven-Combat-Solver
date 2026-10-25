@@ -1,0 +1,10 @@
+Parser: FHItem
+ID: 104
+ScenarioItemID: 1073
+Name: Swiftness Potion
+Quantity: 2
+Type: Small
+Brewing:
+    Herb1: Rockroot
+    Herb2: Axenut
+    Herb3: Flamefruit

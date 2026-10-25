@@ -1,0 +1,8 @@
+Parser: CampaignSection
+ID: 139.2
+Name: Boat Built
+SkipCompletedNotification: False
+Effects:
+    - Type: AddProsperity
+      Param1: 1
+    - Type: UnlockBoatScenarios

@@ -1,0 +1,17 @@
+Parser: BattleGoal
+ID: BattleGoal_Streamliner
+LocalisedName: BATTLEGOAL_Streamliner
+LocalisedDescription: BATTLEGOAL_Streamliner_Desc
+#Have five or more total cards in your hand and discard
+#at the end of the scenario - 1
+PerkChecks: 1
+BattleGoalCondition:
+    - Targets:
+        Filter: CardsRemaining
+        Conditional:
+            Type: EndScenario
+            Amount: "> 4"
+        ScenarioResult: Win
+        Value: 1
+        SubFilter: Scenario
+TreasureTables: [TT_Battle_Goals_1]

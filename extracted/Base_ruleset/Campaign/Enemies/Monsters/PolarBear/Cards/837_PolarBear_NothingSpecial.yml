@@ -1,0 +1,16 @@
+Parser: EnemyCard
+ID: 837
+Name: $Monster_Ability_BasicAttack$
+Initiative: 41
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: 0
+            Vars:
+                ValidateIsNotTrapped: ScenarioScript_FH117.ValidateIsPolarBearNotTrapped(TargetingActor)
+        Attack1:
+            Attack: 0
+            Filter: Enemy
+            Vars:
+                ValidateIsNotTrapped: ScenarioScript_FH117.ValidateIsPolarBearNotTrapped(TargetingActor)

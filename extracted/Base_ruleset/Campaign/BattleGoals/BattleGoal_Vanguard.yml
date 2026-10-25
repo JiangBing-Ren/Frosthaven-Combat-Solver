@@ -1,0 +1,20 @@
+Parser: BattleGoal
+ID: BattleGoal_Vanguard
+LocalisedName: FH/1359_battle_goals_vanguard_1
+LocalisedDescription: FH/1359_battle_goals_vanguard_2
+#Dont attack enemies that have played
+# lose if you do
+PerkChecks: 2
+CheckAtEndOfScenario: True
+HideCounter: True
+BattleGoalCondition:
+    - Targets:
+        Filter: AttackEnemyWhoPlayed
+        Value: 0
+        ScenarioResult: Win
+        SubFilter: Scenario
+BattleGoalFailCondition:
+    - Targets:
+        Filter: AttackEnemyWhoPlayed
+        Value: 1
+        SubFilter: Scenario

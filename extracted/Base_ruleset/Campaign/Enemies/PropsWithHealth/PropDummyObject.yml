@@ -1,0 +1,23 @@
+Parser: Enemy
+ID: PropDummyObject
+LocKey: $PropDummyObject$
+MonsterType: Object
+Model: Prop Dummy Object
+StandeeLimit: 100
+# Base Stats
+Level0:
+    Health: 1
+Level1:
+    Health: 1
+Level2:
+    Health: 1
+Level3:
+    Health: 1
+Level4:
+    Health: 1
+Level5:
+    Health: 1
+Level6:
+    Health: 1
+Level7:
+    Health: 1

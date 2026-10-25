@@ -1,0 +1,25 @@
+Parser: ItemCard
+ID: 1167
+StringID: SereneSandalsID
+Name: $FH/1167_item_cards_serene_sandals_1$
+Art: Serene Sandals
+TotalInGame: 2
+Cost: 75
+Slot: Legs
+Rarity: Rare
+Usage: Unrestricted
+Trigger: PassiveEffect
+Data: 
+    Abilities:
+        ABuffDefaultMove:
+            Move: 2
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: BuffMove
+                AttackType: Default
+Layout: 
+    - Active:
+        Ability: ABuffDefaultMove
+        Layout: "$FH/1167_item_cards_serene_sandals_2$"
+        ListLayout: "$FH/1167_item_cards_serene_sandals_2$"
+        Icon: "Positive_MovePlus_Item"        

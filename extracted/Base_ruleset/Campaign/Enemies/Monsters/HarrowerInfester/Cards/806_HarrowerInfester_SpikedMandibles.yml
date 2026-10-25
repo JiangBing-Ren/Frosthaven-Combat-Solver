@@ -1,0 +1,18 @@
+Parser: EnemyCard
+ID: 806
+Name: $Monster_Ability_806_HarrowerInfester_SpikedMandibles$
+Initiative: 16
+Shuffle: False
+Data:
+    Abilities:
+        Attack1:
+            Attack: +2
+            Filter: Enemy
+            Condition: Immobilize
+        Retaliate1:
+            Retaliate: 2
+            Filter: Self
+            ActiveBonus:
+                Duration: Round
+                ListLayoutOverride: ["<sprite name=Retaliate> *Retaliate1*", Positive_Retaliate]
+            AnimOverload: PowerUp            

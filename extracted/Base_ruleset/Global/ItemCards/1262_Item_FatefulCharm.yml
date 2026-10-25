@@ -1,0 +1,36 @@
+Parser: ItemCard
+ID: 1262
+StringID: FatefulCharmID
+Name: $FH/1262_item_cards_fateful_charm_1$
+Art: Fateful Charm
+TotalInGame: 2
+Cost: 30
+Slot: Head
+Rarity: Rare
+Usage: Spent
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        AShowNextModifier:         
+            Filter: Self
+            ShowNextAttackModifier: 1
+            ActiveBonus:
+                Duration: Persistent
+            SubAbilities:
+                AMoveToBottom:
+                    HelpBoxTooltipLocKey: "$GUI_ChooseToMoveModifierToBottomOfDeck$"
+                    MiscVars:
+                        HelpBoxArg0: CustomAbility.NextAttackModifier(TargetingActor)?.AttackModifierLogString()
+                        OverrideReadyButtonText: "'GUI_CONFIRM_ACTION'"
+                    Filter: Self
+                    NullTargeting: True
+                    TreatAsNonSubAbility: True
+                    PerformVars:
+                        ApplyToActors:
+                            MoveToBottomOfDeck: CustomAbility.MoveNextModifierToBackOfDeck(TargetingActor)
+                    StartAbilityRequirements:
+                        Vars:
+                            ValidateHasNextModifier: CustomAbility.NextAttackModifier(Actor) != null
+
+Layout: 
+    - Row: $FH/1262_item_cards_fateful_charm_2$

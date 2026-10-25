@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 179.1
+Name: Crain's Expedition (179.1)
+SkipCompletedNotification: True
+Effects:
+    - Type: GainMetal
+      Param1: 5
+    - Type: AddTownGuardMod
+      Param1: P20

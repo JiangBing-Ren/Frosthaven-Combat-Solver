@@ -1,0 +1,26 @@
+Parser: ItemCard
+ID: 1007
+StringID: BoneBootsID
+Name: $FH/1007_item_cards_bone_boots_1$
+Art: Bone Boots
+TotalInGame: 2
+Cost: 0
+Slot: Legs
+Rarity: Rare
+Usage: Consumed
+Trigger: OnAbilityEnded
+Data: 
+    ItemRequirements:
+        Vars: 
+            ValidateHasParentContext: Ability?.VarsContext?.parentContext != null
+            ValidateActorKilledByItemOwner: Ability.TargetingActor == Ability.VarsContext.parentContext.ItemOwner
+            ValidateHasKilled: CustomAbility.AbilityHasKilledEnemy(Ability)
+    Abilities:
+        AMove:
+            Move: 4
+            MiscVars:
+                # pretty explicitly, this needs to happen after whatever ability is done
+                InterruptCurrentAbility: False
+                StackNextToCurrent: False
+Layout: 
+    - Row: "$FH/1007_item_cards_bone_boots_2$"

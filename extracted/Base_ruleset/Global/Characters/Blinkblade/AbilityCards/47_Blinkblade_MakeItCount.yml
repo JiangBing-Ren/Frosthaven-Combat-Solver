@@ -1,0 +1,123 @@
+Parser: AbilityCard
+Name: $FH/47_character_ability_cards_blinkblade_make_it_count_1$
+Character: BlinkbladeID
+ID: 47
+Level: 3
+Initiative: 51
+Discard: [Discard,Discard]
+Prefab: 47_Blinkblade_MakeItCount
+Data:
+    Top:
+        Abilities:
+            THeal:
+                Heal:
+                    Amount: 1
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Heal", "Target", "Range")
+                Range: 3
+                Target: 3
+                Filter: [Self,Ally]
+                AnimOverload: PowerUpSlow3HexAOE
+                ConditionalOverrides:
+                    THealCO_Fast:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Fast
+                        AbilityOverrides:
+                            THeal:
+                                Strength: 2
+                                Target: -1
+                                Range: -1
+                                AnimOverload: PowerUp2HexAOE
+                        XP: 1                
+            TBless:
+                Bless: True
+                Filter: [Self]
+                AutoTrigger: True
+                AnimOverload: PowerUpSlow
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Slow
+
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                MiscVars:
+                    PrintedProperties: list("Move")
+                #CanSkip: False
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Fast
+            BAttack:
+                Attack:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                ConditionalOverrides:
+                    BWoundFast:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Fast
+                        AbilityOverrides:
+                            BAttack:
+                                Condition: Wound
+                                AnimOverload: Attack
+                    BWoundSlow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            BAttack:
+                                Condition: Muddle
+                                AnimOverload: AttackSlow
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "20,30,50"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Heal> *THeal* <size=100%><voffset=1>@THeal@"
+            - Column:
+                - Row: "<b><sprite name=Target>*THeal.Target* <sprite name=Range>*THeal.Range*"
+        - Row: "<size=50%> "
+        - Row:
+            - ColumnWidths: "70,30"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "<b><size=100%> +2<sprite name=Heal>, -1<sprite name=Target>, -1<sprite name=Range>, <sprite name=XP1>"
+            - Column:
+        - Divider:
+        - Row:
+            - ColumnWidths: "35,20,45"
+            - Column:
+            - Column:
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Text: "<b>$FH/047_character_ability_cards_blinkblade_make_it_count_2$"
+    Bottom:
+        - Row:
+            - ColumnWidths: "50,50"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "<b><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+            - Column:
+        - Divider:
+        - Row:
+            - ColumnWidths: "33,32,35"
+            - Column: 
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "<sprite name=Wound>"
+            - Column:
+                - Row: "<size=130%><b><size=130%><sprite name=Attack> *BAttack* <size=100%><voffset=1>@BAttack@"
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Text: "<sprite name=Muddle>"

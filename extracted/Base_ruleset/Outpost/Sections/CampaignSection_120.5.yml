@@ -1,0 +1,8 @@
+Parser: CampaignSection
+ID: 120.5
+Name: Great Dallum (120.5)
+SkipCompletedNotification: True
+Effects:
+    - Type: GainMorale
+      Param1: 2
+    - Type: SkipNextOutpostEvent

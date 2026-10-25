@@ -1,0 +1,58 @@
+Parser: Enemy
+ID: LurkerWavethrowerFireS60ID
+LocKey: $FH/LurkerWavethrowerS60$
+MonsterType: Monster
+StandeeLimit: 1
+Model: FracturedLieutenantWavethrower Fire
+CardsPoolClass: LurkerWavethrowerID
+PredominantlyMelee: True
+AbilityCards: [698, 699, 700, 701, 702, 703, 704, 705]
+# Base Stats
+Level0:
+    Health: 4
+    Move: 1
+    Attack: 2
+    Range: 1
+    Target: 1
+Level1:
+    Health: 6
+    Move: 1
+    Attack: 2
+    Range: 1
+    Target: 1
+Level2:
+    Health: 8
+    Move: 1
+    Attack: 2
+    Range: 1
+    Target: 1
+Level3:
+    Health: 10
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+Level4:
+    Health: 11
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+Level5:
+    Health: 14
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+Level6:
+    Health: 17
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1    
+Level7:
+    Health: 20
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1    

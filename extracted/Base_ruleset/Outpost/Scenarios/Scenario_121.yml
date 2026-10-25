@@ -1,0 +1,20 @@
+Parser: FHScenario
+ID: 121
+Name: Black Memories
+LevelID: FS_121_Black_Memories
+Chain: Other
+Difficulty: 3
+Conclusions:
+    # 125.4/outro A - disable mind control device
+    - Effects:
+        - Type: GainMorale
+          Param1: 2
+    # 166.5/outro B - destroy automaton, give away the helmet
+    - Effects:
+        - Type: AddCalendarCampaignSection
+          Param1: 184.3
+          Param2: 6
+    # 9.2/outro C - destroy automaton, keep the helmet
+    - Effects:
+        - Type: GainItem
+          Param1: 193

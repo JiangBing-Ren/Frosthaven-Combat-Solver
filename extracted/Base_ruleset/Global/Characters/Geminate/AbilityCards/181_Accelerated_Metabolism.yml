@@ -1,0 +1,101 @@
+Parser: AbilityCard
+Name: $FH/181_character_ability_cards_geminate_accelerated_metabolism_1$
+Character: GeminateID
+ID: 181
+Level: 8
+ProgressionOrder: 30
+Initiative: 85
+Discard: [Discard,Lost]
+RequiredForm: Melee
+Prefab: 181_Geminate_AcceleratedMetabolism
+Data:
+    Top:
+        Abilities:
+            TStrengthen:
+                Strengthen: True
+                Filter: Self
+                Vars:
+                    NeedsOverride: true
+
+            TAttack:
+                Attack:
+                    Amount: 3
+                    Pierce: 3
+                Target: 2
+                MiscVars:
+                    PrintedProperties: list("Attack","Target","Pierce")
+                AnimOverload: Attack_Melee_Strong
+
+        Consumes:
+            TCFire:
+                PreviewEffectText: "<size=130%><sprite name=Strengthen>"
+                Elements: Fire
+                ConsumeOnlyOneElement: True
+                AbilityOverrides:
+                    TCFireBuff:
+                        ParentName: TStrengthen
+
+            TCIce:
+                PreviewEffectText: "<size=130%><sprite name=Strengthen>"
+                Elements: Ice
+                ConsumeOnlyOneElement: True
+                AbilityOverrides:
+                    TCIceBuff:
+                        ParentName: TStrengthen
+
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 6
+                    CircleEnhancements: 2
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BExtraTurn:
+                AutoTrigger: True
+                AddActiveBonus:
+                    SelectAndPlayCard:
+                        CardPile: Hand
+                    MiscVars:
+                        IsCardValid: AbilityCard.GetAbilityCardYML.RequiredForm == CPlayerActor.EForm.Melee
+                        IsActionValid: ActionType != "DefaultAttackAction" && ActionType != "DefaultMoveAction" 
+                    Filter: Self
+                    SkipAnim: True
+                    AutoTrigger: True
+                ActiveBonus:
+                    Behaviour: StartTurnAbility
+                    Duration: Persistent
+                    XPTracker: [0]
+            BSwitchFormMeleeToRange:
+                Null: True
+                Flags: [SwitchFormMeleeToRange]
+                AutoTrigger: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Move,AddActiveBonus]
+Layout:
+    Top:
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCFire
+                    Text: "<size=150%><nobr><sprite name=Strengthen></nobr></nobr>"
+                - Consume:
+                    Name: TCIce
+                    Text: "<size=150%><nobr><sprite name=Strengthen></nobr></nobr>"
+        #- Row: "<size=150%><sprite name=ConsumeMixed-FI><size=100%> : <size=150%><sprite name=Strengthen><size=100%> $Self$"
+        - Divider:
+        - Row: "<b><sprite name=Attack>*TAttack*<size=100%><voffset=1>@TAttack@ <sprite name=Target> *TAttack.Target* <sprite name=Pierce> *TAttack.Pierce*"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Row: "<size=50%> "
+        - Divider:
+        - Row: "$FH/181_character_ability_cards_geminate_accelerated_metabolism_2$"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=GMRangedToMelee>"
+        - Active:
+            Ability: BExtraTurn
+            ListLayout: "$FH/181_character_ability_cards_geminate_accelerated_metabolism_2$"
+            Icon: "Positive_Cards_MeleeForm"

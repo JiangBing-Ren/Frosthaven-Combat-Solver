@@ -1,0 +1,10 @@
+Parser: FHItem
+ID: 101
+ScenarioItemID: 1067
+Name: Major Power Potion
+Quantity: 2
+Type: Small
+Brewing:
+    Herb1: Arrowvine
+    Herb2: Axenut
+    Herb3: Corpsecap

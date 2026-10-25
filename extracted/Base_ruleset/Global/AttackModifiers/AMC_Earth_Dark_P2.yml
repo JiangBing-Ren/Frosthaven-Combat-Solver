@@ -1,0 +1,7 @@
+Parser: AttackModifier
+Name: AMC_EarthOrDark_P2
+MathModifier: "+2"
+Abilities:
+    InfuseAbility:
+        Infuse: [Earth,Dark]
+        ShowElementPicker: True

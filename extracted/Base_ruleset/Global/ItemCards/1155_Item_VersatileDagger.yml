@@ -1,0 +1,26 @@
+Parser: ItemCard
+ID: 1155
+StringID: VersatileDaggerID
+Name: $FH/1155_item_cards_versatile_dagger_1$
+Art: Versatile Dagger
+TotalInGame: 2
+Cost: 25
+Slot: OneHand 
+Rarity: Rare
+Usage: Unrestricted
+Trigger: PassiveEffect
+Data: 
+    Abilities:
+        AAttack:
+            Attack: 1
+            Filter: Self
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: BuffAttack
+                AttackType: Default
+Layout: 
+    - Active:
+        Ability: AAttack
+        ListLayout: "$FH/1155_item_cards_versatile_dagger_2$"
+        Layout: "$FH/1155_item_cards_versatile_dagger_2$"
+        Icon: "Positive_AttackPlus_Item"

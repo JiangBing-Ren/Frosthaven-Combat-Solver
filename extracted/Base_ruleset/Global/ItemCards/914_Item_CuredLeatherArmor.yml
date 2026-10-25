@@ -1,0 +1,29 @@
+Parser: ItemCard
+ID: 914
+StringID: CuredLeatherArmorID
+Name: $FH/0914_item_cards_cured_leather_armor_1$
+Art: Cured Leather Armor
+TotalInGame: 2
+Cost: 0
+Slot: Body
+Rarity: Rare
+Usage: Spent
+Trigger: PassiveEffect
+Data: 
+    Abilities:
+        Disadvantage:
+            AttackersGainDisadvantage: 2
+            Filter: Self
+            ActiveBonus:
+                Duration: Persistent
+                XPTracker: [0,0]
+    CompareAbility:
+        AbilityType: Attack
+Layout: 
+    - Active:
+        Ability: Disadvantage
+        ListLayout: $FH/0914_item_cards_cured_leather_armor_2$
+        Layout: $FH/0914_item_cards_cured_leather_armor_2$
+        Icon: "Positive_Disadvantage_Enemy_Item"
+    - Row: "<size=50%> "
+    - XPTracker: Disadvantage

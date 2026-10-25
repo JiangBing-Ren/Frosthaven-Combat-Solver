@@ -1,0 +1,7 @@
+Parser: FHItem
+ID: 59
+ScenarioItemID: 1294
+Name: Charm of Expertise
+Quantity: 2
+Type: Head
+RequiredCraftingItemIDs: [ 11, 113 ]

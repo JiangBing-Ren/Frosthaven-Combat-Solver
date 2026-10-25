@@ -1,0 +1,63 @@
+Parser: AbilityCard
+Name: $FH/462_character_ability_cards_deepwraith_crushing_darkness_1$
+Character: DeepwraithID
+ID: 462
+Level: 4
+Initiative: 40
+Discard: [Discard,Discard]
+Prefab: 462_Deepwraith_CrushingDarkness
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 4
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+        Consumes:
+            TCTrophy:
+                Trophies: 1
+                AbilityOverrides:
+                    CBuffAttack:
+                        ParentName: TAttack
+                        Strength: 1
+                        Conditions: [Curse]
+                XP: 1
+                PreviewEffectId: M1TrophyCurse
+    Bottom:
+        Abilities:
+            BMuddle:
+                Muddle: True 
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Target: 99
+                Filter: Enemy
+                AnimOverload: Intimidate_AOE
+                MiscVars:
+                    AutoSelectValidTiles: True
+        Consumes:
+            BCDark:
+                Element: Dark
+                AbilityOverrides:
+                    CBuffMuddle:
+                        ParentName: BMuddle
+                        Range: 3
+Layout:
+    Top:
+        - Row: "<sprite name=Attack> *TAttack* @TAttack@"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCTrophy
+                    Text: ": +1 <sprite name=Attack>,<sprite name=Curse>, <sprite name=XP1>"
+    Bottom:
+        - Row: "$FH/462_character_ability_cards_deepwraith_crushing_darkness_2$"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: BCDark
+                    Text: "+3 <sprite name=Range>"

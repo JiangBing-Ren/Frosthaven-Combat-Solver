@@ -1,0 +1,15 @@
+Parser: FHScenario
+ID: 31
+Name: Cracking Tunnel
+LevelID: FS_031_Cracking_Tunnel
+Chain: Algox3
+Location: CopperneckMountaions
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: AllCharactersGainGold
+          Param1: 10
+        - Type: AllCharactersGainExperience
+          Param1: 5
+        - Type: UnlockScenario
+          Param1: 41

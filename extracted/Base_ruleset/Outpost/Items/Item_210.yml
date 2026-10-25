@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 210
+ScenarioItemID: 1220
+Name: Tanjo
+Quantity: 1
+GoldCost: 30
+Type: TwoHandWeapon
+IsNewCharacterItem: False

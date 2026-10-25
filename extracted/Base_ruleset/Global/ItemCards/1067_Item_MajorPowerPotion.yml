@@ -1,0 +1,25 @@
+Parser: ItemCard
+ID: 1067
+StringID: MajorPowerPotionID
+Name: $FH/1067_item_cards_major_power_potion_1$
+Art: Major Power Potion
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        ABuffAttack:
+            Filter: Self
+            Attack: 2
+            ActiveBonus:
+                Behaviour: BuffAttack
+                Duration: Turn
+Layout: 
+    - Active:
+        Ability: ABuffAttack
+        Layout: "$FH/1067_item_cards_major_power_potion_2$"
+        ListLayout: "$FH/1067_item_cards_major_power_potion_2$"
+        Icon: "Positive_AttackPlus_Item"        

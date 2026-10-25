@@ -1,0 +1,15 @@
+Parser: HeroSummon
+ID: ToxinDistributorID
+LocKey: $FH/405_character_ability_cards_hive_plague_protocol_2$
+Model: ToxinDistributor
+Health:
+    Amount: 6
+    SquareEnhancements: 1
+Move:
+    Amount: 2
+    SquareEnhancements: 1
+Attack:
+    Amount: 2
+    SquareEnhancements: 1
+OnAttackConditions: Poison
+

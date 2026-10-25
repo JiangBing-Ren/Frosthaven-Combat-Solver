@@ -1,0 +1,63 @@
+Parser: AbilityCard
+Name: $FH/001_character_ability_cards_drifter_crushing_weight_1$
+Character: DrifterID
+ID: 1
+Level: 1
+ProgressionOrder: 0
+Initiative: 71
+Discard: [Lost,Discard]
+Prefab: 1_Drifter_CrushingWeight
+Data:
+    Top:
+        Abilities:
+            TBuffAttack:
+                Attack: 0
+                AttackEffect:
+                    Type: BuffIfAttackIsMelee
+                    Strength: 2
+                MiscVars:
+                    PrintedProperties: list("AttackBuff")
+                Filter: Self
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: BuffAttack
+                    AttackType: Melee
+                    XPTracker: [1,0,1,0,1,0]
+                    Flags: [EnhancedEffects]
+                AnimOverload: Persistent Buff
+
+    Bottom:
+        Abilities:
+            BHeal:
+                Heal:
+                    Amount: 2
+                    SquareEnhancements: 1
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Heal","Range")
+                Filter: [Self, Ally]
+                AnimOverload: Heal
+            BMoveTracker:
+                Filter: Self
+                MoveActiveBonusTracker: -1
+                Vars:
+                    NumberOfCardsToSelect: 1
+                AnimOverload: PowerUp
+Layout:
+    Top:
+        - Active:
+            Ability: TBuffAttack
+            Icon: Positive_AttackPlus
+            ListLayout: "$FH/001_character_ability_cards_drifter_crushing_weight_2$"
+            Layout: "$FH/001_character_ability_cards_drifter_crushing_weight_2$"
+        - XPTracker: TBuffAttack
+    Bottom:
+        - Row:
+            - ColumnWidths: "30,20,20,30"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Heal> *BHeal*<size=100%><voffset=1>@BHeal@"
+            - Column:
+                - AddedEffect: "<sprite name=Range>2"
+            - Column:
+        - Divider:
+        - Row: "$FH/001_character_ability_cards_drifter_crushing_weight_3$"

@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 212
+ScenarioItemID: 1222
+Name: Elemental Stone
+Quantity: 1
+GoldCost: 30
+Type: OneHandWeapon
+IsNewCharacterItem: False

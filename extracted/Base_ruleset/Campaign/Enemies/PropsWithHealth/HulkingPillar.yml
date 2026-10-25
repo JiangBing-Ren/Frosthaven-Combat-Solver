@@ -1,0 +1,71 @@
+Parser: Enemy
+ID: HulkingPillarID
+LocKey: $FH/FH_Scenario_Campaign_058_SCENARIO_OBJECT_1$
+MonsterType: Object
+Model: HulkingPillar
+StandeeLimit: 1
+# Base Stats
+Level0:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: LevelPlusXTimesCharactersTimesY
+            Multiplier: 3
+            SecondVariable: 2
+            AddTo: True
+Level1:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: LevelPlusXTimesCharactersTimesY
+            Multiplier: 3
+            SecondVariable: 2
+            AddTo: True
+Level2:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: LevelPlusXTimesCharactersTimesY
+            Multiplier: 3
+            SecondVariable: 2
+            AddTo: True
+Level3:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: LevelPlusXTimesCharactersTimesY
+            Multiplier: 3
+            SecondVariable: 2
+            AddTo: True
+Level4:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: LevelPlusXTimesCharactersTimesY
+            Multiplier: 3
+            SecondVariable: 2
+            AddTo: True
+Level5:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: LevelPlusXTimesCharactersTimesY
+            Multiplier: 3
+            SecondVariable: 2
+            AddTo: True
+Level6:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: LevelPlusXTimesCharactersTimesY
+            Multiplier: 3
+            SecondVariable: 2
+            AddTo: True
+Level7:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: LevelPlusXTimesCharactersTimesY
+            Multiplier: 3
+            SecondVariable: 2
+            AddTo: True

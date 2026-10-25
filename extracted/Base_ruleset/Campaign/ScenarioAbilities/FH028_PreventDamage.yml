@@ -1,0 +1,15 @@
+Parser: ScenarioAbility
+ID: FH028_PreventDamage
+ScenarioAbility:
+    AActive:
+        PreventDamage: -1
+        Target: -1
+        Filter: Self
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: PreventDamageByDiscardingPlayerCards
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_035_SCENARIO_MODIFIER_1$, Prevent]
+            IsToggleBonus: False
+            Hidden: True
+        AnimOverload: None
+        AutoTrigger: True

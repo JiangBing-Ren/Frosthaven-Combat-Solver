@@ -1,0 +1,85 @@
+Parser: AbilityCard
+Name: $FH/081_character_ability_cards_banner_spear_hold_the_line_1$
+#CustomImage: KRO_BANNER_SPEAR_AbilityCards_HoldTheLine
+Character: BannerSpearID
+ID: 81
+Level: 5
+Initiative: 05
+Discard: [Discard,Lost]
+Prefab: 81_Bannerspear_HoldTheLine
+Data:
+    Top:
+        Abilities:
+            TShield:
+                Shield:
+                    Amount: 2
+                    DiamondPlusEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                ActiveBonusDuration: Round
+                AnimOverload: SelfBuff
+            TAllySubShield:
+                Shield: 2
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                Range: 1
+                Target: 99
+                Filter: [Ally]
+                MiscVars:
+                    AutoSelectValidTiles: True
+                ActiveBonus:
+                    Duration: Round                     
+        XP: 0
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BShield:
+                Shield: 2
+                ActiveBonusDuration: Round
+                AnimOverload: SelfBuff
+                MiscVars:
+                    PrintedProperties: list("Shield")
+            BRetaliate:
+                Retaliate:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Retaliate")
+                AnimOverload: SelfBuff
+        XP: 2
+Layout:
+    Top:
+        - Active:
+            Ability: TShield
+            Icon: Positive_Shield
+            ListLayout: "<sprite name=Shield> *TShield*"
+            Layout: "<sprite name=Shield> *TShield* <voffset=1>@TShield@"
+        - Row: "<size=20%> "
+        - Row: "$FH/081_character_ability_cards_banner_spear_hold_the_line_2$"
+        - Row: "<size=20%> "
+        - Active:
+            Ability: TAllySubShield
+            Icon: Positive_Shield
+            ListLayout: "<sprite name=Shield> *TShield.TAllySubShield*"
+            Layout: "<sprite name=Shield> *TShield.TAllySubShield*"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove.Amount* <size=100%><voffset=1>@BMove@"
+        - Row: "<size=20%> "
+        - Row: "<b><size=130%><sprite name=Shield> *BShield*"
+        - Active:
+            Ability: BShield
+            Icon: Positive_Shield
+            ListLayout: "<sprite name=Shield> *BShield*"
+            Layout: "<sprite name=Shield> *BShield*"
+        - Row: "<size=20%> "
+        - Row: "<b><size=130%><sprite name=Retaliate> *BRetaliate* <voffset=1>@BRetaliate@"
+        - Active:
+            Ability: BRetaliate
+            Icon: Positive_Retaliate
+            ListLayout: "<sprite name=Retaliate> *BRetaliate*"
+            Layout: "<sprite name=Retaliate> *BRetaliate* <voffset=1>@BRetaliate@"

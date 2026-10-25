@@ -1,0 +1,44 @@
+Parser: EnemyCard
+ID: 881000624
+Name: $Monster_Ability_624_SteelAutomaton_UnstoppableForce$
+Initiative: 45
+Shuffle: False
+Data:
+    Abilities: 
+        AMove:
+            Move: 1
+        AAttack:
+            Attack: -1
+            SubAbilities:
+                AAttackSubPush:
+                    Push: 2
+                    IsInlineSubAbility: True
+                    SkipAnim: True
+        Control1:
+            Filter:
+                TargetType: Enemy
+                ActorType: [Player,Summon]
+            Range: 3
+            RangeIsBase: True
+            AnimOverload: Control
+            ControlActor:
+                Abilities:
+                    ControlMove:
+                        Move: 2
+                        StrengthIsBase: True
+                    ControlAttack:
+                        Attack: 0
+                        StrengthIsBase: True
+                        Range: 1
+                        RangeIsBase: True
+                        ShowRange: False
+                        Target: 1
+                        TargetIsBase: True
+                        ShowTarget: False
+                        StatIsBasedOnX:
+                            Strength:
+                                BasedOn: Vars
+                                Vars:
+                                    Value: MonsterClassManager.Find("AugmentedMindthiefID")?.CurrentMonsterStat?.Attack || 0
+                ControlDurationType: ControlForOneAction
+                ControlActorType: Enemy

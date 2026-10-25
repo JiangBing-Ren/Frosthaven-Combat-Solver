@@ -1,0 +1,885 @@
+Parser: MonsterData
+
+#--------------------------------------------------------------------------------
+# Commented out as this is used by the Guildmasters mode while generating scenarios which we won't be supporting.
+# NOTE: Sandbox generates empty room scenario.
+
+# Elite IDs do not need to be used in this file.  Only the non-elite IDs for monsters should be used
+Threats:
+#   Monster Name           [Normal threat value, Elite threat value]
+    CityGuardID:           [25,50]
+    CityArcherID:          [25,50]
+#    BanditArcherID:        [25,50]
+#    LivingBonesID:         [25,50]
+#    BanditGuardID:         [25,50]
+#    HoundID:               [25,50]
+#    RendingDrakeID:        [38,75]
+#    SpittingDrakeID:       [38,75]
+#    LivingCorpseID:        [25,50]
+#    LivingSpiritID:        [25,50]
+#    InoxGuardID:           [25,50]
+#    InoxArcherID:          [25,50]
+#    InoxShamanID:          [25,50]
+#    VermlingScoutID:       [13,25]
+#    CaveBearID:            [50,100]
+#    CultistID:             [25,50]
+#    LurkerID:              [38,75]
+#    FrostDemonID:          [38,75]
+#    FlameDemonID:          [38,75]
+#    EarthDemonID:          [38,75]
+#    WindDemonID:           [38,75]
+#    NightDemonID:          [38,75]
+#    SunDemonID:            [38,75]
+#    ForestImpID:           [20,40]
+#    BlackImpID:            [13,25]
+#    StoneGolemID:          [50,100]
+#    OozeID:                [25,50]
+#    AncientArtilleryID:    [25,50]
+#    GiantViperID:          [13,25]
+#    VermlingShamanID:      [25,50]
+#    SavvasIcestormID:      [50,100]
+#    SavvasLavaflowID:      [50,100]
+#    HarrowerInfesterID:    [38,75]
+#    DeepTerrorID:          [25,50]
+#Bosses
+#    BanditCommanderID:     [75,50]
+#    UndeadCommanderID:     [75,50]
+#    HighCultistID:         [75,50]
+#    InoxBodyguardID:       [75,50]
+#    MercilessOverseerID:   [75,50]
+#    ElderDrakeID:          [75,50]
+#    TheBetrayerID:         [75,50]
+#    TheColorlessID:        [75,50]
+#    SightlessEyeID:        [75,50]
+#    DarkRiderID:           [75,50]
+#    WingedHorrorID:        [75,50]
+#    JekserahID:            [75,50]
+#    CaptainoftheGuardID:   [75,50]
+#    PrimeDemonID:          [75,50]
+#    TheGloomID:            [75,50]
+    
+#--------------------------------------------------------------------------------
+# Commented out as this is used by the Guildmasters mode while generating scenarios which we won't be supporting.
+# NOTE: Sandbox generates empty room scenario.
+MonsterFamilies:
+    City:
+        Descriptions:
+            Generic: ["A hive of villainy", "A group of outlaws have made this area their home", "The local region has been pillaged by Bandits" ]
+            Crypt: ["A crypt defiled by Bandits", "Bandits have taken this crypt as their hideout", "Tomb robbers have pillaged this vault" ] 
+        DefaultMonsterGroup:
+        #   Monster Name:      [Min%, Max%]
+            CityGuardID:      [50, 75, 12, 25, 50, 75]
+            CityArcherID:     [25, 50, 12, 25, 50, 75]
+            
+#    Demon_SunNight:
+#        Descriptions:
+#            Generic: ["Demons from another realm walk the land", "Strange creatures have been seen in this area", "Demons blight the land"]
+#            Crypt: ["A crypt full of Demons, surely treasures await?", "This tomb could hold a portal to another realm", "This crypt must be purged of the demonic hordes" ]
+#        DefaultMonsterGroup:
+#            SunDemonID:         [0, 100, 12, 25, 50, 75]
+#            NightDemonID:       [0, 100, 12, 25, 50, 75]
+#    Undead:
+#        Descriptions:
+#            Generic: ["Rumours of the living dead plague this area", "The dead are restless here", "This place smells of one thing, the undead" ]
+#            Crypt: ["An ancient crypt swarming with the dead", "These catacombs echo to the sounds of the undead", "Death awaits you here" ]
+#        DefaultMonsterGroup:
+#            LivingBonesID:      [12, 50, 12, 25, 50, 75]
+#            LivingCorpseID:     [0, 25, 12, 25, 50, 75]        
+#            LivingSpiritID:     [0, 25, 12, 25, 50, 75]        
+#    CultistID:
+#        Descriptions:
+#            Generic: ["Men in strange robes have been seen in the area", "Weird lights have been seen in the dead of night" ]
+#            Crypt: ["A crypt use in strange ritual", "Unhallowed rites are performed within these walls", "The Undead are not allowed to rest here." ] 
+#        DefaultMonsterGroup:
+#        #   Monster Name:      [Min%, Max%]
+#            CultistID:           [25, 50, 12, 25, 50, 75]
+#            LivingBonesID:      [0, 75, 12, 25, 50, 75]
+#            LivingCorpseID:     [0, 75, 12, 25, 50, 75]
+#            LivingSpiritID:     [0, 50, 12, 25, 50, 75]
+#            
+#    Vermling:
+#        Descriptions:
+#            Generic: ["Locals have complained of items going missing", "Small shadowy figures plague the area" ]
+#            Forest: ["Strange creatures live in this wooded area", "A wild area, with detritus laid about", "The Undead are not allowed to rest here." ] 
+#        DefaultMonsterGroup:
+#        #   Monster Name:      [Min%, Max%]
+#            VermlingScoutID:    [75, 88, 25, 50, 75, 85]
+#            VermlingShamanID:   [12, 25, 12, 25, 50, 75]
+#            
+#    Inox:
+#        Descriptions:
+#            Generic: ["Trade routes have been cut off", "Locals tell of strange chanting in the night" ]
+#            Forest: ["Woodcutters in the area have been murdered", "None venture deep into the forest here", "Humans are not welcome" ] 
+#        DefaultMonsterGroup:
+#        #   Monster Name:      [Min%, Max%]
+#            InoxGuardID:        [25, 50, 12, 25, 50, 75]
+#            InoxArcherID:       [25, 50, 12, 25, 50, 75]
+#            InoxShamanID:       [0, 25, 12, 25, 50, 75]
+#            
+#    ForestDenizens:
+#        Descriptions:
+#            Generic: ["The wilds have reclaimed the land", "Magic is strong in this area" ]
+#            Forest: ["Laughter can be heard echoing through the trees", "Howls are heard deep in the forest" ] 
+#        DefaultMonsterGroup:
+#        #   Monster Name:      [Min%, Max%]
+#            ForestImpID:        [25, 75, 12, 25, 50, 75]        
+#            HoundID:             [25, 75, 12, 25, 50, 75]
+#            
+#    Drakes:
+#        Descriptions:
+#            Generic: ["The wilds have reclaimed the land", "Magic is strong in this area" ]
+#            Forest: ["Laughter can be heard echoing through the trees", "Howls are heard deep in the forest" ] 
+#        DefaultMonsterGroup:
+#        #   Monster Name:      [Min%, Max%]
+#            RendingDrakeID:     [25, 75, 12, 25, 50, 75]        
+#            SpittingDrakeID:    [25, 75, 12, 25, 50, 75]
+#    Golems:
+#        Descriptions:
+#            Generic: ["The wilds have reclaimed the land", "Magic is strong in this area" ]
+#            Forest: ["Laughter can be heard echoing through the trees", "Howls are heard deep in the forest" ] 
+#        DefaultMonsterGroup:
+#        #   Monster Name:      [Min%, Max%]
+#            StoneGolemID:       [100, 100, 12, 25, 50, 75]        
+            
+
+            
+#--------------------------------------------------------------------------------
+# Commented out as this is used by the Guildmasters mode while generating scenarios which we won't be supporting.
+# NOTE: Sandbox generates empty room scenario.
+MonsterGroups:
+#   Monster Group Name:
+#       Monster Name:      [Min%, Max%]
+    City_GuardArchers:
+        CityGuardID:      [50, 75, 12, 25, 50, 75]
+        CityArcherID:     [25, 50, 12, 25, 50, 75]
+#    Bandit_MainlyArchers:
+#        BanditGuardID:      [0, 25, 12, 25, 50, 75]
+#        BanditArcherID:     [75, 100, 12, 25, 50, 75]
+#    Bandit_Forest:
+#        BanditGuardID:      [25, 75, 12, 25, 50, 75]
+#        BanditArcherID:     [0,  50, 12, 25, 50, 75]
+#        HoundID:             [25, 75, 12, 25, 50, 75]
+#    BanditArcherHounds:
+#        BanditArcherID:     [25, 75, 12, 25, 50, 75]
+#        HoundID:             [25, 75, 12, 25, 50, 75]
+#    BanditBears:
+#        BanditGuardID:      [0,  50, 12, 25, 50, 75]
+#        BanditArcherID:     [0,  50, 12, 25, 50, 75]
+#        CaveBearID:         [25,  50, 12, 25, 50, 75]
+#    BanditAnimals:
+#        BanditGuardID:      [25, 50, 12, 25, 50, 75]
+#        BanditArcherID:     [0,  50, 12, 25, 50, 75]
+#        CaveBearID:         [0,  50, 12, 25, 50, 75]
+#        GiantViperID:       [25, 50, 25, 50, 75, 85]
+#    Undead_Bandit:
+#        BanditGuardID:      [25, 50, 12, 25, 50, 75]
+#        BanditArcherID:     [0,  50, 12, 25, 50, 75]
+#        LivingBonesID:      [25, 50, 12, 25, 50, 75]
+#        LivingCorpseID:     [0,  50, 12, 25, 50, 75]
+#    Bandit_PlusCultist:
+#        BanditGuardID:      [25, 50, 12, 25, 50, 75]
+#        BanditArcherID:     [25, 50, 12, 25, 50, 75]
+#        CultistID:           [25, 50, 12, 25, 50, 75]
+#    Bandit_BossGroup:
+#        BanditGuardID:      [25, 65, 12, 25, 50, 75]
+#        BanditArcherID:     [25, 65, 12, 25, 50, 75]
+#    Bandit_ArchersWithRangers:
+#        BanditArcherID:     [0, 25, 12, 25, 50, 75]
+#        CultistID:           [25, 50, 12, 25, 50, 75]
+#    Bandit_ArchersWithBones:
+#        BanditArcherID:     [25, 50, 12, 25, 50, 75]
+#        LivingBonesID:      [25, 50, 12, 25, 50, 75]
+#    Bandit_ArchersWithCultists:
+#        BanditArcherID:     [25, 50, 12, 25, 50, 75]
+#        CultistID:           [25, 50, 12, 25, 50, 75]
+#    Bandit_ArchersWithCorpses:
+#        BanditArcherID:     [25, 50, 12, 25, 50, 75]
+#        LivingCorpseID:     [25, 50, 12, 25, 50, 75]
+#    Bandit_ArchersWithBonesCultists:
+#        BanditArcherID:     [20, 60, 12, 25, 50, 75]
+#        LivingBonesID:      [20, 60, 12, 25, 50, 75]        
+#        CultistID:           [20, 60, 12, 25, 50, 75]
+#    Bandit_ArchersWithDemonsCultists:
+#        BanditArcherID:     [20, 60, 12, 25, 50, 75]
+#        SunDemonID:         [0, 25, 12, 25, 50, 75]        
+#        NightDemonID:       [0, 25, 12, 25, 50, 75]        
+#        CultistID:           [20, 60, 12, 25, 50, 75]
+#    Bandit_ArchersWithCorpsesCultists:
+#        BanditArcherID:     [20, 60, 12, 25, 50, 75]
+#        LivingCorpseID:     [20, 60, 12, 25, 50, 75]        
+#        CultistID:           [20, 60, 12, 25, 50, 75]
+#    Undead_CultistsSkellies:
+#        CultistID:           [25, 50, 12, 25, 50, 75]
+#        LivingBonesID:      [25, 50, 12, 25, 50, 75]
+#    Undead_Cultists:
+#        CultistID:           [25, 50, 12, 25, 50, 75]
+#        LivingBonesID:      [0, 75, 12, 25, 50, 75]
+#        LivingCorpseID:     [0, 75, 12, 25, 50, 75]
+#        LivingSpiritID:     [0, 50, 12, 25, 50, 75]
+#    Undead_NonFamily:
+#        LivingBonesID:      [0, 75, 12, 25, 50, 75]
+#        LivingCorpseID:     [0, 75, 12, 25, 50, 75]
+#        LivingSpiritID:     [0, 50, 12, 25, 50, 75]
+#    Undead_Skellies:
+#        LivingBonesID:      [0, 100, 12, 25, 50, 75]
+#    Undead_CorpseCultists:
+#        CultistID:           [25, 50, 12, 25, 50, 75]
+#        LivingCorpseID:     [25, 75, 12, 25, 50, 75]
+#    Undead_CorpseCultistElites:
+#        CultistID:           [25, 75, 100, 100, 100, 100]
+#        LivingCorpseID:     [25, 50, 12, 25, 50, 75]
+#    Undead_BonesCorpseCultists:
+#        CultistID:           [25, 50, 12, 25, 50, 75]
+#        LivingCorpseID:     [25, 50, 12, 25, 50, 75]
+#        LivingBonesID:      [25, 50, 12, 25, 50, 75]
+#    Demon_SunNight_PlusCultists:
+#        SunDemonID:         [0, 50, 12, 25, 50, 75]
+#        NightDemonID:       [0, 50, 12, 25, 50, 75]
+#        CultistID:           [25, 50, 12, 25, 50, 75]
+#    Demon_Night_PlusCultists:
+#        NightDemonID:       [50, 75, 12, 25, 50, 75]
+#        CultistID:           [25, 50, 12, 25, 50, 75]
+#    Demon_Night_PlusCorpses:
+#        NightDemonID:       [50, 75, 12, 25, 50, 75]
+#        LivingCorpseID:     [25, 50, 12, 25, 50, 75]
+#    Demon_Sun_PlusRangers:
+#        SunDemonID:         [50, 75, 12, 25, 50, 75]
+#    Demon_Sun_PlusImps:
+#        SunDemonID:         [50, 75, 12, 25, 50, 75]
+#        ForestImpID:        [25, 50, 12, 25, 50, 75]
+#    Demon_SunNight_PlusBones:
+#        SunDemonID:         [0, 50, 12, 25, 50, 75]
+#        NightDemonID:       [0, 50, 12, 25, 50, 75]
+#        LivingBonesID:      [25, 50, 12, 25, 50, 75]
+#    Demon_SunNight_PlusRangers:
+#        SunDemonID:         [0, 50, 12, 25, 50, 75]
+#        NightDemonID:       [0, 50, 12, 25, 50, 75]
+#        LivingBonesID:      [25, 50, 12, 25, 50, 75]
+#    Demon_SunNight_PlusCorpses:
+#        SunDemonID:         [0, 50, 12, 25, 50, 75]
+#        NightDemonID:       [0, 50, 12, 25, 50, 75]
+#        LivingCorpseID:      [25, 50, 12, 25, 50, 75]
+#    Demon_SunNight_PlusSpirits:
+#        SunDemonID:         [0, 50, 12, 25, 50, 75]
+#        NightDemonID:       [0, 50, 12, 25, 50, 75]
+#        LivingSpiritID:      [25, 50, 12, 25, 50, 75]
+#    Undead_Melee:
+#        LivingBonesID:      [25, 50, 12, 25, 50, 75]
+#        LivingCorpseID:     [25, 50, 12, 25, 50, 75]
+#    Undead_Mixed:
+#        LivingBonesID:      [12, 50, 12, 25, 50, 75]
+#        LivingCorpseID:     [12, 50, 12, 25, 50, 75]        
+#        LivingSpiritID:     [0, 25, 12, 25, 50, 75]        
+#    Undead_NoSpirits:
+#        LivingBonesID:      [12, 50, 12, 25, 50, 75]
+#        LivingCorpseID:     [12, 50, 12, 25, 50, 75]        
+#    Undead_MoreSpirits:
+#        LivingBonesID:      [12, 37, 12, 25, 50, 75]
+#        LivingCorpseID:     [12, 37, 12, 25, 50, 75]        
+#        LivingSpiritID:     [50, 50, 12, 25, 50, 75]
+#    Vermling_Hunters:
+#        VermlingScoutID:    [25, 50, 25, 50, 75, 85]
+#        VermlingShamanID:   [0,  25, 12, 25, 50, 75]
+#        HoundID:             [25, 50, 12, 25, 50, 75]
+#    VermlingCorpses:
+#        VermlingScoutID:    [0, 50, 25, 50, 75, 85]
+#        VermlingShamanID:   [25,  50, 12, 25, 50, 75]
+#        LivingCorpseID:     [25, 50, 12, 25, 50, 75]
+#    Vermling_Hunters_GuaranteedShaman:
+#        VermlingScoutID:    [0, 50, 25, 50, 75, 85]
+#        VermlingShamanID:   [25,  50, 12, 25, 50, 75]
+#        HoundID:             [0, 50, 12, 25, 50, 75]        
+#    Vermling_PlusImps:
+#        VermlingScoutID:    [12, 50, 25, 50, 75, 85]
+#        VermlingShamanID:   [12, 25, 12, 25, 50, 75]
+#        ForestImpID:        [25, 50, 12, 25, 50, 75]
+#    VermlingScouts_Imps:
+#        VermlingScoutID:    [12, 50, 25, 50, 75, 85]
+#        HoundID:             [0,  50, 12, 25, 50, 75]
+#        ForestImpID:        [25, 50, 12, 25, 50, 75]
+#    InoxMagic_PlusImps:
+#        ForestImpID:        [75, 88, 12, 25, 50, 75]
+#        InoxShamanID:       [12, 25, 12, 25, 50, 75]
+#    InoxHunters:    
+#        InoxGuardID:        [0,  25, 12, 25, 50, 75]
+#        InoxArcherID:       [25, 75, 12, 25, 50, 75]
+#        HoundID:             [25, 75, 12, 25, 50, 75]
+#    InoxEliteGuards:    
+#        InoxGuardID:        [50, 75, 100, 100, 100, 100]
+#        InoxArcherID:       [0, 50, 12, 25, 50, 75]
+#        HoundID:             [0, 50, 12, 25, 50, 75]
+#    InoxGuaranteedShaman:
+#        HoundID:             [0, 25, 12, 25, 50, 75]
+#        InoxGuardID:        [0, 50, 12, 25, 50, 75]
+#        InoxArcherID:       [0, 50, 12, 25, 50, 75]
+#        InoxShamanID:       [12, 25, 12, 25, 50, 75]
+#    InoxVermlingFighters:
+#        InoxGuardID:        [25, 50, 12, 25, 50, 75]
+#        InoxArcherID:       [0, 50, 12, 25, 50, 75]
+#        VermlingScoutID:    [12, 50, 25, 50, 75, 85]
+#        InoxShamanID:       [0, 25, 12, 25, 50, 75]
+#    ForestMagic:
+#        InoxGuardID:        [25, 50, 12, 25, 50, 75]
+#        InoxShamanID:       [0, 12, 12, 25, 50, 75]
+#        VermlingShamanID:   [0, 12, 12, 25, 50, 75]
+#        ForestImpID:        [25, 50, 12, 25, 50, 75]
+#    DemonImps:
+#        NightDemonID:       [50, 75, 12, 25, 50, 75]
+#        ForestImpID:        [25, 50, 12, 25, 50, 75]        
+#    DemonImpCultists:
+#        NightDemonID:       [25, 50, 12, 25, 50, 75]
+#        CultistID:           [25, 50, 12, 25, 50, 75]
+#        ForestImpID:        [25, 50, 12, 25, 50, 75]        
+#    Vermling_PlusSpirits:
+#        VermlingScoutID:    [12, 50, 25, 50, 75, 85]
+#        VermlingShamanID:   [12, 25, 12, 25, 50, 75]
+#        LivingSpiritID:     [25, 50, 12, 25, 50, 75]
+#    InoxBossGroup:
+#        InoxGuardID:        [0, 50, 12, 25, 50, 75]
+#        InoxArcherID:       [0, 50, 12, 25, 50, 75]
+#        InoxShamanID:       [12, 25, 12, 25, 50, 75]
+#    DemonBones:
+#        NightDemonID:       [50, 50, 12, 25, 50, 75]
+#        LivingBonesID:      [0, 50, 12, 25, 50, 75]        
+#    NightCultist:
+#        NightDemonID:       [50, 50, 12, 25, 50, 75]
+#        CultistID:           [50, 50, 50, 50, 50, 75] 
+#    Undead_CorpseMainly:        
+#        LivingBonesID:      [25, 25, 12, 25, 50, 75]
+#        LivingCorpseID:     [75, 75, 12, 25, 50, 75]
+#    Some_Cultists_Bones:
+#        CultistID:           [25, 50, 12, 25, 50, 75]
+#        LivingBonesID:      [50, 75, 12, 25, 50, 75]
+#    More_Cultists_Bones:
+#        CultistID:           [50, 50, 12, 25, 50, 75]
+#        LivingBonesID:      [50, 50, 12, 25, 50, 75] 
+#        
+#    Some_Cultists_BoneRangers:
+#        CultistID:           [25, 50, 12, 25, 50, 75]
+#    More_Cultists_BoneRangers:
+#        CultistID:           [50, 50, 12, 25, 50, 75]
+#    Undead_ExtraRangers:
+#        LivingBonesID:      [0, 50, 12, 25, 50, 75]
+#        LivingCorpseID:     [0, 50, 12, 25, 50, 75]        
+#    Vermling_BanditArchers:
+#        VermlingScoutID:    [25, 75, 25, 50, 75, 85]
+#        BanditArcherID:     [25, 75, 12, 25, 50, 75]
+#    Vermling_Hounds:
+#        VermlingScoutID:    [25, 50, 25, 50, 75, 85]
+#        HoundID:             [50, 75, 12, 25, 50, 75]        
+#    Vermling_Hounds_Inox_Elite:
+#        VermlingScoutID:    [25, 50, 25, 50, 75, 85]
+#        HoundID:             [25, 50, 12, 25, 50, 75]        
+#        InoxShamanID:       [25, 25, 100, 100, 100, 100]
+#    Hounds:
+#        HoundID:             [100, 100, 12, 25, 50, 75]        
+#    Elite_Inox_Archer_Hounds:
+#        HoundID:             [75, 75, 100, 100, 100, 100]        
+#        InoxArcherID:       [25, 25, 100, 100, 100, 100] 
+#    Undead_SpiritsBones:
+#        LivingBonesID:      [25, 75, 0, 0, 0, 0]
+#        LivingSpiritID:     [25, 75, 0, 0, 0, 0]        
+#    Undead_CorpsesBones:
+#        LivingCorpseID:     [25, 75, 12, 25, 50, 75]
+#        LivingSpiritID:     [25, 75, 12, 25, 50, 75]        
+#    NightDemons_PlusInox:
+#        InoxGuardID:        [0, 50, 12, 25, 50, 75]
+#        InoxArcherID:       [0, 50, 12, 25, 50, 75]
+#        NightDemonID:       [25, 50, 12, 25, 50, 75]
+#    NightDemons:
+#        NightDemonID:       [100, 100, 12, 25, 50, 75]
+#
+#    NightDemons_PlusInoxShamans:
+#        InoxShamanID:       [25, 25, 12, 25, 50, 75]
+#        InoxGuardID:        [0, 50, 12, 25, 50, 75]
+#        InoxArcherID:       [0, 50, 12, 25, 50, 75]
+#        NightDemonID:       [25, 50, 12, 25, 50, 75]
+#    Vermling_BearHunters:
+#        VermlingScoutID:    [25, 50, 25, 50, 75, 85]
+#        HoundID:             [25, 50, 12, 25, 50, 75]
+#        CaveBearID:         [25, 50, 12, 25, 50, 75]
+#    Vermling_SnakeHunters:
+#        VermlingScoutID:    [25, 75, 25, 50, 75, 85]
+#        GiantViperID:       [25, 50, 25, 50, 75, 85]
+#    GolemImp:
+#        StoneGolemID:       [50, 50, 12, 25, 50, 75]
+#        ForestImpID:        [50, 50, 12, 25, 50, 75]
+#    GolemBones:
+#        StoneGolemID:       [50, 75, 12, 25, 50, 75]
+#        LivingBonesID:      [0, 50, 12, 25, 50, 75]
+#    Snakes_Undead:
+#        LivingBonesID:      [0, 50, 12, 25, 50, 75]
+#        LivingCorpseID:     [0, 50, 12, 25, 50, 75]        
+#        LivingSpiritID:     [0, 50, 12, 25, 50, 75]  
+#        GiantViperID:       [25, 50, 25, 50, 75, 85]
+#    Snakes_Bones:
+#        LivingBonesID:      [0, 50, 12, 25, 50, 75]
+#        GiantViperID:       [25, 50, 25, 50, 75, 85]
+#
+#    Chaos:
+#        BanditArcherID:     [0, 100, 12, 25, 50, 75]
+#        BanditGuardID:      [0, 100, 12, 25, 50, 75]
+#        CaveBearID:         [0, 100, 12, 25, 50, 75]
+#        CultistID:           [0, 100, 12, 25, 50, 75]
+#        ForestImpID:        [0, 100, 12, 25, 50, 75]     
+#        GiantViperID:       [0, 100, 25, 50, 75, 85]
+#        HoundID:             [0, 100, 12, 25, 50, 75]
+#        InoxArcherID:       [0, 100, 12, 25, 50, 75]
+#        InoxGuardID:        [0, 100, 12, 25, 50, 75]
+#        InoxShamanID:       [0, 100, 12, 25, 50, 75]
+#        LivingBonesID:      [0, 100, 12, 25, 50, 75]
+#        LivingCorpseID:     [0, 100, 12, 25, 50, 75]        
+#        LivingSpiritID:     [0, 100, 12, 25, 50, 75]  
+#        NightDemonID:       [0, 100, 12, 25, 50, 75]
+#        RendingDrakeID:     [0, 100, 12, 25, 50, 75]        
+#        SpittingDrakeID:    [0, 100, 12, 25, 50, 75]
+#        StoneGolemID:       [0, 100, 12, 25, 50, 75]
+#        SunDemonID:         [0, 100, 12, 25, 50, 75]
+#        VermlingScoutID:    [0, 100, 25, 50, 75, 85]
+#        VermlingShamanID:   [0, 100, 12, 25, 50, 75]
+#    CreatureChaos:
+#        CaveBearID:         [0, 100, 12, 25, 50, 75]
+#        HoundID:             [0, 100, 12, 25, 50, 75]
+#        ForestImpID:        [0, 100, 12, 25, 50, 75]     
+#        GiantViperID:       [0, 100, 25, 50, 75, 85]
+#        LivingBonesID:      [0, 100, 12, 25, 50, 75]
+#        LivingCorpseID:     [0, 100, 12, 25, 50, 75]        
+#        LivingSpiritID:     [0, 100, 12, 25, 50, 75]  
+#        RendingDrakeID:     [0, 100, 12, 25, 50, 75]        
+#        SpittingDrakeID:    [0, 100, 12, 25, 50, 75]
+#        StoneGolemID:       [0, 100, 12, 25, 50, 75]
+#        NightDemonID:       [0, 100, 12, 25, 50, 75]
+#        SunDemonID:         [0, 100, 12, 25, 50, 75]
+#    ImpsHoundsSnakes:
+#        HoundID:             [0, 50, 12, 25, 50, 75]
+#        ForestImpID:        [25, 75, 12, 25, 50, 75]     
+#        GiantViperID:       [0, 50, 25, 50, 75, 85]
+#    ImpsHoundsSnakesBears:
+#        HoundID:             [0, 50, 12, 25, 50, 75]
+#        ForestImpID:        [25, 75, 12, 25, 50, 75]     
+#        GiantViperID:       [0, 50, 25, 50, 75, 85]
+#        CaveBearID:         [0, 50, 12, 25, 50, 75]
+#    SunDemons_Golems:
+#        StoneGolemID:       [50, 75, 12, 25, 50, 75]
+#        SunDemonID:         [25, 50, 12, 25, 50, 75]
+#    NightDemons_Golems:
+#        StoneGolemID:       [50, 75, 12, 25, 50, 75]
+#        NightDemonID:       [25, 50, 12, 25, 50, 75]
+#    Vipers_Hounds:
+#        GiantViperID:       [25, 50, 25, 50, 75, 85]
+#        HoundID:             [50, 75, 12, 25, 50, 75]
+#    Vermling_VipersNoShaman:
+#        VermlingScoutID:    [25, 75, 12, 25, 50, 75] 
+#        GiantViperID:       [25, 50, 12, 25, 50, 75] 
+#    Vermling_VipersWithShaman:
+#        VermlingScoutID:    [25, 75, 12, 25, 50, 75] 
+#        VermlingShamanID:   [0, 25, 12, 25, 50, 75]      
+#        GiantViperID:       [25, 50, 12, 25, 50, 75] 
+#    Demon_SunNightGolems:
+#        StoneGolemID:       [25, 50, 12, 25, 50, 75]
+#        NightDemonID:       [12, 50, 12, 25, 50, 75]
+#        SunDemonID:         [12, 50, 12, 25, 50, 75]
+#    ForestImps_Spirits:
+#        ForestImpID:        [25, 75, 12, 25, 50, 75]  
+#        LivingSpiritID:     [25, 75, 12, 25, 50, 75]
+#    MindControl_ImpsBandits:
+#        ForestImpID:        [50, 50, 100, 100, 100, 100]
+#        BanditGuardID:      [0, 50, 12, 25, 50, 75]  
+#        BanditArcherID:     [0, 50, 12, 25, 50, 75]
+#    Bandits_HoundsVipers:
+#        BanditGuardID:      [0, 50, 12, 25, 50, 75]  
+#        BanditArcherID:     [0, 50, 12, 25, 50, 75]
+#        HoundID:             [25, 50, 12, 25, 50, 75]
+#        GiantViperID:       [25, 50, 12, 25, 50, 75]
+#    Inox_WithHounds:
+#        HoundID:             [0, 25, 12, 25, 50, 75]
+#        InoxGuardID:        [0, 50, 12, 25, 50, 75]
+#        InoxArcherID:       [0, 50, 12, 25, 50, 75]
+#        InoxShamanID:       [0, 25, 12, 25, 50, 75]
+#    Cultist_Hounds:
+#        HoundID:             [25, 75, 12, 25, 50, 75]
+#        CultistID:           [25, 75, 12, 25, 50, 75]
+#    Hounds_BearsVipersDrakes:
+#        CaveBearID:         [0, 50, 12, 25, 50, 75]
+#        HoundID:             [0, 50, 12, 25, 50, 75]
+#        GiantViperID:       [0, 50, 12, 25, 50, 75]
+#        RendingDrakeID:     [0, 50, 12, 25, 50, 75]        
+#        SpittingDrakeID:    [0, 50, 12, 25, 50, 75]
+#    HoundsVipers:
+#        HoundID:             [25, 75, 12, 25, 50, 75]
+#        GiantViperID:       [25, 75, 12, 25, 50, 75]
+#    HoundsVipersBears:
+#        HoundID:             [0, 50, 12, 25, 50, 75]
+#        GiantViperID:       [0, 50, 12, 25, 50, 75]
+#        CaveBearID:         [25, 50, 12, 25, 50, 75]        
+#    ImpsHoundsBears:
+#        HoundID:             [0, 50, 12, 25, 50, 75]
+#        ForestImpID:        [25, 50, 12, 25, 50, 75]
+#        CaveBearID:         [25, 50, 12, 25, 50, 75]        
+#    Drakes:
+#        RendingDrakeID:     [25, 75, 12, 25, 50, 75]        
+#        SpittingDrakeID:    [25, 75, 12, 25, 50, 75]
+#    DrakesNSnakes:
+#        RendingDrakeID:     [25, 50, 12, 25, 50, 75]        
+#        SpittingDrakeID:    [25, 50, 12, 25, 50, 75]
+#        GiantViperID:       [25, 25, 12, 25, 50, 75]
+#
+#    DrakesNHounds:
+#        RendingDrakeID:     [25, 50, 12, 25, 50, 75]        
+#        SpittingDrakeID:    [25, 50, 12, 25, 50, 75]
+#        HoundID:             [25, 25, 12, 25, 50, 75]
+#    Demon_SunNight:
+#        NightDemonID:       [25, 75, 12, 25, 50, 75]
+#        SunDemonID:         [25, 75, 12, 25, 50, 75]
+#    Bandit_Golem:
+#        StoneGolemID:       [25, 100, 12, 25, 50, 75]
+#        BanditGuardID:      [0, 50, 12, 25, 50, 75]  
+#        BanditArcherID:     [0, 50, 12, 25, 50, 75]
+#    Golems:
+#        StoneGolemID:       [100, 100, 12, 25, 50, 75]
+#    ForestImps:
+#        ForestImpID:        [100, 100, 12, 25, 50, 75]
+#    Spirits:
+#        LivingSpiritID:     [100, 100, 12, 25, 50, 75]
+#    Bandit_Forest_Cultists:
+#        BanditGuardID:      [0, 50, 12, 25, 50, 75]
+#        BanditArcherID:     [25, 50, 12, 25, 50, 75]
+#        HoundID:             [0, 50, 12, 25, 50, 75]
+#        CultistID:           [25, 50, 12, 25, 50, 75]
+#    GolemsDrakesVipers:
+#        StoneGolemID:       [25, 50, 12, 25, 50, 75]
+#        RendingDrakeID:     [0, 75, 12, 25, 50, 75]        
+#        SpittingDrakeID:    [25, 75, 12, 25, 50, 75]
+#        GiantViperID:       [0, 75, 25, 50, 75, 85]
+#    Demon_EarthFlame:      
+#        EarthDemonID:       [25, 75, 12, 25, 50, 75]
+#        FlameDemonID:       [25, 75, 12, 25, 50, 75]        
+#    Demon_FrostWind:      
+#        FrostDemonID:       [25, 75, 12, 25, 50, 75]
+#        WindDemonID:        [25, 75, 12, 25, 50, 75]     
+#    Demon_FlameWind:      
+#        FlameDemonID:       [25, 75, 12, 25, 50, 75]
+#        WindDemonID:        [25, 75, 12, 25, 50, 75]     
+#    Demon_FlameOnly:      
+#        FlameDemonID:       [100, 100, 12, 25, 50, 75]        
+#    Demon_EarthOnly:      
+#        EarthDemonID:       [100, 100, 12, 25, 50, 75]        
+#    Demon_FrostOnly:      
+#        FrostDemonID:       [100, 100, 12, 25, 50, 75] 
+#    Demon_WindOnly:      
+#        WindDemonID:       [100, 100, 12, 25, 50, 75] 
+#    FlameDemonsPlusEarth:   
+#        FlameDemonID:       [50, 75, 12, 25, 50, 75]
+#        EarthDemonID:       [0, 50, 12, 25, 50, 75] 
+#
+#    Demon_EarthFlameWindFrost:        
+#        EarthDemonID:       [0, 50, 12, 25, 50, 75] 
+#        FlameDemonID:       [0, 50, 12, 25, 50, 75] 
+#        WindDemonID:        [0, 50, 12, 25, 50, 75] 
+#        FrostDemonID:       [0, 50, 12, 25, 50, 75] 
+#
+#    Demon_All:        
+#        EarthDemonID:       [0, 50, 12, 25, 50, 75] 
+#        FlameDemonID:       [0, 50, 12, 25, 50, 75] 
+#        WindDemonID:        [0, 50, 12, 25, 50, 75] 
+#        FrostDemonID:       [0, 50, 12, 25, 50, 75] 
+#        NightDemonID:       [0, 50, 12, 25, 50, 75] 
+#        SunDemonID:         [0, 50, 12, 25, 50, 75] 
+#
+#    Demon_EarthFrost:        
+#        EarthDemonID:       [0, 50, 12, 25, 50, 75] 
+#        FrostDemonID:       [0, 50, 12, 25, 50, 75] 
+#
+#    Demon_EarthNight:        
+#        EarthDemonID:       [0, 50, 12, 25, 50, 75] 
+#        NightDemonID:        [0, 50, 12, 25, 50, 75] 
+#        
+#    NightFlameEarthDemons:
+#        NightDemonID:       [0, 75, 12, 25, 50, 75]
+#        EarthDemonID:       [0, 75, 12, 25, 50, 75]
+#        FlameDemonID:       [0, 50, 12, 25, 50, 75] 
+#    
+#    EarthDemonsPlusFlame:   
+#        EarthDemonID:       [50, 75, 12, 25, 50, 75]
+#        FlameDemonID:       [0, 50, 12, 25, 50, 75] 
+#    WindDemonsPlusImps:   
+#        WindDemonID:       [50, 75, 12, 25, 50, 75]
+#        ForestImpID:       [0, 50, 12, 25, 50, 75]     
+#    CaveBearHounds:   
+#        CaveBearID:         [50, 75, 12, 25, 50, 75] 
+#        HoundID:             [25, 50, 12, 25, 50, 75]         
+#    FrostDemonsCaveBearHounds:   
+#        FrostDemonID:       [50, 75, 12, 25, 50, 75] 
+#        CaveBearID:         [0, 25, 12, 25, 50, 75] 
+#        HoundID:             [0, 25, 12, 25, 50, 75]   
+#
+#    FlameDemonUndead:
+#        FlameDemonID:       [25, 50, 12, 25, 50, 75]
+#        LivingBonesID:      [0, 75, 12, 25, 50, 75]
+#        LivingCorpseID:     [0, 75, 12, 25, 50, 75]
+#        LivingSpiritID:     [0, 50, 12, 25, 50, 75]
+#
+#    NightDemonUndead:
+#        NightDemonID:       [25, 50, 12, 25, 50, 75]
+#        LivingBonesID:      [0, 75, 12, 25, 50, 75]
+#        LivingCorpseID:     [0, 75, 12, 25, 50, 75]
+#        LivingSpiritID:     [0, 50, 12, 25, 50, 75]
+#
+#    FrostDemonUndead:
+#        FrostDemonID:       [25, 50, 12, 25, 50, 75]
+#        LivingBonesID:      [0, 75, 12, 25, 50, 75]
+#        LivingCorpseID:     [0, 75, 12, 25, 50, 75]
+#        LivingSpiritID:     [0, 50, 12, 25, 50, 75]
+#        
+#    WindDemonUndead:
+#        WindDemonID:       [25, 50, 12, 25, 50, 75]
+#        LivingBonesID:      [0, 75, 12, 25, 50, 75]
+#        LivingCorpseID:     [0, 75, 12, 25, 50, 75]
+#        LivingSpiritID:     [0, 50, 12, 25, 50, 75]
+#
+#    FrostWindDemonUndead:
+#        FrostDemonID:       [25, 50, 12, 25, 50, 75]
+#        WindDemonID:        [25, 50, 12, 25, 50, 75]
+#        LivingBonesID:      [0, 50, 12, 25, 50, 75]
+#        LivingCorpseID:     [0, 50, 12, 25, 50, 75]
+#        LivingSpiritID:     [0, 25, 12, 25, 50, 75]
+#
+#    SavvasIcestormFriends:
+#        SavvasIcestormID:   [25, 50, 12, 25, 50, 75]
+#        FrostDemonID:       [0, 50, 12, 25, 50, 75]
+#        WindDemonID:        [0, 50, 12, 25, 50, 75]
+#
+#    SavvasLavaflowFriends:
+#        SavvasLavaflowID:   [25, 50, 12, 25, 50, 75]
+#        EarthDemonID:       [0, 50, 12, 25, 50, 75]
+#        FlameDemonID:       [0, 50, 12, 25, 50, 75] 
+#        
+#    DrakesNFlame:
+#        RendingDrakeID:     [25, 75, 12, 25, 50, 75]        
+#        SpittingDrakeID:    [25, 75, 12, 25, 50, 75]
+#        FlameDemonID:       [25, 50, 12, 25, 50, 75]
+#
+#    FireCult:
+#        CultistID:           [25, 50, 12, 25, 50, 75]
+#        FlameDemonID:       [0, 50, 12, 25, 50, 75] 
+#        SpittingDrakeID:    [0, 50, 12, 25, 50, 75] 
+#
+#    HarrowerVermlings:
+#        HarrowerInfesterID: [25, 50, 12, 25, 50, 75]
+#        VermlingScoutID:    [0, 50, 12, 25, 50, 75] 
+#    CityTypes:
+#        CityGuardID:      [25, 75, 12, 25, 50, 75]
+#        CityArcherID:     [25, 75, 12, 25, 50, 75]
+#    CityTypesArtillery:
+#        CityGuardID:      [25, 50, 12, 25, 50, 75]
+#        CityArcherID:     [25, 50, 12, 25, 50, 75]
+#        AncientArtilleryID: [25, 50, 12, 25, 50, 75]
+#
+#    CityTypesHounds:
+#        CityGuardID:      [25, 50, 12, 25, 50, 75]
+#        CityArcherID:     [25, 50, 12, 25, 50, 75]
+#        HoundID:           [25, 50, 12, 25, 50, 75]
+#
+#    JustArtillery:
+#        AncientArtilleryID: [100, 100, 12, 25, 50, 75]
+#
+#    SavvasCityTypesHighElite:
+#        SavvasIcestormID:   [25, 25, 50, 50, 75, 87]
+#        SavvasLavaflowID:   [25, 25, 50, 50, 75, 87]
+#        CityGuardID:      [0, 25, 50, 50, 75, 87]
+#        CityArcherID:     [0, 25, 50, 50, 75, 87]
+#
+#    JustHarrowers:
+#        HarrowerInfesterID: [100, 100, 12, 25, 50, 75]
+#
+#    HarrowerBandits:
+#        HarrowerInfesterID: [25, 50, 12, 25, 50, 75]
+#        BanditGuardID:      [25, 50, 12, 25, 50, 75]
+#        BanditArcherID:     [0, 50, 12, 25, 50, 75]
+#        
+#    HarrowerCityTypes:
+#        HarrowerInfesterID: [25, 50, 12, 25, 50, 75]
+#        CityGuardID:      [25, 50, 12, 25, 50, 75]
+#        CityArcherID:     [25, 50, 12, 25, 50, 75]
+#    HarrowerCityTypesArtillery:
+#        HarrowerInfesterID: [25, 50, 12, 25, 50, 75]
+#        CityGuardID:      [0, 50, 12, 25, 50, 75]
+#        CityArcherID:     [0, 50, 12, 25, 50, 75]
+#        AncientArtilleryID: [25, 50, 12, 25, 50, 75]
+#        
+#    HarrowerGolemCityTypes:
+#        HarrowerInfesterID: [25, 50, 12, 25, 50, 75]
+#        CityGuardID:      [0, 50, 12, 25, 50, 75]
+#        CityArcherID:     [0, 50, 12, 25, 50, 75]
+#        StoneGolemID:       [25, 50, 12, 25, 50, 75]
+#
+#    HarrowerSnakes:
+#        HarrowerInfesterID: [25, 50, 12, 25, 50, 75]
+#        GiantViperID:      [25, 50, 12, 25, 50, 75]
+#
+#    HarrowerCityTypesHighElite:
+#        HarrowerInfesterID: [25, 50, 50, 50, 75, 87]
+#        CityGuardID:      [25, 50, 50, 50, 75, 87]
+#        CityArcherID:     [25, 50, 50, 50, 75, 87]
+#        
+#    VermlingScoutsHarrowers:
+#        HarrowerInfesterID: [25, 50, 12, 25, 50, 75]
+#        VermlingScoutID:    [25, 50, 12, 25, 50, 75]
+#    
+#    VermlingsHarrowers:
+#        HarrowerInfesterID: [25, 50, 12, 25, 50, 75]
+#        VermlingScoutID:    [25, 50, 12, 25, 50, 75]
+#        VermlingShamanID:    [25, 50, 12, 25, 50, 75]
+#
+#    VermlingScouts:
+#        VermlingScoutID:    [100, 100, 50, 50, 50, 50]
+#        
+#    FrostDemons:
+#        FrostDemonID:       [100, 100, 12, 25, 50, 75]
+#        
+#    FlameDemons:
+#        FlameDemonID:       [100, 100, 12, 25, 50, 75]
+#
+#    SavvasArtillery:
+#        SavvasIcestormID:   [25, 50, 12, 25, 50, 75]
+#        SavvasLavaflowID:   [25, 50, 12, 25, 50, 75]
+#        AncientArtilleryID: [25, 50, 12, 25, 50, 75]
+#        
+#
+#    InoxArtillery:
+#        InoxArcherID:        [0, 50, 12, 25, 50, 75]
+#        InoxGuardID:         [0, 50, 12, 25, 50, 75]
+#        InoxShamanID:        [0, 50, 12, 25, 50, 75]
+#        AncientArtilleryID:  [12, 50, 12, 25, 50, 75]
+#
+#    InoxHarrower:
+#        InoxArcherID:        [0, 50, 12, 25, 50, 75]
+#        InoxGuardID:         [0, 50, 12, 25, 50, 75]
+#        InoxShamanID:        [0, 50, 12, 25, 50, 75]
+#        HarrowerInfesterID:  [12, 50, 12, 25, 50, 75]
+#
+#    InoxDrakes:
+#        InoxArcherID:        [0, 50, 12, 25, 50, 75]
+#        InoxGuardID:         [12, 50, 12, 25, 50, 75]
+#        InoxShamanID:        [0, 50, 12, 25, 50, 75]
+#        RendingDrakeID:      [12, 50, 12, 25, 50, 75]        
+#        SpittingDrakeID:     [0, 50, 12, 25, 50, 75]
+#        
+#    Cultists:
+#        CultistID:           [100, 100, 12, 25, 50, 75]
+# 
+#    CultistsDemons:
+#        CultistID:          [25, 50, 12, 25, 50, 75]
+#        EarthDemonID:       [0, 50, 12, 25, 50, 75] 
+#        FlameDemonID:       [0, 50, 12, 25, 50, 75] 
+#        WindDemonID:        [0, 50, 12, 25, 50, 75] 
+#        FrostDemonID:       [0, 50, 12, 25, 50, 75] 
+#        NightDemonID:       [0, 50, 12, 25, 50, 75] 
+#        SunDemonID:         [0, 50, 12, 25, 50, 75] 
+#
+#    HarrowerDemons:
+#        HarrowerInfesterID: [25, 50, 12, 25, 50, 75]
+#        EarthDemonID:       [0, 50, 12, 25, 50, 75] 
+#        FlameDemonID:       [0, 50, 12, 25, 50, 75] 
+#        WindDemonID:        [0, 50, 12, 25, 50, 75] 
+#        FrostDemonID:       [0, 50, 12, 25, 50, 75] 
+#        NightDemonID:       [0, 50, 12, 25, 50, 75] 
+#        SunDemonID:         [0, 50, 12, 25, 50, 75] 
+#
+#    BlackImps:
+#        BlackImpID:         [100, 100, 12, 25, 50, 75]
+#
+#    DeepTerrors:
+#        DeepTerrorID:       [100, 100, 12, 25, 50, 75]
+#
+#    BlackImpsTerrors:
+#        BlackImpID:         [50, 50, 12, 25, 50, 75]
+#        DeepTerrorID:       [50, 50, 12, 25, 50, 75]
+#
+#    BlackImpOozes:
+#        BlackImpID:         [50, 50, 12, 25, 50, 75]
+#        OozeID:             [50, 50, 12, 25, 50, 75]    
+#
+#    LurkerBlackImps:
+#        BlackImpID:           [25, 25, 12, 25, 50, 75]
+#        LurkerID:             [75, 75, 12, 25, 50, 75]    
+#
+#    InoxLurker:
+#        InoxShamanID:         [0, 50, 12, 25, 50, 75]
+#        InoxArcherID:         [0, 50, 12, 25, 50, 75]
+#        LurkerID:             [25, 50, 12, 25, 50, 75] 
+#
+#    BlackImpOozesTerrors:
+#        BlackImpID:           [0, 50, 12, 25, 50, 75]
+#        OozeID:               [0, 50, 12, 25, 50, 75]       
+#        DeepTerrorID:         [0, 50, 12, 25, 50, 75]    
+#
+#    LurkerOozes:
+#        LurkerID:             [0, 50, 12, 25, 50, 75]
+#        OozeID:               [0, 50, 12, 25, 50, 75]  
+#
+#    LurkerTerrors:
+#        LurkerID:             [0, 50, 12, 25, 50, 75]
+#        DeepTerrorID:               [0, 50, 12, 25, 50, 75]  
+#
+#    Oozes:
+#        OozeID:               [100, 100, 12, 25, 50, 75]       
+#
+#    BlackImpOozesLurkersTerrors:
+#        BlackImpID:           [25, 50, 12, 25, 50, 75]
+#        LurkerID:             [25, 50, 12, 25, 50, 75]        
+#        OozeID:               [0, 50, 12, 25, 50, 75]       
+#        DeepTerrorID:         [0, 50, 12, 25, 50, 75] 
+#
+#    NightDemonLurkers:
+#        NightDemonID:         [25, 50, 12, 25, 50, 75]
+#        LurkerID:             [25, 50, 12, 25, 50, 75]        
+#        BlackImpID:           [0, 50, 12, 25, 50, 75]                
+#        
+#    UndeadOozes:
+#        LivingBonesID:        [12, 50, 12, 25, 50, 75]
+#        LivingCorpseID:       [12, 50, 12, 25, 50, 75]        
+#        OozeID:               [25, 50, 12, 25, 50, 75]  
+#
+#    UndeadOozesImps:
+#        LivingBonesID:        [12, 50, 12, 25, 50, 75]
+#        LivingCorpseID:       [12, 50, 12, 25, 50, 75]        
+#        OozeID:               [25, 50, 12, 25, 50, 75]  
+#        BlackImpID:           [12, 50, 12, 25, 50, 75]                
+#    
+#    HarrowerOozes:
+#        OozeID:               [25, 50, 12, 25, 50, 75]     
+#        HarrowerInfesterID:   [25, 50, 12, 25, 50, 75]        
+#
+#    LurkerHarrowerSpirits:
+#        LurkerID:             [0, 50, 12, 25, 50, 75]          
+#        HarrowerInfesterID:   [0, 50, 12, 25, 50, 75]   
+#        LivingSpiritID:       [25, 50, 12, 25, 50, 75]            
+#
+#    IcestormLurkerDemons:
+#        SavvasIcestormID:   [25, 50, 12, 25, 50, 75]
+#        LurkerID:           [25, 50, 12, 25, 50, 75]
+#        FrostDemonID:       [0, 50, 12, 25, 50, 75]
+#
+#    Vermlings:
+#        VermlingScoutID:    [25, 50, 25, 50, 75, 85]
+#        VermlingShamanID:   [25, 50, 12, 25, 50, 75]        
+#
+#    CityInoxBandit:
+#        InoxArcherID:       [0, 50, 12, 25, 50, 75]
+#        InoxGuardID:        [0, 50, 12, 25, 50, 75]
+#        InoxShamanID:       [0, 50, 12, 25, 50, 75]
+#        CityGuardID:        [0, 50, 50, 50, 75, 87]
+#        CityArcherID:       [0, 50, 50, 50, 75, 87]
+#        BanditGuardID:      [0, 50, 12, 25, 50, 75]
+#        BanditArcherID:     [0, 50, 12, 25, 50, 75]
+#
+#    CityInoxBanditCannon:
+#        InoxArcherID:       [0, 50, 12, 25, 50, 75]
+#        InoxGuardID:        [0, 50, 12, 25, 50, 75]
+#        InoxShamanID:       [0, 50, 12, 25, 50, 75]
+#        CityGuardID:        [0, 50, 50, 50, 75, 87]
+#        CityArcherID:       [0, 50, 50, 50, 75, 87]
+#        BanditGuardID:      [0, 50, 12, 25, 50, 75]
+#        BanditArcherID:     [0, 50, 12, 25, 50, 75]
+#        AncientArtilleryID: [25, 50, 12, 25, 50, 75]

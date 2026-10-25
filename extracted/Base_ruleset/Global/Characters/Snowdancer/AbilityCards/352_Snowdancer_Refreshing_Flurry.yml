@@ -1,0 +1,86 @@
+Parser: AbilityCard
+Name: $FH/352_character_ability_cards_snowdancer_refreshing_flurry_1$
+Character: SnowdancerID
+ID: 352
+Level: 6
+Initiative: 95
+Discard: [Discard,Lost]
+Prefab: 352_Snowdancer_RefreshingFlurry
+Data:
+    Top:
+        Abilities:
+            THeal:
+                Heal:
+                    Amount: 4
+                    DiamondPlusEnhancements: 1
+                Range: 4
+                MiscVars:
+                    PrintedProperties: list("Heal","Range")
+                Target: 1
+                Filter: [Self, Ally]
+                Conditions: [Bless]
+                AnimOverload: Heal
+                SubAbilities:
+                    TSubGrant:
+                        AutoTrigger: True
+                        TreatAsNonSubAbility: True
+                        Filter:
+                            TargetType: [Self, Ally]
+                            EnemyType: [Normal, Elite, Boss]
+                        Target: -1
+                        Targeting: Custom
+                        TargetingVars:
+                            AddTilesInRange: Ability.ParentAbility.TilesSelected
+                            AddValidActorsInRange: Ability.ParentAbility.ActorsToTarget
+                            AddActorsToTarget: Ability.ParentAbility.ActorsToTarget
+                            AddSelectedTiles: Ability.ParentAbility.TilesSelected
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                Target: Ability.ParentAbility.ActorsToTarget[0]
+                                ValidateIsAlly: TargetingActor == Target || CustomAbility.IsAlly(TargetingActor, Target)
+                        ControlActor:
+                            #UseControllingActorPlayerControl: True
+                            Abilities:
+                                GrantConsumeMove:
+                                    CanSkip: True
+                                    Consume:
+                                        Elements: Air
+                                        Abilities:
+                                            GrantMove:
+                                                Move: 3
+                                                MiscVars:
+                                                    PrintedProperties: list("Move")
+                                                StrengthIsBase: True
+                        ActiveBonusDuration: Ability
+                        AnimOverload: Control
+        XP: 1
+    Bottom:
+        Abilities:
+            BSummon:
+                Summon: PolarCatID
+                AnimOverload: Summon
+        XP: 2
+Layout:
+    Top:
+        - Row: "<size=150%><sprite name=Heal> *THeal* <size=100%><voffset=1>@THeal@"
+        - Row: "<sprite name=Range> *THeal.Range*, <sprite name=Bless>"
+        - Divider:
+        - Active:
+            Ability: TSubGrant
+            Icon: Snowdancer
+            ListLayout: "<sprite name=ConsumeAir>: <sprite name=Move> 3"
+            Layout: "<sprite name=ConsumeAir>: <sprite name=Move> 3"
+        - Row: "$FH/352_character_ability_cards_snowdancer_refreshing_flurry_2$"
+        - Conditional:
+            Layout:
+                - Row: "<size=150%><sprite name=ConsumeAir>: <sprite name=Move> 3"
+    Bottom:
+        - Active:
+              Ability: "BSummon"
+              Icon: "Positive_Summon"
+              Layout:
+                  - Summon:
+                        Ability: BSummon
+                        SummonName: "$FH/352_character_ability_cards_snowdancer_refreshing_flurry_3$"
+

@@ -1,0 +1,7 @@
+Parser: AttackModifier
+Name: AMC_Shield1_P1_R
+MathModifier: "+1"
+Rolling: True
+Abilities:
+    ShieldAbility:
+        Shield: 1

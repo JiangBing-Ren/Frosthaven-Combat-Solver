@@ -1,0 +1,7 @@
+Parser: FHEnhancement
+ID: ElementLight
+Name: Glossary_Enhancement_Light
+Cost: 100
+Mark: Circle
+Effect: ElementLight
+ForEffect: Other

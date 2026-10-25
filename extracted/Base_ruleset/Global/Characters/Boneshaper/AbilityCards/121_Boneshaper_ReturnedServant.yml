@@ -1,0 +1,45 @@
+Parser: AbilityCard
+Name: $FH/121_character_ability_cards_boneshaper_returned_servant$
+Character: BoneshaperID
+ID: 121
+Level: 1
+Initiative: 81
+Discard: [Discard,Discard]
+Prefab: 121_Boneshaper_ReturnedServant
+Data:
+    Top:
+        Abilities:
+            TSummon:
+                Summon: ShamblingSkeletonID
+                AnimOverload: Summon
+                SubAbilities:
+                    Damage1:
+                        Damage: 2
+                        MiscVars:
+                            PrintedProperties: list("Damage")
+                        Filter: Self
+                        TextOnly: True
+                        AutoTrigger: True
+                        #Suffer animation triggers from the self damage, no animation overload needed
+        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 4
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+Layout:
+    Top:
+        - Active:
+              Ability: "TSummon"
+              Icon: "Summon"
+              Layout:
+                  - Summon:
+                        Ability: TSummon
+                        SummonName: $FH/120_character_ability_cards_boneshaper_life_in_death_2$
+        - Row: "<size=20%> "
+        - MandatoryTrigger: "$FH/120_character_ability_cards_boneshaper_life_in_death_3$"
+    Bottom:
+        - Row: "<b><size=130%> <sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"

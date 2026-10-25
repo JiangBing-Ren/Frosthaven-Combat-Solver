@@ -1,0 +1,60 @@
+Parser: AbilityCard
+Name: $FH/343_character_ability_cards_snowdancer_the_spirits_call_1$
+Character: SnowdancerID
+ID: 343
+Level: X
+Initiative: 45
+Discard: [Discard,Lost]
+Prefab: 343_Snowdancer_TheSpiritsCall
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                AnimOverload: RangedAttack
+        Consumes:
+            TCAir:
+                Elements: Air
+                AbilityOverrides:
+                    TCAirAttackBuff:
+                        ParentName: TAttack
+                        Strength: 1
+                        Conditions: [Curse]
+                XP: 1
+    Bottom:
+        Abilities:
+            BPush:
+                Push:
+                    Amount: 4
+                    SquareEnhancements: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Push","Range")
+                Target: -1
+                Filter: Ally
+                Conditions: [Bless]
+        Infuse: Light
+        XP: 1
+Layout:
+    Top:
+        - Row: "<size=150%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Row: "<sprite name=Range> *TAttack.Range*"
+        - Row: "<size=100%> "
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCAir
+                    Text: "<size=100%>+1 <sprite name=Attack>, <sprite name=Curse>, <sprite name=XP1>"
+    Bottom:
+        - Row: "<size=130%><sprite name=Push> *BPush* <size=100%><voffset=1>@BPush@"
+        - Row: "$FH/343_character_ability_cards_snowdancer_the_spirits_call_2$"
+        - Row: "<size=100%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Light
+

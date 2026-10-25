@@ -1,0 +1,78 @@
+Parser: AbilityCard
+Name: $FH/170_character_ability_cards_geminate_locust_host_1$
+Character: GeminateID
+ID: 170
+Level: 2
+ProgressionOrder: 19
+Initiative: 23
+Discard: [Lost,Discard]
+RequiredForm: Range
+Prefab: 170_Geminate_LocustHost
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                Range: 3
+                MinRange: 2
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                AreaEffect: "-1,1,R|1,1,R|-2,0,R|0,0,R|2,0,R"
+                AreaEffectLayoutOverride: "-1,1,R|1,1,R|-2,0,R|0,0,R|2,0,R"
+                Filter: [Enemy]
+                MultiPassAttack: false
+                AnimOverload: RangedAttack_LocustHost
+        Consumes:
+            TCCurse:
+                CostAbility:
+                    ParentName: TAttack
+                    Curse: True
+                    Target: 1
+                    Range: 0
+                    Filter: Self
+                    StartAbilityRequirements:
+                        Type: ThisAbility
+                        DoesntHaveNegativeCondition: [Disarm,Stun]
+                AbilityOverrides:
+                    TCAreaIncrease:
+                        ParentName: TAttack
+                        PreviewEffectText: "TCAreaIncrease.Area£"
+                        AreaEffect: "-3,1,R|-1,1,R|1,1,R|3,1,R|-4,0,R|-2,0,R|0,0,R|2,0,R"
+                        MultiPassAttack: False
+
+        XP: 2
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 1
+                    SquareEnhancements: 2
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BPush:
+                Push:
+                    Amount: 2
+                Range: 2
+                MinRange: 2
+                MiscVars:
+                    PrintedProperties: list("Push","Range")
+                Target: -1
+                AnimOverload: Cast Negative
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@ $FH/170_character_ability_cards_geminate_locust_host_2$"              
+        - Row: "£TAttack.Area£"
+        - Row: "<size=50%> "
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCCurse
+                    Text: "$FH/170_character_ability_cards_geminate_locust_host_3$"
+                - Row: "£TCAreaIncrease.Area£"
+
+
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Row: "$FH/170_character_ability_cards_geminate_locust_host_4$"

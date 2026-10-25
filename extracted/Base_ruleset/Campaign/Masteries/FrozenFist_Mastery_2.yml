@@ -1,0 +1,17 @@
+Parser: Mastery
+ID: FrozenFist_MASTERY_2
+LocalisedName: FrozenFist_MASTERY_2_Name
+LocalisedDescription: FrozenFist_MASTERY_2_Desc
+PerkPoints: 1
+# suceed if you recovered a discarded card every round
+BattleGoalCondition:
+    - Targets:
+        Filter: SingleAbilityMoveXThenSingleAbilityDamageX
+        # each round
+        SubFilter: RoundCharactersOnly
+        StopCheckingAfterDeath: True
+        # only for the frozenfist
+        CharacterIDs: 
+            ActorID: FrozenFistID
+        Targets: 10
+        Value: 1

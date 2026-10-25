@@ -1,0 +1,21 @@
+Parser: BattleGoal
+ID: BattleGoal_Pickpocket
+LocalisedName: FH/1325_battle_goals_pickpocket_1
+LocalisedDescription: FH/1325_battle_goals_pickpocket_2
+#Collect two or more money tokens by performing a Loot action while you are adjacent to one or more monsters.
+PerkChecks: 1
+BattleGoalCondition:
+    - Targets:
+        # loot more than one loot tokens a once
+        # we want once instance of looting more than one loot tile at the same time, while adjacent to an enemy
+        Filter: LootAdjacentAtSameTime
+        # chests/goals etc. don't count
+        LootType: MoneyToken
+        # only with abilities, end of turn looting shouldn't count
+        AbilityTypes: [Loot]
+        AdjacentTo: Enemy
+        # while adjacent to 1 or more enemies
+        Targets: 1
+        # once
+        Value: 1
+        SubFilter: Scenario

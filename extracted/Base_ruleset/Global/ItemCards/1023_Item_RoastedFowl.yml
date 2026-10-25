@@ -1,0 +1,26 @@
+Parser: ItemCard
+ID: 1023
+StringID: RoastedFowlID
+Name: $FH/1023_item_cards_roasted_fowl_1$
+Art: Roasted Fowl
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        ABuffAttacks:
+            Attack: 1
+            Filter: Self
+            ActiveBonus:
+                Behaviour: BuffAttack
+                Duration: Turn
+                ListLayoutOverride: [$FH/1023_item_cards_roasted_fowl_2$, Positive_AttackPlus_Item]
+        AHeal:
+            CanUndo: False
+            Heal: 2
+            Filter: Self
+Layout: 
+    - Row: "$FH/1023_item_cards_roasted_fowl_2$"

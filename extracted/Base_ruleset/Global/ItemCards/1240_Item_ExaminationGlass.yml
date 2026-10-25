@@ -1,0 +1,16 @@
+Parser: ItemCard
+ID: 1240
+StringID: ExaminationGlassID
+Name: $FH/1240_item_cards_examination_glass_1$
+Art: Examination Glass
+TotalInGame: 1
+Cost: 20
+Slot: OneHand
+Rarity: Rare
+Usage: Consumed
+Trigger: OnLootFromDeck
+Data:    
+    Vars:
+        LootCardAdvantage: True
+Layout: 
+    - Row: "$FH/1240_item_cards_examination_glass_2$"

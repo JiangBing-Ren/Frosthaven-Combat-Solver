@@ -1,0 +1,26 @@
+Parser: EnemyCard
+ID: 737
+Name: $Monster_Ability_737_AlgoxIcespeaker_OneWithTheEarth$
+Initiative: 12
+Shuffle: False
+Data:
+    Abilities:
+        Shield1:
+            Shield: 3
+            Filter: Self
+            ActiveBonus:
+                ListLayoutOverride: ["<sprite name=Shield> *Shield1*", Positive_Shield]
+        CEarth:
+            Consume:
+                Elements: Earth
+                Abilities:
+                    OIce:
+                        Heal: 1
+                        Filter: Self
+                        SkipAnim: True
+            Text: "<size=200%><sprite name=ConsumeEarth><size=150%>: <sprite name=Heal> 1 $FH/target_self$"
+        Heal1:
+            Heal: 3
+            Filter: Self
+            SkipAnim: True
+    

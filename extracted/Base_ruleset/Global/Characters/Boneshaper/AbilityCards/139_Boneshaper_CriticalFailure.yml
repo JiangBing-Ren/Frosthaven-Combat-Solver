@@ -1,0 +1,99 @@
+Parser: AbilityCard
+Name: $FH/139_character_ability_cards_boneshaper_critical_failure_1$
+Character: BoneshaperID
+ID: 139
+Level: 4
+Initiative: 95
+Discard: [Discard,Lost]
+Prefab: 139_Boneshaper_CriticalFailure
+Data:
+    Top:
+        Abilities:
+            TAlly:
+                ControlActor:
+                    Abilities:
+                        TAllyAttack:
+                            Attack: +1
+                            Range: +0
+                            MiscVars:
+                                PrintedProperties: list("Attack")
+                Target: 1
+                Range: 99
+                Filter:
+                    TargetType: OwnSummon
+                AnimOverload: ControlSummon
+        Consumes:
+            TCDark:
+                Elements: Dark
+                AbilityOverrides:
+                    TCShadowBuff:
+                        ParentName: TAlly
+                        Target: 1
+    Bottom:
+        Abilities:
+            BGrantSummonsAttack:                
+                AddActiveBonus:
+                    ControlActor:
+                        Abilities:
+                            BAllyAttack:
+                                Attack: +0
+                                MiscVars:
+                                    PrintedProperties: list("Attack")
+                                # Range: 1
+                                AttackHasDisadvantage: True
+                                AttackHasAdvantage: True
+                                Vars:
+                                    CanClearTargets: False
+                                Targeting: Custom
+                                TargetingVars:
+                                    AddValidActorInRange: EnemyAttacker
+                                    AddActorToTarget: EnemyAttacker
+                                    AddTileInRange: EnemyAttacker.Tile
+                    PerformVars:
+                        ActorIsSelectingTargetingFocus:
+                            CancelIfTargetDead: CustomAbility.CancelAbilityIfActorIsDead(obj, EnemyAttacker)
+                    Target: 99
+                    Targeting: Custom
+                    TargetingVars:
+                        AddValidActorsInRange: OwnSummonsInRange
+                        AddTilesInRange: EnemyAttacker.TilesInRange(1)
+                    #Filter is needed because it defaults to Enemy if not specified
+                    Filter:
+                       TargetType: OwnSummon
+                    StartAbilityRequirements:
+                        Type: ThisAbility
+                        Vars:
+                            ValidateHasValidTargets: OwnSummonsInRange.Count > 0
+                    AnimOverload: ControlSummon                    
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: GenericAttackFinished
+                    Vars:
+                        ValidateTriggerActor: AppliesTo(TriggerActor) #TriggerActor.IsEnemyMonsterType
+                        ValidateIsCurse: TriggerAbility.CurrentAttackingTargetSummary.UsedAttackMods[0].Name == "Curse"
+                        EnemyAttacker: TriggerActor
+                        OwnSummonsInRange: AllHeroSummons.Where(Summoner == Caster && obj.IsAdjacentTo(EnemyAttacker))
+                        ValidateHasSummonsInRange: OwnSummonsInRange.Count > 0
+                    TriggerOnCaster: true
+                    IsAura: True
+                    HiddenWhenAura: True
+                    AuraTargeting: All
+                    AuraFilter:
+                        TargetType: Enemy                        
+                        UseTargetOriginalType: True
+                AnimOverload: CastNegative
+        XP: 2
+Layout:
+    Top:
+        - Row: "$FH/139_character_ability_cards_boneshaper_critical_failure_2$"
+        - Row: "<size=20%> "
+        - Consume:
+            Name: TCDark
+            Text:
+                - Row: "$FH/139_character_ability_cards_boneshaper_critical_failure_3$"
+    Bottom:
+        - Active:
+            Ability: BGrantSummonsAttack
+            Icon: Positive_Attack_Curse
+            ListLayout: "$FH/139_character_ability_cards_boneshaper_critical_failure_4$ +*BAllyAttack*<sprite name=Attack>$139_character_ability_cards_boneshaper_critical_failure_4a$"
+            Layout: "$FH/139_character_ability_cards_boneshaper_critical_failure_4$ +*BAllyAttack*<sprite name=Attack>$139_character_ability_cards_boneshaper_critical_failure_4a$"

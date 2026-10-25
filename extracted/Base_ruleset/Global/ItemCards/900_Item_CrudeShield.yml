@@ -1,0 +1,18 @@
+Parser: ItemCard
+ID: 900
+StringID: CrudeShieldID
+Name: $FH/0900_item_cards_crude_shield_1$
+Art: Crude Shield
+TotalInGame: 2
+Cost: 0
+Slot: OneHand
+Rarity: Rare
+Usage: Consumed
+Trigger: OnNegativeConditionFromEnemy
+Data:
+    Vars:
+        PreventCondition: True
+    AddModifiers:
+        - [AMC_Basic_M1, 1]
+Layout:
+    - Row: "$FH/0900_item_cards_crude_shield_2$"

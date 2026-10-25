@@ -1,0 +1,80 @@
+Parser: AbilityCard
+Name: $FH/013_character_ability_cards_drifter_fortitude_1$
+Character: DrifterID
+ID: 13
+Level: X
+ProgressionOrder: 12
+Initiative: 31
+Discard: [Discard,Lost]
+Prefab: 13_Drifter_Fortitude
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                    Pierce: 2
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack","Pierce")
+                MiscVars:
+                    ClearDontRefreshTargetingUIFlag: True
+        Consumes:
+            TCMoveTracker:
+                CostAbility:
+                    ParentName: TAttack
+                    MoveActiveBonusTracker: 1
+                    MiscVars:
+                        CheckCanBePerformedWhenAugment: True
+                    Vars:
+                        NumberOfCardsToSelect: 1
+                    PerformVars:
+                        ApplyToActors:
+                            ClearDontRefreshTargetingUIFlag: CustomAbility.ClearDontRefreshTargetingUIFlag()
+                    Filter: Self
+                    CanSkip: False
+                AbilityOverrides:
+                    TCAttackBuff:
+                        ParentName: TAttack
+                        Range: 2
+                        MiscVars:
+                            PrintedProperties: list("Range")
+                        AnimOverload: RangedAttack
+                        Flags: [DontRefreshTargetingUI]
+    Bottom:
+        Abilities:
+            BActive:
+                AddActiveBonus:
+                    Filter: Self
+                    MoveActiveBonusTracker: -1
+                    Vars:
+                        NumberOfCardsToSelect: 1
+                    AnimOverload: PowerUp
+                    MiscVars:
+                        InterruptCurrentAbility: True
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: DuringActionAbilityOnKill
+                    ListLayoutOverride: [$FH/013_character_ability_cards_drifter_fortitude_3$, Positive_Drifter]
+                    Vars:
+                        ValidateAttackerIsDrifter: TriggerActor.Class.ID == "DrifterID"
+                        ValidateVictimIsEnemy: CActor.AreActorsAllied(TriggerActor.Type, TriggerTarget.Type, TriggerActor, TriggerTarget) == false
+                AnimOverload: Persistent Buff
+                Target: Self                    
+Layout:
+    Top:        
+        - Row:
+            - ColumnWidths: "25,25,25,25"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack*<size=100%><voffset=1>@TAttack@"
+            - Column:
+                - AddedEffect: "<sprite name=Pierce>2"
+            - Column:
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCMoveTracker
+                    Text: "<size=80%>$FH/013_character_ability_cards_drifter_fortitude_2$"
+    Bottom:
+        - Row: "$FH/013_character_ability_cards_drifter_fortitude_3$"

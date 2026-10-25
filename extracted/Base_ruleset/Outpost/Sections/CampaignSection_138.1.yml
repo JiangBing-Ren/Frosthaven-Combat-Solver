@@ -1,0 +1,7 @@
+Parser: CampaignSection
+ID: 138.1
+Name: Drifter Returns
+SkipCompletedNotification: False
+ShowAsUnknownInCalendar: True
+Effects:
+    - Type: GainRandomItemBlueprint

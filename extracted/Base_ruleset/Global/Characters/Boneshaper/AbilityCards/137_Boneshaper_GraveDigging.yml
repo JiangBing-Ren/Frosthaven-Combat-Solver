@@ -1,0 +1,58 @@
+Parser: AbilityCard
+Name: $FH/137_character_ability_cards_boneshaper_grave_digging_1$
+Character: BoneshaperID
+ID: 137
+Level: 3
+Initiative: 96
+Discard: [Discard,Discard]
+Prefab: 137_Boneshaper_GraveDigging
+Data:
+    Top:
+        Abilities:
+            TSummon:
+                Summon: ShamblingSkeletonID
+                AnimOverload: Summon
+                SubAbilities:
+                    Damage1:
+                        Damage: 1
+                        Filter: Self
+                        TextOnly: True
+                        AutoTrigger: True
+                        #Suffer animation triggers from the self damage, no animation overload needed
+        XP: 1
+    Bottom:
+        Abilities:
+            BResummon:
+                SelectAndPlayCard:       
+                    CardPile: Discarded  
+                MiscVars:
+                    IsActionValid: Action.Abilities.Any(obj.AbilityType == CAbility.EAbilityType.Summon)
+                AnimOverload: PowerUpPotent
+                SubAbilities:
+                    Damage1:
+                        Damage: 1
+                        MiscVars:
+                            PrintedProperties: list("Damage")
+                        Filter: Self
+                        TextOnly: True
+                        Flags: [SubAbilityPreview]
+                        #Suffer animation triggers from the self damage, no animation overload needed
+        Infuse: Earth
+Layout:
+    Top:
+        - Active:
+              Ability: "TSummon"
+              Icon: "Summon"
+              Layout:
+                  - Summon:
+                        Ability: TSummon
+                        SummonName: $FH/137_character_ability_cards_boneshaper_grave_digging_4$
+        - Divider:
+        - MandatoryTrigger: "$FH/137_character_ability_cards_boneshaper_grave_digging_2$"
+    Bottom:
+        - Row: "$FH/137_character_ability_cards_boneshaper_grave_digging_3$"
+        - Divider:
+        - MandatoryTrigger: "$FH/137_character_ability_cards_boneshaper_grave_digging_2$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Earth

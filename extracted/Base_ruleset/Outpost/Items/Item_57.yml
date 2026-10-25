@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 57
+ScenarioItemID: 1292
+Name: Shovel
+Quantity: 2
+Type: OneHandWeapon
+CraftingCost:
+    Metal: 1
+    Lumber: 1

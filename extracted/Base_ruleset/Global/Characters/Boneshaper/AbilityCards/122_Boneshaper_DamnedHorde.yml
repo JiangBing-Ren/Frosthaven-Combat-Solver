@@ -1,0 +1,56 @@
+Parser: AbilityCard
+Name: $FH/122_character_ability_cards_boneshaper_damned_horde$
+Character: BoneshaperID
+ID: 122
+Level: 1
+Initiative: 71
+Discard: [Discard,Discard]
+Prefab: 122_Boneshaper_DamnedHorde
+Data:
+    Top:
+        Abilities:
+            TSummon:
+                Summon: ShamblingSkeletonID
+                AnimOverload: Summon
+                SubAbilities:
+                    Damage1:
+                        Damage: 2
+                        MiscVars:
+                            PrintedProperties: list("Damage")
+                        Filter: Self
+                        TextOnly: True
+                        AutoTrigger: True
+                        #Suffer animation triggers from the self damage, no animation overload needed
+        XP: 1
+    Bottom:
+        Abilities:
+            BCurse:
+                Curse: True
+                AnimOverload: CastNegative
+                Filter: Enemy
+                Target:
+                    Amount: 2
+                    SquareEnhancements: 1
+                Range:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Target","Range")
+Layout:
+    Top:
+        - Active:
+              Ability: "TSummon"
+              Icon: "Summon"
+              Layout:
+                  - Summon:
+                        Ability: TSummon
+                        SummonName: $FH/120_character_ability_cards_boneshaper_life_in_death_2$
+        - Row: "<size=20%> "
+        - MandatoryTrigger: "$FH/120_character_ability_cards_boneshaper_life_in_death_3$"
+    Bottom:
+        - ColumnWidths: 20,20,20,20,20
+        - Column:
+        - Column: "<b><size=130%><sprite name=Curse>"
+        - Column: "<size=100%> <mark=#6EBE4922><sprite name=Target> *BCurse.Target* @BCurse.Target@</mark>"
+        - Column: "<mark=#6EBE4922>,<sprite name=Range> *BCurse.Range* @BCurse.Range@</mark>"
+        - Column:

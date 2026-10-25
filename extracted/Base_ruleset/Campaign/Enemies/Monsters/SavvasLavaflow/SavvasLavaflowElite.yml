@@ -1,0 +1,65 @@
+Parser: Enemy
+ID: SavvasLavaflowEliteID
+LocKey: $SavvasLavaflowElite$
+MonsterType: Monster
+StandeeLimit: 4
+Model: Savvas Lavaflow Elite
+NonEliteVariant: SavvasLavaflowID
+PredominantlyMelee: True
+AbilityCards: [786, 787, 788, 789, 790, 791, 792, 793]
+# Base Stats
+Level0:
+    Health: 13
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+Level1:
+    Health: 15
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Conditions: [Wound]
+Level2:
+    Health: 18
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Conditions: [Poison, Wound]
+Level3:
+    Health: 21
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Conditions: [Poison, Wound]
+Level4:
+    Health: 25
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+    Conditions: [Poison, Wound]
+Level5:
+    Health: 30
+    Move: 4
+    Attack: 5
+    Range: 1
+    Target: 1
+    Conditions: [Poison, Wound]
+Level6:
+    Health: 40
+    Move: 4
+    Attack: 6
+    Range: 1
+    Target: 1    
+    Conditions: [Poison, Wound]
+Level7:
+    Health: 50
+    Move: 4
+    Attack: 7
+    Range: 1
+    Target: 1    
+    Conditions: [Poison, Wound]

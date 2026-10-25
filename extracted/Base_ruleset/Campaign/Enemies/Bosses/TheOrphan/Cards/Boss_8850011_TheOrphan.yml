@@ -1,0 +1,46 @@
+Parser: EnemyCard
+ID: 8850011
+Name: $Monster_Ability_Boss_TheOrphan_Special1$
+Initiative: 73
+Shuffle: False
+Data:
+    Abilities: 
+        Heal1:
+            Heal: 0
+            StatIsBasedOnX:
+                Strength:
+                    BasedOn: CharactersAddedToXOver2ThenTimesLevelPlusY
+                    Multiplier: 0
+                    SecondVariable: 3
+                    RoundingType: ToCeil
+            Filter: Self
+            StartAbilityRequirements:
+                Type: ThisAbility
+                ValidActorsInRangeOfRequirementRange: "< 1"
+                RequirementRange: 99
+                RequirementActorFilter:
+                    ObjectClasses: [HulkingPillarID]
+            Text: "$8850009_monster_ability_cards_the_orphan_special_2_1$ $FH/FH_Scenario_Campaign_058_SCENARIO_OBJECT_1$"
+            TextOnly: True
+            AnimOverload: PowerUp
+        Heal2:
+            Text: "$8850009_monster_ability_cards_the_orphan_special_2_2$"
+            TextOnly: True
+            Heal: 0
+            StatIsBasedOnX:
+                Strength:
+                    BasedOn: CharactersAddedToXOver2ThenTimesLevelPlusY
+                    Multiplier: 0
+                    SecondVariable: 3
+                    RoundingType: ToCeil
+            Range: 99
+            ShowRange: False
+            Filter:
+                ObjectClasses: [HulkingPillarID]
+            StartAbilityRequirements:
+                Type: ThisAbility
+                ValidActorsInRangeOfRequirementRange: "> 0"
+                RequirementRange: 99
+                RequirementActorFilter:
+                    ObjectClasses: [HulkingPillarID]
+            AnimOverload: Heal Other

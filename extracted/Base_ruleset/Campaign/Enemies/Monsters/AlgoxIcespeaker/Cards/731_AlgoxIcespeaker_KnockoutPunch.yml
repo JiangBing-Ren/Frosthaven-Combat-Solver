@@ -1,0 +1,13 @@
+Parser: EnemyCard
+ID: 731
+Name: $Monster_Ability_731_AlgoxIcespeaker_KnockoutPunch$
+Initiative: 76
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: 0
+        Attack1:
+            Attack: -1
+            Conditions: [Stun]
+    Infuse: Ice

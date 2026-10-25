@@ -1,0 +1,8 @@
+Parser: ScenarioAbility
+ID: FH067_MoveScript
+ScenarioAbility:
+    MoveScript:
+        Move: 0
+        ActiveBonus:
+            Behaviour: MoveScript
+            ArbitraryParams: [ScenarioScript_FH067]

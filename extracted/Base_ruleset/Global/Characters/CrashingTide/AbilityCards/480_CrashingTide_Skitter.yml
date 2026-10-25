@@ -1,0 +1,98 @@
+Parser: AbilityCard
+Name: $FH/480_character_ability_cards_crashing_tide_skitter_1$
+Character: CrashingTideID
+ID: 480
+Level: 1
+ProgressionOrder: 480
+Initiative: 51
+Discard: [Discard,Discard]
+Prefab: 480_CrashingTide_Skitter
+Data:
+    Top:
+        Abilities:
+            TAttack1:
+                Attack: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Range: 1
+                Target: 1
+                Targeting: Range
+                Filter: [Enemy]
+            TMove:
+                Move:
+                    Amount: 1
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            TAttack2:
+                Attack: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Range: 1
+                Target: 1
+                Targeting: Range
+                Filter: [Enemy]
+        Consumes:
+            TCLight:
+                Elements: [Light]
+                AbilityOverrides:
+                    TCLightAttack1Buff:
+                        ParentName: TAttack1
+                        Strength: 1
+                XP: 1
+            TCDark:
+                Elements: [Dark]
+                AbilityOverrides:
+                    TCDarkAttack2Buff:
+                        ParentName: TAttack2
+                        Strength: 1
+                XP: 1
+    Bottom:
+        Abilities:
+            BBuffMove:
+                Move:
+                    Amount: 1
+                    IgnoreDifficultTerrain: True
+                MiscVars:
+                    PrintedProperties: list("Move")
+                Filter: [Self]
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: BuffMove
+                    Flags: [Tide]
+                AnimOverload: Tide
+        Infuse: Dark
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack1*"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCLight
+                    Text: "+1<sprite name=Attack>, <sprite name=XP1>"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Move> *TMove*<size=100%><voffset=1>@TMove@"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack2*"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCDark
+                    Text: "+1<sprite name=Attack>, <sprite name=XP1>"
+    Bottom:
+        - Row:
+            - ColumnWidths: "34,33,33"
+            - Column: "$FH/CrashingTide_Tide$"
+            - Column:
+            - Column:
+        - Active:
+            Ability: BBuffMove
+            Icon: Positive_MovePlus
+            Layout: "$FH/480_character_ability_cards_crashing_tide_skitter_2$"
+            ListLayout: "$FH/480_character_ability_cards_crashing_tide_skitter_2$"
+        - Row: "<size=100%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark

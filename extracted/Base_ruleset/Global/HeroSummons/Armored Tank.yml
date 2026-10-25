@@ -1,0 +1,15 @@
+Parser: HeroSummon
+ID: ArmoredTankID
+LocKey: $FH/387_character_ability_cards_hive_plated_defense_2$
+Model: ArmoredTank
+Health:
+    Amount: 6
+    SquareEnhancements: 1
+Move:
+    Amount: 2
+    SquareEnhancements: 1
+Attack:
+    Amount: 2
+    SquareEnhancements: 1
+Shield: 1
+

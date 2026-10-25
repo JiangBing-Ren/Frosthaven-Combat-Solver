@@ -1,0 +1,16 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH129_ChooseAbilityForAP
+ScenarioAbility:
+    # fake ability, for the purposes of being able to display toggles from other FH129 bonuses
+    # essentially acting as a custom phase
+    ChooseAPAbility:
+        Filter: Self
+        Target: 0
+        NullTargeting: True
+        CanSkip: False
+        CanUndo: False
+        MiscVars:
+            NoButtons: True
+            HelpBoxTooltipLocKeyOverride: ScenarioScript_FH129.ChooseAPKey(Ability, IsHost)
+            HelpBoxArg0: TargetingActor.CharacterName
+            DontMoveCamera: True

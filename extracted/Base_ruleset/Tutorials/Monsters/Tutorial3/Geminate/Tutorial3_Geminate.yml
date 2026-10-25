@@ -1,0 +1,81 @@
+Parser: Enemy
+ID: Tutorial3_Geminate
+LocKey: $FH/FS_Character_Geminate$
+MonsterType: Monster
+StandeeLimit: 6
+Model: Geminate
+PredominantlyMelee: True
+AbilityCards: [9044, 9045, 9046, 9047, 9048, 9049, 9050, 9051]
+# Base Stats
+Level0:
+    Health: 12
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+Level1:
+    Health: 12
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+Level2:
+    Health: 12
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+Level3:
+    Health: 12
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+Level4:
+    Health: 12
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+Level5:
+    Health: 12
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+Level6:
+    Health: 12
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+Level7:
+    Health: 12
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0

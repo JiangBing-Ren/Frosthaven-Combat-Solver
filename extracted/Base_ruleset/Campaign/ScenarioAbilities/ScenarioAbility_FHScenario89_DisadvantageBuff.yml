@@ -1,0 +1,19 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH89_DisadvantageBuff
+ScenarioAbility:
+    AddActiveBonus:
+        Attack: 0
+        AttackHasDisadvantage: True
+        AttackEffect:
+            Type: BasedOnVarsCondition
+        Filter: Self
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: BuffAttack                    
+            #IsAura: True
+            #AuraFilter: [Ally, Enemy]
+            #AuraTargeting: All
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_089_SCENARIO_MODIFIER_2$, Negative_Dasadvantage_Campaign]
+            Filter:
+                Vars:
+                    ValidateProperRooms: ScenarioScript_FH089.ValidateDisadvantage(self, target)

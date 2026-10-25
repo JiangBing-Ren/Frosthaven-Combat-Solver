@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 130
+ScenarioItemID: 1125
+Name: Iron Helmet
+Quantity: 2
+GoldCost: 20
+Type: Head
+IsNewCharacterItem: False

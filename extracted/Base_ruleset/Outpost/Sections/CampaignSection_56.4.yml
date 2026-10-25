@@ -1,0 +1,7 @@
+Parser: CampaignSection
+ID: 56.4
+Name: Selling the Amulet
+SkipCompletedNotification: False
+Effects:
+    - Type: EnableEvent
+      Param1: SR-52

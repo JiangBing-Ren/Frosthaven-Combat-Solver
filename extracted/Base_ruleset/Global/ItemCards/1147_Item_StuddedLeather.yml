@@ -1,0 +1,26 @@
+Parser: ItemCard
+ID: 1147
+StringID: StuddedLeatherID
+Name: $FH/1147_item_cards_studded_leather_1$
+Art: Studded Leather
+TotalInGame: 2
+Cost: 20
+Rarity: Rare
+Slot: Body 
+Usage: Spent
+Trigger: OnAttackedBeforeAttackModifiers
+Data: 
+    ShieldValue: 1
+    ItemRequirements:
+        Vars:
+            AttackedActor: Ability.VarsContext.parentContext.ActorToAttack
+            ItemOwner: Ability.VarsContext.parentContext.ItemOwner
+            ValidateItemOwnerIsAttackTarget: AttackedActor == ItemOwner
+    CompareAbility:
+        AbilityType: Attack
+        Filter: Enemy
+    Overrides:
+        OAttackModifierOverrideBonus:
+            AttackHasDisadvantage: True
+Layout: 
+    - Row: "$FH/1147_item_cards_studded_leather_2$"

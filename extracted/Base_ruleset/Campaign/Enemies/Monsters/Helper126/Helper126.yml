@@ -1,0 +1,73 @@
+Parser: Enemy
+ID: Helper126ID
+LocKey: $FH/FH_Scenario_Campaign_126_Helper$
+MonsterType: Monster
+Model: HelperVillager
+StandeeLimit: 7
+PredominantlyMelee: True
+AbilityCards: [11533]
+# Base Stats
+Level0:
+    Health: 5
+    Move: 0
+    Attack: 0
+    Range: 0
+    Target: 0
+    Immunities: [Ward, Regenerate, StopFlying, Strengthen, Invisible, Bless, Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Sleep, Push, Pull, ControlActor]
+    ImmuneToForcedMovement: True
+Level1:
+    Health: 5
+    Move: 0
+    Attack: 0
+    Range: 0
+    Target: 0
+    Immunities: [Ward, Regenerate, StopFlying, Strengthen, Invisible, Bless, Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Sleep, Push, Pull, ControlActor]
+    ImmuneToForcedMovement: True
+Level2:
+    Health: 7
+    Move: 0
+    Attack: 0
+    Range: 0
+    Target: 0
+    Immunities: [Ward, Regenerate, StopFlying, Strengthen, Invisible, Bless, Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Sleep, Push, Pull, ControlActor]
+    ImmuneToForcedMovement: True
+Level3:
+    Health: 9
+    Move: 0
+    Attack: 0
+    Range: 0
+    Target: 0
+    Immunities: [Ward, Regenerate, StopFlying, Strengthen, Invisible, Bless, Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Sleep, Push, Pull, ControlActor]
+    ImmuneToForcedMovement: True
+Level4:
+    Health: 11
+    Move: 0
+    Attack: 0
+    Range: 0
+    Target: 0
+    Immunities: [Ward, Regenerate, StopFlying, Strengthen, Invisible, Bless, Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Sleep, Push, Pull, ControlActor]
+    ImmuneToForcedMovement: True
+Level5:
+    Health: 13
+    Move: 0
+    Attack: 0
+    Range: 0
+    Target: 0
+    Immunities: [Ward, Regenerate, StopFlying, Strengthen, Invisible, Bless, Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Sleep, Push, Pull, ControlActor]
+    ImmuneToForcedMovement: True
+Level6:
+    Health: 15
+    Move: 0
+    Attack: 0
+    Range: 0
+    Target: 0
+    Immunities: [Ward, Regenerate, StopFlying, Strengthen, Invisible, Bless, Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Sleep, Push, Pull, ControlActor]
+    ImmuneToForcedMovement: True
+Level7:
+    Health: 17
+    Move: 0
+    Attack: 0
+    Range: 0
+    Target: 0
+    Immunities: [Ward, Regenerate, StopFlying, Strengthen, Invisible, Bless, Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Sleep, Push, Pull, ControlActor]
+    ImmuneToForcedMovement: True

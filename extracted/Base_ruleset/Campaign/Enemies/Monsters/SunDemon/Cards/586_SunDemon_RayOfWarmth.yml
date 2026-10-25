@@ -1,0 +1,24 @@
+Parser: EnemyCard
+ID: 586
+Name: $Monster_Ability_586_SunDemon_RayOfWarmth$
+Initiative: 17
+Shuffle: True
+Data:
+    Abilities: 
+        Heal1:
+            Heal: 3
+            Range: 3
+            RangeIsBase: True
+            Filter: [Self, Ally]
+            AnimOverload: Cast
+    Consumes:
+        CLight:
+            Elements: Light
+            AbilityOverrides:
+                CLightTargetAll:
+                    ParentName: Heal1
+                    Target: -1
+                    TargetIsBase: True
+                    Filter: [Self,Ally]
+                    Text: "$Target_AllAlliesWithinRange$"
+                    TextOnly: True

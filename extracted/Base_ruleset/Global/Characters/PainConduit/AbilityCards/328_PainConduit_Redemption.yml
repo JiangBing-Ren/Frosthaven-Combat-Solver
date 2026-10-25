@@ -1,0 +1,51 @@
+Parser: AbilityCard
+Name: $FH/328_character_ability_cards_pain_conduit_redemption_1$
+Character: PainConduitID
+ID: 328
+Level: 9
+Initiative: 33
+Discard: [Lost,Discard]
+Prefab: 328_PainConduit_Redemption
+Data:
+    Top:
+        XP: 2
+        Abilities:
+            TDamageAnyEnemyOnDamaged:
+                Filter: Self
+                AddActiveBonus:
+                    Damage: 2
+                    Range: 2
+                    MiscVars:
+                        PrintedProperties: list("Damage","Range")
+                    Target: 1
+                    Filter: [Enemy]
+                    AnimOverload: CastGivingPain
+                AnimOverload: Heal
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: DuringActionAbilityOnDamaged
+                    TriggerAbilitiesImmediately: True
+    Bottom:
+        Abilities:
+            BRemoveCurse:
+                NullTargeting: True
+                # target doesn't matter, i just use it for a visual guide
+                Filter: [Self, Ally]
+                Target: -1
+                AnimOverload: CastGivingPain
+                PerformVars:
+                    ApplyToActors:
+                        ActorsInRange: GameState.GetAllAlliesInRange(TargetingActor, TargetingActor.ArrayIndex, 1).Append(TargetingActor)
+                        ClassesAndActorsInRange: CustomAbility.GetClassesFromActors(ActorsInRange)
+                        NumRemovedCurseModifiers: CustomAbility.RemoveCurseModifiers(ClassesAndActorsInRange)
+                        AddCurses: CustomAbility.AddCurseModifiersToEnemyMonsterDecks(NumRemovedCurseModifiers)
+Layout:
+    Top:
+        - Active:
+            Ability: TDamageAnyEnemyOnDamaged
+            Icon: Positive_Thorns_Range
+            ListLayout: "$FH/328_character_ability_cards_pain_conduit_redemption_2$"
+            Layout: "$FH/328_character_ability_cards_pain_conduit_redemption_2$"
+    Bottom:      
+        - Row: "$FH/328_character_ability_cards_pain_conduit_redemption_3$"
+

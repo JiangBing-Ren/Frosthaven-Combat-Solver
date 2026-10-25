@@ -1,0 +1,16 @@
+Parser: Perk
+ID: HIVE10
+Name: FH/PERK_HIVE_10_Name
+Description: FH/PERK_HIVE_10_Desc
+CharacterID: HIVEID
+Available: 1
+Flags: [Passive, ApplyActiveBonusesAtScenarioStart]
+Abilities:
+    TActive:
+        AutoTrigger: True
+        ImmunityTo: [Wound]
+        Filter: Self
+        ActiveBonus:
+            Duration: Persistent
+            Hidden: True
+           

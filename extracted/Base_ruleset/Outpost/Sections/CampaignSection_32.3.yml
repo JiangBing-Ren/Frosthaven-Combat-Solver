@@ -1,0 +1,6 @@
+Parser: CampaignSection
+ID: 32.3
+Name: Visiting Trader (32.3)
+SkipCompletedNotification: False
+Effects:
+    - Type: EnableTravellingMerchantThisWeek

@@ -1,0 +1,6 @@
+Parser: AttackModifier
+Name: AMC_Heal2_P1
+MathModifier: "+1"
+Abilities:
+    HealAbility:
+        Heal: 2

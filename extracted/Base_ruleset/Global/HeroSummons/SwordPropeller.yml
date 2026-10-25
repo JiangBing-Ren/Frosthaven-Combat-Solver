@@ -1,0 +1,23 @@
+Parser: HeroSummon
+ID: SwordPropellerID
+LocKey: $FH/409_character_ability_cards_hive_spinning_blades_2$
+Model: SwordPropeller
+Flying: True
+Health:
+    Amount: 1
+    SquareEnhancements: 1
+Move:
+    Amount: 5
+    SquareEnhancements: 1
+Attack:
+    Amount: 2
+    SquareEnhancements: 1
+SpecialAbilities:
+    AWound:
+        AbilityType: AddCondition
+        Condition: Wound
+        Range: 1
+        Target: -1
+        Filter: [Self,Enemy,Ally]
+        AnimOverload: AOE
+

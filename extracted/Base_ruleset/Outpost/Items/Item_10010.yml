@@ -1,0 +1,7 @@
+Parser: FHItem
+ID: 10010
+ScenarioItemID: 10010
+Name: AlgoxWarHammer
+Quantity: 2
+Type: TwoHandWeapon
+GoldCost: 25

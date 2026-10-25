@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 233
+ScenarioItemID: 1243
+Name: Dead Raven
+Quantity: 1
+GoldCost: 30
+Type: Small
+IsNewCharacterItem: False

@@ -1,0 +1,37 @@
+Parser: ItemCard
+ID: 1131
+StringID: NimbleLegguardsID
+Name: $FH/1131_item_cards_nimble_legguards_1$
+Art: Nimble Legguards
+TotalInGame: 2
+Cost: 20
+Slot: Legs
+Rarity: Rare
+Usage: Spent
+Trigger: OnAttackedBeforeAttackModifiers
+Data: 
+    ItemRequirements:
+        Vars:
+            AttackedActor: Ability.VarsContext.parentContext.ActorToAttack
+            ItemOwner: Ability.VarsContext.parentContext.ItemOwner
+            ValidateIsAdjacent: ItemOwner.GetDistanceTo(AttackedActor) == 1
+            ValidateIsAlly: CustomAbility.IsAlly(ItemOwner, AttackedActor)
+            ValidateCanUseItems: ItemOwner.Tokens.HasKey(CCondition.ENegativeCondition.Impair) == false && ItemOwner.Tokens.HasKey(CCondition.ENegativeCondition.Stun) == false  
+    CompareAbility:
+        AbilityType: Attack
+        Filter: Enemy
+    Abilities:
+        ARedirect:            
+            Redirect:
+                Filter: Ally
+                Range: 1
+                IgnoreLOS: True
+            MiscVars:
+                ProjectileName: "'NimbleLegguardsTransfer'"
+            Filter: Self
+            ActiveBonus:
+                Duration: Turn
+                Hidden: True
+                Restriction: OncePerRound
+Layout: 
+    - Row: "$FH/1131_item_cards_nimble_legguards_2$"

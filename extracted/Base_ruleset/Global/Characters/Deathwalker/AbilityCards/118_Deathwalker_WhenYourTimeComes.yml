@@ -1,0 +1,107 @@
+Parser: AbilityCard
+Name: $FH/118_character_ability_cards_deathwalker_when_your_time_comes_1$
+Character: DeathwalkerID
+ID: 118
+Level: 9
+Initiative: 72
+Discard: [Discard,Lost]
+Prefab: 118_Deathwalker_WhenYourTimeComes
+Data:
+    Top:
+        Abilities:
+            TBuffDamageOnDie:
+                AddActiveBonus:
+                    Damage: 4
+                    Target: -1
+                    Range: 1
+                    MiscVars:
+                        PrintedProperties: list("Damage")
+                    Filter:
+                        ActorType: [Enemy,Enemy2]
+                    AutoTrigger: True
+                Range: 4
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Target: 1
+                Filter: Enemy
+                AnimOverload: Debuff
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: DuringActionAbilityOnDeath
+                    TriggerAbilitiesImmediately: True
+                    ListLayoutOverride: [$FH/118_character_ability_cards_deathwalker_when_your_time_comes_2$, Positive_Damage_Enemy_Death]
+            TAttack:
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                Range: 4
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                Conditions: Curse
+                AnimOverload: RangedAttack
+        Infuse: Dark
+    Bottom:
+        Abilities:
+            # used to be 2 bonuses, one for out of ability deaths, one for post-ability deaths
+            # i'd rename this, but i'm afraid of messing up any cards that reference the name
+            BPlaceShadowOnEnemyDeadFromTrap:
+                AddActiveBonus:
+                    CanUndo: False
+                    Vars: 
+                        # custom preview for shadow while selecting the consume toggle, since the actual shadow creation ability will autotrigger and you'll never see its tile preview
+                        ForcePreviewTiles: list(TargetTile)
+                    MiscVars:
+                        SpawnTypePreview: "'Shadow'"
+                        SpawnPropPreview: "'Shadow'"
+                        IsPositive: True
+                    Consume: 
+                        Elements: [Dark]
+                        Abilities:
+                            BCreateShadow:
+                                AutoTrigger: True
+                                CreateShadow:
+                                #HelpBoxTooltipLocKey: "FH/GUI_PLACE_SHADOWS_HELPBOX"
+                                Targeting: Custom
+                                TargetingVars:
+                                    AddTileInRange: TargetTile
+                                Target: 1
+                                AnimOverload: Shadow Manipulation
+                    PreviewEffectText: "<sprite name=DWLShadow>"
+                Range: 1
+                Target: -1
+                Filter: Self
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: DuringActionAbilityOnDeath
+                    TriggerAbilitiesImmediately: True
+                    TriggerOnCaster: True
+                    IsAura: True
+                    AuraTargeting: All
+                    AuraFilter:
+                        TargetType: Enemy                        
+                        UseTargetOriginalType: True
+                    Vars: 
+                        TargetTile: TriggerActor.Tile
+        XP: 2
+Layout:
+    Top:
+        - Active:
+            Ability: TBuffDamageOnDie
+            ListLayout: "$FH/118_character_ability_cards_deathwalker_when_your_time_comes_2$"
+            Layout: "$FH/118_character_ability_cards_deathwalker_when_your_time_comes_2$"
+            Icon: Positive_Damage_Enemy_Death
+        - Divider:
+        - Row:
+            - Column:
+                - Row: "<b><size=130%> <sprite name=Attack> *TAttack* <b><size=130%> @TAttack@"
+            - Column:
+                - Row: "<size=130%> <sprite name=Range> *TAttack.Range*, <sprite name=Curse>"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Dark]
+    Bottom:
+        - Active:
+            Ability: BPlaceShadowOnEnemyDeadFromTrap
+            ListLayout: "$FH/118_character_ability_cards_deathwalker_when_your_time_comes_3$<br><sprite name=ConsumeDark>: $FH/118_character_ability_cards_deathwalker_when_your_time_comes_3a$"
+            Layout: "$FH/118_character_ability_cards_deathwalker_when_your_time_comes_3$<br><sprite name=ConsumeDark>: $FH/118_character_ability_cards_deathwalker_when_your_time_comes_3a$"
+            Icon: Positive_Shadow_Enemy_Death

@@ -1,0 +1,28 @@
+Parser: AbilityCard
+Name: $FH/Tutorial2_BannerSpear_Round4_1_Name$
+Character: Tutorial2_BannerSpearID
+ID: 9035
+Level: 1
+Initiative: 1
+Discard: [Discard,Discard]
+Data:
+    Top:
+        Abilities:
+            TImmobilize:
+                Immobilize: True
+                Filter: Enemy
+            TPush:
+                Filter: Enemy
+                Push: 1
+    Bottom:
+        Abilities:
+            BHeal:
+                Heal: 5
+                Filter: Self
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Immobilize>"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Push> *TPush*"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Heal> *BHeal* <mark=#80919922><size=100%>$Self$</mark> <size=100%>: $FH/Tutorial2_Heal$"

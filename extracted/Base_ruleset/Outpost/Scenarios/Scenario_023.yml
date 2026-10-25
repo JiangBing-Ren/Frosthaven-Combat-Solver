@@ -1,0 +1,12 @@
+Parser: FHScenario
+ID: 23
+Name: Spire Basement
+LevelID: FS_023_Spire_Basement
+Chain: Unfettered
+Location: CrystalFields
+Difficulty: 1
+Conclusions:
+    - Effects:
+        - Type: GainRandomItemBlueprint
+        - Type: UnlockLinkedScenario
+          Param1: 34

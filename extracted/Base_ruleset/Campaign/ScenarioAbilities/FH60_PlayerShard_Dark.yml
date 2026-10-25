@@ -1,0 +1,9 @@
+Parser: ScenarioAbility
+ID: FH60_PlayerShard_Dark
+ScenarioAbility:
+    FH60_PlayerShard_Dark:
+        NullTargeting: True
+        Filter: Self
+        ActiveBonus:
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_060_PlayerShard_Dark$, Positive_AttackPlus_Enemy_Campaign]
+            Duration: Persistent

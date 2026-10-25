@@ -1,0 +1,73 @@
+Parser: Enemy
+ID: LaserSpireID
+LocKey: $FH/FH_Scenario_Campaign_109_SCENARIO_OBJECT_2$
+MonsterType: Object
+Model: LaserSpire
+StandeeLimit: 6
+PredominantlyMelee: True
+AbilityCards: [08740068, 08750069, 08760070, 08770071, 08780072, 08790073, 08800074, 08810075]
+# Base Stats
+Level0:
+    Health: 1
+    Move: 0
+    Attack: 0
+    Range: 0
+    Target: 0
+    Invulnerable: True
+    #Immunities: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Sleep, Push, Pull, ControlActor]
+Level1:
+    Health: 1
+    Move: 0
+    Attack: 0
+    Range: 0
+    Target: 0
+    Invulnerable: True
+    #Immunities: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Sleep, Push, Pull, ControlActor]
+Level2:
+    Health: 1
+    Move: 0
+    Attack: 0
+    Range: 0
+    Target: 0
+    Invulnerable: True
+    #Immunities: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Sleep, Push, Pull, ControlActor]
+Level3:
+    Health: 1
+    Move: 0
+    Attack: 0
+    Range: 0
+    Target: 0
+    Invulnerable: True
+    #Immunities: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Sleep, Push, Pull, ControlActor]
+Level4:
+    Health: 1
+    Move: 0
+    Attack: 0
+    Range: 0
+    Target: 0
+    Invulnerable: True
+    #Immunities: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Sleep, Push, Pull, ControlActor]
+Level5:
+    Health: 1
+    Move: 0
+    Attack: 0
+    Range: 0
+    Target: 0
+    Invulnerable: True
+    #Immunities: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Sleep, Push, Pull, ControlActor]
+Level6:
+    Health: 1
+    Move: 0
+    Attack: 0
+    Range: 0
+    Target: 0
+    Invulnerable: True
+    #Immunities: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Sleep, Push, Pull, ControlActor]
+Level7:
+    Health: 1
+    Move: 0
+    Attack: 0
+    Range: 0
+    Target: 0
+    Invulnerable: True
+    #Immunities: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Sleep, Push, Pull, ControlActor]

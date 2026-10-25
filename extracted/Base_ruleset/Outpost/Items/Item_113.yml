@@ -1,0 +1,10 @@
+Parser: FHItem
+ID: 113
+ScenarioItemID: 1091
+Name: Expertise Potion
+Quantity: 2
+Type: Small
+Brewing:
+    Herb1: Rockroot
+    Herb2: Corpsecap
+    Herb3: Flamefruit

@@ -1,0 +1,99 @@
+Parser: AbilityCard
+Name: $FH/136_character_ability_cards_boneshaper_bone_dagger_1$
+Character: BoneshaperID
+ID: 136
+Level: 2
+Initiative: 29
+Discard: [Lost,Discard]
+Prefab: 136_Boneshaper_BoneDagger
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 4
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Condition: Curse
+                StatIsBasedOnX:
+                    Strength:
+                        AddTo: True
+                        BasedOn: ActorCount
+                        Filter: [OwnSummon]
+        Infuse: Dark
+        XP: 1
+    Bottom:
+        Abilities:
+            BCurse:
+                Curse: True
+                Range:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Filter: Enemy
+                AnimOverload: CastNegative
+                SubAbilities:
+                    BActive:
+                        AutoTrigger: True
+                        AddActiveBonus:
+                            Filter: Self
+                            AutoTrigger: True
+                            SelectAndPlayCard:       
+                                CardPile: Discarded  
+                            MiscVars:
+                                IsActionValid: Action.Abilities.Any(obj.AbilityType == CAbility.EAbilityType.Summon)
+                                ReduceNextDamage: 2
+                        ActiveBonus:
+                            Duration: Round
+                            Behaviour: DuringActionAbilityOnDeath
+                            TriggerAbilitiesImmediately: True
+                            TriggerOnCaster: True
+                            Restriction: OncePerTurn
+                            RestrictPerActor: True
+                            Requirement:
+                                Vars:
+                                    ValidateCasterAlive: CheckingBonus.Caster.IsDead == False
+                        AnimOverload: PowerUp
+        Consumes:
+            BCDark:
+                Elements: Dark
+                AbilityOverrides:
+                    BCCurseRangeBuff:
+                        ParentName: BCurse
+                        Range: 2
+                        
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: 25,25,25,25
+            - Column:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column: "<mark=#6EBE4922><sprite name=Curse></mark>"
+            - Column:
+        - Row : "$FH/136_character_ability_cards_boneshaper_bone_dagger_2$"
+        - Row: "<size=20%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark
+    Bottom:
+        - Row:
+            - ColumnWidths: 40,10,25,25
+            - Column:
+            - Column: "<b><size=130%><sprite name=Curse>"
+            - Column: "<mark=#6EBE4922><sprite name=Range> *BCurse.Range* @BCurse.Range@</mark>"
+            - Column:
+        - Row: "<size=20%> "
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: BCDark
+                    Text: "+2<sprite name=Range>"
+        - Row: "<size=20%> "
+        - Active:
+            Ability: BActive
+            ListLayout: "$FH/136_character_ability_cards_boneshaper_bone_dagger_3$"
+            Layout: "$FH/136_character_ability_cards_boneshaper_bone_dagger_3$"
+            Icon: Positive_Cards_Enemy_Death

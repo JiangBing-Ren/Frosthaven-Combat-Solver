@@ -1,0 +1,29 @@
+Parser: ItemCard
+ID: 884
+StringID: CrudeHelmetID
+Name: $FH/884_item_cards_crude_helmet_1$
+Art: Crude Helmet
+TotalInGame: 2
+Cost: 30
+Slot: Head 
+Rarity: Rare
+Usage: Unrestricted
+ProsperityRequirement: 1
+Trigger: PassiveEffect
+Data: 
+    Abilities:
+        AModifyAttack:
+            ChangeAttackModifier:
+            ReplaceModifiers: "*2"
+            ReplaceWithModifier: "+1"
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: AdjustWhenAttacked
+Layout:
+    - Active:
+        Ability: AModifyAttack
+        ListLayout: $FH/884_item_cards_crude_helmet_2$
+        Layout: $FH/884_item_cards_crude_helmet_2$
+        Icon: "Positive_2X_Enemy-Attack_Item"
+    - Row: "<size=50%> "
+    #When you are attacked, treat any (2x) attack modifier card the enemy draws as a (+1) instead.

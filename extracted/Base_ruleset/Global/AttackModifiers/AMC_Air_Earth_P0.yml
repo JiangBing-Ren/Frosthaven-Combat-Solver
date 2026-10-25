@@ -1,0 +1,7 @@
+Parser: AttackModifier
+Name: AMC_Air_Earth_P0
+MathModifier: "+0"
+Abilities:
+    InfuseAbility:
+        Infuse: [Air, Earth]
+        ShowElementPicker: True

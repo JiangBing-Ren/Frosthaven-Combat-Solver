@@ -1,0 +1,7 @@
+Parser: FHItem
+ID: 24
+ScenarioItemID: 928
+Name: Corrupted Blade
+Quantity: 2
+Type: OneHandWeapon
+RequiredCraftingItemIDs: [ 14, 98 ]

@@ -1,0 +1,43 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH0106_BossEndRound
+ScenarioAbility:
+    ABossAbility:
+        AddActiveBonus:
+            Null: True
+            SubAbilities:
+                AHeal:
+                    TreatAsNonSubAbility: True
+                    Heal: 2
+                    Filter: [Self]
+                APush:
+                    TreatAsNonSubAbility: True
+                    Push: 1
+                    Range: 5
+                    RangeIsBase: True
+                    Target: -1
+                    TargetIsBase: True
+                    Filter:
+                        TargetType: Enemy
+                        ActorType: Player
+                    AnimOverload: PowerUp
+                    Conditions: Muddle
+                    PerformVars:
+                        OnAbilityEnded:
+                            TriggerSubAbility: CustomAbility.StackNonInlineSubabilities(obj)
+
+                ADamage:
+                    TreatAsNonSubAbility: True
+                    Damage: 1
+                    Targeting: All
+                    IgnoreLOS: True
+                    Target: -1
+                    TargetIsBase: True
+                    Filter:
+                        TargetType: Enemy
+                        ActorType: Player
+                    AnimOverload: CastAOE
+        Filter: Self
+        ActiveBonus:
+            Behaviour: EndRoundAbility
+            Duration: Persistent
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_106_SCENARIO_MODIFIER_5$, Positive_HealSelf_Campaign]

@@ -1,0 +1,122 @@
+Parser: GameMode
+Name: Frosthaven
+OutpostMarkerLocation: Frosthaven
+StartingMorale: 0
+StartingProsperity: 0
+StartingCharacterGold: 30
+MoraleToDefenseTable:
+    - Morale: 0
+      Defense: -10
+      SectionID: 126.1
+    - Morale: 2
+      Defense: -10
+    - Morale: 4
+      Defense: -5
+    - Morale: 7
+      Defense: 0
+    - Morale: 10
+      Defense: 5
+    - Morale: 13
+      Defense: 10
+    - Morale: 19
+      Defense: 15
+    - Morale: 20
+      Defense: 15
+      SectionID: 161.3
+ProsperityTable: [ 0, 5, 8, 11, 14, 17, 20, 23, 26 ]
+CharacterExperienceTable: [ 0, 45, 95, 150, 210, 275, 345, 420, 500 ]
+StartingScenarios: [ 1 ]
+StartingItems: [ 120, 121, 122, 123, 124, 125, 126, 127, 128, 10010, 10072, 10025, 10105, 10109, 10116 ]
+RandomItems: [ 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192 ]
+StartingBlueprints: [ 51, 52, 53, 54, 55, 56, 57, 58 ]
+StartingPersonalQuests: [PQ_1, PQ_2, PQ_3, PQ_4, PQ_5, PQ_6, PQ_7, PQ_8, PQ_9, PQ_10]
+StartingEvents: [ SO-01, SO-02, SO-03, SO-04, SO-05, SO-06, SO-07, SO-08, SO-09, SO-10, SO-11, SO-12, SO-13, SO-14, SO-15, SO-16, SO-18, SO-19, SO-20, B-01, B-02, B-03, B-04, B-05, B-06, B-07, B-08, B-09, B-10, B-11, B-12, B-13, WO-01, WO-02, WO-03, WO-04, WO-05, WO-06, WO-07, WO-08, WO-09, WO-10, WO-11, WO-12, WO-13, WO-14, WO-15, WO-16, WO-17, WO-18, WO-19, WO-20, SR-01, SR-02, SR-03, SR-04, SR-06, SR-07, SR-08, SR-09, SR-10, SR-12, SR-13, SR-14, SR-15, SR-16, SR-17, SR-18, SR-19, WR-01, WR-02, WR-03, WR-04, WR-05, WR-06, WR-07, WR-08, WR-09, WR-10, WR-11, WR-12, WR-13, WR-14, WR-15, WR-16, WR-17, WR-19, WR-20]
+StartingBuildings: 
+    - ID: 34
+      Level: 1
+    - ID: 98
+      Level: 1
+    - ID: 84
+      Level: 1
+    - ID: 35
+      Level: 1
+AvailableForConstruct:
+    - ID: 5
+      Level: 1
+    - ID: 12
+      Level: 1
+    - ID: 17
+      Level: 1
+    - ID: 1000
+      Level: 1
+
+UnlockedClasses: [ BannerSpearID, BoneshaperID, DrifterID, DeathwalkerID, BlinkbladeID, GeminateID]
+ScenarioLevels:
+    - BonusExperience: 4
+      GoldConversion: 2
+      TrapDamage: 2
+      HazardousTerrainDamage: 1
+    - BonusExperience: 6
+      GoldConversion: 2
+      TrapDamage: 3
+      HazardousTerrainDamage: 2
+    - BonusExperience: 8
+      GoldConversion: 3
+      TrapDamage: 4
+      HazardousTerrainDamage: 2
+    - BonusExperience: 10
+      GoldConversion: 3
+      TrapDamage: 5
+      HazardousTerrainDamage: 2
+    - BonusExperience: 12
+      GoldConversion: 4
+      TrapDamage: 6
+      HazardousTerrainDamage: 3
+    - BonusExperience: 14
+      GoldConversion: 4
+      TrapDamage: 7
+      HazardousTerrainDamage: 3
+    - BonusExperience: 16
+      GoldConversion: 5
+      TrapDamage: 8
+      HazardousTerrainDamage: 4
+    - BonusExperience: 18
+      GoldConversion: 6
+      TrapDamage: 9
+      HazardousTerrainDamage: 4
+StartingCampaignEffects:
+    # 5th week
+    - Type: AddCalendarCampaignSection
+      Param1: 32.3
+      Param2: 5
+    # end of first summer
+    - Type: AddCalendarCampaignSection
+      Param1: 183.3
+      Param2: 10
+    # end of first summer
+    - Type: AddCalendarCampaignSection
+      Param1: 21.4
+      Param2: 11
+    # end of first winter
+    - Type: AddCalendarCampaignSection
+      Param1: 129.3
+      Param2: 21
+    # midway through second summer
+    - Type: AddCalendarCampaignSection
+      Param1: 183.3
+      Param2: 25
+    # end of second summer
+    - Type: AddCalendarCampaignSection
+      Param1: 183.3
+      Param2: 30
+    #end of second winter
+    - Type: AddCalendarCampaignSection
+      Param1: 184.1
+      Param2: 41
+    #end of first calendar sheet
+    - Type: AddCalendarCampaignSection
+      Param1: 137.2
+      Param2: 81
+    - Type: UnlockPuzzle
+      Param1: Prologue
+    

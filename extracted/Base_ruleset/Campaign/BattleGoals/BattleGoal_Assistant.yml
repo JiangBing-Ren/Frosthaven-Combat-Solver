@@ -1,0 +1,12 @@
+Parser: BattleGoal
+ID: BattleGoal_Assistant
+LocalisedName: FH/1304_battle_goals_assistant_1
+LocalisedDescription: FH/1304_battle_goals_assistant_2
+#Kill a monster attacked by any of your allies earlier in the same round.
+PerkChecks: 1
+BattleGoalCondition:
+    - Targets:
+        Filter: KillAttackedByAllyInSameRound
+        MonsterType: [Normal, Elite, Boss]
+        Value: 1
+        SubFilter: Scenario

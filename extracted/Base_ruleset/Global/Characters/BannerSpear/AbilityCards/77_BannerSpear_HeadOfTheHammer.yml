@@ -1,0 +1,61 @@
+Parser: AbilityCard
+Name: $FH/077_character_ability_cards_banner_spear_head_of_the_hammer_1$
+#CustomImage: KRO_BANNER_SPEAR_AbilityCards_HeadOfTheHammer
+Character: BannerSpearID
+ID: 77
+Level: 3
+Initiative: 87
+Discard: [Lost,Discard]
+Prefab: 77_Bannerspear_HeadOfTheHammer
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 7
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AreaEffect: "0,0,G|2,0,R|-2,0,B"
+                AreaEffectLayoutOverride: "0,0,G|1,1,R|-1,-1,B"
+                MultiPassAttack: False
+                Conditions: [Stun]
+                AnimOverload: Attack
+        XP: 3        
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 4
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BMuddle:
+                Muddle: True
+                Range: 1
+                Target: 99
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Filter: [Enemy]
+                AnimOverload: SelfBuff
+                MiscVars:
+                    AutoSelectValidTiles: True
+        Infuse: Air
+Layout:
+    Top:
+        - ColumnWidths: "40,20,40"
+        - Column:
+            - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Row: "<size=20%> "
+        - Column:
+            - AddedEffect: "<size=130%><sprite name=Stun>"
+        - Column:
+            - Row: "£Area£"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove.Amount* <size=100%><voffset=1>@BMove@"
+        - Divider: 
+        - AddedEffect: $FH/077_character_ability_cards_banner_spear_head_of_the_hammer_2$
+        - Row: "<size=100%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Air

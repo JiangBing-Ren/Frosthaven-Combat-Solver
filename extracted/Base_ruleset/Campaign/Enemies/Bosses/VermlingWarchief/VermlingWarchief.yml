@@ -1,0 +1,105 @@
+Parser: Enemy
+ID: VermlingWarchiefID
+LocKey: $VermlingWarchief$
+MonsterType: Boss
+Model: VermlingWarchief
+StandeeLimit: 1
+PredominantlyMelee: True
+AbilityCards: [0874000076,0875000077,0876000078,0877000079,0878000080,0879000081,0880000082,0881000083]
+# Base Stats
+Level0:
+    Health: 0
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Shield: 1 
+    Immunities: [Disarm, Stun, Poison, Muddle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 5
+Level1:
+    Health: 0
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Shield: 1 
+    Immunities: [Disarm, Stun, Poison, Muddle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 6
+Level2:
+    Health: 0
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 1 
+    Immunities: [Disarm, Stun, Poison, Muddle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 7
+Level3:
+    Health: 0
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 1 
+    Immunities: [Disarm, Stun, Poison, Muddle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 9
+Level4:
+    Health: 0
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 1 
+    Immunities: [Disarm, Stun, Poison, Muddle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 12
+Level5:
+    Health: 0
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 1 
+    Immunities: [Disarm, Stun, Poison, Muddle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 14
+Level6:
+    Health: 0
+    Move: 2
+    Attack: 5
+    Range: 1
+    Target: 1
+    Shield: 1 
+    Immunities: [Disarm, Stun, Poison, Muddle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 17
+Level7:
+    Health: 0
+    Move: 2
+    Attack: 5
+    Range: 1
+    Target: 1
+    Shield: 1 
+    Immunities: [Disarm, Stun, Poison, Muddle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 21

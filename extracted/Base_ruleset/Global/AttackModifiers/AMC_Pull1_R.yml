@@ -1,0 +1,7 @@
+Parser: AttackModifier
+Name: AMC_Pull1_R
+MathModifier: "+0"
+Rolling: True
+Abilities:
+    PullAbility:
+        Pull: 1

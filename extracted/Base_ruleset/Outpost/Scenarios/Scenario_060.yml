@@ -1,0 +1,31 @@
+Parser: FHScenario
+ID: 60
+Name: Uniting the Crown
+LevelID: FS_060_Uniting_the_Crown
+RequiresBoat: true
+RequiredLurkerCrownShards: 6
+Chain: Lurker
+Location: TheBitingSea
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: GainMorale
+          Param1: 2
+        - Type: AddProsperity
+          Param1: 1
+        - Type: AllCharactersGainExperience
+          Param1: 30
+        - Type: UnlockClassChoise
+          Param1: CrashingTideID
+          Param2: DeepwraithID
+        - Type: GainCampaignSticker
+          Param1: CrownReunited
+        - Type: RemoveLurkerEvents
+        - Type: AddTownGuardMod
+          Param1: +50
+        - Type: EnableEvent
+          Param1: SO-48
+        - Type: EnableEvent
+          Param1: B-17
+        - Type: GainItem
+          Param1: 224

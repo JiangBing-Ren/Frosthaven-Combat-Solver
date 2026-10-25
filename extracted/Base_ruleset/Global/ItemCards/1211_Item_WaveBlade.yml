@@ -1,0 +1,30 @@
+Parser: ItemCard
+ID: 1211
+StringID: WaveBladeID
+Name: $FH/1211_item_cards_wave_blade_1$
+Art: Wave Blade
+TotalInGame: 1
+Cost: 50
+Slot: TwoHand 
+Rarity: Rare
+Usage: Spent
+Trigger: SingleTarget
+Data:     
+    ItemRequirements:
+        Vars:
+            ItemOwner: Ability.TargetingActor
+            WaterTiles: GameState.GetTilesInRange(ItemOwner, 1).Where(obj.IsWater)
+            ValidateIsInWater: WaterTiles.Count > 0
+    Overrides:
+        OAttack:
+            Conditions: Immobilize
+            SubAbilities:
+                AttackSubPush:
+                    Push: 1
+                    IsInlineSubAbility: True
+    CompareAbility:
+        AbilityType: Attack
+        IsMelee: True
+        Filter: Enemy
+Layout: 
+    - Row: $FH/1211_item_cards_wave_blade_2$

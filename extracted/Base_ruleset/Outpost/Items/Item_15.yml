@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 15
+ScenarioItemID: 910
+Name: Reinforced Shield
+Quantity: 2
+Type: OneHandWeapon
+CraftingCost:
+    Lumber: 1
+RequiredCraftingItemIDs: [ 10 ]

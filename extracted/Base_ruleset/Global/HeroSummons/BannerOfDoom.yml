@@ -1,0 +1,32 @@
+Parser: HeroSummon
+ID: BannerOfDoomID
+LocKey: $FH/088_character_ability_cards_banner_spear_take_no_prisoners_2$
+Model: BannerOfDoom
+Health:
+    Amount: 9
+    SquareEnhancements: 1
+Move: 0
+Attack: 0
+Range: 0
+OnSummonAbilities:
+    ADamageAura:
+        Range: 4
+        Target: -1
+        Filter: Self
+        AddActiveBonus:
+            Damage: 1
+            Filter: Enemy
+            IgnoreStun: True
+            Targeting: Custom
+            TargetingVars:
+                AddValidActorInRange: GameState.TurnActor
+        ActiveBonus:
+            Behaviour: StartTurnAbility
+            Duration: Persistent
+            IsAura: True
+            AuraTargeting: Range
+            AuraFilter: Enemy
+            TriggerOnCaster: true
+            ListLayoutOverride: [$FH/088_character_ability_cards_banner_spear_take_no_prisoners_3$, Positive_Damage_Enemy_Aura]
+        Text: $FH/088_character_ability_cards_banner_spear_take_no_prisoners_3$
+        AnimOverload: None

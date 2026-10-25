@@ -1,0 +1,7 @@
+Parser: CampaignSection
+ID: 52.3
+Name: Puzzle Solution
+SkipCompletedNotification: True
+Effects:
+    - Type: UnlockPuzzle
+      Param1: Poetry

@@ -1,0 +1,17 @@
+Parser: ItemCard
+ID: 1179
+StringID: SteelRingID
+Name: $FH/1179_item_cards_steel_ring_1$
+Art: Steel Ring
+TotalInGame: 2
+Cost: 20
+Rarity: Rare
+Slot: SmallItem 
+Usage: Consumed
+Trigger: OnAttacked
+Data:
+    ShieldValue: 4
+    CompareAbility:
+        AbilityType: Attack
+Layout:
+    - Row: $FH/1179_item_cards_steel_ring_2$

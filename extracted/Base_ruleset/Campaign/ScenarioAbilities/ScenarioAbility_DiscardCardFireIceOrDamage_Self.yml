@@ -1,0 +1,20 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_DiscardCardFireIceOrDamage_Self
+ScenarioAbility:
+    TDiscardCard:
+        HelpBoxTooltipLocKey: "$ScenarioAbility_PartyDiscardFireLightOrDamage$"
+        DiscardCards: 1
+        Filter: Self
+        AutoTrigger: True
+        NegativeAbilityIsOptional: True
+        CanSkip: True
+        MiscVars:
+            CardFilter: obj.TopAction.Infusions.Any(obj == ElementInfusionBoardManager.EElement.Fire) || obj.BottomAction.Infusions.Any(obj == ElementInfusionBoardManager.EElement.Fire) ||  obj.TopAction.Infusions.Any(obj == ElementInfusionBoardManager.EElement.Light) || obj.BottomAction.Infusions.Any(obj == ElementInfusionBoardManager.EElement.Light) 
+    TDamage:
+        AutoTrigger: True
+        Damage: 3
+        Filter: Self      
+        StartAbilityRequirements:
+            Type: ThisAbility
+            ActorHasPerformedValidAbilityTypesThisAction: "== 0"
+            AbilityTypes: [DiscardCards]

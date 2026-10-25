@@ -1,0 +1,19 @@
+Parser: BattleGoal
+ID: BattleGoal_Promoter
+LocalisedName: FH/1329_battle_goals_promoter_1
+LocalisedDescription: FH/1329_battle_goals_promoter_2
+#target an ally with an ability before each rest
+PerkChecks: 1
+CheckAtEndOfScenario: True
+BattleGoalCondition:
+    - Targets:
+        Filter: UseAbility
+        AbilityTypes: [LongRest,ShortRest]
+        Value: 1
+        SubFilter: Scenario
+# handled in code, fail if you have a turn in which you targeted less than 1 allies between rests
+BattleGoalFailCondition:
+    - Targets:
+        Filter: TargetAllyBeforeEachRest
+        Value: 1
+        SubFilter: Scenario

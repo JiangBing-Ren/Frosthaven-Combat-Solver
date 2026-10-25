@@ -1,0 +1,19 @@
+Parser: FHScenario
+ID: 15
+Name: Ancient Spire
+LevelID: FS_015_Ancient_Spire
+Chain: Unfettered
+Location: CrystalFields
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: GainLumber
+          Param1: 1
+        - Type: GainHide
+          Param1: 1
+        - Type: GainMetal
+          Param1: 1
+        - Type: UnlockLinkedScenario
+          Param1: 23
+        - Type: UnlockLinkedScenario
+          Param1: 24

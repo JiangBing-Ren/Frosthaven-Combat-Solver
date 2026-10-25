@@ -1,0 +1,109 @@
+Parser: AbilityCard
+Name: $FH/301_character_ability_cards_pain_conduit_shared_affliction_1$
+Character: PainConduitID
+ID: 301
+Level: 1
+Initiative: 61
+Discard: [Lost,Discard]
+Prefab: 301_PainConduit_SharedAffliction
+Data:
+    Top:
+        XP: 2
+        Abilities:
+            TBuffAttack:
+                Attack: 0
+                AttackEffect:
+                    Type: StandardBuff
+                    Vars:
+                        AddConditions: Actor.Tokens.GetAllTransferableConditions().Where(obj != "Brittle" && obj != "Bane" && obj != "Stun").Select(obj.ToString())
+                Filter: Self
+                AnimOverload: Cast
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: BuffAttack
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BRemoveCondition:
+                StartAbilityRequirements: 
+                    Type: ThisAbility
+                    Vars: 
+                        EnemyFilter: CAbilityFilterContainer.CreateDefaultEnemyFilter()
+                        ValidateHasAdjacentEnemies: GameState.GetActorsInRange(TargetingActor, TargetingActor, 1, null, EnemyFilter, null, null, true).Count > 0
+                        ValidateHasConditionsCanRemove: TargetingActor.Tokens.CountNegativeConditions(true) > 0
+                Filter: Self
+                HasCondition: True     
+                HelpBoxTooltipLocKey: "$GUI_CHOOSE_ABILITY_FH_301_character_ability_cards_pain_conduit_shared_affliction_1$"       
+                SkipAnim: True         
+                Choose:
+                    Abilities:
+                        RemoveWound:
+                            RemoveConditions: 1
+                            Conditions: [Wound]
+                            SkipAnim: True      
+                        RemoveBrittle:
+                            RemoveConditions: 1
+                            Conditions: [Brittle]
+                            SkipAnim: True      
+                        RemoveBane:
+                            RemoveConditions: 1
+                            Conditions: [Bane]
+                            SkipAnim: True      
+                        RemovePoison:
+                            RemoveConditions: 1
+                            Conditions: [Poison]
+                            SkipAnim: True      
+                        RemoveImmobilize:
+                            RemoveConditions: 1
+                            Conditions: [Immobilize]
+                            SkipAnim: True      
+                        RemoveDisarm:
+                            RemoveConditions: 1
+                            Conditions: [Disarm]
+                            SkipAnim: True      
+                        RemoveImpair:
+                            RemoveConditions: 1
+                            Conditions: [Impair]
+                            SkipAnim: True      
+                        RemoveStun:
+                            RemoveConditions: 1
+                            Conditions: [Stun]
+                            SkipAnim: True      
+                        RemoveMuddle:
+                            RemoveConditions: 1
+                            Conditions: [Muddle]
+                            SkipAnim: True      
+                SubAbilities:
+                    BAddConditionToEnemy:
+                        TreatAsNonSubAbility: true
+                        CanSkip: False
+                        Vars: 
+                            ParentActor: ParentAbility.TargetingActor
+                            ValidateRemovedCondition: ParentAbility?.ChosenAbility != null
+                            AddNegativeConditions: ParentAbility.ChosenAbility.GetAllNegativeConditions()
+                        Filter: Enemy
+                        Range: 1
+                        Target: 1
+                        NullTargeting: True
+                        AnimOverload: CastGivingPain
+        Infuse: Air
+Layout:
+    Top:
+        - Active:
+            Ability: TBuffAttack
+            Icon: Positive_PainConduit_Attack
+            ListLayout: "$FH/301_character_ability_cards_pain_conduit_shared_affliction_2$"
+            Layout: "$FH/301_character_ability_cards_pain_conduit_shared_affliction_2$"
+    Bottom:
+        - Row: "<size=100%><sprite name=Move>*BMove* @BMove@"
+        - Divider:
+        - Row: "$FH/301_character_ability_cards_pain_conduit_shared_affliction_3$"
+        - Row: "<size=100%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Air

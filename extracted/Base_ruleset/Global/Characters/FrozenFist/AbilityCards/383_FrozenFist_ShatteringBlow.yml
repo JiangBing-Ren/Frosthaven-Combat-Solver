@@ -1,0 +1,107 @@
+Parser: AbilityCard
+Name: $FH/383_character_ability_cards_frozen_fist_shattering_blow_1$
+Character: FrozenFistID
+ID: 383
+Level: 8
+ProgressionOrder: 23
+Initiative: 18
+Discard: [Lost,Discard]
+Prefab: 383_FrozenFist_ShatteringBlow
+Data:
+    Top:
+        Abilities:
+            TConsume:
+                Consume:
+                    Elements: [Ice]
+                    Abilities:
+                        TBrittle:
+                            Brittle: True
+                            Range: 1
+                            MiscVars:
+                                PrintedProperties: list("Range")
+                            Target: 99
+                            Filter: Enemy
+                            AnimOverload: FistsSparks
+                            MiscVars:
+                                AutoSelectValidTiles: True
+                    XP: 1
+            TAttack:
+                Attack:
+                    Amount: 6
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AnimOverload: AttackPower
+        Consumes:
+            TCEarth:
+                Elements: [Earth]
+                AbilityOverrides:
+                    TCAttack:
+                        ParentName: TAttack
+                        Strength: 2
+                XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BConsume:
+                Consume:
+                    Elements: [Ice]
+                    Abilities:
+                        BShield:
+                            Shield: 2
+                            MiscVars:
+                                PrintedProperties: list("Shield")
+                            ActiveBonus: 
+                                Duration: Round
+                                ListLayoutOverride: ["<sprite name=Shield> *BShield*", Positive_Shield]
+                            AnimOverload: FootStomp
+            BHeal:
+                Heal: 
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self
+                AnimOverload: Heal
+        Consumes:
+            BCEarth:
+                Elements: [Earth]
+                AbilityOverrides:
+                    BCHeal:
+                        ParentName: BHeal
+                        Strength: 2
+                XP: 1
+
+Layout:
+    Top:
+        - AddedEffect: "$FH/383_character_ability_cards_frozen_fist_shattering_blow_2$"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCEarth
+                    Text: "+2<sprite name=Attack>, <sprite name=XP1>"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Conditional:
+            Layout: 
+                - Column: "<sprite name=ConsumeIce>: <sprite name=Shield>2"
+                - Column:            
+                    - Duration: Round
+        - Divider:
+        - Row: "$FH/383_character_ability_cards_frozen_fist_shattering_blow_3$ <size=100%><voffset=1>@BHeal@"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: BCEarth
+                    Text: "+2<sprite name=Heal>, <sprite name=XP1>"
+

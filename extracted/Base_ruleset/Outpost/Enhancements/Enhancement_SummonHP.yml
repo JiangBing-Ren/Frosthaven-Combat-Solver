@@ -1,0 +1,7 @@
+Parser: FHEnhancement
+ID: SummonHP
+Name: Glossary_Enhancement_SummonHP
+Cost: 40
+Mark: Square
+Effect: AddOne
+ForEffect: SummonHP

@@ -1,0 +1,7 @@
+Parser: FHItem
+ID: 52
+ScenarioItemID: 1287
+Name: Laser Lens
+Quantity: 2
+Type: Head
+RequiredCraftingItemIDs: [ 97, 129 ]

@@ -1,0 +1,23 @@
+Parser: ItemCard
+ID: 1215
+StringID: HarpoonID
+Name: $FH/1215_item_cards_harpoon_1$
+Art: Harpoon
+TotalInGame: 1
+Cost: 30
+Slot: TwoHand 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        AAttackPull:
+            Attack: 2
+            Range: 3
+            PreviewEffectText: "<sprite name=Attack>2, <sprite name=Range>3, <sprite name=Pull>2"
+            SubAbilities:
+                APull:
+                    Pull: 2
+                    IsInlineSubAbility: True
+Layout: 
+    - Row: "$FH/1215_item_cards_harpoon_2$"

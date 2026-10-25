@@ -1,0 +1,17 @@
+Parser: HeroSummon
+ID: ShaggyLureID
+LocKey: $FH/274_character_ability_cards_trapper_furry_facade_3$
+Model: ShaggyLure
+Health:
+    Amount: 2
+    SquareEnhancements: 1
+Move: 0
+Attack: 0
+Range: 0
+SpecialAbilities:
+    APull:
+        Pull:
+            Amount: 2
+        Range:
+            Amount: 3
+        AnimOverload: Lure

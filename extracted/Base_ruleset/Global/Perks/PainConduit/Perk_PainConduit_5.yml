@@ -1,0 +1,8 @@
+Parser: Perk
+ID: PainConduit05
+Name: FH/PERK_PainConduit_05_Name
+Description: FH/PERK_PainConduit_05_Desc
+CharacterID: PainConduitID
+Available: 1
+CardsToRemove: [AMC_Basic_P0]
+CardsToAdd: [AMC_Basic_P2]

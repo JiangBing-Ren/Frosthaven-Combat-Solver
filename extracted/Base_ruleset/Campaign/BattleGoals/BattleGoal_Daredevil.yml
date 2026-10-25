@@ -1,0 +1,21 @@
+Parser: BattleGoal
+ID: BattleGoal_Daredevil
+LocalisedName: FH/1347_battle_goals_daredevil_1
+LocalisedDescription: FH/1347_battle_goals_daredevil_2
+#Lose two cards before your first rest.
+PerkChecks: 2
+BattleGoalCondition:
+    - Targets:
+        # lose 2 cards before the first rest
+        Filter: LoseCardsBeforeRest
+        Value: 2
+        SubFilter: Scenario
+BattleGoalFailCondition:
+    - Targets:
+        # fail if you rest with less than 2 cards
+        Filter: LoseCardsBeforeRest
+        Conditional:
+            Amount: "< 2"
+        # amount of short rests
+        Amount: 1
+        SubFilter: Scenario

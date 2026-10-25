@@ -1,0 +1,38 @@
+Parser: ItemCard
+ID: 1281
+StringID: FreezingCrystalID
+Name: $FH/1281_item_cards_freezing_crystal_1$
+Art: Freezing Crystal
+TotalInGame: 1
+Cost: 35
+Slot: SmallItem 
+Rarity: Relic
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        AChooseTerrainToCreate:
+            Filter: Self
+            HelpBoxTooltipLocKey: "$FH/GUI_CHOOSE_TERRAIN_TYPE_TO_SPAWN$"
+            Choose:
+                Abilities:
+                    ASpawnIce:
+                        PreviewEffectText: "$FH/ICE_TERRAIN_TOOLTIP$"
+                        CreateTerrain: Ice
+                        TileFilter: FeaturelessHex
+                        MiscVars: 
+                            OverrideIcon: "'IceHex'"
+                    ASpawnDifficultTerrain:
+                        PreviewEffectText: "$TerrainWater$"
+                        CreateTerrain: Water
+                        TileFilter: FeaturelessHex
+                        MiscVars: 
+                            OverrideIcon: "'WaterHex'"
+                    ASpawnHazardousTerrain:
+                        PreviewEffectText: "$HAZARDOUS_TERRAIN_TOOLTIP$"
+                        CreateTerrain: Thorns
+                        TileFilter: FeaturelessHex
+                        MiscVars: 
+                            OverrideIcon: "'HazardHex'"
+Layout:
+    - Row: "$FH/1281_item_cards_freezing_crystal_2$"

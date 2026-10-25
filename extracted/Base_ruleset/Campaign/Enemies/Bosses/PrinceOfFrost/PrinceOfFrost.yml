@@ -1,0 +1,137 @@
+Parser: Enemy
+ID: PrinceOfFrostID
+LocKey: $FH/PrinceOfFrost$
+MonsterType: Boss
+Model: PrinceOfFrost
+StandeeLimit: 1
+PredominantlyMelee: True
+AbilityCards: [0874000101, 0875000102, 0876000103, 0877000104, 0878000105, 0879000106, 0880000107, 0881000108]
+# Base Stats
+Level0:
+    Health: 0
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Immunities: [Immobilize, Disarm, Stun, Curse]
+    Retaliate: 1
+    RetaliateRange: 2
+    Conditions: [Brittle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 10
+    Specials:        
+        Heal: 2
+Level1:
+    Health: 0
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Immunities: [Immobilize, Disarm, Stun, Curse]
+    Retaliate: 1
+    RetaliateRange: 3
+    Conditions: [Brittle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 13
+    Specials:
+        Heal: 3
+Level2:
+    Health: 0
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Immunities: [Immobilize, Disarm, Stun, Curse]
+    Retaliate: 2
+    RetaliateRange: 3
+    Conditions: [Brittle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 15
+    Specials:
+        Heal: 3
+Level3:
+    Health: 0
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Immunities: [Immobilize, Disarm, Stun, Curse]
+    Retaliate: 2
+    RetaliateRange: 3
+    Conditions: [Brittle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 18
+    Specials:
+        Heal: 4
+Level4:
+    Health: 0
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Immunities: [Immobilize, Disarm, Stun, Curse]
+    Retaliate: 2
+    RetaliateRange: 3
+    Conditions: [Brittle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 24
+    Specials:        
+        Heal: 4
+Level5:
+    Health: 0
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Disarm, Stun, Curse]
+    Retaliate: 3
+    RetaliateRange: 3
+    Conditions: [Brittle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 25
+    Specials:
+        Heal: 5
+Level6:
+    Health: 0
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    Immunities: [Immobilize, Disarm, Stun, Curse]
+    Retaliate: 3
+    RetaliateRange: 3
+    Conditions: [Brittle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 34
+    Specials:
+        Heal: 5
+Level7:
+    Health: 0
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    Immunities: [Immobilize, Disarm, Stun, Curse]
+    Retaliate: 4
+    RetaliateRange: 4
+    Conditions: [Brittle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 42
+    Specials:
+        Heal: 6

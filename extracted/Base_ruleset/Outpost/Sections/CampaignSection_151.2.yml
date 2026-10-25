@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 151.2
+Name: Inn Built
+SkipCompletedNotification: False
+Effects:
+    - Type: EnableEvent
+      Param1: WO-71
+    - Type: EnableEvent
+      Param1: SO-55

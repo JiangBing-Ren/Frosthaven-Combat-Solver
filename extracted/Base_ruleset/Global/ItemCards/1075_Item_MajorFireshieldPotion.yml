@@ -1,0 +1,27 @@
+Parser: ItemCard
+ID: 1075 
+StringID: MajorFireshieldPotionID
+Name: $FH/1075_item_cards_major_fireshield_potion_1$
+Art: Major Fireshield Potion
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        ARetaliate:
+            Filter: Self
+            Retaliate: 2
+            RetaliateRange: 3
+            ActiveBonus:
+                Duration: Round
+                MiscVars:
+                    IgnoreImpair: True
+Layout: 
+    - Active:
+        Ability: ARetaliate
+        Icon: "Positive_Pull_AttackRanged_Item"
+        ListLayout: "$FH/1075_item_cards_major_fireshield_potion_2$"
+        Layout: "$FH/1075_item_cards_major_fireshield_potion_2$"

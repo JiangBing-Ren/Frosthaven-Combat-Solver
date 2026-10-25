@@ -1,0 +1,20 @@
+Parser: EnemyCard
+ID: 06540005
+Name: $Monster_Ability_654_LivingDoom_SunlessAbyss$
+Initiative: 11
+Shuffle: False
+Data:
+    Abilities:
+        Curse1:
+             Curse: True
+             Range: 2
+             RangeIsBase: True
+             Filter: Enemy
+             AnimOverload: NegativeCast
+        Shield1:
+            Shield: 1
+        Retaliate1:
+            Retaliate: 2
+            RetaliateRange: 2
+            SkipAnim: True
+    Infuse: [Ice, Dark]

@@ -1,0 +1,76 @@
+Parser: AbilityCard
+Name: $FH/306_character_ability_cards_pain_conduit_blood_ritual_1$
+Character: PainConduitID
+ID: 306
+Level: 1
+Initiative: 56
+Discard: [Discard,Lost]
+Prefab: 306_PainConduit_BloodRitual
+Data:
+    Top:
+        Abilities:
+            TAttack: 
+                Attack:
+                    Amount: 4
+                    DiamondEnhancements: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                AnimOverload: RangedAttack
+            TDamageSelf:
+                Filter: Self
+                Damage: 2
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                AutoTrigger: True
+    Bottom:
+        XP: 2
+        Abilities:
+            BActive:
+                Range: 3
+                AddActiveBonus:
+                    PreviewEffectText: "$FH/306_character_ability_cards_pain_conduit_blood_ritual_3$"
+                    AutoTrigger: True
+                    NullTargeting: True
+                    Filter: Self
+                    AnimOverload: CastTakingPain
+                    Vars:                  
+                        AddNegativeConditions: list(PreventedCondition)
+                    MiscVars:
+                        InterruptCurrentAbility: True
+                        # actual description is too long, and cant be shortened via icons. Just show the name
+                        UseTitleAsOverrideDescription: True
+                AnimOverload: Cast
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: GenericOnNegativeCondition
+                    TriggerOnCaster: True
+                    TriggerAbilitiesImmediately: True
+                    IsToggleBonus: True
+                    IsAura: True
+                    AuraFilter: Ally
+                    AuraTargeting: Range
+                    HiddenWhenAura: True
+                    Vars:
+                        ValidateIsntCaster: TriggerTarget != ActiveBonus.Caster && TriggerTarget != ActiveBonus.Caster.GetMirrorAbilitiesActor(true)
+                        ValidateNotImmune: CAbility.ImmuneToAbility(TriggerTarget, TriggerAbility) == False
+                        PreventedCondition: CCondition.NegativeConditionFromAbility(TriggerAbility.AbilityType)
+                        PreventCondition: True
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "20,30,30"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column:
+                - Row: "<mark=#80919922><size=100%><sprite name=Range>*TAttack.Range*</mark>"
+        - Divider:
+        - MandatoryTrigger: "<sprite name=Damage> 2 $Self$"
+    Bottom:
+        - Active:
+            Ability: BActive
+            Icon: Negative_Redirect_Ally_PainConduit
+            ListLayout: "$FH/306_character_ability_cards_pain_conduit_blood_ritual_3$"
+            Layout: "$FH/306_character_ability_cards_pain_conduit_blood_ritual_3$"
+

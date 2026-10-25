@@ -1,0 +1,15 @@
+Parser: EnemyCard
+ID: 881000501
+Name: $Monster_Ability_MirroredCharacter111Simplified_Projection$
+Initiative: 99
+Shuffle: True
+Data:
+    Abilities:
+        Move1:
+            Move: 1
+        Attack1:
+            Attack: 0
+            Filter: Enemy
+            Range: 3
+            RangeIsBase: True
+            AnimOverload: RangedAttack

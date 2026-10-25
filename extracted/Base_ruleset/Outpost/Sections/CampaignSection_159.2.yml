@@ -1,0 +1,11 @@
+Parser: CampaignSection
+ID: 159.2
+Name: Vermling Siege
+Repeatable: True
+SkipCompletedNotification: True
+ShowAsUnknownInCalendar: True
+Effects:
+    - Type: ChooseNextCampaignSection
+      Param1: "Event_159.2_Choice" 
+      Param2: 170.3
+      Param3: 123.2

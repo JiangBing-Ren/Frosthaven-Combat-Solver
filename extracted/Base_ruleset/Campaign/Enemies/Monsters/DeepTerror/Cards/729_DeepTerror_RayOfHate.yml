@@ -1,0 +1,25 @@
+Parser: EnemyCard
+ID: 729
+Name: $Monster_Ability_729_DeepTerror_RayOfHate$
+Initiative: 54
+Shuffle: False
+Data:
+    Abilities:
+        Debuff:
+            Wound: True
+            Condition: Poison
+            Range: 1
+            RangeIsBase: True
+            Target: -1
+            TargetIsBase: True
+            Filter: Enemy
+            ShowRange: False
+            Text: "$Target_AllAdjacentEnemies$"
+            AnimOverload: AOE
+        Attack2:
+            Attack: 0
+            Range: 4
+            RangeIsBase: True
+            Filter: Enemy
+            AnimOverload: RangedAttack
+            

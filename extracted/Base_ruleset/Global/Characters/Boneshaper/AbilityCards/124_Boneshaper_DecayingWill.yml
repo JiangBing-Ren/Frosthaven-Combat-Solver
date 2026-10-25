@@ -1,0 +1,61 @@
+Parser: AbilityCard
+Name: $FH/124_character_ability_cards_boneshaper_decaying_will_1$
+Character: BoneshaperID
+ID: 124
+Level: 1
+Initiative: 46
+Discard: [Discard,Lost]
+Prefab: 124_Boneshaper_DecayingWill
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 1
+                    DiamondEnhancements: 1
+                Range: 5
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                Condition: Poison
+                ConditionalOverrides:
+                    TAttackCO:
+                        Filter:
+                            TargetType: Enemy
+                            TargetAdjacentSummonsOfCaster: "> 0"
+                        AbilityOverrides:
+                            TAdjAllyBuff:
+                                Strength: 1
+                AnimOverload: RangedAttack
+        Infuse: Earth
+    Bottom:
+        Abilities:
+            BPrevent:
+                PreventDamage: 1
+                Target: -1
+                Targeting: All
+                Filter: Self
+                ActiveBonus:
+                    Behaviour: BlockRetaliate
+                    Duration: Persistent
+                    IsAura: True
+                    AuraTargeting: All
+                    IsToggleBonus: False
+                    AuraFilter: OwnSummon
+                AnimOverload: CastNegative
+        XP: 1
+Layout:
+    Top:
+        - Row: "<size=100%> "
+        - Row: "<b><size=130%><sprite name=Attack><size=100%>1 @TAttack@ <mark=#6EBE4922><sprite name=Range>5, <sprite name=Poison></mark>"
+        - Row: "$FH/124_character_ability_cards_boneshaper_decaying_will_2$"
+        - Row: "<size=100%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Earth
+    Bottom:
+        - Active:
+            Ability: BPrevent
+            ListLayout: "$FH/124_character_ability_cards_boneshaper_decaying_will_3$"
+            Layout: "$FH/124_character_ability_cards_boneshaper_decaying_will_3$"
+            Icon: Positive_RetaliatePrevent_Summon
+        - Row: "<size=20%> "

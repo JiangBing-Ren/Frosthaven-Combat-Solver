@@ -1,0 +1,18 @@
+Parser: FHScenario
+ID: 204
+Name: Tutorial 4
+LevelID: RFS_04_Waylaid
+Chain: RoadToFrosthaven
+Location: Frosthaven
+IsPrologue: True
+CanNotBeReplayed: True
+Difficulty: 2
+Conclusions:
+    - Effects:
+         - Type: GainGold
+           Param1: 12
+         # - Type: ActivateCampaignSection
+         #   Param1: TheBridge
+         #   Param2: AfterUnresolvedActions
+         - Type: ActivateEvent
+           Param1: CustomEvent_TheBridge

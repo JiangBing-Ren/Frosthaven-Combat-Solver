@@ -1,0 +1,94 @@
+Parser: AbilityCard
+Name: $FH/321_character_ability_cards_pain_conduit_chained_by_despair_1$
+Character: PainConduitID
+ID: 321
+Level: 5
+Initiative: 15
+Discard: [Lost,Discard]
+Prefab: 321_PainConduit_ChainedByDespair
+Data:
+    Top:
+        XP: 2
+        Abilities:
+            TBuffStartTurnDamage:
+                Filter: Self
+                AddActiveBonus:
+                    # choose how much damage
+                    Filter: Self
+                    HelpBoxTooltipLocKey: "$FH/321_character_ability_cards_pain_conduit_chained_by_despair_2$"
+                    PreviewEffectText: "$FH/321_character_ability_cards_pain_conduit_chained_by_despair_2$"           
+                    MiscVars:
+                        DontPreviewDescription: True
+                        # doing the chosen ability as a sub ability so we can preview the effect
+                        DontPerformChosenAbility: True  
+                    Choose:
+                        Conditions: [Wound, Poison, Immobilize, Disarm, Impair, Stun, Muddle, Curse]
+                    SubAbilities:
+                        TAddConditionToEnemy:
+                            Flags: [SubAbilityPreview]
+                            TreatAsNonSubAbility: True
+                            AutoTrigger: True
+                            Vars: 
+                                ValidateChoseCondition: ParentAbility?.ChosenAbility != null
+                                AddNegativeConditions: ParentAbility.ChosenAbility.GetAllNegativeConditions()
+                            MiscVars: 
+                                PreviewAddNegativeConditionsVar: True
+                            Filter: Self
+                            NullTargeting: True 
+                            AnimOverload: Heal
+                AnimOverload: Cast
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: StartTurnAbility
+                    IsToggleBonus: True
+    Bottom:
+        Infuse: Air
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BReflectNegativeConditions:
+                Filter: Self
+                # could probably just have done this via vars, idk, we might want animations
+                AddActiveBonus:
+                    AnimOverload: CastGivingPain
+                    PreviewEffectText: "$FH/321_character_ability_cards_pain_conduit_chained_by_despair_3$"
+                    AutoTrigger: True
+                    NullTargeting: True
+                    AnimOverload: CastGivingPain
+                    Filter: Enemy
+                    Targeting: Custom
+                    TargetingVars:
+                        AddValidActorInRange: TriggerAbility.TargetingActor
+                    Vars:                  
+                        AddNegativeConditions: list(PreventedCondition)
+                    MiscVars:
+                        InterruptCurrentAbility: True
+                AnimOverload: Cast
+                ActiveBonus:
+                    Duration: Round
+                    Behaviour: GenericOnNegativeCondition
+                    Vars:
+                        ValidateAppliedOnSelf: TriggerTarget == ActiveBonus.Caster
+                        PreventedCondition: CCondition.NegativeConditionFromAbility(TriggerAbility.AbilityType)
+Layout:
+    Top:
+        - Active:
+            Ability: TBuffStartTurnDamage
+            Icon: "Positive_PainConduit"
+            ListLayout: "$FH/321_character_ability_cards_pain_conduit_chained_by_despair_2$"
+            Layout: "$FH/321_character_ability_cards_pain_conduit_chained_by_despair_2$"
+    Bottom:      
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Active:
+            Ability: BReflectNegativeConditions
+            Icon: "Positive_PainConduit_Enemy"
+            ListLayout: "$FH/321_character_ability_cards_pain_conduit_chained_by_despair_3$"
+            Layout: "$FH/321_character_ability_cards_pain_conduit_chained_by_despair_3$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Air

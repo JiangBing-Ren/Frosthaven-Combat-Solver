@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 122
+ScenarioItemID: 1109
+Name: Warden’s Robes
+Quantity: 2
+GoldCost: 30
+Type: Body
+IsNewCharacterItem: True

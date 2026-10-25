@@ -1,0 +1,23 @@
+Parser: BattleGoal
+ID: BattleGoal_Hunter
+LocalisedName: FH/BATTLEGOAL_Hunter
+LocalisedDescription: FH/BATTLEGOAL_Hunter_Desc
+#Kill one or more elite monsters during the scenario
+# two for 4 characters
+PerkChecks: 1
+BattleGoalCondition:
+    - Targets:
+        Filter: Kill
+        MonsterType: [Elite]
+        CharacterTypes:
+            Target: [Enemy,Enemy2]
+        Value: 1
+        SubFilter: Scenario
+BattleGoalConditionFourCharacters:
+    - Targets:
+        Filter: Kill
+        MonsterType: [Elite]
+        CharacterTypes:
+            Target: [Enemy,Enemy2]
+        Value: 2
+        SubFilter: Scenario

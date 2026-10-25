@@ -1,0 +1,15 @@
+Parser: ScenarioAbility
+ID: FH118_AmuletOfReanimation
+ScenarioAbility:
+    AmuletOfReanimation:
+        NullTargeting: True
+        Target: 1
+        Filter: Self
+        ActiveBonus:
+            Duration: Persistent
+            Vars:
+                PersistentCasterVFX: "'AmuletReanimationVFX'"
+            MiscVars:
+                Amulet: True
+                Reanimation: True
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_118_SCENARIO_OBJECT_2$, Positive_Unique_Campaign]

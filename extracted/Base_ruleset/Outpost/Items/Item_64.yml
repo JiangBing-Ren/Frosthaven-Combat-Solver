@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 64
+ScenarioItemID: 1299
+Name: Detonator
+Quantity: 2
+Type: OneHandWeapon
+CraftingCost:
+    Metal: 1
+RequiredCraftingItemIDs: [ 96, 112 ]

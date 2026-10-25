@@ -1,0 +1,63 @@
+Parser: AbilityCard
+Name: $FH/377_character_ability_cards_frozen_fist_preserved_fury_1$
+Character: FrozenFistID
+ID: 377
+Level: 5
+ProgressionOrder: 17
+Initiative: 49
+Discard: [Discard,Discard]
+Prefab: 377_FrozenFist_PreservedFury
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Flags: [ImmuneFrozenFistMechanic]
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AnimOverload: Attack2
+            TRecover:        
+                RecoverDiscardedCards: 1
+                Filter: [Self]
+                AnimOverload: FootStomp
+        Consumes:
+            TCAny:
+                Elements: Any
+                AbilityOverrides:
+                    TCRecover:
+                        ParentName: TRecover
+                        Strength: 1
+    Bottom:
+        Abilities:
+            BRecover:        
+                RecoverDiscardedCards: 1
+                Filter: [Self]
+                AnimOverload: FootStomp
+        Consumes:
+            BCAny:
+                Elements: Any
+                AbilityOverrides:
+                    BCRecover:
+                        ParentName: BRecover
+                        Strength: 1
+Layout:
+    Top:
+        - Row: "$FH/377_character_ability_cards_frozen_fist_preserved_fury_2$"
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Divider:
+        - Row: "$FH/377_character_ability_cards_frozen_fist_preserved_fury_3$"
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCAny
+                    Text: "+1<sprite name=RecoverIcon>"
+    Bottom:
+        - Row: "$FH/377_character_ability_cards_frozen_fist_preserved_fury_2$"
+        - Row: "$FH/377_character_ability_cards_frozen_fist_preserved_fury_3$"
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: BCAny
+                    Text: "+1<sprite name=RecoverIcon>"

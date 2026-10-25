@@ -1,0 +1,17 @@
+Parser: EnemyCard
+ID: 679
+Name: $Monster_Ability_679_LurkerSoldier_BerserkRage$
+Initiative: 64
+Shuffle: False
+Data:
+    Abilities:
+        Attack1:
+            Attack: +1
+            Filter: Enemy
+            Range: 2
+            RangeIsBase: True
+            ShowRange: False
+            TreatAsMelee: True
+            Condition: Impair
+            AnimOverload: AttackBerserk
+            Text: "$FH/0679_monster_ability_cards_lurker_soldier_berserk_rage_1$"

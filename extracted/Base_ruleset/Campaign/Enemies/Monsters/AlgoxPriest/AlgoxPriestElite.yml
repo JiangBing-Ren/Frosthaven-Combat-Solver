@@ -1,0 +1,73 @@
+Parser: Enemy
+ID: AlgoxPriestEliteID
+LocKey: $FH/AlgoxPriestElite$
+MonsterType: Monster
+StandeeLimit: 6
+Model: AlgoxPriest Elite
+NonEliteVariant: AlgoxPriestID
+PredominantlyMelee: True
+AbilityCards: [762, 763, 764, 765, 766, 767, 768, 769]
+# Base Stats
+Level0:
+    Health: 7
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Pierce: 2
+Level1:
+    Health: 7
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Pierce: 2
+    Shield: 2
+Level2:
+    Health: 9
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Pierce: 2
+    Shield: 2
+Level3:
+    Health: 12
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Pierce: 2
+    Shield: 2
+Level4:
+    Health: 14
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Pierce: 2
+    Shield: 2
+Level5:
+    Health: 19
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Pierce: 2
+    Shield: 2
+Level6:
+    Health: 25
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    Pierce: 3
+    Shield: 2  
+Level7:
+    Health: 34
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    Pierce: 3
+    Shield: 2  

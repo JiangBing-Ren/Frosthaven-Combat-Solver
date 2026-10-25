@@ -1,0 +1,80 @@
+﻿Parser: AbilityCard
+Name: $FH/153_character_ability_cards_geminate_hornet_stingers_1$
+Character: GeminateID
+ID: 153
+Level: 1
+ProgressionOrder: 2
+Initiative: 23
+Discard: [Discard,Discard]
+RequiredForm: Melee
+Prefab: 153_Geminate_HornetStingers
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 1
+                    Pierce: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Pierce")
+                Conditions: [Poison]
+                AreaEffect: "0,0,G|1,1,R|2,0,R|1,-1,R|3,1,R|-1,1,R"
+                AreaEffectLayoutOverride: "0,0,G|1,1,R|2,0,R|1,-1,R|3,1,R|-1,1,R"
+                MultiPassAttack: False
+                AnimOverload: Attack_Melee_HornetStingers
+                SubAbilities:
+                    TPoisonAliies:
+                        Poison: True
+                        Filter: Ally
+                        CanSkip: False
+                        AutoTrigger: True
+                        Target: -1
+                        UseParentTargets: True
+                        #SkipAnim: True
+            TSwitchFormMeleeToRange:
+                Null: True
+                Flags: [SwitchFormMeleeToRange]
+                AutoTrigger: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Attack]
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BDisadvantage:
+                AttackersGainDisadvantage: 1
+                Range: 0
+                Target: -1
+                Filter: Self
+                ActiveBonus:
+                    Duration: Round
+                AutoTrigger: True
+Layout:
+    Top:
+        - ColumnWidths: "70,30"
+        - Column:
+            - Row: "<b><size=120%><sprite name=Attack> *TAttack* <sprite name=Pierce> *TAttack.Pierce*, <sprite name=Poison>"
+            - Row: "<size=50%> "
+            - MandatoryTrigger:
+                Layout:
+                    - Row: "$FH/153_character_ability_cards_geminate_hornet_stingers_2$"
+            - Row: "<size=50%> "
+            - MandatoryTrigger:
+                Layout:
+                    - Row: "<size=130%><sprite name=GMMeleeToRanged>"
+        - Column: "£Area£"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Row: "<size=50%> "
+        - Divider:
+        - Active:
+            Ability: BDisadvantage
+            Icon: Positive_Disadvantage_Enemy_Attack
+            ListLayout: "$FH/153_character_ability_cards_geminate_hornet_stingers_3$"
+            Layout: "$FH/153_character_ability_cards_geminate_hornet_stingers_3$"

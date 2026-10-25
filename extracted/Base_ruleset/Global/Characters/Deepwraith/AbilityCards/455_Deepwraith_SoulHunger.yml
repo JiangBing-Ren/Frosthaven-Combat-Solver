@@ -1,0 +1,66 @@
+Parser: AbilityCard
+Name: $FH/455_character_ability_cards_deepwraith_soul_hunger_1$
+Character: DeepwraithID
+ID: 455
+Level: X
+Initiative: 91
+Discard: [Lost,Discard]
+Prefab: 455_Deepwraith_SoulHunger
+Data:
+    Top:
+        Abilities:
+            TBane:
+                Bane: True
+                MiscVars:
+                    PrintedProperties: list("Target")
+                AnimOverload: Intimidate
+                Filter:
+                    TargetType: Enemy
+                    Vars:
+                        ValidateConditions: target.Tokens.CountNegativeConditions() >= 2
+                        ValidateNonBoss: not target.IsBoss
+            THeal:
+                Heal:
+                    Amount: 5
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self
+        XP: 2
+        Infuse: Dark
+    Bottom:
+        Abilities:
+            BToken:
+                NullTargeting:
+                Tokens: 1
+                Flags: [ModifiesTrophyTokens]
+                Filter: [Self]
+                AnimOverload: Loot
+                StartAbilityRequirements:
+                        Type: ThisAbility
+                        Vars:
+                            ValidateHasInvisibility: TargetingActor.Tokens.HasKey(CCondition.EPositiveCondition.Invisible)
+            BTeleport:
+                Teleport2: 
+                    Amount: 3
+                MiscVars:
+                    PrintedProperties: list("Teleport")
+                Filter: Self
+                AnimOverload: Teleport Into
+                AnimOverload2: Teleport Outof
+        Infuse: Dark
+Layout:
+    Top:
+        - Row: "$FH/455_character_ability_cards_deepwraith_soul_hunger_2$"
+        - Divider:
+        - Row: "$FH/455_character_ability_cards_deepwraith_soul_hunger_3$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark
+    Bottom:
+        - Row: "$FH/455_character_ability_cards_deepwraith_soul_hunger_4$"
+        - Divider:
+        - Row: "<sprite name=Teleport> *BTeleport*"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark

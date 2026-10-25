@@ -1,0 +1,121 @@
+Parser: Enemy
+ID: WagonID
+LocKey: $FH/FH_Scenario_Campaign_116_SCENARIO_OBJECT_1$
+MonsterType: Monster
+StandeeLimit: 5
+Model: CaravanWagon
+PredominantlyMelee: True
+AbilityCards: [11601]
+# Base Stats
+Level0:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XPlusCharactersPlusLevel
+            RoundingType: ToFloor
+            Multiplier: 2
+            SecondVariable: 0
+            AddTo: True
+    Move: 1
+    Attack: 0
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Brittle, Poison, Disarm, Immobilize, Curse, Push, Pull, Swap, Teleport2, ControlActor, Bless, Muddle, Strengthen, Stun, StopFlying, Sleep, Bane, Regenerate, Ward, Invisible]
+Level1:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XPlusCharactersPlusLevel
+            RoundingType: ToFloor
+            Multiplier: 2
+            SecondVariable: 0
+            AddTo: True
+    Move: 1
+    Attack: 0
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Brittle, Poison, Disarm, Immobilize, Curse, Push, Pull, Swap, Teleport2, ControlActor, Bless, Muddle, Strengthen, Stun, StopFlying, Sleep, Bane, Regenerate, Ward, Invisible]
+Level2:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XPlusCharactersPlusLevel
+            RoundingType: ToFloor
+            Multiplier: 2
+            SecondVariable: 0
+            AddTo: True
+    Move: 1
+    Attack: 0
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Brittle, Poison, Disarm, Immobilize, Curse, Push, Pull, Swap, Teleport2, ControlActor, Bless, Muddle, Strengthen, Stun, StopFlying, Sleep, Bane, Regenerate, Ward, Invisible]
+Level3:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XPlusCharactersPlusLevel
+            RoundingType: ToFloor
+            Multiplier: 2
+            SecondVariable: 0
+            AddTo: True
+    Move: 1
+    Attack: 0
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Brittle, Poison, Disarm, Immobilize, Curse, Push, Pull, Swap, Teleport2, ControlActor, Bless, Muddle, Strengthen, Stun, StopFlying, Sleep, Bane, Regenerate, Ward, Invisible]
+Level4:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XPlusCharactersPlusLevel
+            RoundingType: ToFloor
+            Multiplier: 2
+            SecondVariable: 0
+            AddTo: True
+    Move: 1
+    Attack: 0
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Brittle, Poison, Disarm, Immobilize, Curse, Push, Pull, Swap, Teleport2, ControlActor, Bless, Muddle, Strengthen, Stun, StopFlying, Sleep, Bane, Regenerate, Ward, Invisible]
+Level5:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XPlusCharactersPlusLevel
+            RoundingType: ToFloor
+            Multiplier: 2
+            SecondVariable: 0
+            AddTo: True
+    Move: 1
+    Attack: 0
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Brittle, Poison, Disarm, Immobilize, Curse, Push, Pull, Swap, Teleport2, ControlActor, Bless, Muddle, Strengthen, Stun, StopFlying, Sleep, Bane, Regenerate, Ward, Invisible]
+Level6:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XPlusCharactersPlusLevel
+            RoundingType: ToFloor
+            Multiplier: 2
+            SecondVariable: 0
+            AddTo: True
+    Move: 1
+    Attack: 0
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Brittle, Poison, Disarm, Immobilize, Curse, Push, Pull, Swap, Teleport2, ControlActor, Bless, Muddle, Strengthen, Stun, StopFlying, Sleep, Bane, Regenerate, Ward, Invisible]
+Level7:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XPlusCharactersPlusLevel
+            RoundingType: ToFloor
+            Multiplier: 2
+            SecondVariable: 0
+            AddTo: True
+    Move: 1
+    Attack: 0
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Brittle, Poison, Disarm, Immobilize, Curse, Push, Pull, Swap, Teleport2, ControlActor, Bless, Muddle, Strengthen, Stun, StopFlying, Sleep, Bane, Regenerate, Ward, Invisible]

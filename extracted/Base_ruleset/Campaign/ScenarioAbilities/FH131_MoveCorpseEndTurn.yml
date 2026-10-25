@@ -1,0 +1,26 @@
+Parser: ScenarioAbility
+ID: FH131_MoveCorpseEndTurn
+ScenarioAbility:
+    AActive:
+        PreviewEffectText: ""
+        Filter: Self
+        SkipAnim: True
+        NullTargeting: True
+        AddActiveBonus:
+            Push: 1
+            CanUndo: False
+            # all possible targets
+            Target: -1
+            Flags: [Special1]
+            Filter:
+                ActorType: Neutral
+                EnemyType: Object
+        ActiveBonus:
+            Behaviour: EndTurnAbility
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_131_SCENARIO_MODIFIER_3$, Push]
+            Duration: Persistent
+            Hidden: True
+            Requirements:
+                DoesntHaveNegativeCondition: [Stun, Immobilize]
+                Vars:
+                    ValidateHasValidTargets: CustomAbility.GetAdjacentSpecificPropsCount(Actor, ScenarioScript_FH131.CorpseSpecificPropType) > 0

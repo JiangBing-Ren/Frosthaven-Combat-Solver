@@ -1,0 +1,47 @@
+Parser: Perk
+ID: MetalMosaic08
+Name: FH/PERK_MetalMosaic_08_Name
+Description: FH/PERK_MetalMosaic_08_Desc
+CharacterID: MetalMosaicID
+Available: 1
+Flags: [Passive, ApplyActiveBonusesAtScenarioStart]
+Abilities:
+  OnLongRest:
+    Filter: Self
+    AutoTrigger: True
+    SkipAnim: True
+    AddActiveBonus:
+      CanUndo: False
+      Filter: Self
+      # SkipAnim: True
+      HelpBoxTooltipLocKey: $FH/GUI_CHOOSE_INCREASE_DECREASE_PRESSURE_HELPBOX$
+      Choose:
+        Abilities:
+          IncreasePressure:
+            AutoTrigger: True
+            PreviewEffectText: "<sprite name=MMGainPressure>"
+            Null: True
+            SkipAnim: True
+            PerformVars:
+              NullBegin:
+                ChangePressure: CustomAbility.PressureChange(TargetingActor, 1, true)
+            StartAbilityRequirements:
+              Type: ThisAbility
+              Vars:
+                ValidateValidPressure: Actor.Pressure != "Over"
+          LowerPressure:
+            AutoTrigger: True
+            PreviewEffectText: "<sprite name=MMLosePressure>"
+            Null: True
+            SkipAnim: True
+            PerformVars:
+              NullBegin:
+                ChangePressure: CustomAbility.PressureChange(TargetingActor, -1, true)
+            StartAbilityRequirements:
+              Type: ThisAbility
+              Vars:
+                ValidateValidPressure: Actor.Pressure != "Low"
+    ActiveBonus:
+      Duration: Persistent
+      Behaviour: DuringActionAbilityOnLongRest
+      Hidden: True

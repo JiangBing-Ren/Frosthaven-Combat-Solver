@@ -1,0 +1,19 @@
+Parser: BattleGoal
+ID: BattleGoal_Pauper
+LocalisedName: FH/1322_battle_goals_pauper_1
+LocalisedDescription: FH/1322_battle_goals_pauper_2
+#fail if you loot from end of the turn looting (loot bags only)
+PerkChecks: 1
+CheckAtEndOfScenario: True
+BattleGoalCondition:
+    - Targets:
+        Filter: LootEndOfTurn
+        LootType: [MoneyToken]
+        Value: 0
+        SubFilter: Scenario
+BattleGoalFailCondition:
+    - Targets:
+        Filter: LootEndOfTurn
+        LootType: [MoneyToken]
+        Value: 1
+        SubFilter: Scenario

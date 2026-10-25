@@ -1,0 +1,85 @@
+Parser: AbilityCard
+Name: $FH/190_character_ability_cards_infuser_torrential_cleave$
+Character: InfuserID
+ID: 190
+Level: 1
+Initiative: 83
+Discard: [Discard,Discard]
+Prefab: 190_Infuser_TorrentialCleave
+Data:
+    Top:
+        Abilities:
+            ConsumeAbility:
+                Consume: 
+                    Elements: [Air, Earth]
+                    Abilities:
+                        CNull:
+                            Null: True
+                            AutoTrigger: True
+            TAttack:
+                Attack: 4
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AreaEffect: "0,0,G|1,-1,E|2,0,R|1,1,R"
+                AreaEffectLayoutOverride: "0,0,G|1,1,E|-1,1,R|-2,0,R"
+                MultiPassAttack: False
+                Filter: Enemy
+                AnimOverload: Attack02_Swipe 
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Consume]
+                SubAbilities:
+                    TSubPush:
+                        Push:
+                            Amount: 2
+                            SquareEnhancements: 1
+                        MiscVars:
+                            PrintedProperties: list("Push")
+                        IsInlineSubAbility: True
+                        Target: -1
+                        UseParentTargets: True
+        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 3
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BImmobilize:
+                Immobilize: True
+                Filter: Enemy
+                AreaEffect: "0,0,G|1,-1,E|2,0,R|1,1,R"
+                AreaEffectLayoutOverride: "0,0,G|1,1,E|-1,1,R|-2,0,R"
+                AnimOverload: RangedCast 
+        Consumes:
+            TCMove:
+                PreviewEffectId: M1Move
+                AbilityOverrides:
+                    TCMoveBuff:
+                        ParentName: BMove
+                        Strength: -1
+                        SubAbilities:
+                            CSubInfuse:
+                                Infuse: [Earth]
+                                SkipAnim: True
+
+Layout:
+    Top:
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<sprite name=ConsumeAir>, <sprite name=ConsumeDark>:"
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <sprite name=Push> *TSubPush* <size=100%><voffset=1>@TSubPush@"
+        - Row: "£Area£"
+    Bottom:
+        - Row: "<b><size=100%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCMove
+                    Text: "-1<sprite name=Move>: <sprite name=CreateEarth>"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Immobilize>"
+        - Row: "£Area£"
+

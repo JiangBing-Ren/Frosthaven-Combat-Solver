@@ -1,0 +1,32 @@
+Parser: ItemCard
+ID: 1151
+StringID: EnduranceFootwrapsID
+Name: $FH/1151_item_cards_endurance_footwraps_1$
+Art: Endurance Footwraps
+TotalInGame: 2
+Cost: 40
+Slot: Legs 
+Rarity: Rare
+Usage: Unrestricted
+Trigger: PassiveEffect
+Data:
+    Abilities:
+        AMoveHeal:
+            Filter: Self
+            AddActiveBonus:
+                Heal: 1
+                Filter: Self
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: DuringActionAbilityOnMoved
+                Restriction: OncePerTurn
+                Target: 4
+                ValidAbilityType: Move
+                Requirements:
+                    OnYourTurn: True
+Layout:
+    - Active:
+        Ability: AMoveHeal
+        ListLayout: $FH/1151_item_cards_endurance_footwraps_2$
+        Layout: $FH/1151_item_cards_endurance_footwraps_2$
+        Icon: "Positive_Heal-Self_Move_Item"

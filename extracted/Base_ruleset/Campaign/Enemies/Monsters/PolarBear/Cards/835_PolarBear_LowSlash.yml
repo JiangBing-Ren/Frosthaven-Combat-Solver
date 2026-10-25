@@ -1,0 +1,17 @@
+Parser: EnemyCard
+ID: 835
+Name: $Monster_Ability_835_PolarBear_LowSlash$
+Initiative: 14
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: -1
+            Vars:
+                ValidateIsNotTrapped: ScenarioScript_FH117.ValidateIsPolarBearNotTrapped(TargetingActor)
+        Attack1:
+            Attack: -1
+            Filter: Enemy
+            Conditions: Immobilize
+            Vars:
+                ValidateIsNotTrapped: ScenarioScript_FH117.ValidateIsPolarBearNotTrapped(TargetingActor)

@@ -1,0 +1,9 @@
+Parser: AttackModifier
+Name: AMC_MoveTrackerBackOneSlot
+MathModifier: "+0"
+Abilities:
+    AMoveTracker:
+        Filter: Self
+        MoveActiveBonusTracker: -1
+        Vars:
+            NumberOfCardsToSelect: 1

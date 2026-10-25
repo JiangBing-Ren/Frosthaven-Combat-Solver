@@ -1,0 +1,68 @@
+Parser: AbilityCard
+Name: $FH/295_character_ability_cards_trapper_grasping_hazards_1$
+Character: TrapperID
+ID: 295
+Level: 7
+Initiative: 8
+Discard: [Discard,Discard]
+Prefab: 295_Trapper_GraspingHazards
+Data:
+    Top:
+        Abilities:
+            TTrap:
+                Trap:
+                    TrapName: TrapperTrap
+                    Damage: 2
+                    Conditions: [Wound, Poison, Muddle, Curse]
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Range: 1
+                RangeIsBase: True
+                AnimOverload: CreateTrap
+        XP: 1
+    Bottom:
+        Abilities:
+            BTrapsIgnoreFlyAndJump:
+                AddActiveBonus:
+                    Null: True
+                AnimOverload: PowerUpStrong
+                PerformVars:
+                    ApplyToActors:
+                        ApplyVFXToAllTraps:  CustomAbility.PlayTrapperEnhanceVFXOnAllTraps() 
+                ActiveBonus:
+                    Duration: Round
+                    Behaviour: GenericTrapsIgnoreFlyAndJump
+                    TriggerOnCaster: True
+                    IsAura: True
+                    AuraFilter: All
+                    AuraTargeting: All
+                    HiddenWhenAura: True
+                SubAbilities:
+                    BSpringTrapsUnderFlying:
+                        TreatAsNonSubAbility: True
+                        AutoTrigger: True
+                        Null: True
+                        Vars:
+                            TrapsToSpring: AllTraps.Where(PropTile.LivingActor?.Flying)
+                            ValidateTrapsToSpring: "!!TrapsToSpring"
+                        PerformVars:
+                            NullBegin:
+                                SpringTraps: TrapsToSpring.Select(ForceActivate(PropTile.LivingActor))
+                        SkipAnim: True
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+Layout:
+    Top:
+        - Row: "$FH/295_character_ability_cards_trapper_grasping_hazards_2$"
+    Bottom:
+        - Active:
+              Ability: BTrapsIgnoreFlyAndJump
+              ListLayout: "$FH/295_character_ability_cards_trapper_grasping_hazards_3$"
+              Layout: "$FH/295_character_ability_cards_trapper_grasping_hazards_3$ $FH/295_character_ability_cards_trapper_grasping_hazards_4$"
+              Icon: "Positive_Trap_Flying_Jump"
+        - Row: "<size=20%> "
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"

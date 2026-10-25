@@ -1,0 +1,12 @@
+Parser: EnemyCard
+ID: 611
+Name: $Monster_Ability_HastyAssault$
+Initiative: 38
+Shuffle: True
+Data:
+    Abilities:
+        Move1:
+            Move: +2
+        Attack1:
+            Attack: -1
+    Infuse: Fire

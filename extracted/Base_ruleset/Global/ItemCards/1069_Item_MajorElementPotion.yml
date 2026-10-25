@@ -1,0 +1,25 @@
+Parser: ItemCard
+ID: 1069
+StringID: MajorElementPotionID
+Name: $FH/1069_item_cards_major_element_potion_1$
+Art: Major Element Potion
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        AInfuse1:
+            ShowElementPicker: True
+            Infuse: Any
+            Filter: Self
+            SubAbilities:
+                AInfuse2:
+                    CanUndo: False
+                    ShowElementPicker: True
+                    Infuse: Any
+                    Filter: Self
+Layout: 
+    - Row: "$FH/1069_item_cards_major_element_potion_2$"

@@ -1,0 +1,53 @@
+Parser: AbilityCard
+Name: $FH/446_character_ability_cards_deepwraith_hollow_aura_1$
+Character: DeepwraithID
+ID: 446
+Level: 1
+Initiative: 88
+Discard: [Discard,Discard]
+Prefab: 446_Deepwraith_HollowAura
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                    DiamondEnhancements: 1
+                Pierce: 2
+                MiscVars:
+                    PrintedProperties: list("Attack","Pierce")
+                Target: 1
+                Range: 1
+                Filter: Enemy
+        Infuse: Dark
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BConsume:
+                PreviewEffectText: "<sprite name=DWRTrophy>"
+                Consume:
+                    Element: Any
+                    Abilities:
+                        BToken:
+                            AutoTrigger: True
+                            NullTargeting:
+                            Tokens: 1
+                            Flags: [ModifiesTrophyTokens]
+                            Filter: [Self]
+                            AnimOverload: Loot
+Layout:
+    Top:
+        - Row: "<sprite name=Attack> *TAttack* @TAttack@"
+        - Row: " <sprite name=Pierce> 2"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark
+    Bottom:
+        - Row: "<sprite name=Move> *BMove* @BMove@"
+        - Divider:
+        - Row: "$FH/446_character_ability_cards_deepwraith_hollow_aura_2$"

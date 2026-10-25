@@ -1,0 +1,49 @@
+Parser: EnemyCard
+ID: 08740041
+Name: $Monster_Ability_Boss_Render_Special2$
+Initiative: 11
+Shuffle: False
+Data:
+    Abilities:
+        ADestroyAdjacentWindCarvings:
+            Null: True
+            PerformVars:
+                NullPerform:
+                     DestroyAdjacentWindCarvings: ScenarioScript.current.DestroyWindCarvingsAroundBoss()
+            Text: "$FH/boss_stat_cards_render_4$"
+            TextOnly: True
+            AnimOverload: AttackAOE
+        WaitForIdle:
+            Null: True
+        APull:
+            Pull: 2
+            Target: 0
+            StatIsBasedOnX:
+                Target:
+                    AddTo: True
+                    BasedOn: InitialPlayerCharacterCount
+            Range: 5
+            RangeIsBase: True
+            Text: "$FH/boss_stat_cards_render_5$"
+            TextOnly: True
+            AnimOverload: PowerUp
+        AAttack:
+            Attack: -1
+            Range: 1
+            RangeIsBase: True
+            Target: -1
+            MultiPassAttack: False
+            TargetIsBase: True
+            Text: "$FH/boss_stat_cards_render_6$"
+            TextOnly: True
+            MultiPassAttack: False
+            AnimOverload: AttackAOE
+        AHeal:
+            Heal: 0
+            Filter: Self
+            StatIsBasedOnX:
+                Strength:
+                    AddTo: True
+                    BasedOn: InitialPlayerCharacterCount
+            Text: "$FH/boss_stat_cards_render_7$"
+            TextOnly: True

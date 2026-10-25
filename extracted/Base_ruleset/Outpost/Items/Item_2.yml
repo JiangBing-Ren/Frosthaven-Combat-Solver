@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 2
+ScenarioItemID: 884
+Name: Crude Hemlet
+Quantity: 2
+Type: Head
+CraftingCost:
+    Metal: 1

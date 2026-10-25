@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 198
+ScenarioItemID: 1207
+Name: Hunter's Necklace
+Quantity: 1
+GoldCost: 35
+Type: Head
+IsNewCharacterItem: False

@@ -1,0 +1,61 @@
+Parser: AbilityCard
+Name: $FH/160_character_ability_cards_geminate_selfless_offering_1$
+Character: GeminateID
+ID: 160
+Level: 1
+ProgressionOrder: 7
+Initiative: 27
+Discard: [Discard,Discard]
+RequiredForm: Range
+Prefab: 160_Geminate_SelflessOffering
+Data:
+    Top:
+        Abilities:
+            THeal:
+                Heal:
+                    Amount: 3
+                    DiamondPlusEnhancements: 1
+                Range: 3
+                Target: 1
+                MiscVars:
+                    PrintedProperties: list("Heal","Target","Range")
+                Filter: Ally
+        Consumes:
+            TCFire:
+                Elements: [Fire]
+                AbilityOverrides:
+                    TCFireBuff:
+                        ParentName: THeal
+                        Conditions: [Regenerate]
+                XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            TSwitchFormMeleeToRange:
+                Null: True
+                Flags: [SwitchFormRangeToMelee]
+                AutoTrigger: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Move]
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Heal> *THeal* <size=100%><voffset=1>@THeal@ $FH/160_character_ability_cards_geminate_selfless_offering_2$"
+        - Row: "<size=20%> "
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCFire
+                    Text: "<nobr><sprite name=Regenerate></nobr>, <nobr><sprite name=XP1></nobr>"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Row: "<size=20%> "
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=200%><sprite name=GMRangedToMelee>"

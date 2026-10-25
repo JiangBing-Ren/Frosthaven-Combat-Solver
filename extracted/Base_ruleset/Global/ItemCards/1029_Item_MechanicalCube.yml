@@ -1,0 +1,79 @@
+Parser: ItemCard
+ID: 1029
+StringID: MechanicalCubeID
+Name: $FH/1029_item_cards_mechanical_cube_1$
+Art: Mechanical Cube
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem
+Rarity: Rare
+Usage: Consumed
+Trigger: PassiveEffect
+Data:
+    Abilities:
+        AImmobilizeContainer:
+            NullTargeting: True
+            Filter: Self
+            ActiveBonus:
+                Duration: Persistent
+                AbilityData:      
+                    MiscVars:
+                        DontPreviewDescription: True 
+                    Immobilize: True
+                    Target: 99
+                    Filter: Enemy
+                    Range: 1
+                    PerformVars:
+                        ApplyToActors:
+                            EndBonuses:  CustomAbility.RemoveCardBonuses(GetAbilityBaseCard())
+
+        # so you can choose to do this on each step while moving
+        ADuringMoveActive:
+            AutoTrigger: True
+            Filter: Self
+            AddActiveBonus:
+                Null: True
+            ActiveBonus:
+                Hidden: True
+                Duration: Persistent
+                IsToggleBonus: True
+                ValidAbilityType: Move
+                Behaviour: DuringTurnAbility
+                ListLayoutOverride: [$FH/1029_item_cards_mechanical_cube_2$, Move]
+                MiscVars:
+                    OverrideAddActiveBonusAbility: CustomAbility.GetAbilityFromBonusOnCard(card, "AImmobilizeContainer")
+                Requirements:
+                    Vars:
+                        ValidateNotImpaired: Actor.Tokens.HasKey(CCondition.ENegativeCondition.Impair) == false
+                        ValidateCanStillUse: CustomAbility.HasActiveBonus(Actor, "AImmobilizeContainer")
+                        ValidateHasMoved: Ability != null && Ability.HasMoved
+                        ValidateHasPossibleTargets: GameState.GetAdjacentEnemies(Actor, Actor.ArrayIndex).Count > 0
+
+        # so you can choose to do this after finishing the entire move
+        AAfterMoveActive:
+            AutoTrigger: True
+            Filter: Self
+            AddActiveBonus:
+                Null: True
+            ActiveBonus:
+                Hidden: True
+                Duration: Persistent
+                IsToggleBonus: True
+                Behaviour: DuringActionAbilityOnFinishedMovement
+                ListLayoutOverride: [$FH/1029_item_cards_mechanical_cube_2$, Move]       
+                MiscVars:
+                    OverrideAddActiveBonusAbility: CustomAbility.GetAbilityFromBonusOnCard(card, "AImmobilizeContainer")     
+                Vars:
+                    Actor: TriggerActor
+                    Ability: TriggerAbility
+                    ValidateNotImpaired: Actor.Tokens.HasKey(CCondition.ENegativeCondition.Impair) == false
+                    ValidateCanStillUse: CustomAbility.HasActiveBonus(Actor, "AImmobilizeContainer")
+                    ValidateHasMoved: Ability != null && Ability.HasMoved
+                    ValidateHasPossibleTargets: GameState.GetAdjacentEnemies(Actor, Actor.ArrayIndex).Count > 0
+
+Layout: 
+    - Active:
+        Ability: AImmobilizeContainer
+        Icon: Move_Ignore
+        ListLayout: "$FH/1029_item_cards_mechanical_cube_2$"
+        Layout: "$FH/1029_item_cards_mechanical_cube_2$"

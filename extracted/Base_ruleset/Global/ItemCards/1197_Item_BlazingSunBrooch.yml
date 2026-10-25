@@ -1,0 +1,26 @@
+Parser: ItemCard
+ID: 1197
+StringID: BlazingSunBroochID
+Name: $FH/1197_item_cards_blazing_sun_brooch_1$
+Art: Blazing Sun Brooch
+TotalInGame: 2
+Cost: 50
+Slot: SmallItem
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    ItemRequirements:
+        Vars:
+            ValidateHasConsumes: CAbilityConsume.CanConsume(list(ElementInfusionBoardManager.EElement.Fire, ElementInfusionBoardManager.EElement.Light))
+    Abilities:
+        AConsume:
+            ShowElementPicker: True
+            Consume:
+                  Elements: [Fire, Light]
+                  Abilities:
+                    AAttackDisarm:
+                        Attack: 3
+                        Conditions: Disarm
+Layout: 
+    - Row: "$FH/1197_item_cards_blazing_sun_brooch_2$"

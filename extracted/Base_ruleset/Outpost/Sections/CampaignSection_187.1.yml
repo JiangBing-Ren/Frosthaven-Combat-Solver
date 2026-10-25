@@ -1,0 +1,7 @@
+Parser: CampaignSection
+ID: 187.1
+Name: All Trials Complete
+SkipCompletedNotification: True
+Effects:
+    - Type: RemoveEvent
+      Param1: SR-51

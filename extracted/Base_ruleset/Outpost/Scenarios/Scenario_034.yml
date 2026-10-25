@@ -1,0 +1,10 @@
+Parser: FHScenario
+ID: 34
+Name: Top of the Spire
+LevelID: FS_034_Top_Of_The_Spire
+Chain: Unfettered
+Location: CrystalFields
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: AddCoralShard

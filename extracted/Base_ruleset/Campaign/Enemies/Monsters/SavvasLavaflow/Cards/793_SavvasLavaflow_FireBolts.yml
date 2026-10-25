@@ -1,0 +1,19 @@
+Parser: EnemyCard
+ID: 793
+Name: $Monster_Ability_793_SavvasLavaflow_FireBolts$
+Initiative: 68
+Shuffle: True
+Data:
+    Abilities:
+        Move1:
+            Move: -1
+        Attack1:
+            Attack: -1
+            Range: 3
+            RangeIsBase: True
+            Target: 2
+            TargetIsBase: True
+            Filter: Enemy
+            AnimOverload: FireBolts
+    Infuse: Fire              
+            

@@ -1,0 +1,33 @@
+Parser: PetCard
+ID: 364
+StringID: RendingDrakePetID
+Name: $FH/364_pet_cards_rending_drake_1$
+Description: $FH/364_pet_cards_rending_drake_2$
+Art: Rending Drake
+Usage: Consumed
+Trigger: DuringOwnTurn
+PetUnlockedBy: RendingDrakeID
+Cost: 0
+Data: 
+    Abilities:
+        AGrantAttack:
+            Attack: 0
+            AttackEffect:
+                Type: BuffIfAttackIsMelee
+                Conditions: Wound
+            AnimOverload: UseItem
+            PerformVars:
+                AttackBuff: 
+                    VFX: TargetingActor.PlayVFX("PetRendingDrakeEffect")
+            ActiveBonus:
+                Duration: Round
+                Behaviour: BuffAttack
+                IsAura: True
+                AuraTargeting: All
+                AuraFilter:
+                    ActorType: Player
+                    TargetType: [Self, Ally]
+                ListLayoutOverride: [$FH/364_pet_cards_rending_drake_2$, Attack]
+            Filter: [Self]
+Layout: 
+    - Row: "$FH/364_pet_cards_rending_drake_2$"

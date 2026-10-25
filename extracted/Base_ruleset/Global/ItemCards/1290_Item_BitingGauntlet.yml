@@ -1,0 +1,21 @@
+Parser: ItemCard
+ID: 1290
+StringID: BitingGauntletID
+Name: $FH/986_item_cards_biting_gauntlet_1$
+Art: Biting Gauntlet
+TotalInGame: 2
+Cost: 0
+Slot: OneHand 
+Rarity: Rare
+Usage: Spent
+Trigger: OnAttackedIgnoringDamageTaken
+Data: 
+    RetaliateValue: 2
+    CompareAbility:
+        AbilityType: Attack
+        Filter: Enemy
+        Adjacent: True
+    Vars: 
+        NotAShieldEffect: True
+Layout: 
+    - Row: "$FH/986_item_cards_biting_gauntlet_2$"

@@ -1,0 +1,65 @@
+Parser: Enemy
+ID: LurkerWavethrowerWindS60EliteID
+LocKey: $FH/LurkerWavethrowerS60Elite$
+MonsterType: Monster
+StandeeLimit: 1
+Model: FracturedLieutenantWavethrower Air Elite
+NonEliteVariant: LurkerWavethrowerWindS60ID
+PredominantlyMelee: True
+AbilityCards: [698, 699, 700, 701, 702, 703, 704, 705]
+# Base Stats
+Level0:
+    Health: 6
+    Move: 1
+    Attack: 3
+    Range: 1
+    Target: 1
+Level1:
+    Health: 7
+    Move: 1
+    Attack: 3
+    Range: 1
+    Target: 1
+    Conditions: [Immobilize]
+Level2:
+    Health: 9
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+    Conditions: [Immobilize]
+Level3:
+    Health: 11
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+    Conditions: [Immobilize]
+Level4:
+    Health: 13
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    Conditions: [Immobilize]
+Level5:
+    Health: 16
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Conditions: [Immobilize]
+Level6:
+    Health: 21
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Conditions: [Immobilize]
+Level7:
+    Health: 26
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    Conditions: [Immobilize]

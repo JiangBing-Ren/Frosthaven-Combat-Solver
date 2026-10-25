@@ -1,0 +1,37 @@
+Parser: ScenarioAbility
+ID: FH132_GiveCatIdolDuringMovement
+ScenarioAbility:
+    AGiveIdolToAdjacentPlayerDuringMovement:
+        PreviewEffectText: ""
+        Filter: Self
+        SkipAnim: True
+        NullTargeting: True
+        AutoTrigger: True
+        MiscVars:
+            InterruptCurrentAbility: True
+            StackNextToCurrent: True
+        ActiveBonus:
+            ListLayoutOverride: [$FH/FH_Scenariro_Campaign_132_CatIdolTransferBonus$, Move]
+            Duration: Persistent
+            ValidAbilityType: Move
+            IsToggleBonus: True
+            MiscVars:
+                CatIdolTransferable: True
+                HiddenInCombatLog: True
+            Requirements:
+                DoesntHaveNegativeCondition: [Stun]
+                Vars:
+                    AlliesInRange: GameState.GetAllAlliesInRange(Actor, Actor.ArrayIndex, 1).Where(obj.OriginalType == "Player")
+                    ValidateHasAlliesInRange: AlliesInRange.Count > 0
+            CostAbility:
+                NullTargeting: True
+                Filter:
+                    TargetType: Ally
+                    ActorType: Player
+                Range: 1
+                Target: 1
+                Vars:
+                    CacheActiveBonus: PhaseManager.CurrentPhaseAction.CurrentTriggeredActiveBonus
+                PerformVars:
+                    ApplyToActors:
+                        GiveIdol: ScenarioScript_FH132.GiveCatIdol(TargetingActor, ActorsToTarget[0])

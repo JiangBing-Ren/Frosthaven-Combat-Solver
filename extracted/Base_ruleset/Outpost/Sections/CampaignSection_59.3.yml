@@ -1,0 +1,7 @@
+Parser: CampaignSection
+ID: 59.3
+Name: PuzzleSolution
+SkipCompletedNotification: True
+Effects:
+    - Type: UnlockPuzzle
+      Param1: MercenariesMathematics

@@ -1,0 +1,19 @@
+Parser: BattleGoal
+ID: BattleGoal_Prepper
+LocalisedName: FH/1355_battle_goals_prepper_1
+LocalisedDescription: FH/1355_battle_goals_prepper_2
+PerkChecks: 2
+BattleGoalCondition:
+    - Targets:
+        Filter: CountXRounds
+        Value: 3
+        SubFilter: Scenario
+# fail if you use an attack ability in the first three rounds
+BattleGoalFailCondition:
+    - Targets:
+        Filter: UseAbilityBeforeRound
+        CompareVal1: 3
+        AbilityTypes: Attack
+        HasHappened: True
+        Value: 1
+        SubFilter: Scenario

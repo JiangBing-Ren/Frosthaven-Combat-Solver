@@ -1,0 +1,8 @@
+Parser: CampaignSection
+ID: 156.1
+Name: Opening the Pass
+ShowAsUnknownInCalendar: True
+SkipCompletedNotification: False
+Effects:
+    - Type: UnlockScenario
+      Param1: 114

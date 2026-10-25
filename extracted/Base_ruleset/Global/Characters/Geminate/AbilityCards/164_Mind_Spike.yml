@@ -1,0 +1,89 @@
+Parser: AbilityCard
+Name: $FH/164_character_ability_cards_geminate_mind_spike_1$
+Character: GeminateID
+ID: 164
+Level: 1
+ProgressionOrder: 11
+Initiative: 18
+Discard: [Lost,Discard]
+RequiredForm: Range
+Prefab: 164_Geminate_MindSpike
+Data:
+    Top:
+        Abilities:
+            TMindSpikeImmobilize:
+                Immobilize: True
+                Target: 3
+                TargetIsBase: True
+                Range: 5
+                MinRange: 4
+                MiscVars:
+                    PrintedProperties: list("Range","Target")
+                Filter: Enemy
+                AnimOverload: RangedAttack_Tendrils
+            TDamage:
+                Damage: 1
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                AutoTrigger: False
+                Target: -1
+                Targeting: Custom
+                Vars:
+                    Parent: CustomAbility.FindAbilityInPhaseByName("TMindSpikeImmobilize")
+                TargetingVars:
+                    AddTilesInRange: Parent.TilesSelected
+                    AddValidActorsInRange: Parent.ActorsToTarget
+                    AddActorsToTarget: Parent.ActorsToTarget
+                    AddSelectedTiles: Parent.TilesSelected
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [ Immobilize ]
+                    DoesntHaveNegativeCondition: [Stun]
+                Filter: Enemy
+                AnimOverload: Cast Negative
+        Consumes:
+            TCLight:
+                Elements: [Light]
+                AbilityOverrides:
+                    CADamage:
+                        Strength: 1
+                        ParentName: TDamage
+                XP: 1
+        XP: 1
+    Bottom:
+        Abilities:
+            BAttack:
+                Attack:
+                    Amount: 2
+                    SquareEnhancements: 1
+                Range: 4
+                MinRange: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                AnimOverload: RangedAttack
+            BSwitchFormMeleeToRange:
+                Null: True
+                Flags: [SwitchFormRangeToMelee]
+                AutoTrigger: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Attack]
+Layout:
+    Top:
+        - Row: "<size=200%><sprite name=Immobilize><size=100%> $FH/164_character_ability_cards_geminate_mind_spike_2$"
+        - Divider:
+        - Row: "<size=100%> $FH/164_character_ability_cards_geminate_mind_spike_3$"
+        - Row: "<size=50%> "
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCLight
+                    Text: "<nobr><size=100%>+1 <sprite name=Damage></nobr>, <nobr><sprite name=XP1></nobr>"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Attack> *BAttack* <size=100%><voffset=1>@BAttack@ $FH/164_character_ability_cards_geminate_mind_spike_4$"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=200%><sprite name=GMRangedToMelee>"

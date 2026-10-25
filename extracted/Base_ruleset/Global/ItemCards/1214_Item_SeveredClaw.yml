@@ -1,0 +1,28 @@
+Parser: ItemCard
+ID: 1214
+StringID: SeveredClawID
+Name: $FH/1214_item_cards_severed_claw_1$
+Art: Severed Claw
+TotalInGame: 1
+Cost: 35
+Slot: OneHand
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        ADamage:
+            Damage: 0
+            Range: 1
+            RangeIsBase: True
+            Target: 1
+            TargetIsBase: True
+            Filter: [Enemy]
+            StatIsBasedOnX:
+                Strength:
+                    BasedOn: TargetShieldValue
+                    Multiplier: 1.0
+    AddModifiers:
+        - [AMC_Basic_M1, 3]
+Layout: 
+    - Row: $FH/1214_item_cards_severed_claw_2$

@@ -1,0 +1,17 @@
+Parser: HeroSummon
+ID: PolarCatID
+LocKey: $FH/352_character_ability_cards_snowdancer_refreshing_flurry_3$
+Model: PolarCat
+Health:
+    Amount: 6
+    SquareEnhancements: 1
+Move:
+    Amount: 3
+    SquareEnhancements: 1
+Attack:
+    Amount: 2
+    SquareEnhancements: 1
+Range: 1
+Pierce: 3
+OnAttackConditions: Wound
+

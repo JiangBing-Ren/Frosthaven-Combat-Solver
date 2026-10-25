@@ -1,0 +1,20 @@
+Parser: ItemCard
+ID: 1105
+StringID: AmuletOfLifeID
+Name: $FH/1105_item_cards_amulet_of_life_1$
+Art: Amulet of Life
+TotalInGame: 2
+Cost: 15
+Slot: Head 
+Rarity: Rare
+Usage: Spent
+Trigger: DuringOwnTurn
+ProsperityRequirement: 3
+Data: 
+    Abilities:
+        AHealSelf:
+            Heal: 1
+            Filter: Self
+Layout: 
+    - Row: $FH/1105_item_cards_amulet_of_life_2$
+    #- Row: "<sprite name=Heal> *AHealSelf* self"

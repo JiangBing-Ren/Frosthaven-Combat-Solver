@@ -1,0 +1,33 @@
+Parser: ScenarioAbility
+ID: FH102_SkipMove1ToToggleTile
+ScenarioAbility:
+    SkipMove1ToSearch:
+        Filter: Self
+        SkipAnim: True
+        NullTargeting: True
+        ActiveBonus:
+            ListLayoutOverride: ["$FH/FH_Scenario_Campaign_102_SCENARIO_MODIFIER_1$", Loot]
+            Duration: Persistent
+            ValidAbilityType: Move
+            IsToggleBonus: True
+            Requirements:
+                DoesntHaveNegativeCondition: [Stun, Immobilize]
+                Vars:
+                    CurrentAbility: PhaseManager.CurrentPhaseAction?.CurrentPhaseAbility?.m_Ability
+                    ValidateHasEnoughMovePoints: CurrentAbility != null && CurrentAbility.AbilityType == "Move" && CurrentAbility.RemainingMoves >= 1
+                    ValidateHasValidTargets: ScenarioScript_FH102.GetValidTilesToToggle(GameState.CurrentActor).Count > 0
+            MiscVars:
+                Hidden: True
+            CostAbility:
+                NullHex: True
+                PerformVars:
+                    Perform:
+                        UntoggleBonus: CacheActiveBonus.ToggleActiveBonusFromVars(TargetingActor, true)
+                        PayMovement: CustomAbility.PayMovementPoints(1, TargetingActor, CacheActiveBonus)
+                        ToggleTiles: ScenarioScript_FH102.ToggleTiles(TilesSelected, true)
+                Target: 1
+                Targeting: Custom
+                TargetingVars:
+                    AddTilesInRange: ScenarioScript_FH102.GetValidTilesToToggle(TargetingActor)
+                Vars:
+                    CacheActiveBonus: PhaseManager.CurrentPhaseAction.CurrentTriggeredActiveBonus

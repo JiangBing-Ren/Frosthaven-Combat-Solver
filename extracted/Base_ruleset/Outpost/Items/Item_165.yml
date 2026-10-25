@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 165
+ScenarioItemID: 1195
+Name: Ring of Haste
+Quantity: 2
+GoldCost: 40
+Type: Small
+IsNewCharacterItem: False

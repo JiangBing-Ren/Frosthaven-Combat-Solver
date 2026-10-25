@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 144.3
+Name: Lumber Depot Built
+SkipCompletedNotification: False
+Effects:
+    - Type: EnableEvent
+      Param1: SR-39
+    - Type: EnableEvent
+      Param1: SR-44

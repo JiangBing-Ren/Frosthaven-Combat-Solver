@@ -1,0 +1,99 @@
+Parser: AbilityCard
+Name: $FH/450_character_ability_cards_deepwraith_lacerating_stabs_1$
+Character: DeepwraithID
+ID: 450
+Level: 1
+Initiative: 14
+Discard: [Lost,Discard]
+Prefab: 450_Deepwraith_LaceratingStabs
+Data:
+    Top:
+        Abilities:
+            TAttack1:
+                Attack: 
+                    Amount: 2
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Conditions: Wound
+            TAttack2:
+                Attack: 
+                    Amount: 2
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Conditions: Wound
+                Vars:
+                    FirstAbility: TargetingActor.LastAbilityPerformed != null && TargetingActor.LastAbilityPerformed.Name == "TAttack1" && TargetingActor.LastAbilityPerformed
+                    FirstTarget: FirstAbility && FirstAbility?.ActorsToTarget != null && FirstAbility.ActorsToTarget[0]
+                ConditionalOverrides:
+                    TAttack2CO:
+                        AbilityOverrides:
+                            TDifferentTargetBuff2:
+                                StatIsBasedOnX:
+                                    Strength:
+                                        BasedOn: Vars
+                                        AddTo: True
+                                        Vars:
+                                            FirstTarget: parentContext.obj.GetVar("FirstTarget")
+                                            SecondTarget: TargetActor
+                                            IsDifferentTarget: SecondTarget != FirstTarget
+                                            Value: IsDifferentTarget
+            TAttack3:
+                Attack: 
+                    Amount: 2
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Conditions: Wound
+                Vars:
+                    SecondAbility:  TargetingActor.LastAbilityPerformed != null && (TargetingActor.LastAbilityPerformed.Name == "TAttack1" || TargetingActor.LastAbilityPerformed.Name == "TAttack2") && TargetingActor.LastAbilityPerformed
+                    SecondTarget: SecondAbility && SecondAbility?.ActorsToTarget != null && SecondAbility.ActorsToTarget[0]
+                    FirstTarget: SecondAbility && SecondAbility.Name != "TAttack1" && SecondAbility?.GetVar("FirstTarget")
+                ConditionalOverrides:
+                    TAttack3CO:
+                        AbilityOverrides:
+                            TDifferentTargetBuff3:
+                                StatIsBasedOnX:
+                                    Strength:
+                                        BasedOn: Vars
+                                        AddTo: True
+                                        Vars:
+                                            FirstTarget: parentContext.obj.GetVar("FirstTarget")
+                                            SecondTarget: parentContext.obj.GetVar("SecondTarget")
+                                            ThirdTarget: TargetActor
+                                            IsDifferentTarget: ThirdTarget != FirstTarget && ThirdTarget != SecondTarget
+                                            Value: 2 * IsDifferentTarget
+
+        XP: 2
+    Bottom:
+        Abilities:
+            BTeleport:
+                Teleport2: 
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Teleport")
+                Filter: Self
+                AnimOverload: Teleport Into
+                AnimOverload2: Teleport Outof
+            BMuddle:
+                Wound: True
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Filter: [Enemy]
+                AnimOverload: Attack
+Layout:
+    Top:
+        - Row: "<sprite name=Attack> *TAttack1* @TAttack1@ <sprite name=Wound>"
+        - Divider:
+        - Row: "<sprite name=Attack> *TAttack2* @TAttack2@ <sprite name=Wound>"
+        - Row: "$FH/450_character_ability_cards_deepwraith_lacerating_stabs_2$"
+        - Divider:
+        - Row: "<sprite name=Attack> *TAttack3* @TAttack3@ <sprite name=Wound>"
+        - Row: "$FH/450_character_ability_cards_deepwraith_lacerating_stabs_3$"
+    Bottom:
+        - Row: "<sprite name=Teleport> *BTeleport* @BTeleport@"
+        - Divider:
+        - Row: "<sprite name=Wound> <sprite name=Range> *BMuddle.Range*"

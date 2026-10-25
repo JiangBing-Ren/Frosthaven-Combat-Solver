@@ -1,0 +1,54 @@
+Parser: AbilityCard
+Name: $FH/168_character_ability_cards_geminate_reshape_the_guise_1$
+Character: GeminateID
+ID: 168
+Level: X
+ProgressionOrder: 17
+Initiative: 38
+Discard: [Discard,Lost]
+RequiredForm: Range
+Prefab: 168_Geminate_ReshapeTheGuise
+Data:
+    Top:
+        Abilities:
+            TLoot:
+                Loot: 1
+                MiscVars:
+                    PrintedProperties: list("Loot")
+                Target: -1
+                TargetIsBase: True
+            TRegenerate:
+                Regenerate: True
+                Filter: Self
+                Target: 1
+    Bottom:
+        Abilities:
+            BImprovedShortRest:
+                AddActiveBonus:
+                    ImprovedShortRest: True
+                    Filter: Self
+                    AutoTrigger: True
+                    SkipAnim: True
+                    MiscVars:
+                        SkipCombatLog: True
+                Filter: Self
+                ActiveBonus:
+                    Behaviour: EndTurnAbility
+                    Duration: Persistent
+        Infuse: Light
+        XP: 1
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Loot> *TLoot*"
+        - Row: "<size=20%> "
+        - Row: "$FH/168_character_ability_cards_geminate_reshape_the_guise_2$"
+    Bottom:
+        - Active:
+            Ability: BImprovedShortRest
+            Icon: "Positive_Cards_Geminate"
+            ListLayout: "$FH/168_character_ability_cards_geminate_reshape_the_guise_3$"
+            Layout: "$FH/168_character_ability_cards_geminate_reshape_the_guise_3$"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Light

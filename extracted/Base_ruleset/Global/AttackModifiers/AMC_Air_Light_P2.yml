@@ -1,0 +1,8 @@
+Parser: AttackModifier
+Name: AMC_Air_Light_P2
+MathModifier: "+2"
+Abilities:
+    InfuseAbility:
+        Infuse: [Air,Light]
+        ShowElementPicker: True
+        CanUndo: False

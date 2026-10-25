@@ -1,0 +1,72 @@
+Parser: Enemy
+ID: SpittingDrakeID
+LocKey: $SpittingDrake$
+MonsterType: Monster
+StandeeLimit: 6
+Model: Spitting Drake
+PredominantlyMelee: False
+AbilityCards: [858, 859, 860, 861, 862, 863, 864, 865]
+# Base Stats
+Level0:
+    Health: 4
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Flying: True
+Level1:
+    Health: 5
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Flying: True
+    Conditions: [Muddle]
+Level2:
+    Health: 7
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Flying: True
+    Conditions: [Muddle]
+Level3:
+    Health: 8
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Flying: True
+    Conditions: [Muddle]
+Level4:
+    Health: 9
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+    Flying: True
+    Conditions: [Muddle]
+Level5:
+    Health: 12
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+    Flying: True
+    Conditions: [Muddle]
+Level6:
+    Health: 16
+    Move: 4
+    Attack: 5
+    Range: 1
+    Target: 1
+    Flying: True
+    Conditions: [Muddle]
+Level7:
+    Health: 22
+    Move: 4
+    Attack: 5
+    Range: 1
+    Target: 1
+    Flying: True
+    Conditions: [Muddle]

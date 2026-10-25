@@ -1,0 +1,113 @@
+Parser: AbilityCard
+Name: $FH/430_character_ability_cards_metal_mosaic_bronze_plating_1$
+Character: MetalMosaicID
+ID: 430
+Level: 2
+Initiative: 18
+Discard: [Discard,Discard]
+Prefab: 430_MetalMosaic_BronzePlating
+Data:
+    Top:
+        Abilities:
+            TShield:
+                Shield: 1
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                ActiveBonus:
+                    Duration: Persistent
+                    ListLayoutOverride: ["<sprite name=Shield> *TShield*", Positive_Shield]
+                SubAbilities:
+                    TPreventMove:
+                        TreatAsNonSubAbility: True
+                        ImmunityTo: [Move]
+                        Filter: Self
+                        CanUndo: False
+                        CanSkip: False
+                        SkipAnim: True
+                        AutoTrigger: True
+                        ActiveBonus:
+                            Duration: Persistent
+                            ListLayoutOverride: [$FH/430_character_ability_cards_metal_mosaic_bronze_plating_2$, Negative_MovePrevent]
+            TRegenerate:
+                Regenerate: True
+                CanUndo: False
+                CanSkip: False
+                Filter: Self
+                AutoTrigger: True
+                AnimOverload: CastNeutral
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    Vars:
+                        ValidatePressure: TargetingActor.Pressure.ToString() == 'Regular' || TargetingActor.Pressure.ToString() == 'Low'
+                StatIsBasedOnX:
+                    XP:
+                        BasedOn: Vars
+                        AddTo: True
+                        Vars:
+                            RegularPressure: TargetingActor.Pressure.ToString() == 'Regular'
+                            LowPressure: TargetingActor.Pressure.ToString() == 'Low'
+                            Value: LowPressure && 1 || RegularPressure && 1 || 0
+                SubAbilities:
+                    SubPressureChangeLow:
+                        Null: True
+                        SkipAnim: True
+                        IgnoreStun: True
+                        AutoTrigger: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Low
+                        PerformVars:
+                            NullBegin:
+                                ChangePressure: CustomAbility.PressureChange(TargetingActor, 1)
+                    SubPressureChangeRegular:
+                        Null: True
+                        SkipAnim: True
+                        IgnoreStun: True
+                        AutoTrigger: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Regular
+                        PerformVars:
+                            NullBegin:
+                                ChangePressure: CustomAbility.PressureChange(TargetingActor, 1)
+    Bottom:
+        Abilities:
+            BAttackBuff:
+                Attack: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Filter: Self
+                ActiveBonus:
+                    Duration: Round
+                    Behaviour: BuffAttack
+                    AttackType: Melee
+                    ListLayoutOverride: [$FH/430_character_ability_cards_metal_mosaic_bronze_plating_4$, Positive_AttackPlus]
+            BPressureChangeGain:
+                Null: True
+                SkipAnim: True
+                IgnoreStun: True
+                PerformVars:
+                    NullBegin:
+                        ChangePressure: CustomAbility.PressureChange(TargetingActor, 1)
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    Vars: 
+                        ValidateActionHasHappened: CustomAbility.HasPerformedAction(Ability) 
+
+Layout:
+    Top:
+        - Row: "<sprite name=Shield> 1"
+        - Divider:
+        - MandatoryTrigger:
+            Layout:
+                - Row: "$FH/430_character_ability_cards_metal_mosaic_bronze_plating_2$"
+        - Divider:
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureLow><sprite name=MMPressureRegular><size=100%> <sprite name=Regenerate> $Self$, <sprite name=XP1>, <sprite name=MMGainPressure>"
+        
+    Bottom:
+        - Row: "$FH/430_character_ability_cards_metal_mosaic_bronze_plating_4$"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMGainPressure>"

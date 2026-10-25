@@ -1,0 +1,27 @@
+Parser: EnemyCard
+ID: 778
+Name: $Monster_Ability_778_AbaelHerder_BrinyBristles$
+Initiative: 18
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: -1
+        ControlPig1:
+            ControlActor:
+                ChooseClosestActor: True
+                UseControllingActorType: True
+                Abilities:
+                    AllyMove:
+                        Move: 0
+                        TextOnly: True
+                        Text: "$FH/0778_monster_ability_cards_abael_herder_briny_bristles_2$"
+                    AllyAttack:
+                        Attack: 1
+                        TextOnly: True
+            Range: 4
+            RangeIsBase: True
+            AnimOverload: Control
+            Filter:
+                EnemyClasses: [PiranhaPigID,PiranhaPigEliteID]
+            

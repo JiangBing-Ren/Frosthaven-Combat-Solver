@@ -1,0 +1,8 @@
+Parser: CampaignSection
+ID: 132.1
+Name: Shattersong Retires
+SkipNarration: True
+SkipCompletedNotification: False
+Effects:
+    - Type: GainInspiration
+      Param1: 4

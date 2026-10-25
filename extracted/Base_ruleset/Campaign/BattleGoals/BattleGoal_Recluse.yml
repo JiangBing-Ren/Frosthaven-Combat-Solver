@@ -1,0 +1,21 @@
+Parser: BattleGoal
+ID: BattleGoal_Recluse
+LocalisedName: FH/1332_battle_goals_recluse_1
+LocalisedDescription: FH/1332_battle_goals_recluse_2
+# one or the other
+PerkChecks: 1
+PerkChecksFullParty: 2
+CheckAtEndOfScenario: True
+# Never end your turn adjacent to any other character
+BattleGoalCondition:
+    - Targets:
+        Filter: TurnsWithAdjacency
+        AdjacentTo: [Player]
+        Value: 0
+        SubFilter: Scenario
+BattleGoalFailCondition:
+    - Targets:
+        Filter: TurnsWithAdjacency
+        AdjacentTo: [Player]
+        Value: 1
+        SubFilter: Scenario

@@ -1,0 +1,104 @@
+Parser: Enemy
+ID: GiantPiranhaPigBossCardsID
+LocKey: $FH/GiantPiranhaPig$
+MonsterType: Boss
+StandeeLimit: 1
+Model: PiranhaPig Elite
+PredominantlyMelee: True
+AbilityCards: [0874000301,0875000302,0876000303,0877000304,0878000305,0879000306,0880000307,0881000308]
+# Base Stats
+Level0:
+    Health: 0
+    Move: 1
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 7
+Level1:
+    Health: 0
+    Move: 1
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 1
+    Conditions: [Wound]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 7
+Level2:
+    Health: 0
+    Move: 1
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 1
+    Conditions: [Wound]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 9
+Level3:
+    Health: 0
+    Move: 1
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 1
+    Conditions: [Wound]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 11
+Level4:
+    Health: 0
+    Move: 1
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 1
+    Conditions: [Wound]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 15
+Level5:
+    Health: 0
+    Move: 1
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 1
+    Conditions: [Wound]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 19
+Level6:
+    Health: 0
+    Move: 1
+    Attack: 5
+    Range: 1
+    Target: 1
+    Shield: 1    
+    Conditions: [Wound]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 25
+Level7:
+    Health: 0
+    Move: 1
+    Attack: 6
+    Range: 1
+    Target: 1  
+    Shield: 1    
+    Conditions: [Wound]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 33

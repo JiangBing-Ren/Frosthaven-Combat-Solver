@@ -1,0 +1,6 @@
+Parser: CampaignSection
+ID: 36.4
+Name: Old Coin (36.4)
+SkipCompletedNotification: True
+# this yml only exists for the purposes of showing it in the outpost via SR-50
+# the actual effect mainly happens in the scenario logic

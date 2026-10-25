@@ -1,0 +1,14 @@
+Parser: FHScenario
+ID: 78
+Name: The Lurker Problem
+LevelID: FS_078_The_Lurker_problem
+RequiresClimbingGear: true
+Chain: JobPosting
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: AllCharactersGainExperience
+          Param1: 10
+    - Effects:
+        - Type: AllCharactersGainExperience
+          Param1: 10

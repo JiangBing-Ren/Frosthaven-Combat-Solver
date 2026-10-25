@@ -1,0 +1,23 @@
+Parser: ItemCard
+ID: 1065
+StringID: MajorStaminaPotionID
+Name: $FH/1065_item_cards_major_stamina_potion_1$
+Art: Major Stamina Potion
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+PermanentlyConsumed: True
+Data: 
+    ItemRequirements:
+        Vars: 
+            DiscardedAbilityCards: Actor.CharacterClass.DiscardedAbilityCards
+            ValidateHasCards: DiscardedAbilityCards.Count > 0
+    Abilities:
+        ARecoverCard:
+            Filter: Self
+            RecoverDiscardedCards: 1
+Layout: 
+    - Row: "$FH/1065_item_cards_major_stamina_potion_2$"

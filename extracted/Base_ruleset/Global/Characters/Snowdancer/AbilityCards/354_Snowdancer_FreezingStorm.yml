@@ -1,0 +1,93 @@
+Parser: AbilityCard
+Name: $FH/354_character_ability_cards_snowdancer_freezing_storm_1$
+Character: SnowdancerID
+ID: 354
+Level: 7
+Initiative: 81
+Discard: [Lost,Discard]
+Prefab: 354_Snowdancer_FreezingStorm
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 4
+                    DiamondEnhancements: 1
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                Target: 99
+                MultiPassAttack: False
+                AnimOverload: FreezingStorm
+                MiscVars:
+                    AutoSelectValidTiles: True
+        Consumes:
+            TCAir:
+                Elements: Air
+                AbilityOverrides:
+                    TCAirAttackBuff:
+                        ParentName: TAttack
+                        Range: 1
+                XP: 1
+        Infuse: Air
+        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BConsumeCreate:
+                CanUndo: False
+                Consume:
+                    Elements: Ice
+                    Abilities:
+                        BSubCreate:
+                            CreateTerrain: Thorns
+                            TileFilter: FeaturelessHex
+                            Target: 1
+                            Range: 1
+                            Vars:
+                                OverridePropName: "'SnowdancerHazardTerrain'"
+                            MiscVars:
+                                includeCasterTile: True
+                            AnimOverload: TerrainFormation
+                            StatIsBasedOnX:
+                                XP:
+                                    BasedOn: LevelTimesXPlusY
+                                    Multiplier: 0
+                                    SecondVariable: 1
+            BPull:
+                CanUndo: False
+                Pull: 2
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Pull","Range")
+                Target: 1
+                Filter: Enemy
+                AnimOverload: Pull
+Layout:
+    Top:
+        - Row: "<size=150%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@ $FH/354_character_ability_cards_snowdancer_freezing_storm_2$"
+        #- Row: "<sprite name=Range> *TAttack.Range*"
+        - Row: "<size=100%> "
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCAir
+                    Text: "<size=100%>+1 <sprite name=Range>, <sprite name=XP1>"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Air]
+    Bottom:
+        - Row: "<size=100%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Conditional:
+            Layout:
+                - Row: "$FH/354_character_ability_cards_snowdancer_freezing_storm_3$"
+        - Divider:
+        - Row: "<size=100%><sprite name=Pull> *BPull* <sprite name=Range> *BPull.Range*"
+

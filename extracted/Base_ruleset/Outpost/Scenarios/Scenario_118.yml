@@ -1,0 +1,12 @@
+Parser: FHScenario
+ID: 118
+Name: Lurker Necromancy
+LevelID: FS_118_Lurker_Necromancy
+RequiresSled: true
+Chain: Other
+Difficulty: 1
+Conclusions:
+    - Effects:
+        - Type: GainItemBlueprint
+          Param1: 66
+        - Type: FS118ConclusionEffect

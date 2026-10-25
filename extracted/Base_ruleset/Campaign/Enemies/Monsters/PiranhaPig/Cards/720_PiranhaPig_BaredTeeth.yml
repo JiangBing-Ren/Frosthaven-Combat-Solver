@@ -1,0 +1,23 @@
+Parser: EnemyCard
+ID: 720
+Name: $Monster_Ability_720_PiranhaPig_BaredTeeth$
+Initiative: 13
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: 1
+            Jump: True
+        Wound1:
+            Wound: True
+            Target: -1
+            TargetIsBase: True
+            Range: 1
+            RangeIsBase: True
+            Filter: Enemy
+            TextOnly: True
+            Text: "$FH/0720_monster_ability_cards_piranha_pig_bared_teeth_2$"
+        Retaliate1:
+            Retaliate: 2
+            ActiveBonus:
+                ListLayoutOverride: ["<sprite name=Retaliate> *Retaliate1*", Positive_Retaliate]

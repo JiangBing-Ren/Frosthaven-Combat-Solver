@@ -1,0 +1,33 @@
+Parser: ItemCard
+ID: 1234
+StringID: ArmorOfEmpathyID
+Name: $FH/1234_item_cards_armor_of_empathy_1$
+Art: Armor of Empathy
+TotalInGame: 1
+Cost: 40
+Slot: Body 
+Rarity: Rare
+Usage: Flip
+FlipItemID: 12342
+FlipItemSide: Front
+Trigger: PassiveEffect
+Data: 
+    Abilities:
+        ATrackAttacks:
+            Attack: 0
+            Filter: Self
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: BuffIncomingAttacks
+                XPTracker: [0,0,0]
+                AlwaysBuff: True
+                ValidAbilityType: Attack
+
+Layout: 
+    - Active:
+        Ability: ATrackAttacks
+        ListLayout: "$FH/1234_item_cards_armor_of_empathy_2$"
+        Layout: "$FH/1234_item_cards_armor_of_empathy_2$"
+        Icon: "Positive_Flip_Item"
+    - Row: "<size=50%> "
+    - XPTracker: ATrackAttacks

@@ -1,0 +1,33 @@
+Parser: ItemCard
+ID: 1193
+StringID: StarEarringID
+Name: $FH/1193_item_cards_star_earring_1$
+Art: Star Earring
+TotalInGame: 2
+Cost: 50
+Slot: SmallItem
+Rarity: Rare
+Usage: Consumed
+Trigger: BeforeShortRest
+Data:    
+    Abilities:
+        AShortRest:
+            AutoTrigger: True
+            Filter: Self
+            ImprovedShortRest: True
+            CanUndo: False
+        ARefreshOtherSpentItem:
+            AutoTrigger: True
+            RefreshItems: 3
+            Filter: Self
+            MiscVars:
+                MaxSelectIsOptional: True
+            Vars:
+                SpecificItems: TargetingActor.Inventory.AllItems.Where(obj.SlotState.ToString() == "Spent" && obj.YMLData.Usage.ToString() == "Spent")
+            CanUndo: False
+        AHeal:
+            Filter: Self
+            Heal: 2
+            CanUndo: False
+Layout: 
+    - Row: $FH/1193_item_cards_star_earring_2$

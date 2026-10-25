@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 9.2
+Name: Black Memories (Conclusion 3)
+# there is none lmao
+SkipNarration: True
+SkipCompletedNotification: True
+Effects:
+    - Type: GainItem
+      Param1: 193

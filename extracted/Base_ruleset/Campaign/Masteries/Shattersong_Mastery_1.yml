@@ -1,0 +1,34 @@
+Parser: Mastery
+ID: Shattersong_MASTERY_1
+LocalisedName: Shattersong_MASTERY_1_Name
+LocalisedDescription: Shattersong_MASTERY_1_Desc
+PerkPoints: 1
+CheckAtEndOfScenario: True
+# end at least 1 turn with 0 resonance
+BattleGoalCondition:
+    - Targets:
+        # check end turns
+        Filter: EndTurnWithXResonanceTokens
+        # with 0 or more resonance okens
+        CompareVal1: 0
+        # throughout the entire scenario
+        SubFilter: Scenario
+        # only for the shattersong
+        CharacterIDs: 
+            ActorID: ShattersongID
+        StopCheckingAfterDeath: True
+        Value: 1
+# fail if you ended even one round with more than 0 resonance
+BattleGoalFailCondition:
+    - Targets:
+        # check end turns
+        Filter: EndTurnWithXResonanceTokens
+        # with more than 0 resonance okens
+        CompareVal1: 1
+        # throughout the entire scenario
+        SubFilter: Scenario
+        # only for the shattersong
+        CharacterIDs: 
+            ActorID: ShattersongID
+        StopCheckingAfterDeath: True
+        Value: 1

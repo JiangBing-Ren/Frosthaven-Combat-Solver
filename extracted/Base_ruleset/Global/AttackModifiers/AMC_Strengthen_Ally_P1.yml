@@ -1,0 +1,11 @@
+Parser: AttackModifier
+Name: AMC_Strengthen_Ally_P1
+MathModifier: "+1"
+ControlTargetingActor: True
+Abilities:
+    AHeal:
+        Strengthen: True
+        Filter: Ally
+        Targeting: Range
+        Range: 99
+        CanUndo: False

@@ -1,0 +1,15 @@
+Parser: EnemyCard
+ID: 606
+Name: $Monster_Ability_BasicAttack$
+Initiative: 57
+Shuffle: False
+Data:
+    Abilities:
+        AMove:
+            Move: -0
+        AAttack:
+            Attack: +0
+            Range: 5
+            RangeIsBase: True
+            AnimOverload: Ranged Attack Multiple Targets
+            MultiPassAttack: False

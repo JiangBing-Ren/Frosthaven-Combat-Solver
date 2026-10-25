@@ -1,0 +1,15 @@
+Parser: FHScenario
+ID: 92
+Name: Sinking Ship
+LevelID: FS_092_Sinking_Ship
+Chain: JobPosting
+RequiresBoat: true
+Location: TheBitingSea
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: FS92ConclusionEffect
+          Param1: 5
+        - Type: AddCalendarCampaignSection
+          Param1: 181.2
+          Param2: 1

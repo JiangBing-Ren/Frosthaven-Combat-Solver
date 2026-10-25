@@ -1,0 +1,10 @@
+Parser: FHItem
+ID: 110
+ScenarioItemID: 1085
+Name: Precision Potion
+Quantity: 2
+Type: Small
+Brewing:
+    Herb1: Rockroot
+    Herb2: Snowthistle
+    Herb3: Corpsecap

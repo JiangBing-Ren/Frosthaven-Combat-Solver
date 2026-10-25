@@ -1,0 +1,8 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_Damage2_Self
+ScenarioAbility:
+    ADamage:
+        Damage: 2
+        Filter: Self
+        AutoTrigger: True
+        IgnoreStun: True

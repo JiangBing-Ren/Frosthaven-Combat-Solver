@@ -1,0 +1,7 @@
+Parser: FHEnhancement
+ID: Pull
+Name: Glossary_Enhancement_PlusPull
+Cost: 20
+Mark: Square
+Effect: AddOne
+ForEffect: Pull

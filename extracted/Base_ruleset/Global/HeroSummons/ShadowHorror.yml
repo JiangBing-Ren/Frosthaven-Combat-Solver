@@ -1,0 +1,12 @@
+Parser: HeroSummon
+ID: ShadowHorrorID
+LocKey: $FH/112_character_ability_cards_deathwalker_the_night_takes_shape_2$
+Model: ShadowHorror
+Health:
+    Amount: 5
+    SquareEnhancements: 1
+Move:
+    Amount: 3  
+Attack:
+    Amount: 3
+    SquareEnhancements: 1

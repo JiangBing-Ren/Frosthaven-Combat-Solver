@@ -1,0 +1,49 @@
+Parser: AbilityCard
+Name: $FH/144_character_ability_cards_boneshaper_twisted_decree_1$
+Character: BoneshaperID
+ID: 144
+Level: 6
+Initiative: 85
+Discard: [Discard,Discard]
+Prefab: 144_Boneshaper_TwistedDecree
+Data:
+    Top:
+        Abilities:
+            TSummonMoveAttack:
+                Filter: [OwnSummon]
+                AnimOverload: ControlSummon
+                Range: 99
+                ControlActor:
+                    Abilities:
+                        TSummonMove:
+                            Move: 1
+                            MiscVars:
+                                PrintedProperties: list("Move")
+                        TSummonAttack:
+                            Attack: 1
+                            Range: +0
+                            MiscVars:
+                                PrintedProperties: list("Attack")
+                    ControlActorType: Player
+        Infuse: Dark
+    Bottom:
+        Abilities:
+            BAttack:
+                Attack:
+                    Amount: 1
+                    DiamondEnhancements: 1
+                Range: 4
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                Conditions: [Poison,Curse]
+                AnimOverload: RangedAttack
+
+Layout:
+    Top:
+        - Row: "$FH/144_character_ability_cards_boneshaper_twisted_decree_2$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Attack> *BAttack* <size=130%><voffset=1>@BAttack@"
+        - Row: "<b><mark=#6EBE4922><sprite name=Range> *BAttack.Range*, <sprite name=Poison>, <sprite name=Curse></mark>"

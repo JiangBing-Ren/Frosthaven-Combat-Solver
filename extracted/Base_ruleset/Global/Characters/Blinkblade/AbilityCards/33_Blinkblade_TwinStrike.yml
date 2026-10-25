@@ -1,0 +1,181 @@
+Parser: AbilityCard
+Name: $FH/033_character_ability_cards_blinkblade_twin_strike_1$
+Character: BlinkbladeID
+ID: 33
+Level: 1
+Initiative: 24
+Discard: [Discard,Discard]
+Prefab: 33_Blinkblade_TwinStrike
+Data:
+    Top:
+        Abilities:
+            TAttack1:
+                Attack:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                ConditionalOverrides:
+                    TAttackCO_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            TAttack1:
+                                Strength: -1
+                                AnimOverload: AttackSlow
+            TMove_Fast:
+                Move:
+                    Amount: 2
+                MiscVars:
+                    PrintedProperties: list("Move")
+                #CanSkip: False
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Fast
+                # Just to add XP to the movement
+                ConditionalOverrides:
+                    TMoveCO_Fast:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Fast
+                        XP: 1
+                        AbilityOverrides:
+                            TMove:
+                                Strength: 0
+            TAttack2:
+                Attack:
+                    Amount: 3
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                ConditionalOverrides:
+                    TAttackCO_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            TAttack2:
+                                Strength: -1
+                                AnimOverload: AttackSlow
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+                ConditionalOverrides:
+                    BMoveCO_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            BMove:
+                                Strength: -2
+            BActive_Fast:
+                Attack: 0
+                MiscVars:
+                    PrintedProperties: list("Pierce")
+                AttackEffect:
+                    Type: StandardBuff
+                    Pierce: 2
+                Filter: [Self]
+                AutoTrigger: True
+                ActiveBonus:
+                    Behaviour: BuffAttack
+                    Duration: Round
+                    ValidAbilityTypes: [Attack]
+                    ListLayoutOverride: [$FH/033_character_ability_cards_blinkblade_twin_strike_2$, Positive_Pierce]
+                CanSkip: False
+                AnimOverload: PowerUp
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Fast
+                SubAbilities:
+                    BSubInfuse_Fast:
+                        MiscVars:
+                            DontTriggerFromBuffAttack: True
+                        Infuse: [Air]
+                        SkipAnim: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredAgility: Fast
+            BHeal_Slow:
+                Heal: 2
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: [Self]
+                CanSkip: False
+                AutoTrigger: True
+                AnimOverload: PowerUpSlow
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Slow
+                SubAbilities:
+                    BSubInfuse_Slow:
+                        MiscVars:
+                            DontTriggerFromBuffAttack: True
+                        Infuse: [Earth]
+                        SkipAnim: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredAgility: Slow
+
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "33,34,33"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Attack> *TAttack1* <size=100%><voffset=1>@TAttack1@"
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Text: "-1 <sprite name=Attack>"
+        - Divider:
+        - Row:
+            - ColumnWidths: "50,50"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "<b><size=130%><sprite name=Move> *TMove_Fast*, <size=100%><sprite name=XP1>"
+            - Column:
+        - Divider:
+        - Row:
+            - ColumnWidths: "33,34,33"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Attack> *TAttack2* <size=100%><voffset=1>@TAttack2@"
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Text: "-1 <sprite name=Attack>"
+    Bottom:
+        - Row:
+            - ColumnWidths: "33,34,33"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Text: "-2 <sprite name=Move>"
+        - Divider:
+        - Row:
+            - ColumnWidths: "50,50"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Layout: 
+                        - Row: "$FH/033_character_ability_cards_blinkblade_twin_strike_2$"
+                        - Row: "<size=20%> "
+                        - Infuse: Air
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Layout: 
+                        - Row: "$FH/033_character_ability_cards_blinkblade_twin_strike_3$"
+                        - Row: "<size=20%> "
+                        - Infuse: Earth

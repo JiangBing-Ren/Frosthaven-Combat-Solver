@@ -1,0 +1,80 @@
+Parser: AbilityCard
+Name: $FH/381_character_ability_cards_frozen_fist_gift_of_the_mountain_1$
+Character: FrozenFistID
+ID: 381
+Level: 7
+ProgressionOrder: 21
+Initiative: 73
+Discard: [Discard,Lost]
+Prefab: 381_FrozenFist_GiftOfTheMountain
+Data:
+    Top:
+        Abilities:
+            TConsume:
+                Consume:
+                    Elements: [Any]
+                    Abilities:
+                        TStrengthen:
+                            Strengthen: True
+                            Filter: Self
+                            AnimOverload: FistsSparks
+                    XP: 1
+            TAttackBuff:
+                AddActiveBonus:
+                    Attack: 2
+                    MiscVars:
+                        PrintedProperties: list("Attack")
+                    Target: 99
+                    MultiPassAttack: False
+                    IgnoreLOS: True
+                    Targeting: Custom
+                    AnimOverload: CrystalBurst
+                    TargetingVars:                  
+                        AdjacentTiles: CustomAbility.GetAdjacentTiles(TilesMoved)
+                        AddTilesInRange: AdjacentTiles
+                        AddValidActorsInRange: CustomAbility.GetActorsOnTiles(AdjacentTiles)
+                ActiveBonus:
+                    Duration: Round
+                    Behaviour: DuringActionAbilityOnFinishedMovement
+                    ValidAbilityTypes: Move
+                    Flags: [EnhancedMoveEffects]
+                AnimOverload: Roar
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BHealBuff:
+                AddActiveBonus:
+                    Heal: 2
+                    MiscVars:
+                        PrintedProperties: list("Heal")
+                    Filter: Self
+                    AnimOverload: Heal
+                    AutoTrigger: True
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: EndTurnAbility
+                AnimOverload: FootStomp
+                AutoTrigger: True
+        XP: 2
+Layout:
+    Top:
+        - AddedEffect: "$FH/381_character_ability_cards_frozen_fist_gift_of_the_mountain_2$"
+        - Divider:
+        - Active:
+            Ability: TAttackBuff
+            ListLayout: "$FH/381_character_ability_cards_frozen_fist_gift_of_the_mountain_3$ \n$FH/381_character_ability_cards_frozen_fist_gift_of_the_mountain_4$"
+            Layout:  "$FH/381_character_ability_cards_frozen_fist_gift_of_the_mountain_3$ \n$FH/381_character_ability_cards_frozen_fist_gift_of_the_mountain_4$"
+            Icon: "Positive_Attack_Move_FrozenFist"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@ "
+        - Divider: 
+        - Active:
+            Ability: BHealBuff
+            ListLayout: "$FH/333_character_ability_cards_snowdancer_gathering_force_2$ <sprite name=Heal>2 $target_self$"
+            Layout: "$FH/333_character_ability_cards_snowdancer_gathering_force_2$ <sprite name=Heal>2 $target_self$"
+            Icon: "Positive_HealSelf"

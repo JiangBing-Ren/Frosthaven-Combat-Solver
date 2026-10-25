@@ -1,0 +1,49 @@
+Parser: ItemCard
+ID: 892
+StringID: FlexibleSlippersID
+Name: $FH/892_item_cards_flexible_slippers_1$
+Art: Flexible Slippers
+TotalInGame: 2
+Cost: 30
+Slot: Legs 
+Rarity: Rare
+Usage: Spent
+Trigger: AtEndOfTurn
+ProsperityRequirement: 1
+Data:
+    ItemRequirements:
+        Vars:
+            ValidateHasAdjacentLoot: GameState.GetAdjacentLootTiles(Actor, Actor.ArrayIndex).Count > 0
+    Abilities:      
+        ALoot:
+            Loot: 1
+            Target: 1
+            AnimOverload: Loot
+            HelpBoxTooltipLocKey: $FH/892_item_cards_flexible_slippers_3$
+            MiscVars:
+                UseHelpBoxTooltipAsTooltipTitle: True
+                DontIncludeSelfTile: True
+        ALimitLoot:
+            Loot: 0
+            Filter: Self
+            ActiveBonus:
+                Duration: Round
+                XPTracker: [0]
+                Behaviour: LimitLoot
+                Hidden: True
+            AutoTrigger: True
+            SkipAnim: True
+            HelpBoxTooltipLocKey: $FH/892_item_cards_flexible_slippers_3$
+            MiscVars:
+                UseHelpBoxTooltipAsTooltipTitle: True
+            StartAbilityRequirements:
+                Type: PreviousAbility
+                AbilityHasHappened: True
+            MiscVars:
+                DontPreviewDescription: True
+Layout: 
+    - Active:
+        Ability: "ALimitLoot"
+        Icon: "Loot"
+        ListLayout: "$FH/892_item_cards_flexible_slippers_2$"
+        Layout: "$FH/892_item_cards_flexible_slippers_2$"

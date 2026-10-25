@@ -1,0 +1,15 @@
+Parser: FHScenario
+ID: 18
+Name: Crystal Fields
+LevelID: FS_018_Crystal_Fields
+Chain: Algox1
+Location: CrystalFields
+Difficulty: 1
+Conclusions:
+    - Effects:
+        - Type: GainMorale
+          Param1: 1
+        - Type: GainRandomItemBlueprint
+        - Type: AddCalendarCampaignSection
+          Param1: 122.3
+          Param2: 4

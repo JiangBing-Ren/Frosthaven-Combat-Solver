@@ -1,0 +1,26 @@
+Parser: BattleGoal
+ID: BattleGoal_Pacifist
+LocalisedName: FH/BATTLEGOAL_Pacifist
+LocalisedDescription: FH/BATTLEGOAL_Pacifist_Desc
+#Kill three or fewer monsters during the scenario - Fail
+PerkChecks: 1
+BattleGoalCondition:
+    - Targets:
+        Filter: Kill
+        MonsterType: [Normal, Elite, Boss]
+        CharacterTypes:
+            Target: [Enemy,Enemy2]
+        Conditional:
+            Amount: "< 4"
+        Value: 3
+        SubFilter: Scenario
+BattleGoalFailCondition:
+    - Targets:
+        Filter: Kill
+        MonsterType: [Normal, Elite, Boss]
+        CharacterTypes:
+            Target: [Enemy,Enemy2]
+        Conditional:
+            Amount: "> 3"
+        Value: 1
+        SubFilter: Scenario

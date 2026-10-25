@@ -1,0 +1,12 @@
+Parser: EnemyCard
+ID: 13004
+Name: $Monster_Ability_S64_Militia_ForwardStrike$
+Initiative: 51
+Shuffle: True
+Data:
+    Abilities:
+        Move1:
+            Move: 0
+        Attack1:
+            Attack: 0
+            Filter: Enemy

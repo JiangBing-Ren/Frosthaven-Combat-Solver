@@ -1,0 +1,65 @@
+Parser: Enemy
+ID: LurkerClawcrusherID
+LocKey: $FH/LurkerClawcrusher$
+MonsterType: Monster
+StandeeLimit: 4
+Model: LurkerClawcrusher
+PredominantlyMelee: True
+AbilityCards: [690, 691, 692, 693, 694, 695, 696, 697]
+# Base Stats
+Level0:
+    Health: 7
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 2
+Level1:
+    Health: 8
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 2
+    Shield: 1
+Level2:
+    Health: 10
+    Move: 3
+    Attack: 2
+    Range: 1
+    Target: 2
+    Shield: 1
+Level3:
+    Health: 13
+    Move: 3
+    Attack: 2
+    Range: 1
+    Target: 2
+    Shield: 1
+Level4:
+    Health: 13
+    Move: 3
+    Attack: 2
+    Range: 1
+    Target: 2
+    Shield: 2
+Level5:
+    Health: 15
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 2
+    Shield: 2
+Level6:
+    Health: 21
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 2
+    Shield: 2
+Level7:
+    Health: 23
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 2
+    Shield: 2
+    Immunities: [Stun]

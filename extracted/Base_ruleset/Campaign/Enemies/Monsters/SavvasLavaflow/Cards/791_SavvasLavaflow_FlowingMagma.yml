@@ -1,0 +1,37 @@
+Parser: EnemyCard
+ID: 791
+Name: $Monster_Ability_791_SavvasLavaflow_FlowingMagma$
+Initiative: 51
+Shuffle: False
+Data:
+    Abilities:
+        Damage1:
+            Damage: 2
+            Target: -1
+            Range: 4
+            RangeIsBase: True
+            Target: -1
+            TargetIsBase: True
+            Filter: Enemy            
+            AnimOverload: Magma
+            Text: "$FH/0791_monster_ability_cards_savvas_lavaflow_flowing_magma_2$"            
+            TextOnly: True
+    Consumes:
+        CFire:
+            Elements: Fire
+            AbilityOverrides:
+                CFireWound:
+                    ParentName: Damage1
+                    Conditions: Wound
+                    Filter: Enemy
+                    Text: "$FH/0791_monster_ability_cards_savvas_lavaflow_flowing_magma_3$"  
+                    TextOnly: True
+        CEarth:
+            Elements: Earth
+            AbilityOverrides:
+                CFireWound:
+                    ParentName: Damage1
+                    Conditions: Disarm                    
+                    Text: "$FH/0791_monster_ability_cards_savvas_lavaflow_flowing_magma_4$"  
+                    TextOnly: True     
+                    Filter: Enemy                    

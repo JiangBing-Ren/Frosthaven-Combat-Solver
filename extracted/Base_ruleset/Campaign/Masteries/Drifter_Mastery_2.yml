@@ -1,0 +1,50 @@
+Parser: Mastery
+ID: Drifter_MASTERY_2
+LocalisedName: Drifter_MASTERY_2_Name
+LocalisedDescription: Drifter_MASTERY_2_Desc
+PerkPoints: 1
+CheckAtEndOfScenario: True
+# use at least 1 move/attack each round with modified strength >= 4
+BattleGoalCondition:
+    - Targets:
+        Filter: AttackOrUseAbility
+        # each round
+        SubFilter: EveryRoundCharactersOnly
+        AbilityTypes: [Move,Attack]
+        HasHappened: True
+        StopCheckingAfterDeath: True
+        Conditional:
+            Strength: ">= 4"
+        CharacterIDs: 
+            ActorID: DrifterID
+        Value: 1
+BattleGoalFailCondition:
+    # if at least one of these is true, you fail
+    - TargetsRequired: 1 
+    # fail if you use move/attack abilities with modified strength < 4
+    - Targets:
+        Filter: AttackOrUseAbility
+        # each round
+        SubFilter: RoundCharactersOnly
+        AbilityTypes: [Move,Attack]
+        HasHappened: True
+        StopCheckingAfterDeath: True
+        Conditional:
+            Strength: "< 4"
+        CharacterIDs: 
+            ActorID: DrifterID
+        Value: 1
+    # fail if you don't use a move/attack ability with modified strength >= 4
+    # this one only gets checked if you've ended a turn
+    - Targets:
+        Filter: AttackOrUseAbility
+        # each round
+        SubFilter: RoundCharactersOnly
+        AbilityTypes: [Move,Attack]
+        HasHappened: True
+        StopCheckingAfterDeath: True
+        Conditional:
+            Strength: ">= 4"
+        CharacterIDs: 
+            ActorID: DrifterID
+        Value: 0

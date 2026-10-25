@@ -1,0 +1,55 @@
+Parser: AbilityCard
+Name: $FH/071_character_ability_cards_banner_spear_resolved_courage_1$
+#CustomImage: KRO_BANNER_SPEAR_AbilityCards_ResolvedCourage
+Character: BannerSpearID
+ID: 71
+Level: X
+Initiative: 10
+Discard: [Discard,Discard]
+Prefab: 71_Bannerspear_ResolvedCourage
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Conditions: Immobilize
+                AreaEffect: "0,0,G|-2,0,B|2,0,R|1,1,R|1,-1,R" 
+                MultiPassAttack: False   
+                AnimOverload: Attack2             
+        XP: 1    
+    Bottom:
+        Abilities:
+            BActive:
+                Attack: 1
+                Target: 1
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Filter: [Self]
+                ActiveBonus:
+                    Behaviour: BuffAttack
+                    Duration: Round
+                    ValidAbilityTypes: [Attack]
+                    Restriction: OncePerRound
+                    IsToggleBonus: False
+                    IsAura: True
+                    AuraTargeting: Range
+                    AuraFilter: [Self, Ally]
+                AnimOverload: SelfBuff             
+Layout:
+    Top:
+        - ColumnWidths: "40,20,40"
+        - Column: "<b><size=130%><sprite name=Attack> *TAttack*"
+        - Column:
+            - AddedEffect: "<sprite name=Immobilize>"
+        - Column:
+            - Row: "£Area£"
+    Bottom:
+        - Active:
+            Ability: BActive
+            Icon: Positive_AttackPlus_Ally
+            ListLayout: "$FH/071_character_ability_cards_banner_spear_resolved_courage_2$"
+            Layout: "$FH/071_character_ability_cards_banner_spear_resolved_courage_2$"

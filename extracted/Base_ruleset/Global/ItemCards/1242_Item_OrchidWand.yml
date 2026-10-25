@@ -1,0 +1,21 @@
+Parser: ItemCard
+ID: 1242
+StringID: OrchidWandID
+Name: $FH/1242_item_cards_orchid_wand_1$
+Art: Orchid Wand
+TotalInGame: 1
+Cost: 20
+Slot: OneHand
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+MoraleCost: 1
+Data:    
+    Abilities:
+        TBless:
+            Range: 99
+            Target: 99
+            Filter: [Self,Ally]
+            Bless: True
+Layout: 
+    - Row: "$FH/1242_item_cards_orchid_wand_2$"

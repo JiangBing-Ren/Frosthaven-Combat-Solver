@@ -1,0 +1,7 @@
+Parser: CampaignSection
+ID: 21.4
+Name: Winter Arrives
+SkipCompletedNotification: False
+Effects:
+    - Type: AddProsperity
+      Param1: 1

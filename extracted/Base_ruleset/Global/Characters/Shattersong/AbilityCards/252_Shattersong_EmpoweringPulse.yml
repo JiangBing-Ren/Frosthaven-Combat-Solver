@@ -1,0 +1,58 @@
+Parser: AbilityCard
+Name: $FH/252_character_ability_cards_shattersong_empowering_pulse_1$
+Character: ShattersongID
+ID: 252
+Level: 1
+Initiative: 22
+Discard: [Lost,Discard]
+Prefab: 252_Shattersong_EmpoweringPulse
+Data:
+    Top:
+        Abilities:            
+            TAttack:
+                Attack:
+                    Amount: 5
+                    DiamondEnhancements: 1
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")     
+                AnimOverload: RangedAttackMedium
+            BToken:
+                NullTargeting:
+                Tokens: 2
+                Flags: [ModifiesResonanceTokens]
+                Filter: [Self]
+                AnimOverload: Cast_Concentrate
+        Infuse: Air
+        XP: 1
+    Bottom:
+        Abilities:
+            BAlly:
+                ControlActor:
+                    Abilities:
+                        BAllyStrengthen:
+                            Shield: 1
+                            Conditions: Strengthen
+                            MiscVars:
+                                PrintedProperties: list("Shield")     
+                            ActiveBonus:
+                                Duration: Round
+                                ListLayoutOverride: ["<sprite name=Shield> *BAllyStrengthen*", Positive_Shield]
+                            Filter: Self
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Range")     
+                Target: 1
+                Filter: Ally
+                AnimOverload: CastTargetMedium
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Row: "<b><size=130%><sprite name=Range> *TAttack.Range*"
+        - Divider:
+        - Row: "$FH/252_character_ability_cards_shattersong_empowering_pulse_2$"     
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Air
+    Bottom:
+        - Row: "$FH/252_character_ability_cards_shattersong_empowering_pulse_3$"

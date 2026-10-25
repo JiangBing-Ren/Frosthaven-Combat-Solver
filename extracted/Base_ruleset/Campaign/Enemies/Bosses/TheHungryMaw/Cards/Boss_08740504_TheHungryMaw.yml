@@ -1,0 +1,23 @@
+Parser: EnemyCard
+ID: 08740504
+Name: $Monster_Ability_Boss_TheHungryMaw_Special1$
+Initiative: 85
+Shuffle: True
+Data:
+    Abilities:  
+        # special 1
+        AMove:
+            Move: 1
+        AAttack:
+            Attack: 1
+            Target: 2
+            TargetIsBase: True
+        APush:
+            Push: 2
+            Target: -1
+            Range: 1
+            TargetIsBase: True
+            RangeIsBase: True
+            Filter: Enemy
+            AnimOverload: Push
+    Infuse: Ice

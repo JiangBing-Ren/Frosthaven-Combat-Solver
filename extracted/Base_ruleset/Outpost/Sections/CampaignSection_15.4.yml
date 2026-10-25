@@ -1,0 +1,7 @@
+Parser: CampaignSection
+ID: 15.4
+Name: The True Oak Triangulated
+SkipCompletedNotification: False
+Effects:
+    - Type: UnlockScenario
+      Param1: 70

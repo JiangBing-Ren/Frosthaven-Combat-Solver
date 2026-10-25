@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 20
+ScenarioItemID: 920
+Name: Well-Strung Bow
+Quantity: 2
+Type: TwoHandWeapon
+CraftingCost:
+    Arrowvine: 1
+RequiredCraftingItemIDs: [ 7 ]

@@ -1,0 +1,7 @@
+Parser: Perk
+ID: Deepwraith08
+Name: FH/PERK_Deepwraith_08_Name
+Description: FH/PERK_Deepwraith_08_Desc
+CharacterID: DeepwraithID
+Available: 3
+CardsToAdd: [AMC_TrophyToken_P1, AMC_TrophyToken_P1]

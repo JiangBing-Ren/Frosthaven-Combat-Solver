@@ -1,0 +1,145 @@
+Parser: Enemy
+ID: AlgoxFrozenFistID
+LocKey: $FH/boss_stat_cards_frozen_fist$
+MonsterType: Boss
+Model: AlgoxFrozenfist
+StandeeLimit: 1
+PredominantlyMelee: True
+AbilityCards: [08770012, 08740009, 08750010, 08760011, 08780013, 08790014, 08800015, 08810016]
+# Base Stats
+Level0:
+    Health: 0
+    Move: 3
+    Attack: 0
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Immobilize, Disarm, Stun, Muddle, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 13
+        Attack:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 2
+            AddTo: True
+    Specials:
+        Shield: 1
+Level1:
+    Health: 0
+    Move: 3
+    Attack: 0
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Immobilize, Disarm, Stun, Muddle, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 15
+        Attack:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 2    
+            AddTo: True
+    Specials:
+        Shield: 2
+Level2:
+    Health: 0
+    Move: 3
+    Attack: 0
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Immobilize, Disarm, Stun, Muddle, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 16
+        Attack:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 3   
+            AddTo: True 
+    Specials:
+        Shield: 2
+Level3:
+    Health: 0
+    Move: 4
+    Attack: 0
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Immobilize, Disarm, Stun, Muddle, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 20
+        Attack:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 3
+            AddTo: True
+    Specials:
+        Shield: 2
+Level4:
+    Health: 0
+    Move: 4
+    Attack: 0
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Immobilize, Disarm, Stun, Muddle, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 22
+        Attack:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 4   
+            AddTo: True 
+    Specials:
+        Shield: 3
+Level5:
+    Health: 0
+    Move: 4
+    Attack: 0
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Immobilize, Disarm, Stun, Muddle, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 27
+        Attack:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 4   
+            AddTo: True  
+    Specials:
+        Shield: 3
+Level6:
+    Health: 0
+    Move: 4
+    Attack: 0
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Immobilize, Disarm, Stun, Muddle, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 36
+        Attack:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 5  
+            AddTo: True   
+    Specials:
+        Shield: 3
+Level7:
+    Health: 0
+    Move: 4
+    Attack: 0
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Immobilize, Disarm, Stun, Muddle, Curse]   
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 47
+        Attack:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 5 
+            AddTo: True
+    Specials:
+        Shield: 4

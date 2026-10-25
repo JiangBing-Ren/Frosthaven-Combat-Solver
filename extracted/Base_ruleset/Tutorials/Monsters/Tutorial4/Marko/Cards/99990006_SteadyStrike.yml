@@ -1,0 +1,10 @@
+Parser: EnemyCard
+ID: 99990006
+Initiative: 48
+Shuffle: True
+Data:
+    Abilities:
+        AAttack:
+            Attack: 0
+            Filter: Enemy
+            AnimOverload: Attack

@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 141
+ScenarioItemID: 1147
+Name: Studded Leather
+Quantity: 2
+GoldCost: 20
+Type: Body
+IsNewCharacterItem: False

@@ -1,0 +1,15 @@
+Parser: AttackModifier
+Name: AMC_Heal2BlessAlly_P0_R
+MathModifier: "+0"
+Rolling: True
+CustomCombatLogDescriptionLocKey: "FH/AMC_Heal2BlessAlly_P0_R_Desc"
+ControlTargetingActor: True
+Abilities:
+    AHealBless:
+        Filter: Ally
+        Target: 1
+        Range: 99
+        Heal: 2
+        Conditions: Bless
+        AnimOverload: CastTargetWeak #Shattersong only
+        Targeting: Range

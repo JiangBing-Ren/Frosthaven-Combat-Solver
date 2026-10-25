@@ -1,0 +1,74 @@
+Parser: AbilityCard
+Name: $FH/201_character_ability_cards_infuser_reinforced_riposte_1$
+Character: InfuserID
+ID: 201
+Level: 3
+Initiative: 18
+Discard: [Discard,Discard]
+Prefab: 201_Infuser_ReinforcedRiposte
+Data:
+    Top:
+        Abilities:
+            TRetaliate:
+                Retaliate: 1
+                RetaliateRange: 2
+                MiscVars:
+                    PrintedProperties: list("Retaliate","RetaliateRange")
+                Filter: Self
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: Vars
+                        AddTo: True
+                        Vars:
+                            Value: ??CustomAbility.GetNumberOfActiveInfusionPairs(TargetingActor)            
+        Consumes:
+            TCDark:
+                Elements: [Dark]
+                AbilityOverrides:
+                    TCOAttack:
+                        ParentName: TRetaliate
+                        SubAbilities:
+                            SubInfuse:
+                                Infuse: [Dark]
+                                SkipAnim: True
+    Bottom:
+        Abilities:
+            BMove1:
+                Move: 2
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BWound:
+                Wound: True
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Filter: Enemy
+                AnimOverload: NegativeCast
+            BMove2:
+                Move:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+Layout:
+    Top:
+        - Active:
+            Ability: TRetaliate
+            Icon: Positive_Retaliate_Range
+            ListLayout: "$201_character_ability_cards_infuser_reinforced_riposte_2$<br><sprite name=Retaliate> *TRetaliate* <sprite name=Range>2"
+            Layout: "<sprite name=Retaliate> *TRetaliate* <sprite name=Range>*TRetaliate.RetaliateRange*"
+        - Row: "<b><size=100%><sprite name=Retaliate> *TRetaliate* <sprite name=Range> 2"
+        - Row: "$FH/201_character_ability_cards_infuser_reinforced_riposte_2$"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCDark
+                    Text: "<sprite name=CreateDark>"
+    Bottom:
+        - Row: "<b><size=100%><sprite name=Move> *BMove1*"
+        - Divider:
+        - Row: "<sprite name=Wound> <sprite name=Range> 1"
+        - Divider:
+        - Row: "<b><size=100%><sprite name=Move> *BMove2* <size=100%><voffset=1>@BMove2@"
+        

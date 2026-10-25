@@ -1,0 +1,33 @@
+Parser: ItemCard
+ID: 1027
+StringID: PainSimulacrumID
+Name: $FH/1027_item_cards_pain_simulacrum_1$
+Art: Pain Simulacrum
+TotalInGame: 2
+Cost: 30
+Slot: SmallItem
+Rarity: Rare
+Usage: Consumed
+Trigger: AfterAttackedIgnoringDamageTaken
+Data: 
+    ItemRequirements:
+        Vars:
+            ActorBeingAttacked: Ability.VarsContext.parentContext.ActorBeingAttacked
+            ItemOwner: Ability.VarsContext.parentContext.ItemOwner
+            ValidateIsOwner: ActorBeingAttacked == ItemOwner
+            ValidateDamageBelowFive: GameState.LastTargetSummary.ActualDamageTaken <= 5
+            ValidateDamageBelowFive: GameState.LastTargetSummary.ActualDamageTaken > 0
+    Abilities:
+        BAttack:
+            Damage: 0
+            StatIsBasedOnX:
+                Strength:
+                    BasedOn: Vars
+                    Vars:
+                        Value: GameState.LastTargetSummary.ActualDamageTaken
+            Target: 1
+            Range: 2
+            Filter: [Enemy]
+            IgnoreStun: True
+Layout: 
+    - Row: $FH/1027_item_cards_pain_simulacrum_2$

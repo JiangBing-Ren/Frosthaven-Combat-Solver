@@ -1,0 +1,46 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FHScenario073_MoveFlotsam
+ScenarioAbility:
+    AMoveFlotsamBuff:
+        AddActiveBonus:
+            NullHex: True
+            MiscVars:
+                # SelectedTiles passed as var when calculating PreviewPath
+                PreviewPath: CustomAbility.GetPushTilesForPreview(Ability, MouseoverTile)
+                IsValidTile: ScenarioScript_FH073.CanMoveFlotsamOnTile(obj)
+                SelectionValid: ScenarioScript_FH073.CanConfirmFlotsamMovement(obj)
+                MoveBoat: True
+            TileFilter: Custom
+            # x targets as in x tiles that form a path
+            # strength is based on the number of remaining moves of the move ability we triggered this with
+            Target: 0
+            StatIsBasedOnX:
+                Target:
+                    BasedOn: Vars
+                    Vars:
+                        Value: TriggerAbility.RemainingMoves
+            Targeting: Custom
+            SkipAnim: True                    
+            TargetingVars:
+                CalcTilesInRange: CustomAbility.RecalcValidTilesToFormPath(parentContext.obj)
+            PerformVars:                
+                SelectHexPositions:
+                    CalcTilesInRange: CustomAbility.RecalcValidTilesToFormPath(obj)
+                OnTileDeselected:
+                    RemoveFurtherTiles: CustomAbility.RemoveRemovedTilesToFormPath(obj)
+                OnAbilityEnded:
+                    MoveBoat: ScenarioScript_FH073.MoveFlotsamOnPath(obj)
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringTurnAbility
+            ValidAbilityType: [Move,NullHex]
+            IsToggleBonus: True
+            Hidden: True
+            ListLayoutOverride: [$FH_Scenario_Campaign_073_SCENARIO_MODIFIER_1$, Move]
+            Requirements:
+                Vars:
+                    Actor: obj.Actor
+                    Vehicle: ScenarioScript_FH073.GetFlotsam(Actor.Tile)
+                    Ability: PhaseManager.CurrentPhaseAction?.CurrentPhaseAbility?.m_Ability
+                    ValidateHasAbility: Ability != null && (Ability.AbilityType == "Move" || Ability.GetMiscVar("MoveBoat"))
+                    ValidateIsOnVehicle: Vehicle != null

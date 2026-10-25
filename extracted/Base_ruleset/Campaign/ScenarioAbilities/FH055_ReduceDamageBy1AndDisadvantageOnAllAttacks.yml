@@ -1,0 +1,23 @@
+Parser: ScenarioAbility
+ID: FH055_ReduceDamageBy1AndDisadvantageOnAllAttacks
+ScenarioAbility:
+    ADisadvantage:
+        AttackersGainDisadvantage: 1
+        Filter: Self
+        ActiveBonus:
+            Duration: Persistent
+            Hidden: True
+            ListLayoutOverride: [$Scenario_055_BittingCold_Desc$, Positive_Disadvantage_Attack_Campaign]
+            MiscVars:
+                OverrideLayoutName: "'$Scenario_055_BittingCold_Title$'"
+    AReduceDamageBy11:
+        PreventDamage: 1
+        Filter: Self
+        AutoTrigger: True
+        SkipAnim: True
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: PreventPartialDamage
+            ListLayoutOverride: [$Scenario_055_IceArmor_Desc$, Positive_DamagePrevent_Campaign]
+            MiscVars:
+                OverrideLayoutName: "'$Scenario_055_IceArmor_Title$'"

@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 90
+ScenarioItemID: 1045
+Name: Muscle Potion
+Quantity: 2
+Type: Small
+Brewing:
+    Herb1: Axenut
+    Herb2: Flamefruit

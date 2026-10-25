@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 207
+ScenarioItemID: 1217
+Name: Fishhook
+Quantity: 1
+GoldCost: 25
+Type: TwoHandWeapon
+IsNewCharacterItem: False

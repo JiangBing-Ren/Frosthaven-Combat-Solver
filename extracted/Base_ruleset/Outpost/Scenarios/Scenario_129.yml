@@ -1,0 +1,13 @@
+Parser: FHScenario
+ID: 129
+Name: How to Lay an Ambush
+LevelID: FS_129_How_To_Lay_An_Ambush
+Chain: Other
+Location: CopperneckMountaions
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: AllCharactersAddPerkCheck
+          Param1: 1
+        - Type: UnlockMandatoryScenario
+          Param1: 130

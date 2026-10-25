@@ -1,0 +1,11 @@
+Parser: FHScenario
+ID: 88
+Name: 
+LevelID: FS_088_Collections_Capstone
+Chain: JobPosting
+Location: WhitefireWood
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: GainMorale
+          Param1: 2

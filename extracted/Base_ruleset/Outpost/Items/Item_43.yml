@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 43
+ScenarioItemID: 966
+Name: Kicking Boots
+Quantity: 2
+Type: Feet
+CraftingCost:
+    Metal: 1
+RequiredCraftingItemIDs: [ 28, 90 ]

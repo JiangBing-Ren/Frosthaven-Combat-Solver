@@ -1,0 +1,24 @@
+Parser: EnemyCard
+ID: 686
+Name: $Monster_Ability_686_LurkerMindsnipper_InstillFear$
+Initiative: 37
+Shuffle: False
+Data:
+    Abilities:
+        Attack1:
+            Attack: -1
+            Range: 3
+            RangeIsBase: True
+            Target: 4
+            TargetIsBase: True
+            Filter: Enemy
+            AnimOverload: InstillFear
+            MultiPassAttack: False
+            SubAbilities:
+                ASubPush:
+                    Push:
+                        Amount: 2
+                    IsInlineSubAbility: True
+                    Target: -1
+                    UseParentTargets: True
+            AnimOverload: InstillFear

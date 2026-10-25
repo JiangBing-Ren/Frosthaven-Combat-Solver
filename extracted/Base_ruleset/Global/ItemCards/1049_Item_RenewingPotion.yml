@@ -1,0 +1,26 @@
+Parser: ItemCard
+ID: 1049
+StringID: RenewingPotionID
+Name: $FH/1049_item_cards_renewing_potion_1$
+Art: Renewing Potion
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    ItemRequirements:
+        Vars:
+            SpecificItems: Actor.Inventory.AllItems.Where(obj.SlotState.ToString() == "Spent" && obj.YMLData.Usage.ToString() == "Spent")
+            ValidateHasItems: SpecificItems.Count > 0
+    Abilities:
+        ARefreshOtherSpentItem:
+            RefreshItems: 2
+            Filter: Self
+            MiscVars:
+                MaxSelectIsOptional: True
+            Vars:
+                SpecificItems: TargetingActor.Inventory.AllItems.Where(obj.SlotState.ToString() == "Spent" && obj.YMLData.Usage.ToString() == "Spent")
+Layout: 
+    - Row: "$FH/1049_item_cards_renewing_potion_2$"

@@ -1,0 +1,12 @@
+Parser: CampaignSection
+ID: 143.2
+Name: Library Built (1-NotEducated)
+SkipCompletedNotification: True
+Effects:
+    - Type: EnableEvent
+      Param1: WR-45
+    - Type: EnableEvent
+      Param1: SR-47
+    - Type: AddCalendarCampaignSection
+      Param1: 152.3
+      Param2: 2

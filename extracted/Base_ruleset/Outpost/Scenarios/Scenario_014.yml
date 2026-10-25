@@ -1,0 +1,20 @@
+Parser: FHScenario
+ID: 14
+Name: Jagged Shoals
+LevelID: FS_014_Jagged_Shoals
+Chain: Lurker
+Location: TheBitingSea
+RequiresBoat: true
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: AddCoralShard
+        - Type: GainCampaignSticker
+          Param1: ShardSeeker
+        - Type: UnlockClassChoise
+          Param1: CrashingTideID
+          Param2: DeepwraithID
+        - Type: EnableEvent
+          Param1: WO-81
+        - Type: UnlockScenario
+          Param1: 22

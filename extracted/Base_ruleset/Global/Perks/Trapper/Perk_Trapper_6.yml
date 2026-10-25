@@ -1,0 +1,7 @@
+Parser: Perk
+ID: Trapper06
+Name: FH/PERK_Trapper_06_Name
+Description: FH/PERK_Trapper_06_Desc
+CharacterID: TrapperID
+Available: 3
+CardsToAdd: [AMC_PushOrPull2_R, AMC_PushOrPull2_R]

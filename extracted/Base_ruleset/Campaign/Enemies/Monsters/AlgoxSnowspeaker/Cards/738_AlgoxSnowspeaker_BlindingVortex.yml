@@ -1,0 +1,18 @@
+Parser: EnemyCard
+ID: 738
+Name: $Monster_Ability_738_AlgoxSnowspeaker_BlindingVortex$
+Initiative: 22
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: 0
+        Attack1:
+            Attack: -1
+            Range: 3
+            RangeIsBase: True
+            AreaEffect: "0,0,R|2,0,R|1,1,R|-1,1,R|-2,0,R|-1,-1,R|1,-1,R"
+            MultiPassAttack: False
+            Conditions: [Muddle]
+            AnimOverload: Vortex
+    Infuse: Air

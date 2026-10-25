@@ -1,0 +1,23 @@
+Parser: ItemCard
+ID: 1300
+StringID: RustPowderID
+Name: $FH/1300_item_cards_rust_powder_1$
+Art: Rust Powder
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+PersistentBonus: True
+Data: 
+    Abilities:
+        EShield:
+            Shield: -1
+            Filter: Enemy
+            Range: 3
+            ActiveBonus:
+                Duration: Persistent
+                ListLayoutOverride: [$FH/1300_item_cards_rust_powder_2$, Negative_ShieldMinus_Item]
+Layout: 
+    - Row: $FH/1300_item_cards_rust_powder_2$

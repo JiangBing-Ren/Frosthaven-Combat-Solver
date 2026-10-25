@@ -1,0 +1,31 @@
+Parser: Mastery
+ID: Snowdancer_MASTERY_2
+LocalisedName: Snowdancer_MASTERY_2_Name
+LocalisedDescription: Snowdancer_MASTERY_2_Desc
+PerkPoints: 1
+CheckAtEndOfScenario: True
+# suceed if the first (T) damage events this round had targets with positive conditions cast by the snowdancer
+BattleGoalCondition:
+    - Targets:
+        Filter: FirstDamageHadPositiveCondition
+        # each round
+        SubFilter: EveryRound
+        StopCheckingAfterDeath: True
+        # only for the snowdancer
+        CharacterIDs: 
+            ActorID: SnowdancerID
+        Targets: 1
+        Value: 1
+# fail if the first (T) damage events this round had no positive conditions cast by the snowdancer
+# same as top condition, internally changes result since it knows we're checking a fail condition
+BattleGoalFailCondition:
+    - Targets:
+        Filter: FirstDamageHadPositiveCondition
+        # each round
+        SubFilter: EveryRound
+        StopCheckingAfterDeath: True
+        # only for the snowdancer
+        CharacterIDs: 
+            ActorID: SnowdancerID
+        Targets: 1
+        Value: 1

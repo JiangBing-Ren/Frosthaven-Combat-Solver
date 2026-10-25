@@ -1,0 +1,14 @@
+Parser: FHScenario
+ID: 82
+Name: Expedition North
+LevelID: FS_082_Expedition_North
+Chain: Other
+Location: ImperialMountains
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: AddProsperity
+          Param1: 2
+        - Type: AddItemsToShop
+          Param1: 2030
+          Param2: 2032

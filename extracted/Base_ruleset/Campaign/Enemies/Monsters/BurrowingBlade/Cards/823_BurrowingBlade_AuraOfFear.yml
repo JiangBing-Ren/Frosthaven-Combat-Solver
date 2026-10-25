@@ -1,0 +1,30 @@
+Parser: EnemyCard
+ID: 823
+Name: $Monster_Ability_823_BurrowingBlade_AuraOfFear$
+Initiative: 37
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move:
+                Amount: 2
+                Jump: True
+            MiscVars:
+                CasterEffectsSMBAbilityName: "'BasicJump'"
+            AIFocusOverride:
+                OverrideType: OverrideFocus
+                OverrideTargetType: Actor
+                UseFurthestFocus: True
+            Text: "$FH/823_1$"
+        Muddle1:
+            Muddle: True
+            Target: -1
+            TargetIsBase: True
+            Range: 2
+            RangeIsBase: True
+            ShowRange: False
+            Filter: Enemy
+            Condition: Curse
+            AnimOverload: RadialSpell
+            Text: "$FH/823_2$"
+            TextOnly: True

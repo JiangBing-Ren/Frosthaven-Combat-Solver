@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 161.3
+Name: High Morale
+SkipCompletedNotification: False
+Effects:
+    - Type: AddProsperity
+      Param1: 2
+    - Type: GainCampaignSticker
+      Param1: Statue

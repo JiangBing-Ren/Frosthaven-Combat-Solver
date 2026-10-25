@@ -1,0 +1,25 @@
+Parser: ItemCard
+ID: 1267
+StringID: MagneticCapeID
+Name: $FH/1267_item_cards_magnetic_cape_1$
+Art: Magnetic Cape
+TotalInGame: 1
+Cost: 40
+Slot: Body
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+ProsperityRequirement: 1
+Data: 
+    Abilities:
+        ATeleport:
+            Teleport2: 20
+            Filter: Self
+            Range: 20
+            CanUndo: True
+            Target: -1
+            Flags: AdjacentToAllies
+            PreviewEffectText: "20 <sprite name=Teleport>"
+Layout: 
+    - Row: $FH/1267_item_cards_magnetic_cape_2$
+    - Row: $FH/1267_item_cards_magnetic_cape_3$

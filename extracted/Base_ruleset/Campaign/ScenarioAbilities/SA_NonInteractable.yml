@@ -1,0 +1,11 @@
+Parser: ScenarioAbility
+ID: SA_NonInteractable
+ScenarioAbility:
+    AImmunity:
+        ImmunityTo: [Push, Pull, ControlActor, Teleport2, Heal, Attack, Damage, Poison, Wound, Immobilize, Disarm, Stun, Muddle, Curse, StopFlying, Sleep, Bane, Brittle, Impair, Invisible, Strengthen, Bless, Advantage, Immovable, Regenerate, Ward]
+        AutoTrigger: True
+        Filter: Self
+        Flags: [FromScenarioModifier]
+        ActiveBonus:
+            Duration: Persistent            
+            ListLayoutOverride: [$ImmunityTo$ $AllConditions$, AA_Immune]

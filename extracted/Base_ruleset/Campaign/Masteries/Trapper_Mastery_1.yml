@@ -1,0 +1,12 @@
+Parser: Mastery
+ID: Trapper_MASTERY_1
+LocalisedName: Trapper_MASTERY_1_Name
+LocalisedDescription: Trapper_MASTERY_1_Desc
+PerkPoints: 1
+BattleGoalCondition:
+    - Targets:
+        # check if trap exists with heal ability with strenght X
+        Filter: HasTrapWithHealX
+        # throughout the entire scenario
+        SubFilter: Scenario
+        Value: 20

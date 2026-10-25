@@ -1,0 +1,11 @@
+Parser: CampaignSection
+ID: 123.2
+Name: Vermling Siege (123.2)
+SkipCompletedNotification: True
+Repeatable: True
+SkipNarration: True
+DontFadeIn: True
+Effects:
+    - Type: ActivateEvent
+      Param1: "CustomEvent_123.2"
+    - Type: SkipNextOutpostEvent

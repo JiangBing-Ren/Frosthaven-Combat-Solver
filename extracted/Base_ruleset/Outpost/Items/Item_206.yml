@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 206
+ScenarioItemID: 1216
+Name: Giant Sword
+Quantity: 1
+GoldCost: 40
+Type: TwoHandWeapon
+IsNewCharacterItem: False

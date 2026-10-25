@@ -1,0 +1,109 @@
+Parser: AbilityCard
+Name: $FH/45_character_ability_cards_blinkblade_systems_reboot_1$
+Character: BlinkbladeID
+ID: 45
+Level: 2
+Initiative: 57
+Discard: [Permanently Lost,Discard]
+Prefab: 45_Blinkblade_SystemsReboot
+Data:
+    Top:
+        Abilities:
+            THeal:
+                Heal:
+                    Amount: 4
+                    DiamondPlusEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: [Self]
+                AnimOverload: ChargeUp
+                ConditionalOverrides:
+                    AnimCO_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            BAnim:
+                                AnimOverload: ChargeUpSlow
+            TRecover:
+                Filter: [Self]
+                AutoTrigger: True
+                RecoverLostCards: 
+                    Strength: 1
+                AnimOverload: ChargeUp
+                ConditionalOverrides:
+                    AnimCO_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            BAnim:
+                                AnimOverload: ChargeUpSlow
+    Bottom:
+        Abilities:
+            BCleanse:
+                IgnoreStun: True
+                RemoveConditions: "All"
+                Conditions: [Wound,Brittle,Bane,Poison,Immobilize,Disarm,Impair,Stun,Muddle,StopFlying]
+                AnimOverload: ChargeUp
+                ConditionalOverrides:
+                    AnimCO_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            BAnim:
+                                AnimOverload: ChargeUpSlow
+            BMove:
+                Move: 2
+                MiscVars:
+                    PrintedProperties: list("Move")
+                ConditionalOverrides:
+                    BMoveCO_Fast:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Fast
+                        AbilityOverrides:
+                            BMove:
+                                Strength: 2
+            CSwapAgilityEffects:
+                NullTargeting:
+                Filter: Self
+                ActiveBonus:
+                    Duration: Round
+                    Flags: [TreatSlowAgilityAsFast]
+                    ListLayoutOverride: [$FH/045_character_ability_cards_blinkblade_systems_reboot_5$, Positive_Blinkblade_Fast]
+                    MiscVars:
+                        OverrideLayoutName: "'$FH/45_character_ability_cards_blinkblade_systems_reboot_1$'"
+                AnimOverload: ChargeUpSlow
+                Tokens: -1
+                Flags: [ModifiesTimeTokens]
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Slow
+                    TimeTokens: ">= 1"
+                HelpBoxTooltipLocKey: "$FH/045_character_ability_cards_blinkblade_systems_reboot_5$"
+Layout:
+    Top:
+        - Row: "<b><size=130%>$FH/045_character_ability_cards_blinkblade_systems_reboot_2$ <size=100%><voffset=1>@THeal@"
+        - Divider:
+        - Row: "$FH/045_character_ability_cards_blinkblade_systems_reboot_3$"
+    Bottom:
+        - Row: "<size=90%>$FH/045_character_ability_cards_blinkblade_systems_reboot_4$"
+        - Row:
+            - ColumnWidths: "40,33,27"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "+2<sprite name=Move>"
+            - Column:
+                - Row: "<b><size=130%><sprite name=Move> *BMove*"
+            - Column:
+        - Row: "<size=25%> "
+        - Row:
+            - ColumnWidths: "90,10"
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Text:  "<size=90%>$FH/045_character_ability_cards_blinkblade_systems_reboot_5$"
+            - Column:

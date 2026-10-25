@@ -1,0 +1,31 @@
+Parser: ScenarioAbility
+ID: FH067_HealCore
+ScenarioAbility:
+    AActive:
+        MiscVars:
+            ListLayoutParamVar0: CustomAbility.GetAddActiveStrength(ActiveBonus)
+        AddActiveBonus:
+            Heal: 0
+            Filter:
+                TargetType: Ally
+                EnemyType: [Object]
+                ActorType: Ally
+            PreviewEffectText: "<sprite name=Heal>" 
+            Target: 1
+            StatIsBasedOnX: 
+                Strength:
+                    BasedOn: XPlusLevel
+                    Multiplier: 1
+                    AddTo: True
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringTurnAbility
+            IsToggleBonus: True
+            Hidden: True
+            Requirements:
+                ForgoBottomAction: True
+                Vars:
+                    FriendlyFilter: CAbilityFilterContainer.CreateDefaultFriendlyFilter()
+                    ActorsInRange: GameState.GetActorsInRange(Actor, Actor, 1, null, FriendlyFilter, null, null, true).Where(obj.IsAttachedToProp)
+                    ValidateIsNextToCore: ActorsInRange.Count > 0
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_067_SCENARIO_MODIFIER_2$, Positive_Heal]

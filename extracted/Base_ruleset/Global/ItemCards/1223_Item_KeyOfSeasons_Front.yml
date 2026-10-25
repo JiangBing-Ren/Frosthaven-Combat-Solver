@@ -1,0 +1,24 @@
+Parser: ItemCard
+ID: 1223
+StringID: KeyOfSeasonsID
+Name: $FH/1223_item_cards_key_of_seasons_1$
+Art: Key of Seasons
+TotalInGame: 1
+Cost: 70
+Slot: OneHand
+Rarity: Rare
+Usage: Flip
+FlipItemID: 12232
+FlipItemSide: Front
+Trigger: SingleTarget
+Consumes: Ice
+Data: 
+    CompareAbility:
+        AbilityType: Attack
+        Filter: Enemy
+    Overrides:
+        OAttackImmobilize:
+            Conditions: Immobilize
+
+Layout: 
+    - Row: $FH/1223_item_cards_key_of_seasons_2$

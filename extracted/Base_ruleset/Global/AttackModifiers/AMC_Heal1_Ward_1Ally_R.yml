@@ -1,0 +1,13 @@
+Parser: AttackModifier
+Name: AMC_Heal1_Ward_1Ally_R
+MathModifier: "+0"
+Rolling: True
+ControlTargetingActor: True
+Abilities:
+    AHeal:
+        Heal: 1
+        Filter: Ally
+        Conditions: Ward
+        Targeting: Range
+        Range: 99
+        AnimOverload: Heal

@@ -1,0 +1,157 @@
+Parser: AbilityCard
+Name: $FH/272_character_ability_cards_shattersong_violent_vibrations_1$
+Character: ShattersongID
+ID: 272
+Level: 9
+Initiative: 5
+Discard: [Lost,Discard]
+Prefab: 272_Shattersong_ViolentVibrations
+Data:
+    Top:
+        Abilities:
+            TWaveAttack:
+                Filter: Self          
+                HelpBoxTooltipLocKey: "$FH/GUI_CHOOSE_RESONANCE_TOKEN_COUNT$"
+                PreviewEffectText: "<sprite name=Shield>X+1\n<sprite name=Retaliate>X+1"           
+                MiscVars:
+                    # doing the chosen ability as a sub ability so we can preview the effect
+                    DontPerformChosenAbility: True  
+                    OverrideIcon: "'Ability_Shattersong_Icon'"
+                Choose:
+                    Choices:
+                        D1:
+                            PreviewEffectText: "1"
+                            Strength: 1
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 1
+                        D2:
+                            PreviewEffectText: "2"
+                            Strength: 2
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 2
+                        D3:
+                            PreviewEffectText: "3"
+                            Strength: 3
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 3
+                        D4:
+                            PreviewEffectText: "4"
+                            Strength: 4
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 4
+                        D5:
+                            PreviewEffectText: "5"
+                            Strength: 5
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 5
+                PerformVars:
+                    ApplyToActors:
+                        Resonance: ChosenAbility?.Strength || 0
+                        Tokens: Resonance * -1
+                Flags: [ModifiesResonanceTokens]
+                SubAbilities:
+                    TGrantShieldRetaliatte:
+                        Flags: [SubAbilityPreview]
+                        TreatAsNonSubAbility: True
+                        UseParentTargets: False
+                        Filter: [Ally, Self]
+                        Target: 99
+                        Range: 2
+                        MiscVars:
+                            PrintedProperties: list("Shield")     
+                            AutoSelectValidTiles: True     
+                        Vars:
+                            ParentStrength: ParentAbility.ChosenAbility?.Strength || 0
+                            AnimOverload: ((ParentStrength == 1 || ParentStrength == 2) && "CastTargetControlWeak") ||
+                                          ((ParentStrength == 3 || ParentStrength == 4) && "CastTargetControlMedium") ||
+                                          ((ParentStrength == 5) && "CastTargetControlStrong")  
+                        Shield: 1
+                        StatIsBasedOnX:
+                            Strength:
+                                AddTo: True
+                                BasedOn: Vars
+                                Vars:
+                                    Strength: ParentAbility.ChosenAbility?.Strength || 0
+                                    Value: max(1, Strength)
+                        ActiveBonus:
+                            Duration: Round
+                            ListLayoutOverride: ["<sprite name=Shield> *TShield*", Positive_Shield]
+                        SubAbilities:
+                            TRealiate:
+                                Retaliate: 1
+                                SkipAnim: True
+                                AutoTrigger: True
+                                MiscVars:
+                                    PrintedProperties: list("Retaliate")   
+                                StatIsBasedOnX:
+                                    Strength:
+                                        AddTo: True
+                                        BasedOn: Vars
+                                        Vars:
+                                            Strength: ParentAbility.ParentAbility.ChosenAbility?.Strength || 0
+                                            Value: max(1, Strength)
+                                ActiveBonus:
+                                    Duration: Round
+                                    ListLayoutOverride: ["<sprite name=Retaliate> *TRealiate*", Positive_Retaliate]
+                            TFinishWave:
+                                NullTargeting: True
+                                Filter: Self
+                                SkipAnim: True
+                                AutoTrigger: True
+                                TreatAsNonSubAbility: True
+                                Flags: [Wave]
+                        PerformVars:
+                            OnAbilityEnded:
+                                StackSubAbilities: obj.AbilityHasHappened && CustomAbility.StackNonInlineSubabilities(obj)
+
+        XP: 2
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")     
+            BWound:
+                Filter: Enemy
+                Wound: True
+                Target: 99
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Range")     
+                AnimOverload: Cast_Negative AOE 2hex
+                MiscVars:
+                    AutoSelectValidTiles: True
+            BInfuse: 
+                CanUndo: False
+                CanSkip: False 
+                Infuse: [Any]
+                ShowElementPicker: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    Vars: 
+                        ValidateActionHasHappened: CustomAbility.HasPerformedAction(Ability) 
+Layout:
+    Top:
+        - Row: "$FH/character_ability_cards_shattersong_wave$"
+        - Row: "$FH/272_character_ability_cards_shattersong_violent_vibrations_2$"
+        - Row: "<sprite name=Shield>X+1"
+        - Row: "<sprite name=Retaliate>X+1"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Wound> <mark=#FCD06E22><size=100%>$FH/272_character_ability_cards_shattersong_violent_vibrations_3$</mark>"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Any

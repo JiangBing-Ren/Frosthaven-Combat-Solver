@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 235
+ScenarioItemID: 1245
+Name: Small Rat
+Quantity: 1
+GoldCost: 10
+Type: Small
+IsNewCharacterItem: False

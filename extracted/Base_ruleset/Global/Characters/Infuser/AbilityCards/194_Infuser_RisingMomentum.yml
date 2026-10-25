@@ -1,0 +1,73 @@
+Parser: AbilityCard
+Name: $FH/194_character_ability_cards_infuser_rising_momentum_1$
+Character: InfuserID
+ID: 194
+Level: 1
+Initiative: 25
+Discard: [Discard,Discard]
+Prefab: 194_Infuser_RisingMomentum
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Range: 1
+                Target: 1
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: Vars
+                        AddTo: True
+                        Vars:
+                            Value: ??CustomAbility.GetNumberOfActiveInfusionPairs(TargetingActor)
+        Consumes:
+            TCEarth:
+                Elements: Earth
+                Abilities:
+                    TInfuse:
+                        Infuse: [Earth]
+                        SkipAnim: True
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: Vars
+                        AddTo: True
+                        Vars:
+                            Value: ??CustomAbility.GetNumberOfActiveInfusionPairs(TargetingActor)
+        Consumes:
+            BCAir:
+                Elements: Air
+                Abilities:
+                    TInfuse:
+                        Infuse: [Air]
+                        SkipAnim: True
+
+Layout:
+    Top:
+        - Row: "<b><size=100%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Row: "$FH/194_character_ability_cards_infuser_rising_momentum_2$"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCEarth
+                    Text: "<sprite name=CreateEarth>"
+    Bottom:
+        - Row: "<b><size=100%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Row: "$FH/194_character_ability_cards_infuser_rising_momentum_3$"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: BCAir
+                    Text: "<sprite name=CreateAir>"

@@ -1,0 +1,10 @@
+Parser: FHItem
+ID: 48
+ScenarioItemID: 976
+Name: Living Shoes
+Quantity: 2
+Type: Feet
+CraftingCost:
+    Hide: 2
+    Flamefruit: 1
+RequiredCraftingItemIDs: [ 13 ]

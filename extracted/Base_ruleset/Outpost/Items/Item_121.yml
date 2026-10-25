@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 121
+ScenarioItemID: 1107
+Name: Circlet of Elements
+Quantity: 2
+GoldCost: 25
+Type: Head
+IsNewCharacterItem: True

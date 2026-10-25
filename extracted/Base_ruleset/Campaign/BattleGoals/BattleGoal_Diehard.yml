@@ -1,0 +1,29 @@
+Parser: BattleGoal
+ID: BattleGoal_Diehard
+LocalisedName: BATTLEGOAL_Diehard
+LocalisedDescription: BATTLEGOAL_Diehard_Desc
+#Never allow your current hit point value to drop below half your maximum
+#hit point value (rounded up) during the scenario - Fail
+PerkChecks: 1
+CheckAtEndOfScenario: True
+BattleGoalCondition:
+    - Targets:
+        Filter: Health
+        CharacterTypes:
+            Target: [Player]
+        Conditional:
+            Type: ScenarioMinimum
+            HPPercentOfMax: ">= 50%"
+        Value: 1
+        SubFilter: Scenario
+BattleGoalFailCondition:
+    - Targets:
+        Filter: Health
+        CharacterTypes:
+            Target: [Player]
+        Conditional:
+            Type: ScenarioMinimum
+            HPPercentOfMax: "< 50%"
+        Value: 1
+        SubFilter: Scenario
+TreasureTables: [TT_Battle_Goals_1]

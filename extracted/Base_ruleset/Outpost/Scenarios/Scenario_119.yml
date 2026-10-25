@@ -1,0 +1,9 @@
+Parser: FHScenario
+ID: 119
+Name: Radiant Dust
+LevelID: FS_119_Radiant_Dust
+Chain: Other
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: FS119ConclusionEffect

@@ -1,0 +1,68 @@
+Parser: Enemy
+ID: LivingDoomEliteID
+LocKey: $FH/LivingDoomElite$
+MonsterType: Monster
+StandeeLimit: 4
+Model: LivingDoom Elite
+NonEliteVariant: LivingDoomID
+PredominantlyMelee: True
+AbilityCards: [650, 651, 652, 653, 654, 655, 656, 657]
+# Base Stats
+Level0:
+    Health: 10
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 1
+Level1:
+    Health: 10
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 2
+Level2:
+    Health: 11
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    Shield: 2
+Level3:
+    Health: 14
+    Move: 4
+    Attack: 5
+    Range: 1
+    Target: 1
+    Shield: 2
+Level4:
+    Health: 18
+    Move: 4
+    Attack: 5
+    Range: 1
+    Target: 1
+    Shield: 2
+Level5:
+    Health: 20
+    Move: 4
+    Attack: 6
+    Range: 1
+    Target: 1
+    Shield: 2
+Level6:
+    Health: 27
+    Move: 4
+    Attack: 7
+    Range: 1
+    Target: 1    
+    Shield: 2
+    Immunities: [Bane]
+Level7:
+    Health: 30
+    Move: 4
+    Attack: 7
+    Range: 1
+    Target: 1
+    Shield: 3 
+    Immunities: [Bane]

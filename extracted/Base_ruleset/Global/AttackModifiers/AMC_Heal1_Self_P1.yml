@@ -1,0 +1,8 @@
+Parser: AttackModifier
+Name: AMC_Heal1_Self_P1
+MathModifier: "+1"
+Abilities:
+    AHeal:
+        Heal: 1
+        Filter: Self
+        AutoTrigger: True

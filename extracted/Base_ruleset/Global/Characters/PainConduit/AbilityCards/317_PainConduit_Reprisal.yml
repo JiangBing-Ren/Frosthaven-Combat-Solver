@@ -1,0 +1,78 @@
+Parser: AbilityCard
+Name: $FH/317_character_ability_cards_pain_conduit_reprisal_1$
+Character: PainConduitID
+ID: 317
+Level: 3
+Initiative: 70
+Discard: [Discard,Discard]
+Prefab: 317_PainConduit_Reprisal
+Data:
+    Top:
+        Abilities:
+            THeal:
+                Heal: 2
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self
+                AnimOverload: Heal
+            TRetaliate:
+                Retaliate:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Retaliate")
+                AnimOverload: Cast
+                ActiveBonus:
+                    Duration: Round
+                    ListLayoutOverride: ["<sprite name=Retaliate> *TRetaliate*", Positive_Retaliate]
+        Consumes:
+            TCAir:
+                Elements: Air
+                XP: 1
+                AbilityOverrides:
+                    TCAirRetaliateBuff:
+                        ParentName: TRetaliate
+                        Strength: 1
+    Bottom:
+        Abilities:
+            BDamageAnyEnemyOnDamaged:
+                Filter: Self
+                AddActiveBonus:
+                    Damage: 2
+                    MiscVars:
+                        PrintedProperties: list("Damage")
+                    Target: 1
+                    Range: 2
+                    Filter: [Enemy]
+                    AnimOverload: CastGivingPain
+                AnimOverload: Cast
+                ActiveBonus:
+                    Duration: Round
+                    Behaviour: DuringActionAbilityOnDamaged
+                    TriggerAbilitiesImmediately: True
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Heal> *THeal* </b><mark=#80919922><size=100%>$Self$</mark>"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Retaliate> *TRetaliate* <size=100%><voffset=1>@TRetaliate@"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCAir
+                    Text: "+1<sprite name=Retaliate>, <sprite name=XP1>"
+    Bottom:      
+        - Active:
+            Ability: BDamageAnyEnemyOnDamaged
+            Icon: Positive_Thorns_Range
+            ListLayout: "$FH/317_character_ability_cards_pain_conduit_reprisal_2$"
+            Layout: "$FH/317_character_ability_cards_pain_conduit_reprisal_2$"
+        - Divider:       
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+

@@ -1,0 +1,11 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH70_MirrorDamage
+ScenarioAbility:
+    AActive:
+        MirrorDamage: True
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: MirrorAll
+            IsToggleBonus: False
+        AnimOverload: None
+        AutoTrigger: True

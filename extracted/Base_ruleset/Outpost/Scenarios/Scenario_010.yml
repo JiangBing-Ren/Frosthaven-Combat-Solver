@@ -1,0 +1,16 @@
+Parser: FHScenario
+ID: 10
+Name: Crystal Enclosure
+LevelID: FS_010_Crystal_Enclosure
+RequiresSled: true
+Chain: Algox1
+Location: CrystalFields
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: GainMorale
+          Param1: 1
+        - Type: GainInspiration
+          Param1: 1
+        - Type: UnlockScenario
+          Param1: 18

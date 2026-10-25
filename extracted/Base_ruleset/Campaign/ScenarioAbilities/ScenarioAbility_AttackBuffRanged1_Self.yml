@@ -1,0 +1,12 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_AttackBuffRanged1_Self
+ScenarioAbility:
+    AAttackBuffRanged:
+        Attack: 1
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: BuffAttack
+            AttackType: Ranged
+        AnimOverload: None
+        Filter: Self
+        AutoTrigger: True

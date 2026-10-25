@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 194
+ScenarioItemID: 1202
+Name: Temporal Amulet
+Quantity: 1
+GoldCost: 30
+Type: Head
+IsNewCharacterItem: False

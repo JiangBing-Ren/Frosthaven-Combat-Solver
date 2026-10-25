@@ -1,0 +1,19 @@
+Parser: FHScenario
+ID: 207
+Name: Tutorial 7
+LevelID: RFS_07_Assault_On_The_Warchief
+Chain: RoadToFrosthaven
+Location: Frosthaven
+CanNotReturnToOutpost: True
+CanNotBeReplayed: True
+Difficulty: 2
+Conclusions:
+    - Effects:
+         - Type: SetGameMode
+           Param1: Frosthaven
+         - Type: LockBuilding
+           Param1: 201
+         - Type: LockBuilding
+           Param1: 202
+         - Type: UnlockMandatoryScenario
+           Param1: 1

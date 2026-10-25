@@ -1,0 +1,24 @@
+Parser: Perk
+ID: PainConduit11
+Name: FH/PERK_PainConduit_11_Name
+Description: FH/PERK_PainConduit_11_Desc
+CharacterID: PainConduitID
+Available: 1
+Flags: [Passive, ApplyActiveBonusesAtScenarioStart]
+Abilities:
+    CurseOnDeath:
+        Filter: Self
+        AutoTrigger: True
+        SkipAnim: True
+        NullTargeting: True
+        AddActiveBonus:
+            Curse: True
+            Target: 99
+            Range: 3
+            Filter: Enemy
+            AnimOverload: CastGivingPain
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringActionAbilityOnDeath
+            TriggerAbilitiesImmediately: True
+            Hidden: True

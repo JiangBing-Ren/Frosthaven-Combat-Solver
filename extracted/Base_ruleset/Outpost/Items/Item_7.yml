@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 7
+ScenarioItemID: 894
+Name: Crude Bow
+Quantity: 2
+Type: TwoHandWeapon
+CraftingCost:
+    Lumber: 1

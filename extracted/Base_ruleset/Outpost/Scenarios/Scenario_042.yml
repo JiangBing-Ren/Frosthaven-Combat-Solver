@@ -1,0 +1,18 @@
+Parser: FHScenario
+ID: 42
+Name: Sunless Trench
+LevelID: FS_042_Sunless_Trench
+RequiresBoat: true
+Chain: Lurker
+Location: TheBitingSea
+Difficulty: 1
+Conclusions:
+    - Effects:
+        - Type: AllCharactersAddPerkCheck
+          Param1: 2
+        - Type: AddCoralShard
+        - Type: AddCalendarCampaignSection
+          Param1: 114.2
+          Param2: 3
+        - Type: EnableEvent
+          Param1: B-16

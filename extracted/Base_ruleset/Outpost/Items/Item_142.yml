@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 142
+ScenarioItemID: 1149
+Name: Boots of Quickness
+Quantity: 2
+GoldCost: 50
+Type: Feet
+IsNewCharacterItem: False

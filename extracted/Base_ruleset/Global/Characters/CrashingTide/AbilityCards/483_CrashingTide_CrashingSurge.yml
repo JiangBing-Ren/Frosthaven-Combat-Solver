@@ -1,0 +1,65 @@
+Parser: AbilityCard
+Name: $FH/483_character_ability_cards_crashing_tide_crashing_surge_1$
+Character: CrashingTideID
+ID: 483
+Level: 1
+ProgressionOrder: 483
+Initiative: 34
+Discard: [Lost,Discard]
+Prefab: 483_CrashingTide_CrashingSurge
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AreaEffect: "0,0,G|1,1,R|3,1,R|2,0,R|4,0,R|3,-1,R|1,-1,R"
+                MultiPassAttack: False
+                AnimOverload: CrashingSurge
+                SubAbilities:
+                    TCreateWater:
+                        CreateTerrain: Water
+                        TileFilter: FeaturelessHex
+                        Vars:
+                            OverridePropName: "'CrashingTideWater'"
+                        Target: 6
+                        Targeting: Custom
+                        TargetingVars:
+                            AddTilesInRange: ParentAbility.ValidTilesInAreaAffected.Where(CAbilityFilter.IsTileFeatureless(obj))
+                        TreatAsNonSubAbility: True
+                        AnimOverload: CreateWaterTile
+        XP: 2
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BCreateWater:
+                CreateTerrain: Water
+                TileFilter: FeaturelessHex
+                Vars:
+                    OverridePropName: "'CrashingTideWater'"
+                Range: 1
+                Target: 1
+                Targeting: Range
+                AnimOverload: CreateWaterTile
+                MiscVars:
+                    includeCasterTile: True
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "50,50"
+            - Column: "<b><size=130%><sprite name=Attack> 2<voffset=1>@TAttack@"
+            - Column: "£Area£"
+        - Divider:
+        - Row: "$FH/483_character_ability_cards_crashing_tide_crashing_surge_2$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "$FH/483_character_ability_cards_crashing_tide_crashing_surge_3$"

@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 225
+ScenarioItemID: 1235
+Name: Algox Carving
+Quantity: 1
+GoldCost: 60
+Type: Body
+IsNewCharacterItem: False

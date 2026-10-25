@@ -1,0 +1,108 @@
+Parser: AbilityCard
+Name: $FH/100_character_ability_cards_deathwalker_strength_of_the_abyss_1$
+Character: DeathwalkerID
+ID: 100
+Level: 1
+Initiative: 50
+Discard: [Discard,Lost]
+Prefab: 100_Deathwalker_StrengthOfTheAbyss
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                MiscVars:
+                    OnActorIsAttacking: obj.TargetingActor.BuffFromAllShadows()
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: Vars
+                        AddTo: True
+                        Vars:
+                            Value: ScenarioManager.CurrentScenarioState.ShadowProps.Count
+    Bottom:
+        Abilities:
+            BBuffMove:
+                Move: 2
+                MiscVars:
+                    PrintedProperties: list("Move")
+                PreviewEffectText: ""
+                Filter: Self
+                AnimOverload: PowerUp
+                ActiveBonus:
+                    Behaviour: BuffMove
+                    Duration: Persistent
+                    ListLayoutOverride: [$FH/100_character_ability_cards_deathwalker_strength_of_the_abyss_4$, Positive_Deathwalker_Shadow]
+                    ValidAbilityType: Move
+                    IsToggleBonus: True
+                    Requirements:
+                        DoesntHaveNegativeCondition: [Stun, Immobilize]
+                        Vars:
+                            ValidateHasValidTargets: CustomAbility.GetShadowTilesInRange(TargetingActor, 3, true).Count > 0
+                    CostAbility:
+                        RemoveShadow:
+                        Target: 1
+                        Targeting: Custom
+                        TargetingVars:
+                            AddTilesInRange: CustomAbility.GetShadowTilesInRange(TargetingActor, 3, true)
+                        Vars:
+                            SendBuffProjectiles: True
+                        AnimOverload: Shadow Manipulation
+                        CanUndo: True
+                        StatIsBasedOnX:
+                            XP:
+                                BasedOn: LevelTimesXPlusY
+                                Multiplier: 0
+                                SecondVariable: 1
+            BBuffAttack:
+                Attack: 2
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                PreviewEffectText: ""
+                AutoTrigger: True
+                SkipAnim: True
+                Filter: Self
+                ActiveBonus:
+                    Behaviour: BuffSingleAttack
+                    Duration: Persistent
+                    ValidAbilityType: Attack
+                    ListLayoutOverride: [$FH/100_character_ability_cards_deathwalker_strength_of_the_abyss_5$, Positive_Deathwalker_Shadow]
+                    IsToggleBonus: True
+                    IsSingleTargetBonus: True
+                    FullCopy: True
+                    Hidden: True
+                    Requirements:
+                        DoesntHaveNegativeCondition: [Stun, Disarm]
+                        Vars:
+                            ValidateHasValidTargets: CustomAbility.GetShadowTilesInRange(TargetingActor, 3, true).Count > 0
+                    CostAbility:
+                        RemoveShadow:
+                        Target: 1
+                        Targeting: Custom
+                        Vars:
+                            SendBuffProjectiles: True
+                        TargetingVars:
+                            AddTilesInRange: CustomAbility.GetShadowTilesInRange(TargetingActor, 3, true)
+                        AnimOverload: Shadow Manipulation
+                        CanUndo: True
+                        StatIsBasedOnX:
+                            XP:
+                                BasedOn: LevelTimesXPlusY
+                                Multiplier: 0
+                                SecondVariable: 1
+
+Layout:
+    Top:
+        - Row: "$FH/100_character_ability_cards_deathwalker_strength_of_the_abyss_2$"
+    Bottom:
+        - Active:
+            Ability: BBuffMove
+            Icon: Positive_Deathwalker_Shadow
+            ListLayout: "$FH/100_character_ability_cards_deathwalker_strength_of_the_abyss_3$ $FH/100_character_ability_cards_deathwalker_strength_of_the_abyss_3a$"
+            Layout: "$FH/100_character_ability_cards_deathwalker_strength_of_the_abyss_3$ $FH/100_character_ability_cards_deathwalker_strength_of_the_abyss_3a$"
+        - Active:
+            Ability: BBuffAttack
+            Icon: Positive_Deathwalker_Shadow
+            ListLayout: "$FH/100_character_ability_cards_deathwalker_strength_of_the_abyss_3$ $FH/100_character_ability_cards_deathwalker_strength_of_the_abyss_3b$"
+            Layout: "$FH/100_character_ability_cards_deathwalker_strength_of_the_abyss_3$ $FH/100_character_ability_cards_deathwalker_strength_of_the_abyss_3b$"

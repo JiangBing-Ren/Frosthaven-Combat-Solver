@@ -1,0 +1,65 @@
+Parser: AbilityCard
+Name: $FH/141_character_ability_cards_boneshaper_unforgivable_methods_1$
+Character: BoneshaperID
+ID: 141
+Level: 5
+Initiative: 98
+Discard: [Lost,Discard]
+Prefab: 141_Boneshaper_UnforgivableMethods
+Data:
+    Top:
+        Abilities:
+            TSummon:
+                Summon: StitchedAtrocityID
+                AnimOverload: Summon
+                SubAbilities:
+                    Damage1:
+                        Damage: 2
+                        MiscVars:
+                            PrintedProperties: list("Damage")
+                        Filter: Self
+                        TextOnly: True
+                        AutoTrigger: True
+                        #Suffer animation triggers from the self damage, no animation overload needed
+                    
+        XP: 2
+    Bottom:
+        Abilities:
+            BHeal:
+                Heal: 3
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Heal","Range")
+                Filter: [Self, Ally]
+                AnimOverload: PowerUp
+        Consumes:
+            BCEarth:
+                Elements: Earth
+                AbilityOverrides:
+                    BCHealBuff:
+                        ParentName: BHeal
+                        Heal: 1
+                        Range: 1
+                        
+Layout:
+    Top:
+        - Active:
+              Ability: "TSummon"
+              Icon: "Summon"
+              Layout:
+                  - Summon:
+                        Ability: TSummon
+                        SummonName: $FH/141_character_ability_cards_boneshaper_unforgivable_methods_2$
+                        SpecialText:
+                            - Row: "<size=150%><sprite name=Wound>"
+
+        - Divider:
+        - MandatoryTrigger: "$FH/120_character_ability_cards_boneshaper_life_in_death_3$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Heal> *BHeal* <size=100%><sprite name=Range>*BHeal.Range*"
+        - Conditional:
+            Top: true
+            Layout:
+               - Consume:
+                    Name: BCEarth
+                    Text: "+1 <sprite name=Heal>, +1 <sprite name=Range>"

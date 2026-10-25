@@ -1,0 +1,55 @@
+Parser: AbilityCard
+Name: $FH/125_character_ability_cards_boneshaper_dark_tidings_1$
+Character: BoneshaperID
+ID: 125
+Level: 1
+Initiative: 43
+Discard: [Lost,Discard]
+Prefab: 125_Boneshaper_DarkTidings
+Data:
+    Top:
+        Abilities:
+            TAlly:
+                ControlActor:
+                    Abilities:
+                        BAllyAttack:
+                            Attack: +0
+                            Range: +0
+                            MiscVars:
+                                PrintedProperties: list("Attack")
+                            Condition: Curse
+                    ControlActorType: Player
+                Range: 99
+                Target: 3
+                Filter: OwnSummon
+                AnimOverload: ControlSummon
+        Consumes:
+            TCDark:
+                Elements: Dark
+                AbilityOverrides:
+                    TCDarkAttackBuff:
+                        ParentName: BAllyAttack
+                        Condition: Poison
+                XP: 1        
+        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 4
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+Layout:
+    Top:
+        - Row: "$FH/125_character_ability_cards_boneshaper_dark_tidings_2$"
+        - Row: "<b><size=130%><sprite name=Attack> +0<mark=#6EBE4922><sprite name=Curse></mark>"
+        - Row: "<size=20%> "
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCDark
+                    Text: "<sprite name=Poison>, <sprite name=XP1>"
+    Bottom:
+        - Row: "<b><size=130%> <sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"

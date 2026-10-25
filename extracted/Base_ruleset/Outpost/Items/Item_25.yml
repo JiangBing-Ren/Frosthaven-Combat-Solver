@@ -1,0 +1,10 @@
+Parser: FHItem
+ID: 25
+ScenarioItemID: 930
+Name: Soothing Scepter
+Quantity: 2
+Type: OneHandWeapon
+CraftingCost:
+    Lumber: 1
+    Hide: 1
+    Rockroot: 1

@@ -1,0 +1,21 @@
+Parser: ItemCard
+ID: 980
+StringID: ShieldOfReciprocityID
+Name: $FH/0980_item_cards_shield_of_reciprocity_1$
+Art: Shield of Reciprocity
+TotalInGame: 2
+Cost: 0
+Rarity: Rare
+Slot: OneHand
+Usage: Flip
+FlipItemID: 979
+FlipItemSide: Front
+Trigger: OnAttacked
+Data:
+    ShieldValue: 1
+    CompareAbility:
+        AbilityType: Attack
+    AddModifiers:
+        - [AMC_Basic_M1, 3]
+Layout:
+    - Row: $FH/0980_item_cards_shield_of_reciprocity_2$

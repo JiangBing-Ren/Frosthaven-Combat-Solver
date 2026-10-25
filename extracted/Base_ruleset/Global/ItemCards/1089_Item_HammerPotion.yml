@@ -1,0 +1,18 @@
+Parser: ItemCard
+ID: 1089
+StringID: HammerPotionID
+Name: $FH/1089_item_cards_hammer_potion_1$
+Art: Hammer Potion
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        ADamage:
+            Filter: Self
+            Damage: 10
+Layout: 
+    - Row: "$FH/1089_item_cards_hammer_potion_2$"

@@ -1,0 +1,38 @@
+Parser: ItemCard
+ID: 1220
+StringID: TanjoID
+Name: $FH/1220_item_cards_tanjo_1$
+Art: Tanjo
+TotalInGame: 1
+Cost: 30
+Slot: TwoHand
+Rarity: Rare
+Usage: Spent
+Trigger: DuringOwnTurn
+Data:
+    Abilities:
+        TanjoBonus:
+            Attack: 0
+            Filter: Self
+            AttackEffect:
+                Type: BasedOnVarsCondition
+                Strength: -3
+                TargetingActorFilter:
+                    EnemyClasses: [LurkerClawcrusherID, LurkerClawcrusherEliteID, LurkerConductorID, LurkerClawcrusherS60ID, LurkerClawcrusherS60EliteID, LurkerMindsnipperID, LurkerMindsnipperEliteID, LurkerMindsnipperS60ID, LurkerMindsnipperS60EliteID, LurkerSoldierID, LurkerSoldierEliteID, LurkerWavethrowerID, LurkerWavethrowerEliteID, LurkerWavethrowerS60ID, LurkerWavethrowerS60EliteID, SeekerOfTheAbyssID, FractureOfTheDeepID]
+            ActiveBonus:
+                Duration: Round
+                Behaviour: BuffAttack
+                IsAura: True
+                AuraTargeting: All
+                HiddenWhenAura: True
+                AuraFilter: Enemy
+                Vars:
+                    ValidateClass: TriggerTarget == ActiveBonus.Caster
+                MiscVars:
+                    IgnoreImpair: True
+Layout: 
+    - Active:
+        Ability: TanjoBonus
+        ListLayout: "$FH/1220_item_cards_tanjo_2$"
+        Layout: "$FH/1220_item_cards_tanjo_2$"
+        Icon: "Negative_AttackMinus_Enemy_Lurker_Item"

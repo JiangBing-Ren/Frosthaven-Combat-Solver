@@ -1,0 +1,15 @@
+Parser: EnemyCard
+ID: 724
+Name: $Monster_Ability_723_724_DeepTerror_BeamOfAnihilation$
+Initiative: 60
+Shuffle: True
+Data:
+    Abilities:
+        Attack1:
+            Attack: 0
+            Pierce: 3
+            AreaEffect: "0,0,G|2,0,R|4,0,R|6,0,R|8,0,R|10,0,R"
+            AreaEffectLayoutOverride: "0,0,G|1,1,R|2,2,R|3,3,R|4,4,R|5,5,R"
+            Filter: Enemy
+            AnimOverload: Beam
+            MultiPassAttack: False

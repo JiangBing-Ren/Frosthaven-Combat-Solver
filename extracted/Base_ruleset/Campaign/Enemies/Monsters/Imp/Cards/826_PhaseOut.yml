@@ -1,0 +1,20 @@
+Parser: EnemyCard
+ID: 826
+Name: $Monster_Ability_826_Imp_PhaseOut$
+Initiative: 5
+Shuffle: False
+Data:
+    Abilities: 
+        Shield1:
+            Shield: 5
+            Filter: Self
+            ActiveBonus:
+                Duration: Round
+                ListLayoutOverride: ["<sprite name=Shield> *Shield1*", Positive_Shield]
+            AnimOverload: PowerUp           
+        Heal1:
+            Heal: 1
+            Filter: Self
+            AnimOverload: None
+            SkipAnim: True
+    Infuse: Any

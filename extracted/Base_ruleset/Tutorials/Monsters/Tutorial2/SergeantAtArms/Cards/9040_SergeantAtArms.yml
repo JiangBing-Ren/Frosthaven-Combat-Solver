@@ -1,0 +1,14 @@
+Parser: EnemyCard
+ID: 9040
+Name: $Monster_Ability_Tutorial2SargeantAtArms_PinningStrike$
+Initiative: 99
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: 2
+            StrengthIsBase: True
+        Attack1:
+            Attack: 8
+            Filter: Enemy
+            Conditions: [Immobilize]

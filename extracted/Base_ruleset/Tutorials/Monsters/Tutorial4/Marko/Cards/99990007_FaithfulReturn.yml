@@ -1,0 +1,8 @@
+Parser: EnemyCard
+ID: 99990007
+Initiative: 68
+Shuffle: False
+Data:
+    Abilities:
+        AMove:
+            Move: 0

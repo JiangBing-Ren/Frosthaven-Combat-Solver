@@ -1,0 +1,37 @@
+Parser: EnemyCard
+ID: 08090102
+Name: $Monster_Ability_Boss_LordOfChaos_Special2$
+Initiative: 14
+Shuffle: False
+Data:
+    Abilities:  
+        ANull1:
+            Null: True
+            Text: "$FH/boss_stat_cards_lord_of_chaos_3$ <br> $FH/boss_stat_cards_lord_of_chaos_4$"
+            TextOnly: True
+            AnimOverload: Summon
+            Flags: [Special2]
+            Vars:
+                First: True
+        ANull2:
+            Null: True
+            AnimOverload: Control
+            TextOnly: True
+            SubAbilities:
+                AControl:
+                    TreatAsNonSubAbility: True
+                    SkipAnim: True
+                    Filter: Enemy
+                    Target: -1
+                    TargetIsBase: True
+                    Range: 99
+                    ControlActor:
+                        ControlActorType: Player
+                        Abilities:
+                            CMove:
+                                Flags: [Special2]
+                                Move: 1
+                                IgnoreImmobilize: True
+                                StrengthIsBase: True
+                                MiscVars:
+                                    NoBonuses: True

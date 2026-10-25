@@ -1,0 +1,36 @@
+Parser: EnemyCard
+ID: 08770060
+Name: $Monster_Ability_Boss_FishKing_Special1$
+Initiative: 85
+Shuffle: True
+Data:
+    Abilities:
+        AMove:
+            Move: 0
+        AAttack:
+            Attack: -1
+            Target: -1
+            TargetIsBase: True
+            MultiPassAttack: False
+            Text: "$FH/boss_stat_cards_fish_king_2$"
+            TextOnly: True
+            Filter: Enemy
+            AnimOverload: Attack AOE
+            SubAbilities:
+                TSubPush:
+                    Push:
+                        Amount: 2
+                    IsInlineSubAbility: True
+                    Target: -1
+                    UseParentTargets: True
+        ASummon:
+            Summons: 
+                - PiranhaPigID
+                - PiranhaPigID
+                - PiranhaPigEliteID
+                - PiranhaPigEliteID
+            Target: 1
+            TargetIsBase: True
+            AnimOverload: Summon
+
+            

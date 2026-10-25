@@ -1,0 +1,43 @@
+Parser: ScenarioAbility
+ID: FH119_InfuserChangeAllegiance
+ScenarioAbility:
+    AInfuserMoveIgnoreTerrain:
+        Filter: Self
+        SkipAnim: True
+        AddActiveBonus:                                
+            ChangeAllegiance:
+                ChangeToType: Ally
+            Range: 2
+            Filter: Enemy
+            AnimOverload: NegativeCast
+            PreviewEffectText: "FH_Scenario_Campaign_119_Activate_Dust_Ability_4_Control"
+            MiscVars: 
+                PreviewEffectTextWhenSelected: "'<sprite name=Enemy>'"
+                DustCost: 5
+            SubAbilities:
+                CConvertPrevious:
+                    ChangeAllegiance:
+                        ChangeToType: Enemy
+                    AutoTrigger: True
+                    SkipAnim: True
+                    TreatAsNonSubAbility: True
+                    Targeting: Custom
+                    Filter: Ally
+                    TargetingVars:
+                        AddValidActorInRange: ScenarioScript_FH119.current.GetPreviousConveredActor()
+        ActiveBonus:
+            ListLayoutOverride: ["$FH/FH_Scenario_Campaign_119_Activate_Dust_Ability_4_Control$", Empty]
+            Hidden: True
+            Behaviour: DuringTurnAbility
+            Duration: Persistent
+            ValidAbilityType: NullTargeting
+            IsToggleBonus: True
+            MiscVars:
+                OverrideIcon: "'FH_UI_dust_5'"
+            Requirements:
+                Vars:
+                    CurrentAbility: PhaseManager.CurrentPhaseAction?.CurrentPhaseAbility?.m_Ability
+                    ValidateAbility: CurrentAbility != null && CurrentAbility.Name == "AChooseInfuserDust"
+                    ValidateDusts: ScenarioScript_FH119.current.GetNumDusts() >= 5
+                    ValidateHasEnemyInRange: GameState.GetAllEnemiesInRange(Actor, Actor.ArrayIndex, 2).Count > 0
+

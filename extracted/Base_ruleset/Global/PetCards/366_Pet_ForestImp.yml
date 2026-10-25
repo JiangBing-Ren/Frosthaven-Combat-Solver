@@ -1,0 +1,29 @@
+Parser: PetCard
+ID: 366
+StringID: ForestImpPetID
+Name: $FH/366_pet_cards_forest_imp_1$
+Description: $FH/366_pet_cards_forest_imp_2$
+Art: Forest Imp
+Usage: Consumed
+Trigger: DuringOwnTurn
+PetUnlockedBy: ForestImpID
+Cost: 0
+Data: 
+    Abilities:
+        AHeal:
+            Heal: 3                    
+            Filter:
+                ActorType: Player
+                TargetType: [Self, Ally]
+            Target: 99
+            Range: 99
+            Targeting: All
+            IgnoreLOS: True
+            AnimOverload: UseItem
+            MiscVars:
+                AutoSelectValidTiles: True
+            PerformVars:
+                ActorIsApplying: 
+                    VFX: TargetingActor.PlayVFX("PetForestImpEffect")
+Layout: 
+    - Row: "$FH/366_pet_cards_forest_imp_2$"

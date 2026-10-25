@@ -1,0 +1,114 @@
+Parser: AbilityCard
+Name: $FH/202_character_ability_cards_infuser_guide_the_flow$
+Character: InfuserID
+ID: 202
+Level: 3
+Initiative: 35
+Discard: [Discard,Discard]
+Prefab: 202_Infuser_GuideTheFlow
+Data:
+    Top:
+        Abilities:
+            TMove:
+                Move:       
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+        Consumes:
+            TCAir:
+                Elements: [Air]
+                AbilityOverrides:
+                    TCOMove:
+                        ParentName: TMove
+                        SubAbilities:
+                            SubInfuse:
+                                Infuse: [Dark]
+                                SkipAnim: True
+            TCEarth:
+                Elements: [Earth]
+                AbilityOverrides:
+                    TCOMove:
+                        ParentName: TMove
+                        SubAbilities:
+                            SubInfuse:
+                                Infuse: [Air]
+                                SkipAnim: True
+            TCDark:
+                Elements: [Dark]
+                AbilityOverrides:
+                    TCOMove:
+                        ParentName: TMove
+                        SubAbilities:
+                            SubInfuse:
+                                Infuse: [Earth]
+                                SkipAnim: True
+                                XP: 1
+    Bottom:
+        Abilities:
+            BAttack:
+                Attack:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Filter: Enemy
+        Consumes:
+            BCAir:
+                Elements: [Air]
+                AbilityOverrides:
+                    BCOAttack:
+                        ParentName: BAttack
+                        SubAbilities:
+                            SubInfuse:
+                                Infuse: [Earth]
+                                SkipAnim: True
+            BCEarth:
+                Elements: [Earth]
+                AbilityOverrides:
+                    BCOAttack:
+                        ParentName: BAttack
+                        SubAbilities:
+                            SubInfuse:
+                                Infuse: [Dark]
+                                SkipAnim: True
+            BCDark:
+                Elements: [Dark]
+                AbilityOverrides:
+                    BCOAttack:
+                        ParentName: BAttack
+                        SubAbilities:
+                            SubInfuse:
+                                Infuse: [Air]
+                                SkipAnim: True
+                                XP: 1
+Layout:
+    Top:
+        - Row: "<b><size=100%><sprite name=Move> *TMove* <size=100%><voffset=1>@TMove@"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCAir
+                    Text: "<sprite name=CreateDark>"
+                - Consume:
+                    Name: TCEarth
+                    Text: "<sprite name=CreateAir>"
+                - Consume:
+                    Name: TCDark
+                    Text: "<sprite name=CreateEarth>, <sprite name=XP1>"
+    Bottom:
+        - Row: "<b><size=100%><sprite name=Attack> *BAttack* <size=100%><voffset=1>@BAttack@"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: BCAir
+                    Text: "<sprite name=CreateEarth>"
+                - Consume:
+                    Name: BCEarth
+                    Text: "<sprite name=CreateDark>"
+                - Consume:
+                    Name: BCDark
+                    Text: "<sprite name=CreateAir>, <sprite name=XP1>"
+        

@@ -1,0 +1,7 @@
+Parser: FHEnhancement
+ID: Target
+Name: Glossary_Enhancement_PlusTarget
+Cost: 75
+Mark: Square
+Effect: AddOne
+ForEffect: Target

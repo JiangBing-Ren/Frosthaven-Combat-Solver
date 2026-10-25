@@ -1,0 +1,13 @@
+Parser: FHScenario
+ID: 136
+Name: Abandoned Hideout
+LevelID: FS_136_Abandoned_Hideout
+RequiresBoat: true
+Chain: Other
+Location: TheBitingSea
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: AllCharactersGainGold
+          Param1: 20
+        - Type: AddAncientCoin

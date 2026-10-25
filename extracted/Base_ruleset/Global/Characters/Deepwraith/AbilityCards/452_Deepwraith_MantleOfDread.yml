@@ -1,0 +1,85 @@
+Parser: AbilityCard
+Name: $FH/452_character_ability_cards_deepwraith_mantle_of_dread_1$
+Character: DeepwraithID
+ID: 452
+Level: 1
+Initiative: 96
+Discard: [Discard,Lost]
+Prefab: 452_Deepwraith_MantleOfDread
+Data:
+    Top:
+        Abilities:
+            TPoison:
+                Poison: 
+                    Amount: True
+                    CircleEnhancements: 1
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Target: 99
+                Filter: [Enemy]
+                AnimOverload: Mantle Of Dread
+                MiscVars:
+                    AutoSelectValidTiles: True
+        Consumes:
+            TCDark:
+                Element: Dark
+                AbilityOverrides:
+                    CPoisonBuff:
+                        ParentName: TPoison
+                        Range: 1
+                XP: 1
+    Bottom:
+        Abilities:
+            BTeleport:
+                AddActiveBonus:
+                    Choose:
+                        Abilities:
+                            CWound:
+                                Filter: Enemy
+                                Wound: True
+                                AnimOverload: Attack
+                                PerformVars:
+                                    OnAbilityEnded:
+                                        RestrictActiveBonus: AbilityHasHappened && ActiveBonus.RestrictActiveBonus(TargetingActor, true)
+                            CMuddle:
+                                Filter: Enemy
+                                Muddle: True
+                                AnimOverload: Intimidate
+                                PerformVars:
+                                    OnAbilityEnded:
+                                        RestrictActiveBonus: AbilityHasHappened && ActiveBonus.RestrictActiveBonus(TargetingActor, true)
+                    Filter: Self
+                    HelpBoxTooltipLocKey: "$GUI_CHOOSE_ABILITY$"                  
+                    MiscVars:
+                        OverrideIcon: "'Ability_Deepwraith_MantleOfDread'"
+                AnimOverload: PowerUp
+                ActiveBonus:
+                    Duration: Persistent
+                    Restriction: OncePerTurn
+                    Behaviour: DuringActionAbilityOnFinishedMovement
+                    ValidAbilityType: [Move, Teleport2]
+                    Flags: [ManualRestrict]
+                Range: 1
+                Target: -1
+                Filter: Self
+        Infuse: Dark
+        XP: 2
+Layout:
+    Top:
+        - Row: "$FH/452_character_ability_cards_deepwraith_mantle_of_dread_2$"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCDark
+                    Text: "+1 <sprite name=Range>, <sprite name=XP1>"
+    Bottom:
+        - Active:
+            Ability: BTeleport
+            Icon: Positive_WoundMuddle_Move
+            Layout: "$452_character_ability_cards_deepwraith_mantle_of_dread_3$"
+            ListLayout: "$452_character_ability_cards_deepwraith_mantle_of_dread_3$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark

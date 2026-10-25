@@ -1,0 +1,15 @@
+Parser: EnemyCard
+ID: 08090108
+Name: $Monster_Ability_TwinShots$
+Initiative: 52
+Shuffle: False
+Data:
+    Abilities: 
+        Attack1:
+            Attack: -1
+            Range: 3
+            RangeIsBase: True
+            Target: 2
+            TargetIsBase: True
+            Filter: Enemy
+            AnimOverload: RangedAttack

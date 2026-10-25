@@ -1,0 +1,8 @@
+Parser: CampaignSection
+ID: 178.1
+Name: Mysterious Crate (178.1)
+ShowAsUnknownInCalendar: True
+SkipCompletedNotification: True
+Effects:
+    - Type: RestrictNextScenario
+      Param1: 127

@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 98
+ScenarioItemID: 1061
+Name: Unhealthy Mixture
+Quantity: 2
+Type: Small
+Brewing:
+    Herb1: Any
+    Herb2: Any

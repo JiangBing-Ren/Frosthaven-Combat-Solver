@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 155
+ScenarioItemID: 1175
+Name: Wall Shield
+Quantity: 2
+GoldCost: 50
+Type: TwoHandWeapon
+IsNewCharacterItem: False

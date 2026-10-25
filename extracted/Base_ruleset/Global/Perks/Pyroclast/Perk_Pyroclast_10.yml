@@ -1,0 +1,35 @@
+Parser: Perk
+ID: Pyroclast10
+Name: FH/PERK_Pyroclast_10_Name
+Description: FH/PERK_Pyroclast_10_Desc
+CharacterID: PyroclastID
+Available: 1
+Flags: [Passive, ExecuteAbilitiesAfterLongRest]
+Abilities:
+    ADestoyObstacle:
+        StartAbilityRequirements:
+            Type: ThisAbility
+            DoesntHaveNegativeCondition: [Stun]
+            Vars:
+                ValidateHasObstacleInRange: CustomAbility.GetAdjacentTiles(Actor.Tile).Where(obj.FindObstacleProp(true, true) != null).Count > 0
+        NullHex: True
+        Range: 1
+        TileFilter: Custom
+        MiscVars:
+            IsValidTile: obj.FindObstacleProp(true, false) != null
+            SelectMultiHexProps: True
+        AnimOverload: ObstacleDestruction
+        PerformVars:
+            Perform:
+                SelectedTile: TilesSelected[0]
+                Prop: SelectedTile.FindObstacleProp(true, false)
+                DestroyProp: Prop.DestroyPropFromAbility(obj)
+                # long rest flag only stacks same row abilities
+                StackSubAbilities: CustomAbility.StackNonInlineSubabilities(obj)
+        SubAbilities:
+            TWard:
+                Ward: True
+                Filter: Self
+                AutoTrigger: True
+                TreatAsNonSubAbility: True
+                SkipAnim: True

@@ -1,0 +1,17 @@
+Parser: BattleGoal
+ID: BattleGoal_Miser
+LocalisedName: FH/1352_battle_goals_miser_1
+LocalisedDescription: FH/1352_battle_goals_miser_2
+#fail if you leave a room that has loot in it
+PerkChecks: 2
+CheckAtEndOfScenario: True
+BattleGoalCondition:
+    - Targets:
+        Filter: LeaveRoomWithRemainingLoot
+        Value: 0
+        SubFilter: Scenario
+BattleGoalFailCondition:
+    - Targets:
+        Filter: LeaveRoomWithRemainingLoot
+        Value: 1
+        SubFilter: Scenario

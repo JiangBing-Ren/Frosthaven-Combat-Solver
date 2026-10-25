@@ -1,0 +1,19 @@
+Parser: ItemCard
+ID: 1139
+StringID: TowerShieldID
+Name: $FH/1139_item_cards_tower_shield_1$
+Art: Tower Shield
+TotalInGame: 2
+Cost: 35
+Slot: OneHand 
+Rarity: Rare
+Usage: Spent
+Trigger: OnAttacked
+Data: 
+    AddModifiers:
+        - [AMC_Basic_M1, 1]
+    ShieldValue: 2
+    CompareAbility:
+        AbilityType: Attack
+Layout: 
+    - Row: "$FH/1139_item_cards_tower_shield_2$"

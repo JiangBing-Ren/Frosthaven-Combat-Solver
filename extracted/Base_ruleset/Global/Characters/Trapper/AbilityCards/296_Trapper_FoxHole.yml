@@ -1,0 +1,72 @@
+Parser: AbilityCard
+Name: $FH/296_character_ability_cards_trapper_foxhole_1$
+Character: TrapperID
+ID: 296
+Level: 7
+Initiative: 90
+Discard: [Discard,Lost]
+Prefab: 296_Trapper_Foxhole
+Data:
+    Top:
+        Abilities:
+            TDestroyTrap:
+                DisarmTrap: true
+                Range: 1
+                RangeIsBase: true
+                Targeting: Custom
+                TargetingVars:
+                    AddTilesInRange: CustomAbility.GetAdjacentTiles(TargetingActor.Tile, true).Where(Trap?.Damage and Trap.GetTrapDamage() > 0)
+                AnimOverload: DisassembleTrap_Tinker
+                PerformVars:
+                    DisarmTrap:
+                        DisarmedTrap: TilesSelected[0].Trap
+            TAttack:
+                Attack:
+                    Amount: 0    # modified by vars
+                Range: 
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Range")
+                RangeIsBase: True
+                MultiPassAttack: False
+                AnimOverload: Foxhole
+                AreaEffect: "0,0,R|2,0,R"
+                AreaEffectLayoutOverride: "0,0,R|1,1,R"
+                Vars:
+                    DisarmedTrap: TargetingActor.LastAbilityPerformed?.DisarmedTrap
+                    ValidateDisarmedTrap: "!!DisarmedTrap"
+                    Strength: DisarmedTrap?.GetTrapDamage() - 1
+                    AddNegativeConditions: DisarmedTrap?.Conditions
+                    AddPositiveConditions: DisarmedTrap?.PositiveConditions
+                MiscVars:
+                    ApplyPositiveEffectsToTarget: true
+        XP: 1
+    Bottom:
+        Abilities:
+            BSummon:
+                Summon: DefenseGridID
+                AnimOverload: Summon
+        XP: 2
+Layout:
+    Top:
+        - Row: "$FH/296_character_ability_cards_trapper_foxhole_2$"
+        - Row:
+            - ColumnWidths: "10,30,30,30"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Attack> X-1"
+            - Column:
+                - Row: " <sprite name=Range>*TAttack.Range* @TAttack.Range@"
+            - Column:
+                - Row: "£Area£"
+        - Row: "$FH/296_character_ability_cards_trapper_foxhole_3$"
+    Bottom:
+        - Active:
+              Ability: "BSummon"
+              Icon: "Summon"
+              Layout:
+                  - Summon:
+                        Ability: BSummon
+                        SummonName: "$FH/296_character_ability_cards_trapper_foxhole_4$"
+                        SpecialText: "$FH/296_character_ability_cards_trapper_foxhole_5$"

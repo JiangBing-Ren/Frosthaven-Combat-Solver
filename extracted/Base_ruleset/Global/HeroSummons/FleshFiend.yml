@@ -1,0 +1,24 @@
+Parser: HeroSummon
+ID: FleshFiendID
+LocKey: $FH/307_character_ability_cards_pain_conduit_scarred_effigy_2$
+Model: FleshFiend
+Health:
+    Amount: 7
+    SquareEnhancements: 1
+Move:
+    Amount: 2
+    SquareEnhancements: 1
+Attack:
+    Amount: 1
+    SquareEnhancements: 1
+OnSummonAbilities:
+    TIgnoreRetaliate:
+        PreventDamage: 1
+        Target: -1
+        Targeting: All
+        Filter: Self
+        ActiveBonus:
+            Behaviour: BlockRetaliate
+            Duration: Persistent
+            IsToggleBonus: False
+            ListLayoutOverride: [$FH/307_character_ability_cards_pain_conduit_scarred_effigy_3$ <sprite name=Retaliate>, Positive_RetaliatePrevent]

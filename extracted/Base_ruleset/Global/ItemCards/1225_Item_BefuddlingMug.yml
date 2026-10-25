@@ -1,0 +1,39 @@
+Parser: ItemCard
+ID: 1225
+StringID: BefuddlingMugID
+Name: $FH/1225_item_cards_befuddling_mug_1$
+Art: Befuddling Mug
+TotalInGame: 1
+Cost: 30
+Slot: OneHand 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        ABuffAttacks:
+            Attack: 1
+            Conditions: Muddle
+            Filter: Self
+            ActiveBonus:
+                Duration: Turn
+                Behaviour: BuffAttack
+                ListLayoutOverride: [$FH/1225_item_cards_befuddling_mug_2$, Positive_AttackPlus_Muddle_Item]
+                MiscVars:
+                    IgnoreImpair: True
+        AAddEndTurnMuddle:
+            AutoTrigger: True
+            Filter: Self
+            AddActiveBonus:
+                Muddle: True
+                Filter: Self
+                AutoTrigger: True
+            ActiveBonus:
+                Duration: Turn
+                Behaviour: EndTurnAbility
+Layout: 
+    - Row: "$FH/1225_item_cards_befuddling_mug_2$"
+    - Active:
+        Ability: AAddEndTurnMuddle
+        Icon: "Positive_AttackPlus_Muddle_Item"
+        ListLayout: "$FH/1225_item_cards_befuddling_mug_3$"

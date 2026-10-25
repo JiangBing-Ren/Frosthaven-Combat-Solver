@@ -1,0 +1,25 @@
+Parser: EnemyCard
+ID: 725
+Name: $Monster_Ability_725_DeepTerror_BurningGaze$
+Initiative: 84
+Shuffle: False
+Data:
+    Abilities:
+        Attack1:
+            Attack: -1
+            Range: 1
+            RangeIsBase: True
+            Target: -1
+            TargetIsBase: True
+            Filter: Enemy
+            ShowRange: False
+            MultiPassAttack: False
+            Text: "$Target_AllAdjacentEnemies$"
+            AnimOverload: AOE
+        Attack2:
+            Attack: 0
+            Range: 4
+            RangeIsBase: True
+            Conditions: Wound
+            Filter: Enemy
+            AnimOverload: RangedAttack

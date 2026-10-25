@@ -1,0 +1,15 @@
+Parser: FHScenario
+ID: 19
+Name: Skyhall
+LevelID: FS_019_Skyhall
+Chain: Algox3
+Location: CopperneckMountaions
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: GainMorale
+          Param1: 1
+        - Type: GainRandomItemBlueprint
+        - Type: AddCalendarCampaignSection
+          Param1: 54.3
+          Param2: 4

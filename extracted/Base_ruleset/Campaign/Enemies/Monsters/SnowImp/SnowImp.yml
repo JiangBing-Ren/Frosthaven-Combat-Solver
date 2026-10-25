@@ -1,0 +1,72 @@
+Parser: Enemy
+ID: SnowImpID
+LocKey: $FH/SnowImp$
+MonsterType: Monster
+StandeeLimit: 10
+Model: SnowImp
+PredominantlyMelee: True
+AbilityCards: [826, 827, 828, 829, 830, 831, 832, 833]
+# Base Stats
+Level0:
+    Health: 2
+    Move: 2
+    Attack: 1
+    Range: 1
+    Target: 1
+    Flying: True
+Level1:
+    Health: 2
+    Move: 2
+    Attack: 1
+    Range: 1
+    Target: 1
+    Flying: True
+    Conditions: [Brittle]
+Level2:
+    Health: 3
+    Move: 2
+    Attack: 1
+    Range: 1
+    Target: 1
+    Flying: True
+    Conditions: [Brittle]
+Level3:
+    Health: 3
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Flying: True
+    Conditions: [Brittle]
+Level4:
+    Health: 4
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Flying: True
+    Conditions: [Brittle]
+Level5:
+    Health: 5
+    Move: 3
+    Attack: 2
+    Range: 1
+    Target: 1
+    Flying: True
+    Conditions: [Brittle]
+Level6:
+    Health: 7
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Flying: True
+    Conditions: [Brittle]
+Level7:
+    Health: 11
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Flying: True
+    Conditions: [Brittle]

@@ -1,0 +1,61 @@
+Parser: ScenarioAbility
+ID: FH129_SwapIceWithSpikes
+ScenarioAbility:
+    SwapIceWithSpikes:
+        Filter: Self
+        SkipAnim: True
+        AddActiveBonus:
+            CanUndo: False
+            CanSkip: False
+            PreviewEffectText: "1 AP"
+            HelpBoxTooltipLocKey: "FH_Scenario_Campaign_129_SCENARIO_MODIFIER_7"
+            NullHex: True
+            Range: 99
+            IgnoreLOS: True
+            TileFilter: Custom
+            MiscVars:
+                IsValidTile: obj.GetIceTerrain() != null
+                DontCancelIfNoTiles: True
+                DontPreviewDescription: True
+                DontMoveCamera: True
+            PerformVars:
+                AnimateCharacter:
+                    SelectedTile: ??TilesSelected[0]
+                    Prop: ??SelectedTile.GetIceTerrain()
+                    DestroyProp: Prop.DestroyPropFromAbility(obj)
+            SubAbilities:
+                CreateSpikes:
+                    CanSkip: False
+                    CanUndo: False
+                    Target: 1
+                    TreatAsNonSubAbility: True
+                    CreateTerrain: Thorns
+                    AutoTrigger: True
+                    SkipAnim: True
+                    IgnoreLOS: True
+                    Range: 99
+                    MiscVars:
+                        APCost: 1
+                        DontMoveCamera: True
+                    Targeting: Custom
+                    TargetingVars:
+                        #ParentTile: ??ParentAbility.m_TilesSelected[0]
+                        AddTilesInRange: ??ParentAbility.m_TilesSelected
+                        AddSelectedTiles: ParentAbility.m_TilesSelected
+        ActiveBonus:
+            ListLayoutOverride: ["$FH/FH_Scenario_Campaign_129_SCENARIO_MODIFIER_7$", Empty]
+            Hidden: True
+            Behaviour: DuringTurnAbility
+            Duration: Persistent
+            ValidAbilityType: NullTargeting
+            IsToggleBonus: True
+            MiscVars:
+                OverrideIcon: "'Create_Hazardous_Terrain'"
+                OverrideLayoutName: "''"
+                ShowCounter: (6 - ScenarioScript_FH129.CountHazardous())
+            Requirements:
+                Vars:
+                    CurrentAbility: PhaseManager.CurrentPhaseAction?.CurrentPhaseAbility?.m_Ability
+                    ValidateAbility: CurrentAbility != null && CurrentAbility.Name == "ChooseAPAbility"
+                    ValidateMaxCount: ScenarioScript_FH129.CountHazardous() < 6
+

@@ -1,0 +1,101 @@
+Parser: TreasureTable
+TT_LAW_BRINGER:
+    Group:
+        Nothing: 100
+TT_PERSONALQUEST_Merchant_Class:
+    Group:
+        Nothing: 100
+TT_PERSONALQUEST_Greed_is_Good:
+    Group:
+        Nothing: 100
+TT_PERSONALQUEST_A_Study_of_Anatomy:
+    Group:
+        Nothing: 100
+TT_PERSONALQUEST_Pounds_of_Flesh:
+    Group:
+        Nothing: 100
+TT_PERSONALQUEST_Trophy_Hunt:
+    Group:
+        Nothing: 100
+TT_PERSONALQUEST_Eternal_Wanderer:
+    Group:
+        Nothing: 100
+TT_PERSONALQUEST_Battle_Legend:
+    Group:
+        Nothing: 100
+TT_PERSONALQUEST_Implement_of_Light:
+    Group:
+        Nothing: 100
+TT_PERSONALQUEST_The_Thin_Places:
+    Group:
+        Nothing: 100
+TT_PERSONALQUEST_Aberrant_Slayer:
+    Group:
+        Nothing: 100
+TT_PERSONALQUEST_Fearless_Stand:
+    Group:
+        Nothing: 100
+TT_PERSONALQUEST_Piety_in_All_Things:
+    Group:
+        Nothing: 100
+TT_PERSONALQUEST_Zealot_of_the_Blood_God:
+    Group:
+        Nothing: 100
+TT_PERSONALQUEST_Goliath_Toppler:
+    Group:
+        Nothing: 100
+TT_PERSONALQUEST_Augmented_Abilities:
+    Group:
+        Nothing: 100
+TT_PERSONALQUEST_Elemental_Samples:
+    Group:
+        Nothing: 100
+TT_PERSONALQUEST_A_Helping_Hand:
+    Group:
+        Nothing: 100
+TT_PERSONALQUEST_The_Perfect_Poison:
+    Group:
+        Nothing: 100
+TT_PERSONALQUEST_Finding_the_Cure_Step0:
+    UnlockQuest: Quest_Campaign_059
+TT_PERSONALQUEST_Finding_the_Cure_Step1a:
+    Group:
+        Nothing: 100
+TT_PERSONALQUEST_Finding_the_Cure_Step1:
+    Group:
+        Nothing: 100
+TT_PERSONALQUEST_Seeker_of_Xorn_Step0:
+    UnlockQuest: Quest_Campaign_052
+TT_PERSONALQUEST_Seeker_of_Xorn_Step1a:
+    Group:
+        Nothing: 100
+TT_PERSONALQUEST_Seeker_of_Xorn_Step1b:
+    Group:
+        Nothing: 100
+TT_PERSONALQUEST_Seeker_of_Xorn_Step1:
+    Group:
+        Nothing: 100
+TT_PERSONALQUEST_Take_Back_the_Trees_Step0:
+    UnlockQuest: Quest_Campaign_055
+TT_PERSONALQUEST_Take_Back_the_Trees_Step1a:
+    Group:
+        Nothing: 100
+TT_PERSONALQUEST_Take_Back_the_Trees_Step1:
+    Group:
+        Nothing: 100
+TT_PERSONALQUEST_Vengeance_Step0:
+    UnlockQuest: Quest_Campaign_057
+TT_PERSONALQUEST_Vengeance_Step1a:
+    Group:
+        Nothing: 100
+TT_PERSONALQUEST_Vengeance_Step1:
+    Group:
+        Nothing: 100
+TT_PERSONALQUEST_The_Fall_of_Man_Step0:
+    UnlockQuest: Quest_Campaign_061
+TT_PERSONALQUEST_The_Fall_of_Man_Step1a:
+    Group:
+        Nothing: 100
+TT_PERSONALQUEST_The_Fall_of_Man_Step1:
+    Group:
+        Nothing: 100

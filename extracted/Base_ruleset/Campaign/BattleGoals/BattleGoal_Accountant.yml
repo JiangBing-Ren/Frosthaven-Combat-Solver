@@ -1,0 +1,23 @@
+Parser: BattleGoal
+ID: BattleGoal_Accountant
+LocalisedName: FH/1301_battle_goals_accountant_1
+LocalisedDescription: FH/1301_battle_goals_accountant_2
+#Have 0 cards in hand when resting
+# still fail if you finish the scenario without resting
+PerkChecks: 1
+CheckAtEndOfScenario: True
+BattleGoalCondition:
+    - Targets:
+        Filter: UseAbility
+        AbilityTypes: [LongRest,ShortRest]
+        MaxCardsInHand: 0
+        Value: 1
+        SubFilter: Scenario
+# fail if you rest with 1 or more cards in hand
+BattleGoalFailCondition:
+    - Targets:
+        Filter: UseAbility
+        AbilityTypes: [LongRest,ShortRest]
+        MinCardsInHand: 1
+        Value: 1
+        SubFilter: Scenario

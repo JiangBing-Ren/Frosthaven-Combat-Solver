@@ -1,0 +1,15 @@
+Parser: ScenarioAbility
+ID: FH134_InvisibleAdjacentOnDeathBuff
+ScenarioAbility:
+    TActive:
+        AddActiveBonus:
+            Invisible: True
+            Range: 1
+            Target: -1
+            Filter:
+                AllyType: All
+            AutoTrigger: True
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringActionAbilityOnDeath      
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_134_SCENARIO_MODIFIER_3$, Invisible]

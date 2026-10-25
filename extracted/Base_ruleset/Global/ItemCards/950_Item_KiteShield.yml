@@ -1,0 +1,38 @@
+Parser: ItemCard
+ID: 950
+StringID: KiteShieldID
+Name: $FH/0950_item_cards_kite_shield_1$
+Art: Kite Shield
+TotalInGame: 2
+Cost: 0
+Slot: OneHand 
+Rarity: Rare
+Usage: Spent
+Trigger: OnAttacked
+Data: 
+    AddModifiers:
+        - [AMC_Basic_M1, 2]
+    ShieldValue: 1
+    CompareAbility:
+        AbilityType: Attack
+        Filter: Enemy
+    Abilities:
+        AImmune:
+            AutoTrigger: True
+            SkipAnim: True
+            ImmunityTo: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair]
+            Filter: Self
+            MiscVars:
+                # attack might be a single target attack, so we can't really interrupt it
+                # just apply the immunity immediately, forget animations and such, immediately resume damage
+                ApplyImmediately: True
+            ActiveBonus:
+                Behaviour: ImmunityToConditionAfterAttackDamage
+                Duration: Round
+                Hidden: True
+                # immediately remove the immunity after this attack ends
+                Vars:
+                    Finish: ActiveBonus.Finish()
+
+Layout: 
+    - Row: $FH/0950_item_cards_kite_shield_2$

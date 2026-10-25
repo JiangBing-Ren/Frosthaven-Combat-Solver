@@ -1,0 +1,38 @@
+Parser: ItemCard
+ID: 1264
+StringID: RejuvenatingCharmID
+Name: $FH/1264_item_cards_rejuvenating_charm_1$
+Art: Rejuvenating Charm
+TotalInGame: 1
+Cost: 20
+Slot: Head
+Rarity: Rare
+UsedWhenEquipped: True
+Usage: Unrestricted
+Trigger: OnPreventDamageByLosingCards
+ProsperityRequirement: 1
+Data: 
+    ItemRequirements:
+        Vars:
+            ItemOwner: Actor
+            ValidateCanUseItems: ItemOwner.Tokens.HasKey(CCondition.ENegativeCondition.Impair) == false && ItemOwner.Tokens.HasKey(CCondition.ENegativeCondition.Stun) == false  
+    Abilities:
+        ARecover:
+            ControlActor:
+                ControlDurationType: ControlForOneAction
+                #UseControllingActorPlayerControl: True
+                Abilities:
+                    BRecover:
+                        RecoverDiscardedCards: 1
+                        SubAbilities:
+                            SRegenerate:
+                                Regenerate: True
+                                Filter: Self
+                                AutoTrigger: True
+                                Flags: [SubAbilityPreview]
+                        Filter: Self
+            AutoTrigger: True
+            SkipAnim: True
+            Filter: Self
+Layout: 
+    - Row: "$FH/1264_item_cards_rejuvenating_charm_2$"

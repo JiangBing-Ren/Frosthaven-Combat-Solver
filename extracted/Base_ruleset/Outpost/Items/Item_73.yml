@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 73
+ScenarioItemID: 1011
+Name: Energizing Baton
+Quantity: 2
+Type: OneHandWeapon
+CraftingCost:
+    Metal: 2
+RequiredCraftingItemIDs: [ 101 ]

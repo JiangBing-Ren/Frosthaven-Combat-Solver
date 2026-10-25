@@ -1,0 +1,9 @@
+Parser: ScenarioAbility
+ID: FH60_MonsterShard_Earth
+ScenarioAbility:
+    FH60_MonsterShard_Earth:
+        NullTargeting: True
+        Filter: Self
+        ActiveBonus:
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_060_MonsterShard_Earth$, Positive_AttackPlus_Enemy_Campaign]
+            Duration: Persistent

@@ -1,0 +1,29 @@
+Parser: EnemyCard
+ID: 08830026
+Name: $Monster_Ability_Boss_Snowdancer_Special2$
+Initiative: 14
+Shuffle: False
+Data:
+    Abilities:
+        Attack0:
+            Attack: 1
+            Target: 2
+            TargetIsBase: True
+            Range: 4
+            Conditions: [Immobilize]
+            RangeIsBase: True
+            SubAbilities:
+                TSubPush:
+                    Push:
+                        Amount: 2
+                    IsInlineSubAbility: True
+                    Target: -1
+                    UseParentTargets: True
+                TSubNull:
+                    Null: True
+                    Text: ""
+                    TextOnly: True
+            Text: "$FH/boss_ability_cards_algox_snowdancer_fh055$"
+            TextOnly: True
+            AnimOverload: RangedAttack_ColdWinds
+                        

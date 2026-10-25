@@ -1,0 +1,12 @@
+Parser: FHScenario
+ID: 24
+Name: Upper Spire
+LevelID: FS_024_Upper_Spire
+Chain: Unfettered
+Location: CrystalFields
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: GainRandomItemBlueprint
+        - Type: UnlockLinkedScenario
+          Param1: 34

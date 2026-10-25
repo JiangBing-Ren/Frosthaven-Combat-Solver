@@ -1,0 +1,9 @@
+Parser: EnemyCard
+ID: 11535
+Name: $Monster_Ability_11534_ValrathMerchant_SearchForMarko$
+Initiative: 50
+Shuffle: True
+Data:
+    Abilities:
+        AMove:
+            Move: 0

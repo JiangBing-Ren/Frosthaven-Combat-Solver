@@ -1,0 +1,65 @@
+Parser: Enemy
+ID: HarbingerOfShadowID
+LocKey: $FH/boss_stat_cards_harbinger_of_shadow_1$
+MonsterType: Boss
+Model: HarbingerOfShadow
+StandeeLimit: 2
+PredominantlyMelee: True
+AbilityCards: [18740001, 18750002, 18760003, 18770004, 18780005, 18790006, 18800007, 18810008]
+# Base Stats
+Level0:
+    Health: 24
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Immobilize, Stun, Curse]    
+Level1:
+    Health: 30
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Immobilize, Stun, Curse] 
+Level2:
+    Health: 39
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Immobilize, Stun, Curse]
+Level3:
+    Health: 48
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Immobilize, Stun, Curse]
+Level4:
+    Health: 60
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Immobilize, Stun, Curse]
+Level5:
+    Health: 72
+    Move: 3
+    Attack: 6
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Immobilize, Stun, Curse]
+Level6:
+    Health: 97
+    Move: 3
+    Attack: 7
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Immobilize, Stun, Curse]
+Level7:
+    Health: 125
+    Move: 3
+    Attack: 8
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Immobilize, Stun, Curse]

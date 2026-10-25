@@ -1,0 +1,105 @@
+Parser: Enemy
+ID: FishKingLeviathanID
+LocKey: $FishKingLeviathan$
+MonsterType: Boss
+Model: FishKingLeviathan
+StandeeLimit: 1
+PredominantlyMelee: True
+AbilityCards: [08740049, 08750050, 08760051, 08770052, 08780053, 08790054, 08800055, 08810056]
+# Base Stats
+Level0:
+    Health: 0
+    Move: 0
+    Attack: 3
+    Range: 0
+    Target: 1
+    Immunities: [Poison, Immobilize, Disarm, Stun, Muddle, Push, Pull, Move, Teleport2]
+    ImmuneToForcedMovement: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 8          
+Level1:
+    Health: 0
+    Move: 0
+    Attack: 4
+    Range: 0
+    Target: 1
+    Immunities: [Poison, Immobilize, Disarm, Stun, Muddle, Push, Pull, Move, Teleport2]
+    ImmuneToForcedMovement: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 10       
+Level2:
+    Health: 0
+    Move: 0
+    Attack: 5
+    Range: 0
+    Target: 1
+    Immunities: [Poison, Immobilize, Disarm, Stun, Muddle, Push, Pull, Move, Teleport2]
+    ImmuneToForcedMovement: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 12           
+Level3:
+    Health: 0
+    Move: 0
+    Attack: 5
+    Range: 0
+    Target: 1
+    Immunities: [Poison, Immobilize, Disarm, Stun, Muddle, Push, Pull, Move, Teleport2]
+    ImmuneToForcedMovement: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 16
+Level4:
+    Health: 0
+    Move: 0
+    Attack: 6
+    Range: 0
+    Target: 1
+    Immunities: [Poison, Immobilize, Disarm, Stun, Muddle, Push, Pull, Move, Teleport2]
+    ImmuneToForcedMovement: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 18
+Level5:
+    Health: 0
+    Move: 0
+    Attack: 6
+    Range: 0
+    Target: 1
+    Immunities: [Poison, Immobilize, Disarm, Stun, Muddle, Push, Pull, Move, Teleport2]
+    ImmuneToForcedMovement: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 24
+Level6:
+    Health: 0
+    Move: 0
+    Attack: 7
+    Range: 0
+    Target: 1
+    Immunities: [Poison, Immobilize, Disarm, Stun, Muddle, Push, Pull, Move, Teleport2]
+    ImmuneToForcedMovement: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 32
+Level7:
+    Health: 0
+    Move: 0
+    Attack: 8
+    Range: 0
+    Target: 1
+    Immunities: [Poison, Immobilize, Disarm, Stun, Muddle, Push, Pull, Move, Teleport2]
+    ImmuneToForcedMovement: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 40

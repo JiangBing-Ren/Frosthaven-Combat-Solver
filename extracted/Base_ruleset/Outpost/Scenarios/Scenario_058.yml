@@ -1,0 +1,32 @@
+Parser: FHScenario
+ID: 58
+Name: Orphan's Core
+LevelID: FS_058_Orphan's_Core
+Chain: Unfettered
+Location: CrystalFields
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: GainMorale
+          Param1: 1
+        - Type: GainCampaignSticker
+          Param1: KeyCard
+        - Type: GainLumber
+          Param1: 3
+        - Type: GainMetal
+          Param1: 3
+        - Type: GainHide
+          Param1: 3
+        - Type: UnlockClass
+          Param1: HIVEID
+        - Type: AddTownGuardMod
+          Param1: +50
+        - Type: EnableEvent
+          Param1: WO-64
+        - Type: EnableEvent
+          Param1: WO-65
+        - Type: GainCampaignSticker
+          Param1: UnfetteredDeactivated
+        - Type: RemoveUnfetteredEvents
+        - Type: LockScenario
+          Param1: 59

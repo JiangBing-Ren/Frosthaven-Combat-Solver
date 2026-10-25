@@ -1,0 +1,99 @@
+Parser: AbilityCard
+Name: $FH/495_character_ability_cards_crashing_tide_tidal_blast_1$
+Character: CrashingTideID
+ID: 495
+Level: 5
+ProgressionOrder: 495
+Initiative: 71
+Discard: [Lost,Discard]
+Prefab: 495_CrashingTide_TidalBlast
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                    DiamondEnhancements: 1
+                Range:
+                    Amount: 4
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack","Target","Range")
+                Target: 0
+                Targeting: Range
+                Filter: [Enemy]
+                AnimOverload: TidalBlast
+                StatIsBasedOnX:
+                    Target:
+                        BasedOn: Vars
+                        Vars:
+                            Value: CustomAbility.GetTideActiveBonuses(TargetingActor).Count
+        XP: 2
+    Bottom:
+        Abilities:
+            BBuffAttack:
+                Attack: 0
+                MiscVars:
+                    PrintedProperties: list("AttackBuff")
+                AttackEffect:
+                    Type: StandardBuff
+                    Strength: 1
+                Filter: [Self]
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: BuffAttack
+                    Restriction: OncePerTurn
+                    ValidAbilityType: Attack
+                    IsToggleBonus: True
+                    Flags: [Tide]
+                    MiscVars:
+                        RestrictionAffectedByOtherTides: True
+                AnimOverload: Tide
+            BBuffMove:
+                Move: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+                Filter: [Self]
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: BuffMove
+                    Restriction: OncePerTurn
+                    ValidAbilityType: Move
+                    IsToggleBonus: True
+                    MiscVars:
+                        RestrictionAffectedByOtherTides: True
+                AutoTrigger: True
+                SkipAnim: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Attack]
+        Infuse: Dark
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "10,40,30,20"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column: "<sprite name=Target>X, <sprite name=Range>*TAttack.Range* @TAttack.Range@"
+            - Column:
+        - Row: "$FH/495_character_ability_cards_crashing_tide_tidal_blast_2$"
+    Bottom:
+        - Row:
+            - ColumnWidths: "34,33,33"
+            - Column: "$FH/CrashingTide_Tide$"
+            - Column:
+            - Column:
+        - Active:
+            Ability: BBuffAttack
+            Icon: Positive_AttackPlus
+            Layout: "$FH/495_character_ability_cards_crashing_tide_tidal_blast_3$"
+            ListLayout: "$FH/495_character_ability_cards_crashing_tide_tidal_blast_4$"
+        - Active:
+            Ability: BBuffMove
+            Icon: Positive_MovePlus
+            ListLayout: "$FH/495_character_ability_cards_crashing_tide_tidal_blast_5$"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark

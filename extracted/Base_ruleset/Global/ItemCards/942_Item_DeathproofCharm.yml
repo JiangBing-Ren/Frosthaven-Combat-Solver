@@ -1,0 +1,30 @@
+Parser: ItemCard
+ID: 942
+StringID: DeathproofCharmID
+Name: $FH/0942_item_cards_deathproof_charm_1$
+Art: Deathproof Charm
+TotalInGame: 2
+Cost: 0
+Slot: Head 
+Rarity: Rare
+Usage: Consumed
+Trigger: PassiveEffect
+Data: 
+    Abilities:
+        APreventDamage:
+            AutoTrigger: True
+            Filter: Self
+            PreventDamage: 1
+            NameKeyOverride: "FH/0942_item_cards_deathproof_charm_1"
+            ActiveBonus:
+                Duration: Persistent
+                XPTracker: [0]
+                Behaviour: PreventFirstDamage
+                ToggleIsOptional: True
+Layout:
+    - Active:
+        Ability: APreventDamage
+        ListLayout: $FH/0942_item_cards_deathproof_charm_2$
+        Layout: $FH/0942_item_cards_deathproof_charm_2$
+        Icon: Positive_Shield
+    - Row: "<size=50%> "

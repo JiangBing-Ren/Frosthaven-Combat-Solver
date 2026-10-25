@@ -1,0 +1,42 @@
+Parser: PetCard
+ID: 365
+StringID: BlackImpPetID
+Name: $FH/365_pet_cards_black_imp_1$
+Description: $FH/365_pet_cards_black_imp_2$
+Art: Black Imp
+Usage: Consumed
+Trigger: DuringOwnTurn
+PetUnlockedBy: BlackImpID
+Cost: 0
+Data: 
+    Abilities:
+        # fake ability first, in order to give us something to undo before triggering the in-order abilities
+        AChooseToGrantAttack:
+            NullTargeting:
+            Filter: Self
+            Range: -1
+            Target: 1
+            AnimOverload: UseItem
+            PerformVars:
+                ActorIsApplying: 
+                    VFX: TargetingActor.PlayVFX("PetBlackImpEffect")
+            PreviewEffectText: ""
+            SubAbilities:
+                AGrantAttack:
+                    PreviewEffectText: ""
+                    TreatAsNonSubAbility: True
+                    ControlActor:
+                        Abilities:
+                            AAttack:
+                                Attack: 2
+                    Target: -1
+                    Targeting: Custom
+                    TargetingVars:
+                        AddValidActorsInRange: CustomAbility.PlayersSortedByInitiative()
+                    Filter: [Ally,Self]
+                    SkipAnim: True
+                    AutoTrigger: True
+                    MiscVars:
+                        DontPreviewDescription: True
+Layout: 
+    - Row: "$FH/365_pet_cards_black_imp_2$"

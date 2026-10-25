@@ -1,0 +1,24 @@
+Parser: EnemyCard
+ID: 08750002
+Name: $Monster_Ability_Boss_AlgoxStormcaller_Special2$
+Initiative: 14
+Shuffle: False
+Data:
+    Abilities:  
+        ATerrainAndDamage:
+            Null: True
+            Text: "$FH/boss_stat_cards_algox_stormcaller_3$ <br> $FH/boss_stat_cards_algox_stormcaller_4$"
+            TextOnly: True
+            Flags: [Special2]
+            AnimOverload: Frostbite
+        AWaitForIdle:
+            Null: True
+        Summon1:
+            Summons: 
+                - FrostDemonID
+                - FrostDemonID
+                - FrostDemonEliteID
+                - FrostDemonEliteID
+            Target: 1
+            TargetIsBase: True
+            AnimOverload: Summon

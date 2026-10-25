@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 81
+ScenarioItemID: 1027
+Name: Pain Simulacrum
+Quantity: 2
+Type: Small
+CraftingCost:
+    Hide: 2
+RequiredCraftingItemIDs: [ 97 ]

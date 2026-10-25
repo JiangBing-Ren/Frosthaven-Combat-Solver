@@ -1,0 +1,49 @@
+Parser: AbilityCard
+Name: $FH/002_character_ability_cards_drifter_sustained_momentum_1$
+Character: DrifterID
+ID: 2
+Level: 1
+ProgressionOrder: 1
+Initiative: 76
+Discard: [Discard,Lost]
+Prefab: 2_Drifter_SustainedMomentum
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:                
+                    Amount: 2
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+            TMoveTracker:
+                Filter: Self
+                MoveActiveBonusTracker: -1
+                Vars:
+                    NumberOfCardsToSelect: 1
+                AnimOverload: PowerUp
+    Bottom:
+        Abilities:
+            BBuffMove:
+                Move: 2
+                MiscVars:
+                    PrintedProperties: list("Move")
+                Filter: Self
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: BuffMove
+                    XPTracker: [1,0,1,0,1,0]
+                    Flags: [EnhancedMoveEffects]
+                AnimOverload: Persistent Buff
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack*<size=100%><voffset=1>@TAttack@"
+        - Divider:
+        - Row: "$002_character_ability_cards_drifter_sustained_momentum_2$"
+    Bottom:
+        - Active:
+            Ability: BBuffMove
+            Icon: Positive_MovePlus
+            ListLayout: "$FH/002_character_ability_cards_drifter_sustained_momentum_3$"
+            Layout: "$FH/002_character_ability_cards_drifter_sustained_momentum_3$"
+        - XPTracker: BBuffMove

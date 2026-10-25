@@ -1,0 +1,66 @@
+Parser: Enemy
+ID: ShrikeFiendEliteID
+LocKey: $FH/ShrikeFiendElite$
+MonsterType: Monster
+StandeeLimit: 6
+Model: ShrikeFiend Elite
+NonEliteVariant: ShrikeFiendID
+PredominantlyMelee: False
+AbilityCards: [810, 811, 812, 813, 814, 815, 816, 817]
+# Base Stats
+Level0:
+    Health: 8
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+    Immunities: [Muddle, Poison, Wound]
+Level1:
+    Health: 10
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+    Immunities: [Muddle, Poison, Wound]
+Level2:
+    Health: 12
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    Immunities: [Muddle, Poison, Wound]
+Level3:
+    Health: 16
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    Immunities: [Muddle, Poison, Wound]
+Level4:
+    Health: 20
+    Move: 2
+    Attack: 5
+    Range: 1
+    Target: 1
+    Immunities: [Muddle, Poison, Wound]
+Level5:
+    Health: 25
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    Immunities: [Muddle, Poison, Wound]
+Level6:
+    Health: 33
+    Move: 3
+    Attack: 6
+    Range: 1
+    Target: 1    
+    Immunities: [Disarm, Muddle, Poison, Wound]
+Level7:
+    Health: 45
+    Move: 3
+    Attack: 6
+    Range: 1
+    Target: 1    
+    Immunities: [Disarm, Muddle, Poison, Wound]

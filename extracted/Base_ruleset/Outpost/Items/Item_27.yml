@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 27
+ScenarioItemID: 934
+Name: Cloak of Warding
+Quantity: 2
+Type: Body
+CraftingCost:
+    Hide: 1
+RequiredCraftingItemIDs: [ 3, 91 ]

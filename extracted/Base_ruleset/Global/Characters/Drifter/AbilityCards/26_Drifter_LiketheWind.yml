@@ -1,0 +1,56 @@
+Parser: AbilityCard
+Name: $FH/026_character_ability_cards_drifter_like_the_wind_1$
+Character: DrifterID
+ID: 26
+Level: 7
+ProgressionOrder: 25
+Initiative: 77
+Discard: [Lost,Discard]
+Prefab: 26_Drifter_LikeTheWind
+Data:
+    Top:
+        Abilities:
+            TActive:
+                AddActiveBonus:
+                    Move: 3
+                    MiscVars:
+                        PrintedProperties: list("Move")
+                    Jump: True
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: GenericHealAbilityFinished
+                    XPTracker: [1,0,1,0,1,0]
+                    Vars:
+                        Caster: TriggerActor
+                        ValidateCasterIsDrifter: Caster.Class.ID == "DrifterID"
+                AnimOverload: Persistent Buff
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 3
+                MiscVars:
+                    PrintedProperties: list("Move")
+                PerformVars:
+                    OnAbilityEnded:
+                        AlliesMovedThrough: CustomAbility.GetAlliesMovedThrough(0, obj)
+                        PerformXTimes: CustomAbility.InjectActiveBonusAbilityXTimes(AlliesMovedThrough, ActiveBonusData, TargetingActor, thisContext)
+                ActiveBonus:
+                    AbilityData:
+                        MoveActiveBonusTracker: -1
+                        Vars:
+                            NumberOfCardsToSelect: 1
+                        Filter: [Self]
+                        TreatAsNonSubAbility: True
+                        AnimOverload: PowerUp
+Layout:
+    Top:
+        - Active:
+            Ability: TActive
+            Icon: Positive_Move_Heal_Jump
+            ListLayout: "$FH/026_character_ability_cards_drifter_like_the_wind_2$"
+            Layout: "$FH/026_character_ability_cards_drifter_like_the_wind_2$"
+        - XPTracker: TActive
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove*"
+        - Divider:
+        - Row: "$FH/026_character_ability_cards_drifter_like_the_wind_3$"

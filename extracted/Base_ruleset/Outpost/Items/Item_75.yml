@@ -1,0 +1,10 @@
+Parser: FHItem
+ID: 75
+ScenarioItemID: 1015
+Name: Rose Gauntlet
+Quantity: 2
+Type: OneHandWeapon
+CraftingCost:
+    Flamefruit: 1
+    Snowthistle: 1
+RequiredCraftingItemIDs: [ 30 ]

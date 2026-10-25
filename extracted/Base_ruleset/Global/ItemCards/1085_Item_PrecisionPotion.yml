@@ -1,0 +1,28 @@
+Parser: ItemCard
+ID: 1085
+StringID: PrecisionPotionID
+Name: $FH/1085_item_cards_precision_potion_1$
+Art: Precision Potion
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: PassiveEffect
+Data: 
+    Abilities:
+        AModifyAttack:
+            ChangeAttackModifier:
+            ReplaceModifiers: "*0"
+            ReplaceWithModifiers: ["+2"]
+            ActiveBonus:
+                XPTracker: [0]
+                IsToggleBonus: True
+                Duration: Persistent
+                Behaviour: AdjustWhenAttacking
+Layout: 
+    - Active:
+        Ability: AModifyAttack
+        Icon: "Positive_0x_Item"
+        ListLayout: "$FH/1085_item_cards_precision_potion_2$"
+        Layout: "$FH/1085_item_cards_precision_potion_2$"

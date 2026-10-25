@@ -1,0 +1,54 @@
+Parser: AbilityCard
+Name: $FH/008_character_ability_cards_drifter_draining_arrows_1$
+Character: DrifterID
+ID: 8
+Level: 1
+ProgressionOrder: 7
+Initiative: 23
+Discard: [Discard,Discard]
+Prefab: 8_Drifter_DrainingArrows
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 1
+                    SquareEnhancements: 1
+                Range: 2
+                Target: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Target","Range")
+                Filter: [Enemy]
+                Conditions: [Muddle]
+                AnimOverload: RangedAttack_AOE_NonArea
+                MultiPassAttack: False
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 3
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BMoveTracker:
+                Filter: Self
+                MoveActiveBonusTracker: -1
+                Vars:
+                    NumberOfCardsToSelect: 1
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ValidActorsInRangeOfRequirementRange: "== 1"
+                    RequirementRange: 1
+                    RequirementActorFilter: Enemy
+                AnimOverload: PowerUp
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "5,40,40,15"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack*<size=100%><voffset=1>@TAttack@"
+            - Column:
+                - AddedEffect: "<sprite name=Target>3, <sprite name=Range>2, <size=130%><sprite name=Muddle></size>"
+            - Column:
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> 3"
+        - Divider:
+        - Row: "<size=85%>$FH/008_character_ability_cards_drifter_draining_arrows_2$"

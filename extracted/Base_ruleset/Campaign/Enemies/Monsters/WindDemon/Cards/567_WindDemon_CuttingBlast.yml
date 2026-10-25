@@ -1,0 +1,22 @@
+Parser: EnemyCard
+ID: 567
+Name: $Monster_Ability_567_WindDemon_CuttingBlast$
+Initiative: 43
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: -1
+        Attack1:
+            Attack: 1
+            Range: 3
+            RangeIsBase: True
+            Filter: Enemy
+            AnimOverload: RangedAttack
+    Consumes:
+        CAir:
+            Elements: Air
+            AbilityOverrides:
+                CAirTargetBuff:
+                    ParentName: Attack1
+                    Conditions: [Disarm]

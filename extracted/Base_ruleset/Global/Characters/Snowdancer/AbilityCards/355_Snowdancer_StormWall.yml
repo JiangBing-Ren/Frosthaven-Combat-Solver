@@ -1,0 +1,98 @@
+Parser: AbilityCard
+Name: $FH/355_character_ability_cards_snowdancer_storm_wall_1$
+Character: SnowdancerID
+ID: 355
+Level: 7
+Initiative: 30
+Discard: [Discard,Lost]
+Prefab: 355_Snowdancer_StormWall
+Data:
+    Top:
+        Abilities:
+            StromWallTopAttack:
+                Attack:
+                    Amount: 2
+                    Pierce: 2
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Attack","Range","Pierce")
+                AreaEffect: "0,0,R|2,0,R|4,0,R|6,0,R|8,0,R"
+                MultiPassAttack: False
+                AreaEffectLayoutOverride: "0,0,R|-1,1,R|-2,2,R|-3,3,R|-4,4,R"
+                AnimOverload: StormWall 
+                SubAbilities:
+                    TSubPush:
+                        Push:
+                            Amount: 2
+                        MiscVars:
+                            PrintedProperties: list("Push")
+                        IsInlineSubAbility: True
+                        Target: -1
+                        UseParentTargets: True
+            TCAir:
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Attack]
+                HelpBoxTooltipLocKey: "FH/355_character_ability_cards_snowdancer_storm_wall_2"
+                Consume:
+                    Elements: Air
+                    Abilities:
+                        TSubDamage:
+                            Damage: 1
+                            MiscVars:
+                                PrintedProperties: list("Damage")
+                            Filter: Enemy
+                            Target: -1
+                            AnimOverload: Cast Negative
+                            Vars:
+                                AttackAbility: CustomAbility.FindAbilityInPhaseByName("StromWallTopAttack")
+                                Actors: CustomAbility.GetActorsAdjacentToArea(AttackAbility)
+                                Tiles: CustomAbility.GetTilesAdjacentToArea(AttackAbility)
+                            Targeting: Custom
+                            TargetingVars:
+                                AddTilesInRange: Tiles
+                                AddValidActorsInRange: Actors
+                                AddActorsToTarget: Actors
+                                AddSelectedTiles: Tiles
+                    XP: 1
+    Bottom:
+        Abilities:
+            BWard:
+                AddActiveBonus:
+                    Ward: True
+                    Filter: Self
+                    AutoTrigger: True
+                Filter:
+                    TargetType: Ally
+                    ActorType: Player
+                Range: 1
+                Target: 1
+                ActiveBonus:
+                    Behaviour: StartTurnAbility
+                    Duration: Persistent
+                    GiveAbilityCardToActor: True
+        XP: 2
+Layout:
+    Top:
+        - ColumnWidths: "70,30"
+        - Column:
+            - Row: "<sprite name=Attack> *StromWallTopAttack* <sprite name=Range> *StromWallTopAttack.Range* <sprite name=Pierce> 2, <sprite name=Push> 2"
+            - Row: "<size=50%> "
+            - Divider:
+            - Row: "<size=50%> "
+            - Conditional:
+                Layout:
+                    - Row: "<sprite name=ConsumeAir>: $FH/355_character_ability_cards_snowdancer_storm_wall_2$"
+        - Column:
+            - Row: "£Area£"
+            - Row: "<size=50%> "
+    Bottom:
+        - Row: "$FH/355_character_ability_cards_snowdancer_storm_wall_3$"
+        - Row: "<size=50%> "
+        - Active:
+            Ability: BWard
+            Icon: Positive_WardSelf
+            ListLayout: "$FH/355_character_ability_cards_snowdancer_storm_wall_4$"
+            Layout: "$FH/355_character_ability_cards_snowdancer_storm_wall_4$"
+

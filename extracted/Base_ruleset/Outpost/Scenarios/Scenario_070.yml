@@ -1,0 +1,12 @@
+Parser: FHScenario
+ID: 70
+Name: The True Oak
+LevelID: FS_070_The_True_Oak
+Chain: PersonalQuest
+Location: RadiantForest
+RequiresPersonalQuest: PQ_2
+Difficulty: 1
+Conclusions:
+    - Effects:
+        - Type: AddProsperity
+          Param1: 1

@@ -1,0 +1,17 @@
+Parser: FHScenario
+ID: 44
+Name: Nerve Center
+LevelID: FS_044_Nerve_Center
+Chain: Unfettered
+Location: CrystalFields
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: AllCharactersGainGold
+          Param1: 5
+        - Type: GainItemBlueprint
+          Param1: 73
+        - Type: ChooseUnlockMandatoryScenario
+          Param1: "UnfetteredQuest_44_51_ChooseUnlockMandatoryQuestion"
+          Param2: 59
+          Param3: 58

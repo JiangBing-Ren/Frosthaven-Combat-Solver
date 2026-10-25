@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 190
+ScenarioItemID: 1283
+Name: White Card
+Quantity: 1
+GoldCost: 20
+Type: Small
+IsNewCharacterItem: False

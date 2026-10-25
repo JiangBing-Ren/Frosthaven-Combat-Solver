@@ -1,0 +1,38 @@
+Parser: AbilityCard
+Name: $FH/395_character_ability_cards_hive_reaper_function$
+Character: HIVEID
+ID: 395
+Level: 1
+Initiative: 32
+Discard: [Discard,Discard]
+Prefab: 395_HIVE_ReaperFunction
+Data:
+    Top:
+        XP: 1
+        Abilities:
+            TAttack:
+                Attack: 
+                    Amount: 2
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AreaEffect: "0,0,G|2,0,R|1,1,R|1,-1,R|-1,1,E"
+                MultiPassAttack: False
+                AnimOverload: AttackAOE
+    Bottom:
+        Abilities:
+            BModeTransfer:
+                Mode: Transfer
+            BLoot:
+                Loot: 1
+                MiscVars:
+                    PrintedProperties: list("Loot")
+                Target: -1
+                AnimOverload: Loot
+Layout:
+    Top:
+        - Column: "<b><size=130%><sprite name=Attack> *TAttack*"
+        - Column: "£Area£"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=HIVETransfer>"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Loot> 1"

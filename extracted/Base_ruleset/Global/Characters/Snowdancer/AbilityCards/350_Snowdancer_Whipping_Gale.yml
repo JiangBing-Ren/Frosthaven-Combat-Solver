@@ -1,0 +1,91 @@
+Parser: AbilityCard
+Name: $FH/350_character_ability_cards_snowdancer_whipping_gale_1$
+Character: SnowdancerID
+ID: 350
+Level: 5
+Initiative: 79
+Discard: [Discard,Lost]
+Prefab: 350_Snowdancer_WhippingGale
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 1
+                    SquareEnhancements: 1
+                Range: 4
+                Target: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Target","Range")
+                AnimOverload: RangedAttack
+                SubAbilities:
+                    TAttackSubPush:
+                        Pull:
+                            Amount: 2
+                            SquareEnhancements: 1
+                        MiscVars:
+                            PrintedProperties: list("Push")
+                        IsInlineSubAbility: True
+        Infuse: Air
+        XP: 1         
+    Bottom:
+        Abilities:
+            BActive:
+                AddActiveBonus:
+                    IgnoreStun: False
+                    Consume:
+                        Elements: Air
+                        Abilities:
+                            CChoose:
+                                Choose:
+                                    Abilities:
+                                        CPush:
+                                            IgnoreStun: False
+                                            Push: 2
+                                            Range: 3
+                                            Target: 1
+                                            MiscVars:
+                                                PrintedProperties: list("Push","Target","Range")
+                                            Filter: [Enemy, Ally]
+                                            AnimOverload: Push
+                                        CPull:
+                                            IgnoreStun: False
+                                            Pull: 2
+                                            Range: 3
+                                            Target: 1
+                                            MiscVars:
+                                                PrintedProperties: list("Pull","Target","Range")
+                                            Filter: [Enemy, Ally]
+                                            AnimOverload: Pull
+                                Filter: Self
+                                HelpBoxTooltipLocKey: "$GUI_CHOOSE_ABILITY$"
+                                PreviewEffectText: "<size=100%><sprite name=Push> / <sprite name=Pull></size>"
+                    ShowElementPicker: True
+                Filter: Self
+                ActiveBonus:
+                    Behaviour: StartTurnAbility
+                    Duration: Persistent
+                    ValidAbilityType: Consume
+                    Restriction: OncePerAction
+        XP: 2
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "20,20,30,20,20"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column:
+                - Row: "<mark=#80919922><size=100%><sprite name=Target>*TAttack.Target*,<sprite name=Range>*TAttack.Range*</mark>"
+            - Column:
+                - Row: "<mark=#80919922><sprite name=Pull>*TAttackSubPush*</mark> @TAttackSubPush@"
+            - Column:
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Air]
+    Bottom:
+         - Active:
+            Ability: BActive
+            Icon: Positive_ForceMove_AirConsume
+            ListLayout: "<sprite name=ConsumeAir>: <sprite name=Push>2 $GUI_CARD_OR$ <sprite name=Pull>2 $338_character_ability_cards_snowdancer_cross_winds_3$ <sprite name=Range>3"
+            Layout: "<sprite name=ConsumeAir>: <sprite name=Push>2 $GUI_CARD_OR$ <sprite name=Pull>2 $338_character_ability_cards_snowdancer_cross_winds_3$ <sprite name=Range>3"

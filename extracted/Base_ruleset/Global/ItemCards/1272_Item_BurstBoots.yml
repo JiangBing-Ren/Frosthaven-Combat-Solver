@@ -1,0 +1,25 @@
+Parser: ItemCard
+ID: 1272
+StringID: BurstBootsID
+Name: $FH/1272_item_cards_burst_boots_1$
+Art: Burst Boots
+TotalInGame: 1
+Cost: 25
+Slot: Legs
+Rarity: Relic
+Usage: Consumed
+Trigger: SingleAbility
+Data:    
+    Overrides:
+        OMove:
+            Strength: 4
+            SubAbilities:
+                AImmobilizeSelf:
+                    PreviewEffectText: "<sprite name=Immobilize>"
+                    Immobilize: True
+                    Filter: Self
+                    AutoTrigger: True
+    CompareAbility:
+        AbilityType: Move
+Layout: 
+    - Row: $FH/1272_item_cards_burst_boots_2$

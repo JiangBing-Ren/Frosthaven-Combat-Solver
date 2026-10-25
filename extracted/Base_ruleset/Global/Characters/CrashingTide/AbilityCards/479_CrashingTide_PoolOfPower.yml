@@ -1,0 +1,73 @@
+Parser: AbilityCard
+Name: $FH/479_character_ability_cards_crashing_tide_pool_of_power_1$
+Character: CrashingTideID
+ID: 479
+Level: 1
+ProgressionOrder: 479
+Initiative: 41
+Discard: [Lost,Discard]
+Prefab: 479_CrashingTide_PoolOfPower
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 4
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Range: 1
+                Target: 1
+                Targeting: Range
+                Filter: [Enemy]
+                StatIsBasedOnX:
+                    Target:
+                        AddTo: True
+                        BasedOn: Vars
+                        Vars:
+                            IsOnWater: TargetingActor.Tile.IsWater
+                            Value: IsOnWater and 1 or 0
+        Consumes:
+            TCLight:
+                Elements: [Light]
+                AbilityOverrides:
+                    TCAttackBuff:
+                        ParentName: TAttack
+                        Strength: 1
+                XP: 1
+        XP: 1
+    Bottom:
+        Abilities:
+            BOnRestKeepOneTideActiveBonus:
+                NullTargeting:
+                Filter: Self
+                ActiveBonus:
+                    Duration: Persistent
+                    Flags: [Tide, CrashingTideRest]
+                AnimOverload: Tide
+        Infuse: Dark
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Row: "$FH/479_character_ability_cards_crashing_tide_pool_of_power_2$"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCLight
+                    Text: "+1<sprite name=Attack>, <sprite name=XP1>"
+    Bottom:
+        - Row:
+            - ColumnWidths: "34,33,33"
+            - Column: "$FH/CrashingTide_Tide$"
+            - Column:
+            - Column:
+        - Active:
+            Ability: BOnRestKeepOneTideActiveBonus
+            Icon: Positive_Tide_Rest
+            Layout: "$FH/479_character_ability_cards_crashing_tide_pool_of_power_3$"
+            ListLayout: "$FH/479_character_ability_cards_crashing_tide_pool_of_power_3$"
+        - Row: "<size=100%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark

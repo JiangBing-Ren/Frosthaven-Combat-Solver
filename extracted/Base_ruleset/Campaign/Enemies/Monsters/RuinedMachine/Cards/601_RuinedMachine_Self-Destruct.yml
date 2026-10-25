@@ -1,0 +1,26 @@
+Parser: EnemyCard
+ID: 601
+Name: $Monster_Ability_601_RuinedMachine_Self-Destruct$
+Initiative: 93
+Shuffle: True
+Data:
+    Abilities: 
+        Move1:
+            Move: 0
+        Attack1:
+            Attack: 0
+            Filter: Enemy
+            Text: "$FH/0601$"
+        SelfDestruct1:
+            Kill: True
+            AnimOverload: PowerUpSelfDestruct
+            Filter: Self
+            PerformVars:
+                CheckForOneTargetAtATime:
+                    Damage: CustomAbility.AdjacentEnemiesTakeTrapDamage(TargetingActor) 
+            StartAbilityRequirements:
+                Type: ThisAbility
+                ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                AbilityTypes: [Attack]
+            TextOnly: True
+            NoLayoutSpace: True

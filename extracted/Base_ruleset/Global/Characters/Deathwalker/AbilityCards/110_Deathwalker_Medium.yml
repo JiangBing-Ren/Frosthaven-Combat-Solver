@@ -1,0 +1,71 @@
+Parser: AbilityCard
+Name: $FH/110_character_ability_cards_deathwalker_medium_1$
+Character: DeathwalkerID
+ID: 110
+Level: 5
+Initiative: 55
+Discard: [Discard,Lost]
+Prefab: 110_Deathwalker_Medium
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Range: 1
+                Target: 1
+                Filter: [Enemy]
+                SubAbilities:
+                    TCreateShadow:
+                        CreateShadow:
+                        HelpBoxTooltipLocKey: "FH/GUI_PLACE_SHADOWS_HELPBOX"
+                        Targeting: Custom
+                        TargetingVars:
+                            AddTilesInRange: CustomAbility.GetAdjacentTilesForShadows()
+                        StartAbilityRequirements:
+                            Type: SubAbility
+                            ActorsKilledByAbility: "> 0"
+                            RequirementActorFilter:
+                                TargetType: Enemy
+                                EnemyType: [Normal,Elite,Boss]
+                        Target: 1
+                        AnimOverload: Shadow Manipulation
+        Consumes:
+            TCDark:
+                Elements: Dark
+                AbilityOverrides:
+                    TCDarkBuff:
+                        ParentName: TAttack
+                        Strength: 2
+    Bottom:
+        Abilities:
+            BMoveShadowBonus:
+                AddActiveBonus:
+                    MoveShadow:
+                    Target: 1
+                    Range: 3
+                    IgnoreStun: False
+                    AnimOverload: Shadow Manipulation
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: StartTurnAbility
+        XP: 1
+Layout:
+    Top:
+        - Row: "<b><size=130%> <sprite name=Attack> *TAttack* <b><size=100%> @TAttack@"
+        - Row: "<size=20%> "
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCDark
+                    Text: "<nobr> +2 <sprite name=Attack></nobr>"
+        - Row: "$FH/110_character_ability_cards_deathwalker_medium_2$"
+    Bottom:
+        - Active:
+            Ability: BMoveShadowBonus
+            ListLayout: "$FH/110_character_ability_cards_deathwalker_medium_3$"
+            Layout: "$FH/110_character_ability_cards_deathwalker_medium_3$"
+            Icon: Positive_Shadow_Move

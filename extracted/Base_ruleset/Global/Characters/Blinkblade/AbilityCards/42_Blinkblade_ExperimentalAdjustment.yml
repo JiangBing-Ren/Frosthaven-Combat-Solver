@@ -1,0 +1,158 @@
+Parser: AbilityCard
+Name: $FH/042_character_ability_cards_blinkblade_experimental_adjustment_1$
+Character: BlinkbladeID
+ID: 42
+Level: X
+Initiative: 12
+Discard: [Discard,Discard]
+Prefab: 42_Blinkblade_ExperimentalAdjustment
+Data:
+    Top:
+        Abilities:
+            TDamageSelf:
+                Damage: 2
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Target: -1
+                Filter: [Self]
+                CanUndo: True
+                NegativeAbilityIsOptional: True
+                CanSkip: False
+                #AnimOverload: Suffer
+            TDamageAll_Fast:
+                Damage: 1
+                MiscVars:
+                    PrintedProperties: list("Damage", "Range")
+                Range: 2
+                Target: -1
+                Targeting: Range
+                Filter: [Enemy]
+                CanSkip: False
+                AutoTrigger: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Fast
+                AnimOverload: PowerUp2HexAOE
+                ConditionalOverrides:
+                    COAnim_SlowBuffed:
+                        Self: True
+                        Requirement:
+                            Vars: 
+                                ValidateHasTreatSlowAgilityAsFast: TargetingActor.HasActiveBonusFlag(AbilityData.EActiveBonusFlag.TreatSlowAgilityAsFast)
+                        AbilityOverrides:
+                            TOverloadAnim:
+                                AnimOverload: PowerUpSlow2HexAOE
+            TDamageAll_Slow:
+                NullTargeting: True
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Target: 99
+                Targeting: Range
+                Filter: [Enemy]
+                Conditions: [Immobilize, Muddle]
+                CanSkip: False
+                MiscVars:
+                    IsNegative: True
+                    AutoSelectValidTiles: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Slow
+                AnimOverload: PowerUpSlow2HexAOE
+            TInvisible:
+                Invisible: True
+                Target: -1
+                Filter: [Self]
+                CanSkip: False
+                AnimOverload: PowerUp
+                AutoTrigger: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Fast
+                ConditionalOverrides:
+                    TInvisibleCO_SlowBuffed:
+                        Self: True
+                        Requirement:
+                            Vars: 
+                                ValidateHasTreatSlowAgilityAsFast: TargetingActor.HasActiveBonusFlag(AbilityData.EActiveBonusFlag.TreatSlowAgilityAsFast)
+                        AbilityOverrides:
+                            TOverloadAnim:
+                                AnimOverload: PowerUpSlow
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 2             
+                MiscVars:
+                    PrintedProperties: list("Move")   
+                ConditionalOverrides:
+                    BMoveCO_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            TMove:
+                                Strength: 2
+            BLoot:
+                Loot: 1
+                MiscVars:
+                    PrintedProperties: list("Loot")
+                Range: 1
+                Target: -1
+                CanSkip: False
+                #AutoTrigger: True //was added for 'speed up' pass, but causes you to be unable to use items that boost loot
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Fast
+            BImmobilize:
+                Immobilize: True
+                Target: -1
+                Filter: [Self]
+                CanSkip: False
+                SkipAnim: True
+                AutoTrigger: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Slow
+Layout:
+    Top:
+        - MandatoryTrigger: "$FH/042_character_ability_cards_blinkblade_experimental_adjustment_2$"
+        - Divider:
+        - Row:
+            - ColumnWidths: "50,50"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "$FH/042_character_ability_cards_blinkblade_experimental_adjustment_3$"
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Text: "$FH/042_character_ability_cards_blinkblade_experimental_adjustment_4$"
+        - Divider:
+        - Row:
+            - ColumnWidths: "50,50"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "$FH/042_character_ability_cards_blinkblade_experimental_adjustment_5$"
+            - Column:                
+    Bottom:
+        - Row:
+            - ColumnWidths: "33,34,33"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Move> *BMove*"
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Text: "+2 <sprite name=Move>"
+        - Divider:
+        - Row:
+            - ColumnWidths: "50,50"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "<b><size=130%><sprite name=Loot> 1"
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Text: "$FH/042_character_ability_cards_blinkblade_experimental_adjustment_6$"

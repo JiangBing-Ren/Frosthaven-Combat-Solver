@@ -1,0 +1,52 @@
+Parser: AbilityCard
+Name: $FH/018_character_ability_cards_drifter_fierce_barrage_1$
+Character: DrifterID
+ID: 18
+Level: 3
+ProgressionOrder: 17
+Initiative: 32
+Discard: [Discard,Lost]
+Prefab: 18_Drifter_FierceBarrage
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AreaEffect: "0,0,G|2,0,R|1,1,R"
+                MultiPassAttack: False
+                AnimOverload: Attack_AOE_Cone
+    Bottom:
+        Abilities:
+            BBuffAttack:
+                Attack: 0
+                AttackEffect:
+                    Type: BuffIfAttackIsRanged
+                    Target: 1
+                MiscVars:
+                    PrintedProperties: list("TargetBuff")
+                Filter: Self
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: BuffAttack
+                    EntireAction: True
+                    XPTracker: [1,0,1,0,1,0]
+                AnimOverload: Persistent Buff
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "15,35,35,15"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack*<size=100%><voffset=1>@TAttack@"
+            - Column: "£Area£"
+            - Column:
+    Bottom:
+        - Active:
+            Ability: BBuffAttack
+            Icon: Positive_TargetPlus_AttackRanged
+            ListLayout: "$FH/018_character_ability_cards_drifter_fierce_barrage_2$"
+            Layout: "$FH/018_character_ability_cards_drifter_fierce_barrage_2$"
+        - XPTracker: BBuffAttack

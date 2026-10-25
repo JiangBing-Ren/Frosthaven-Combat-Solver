@@ -1,0 +1,11 @@
+Parser: AttackModifier
+Name: AMC_Heal1_R_FrozenFist
+MathModifier: "+0"
+Rolling: True
+Abilities:
+    AHeal:
+        Heal: 1
+        Filter: Self
+        CanUndo: False
+        AnimOverload: Heal
+        #AutoTrigger: True

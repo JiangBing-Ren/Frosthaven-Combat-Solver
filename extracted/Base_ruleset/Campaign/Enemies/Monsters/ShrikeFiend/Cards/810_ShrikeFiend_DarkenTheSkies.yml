@@ -1,0 +1,17 @@
+Parser: EnemyCard
+ID: 810
+Name: $Monster_Ability_810_ShrikeFiend_DarkenTheSkies$
+Initiative: 27
+Shuffle: False
+Data:
+    Abilities: 
+        AMove:
+            Move: 0
+        AAttack:
+            Attack: -1
+            Target: 3
+            TargetIsBase: True
+            Range: 3
+            RangeIsBase: True
+            Filter: Enemy
+            AnimOverload: FlockAttack

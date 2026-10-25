@@ -1,0 +1,46 @@
+Parser: EnemyCard
+ID: 08750061
+Name: $Monster_Ability_Boss_TheRelic_Special2$
+Initiative: 14
+Shuffle: False
+Data:
+    Abilities:
+        ASummon1:
+            Summons: 
+                - RuinedMachineID
+                - RuinedMachineID
+                - RuinedMachineID
+                - RuinedMachineEliteID
+            Target: 1
+            TargetIsBase: True
+            AnimOverload: Summon
+            MiscVars:
+                SkipGUI: ScenarioScript_FH080.IsCabinetDead("d")
+            StartAbilityRequirements:
+                Type: ThisAbility
+                Vars:
+                    ValidateCabinateDIsAlive: not ScenarioScript_FH080.IsCabinetDead("d")
+        SummonASummon:
+            Summons: 
+                - RuinedMachineID
+                - RuinedMachineID
+                - RuinedMachineEliteID
+                - RuinedMachineEliteID
+            Target: 1
+            TargetIsBase: True
+            AnimOverload: Summon
+            MiscVars:
+                SkipGUI: ScenarioScript_FH080.IsCabinetDead("d")
+            StartAbilityRequirements:
+                Type: ThisAbility
+                Vars:
+                    ValidateCabinateDIsAlive: not ScenarioScript_FH080.IsCabinetDead("d")
+        AMove:
+            Move: -1
+            MiscVars:
+                SkipGUI: not ScenarioScript_FH080.IsCabinetDead("d")
+                CasterEffectsSMBAbilityName: "'SnowTrail'"
+            StartAbilityRequirements:
+                Type: ThisAbility
+                Vars:
+                    ValidateCabinateDIsDead: ScenarioScript_FH080.IsCabinetDead("d")

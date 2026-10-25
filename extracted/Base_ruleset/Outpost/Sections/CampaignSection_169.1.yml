@@ -1,0 +1,8 @@
+Parser: CampaignSection
+ID: 169.1
+Name: Trapper Returns
+ShowAsUnknownInCalendar: True
+SkipCompletedNotification: False
+Effects:
+    - Type: UnlockScenario
+      Param1: 117

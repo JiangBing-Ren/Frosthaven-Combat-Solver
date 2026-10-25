@@ -1,0 +1,56 @@
+Parser: AbilityCard
+Name: $FH/064_character_ability_cards_banner_spear_javelin$
+#CustomImage: KRO_BANNER_SPEAR_AbilityCards_Javelin
+Character: BannerSpearID
+ID: 64
+Level: 1
+Initiative: 21
+Discard: [Discard,Discard]
+Prefab: 64_Bannerspear_Javelin
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                    DiamondEnhancements: 1
+                Range:
+                    Amount: 3
+                MiscVars:
+                    PrintedProperties: list("Attack", "Range")
+                AnimOverload: RangedAttack
+               
+        Infuse: Air
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 1
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BPull:
+                Pull:
+                    Amount: 2
+                Range:
+                    Amount: 3
+                MiscVars:
+                    PrintedProperties: list("Pull", "Range")
+                AnimOverload: SelfBuff
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "20,20,20,20,20"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack*"
+            - Column: "<size=100%><voffset=1>@TAttack@"
+            - Column: "<mark=#FCD06E22><sprite name=Range> *TAttack.Range*</mark>"
+            - Column:
+        - Row: "<size=200%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Air
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Pull> *BPull* <mark=#FCD06E22><b><size=100%><sprite name=Range> *BPull.Range*</mark>"

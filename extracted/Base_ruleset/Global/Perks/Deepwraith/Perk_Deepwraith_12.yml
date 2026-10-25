@@ -1,0 +1,22 @@
+Parser: Perk
+ID: Deepwraith12
+Name: FH/PERK_Deepwraith_12_Name
+Description: FH/PERK_Deepwraith_12_Desc
+CharacterID: DeepwraithID
+Available: 1
+Cost: 3
+Flags: [Passive, ApplyActiveBonusesAtScenarioStart]
+Abilities:
+    TActive:
+        AutoTrigger: True
+        Filter: Self
+        SkipAnim: True
+        Attack: 0
+        AttackHasAdvantage: True
+        ActiveBonus:
+            Duration: Persistent
+            Hidden: True
+            Behaviour: BuffAttack
+            Filter: 
+                Vars: 
+                    ValidateInvisible: self.Tokens.HasKey(CCondition.EPositiveCondition.Invisible)

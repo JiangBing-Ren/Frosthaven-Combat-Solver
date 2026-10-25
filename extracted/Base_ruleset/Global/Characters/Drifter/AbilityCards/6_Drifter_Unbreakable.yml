@@ -1,0 +1,45 @@
+Parser: AbilityCard
+Name: $FH/006_character_ability_cards_drifter_unbreakable_1$
+Character: DrifterID
+ID: 6
+Level: 1
+ProgressionOrder: 5
+Initiative: 90
+Discard: [Discard,Lost]
+Prefab: 6_Drifter_Unbreakable
+Data:
+    Top:
+        Abilities:
+            TMoveTracker:
+                Filter: Self
+                MoveActiveBonusTracker: -1
+                Vars:
+                    NumberOfCardsToSelect: 2
+                AnimOverload: PowerUp
+    Bottom:
+        Abilities:
+            BShieldIncomingAttacks_Unbreakable:
+                Shield: 1
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                PreviewEffectText: "<sprite name=Shield> 1"
+                Filter: Self
+                ActiveBonus:
+                    Duration: Persistent
+                    TriggerOnCaster: True
+                    IsToggleBonus: True
+                    ToggleIsOptional: False
+                    Behaviour: ShieldIncomingAttacks
+                    ValidAbilityType: Attack
+                    XPTracker: [1,0,1,0,1,0]
+                AnimOverload: Persistent Buff
+Layout:
+    Top:
+        - Row: "$FH/006_character_ability_cards_drifter_unbreakable_2$"
+    Bottom:
+        - Active:
+            Ability: BShieldIncomingAttacks_Unbreakable
+            Icon: Positive_Shield
+            ListLayout: "$FH/006_character_ability_cards_drifter_unbreakable_3$"
+            Layout: "$FH/006_character_ability_cards_drifter_unbreakable_3$"
+        - XPTracker: BShieldIncomingAttacks_Unbreakable

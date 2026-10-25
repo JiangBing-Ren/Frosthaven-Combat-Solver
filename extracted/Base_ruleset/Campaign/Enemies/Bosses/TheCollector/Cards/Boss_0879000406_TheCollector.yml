@@ -1,0 +1,41 @@
+fffffffffffParser: EnemyCard
+ID: 0879000406
+Name: $Monster_Ability_Boss_TheCollector_Special1$
+Initiative: 73
+Shuffle: False
+Data:
+    Abilities: 
+        AMove:
+            Move: +0
+        AAttack: 
+            Attack: +1
+            Filter: [Enemy]
+    Consumes:
+        TCFire:
+            Elements: Fire
+            AbilityOverrides:
+                BCAirAttackBuff:
+                    ParentName: AAttack
+                    Conditions: [Wound]
+        TCIce:
+            Elements: Ice
+            AbilityOverrides:
+                BCAirAttackBuff:
+                    ParentName: AAttack
+                    Conditions: [Disarm]
+        TCAir:
+            Elements: Air
+            AbilityOverrides:
+                BCAirAttackBuff:
+                    ParentName: AAttack
+                    Target: 1
+        CDark:
+            Elements: Dark
+            Abilities:
+                ACurse:
+                    Curse: True
+                    Filter: [Enemy]
+                    Target: -1
+                    TargetIsBase: True
+                    AnimOverload: CurseAOE
+    Infuse: [Fire, Air, Earth, Light]

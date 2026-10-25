@@ -1,0 +1,21 @@
+Parser: EnemyCard
+ID: 599
+Name: $Monster_Ability_599_RuinedMachine_DevastatingTackle$
+Initiative: 42
+Shuffle: False
+Data:
+    Abilities: 
+        AAttack:
+            Attack: 2
+            Filter: Enemy
+            Conditions: Immobilize
+            Text: "$FH/0599$"
+        ADamageSelf:
+            Damage: 1
+            Filter: Self
+            StartAbilityRequirements:
+                Type: ThisAbility
+                ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                AbilityTypes: [Attack]
+            TextOnly: True
+            NoLayoutSpace: True

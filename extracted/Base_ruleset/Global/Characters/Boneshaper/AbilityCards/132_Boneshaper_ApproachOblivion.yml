@@ -1,0 +1,75 @@
+Parser: AbilityCard
+Name: $FH/132_character_ability_cards_boneshaper_approach_oblivion_1$
+Character: BoneshaperID
+ID: 132
+Level: X
+Initiative: 53
+Discard: [Lost,Discard]
+Prefab: 132_Boneshaper_ApproachOblivion
+Data:
+    Top:
+        Abilities:
+            THeal:
+                Heal:
+                    Amount: 4
+                    DiamondPlusEnhancements: 1
+                Target: 99
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Heal","Range")
+                Filter: Ally
+                Conditions: [Bless]
+                AnimOverload: PowerUpPotent
+                MiscVars:
+                    AutoSelectValidTiles: True
+            TDamage:
+                Damage: 2
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Filter: Self
+                AutoTrigger: True
+                #Suffer animation triggers from the self damage, no animation overload needed
+            TCurse:
+                Curse: True
+                Filter: Self
+                SkipAnim: True
+                AutoTrigger: true
+        XP: 2
+    Bottom:
+        Abilities:
+            TAlly:
+                ControlActor:
+                    Abilities:
+                        BAllyMove:
+                            Move:
+                                Amount: 3
+                                SquareEnhancements: 1
+                            MiscVars:
+                                PrintedProperties: list("Move")
+                            StrengthIsBase: True
+                    ControlActorType: Player
+                Range: 99
+                Target: 1
+                Filter: OwnSummon
+                AnimOverload: ControlSummon
+        Infuse: Air
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "33,67"
+            - Column:
+                - Row: "<b><size=130%><sprite name=Heal> *THeal* <size=100%><voffset=1>@THeal@"
+            - Column:
+                - AddedEffect: "$FH/132_character_ability_cards_boneshaper_approach_oblivion_2$"
+        - Divider:
+        - MandatoryTrigger: "$FH/132_character_ability_cards_boneshaper_approach_oblivion_3$"
+        - Divider:
+        - MandatoryTrigger: "$FH/132_character_ability_cards_boneshaper_approach_oblivion_4$"
+    Bottom:
+        - Row: "<size=100%> "
+        - Row: "$FH/132_character_ability_cards_boneshaper_approach_oblivion_5$"
+        - Row: "<b><size=130%><sprite name=Move> *BAllyMove* <size=100%><voffset=1>@BAllyMove@"
+        - Row: "<size=200%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Air

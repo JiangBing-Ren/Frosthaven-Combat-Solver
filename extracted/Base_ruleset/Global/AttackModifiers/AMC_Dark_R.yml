@@ -1,0 +1,7 @@
+Parser: AttackModifier
+Name: AMC_Dark_R
+MathModifier: "+0"
+Rolling: True
+Abilities:
+    InfuseAbility:
+        Infuse: [Dark]

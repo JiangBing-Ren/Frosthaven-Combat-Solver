@@ -1,0 +1,33 @@
+Parser: ItemCard
+ID: 1183
+StringID: GloriousBraceletID
+Name: $FH/1183_item_cards_glorious_bracelet_1$
+Art: Glorious Bracelet
+TotalInGame: 2
+Cost: 30
+Slot: SmallItem
+Rarity: Rare
+Usage: Consumed
+Trigger: AfterAttackedIgnoringDamageTaken
+Data: 
+    ItemRequirements:
+        Vars:
+            ActorBeingAttacked: Ability.VarsContext.parentContext.ActorBeingAttacked
+            ItemOwner: Ability.VarsContext.parentContext.ItemOwner
+            ValidateAttackerIsItemOwner: ItemOwner == Ability.TargetingActor
+            ValidateEnoughDamage: Ability.VarsContext.parentContext.DamageTaken >= 6
+    Abilities:
+        ABless: 
+            AutoTrigger: True
+            Bless: True
+            Filter: Self
+            # item card specifically says "after the attack ability", not "after the attack" so i'm making sure i'm not interrupting the attack
+            MiscVars:
+                InterruptCurrentAbility: False
+        ABless2: 
+            AutoTrigger: True
+            Bless: True
+            Filter: Self
+            SkipAnim: True
+Layout: 
+    - Row: $FH/1183_item_cards_glorious_bracelet_2$

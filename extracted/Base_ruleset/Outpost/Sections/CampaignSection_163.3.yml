@@ -1,0 +1,8 @@
+Parser: CampaignSection
+ID: 163.3
+Name: Joseph the Lion Returns
+ShowAsUnknownInCalendar: True
+SkipCompletedNotification: False
+Effects:
+    - Type: UnlockScenario
+      Param1: 126

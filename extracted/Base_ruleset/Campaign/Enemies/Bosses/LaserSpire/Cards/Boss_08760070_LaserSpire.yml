@@ -1,0 +1,15 @@
+Parser: EnemyCard
+ID: 08760070
+Name: $Monster_Ability_Boss_LaserSpire_Special2$
+Initiative: 17
+Shuffle: True
+Data:
+    Abilities:
+        TRotateLasers:
+            Null: True
+            AutoTrigger: True
+            PerformVars:
+                NullBegin:
+                    RotateLasers: ScenarioScript_FH109.current.StartLaser(TargetingActor)
+            Text: "$FH/FH_Scenario_Campaign_109_SCENARIO_MODIFIER_6$"
+            TextOnly: True

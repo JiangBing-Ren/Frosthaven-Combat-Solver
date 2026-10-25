@@ -1,0 +1,75 @@
+Parser: AbilityCard
+Name: $FH/127_character_ability_cards_boneshaper_fell_remedy_1$
+Character: BoneshaperID
+ID: 127
+Level: 1
+Initiative: 30
+Discard: [Discard,Discard]
+Prefab: 127_Boneshaper_FellRemedy
+Data:
+    Top:
+        Abilities:
+            THeal:
+                Heal:
+                    Amount: 2
+                    DiamondPlusEnhancements: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Heal","Target","Range")
+                Filter: Ally
+                AnimOverload: PowerUp
+        Consumes:
+            TCEarth:
+                Elements: Earth
+                AbilityOverrides:
+                    TCEarthHealBuff:
+                        ParentName: THeal
+                        Strength: 2
+            TCDark:
+                Elements: Dark
+                AbilityOverrides:
+                    TCDarkHealBuff:
+                        ParentName: THeal
+                        Strength: 2
+                XP: 1
+    Bottom:
+        Abilities:
+            BHeal1:
+                Heal:
+                    Amount: 1
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self
+                AnimOverload: PowerUp
+            BHeal2:
+                AutoTrigger: True
+                Heal:
+                    Amount: 1
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    AllActorsKilledThisRound: "> 0"
+                    RequirementActorFilter:
+                        TargetType: Enemy
+                        EnemyType: [Normal,Elite,Boss]
+                AnimOverload: PowerUp
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Heal> *THeal* <size=100%><voffset=1>@THeal@ <mark=#6EBE4922>$FH/123_character_ability_cards_boneshaper_transfer_of_essence_3$</mark>"
+        - Row: "<size=20%> "
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCEarth
+                    Text: "+2 <sprite name=Heal>"
+                - Consume:
+                    Name: TCDark
+                    Text: "+2 <sprite name=Heal>, <sprite name=XP1>"
+    Bottom:
+        - Row: "<sprite name=Heal>1 <mark=#6EBE4922>$FH/127_character_ability_cards_boneshaper_fell_remedy_3$</mark>"
+        - Divider:
+        - Row: "$FH/127_character_ability_cards_boneshaper_fell_remedy_4$"
+        - Row: "<sprite name=Heal>1 <mark=#6EBE4922>$FH/127_character_ability_cards_boneshaper_fell_remedy_3$</mark>"

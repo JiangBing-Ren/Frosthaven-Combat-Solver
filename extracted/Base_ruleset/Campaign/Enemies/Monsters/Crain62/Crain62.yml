@@ -1,0 +1,98 @@
+Parser: Enemy
+ID: Crain62ID
+LocKey: $FH/Crain$
+MonsterType: Monster
+StandeeLimit: 1
+Model: CrainTallengyrS62
+PredominantlyMelee: True
+AbilityCards: [13003]
+# Base Stats
+Level0:
+    Health: 2
+    Move: 3
+    Attack: 0
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersPlusLevelTimesX
+            xVariable: 2
+            MinLValue: 1
+            AddTo: True
+Level1:
+    Health: 2
+    Move: 3
+    Attack: 0
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersPlusLevelTimesX
+            xVariable: 2
+            AddTo: True
+Level2:
+    Health: 2
+    Move: 3
+    Attack: 0
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersPlusLevelTimesX
+            xVariable: 2
+            AddTo: True
+Level3:
+    Health: 2
+    Move: 3
+    Attack: 0
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersPlusLevelTimesX
+            xVariable: 2
+            AddTo: True
+Level4:
+    Health: 2
+    Move: 3
+    Attack: 0
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersPlusLevelTimesX
+            xVariable: 2
+            AddTo: True
+Level5:
+    Health: 2
+    Move: 3
+    Attack: 0
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersPlusLevelTimesX
+            xVariable: 2
+            AddTo: True
+Level6:
+    Health: 2
+    Move: 3
+    Attack: 0
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersPlusLevelTimesX
+            xVariable: 2
+            AddTo: True
+Level7:
+    Health: 2
+    Move: 3
+    Attack: 0
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersPlusLevelTimesX
+            xVariable: 2
+            AddTo: True

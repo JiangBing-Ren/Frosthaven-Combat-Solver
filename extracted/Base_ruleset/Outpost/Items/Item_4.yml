@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 4
+ScenarioItemID: 888
+Name: Crude Hide Armor
+Quantity: 2
+Type: Body
+CraftingCost:
+    Hide: 2

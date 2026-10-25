@@ -1,0 +1,39 @@
+Parser: ItemCard
+ID: 938
+StringID: CleavingAxeID
+Name: $FH/0938_item_cards_cleaving_axe_1$
+Art: Cleaving Axe
+TotalInGame: 2
+Cost: 0
+Slot: TwoHand
+Rarity: Rare
+Usage: Spent
+# on paper this should be nearly the same as the shrapnel bomb item. 
+# but since this has only 1 target instead of everyone, it's impossible to combine visually with parent attack abilities that have more than one target
+# in which case i'm choosing to do OnAttackTargetOneByOne, so it's a bit clearer where this will happen
+Trigger: OnAttackTargetOneByOne
+Data:
+    ItemRequirements:
+        Vars:
+            ValidateAttackerIsItemOwner: Ability.TargetingActor == Actor
+            ValidateHasTargets: GameState.GetAdjacentEnemies(Ability.TargetingActor, AppliedActor).Where(obj != AppliedActor).Count > 0
+    Abilities:
+        ODamage:
+            CanUndo: False
+            Damage: 2
+            Target: 1
+            Filter: Enemy
+            Targeting: Custom
+            TargetingVars:
+                Targets: GameState.GetAdjacentEnemies(TargetingActor, AppliedActor).Where(obj != AppliedActor)
+                AddValidActorsInRange: Targets
+                AddTilesInRange: Targets.Select(obj.Tile)
+            StartAbilityRequirements:
+                Type: ThisAbility
+                Vars:
+                    ValidateHasTarget: AppliedActor != null
+    CompareAbility:
+        AbilityType: Attack
+        IsMelee: True
+Layout: 
+    - Row: $FH/0938_item_cards_cleaving_axe_2$

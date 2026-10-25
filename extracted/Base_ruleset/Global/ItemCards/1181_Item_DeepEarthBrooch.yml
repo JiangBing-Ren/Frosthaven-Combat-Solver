@@ -1,0 +1,27 @@
+Parser: ItemCard
+ID: 1181
+StringID: DeepEarthBroochID
+Name: $FH/1181_item_cards_deep_earth_brooch_1$
+Art: Deep Earth Brooch
+TotalInGame: 2
+Cost: 30
+Slot: SmallItem
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    ItemRequirements:
+        Vars:
+            ValidateHasConsumes: CAbilityConsume.CanConsume(list(ElementInfusionBoardManager.EElement.Earth, ElementInfusionBoardManager.EElement.Dark))
+    Abilities:
+        AConsume:
+            ShowElementPicker: True
+            Consume:
+                  Elements: [Earth, Dark]
+                  Abilities:
+                    AHealWardSelf:
+                        Heal: 3
+                        Filter: Self
+                        Conditions: Ward
+Layout: 
+    - Row: "$FH/1181_item_cards_deep_earth_brooch_2$"

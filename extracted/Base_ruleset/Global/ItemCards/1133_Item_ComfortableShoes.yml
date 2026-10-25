@@ -1,0 +1,25 @@
+Parser: ItemCard
+ID: 1133
+StringID: ComfortableShoesID
+Name: $FH/1133_item_cards_comfortable_shoes_1$
+Art: Comfortable Shoes
+TotalInGame: 2
+Cost: 30
+Slot: Legs
+Rarity: Rare
+Usage: Unrestricted
+Trigger: PassiveEffect
+Data: 
+    Abilities:
+        ABuffDefaultMove:
+            Move: 1
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: BuffMove
+                AttackType: Default
+Layout: 
+    - Active:
+        Ability: ABuffDefaultMove
+        Layout: "$FH/1133_item_cards_comfortable_shoes_2$"
+        ListLayout: "$FH/1133_item_cards_comfortable_shoes_2$"
+        Icon: "Positive_Pierce_AttackRanged_Item"        

@@ -1,0 +1,19 @@
+Parser: EnemyCard
+ID: 593
+Name: $Monster_Ability_593_SunDemon_ShiningOrb$
+Initiative: 50
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: 0
+        Attack1:
+            Attack: 0
+            Range: 3
+            RangeIsBase: True
+            Filter: Enemy
+            AnimOverload: RangedAttack
+    Consumes:
+        CAny:
+            Elements: Any
+            Infuse: Light

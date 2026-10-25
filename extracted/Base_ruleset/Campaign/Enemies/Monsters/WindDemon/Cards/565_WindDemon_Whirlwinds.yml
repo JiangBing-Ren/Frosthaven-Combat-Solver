@@ -1,0 +1,30 @@
+Parser: EnemyCard
+ID: 565
+Name: $Monster_Ability_565_WindDemon_Whirlwinds$
+Initiative: 29
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: 0
+        Attack1:
+            Attack: -1
+            Range: 3
+            RangeIsBase: True
+            Target: 2
+            TargetIsBase: True
+            Filter: Enemy
+            AnimOverload: Whirlwind
+            MultiPassAttack: False
+    Consumes:
+        CAir:
+            Elements: Air
+            AbilityOverrides:
+                CAirPush:
+                    ParentName: Attack1
+                    SubAbilities:
+                        TCAttackSubPush:
+                            Push:
+                                Amount: 2
+                            AnimOverload: None
+                            IsInlineSubAbility: True

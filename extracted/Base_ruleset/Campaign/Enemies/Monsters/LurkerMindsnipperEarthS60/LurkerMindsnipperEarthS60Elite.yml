@@ -1,0 +1,72 @@
+Parser: Enemy
+ID: LurkerMindsnipperEarthS60EliteID
+LocKey: $FH/LurkerMindsnipperS60Elite$
+MonsterType: Monster
+StandeeLimit: 1
+Model: FracturedLieutenantMindsnipper Earth Elite
+NonEliteVariant: LurkerMindsnipperEarthS60ID
+PredominantlyMelee: True
+AbilityCards: [682, 683, 684, 685, 686, 687, 688, 689]
+# Base Stats
+Level0:
+    Health: 7
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 2
+Level1:
+    Health: 7
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 2
+    Pierce: 3
+    Conditions: [Muddle]
+Level2:
+    Health: 8
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 2
+    Pierce: 3
+    Conditions: [Muddle]
+Level3:
+    Health: 11
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 2
+    Pierce: 4
+    Conditions: [Muddle]
+Level4:
+    Health: 13
+    Move: 4
+    Attack: 5
+    Range: 1
+    Target: 2
+    Pierce: 4
+    Conditions: [Muddle]
+Level5:
+    Health: 15
+    Move: 4
+    Attack: 6
+    Range: 1
+    Target: 2
+    Pierce: 4
+    Conditions: [Muddle]
+Level6:
+    Health: 22
+    Move: 5
+    Attack: 6
+    Range: 1
+    Target: 2
+    Pierce: 4
+    Conditions: [Muddle]
+Level7:
+    Health: 27
+    Move: 5
+    Attack: 7
+    Range: 1
+    Target: 2
+    Pierce: 4
+    Conditions: [Muddle]

@@ -1,0 +1,27 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH33_GetRadiantStone
+ScenarioAbility:
+    AActive:
+        AddActiveBonus:
+            NullHex: True
+            Target: 3
+            MiscVars:
+                MinTilesSelected: 3
+            Targeting: Custom
+            TargetingVars:
+                AddTilesInRange: ScenarioScript.current.GetConnectedRunesTiles(TargetingActor.ArrayIndex, false)
+            Vars:
+                TilesSelected:  ScenarioScript.current.GetConnectedRunesTiles(TargetingActor.ArrayIndex, true)
+            HelpBoxTooltipLocKey: $FH/FH_Scenario_Campaign_033_Select_Runes$
+            PreviewEffectText: <sprite name="AA_Kill">
+            AnimOverload: UseItem
+            Flags: [Special1]         
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringTurnAbility
+            XPTracker: [0]
+            IsToggleBonus: True
+            Requirements:
+                ForgoTopAction: True
+            Hidden: True
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_033_GetRadiantStoneAbility$, Move]

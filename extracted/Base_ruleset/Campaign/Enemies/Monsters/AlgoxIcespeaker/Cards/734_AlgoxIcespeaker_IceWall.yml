@@ -1,0 +1,37 @@
+Parser: EnemyCard
+ID: 734
+Name: $Monster_Ability_734_AlgoxIcespeaker_IceWall$
+Initiative: 08
+Shuffle: False
+Data:
+    Abilities:
+        Create1:
+            Create: RockSingle
+            #SpawnDelay: 3.06
+            Vars:
+                OverridePropName: "'FrozenFistObstacle'"
+            Target: 1
+            TargetIsBase: True
+            Range: 1
+            RangeIsBase: True
+            Filter: [Enemy]
+            Text: "$FH/0734_monster_ability_cards_algox_icespeaker_ice_wall_2$"
+            TextOnly: True
+            AnimOverload: ObstacleFormation
+            SubAbilities:
+                AdjacentHazardousDamage1:
+                    Target: -1
+                    Range: 1
+                    RangeIsBase: True
+                    AllTargetsAdjacentToParentTargets: True
+                    Filter: [Enemy]
+                    Damage: 1
+                    StatIsBasedOnX:
+                        Strength:
+                            BasedOn: ScenarioHazardousTerrainDamage
+        DummyNull:
+            Null: True
+            SkipAnim: True
+            Text: "$FH/0734_monster_ability_cards_algox_icespeaker_ice_wall_3$"
+            TextOnly: True
+    Infuse: [Ice, Earth]

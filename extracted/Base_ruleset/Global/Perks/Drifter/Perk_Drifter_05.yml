@@ -1,0 +1,8 @@
+Parser: Perk
+ID: Drifter05
+Name: FH/PERK_Drifter_05_Name
+Description: FH/PERK_Drifter_05_Desc
+CharacterID: DrifterID
+Available: 1
+CardsToRemove: [AMC_Basic_P0, AMC_Basic_P0]
+CardsToAdd: [AMC_Push2_R, AMC_Push2_R]

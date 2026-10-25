@@ -1,0 +1,18 @@
+Parser: AttackModifier
+Name: AMC_ShowNextAbilityCard_P0
+CustomCombatLogDescriptionLocKey: "AMC_ShowNextAbilityCard_P0"
+MathModifier: "+0"
+Abilities:
+    TRevealCard:
+        IsInlineSubAbility: True
+        NullTargeting: True
+        AutoTrigger: True
+        Filter: Enemy
+        MiscVars:
+            DontCopy: True
+        PerformVars:
+            OnAbilityEnded:
+                ValidateHasHappaned: AbilityHasHappened
+                Target: TargetActor
+                # show next monster cards
+                ShowMonsterCards: CustomAbility.ShowTopMonsterCards(Target)

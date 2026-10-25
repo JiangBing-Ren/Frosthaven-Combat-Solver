@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 247
+ScenarioItemID: 1260
+Name: Trainer's Net
+Quantity: 1
+GoldCost: 10
+Type: OneHandWeapon
+IsNewCharacterItem: False

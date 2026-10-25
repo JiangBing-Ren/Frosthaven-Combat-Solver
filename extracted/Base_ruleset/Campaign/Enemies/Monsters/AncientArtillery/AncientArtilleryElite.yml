@@ -1,0 +1,66 @@
+Parser: Enemy
+ID: AncientArtilleryEliteID
+LocKey: $AncientArtilleryElite$
+MonsterType: Monster
+StandeeLimit: 6
+Model: Ancient Artillery Elite
+NonEliteVariant: AncientArtilleryID
+PredominantlyMelee: False
+AbilityCards: [626, 627, 628, 629, 630, 631, 632, 633]
+# Base Stats
+Level0:
+    Health: 7
+    Move: 0
+    Attack: 3
+    Range: 5
+    Target: 1
+    Immunities: [Muddle]
+Level1:
+    Health: 9
+    Move: 0
+    Attack: 3
+    Range: 5
+    Target: 1
+    Immunities: [Muddle]
+Level2:
+    Health: 12
+    Move: 0
+    Attack: 3
+    Range: 6
+    Target: 1
+    Immunities: [Muddle]
+Level3:
+    Health: 14
+    Move: 0
+    Attack: 4
+    Range: 6
+    Target: 1
+    Immunities: [Muddle]
+Level4:
+    Health: 16
+    Move: 0
+    Attack: 5
+    Range: 6
+    Target: 1
+    Immunities: [Muddle]
+Level5:
+    Health: 21
+    Move: 0
+    Attack: 5
+    Range: 7
+    Target: 1
+    Immunities: [Muddle]
+Level6:
+    Health: 26
+    Move: 0
+    Attack: 6
+    Range: 7
+    Target: 1
+    Immunities: [Muddle]
+Level7:
+    Health: 34
+    Move: 0
+    Attack: 7
+    Range: 7
+    Target: 1
+    Immunities: [Muddle]

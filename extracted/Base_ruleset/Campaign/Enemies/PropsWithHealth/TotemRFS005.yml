@@ -1,0 +1,71 @@
+Parser: Enemy
+ID: TotemRFS005
+LocKey: $PropDummyObject$
+MonsterType: Object
+Model: Prop Dummy Object
+StandeeLimit: 100
+# Base Stats
+Level0:
+    Health: 0
+    Shield: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersTimesLevelPlusX
+            xVariable: 1
+            RoundingType: ToCeil
+Level1:
+    Health: 0
+    Shield: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersTimesLevelPlusX
+            xVariable: 1
+            RoundingType: ToCeil
+Level2:
+    Health: 0
+    Shield: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersTimesLevelPlusX
+            xVariable: 1
+            RoundingType: ToCeil
+Level3:
+    Health: 0
+    Shield: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersTimesLevelPlusX
+            xVariable: 1
+            RoundingType: ToCeil
+Level4:
+    Health: 0
+    Shield: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersTimesLevelPlusX
+            xVariable: 1
+            RoundingType: ToCeil
+Level5:
+    Health: 0
+    Shield: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersTimesLevelPlusX
+            xVariable: 1
+            RoundingType: ToCeil
+Level6:
+    Health: 0
+    Shield: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersTimesLevelPlusX
+            xVariable: 1
+            RoundingType: ToCeil
+Level7:
+    Health: 0
+    Shield: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersTimesLevelPlusX
+            xVariable: 1
+            RoundingType: ToCeil

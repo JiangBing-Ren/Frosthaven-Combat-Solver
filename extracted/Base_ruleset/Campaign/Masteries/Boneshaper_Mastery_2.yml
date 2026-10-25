@@ -1,0 +1,21 @@
+Parser: Mastery
+ID: Boneshaper_MASTERY_2
+LocalisedName: Boneshaper_MASTERY_2_Name
+LocalisedDescription: Boneshaper_MASTERY_2_Desc
+# Play a summon action on your first turn, have the summon kill at least six enemies, and keep it alive for the entire scenario
+PerkPoints: 1
+BattleGoalCondition:
+    - Targets:
+        Filter: FirstSummonInFirstRoundWithXKills
+        Value: 6
+        SubFilter: Scenario
+        CharacterIDs: 
+            ActorID: BoneshaperID
+# fail if first turn ended with 0 summons, or if first summon died during first turn. Code handles this if checking fail condition
+BattleGoalFailCondition:
+    - Targets:
+        Filter: FirstSummonInFirstRoundWithXKills
+        Value: 0
+        SubFilter: FirstRound
+        CharacterIDs: 
+            ActorID: BoneshaperID

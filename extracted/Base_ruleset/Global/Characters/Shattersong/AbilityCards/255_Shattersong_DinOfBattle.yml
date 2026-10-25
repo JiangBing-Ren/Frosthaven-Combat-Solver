@@ -1,0 +1,241 @@
+Parser: AbilityCard
+Name: $FH/255_character_ability_cards_shattersong_din_of_battle_1$
+Character: ShattersongID
+ID: 255
+Level: X
+Initiative: 14
+Discard: [Discard,Discard]
+Prefab: 255_Shattersong_DinOfBattle
+Data:
+    Top:
+        Abilities:            
+            TAttack:
+                Attack: 
+                    Amount: 2
+                    SquareEnhancements: 1
+                Target: 2
+                MiscVars:
+                    PrintedProperties: list("Attack","Target")     
+                Conditions: Muddle
+                Filter: [Enemy]
+                SubAbilities:
+                    TToken:
+                        NullTargeting:
+                        Tokens: 1
+                        Flags: [ModifiesResonanceTokens]
+                        Filter: [Self]
+                        AutoTrigger: true
+                        AnimOverload: Cast_Concentrate
+                        StartAbilityRequirements:
+                            Type: SubAbility
+                            ActorsTargetedByAbility: "> 1"
+    Bottom:
+        Abilities:
+            BAttackBuff:
+                Filter: [Self]
+                Attack: 1
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")     
+                    ListLayoutParamVar0: ActiveBonus.Ability.Range
+                Target: -1 
+                ActiveBonus:
+                    Duration: Round
+                    Behaviour: BuffAttack 
+                    ValidAbilityTypes: [Attack]
+                    Restriction: OncePerTurn
+                    RestrictPerActor: True
+                    IsToggleBonus: True
+                    IsSingleTargetBonus: True
+                    IsAura: True
+                    AuraTargeting: Range
+                    AuraFilter: [Self,Ally]
+                    ListLayoutOverride: [$FH/255_character_ability_cards_shattersong_din_of_battle_4$, Positive_AttackPlus_Aura]
+                AnimOverload: CastTargetMedium
+                SubAbilities:
+                    BFinishWave:
+                        NullTargeting: True
+                        Filter: Self
+                        SkipAnim: True
+                        AutoTrigger: True
+                        TreatAsNonSubAbility: True
+                        Flags: [Wave]
+                        MiscVars:
+                            DontTriggerFromBuffAttack: True        
+        Consumes:
+            BCResonance1:
+                PreviewEffectId: "$255_character_ability_cards_shattersong_din_of_battle_1$"
+                PreviewEffectText: "-X<sprite name=SSResonance>: +X<sprite name=Range>"
+                ConsumeGroup: DinOfBattleRangeChoice
+                Resonance: 1
+                AbilityOverrides:
+                    BRangeBuff1:
+                        ParentName: BAttackBuff
+                        Range: 1
+            BCResonance2:
+                ConsumeGroup: DinOfBattleRangeChoice
+                Resonance: 2
+                AbilityOverrides:
+                    BRangeBuff2:
+                        ParentName: BAttackBuff
+                        Range: 2
+            BCResonance3:
+                ConsumeGroup: DinOfBattleRangeChoice
+                Resonance: 3
+                AbilityOverrides:
+                    BRangeBuff3:
+                        ParentName: BAttackBuff
+                        Range: 3
+            BCResonance4:
+                ConsumeGroup: DinOfBattleRangeChoice
+                Resonance: 4
+                AbilityOverrides:
+                    BRangeBuff4:
+                        ParentName: BAttackBuff
+                        Range: 4
+            BCResonance5:
+                ConsumeGroup: DinOfBattleRangeChoice
+                Resonance: 5
+                AbilityOverrides:
+                    BRangeBuff5:
+                        ParentName: BAttackBuff
+                        Range: 5
+            # BChooseRange:
+            #     Filter: Self          
+            #     HelpBoxTooltipLocKey: "$FH/255_character_ability_cards_shattersong_din_of_battle_3$"
+            #     PreviewEffectText: "$FH/255_character_ability_cards_shattersong_din_of_battle_3$"           
+            #     MiscVars:
+            #         DontPreviewDescription: True
+            #         # doing the chosen ability as a sub ability so we can preview the effect
+            #         DontPerformChosenAbility: True            
+            #         OverrideIcon: "'Ability_Shattersong_Icon'"
+            #     Choose:
+            #         Choices:
+            #             D0:
+            #                 PreviewEffectText: "0"
+            #                 Strength: 0
+            #                 Requirements:
+            #                     Type: ThisAbility
+            #                     Vars:
+            #                         ValidateResonance: Actor.GetResonanceTokens() >= 0
+            #             D1:
+            #                 PreviewEffectText: "1"
+            #                 Strength: 1
+            #                 Requirements:
+            #                     Type: ThisAbility
+            #                     Vars:
+            #                         ValidateResonance: Actor.GetResonanceTokens() >= 1
+            #             D2:
+            #                 PreviewEffectText: "2"
+            #                 Strength: 2
+            #                 Requirements:
+            #                     Type: ThisAbility
+            #                     Vars:
+            #                         ValidateResonance: Actor.GetResonanceTokens() >= 2
+            #             D3:
+            #                 PreviewEffectText: "3"
+            #                 Strength: 3
+            #                 Requirements:
+            #                     Type: ThisAbility
+            #                     Vars:
+            #                         ValidateResonance: Actor.GetResonanceTokens() >= 3
+            #             D4:
+            #                 PreviewEffectText: "4"
+            #                 Strength: 4
+            #                 Requirements:
+            #                     Type: ThisAbility
+            #                     Vars:
+            #                         ValidateResonance: Actor.GetResonanceTokens() >= 4
+            #             D5:
+            #                 PreviewEffectText: "5"
+            #                 Strength: 5
+            #                 Requirements:
+            #                     Type: ThisAbility
+            #                     Vars:
+            #                         ValidateResonance: Actor.GetResonanceTokens() >= 5
+            #     PerformVars:
+            #         ApplyToActors:
+            #             Resonance: ChosenAbility?.Strength || 0
+            #             Tokens: Resonance * -1
+            #     Flags: [ModifiesResonanceTokens]
+            #     SubAbilities:
+            #         BAttackBuff:
+            #             TreatAsNonSubAbility: True
+            #             UseParentTargets: False
+            #             Filter: [Self]
+            #             Attack: 1
+            #             Range: 1
+            #             MiscVars:
+            #                 PrintedProperties: list("Attack","Range")     
+            #                 ListLayoutParamVar0: ActiveBonus.Ability.Range
+            #             Target: -1 
+            #             ActiveBonus:
+            #                 Duration: Round
+            #                 Behaviour: BuffAttack 
+            #                 ValidAbilityTypes: [Attack]
+            #                 Restriction: OncePerTurn
+            #                 RestrictPerActor: True
+            #                 IsToggleBonus: True
+            #                 IsSingleTargetBonus: True
+            #                 IsAura: True
+            #                 AuraTargeting: Range
+            #                 AuraFilter: [Self,Ally]
+            #                 ListLayoutOverride: [$FH/255_character_ability_cards_shattersong_din_of_battle_4$, Positive_AttackPlus_Aura]
+            #             AnimOverload: CastTargetMedium
+            #             StatIsBasedOnX:
+            #                 Range:
+            #                     AddTo: True
+            #                     BasedOn: Vars
+            #                     Vars:
+            #                         # if no parent ability, should be defaulting to whatever range was saved in the active bonus state
+            #                         Strength: (ParentAbility?.ChosenAbility?.Strength || 0)
+            #                         Value: max(0, Strength)
+
+            #             PerformVars:
+            #                 OnAbilityEnded:
+            #                     StackSubAbilities: obj.AbilityHasHappened && CustomAbility.StackNonInlineSubabilities(obj)
+            #             SubAbilities:
+            #                 BFinishWave:
+            #                     NullTargeting: True
+            #                     Filter: Self
+            #                     SkipAnim: True
+            #                     AutoTrigger: True
+            #                     TreatAsNonSubAbility: True
+            #                     Flags: [Wave]
+            #                     MiscVars:
+            #                         DontTriggerFromBuffAttack: True
+Layout:
+    Top:
+        - Row: "<sprite name=Attack> *TAttack* @TAttack@"
+        - Row: "<sprite name=Target> *TAttack.Target* <sprite name=Muddle>"
+        - Divider:
+        - Row: "$FH/255_character_ability_cards_shattersong_din_of_battle_2$"
+    Bottom:
+        - Row: "$FH/255_character_ability_cards_shattersong_din_of_battle_3$"
+        # - Conditional:
+        #     Text: "-X<sprite name=SSResonance>: +X<sprite name=Range>"
+        # - Conditional:
+        #     Layout:
+        #         - Consume:
+        #             Name: BCResonance1
+        #             Text: "<size=100%>+1 <sprite name=Range>"
+        # - Conditional:
+        #     Layout:
+        #         - Consume:
+        #             Name: BCResonance2
+        #             Text: "<size=100%>+2 <sprite name=Range>"
+        # - Conditional:
+        #     Layout:
+        #         - Consume:
+        #             Name: BCResonance3
+        #             Text: "<size=100%>+3 <sprite name=Range>"
+        # - Conditional:
+        #     Layout:
+        #         - Consume:
+        #             Name: BCResonance4
+        #             Text: "<size=100%>+4 <sprite name=Range>"
+        # - Conditional:
+        #     Layout:
+        #         - Consume:
+        #             Name: BCResonance5
+        #             Text: "<size=100%>+5 <sprite name=Range>"

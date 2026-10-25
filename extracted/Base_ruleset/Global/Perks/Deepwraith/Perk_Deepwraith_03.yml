@@ -1,0 +1,8 @@
+Parser: Perk
+ID: Deepwraith03
+Name: FH/PERK_Deepwraith_03_Name
+Description: FH/PERK_Deepwraith_03_Desc
+CharacterID: DeepwraithID
+Available: 1
+CardsToRemove: [AMC_Basic_M2]
+CardsToAdd: [AMC_Stun_M1]

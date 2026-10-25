@@ -1,0 +1,18 @@
+Parser: ItemCard
+ID: 944
+StringID: ShellArmorID
+Name: $FH/0944_item_cards_shell_armor_1$
+Art: Shell Armor
+TotalInGame: 2
+Cost: 0
+Slot: Body 
+Rarity: Rare
+Usage: Spent
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        AWardSelf:
+            Ward: True
+            Filter: Self
+Layout: 
+    - Row: $FH/0944_item_cards_shell_armor_2$

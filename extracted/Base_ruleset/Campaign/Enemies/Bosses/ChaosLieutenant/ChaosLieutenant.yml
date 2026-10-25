@@ -1,0 +1,73 @@
+Parser: Enemy
+ID: ChaosLieutenantID
+LocKey: $FH/ChaosLieutenant$
+MonsterType: Boss
+StandeeLimit: 1
+Model: ChaosLieutenant
+PredominantlyMelee: True
+AbilityCards: [05380001,05390002,05400003,05410004,05420005,05430006,05440007,05450008]
+# Base Stats
+Level0:
+    Health: 10
+    Move: 4
+    Attack: 3
+    Range: 1
+    Target: 1
+    Conditions: [Muddle]
+    Immunities: [Stun, Disarm]
+Level1:
+    Health: 12
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+    Conditions: [Muddle]
+    Immunities: [Stun, Disarm]
+Level2:
+    Health: 14
+    Move: 4
+    Attack: 5
+    Range: 1
+    Target: 1
+    Conditions: [Muddle]
+    Immunities: [Stun, Disarm]
+Level3:
+    Health: 18
+    Move: 5
+    Attack: 5
+    Range: 1
+    Target: 1
+    Conditions: [Muddle]
+    Immunities: [Stun, Disarm]
+Level4:
+    Health: 21
+    Move: 5
+    Attack: 6
+    Range: 1
+    Target: 1
+    Conditions: [Muddle]
+    Immunities: [Stun, Disarm]
+Level5:
+    Health: 26
+    Move: 5
+    Attack: 6
+    Range: 1
+    Target: 1
+    Conditions: [Muddle]
+    Immunities: [Stun, Disarm]
+Level6:
+    Health: 33
+    Move: 5
+    Attack: 8
+    Range: 1
+    Target: 1
+    Conditions: [Muddle]
+    Immunities: [Curse, Stun, Disarm]
+Level7:
+    Health: 39
+    Move: 6
+    Attack: 9
+    Range: 1
+    Target: 1
+    Conditions: [Muddle]
+    Immunities: [Curse, Stun, Disarm]

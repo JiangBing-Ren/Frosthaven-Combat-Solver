@@ -1,0 +1,22 @@
+Parser: Perk
+ID: Pyroclast12
+Name: FH/PERK_Pyroclast_12_Name
+Description: FH/PERK_Pyroclast_12_Desc
+CharacterID: PyroclastID
+Available: 1
+Cost: 3
+Flags: [Passive, ApplyActiveBonusesAtScenarioStart]
+Abilities:
+    AIgnoreOwnHazardousProps:
+        AutoTrigger: True
+        SkipAnim: True
+        NullTargeting: True
+        Filter: Self
+        MiscVars:
+            IgnoreOwnHazardousProps: True
+        ActiveBonus:
+            Duration: Persistent
+            IsAura: True
+            AuraFilter: [Self,Ally]
+            AuraTargeting: All
+            Hidden: True

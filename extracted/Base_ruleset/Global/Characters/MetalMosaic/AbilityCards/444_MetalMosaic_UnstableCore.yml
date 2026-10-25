@@ -1,0 +1,191 @@
+Parser: AbilityCard
+Name: $FH/444_character_ability_cards_metal_mosaic_unstable_core_1$
+Character: MetalMosaicID
+ID: 444
+Level: 9
+Initiative: 10
+Discard: [Permanently Lost,Discard]
+Prefab: 444_MetalMosaic_UnstableCore
+Data:
+    Top:
+        Abilities:
+            TPlayLostCards:
+                SelectAndPlayCard: 
+                    CardPile: Lost
+                    Amount: 4
+                MiscVars:
+                    MoveCardsToLostPile: True
+                AnimOverload: CastNeutral
+                PerformVars:
+                    PlayCards:                    
+                        PerformActiveBonusAbility: CustomAbility.PerformActiveBonusAbility(ActiveBonusData, TargetingActor, VarsContext, true)
+                    OnAbilityEnded:
+                        RemoveCardBonuses: CustomAbility.RemoveCardBonuses(GetAbilityBaseCard())
+                ActiveBonus:
+                    AbilityData:
+                        Filter: Self
+                        AddActiveBonus:
+                            Filter: Self
+                            HelpBoxTooltipLocKey: "$GUI_CHOOSE_PRESSURE$"
+                            Choose: 
+                                Abilities:
+                                    ALowPressure:
+                                        AutoTrigger: True
+                                        PreviewEffectText: "<sprite name=MMPressureLow>"
+                                        Filter: Self
+                                        NullTargeting: True
+                                        PerformVars:
+                                            ApplyToActors: 
+                                                SetPressure: CustomAbility.SetPressure(1, TargetingActor)
+                                    ARegularPressure:
+                                        AutoTrigger: True
+                                        PreviewEffectText: "<sprite name=MMPressureRegular>"
+                                        Filter: Self
+                                        NullTargeting: True
+                                        PerformVars:
+                                            ApplyToActors: 
+                                                SetPressure: CustomAbility.SetPressure(2, TargetingActor)
+                                    AHighPressure:
+                                        AutoTrigger: True
+                                        PreviewEffectText: "<sprite name=MMPressureHigh>"
+                                        Filter: Self
+                                        NullTargeting: True
+                                        PerformVars:
+                                            ApplyToActors: 
+                                                SetPressure: CustomAbility.SetPressure(3, TargetingActor)
+                                    AOverPressure:
+                                        AutoTrigger: True
+                                        PreviewEffectText: "<sprite name=MMPressureOver>"
+                                        Filter: Self
+                                        NullTargeting: True
+                                        PerformVars:
+                                            ApplyToActors: 
+                                                SetPressure: CustomAbility.SetPressure(4, TargetingActor)
+                        ActiveBonus:
+                            Behaviour: DuringTurnAbility
+                            Duration: Round
+                            Hidden: True
+                            IsToggleBonus: True
+                            ListLayoutOverride: [$GUI_CHOOSE_PRESSURE$, Positive_MetalMosaic]
+                            MiscVars:
+                                RemoveAfterDeath: True
+            TDie:
+                IgnoreStun: True
+                AutoTrigger: True
+                Kill: True
+                Filter: Self
+                CanUndo: False
+                CanSkip: False
+                SkipAnim: True
+                PerformVars:
+                    OnAbilityEnded:
+                        RemoveCardBonuses: CustomAbility.RemoveBonusesWithVar(TargetingActor, "RemoveAfterDeath")
+
+    Bottom:
+        Abilities:
+            BBuffMove:
+                Move: 3
+                MiscVars:
+                    PrintedProperties: list("Move")
+                PreviewEffectText: ""
+                Filter: Self
+                AnimOverload: CastNeutral
+                ActiveBonus:
+                    Behaviour: BuffMove
+                    Duration: Persistent
+                    ListLayoutOverride: [$FH/444_character_ability_cards_metal_mosaic_unstable_core_4$, Positive_MetalMosaic_PressureUp_PressureDown]
+                    ValidAbilityType: Move
+                    IsToggleBonus: True
+                    Restriction: OncePerTurn
+                    RestrictPerActor: True
+                    MiscVars:
+                        RestrictAllBonusesOnCard: True
+                    Requirements:
+                        DoesntHaveNegativeCondition: [Stun, Immobilize]
+                    CostAbility:
+                        NullTargeting: True
+                        Target: -1
+                        Range: 0
+                        CanUndo: False
+                        CanSkip: False
+                        PerformVars:
+                            ApplyToActors:
+                                ChangePressure: CustomAbility.PressureChange(TargetingActor, 1)
+                        StatIsBasedOnX:
+                            XP:
+                                BasedOn: Vars
+                                Vars:
+                                    Value: 1
+                SubAbilities:
+                    BBuffAttack:
+                        TreatAsNonSubAbility: True
+                        Attack: 3
+                        MiscVars:
+                            PrintedProperties: list("Attack")
+                        PreviewEffectText: ""
+                        AutoTrigger: True
+                        SkipAnim: True
+                        Filter: Self
+                        ActiveBonus:
+                            Behaviour: BuffSingleAttack
+                            Duration: Persistent
+                            ValidAbilityType: Attack
+                            IsToggleBonus: True
+                            IsSingleTargetBonus: True
+                            FullCopy: True
+                            Hidden: True
+                            Restriction: OncePerTurn
+                            RestrictPerActor: True
+                            ListLayoutOverride: ["+*BBuffAttack*<sprite name=Attack>", Positive_AttackPlus]
+                            MiscVars:
+                                RestrictAllBonusesOnCard: True
+                            Requirements:
+                                DoesntHaveNegativeCondition: [Stun, Disarm]
+                            CostAbility:
+                                NullTargeting: True
+                                Target: -1
+                                Range: 0
+                                CanUndo: False
+                                CanSkip: False
+                                PerformVars:
+                                    ApplyToActors:
+                                        ChangePressure: CustomAbility.PressureChange(TargetingActor, -1)
+                                StatIsBasedOnX:
+                                    XP:
+                                        BasedOn: Vars
+                                        Vars:
+                                            Value: 1
+                    BRemoveEndTurn:
+                        TreatAsNonSubAbility: True
+                        AutoTrigger: True
+                        SkipAnim: True
+                        Filter: Self
+                        AddActiveBonus:
+                            Damage: 5
+                            MiscVars:
+                                PrintedProperties: list("Damage")
+                            AutoTrigger: True
+                            Filter: Self
+                            SkipAnim: True
+                            MiscVars:
+                                MetalMosaicSelfDamage: True
+                            PerformVars:
+                                OnAbilityEnded:
+                                    RemoveCardBonuses: CustomAbility.RemoveCardBonuses(GetAbilityBaseCard())
+                        ActiveBonus:              
+                            Hidden: True
+                            Behaviour: EndTurnAbility
+                            Duration: Persistent
+                            Requirements:
+                                Vars: 
+                                    ValidatePressure: Actor.Pressure == "Low" || Actor.Pressure == "Over"
+Layout:
+    Top:
+        - Row: "$FH/444_character_ability_cards_metal_mosaic_unstable_core_2$"
+        - Divider:
+        - MandatoryTrigger:
+            Layout:
+                - Row: "$FH/444_character_ability_cards_metal_mosaic_unstable_core_3$"
+    Bottom:
+        - Row: "$FH/444_character_ability_cards_metal_mosaic_unstable_core_4$"
+        - Row: "$FH/444_character_ability_cards_metal_mosaic_unstable_core_5$"

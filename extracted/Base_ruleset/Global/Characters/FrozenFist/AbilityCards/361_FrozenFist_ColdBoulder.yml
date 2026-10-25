@@ -1,0 +1,102 @@
+Parser: AbilityCard
+Name: $FH/361_character_ability_cards_frozen_fist_cold_boulder_1$
+Character: FrozenFistID
+ID: 361
+Level: 1
+ProgressionOrder: 1
+Initiative: 70
+Discard: [Discard,Discard]
+Prefab: 361_FrozenFist_ColdBoulder
+Data:
+    Top:
+        Abilities:
+            TColdBoulderCreateIce:
+                CreateTerrain: Ice
+                TileFilter: FeaturelessHex
+                Target: 1
+                Range: 1
+                AnimOverload: TerrainFormation
+                MiscVars:
+                    includeCasterTile: True
+            TAttack:
+                Attack: 2
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Target: 99
+                MiscVars:
+                    AutoSelectValidTiles: True
+                MultiPassAttack: False
+                Targeting: Custom
+                TargetingVars:
+                    Parent: CustomAbility.FindAbilityInPhaseByName("TColdBoulderCreateIce")
+                    SelectedTile: Parent.TilesSelected[0]
+                    TilesInRange: GameState.GetTilesInRange(SelectedTile.m_ArrayIndex, 1)
+                    EnemiesInRange: GameState.GetActorsOnTiles(TilesInRange).Where(!CActor.AreActorsAllied(obj.Type, CActor.EType.Player, obj, null))
+                    AddTilesInRange: TilesInRange
+                    AddValidActorsInRange: EnemiesInRange
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [CreateTerrain]
+                AnimOverload: CrystalBurst
+            TActive:
+                AddActiveBonus:
+                    Heal: 1
+                    Filter: [Self]
+                    AutoTrigger: True
+                    AnimOverload: Heal
+                ActiveBonus:
+                    Duration: Round
+                    Behaviour: DuringActionAbilityOnDamaged
+                    ListLayoutOverride: [$FH/361_character_ability_cards_frozen_fist_cold_boulder_4$ <sprite name=Heal> 1 $Self$, Positive_HealSelf_Damage]
+                    Vars:
+                        DamageSourceAbility: TriggerAbility
+                        ValidateIsDamageFromAnAttack: DamageSourceAbility != null && DamageSourceAbility.AbilityType == CAbility.EAbilityType.Attack
+                Filter: [Self]
+                AnimOverload: FootStomp
+        Infuse: [Earth]
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 4
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+        Consumes:
+            BCIce:
+                Elements: Ice
+                AbilityOverrides:
+                    BCIceMoveBuff:
+                        ParentName: BMove
+                        Strength: 2
+                XP: 1
+Layout:
+    Top:
+        - Row: "$FH/361_character_ability_cards_frozen_fist_cold_boulder_2$"
+        - Divider:
+        - Row:  
+            - ColumnWidths: "30,70"
+            - Column: "<b><size=130%><sprite name=Attack> 2"
+            - Column:
+                - AddedEffect: "<size=75%>$FH/361_character_ability_cards_frozen_fist_cold_boulder_3$"
+        - Divider:
+        - Row:
+            - Active:
+                Ability: TActive
+                Icon: Heal
+                ListLayout: "$FH/361_character_ability_cards_frozen_fist_cold_boulder_4$"
+                Layout: "$FH/361_character_ability_cards_frozen_fist_cold_boulder_4$"
+        - Row: "<size=20%> "
+        - Row:
+            - MandatoryTrigger:
+                Layout:
+                    - Infuse: [Earth]
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: BCIce
+                    Text: "<size=90%>+2<sprite name=Move>, <sprite name=XP1>"

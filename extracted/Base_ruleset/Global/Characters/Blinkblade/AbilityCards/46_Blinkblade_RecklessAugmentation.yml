@@ -1,0 +1,131 @@
+Parser: AbilityCard
+Name: $FH/46_character_ability_cards_blinkblade_reckless_augmentation_1$
+Character: BlinkbladeID
+ID: 46
+Level: 2
+Initiative: 10
+Discard: [Discard,Discard]
+Prefab: 46_Blinkblade_RecklessAugmentation
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                ConditionalOverrides:
+                    TAttackFast:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Fast
+                        AbilityOverrides:
+                            TAttackAO:
+                                Strength: 2
+                                Pierce: 1
+                                MiscVars:
+                                    PrintedProperties: list("Pierce")
+                                AnimOverload: Attack
+                    TAttackSlow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            BAttack:
+                                AnimOverload: AttackSlow
+
+            TDamageFast:
+                Damage: 1
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Filter: Self
+                AutoTrigger: True
+                CanSkip: False
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Fast
+                # Just to add XP to the damage
+                ConditionalOverrides:
+                    TMoveCO_Fast:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Fast
+                        XP: 1
+                        AbilityOverrides:
+                            TDamageFast:
+                                Damage: 0
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BDamageFast:
+                Damage: 1
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Filter: Self
+                AutoTrigger: True
+                CanSkip: False
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Fast
+                # Just to add XP to the damage
+                ConditionalOverrides:
+                    TMoveCO_Fast:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Fast
+                        XP: 1
+                        AbilityOverrides:
+                            BDamageFast:
+                                Damage: 0
+            BWardFast:
+                Ward: True
+                Filter: Self
+                AutoTrigger: True
+                CanSkip: False
+                AnimOverload: PowerUp
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Fast
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "45,30"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "+2<sprite name=Attack>, <sprite name=Pierce>1"
+            - Column:
+                - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Divider:
+        - Row:
+            - ColumnWidths: "45,55"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "$FH/046_character_ability_cards_blinkblade_reckless_augmentation_2$"  
+            - Column:
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1> @BMove@"
+        - Divider:
+        - Row:
+            - ColumnWidths: "45,45"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "$FH/046_character_ability_cards_blinkblade_reckless_augmentation_2$"  
+            - Column:
+
+        - Divider:
+        - Row:
+            - ColumnWidths: "45,55"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "$FH/046_character_ability_cards_blinkblade_reckless_augmentation_3$"  
+            - Column:

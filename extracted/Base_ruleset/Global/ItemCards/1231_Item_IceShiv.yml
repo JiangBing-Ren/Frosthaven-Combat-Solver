@@ -1,0 +1,23 @@
+Parser: ItemCard
+ID: 1231
+StringID: IceShivID
+Name: $FH/1231_item_cards_ice_shiv_1$
+Art: Ice Shiv
+TotalInGame: 1
+Cost: 30
+Slot: OneHand 
+Rarity: Rare
+Usage: Spent
+Trigger: SingleTarget
+Consumes: Ice
+ProsperityRequirement: 1
+Data:     
+    Overrides:
+        OAttack:
+            Pierce: 3
+    CompareAbility:
+        AbilityType: Attack
+        IsMelee: True
+        Filter: Enemy
+Layout: 
+    - Row: $FH/1231_item_cards_ice_shiv_2$

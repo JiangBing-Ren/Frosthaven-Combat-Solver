@@ -1,0 +1,14 @@
+Parser: AttackModifier
+Name: AMC_Damage1Trap_P0
+MathModifier: "+0"
+Abilities:
+    TrapAbility:   
+        Trap:
+            TrapName: TrapperTrap
+            Damage: 1
+        RangeIsBase: True
+        AnimOverload: TrapThrow
+        TileFilter: EmptyHex
+        Targeting: Custom
+        TargetingVars:
+            AddTilesInRange: GameState.GetTilesInRange(TargetActor, 1)

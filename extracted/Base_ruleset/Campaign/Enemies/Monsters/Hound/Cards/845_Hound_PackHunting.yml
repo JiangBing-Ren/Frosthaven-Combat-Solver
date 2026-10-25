@@ -1,0 +1,21 @@
+Parser: EnemyCard
+ID: 845
+Name: $Monster_Ability_844_845_Hound_PackHunting$
+Initiative: 19
+Shuffle: True
+Data:
+    Abilities:
+        Move1:
+            Move: 0
+        Attack1:
+            Attack: 0
+            Filter: Enemy
+            ConditionalOverrides:
+                AttackCO:
+                    Filter:
+                        TargetType: Enemy
+                        TargetAdjacentAllies: "> 0"
+                    AbilityOverrides:
+                        TAdjAllyBuff:
+                            Strength: 2 
+            Text: "$10542$"

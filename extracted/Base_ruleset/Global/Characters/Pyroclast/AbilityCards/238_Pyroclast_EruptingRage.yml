@@ -1,0 +1,99 @@
+Parser: AbilityCard
+Name: $FH/238_character_ability_cards_pyroclast_erupting_rage_1$
+Character: PyroclastID
+ID: 238
+Level: 7
+Initiative: 70
+Discard: [Discard,Discard]
+Prefab: 238_Pyroclast_EruptingRage
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 4
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AnimOverload: RichSwipe
+                SubAbilities:
+                    TAttackSubPush:
+                        IsInlineSubAbility: True
+                        Push:
+                            Amount: 2
+                            SquareEnhancements: 1
+                        MiscVars:
+                            PrintedProperties: list("Push")
+                        PerformVars:
+                            OnAbilityEnded:
+                                StackSubAbilities: obj.AbilityHasHappened && CustomAbility.StackNonInlineSubabilities(obj)
+                        # allows pushing them into obstacles. Also destroys the obstacles
+                        AdditionalPushEffect: IntoObstacles
+                        SubAbilities:
+                            TCreateHazardous:
+                                AutoTrigger: True
+                                SkipAnim: True
+                                TreatAsNonSubAbility: True
+                                CreateLimitedHazardousTerrain: True
+                                Vars:
+                                    OverridePropName: "'PyroclastHazardTerrain'"
+                                Target: -1
+                                Targeting: Custom
+                                TargetingVars:
+                                    AddTilesInRange: ParentAbility.DestroyedObstacles.Select(obj.PropTile)
+                                StartAbilityRequirements:
+                                    Type: ThisAbility
+                                    Vars:
+                                        ValidateParentDestroyedObstacle: ParentAbility.DestroyedObstacles != null && ParentAbility.DestroyedObstacles.Count > 0
+                                PerformVars:
+                                    OnAbilityEnded:
+                                        StackSubAbilities: obj.AbilityHasHappened && CustomAbility.StackNonInlineSubabilities(obj)
+                                SubAbilities:
+                                    TDamage:
+                                        TreatAsNonSubAbility: True
+                                        Damage: 0
+                                        Targeting: Custom
+                                        TargetingVars:
+                                            AddValidActorsInRange: ParentAbility.ParentAbility.ActorsTargeted
+                                        AutoTrigger: True
+                                        StatIsBasedOnX:
+                                            Strength:
+                                                BasedOn: ScenarioHazardousTerrainDamage
+
+    Bottom:
+        Infuse: [Fire]
+        Abilities:
+            BCreateHazardous1:              
+                Target: 1
+                Range: 1
+                CreateLimitedHazardousTerrain: True
+                Vars:
+                    OverridePropName: "'PyroclastHazardTerrain'"
+                TileFilter: EmptyHex
+                AnimOverload: TerrainFormation
+            BMove:
+                Move: 
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BCreateHazardous2:              
+                Target: 1
+                Range: 1
+                CreateLimitedHazardousTerrain: True
+                Vars:
+                    OverridePropName: "'PyroclastHazardTerrain'"
+                TileFilter: EmptyHex
+                AnimOverload: TerrainFormation
+Layout:
+    Top:
+        - Row:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column: " <mark=#80919922><size=100%><sprite name=Push>*TAttackSubPush* <voffset=1>@TAttackSubPush@</mark>"
+        - Row: "$FH/238_character_ability_cards_pyroclast_erupting_rage_2$"
+    Bottom:
+        - Row: "$FH/238_character_ability_cards_pyroclast_erupting_rage_3$"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "$FH/238_character_ability_cards_pyroclast_erupting_rage_3$"

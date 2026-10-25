@@ -1,0 +1,13 @@
+Parser: EnemyCard
+ID: 13006
+Name: $Monster_Ability_S71_Artificer_RecoveringStep$
+Initiative: 99
+Shuffle: True
+Data:
+    Abilities: 
+        Move1:
+            Move:
+                Amount: 0
+        Heal1:
+            Heal: 1
+            Filter: Self

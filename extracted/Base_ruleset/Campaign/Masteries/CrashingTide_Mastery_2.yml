@@ -1,0 +1,20 @@
+Parser: Mastery
+ID: CrashingTide_MASTERY_2
+LocalisedName: CrashingTide_MASTERY_2_Name
+LocalisedDescription: CrashingTide_MASTERY_2_Desc
+PerkPoints: 1
+CheckAtEndOfScenario: True
+# at start of rest, have more active tide bonuses than cards in discard pile
+# ignore yml, this one is super specific so its all handled in the code
+BattleGoalCondition:
+    # succeed only if we've done long rests and they've been valid
+    - Targets: 
+        Filter: HaveMoreTidesThanDiscardCardsOnLongRestStart
+        SubFilter: Scenario
+        Value: 1
+BattleGoalFailCondition:
+    # fail only after we've done long rest and they've been invalid
+    - Targets: 
+        Filter: HaveMoreTidesThanDiscardCardsOnLongRestStart
+        SubFilter: Scenario
+        Value: 0

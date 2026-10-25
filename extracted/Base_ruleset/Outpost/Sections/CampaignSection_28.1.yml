@@ -1,0 +1,11 @@
+Parser: CampaignSection
+ID: 28.1
+Name: Mysterious Crate (28.1)
+SkipCompletedNotification: True
+Effects:
+    - Type: AllCharactersGainExperience
+      Param1: 10   
+    - Type: SkipNextOutpostEvent
+    - Type: AddCalendarCampaignSection
+      Param1: 178.1
+      Param2: 3

@@ -1,0 +1,24 @@
+Parser: EnemyCard
+ID: 822
+Name: $Monster_Ability_822_BurrowingBlade_ExplosiveAscent$
+Initiative: 63
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: 0
+            Jump: True
+            MiscVars:
+                CasterEffectsSMBAbilityName: "'BasicJump'"
+        Attack1:
+            Damage: 2
+            Range: 2
+            RangeIsBase: True
+            Target: -1
+            TargetIsBase: True
+            Targeting: Range
+            Filter: Enemy
+            Text: "$FH/822$"
+            TextOnly: True
+            AnimOverload: Tremble
+    Infuse: Earth

@@ -1,0 +1,16 @@
+Parser: EnemyCard
+ID: 20634
+Name: $Monster_Ability_634_FrozenCorpse_FreezingEmbrace$
+Initiative: 23
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: 1
+        TAddConditions:
+            AddCondition: True
+            Condition: [Brittle, Immobilize]
+            Filter: Enemy
+            Range: 1
+            RangeIsBase: True
+            AnimOverload: Cast

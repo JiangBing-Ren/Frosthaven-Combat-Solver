@@ -1,0 +1,12 @@
+Parser: EnemyCard
+ID: 775
+Name: $Monster_Ability_775_Scout_NoxiousBlade$
+Initiative: 92
+Shuffle: False
+Data:
+    Abilities: 
+        AAttack:
+            Attack: 2
+            Condition: [Poison]
+            
+            

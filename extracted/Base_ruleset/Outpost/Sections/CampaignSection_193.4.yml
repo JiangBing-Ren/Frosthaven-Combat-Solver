@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 193.4
+Name: Metal Depot Built
+SkipCompletedNotification: False
+Effects:
+    - Type: EnableEvent
+      Param1: WO-72
+    - Type: EnableEvent
+      Param1: WO-74

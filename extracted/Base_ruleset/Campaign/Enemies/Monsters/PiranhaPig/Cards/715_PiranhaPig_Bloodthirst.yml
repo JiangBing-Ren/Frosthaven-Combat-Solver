@@ -1,0 +1,21 @@
+Parser: EnemyCard
+ID: 715
+Name: $Monster_Ability_715_PiranhaPig_Bloodthirst$
+Initiative: 38
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: 1
+        Attack1:
+            Attack: -1
+            Filter: Enemy
+            Text: "$FH/0715_monster_ability_cards_piranha_pig_bloodthirst_2$"
+            ConditionalOverrides:
+                AttackCO:
+                    Filter:
+                        TargetType: Enemy
+                        TargetHasNegativeCondition: Wound
+                    AbilityOverrides:
+                        TAdjAllyBuff:
+                            Strength: 2

@@ -1,0 +1,32 @@
+Parser: ItemCard
+ID: 1149
+StringID: BootsOfQuicknessID
+Name: $FH/1149_item_cards_boots_of_quickness_1$
+Art: Boots of Quickness
+TotalInGame: 2
+Cost: 50
+Slot: Legs
+Rarity: Rare
+Usage: Spent
+Trigger: PassiveEffect
+Data: 
+    Abilities:
+        AAdjustInitiative:
+            AdjustInitiative: 20
+            Filter: Self
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: AdjustInitiative
+                XPTracker: [0]
+                IsToggleBonus: True
+                ValidAbilityType: AdjustInitiative
+                Hidden: True
+                Requirements:
+                    Vars:
+                        ValidateCanUseItems: Actor.Tokens.HasKey(CCondition.ENegativeCondition.Impair) == false && Actor.Tokens.HasKey(CCondition.ENegativeCondition.Stun) == false
+Layout:
+    - Active:
+        Ability: AAdjustInitiative
+        ListLayout: $FH/1149_item_cards_boots_of_quickness_2$
+        Layout: $FH/1149_item_cards_boots_of_quickness_2$
+        Icon: "Shield"

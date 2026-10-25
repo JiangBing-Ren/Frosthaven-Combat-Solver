@@ -1,0 +1,32 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH77_DamageNightDemons
+ScenarioAbility:
+    FH77DamageDemonsAbility:
+        AddActiveBonus:
+            Damage: 0
+            Target: 1
+            StatIsBasedOnX:
+                Strength:
+                    BasedOn: ScenarioTrapDamage
+            IgnoreLOS: True
+            Targeting: Custom
+            TargetingVars:
+                AddValidActorsInRange: AllEnemyMonsters.Where(!obj.IsDead && obj.MonsterClass.ID.Contains("Demon"))
+                AddTilesInRange: AddValidActorsInRange.Select(obj.Tile)
+            PerformVars:
+                OnAbilityEnded: 
+                    Consume: AbilityHasHappened && ElementInfusionBoardManager.Consume(ElementInfusionBoardManager.EElement.Light, TargetingActor)
+                    EndBonuses: AbilityHasHappened && ScenarioScript_FH077.EndConsumeAbility()
+            CanUndo: False
+        Filter: Self
+        ActiveBonus:
+            Duration: Persistent
+            IsToggleBonus: True
+            Behaviour: DuringTurnAbility
+            Requirements:
+                Vars:
+                    ValidateHasEarth: ElementInfusionBoardManager.GetAvailableElements().Contains(ElementInfusionBoardManager.EElement.Light)
+                    ValidateHasDemons: AllEnemyMonsters.Where(!obj.IsDead && obj.MonsterClass.ID.Contains("Demon")).Count > 0
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_077_SCENARIO_MODIFIER_5$, Positive_AttackPlus_Campaign]
+        AnimOverload: None
+        AutoTrigger: True

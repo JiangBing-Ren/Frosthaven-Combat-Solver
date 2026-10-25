@@ -1,0 +1,55 @@
+Parser: AbilityCard
+Name: $FH/003_character_ability_cards_drifter_precision_aim_1$
+Character: DrifterID
+ID: 3
+Level: 1
+ProgressionOrder: 2
+Initiative: 66
+Discard: [Lost,Discard]
+Prefab: 3_Drifter_PrecisionAim
+Data:
+    Top:
+        Abilities:
+            TBuffAttack:
+                Attack: 0
+                AttackEffect:
+                    Type: BuffIfAttackIsRanged
+                    Strength: 1
+                    Range: 1
+                MiscVars:
+                    PrintedProperties: list("AttackBuff","RangeBuff")
+                Filter: Self
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: BuffAttack
+                    AttackType: Ranged
+                    IsSingleTargetBonus: True
+                    XPTracker: [1,0,1,0,1,0]
+                    Flags: [EnhancedEffects]
+                AnimOverload: Persistent Buff
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BMoveTracker:
+                Filter: Self
+                MoveActiveBonusTracker: -1
+                Vars:
+                    NumberOfCardsToSelect: 1
+                AnimOverload: PowerUp
+Layout:
+    Top:
+        - Active:
+            Ability: TBuffAttack
+            Icon: Positive_AttackRanged_Plus_Range
+            ListLayout: "$FH/003_character_ability_cards_drifter_precision_aim_2$"
+            Layout: "$FH/003_character_ability_cards_drifter_precision_aim_2$"
+        - XPTracker: TBuffAttack
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove*<size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "$003_character_ability_cards_drifter_precision_aim_3$"

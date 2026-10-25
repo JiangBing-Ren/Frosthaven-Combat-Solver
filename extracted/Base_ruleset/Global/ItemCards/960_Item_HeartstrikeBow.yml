@@ -1,0 +1,38 @@
+Parser: ItemCard
+ID: 960
+StringID: HeartstrikeBowID
+Name: $FH/0960_item_cards_heartstrike_bow_1$
+Art: Heartstrike Bow
+TotalInGame: 2
+Cost: 0
+Slot: TwoHand 
+Rarity: Rare
+Usage: Spent
+Trigger: DuringOwnTurn
+Data:     
+    Abilities:
+        AAttack:
+            PreviewEffectText: "+1<sprite name=Attack>, +2<sprite name=Range>"
+            Filter: Self
+            Attack: 0
+            AttackEffect:
+                Type: FirstTargetOnly
+                Strength: 1
+                Range: 2
+                AttackType: Ranged
+            ActiveBonus:
+                Duration: Turn
+                Behaviour: BuffAttack
+                XPTracker: [0]
+                Hidden: True
+                Vars:
+                    ValidateHasAbility: TriggerAbility != null
+                    ValidateIsRanged: TriggerAbility.IsMeleeAttack == false
+                    ValidateNoAreaEffect: TriggerAbility.AreaEffect == null
+Layout: 
+    - Active:
+        Ability: AAttack
+        Icon: "Range"
+        ListLayout: "$FH/0960_item_cards_heartstrike_bow_2$"
+        Layout: "$FH/0960_item_cards_heartstrike_bow_2$"
+

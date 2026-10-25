@@ -1,0 +1,16 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH77_AttackBuff1
+ScenarioAbility:
+    AddActiveBonus:
+        Attack: 1
+        AttackEffect:
+            Type: BasedOnVarsCondition
+        Filter: Self
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: BuffAttack
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_077_SCENARIO_MODIFIER_6$, Positive_AttackPlus_Campaign]
+            Vars:
+                ActorTarget: TriggerTarget
+                ValidateTarget: ActorTarget != null && ActorTarget.MonsterClass != null
+                ValidateTargetIsDemon: ActorTarget.MonsterClass.ID.Contains("Demon")

@@ -1,0 +1,8 @@
+Parser: ScenarioAbility
+ID: FH002_PhaseScript
+ScenarioAbility:
+    ScenarioScript:
+        Null:
+        ActiveBonus:
+            Behaviour: ScenarioScript
+            ArbitraryParams: [ScenarioScript_FH002, a, b, c, d]

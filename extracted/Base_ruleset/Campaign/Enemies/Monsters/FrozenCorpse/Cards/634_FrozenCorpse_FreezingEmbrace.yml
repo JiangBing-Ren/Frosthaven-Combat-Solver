@@ -1,0 +1,22 @@
+Parser: EnemyCard
+ID: 634
+Name: $Monster_Ability_634_FrozenCorpse_FreezingEmbrace$
+Initiative: 23
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: 1
+            Vars:
+                ValidateIsActive: ScenarioScript_FH090.ValidateIsFrozenCorpseActive(TargetingActor)
+        TAddConditions:
+            AddCondition: True
+            Condition: [Brittle, Immobilize]
+            Filter: Enemy
+            Range: 1
+            RangeIsBase: True
+            AnimOverload: Cast
+            Vars:
+                ValidateIsActive: ScenarioScript_FH090.ValidateIsFrozenCorpseActive(TargetingActor)
+            MiscVars:
+                DontShowActiveBonusInActorStatPanel: True

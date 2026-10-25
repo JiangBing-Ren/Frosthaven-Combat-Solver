@@ -1,0 +1,7 @@
+Parser: FHEnhancement
+ID: SummonRange
+Name: Glossary_Enhancement_SummonRange
+Cost: 50
+Mark: Square
+Effect: AddOne
+ForEffect: SummonRange

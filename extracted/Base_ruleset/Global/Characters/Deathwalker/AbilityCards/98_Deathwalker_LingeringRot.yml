@@ -1,0 +1,62 @@
+Parser: AbilityCard
+Name: $FH/098_character_ability_cards_deathwalker_lingering_rot_1$
+Character: DeathwalkerID
+ID: 98
+Level: 1
+Initiative: 64
+Discard: [Lost,Discard]
+Prefab: 98_Deathwalker_LingeringRot
+Data:
+    Top:
+        Abilities:
+            TPerformAttackFromShadow:
+                PerformFromShadow:
+                    RemoveWhenDone: True
+                    Abilities:
+                        TAttack:
+                            Attack:
+                                Amount: 3
+                                DiamondEnhancements: 1
+                            MiscVars:
+                                PrintedProperties: list("Attack")
+                            MultiPassAttack: True
+                            Range: 1
+                            Target: 99
+                            Conditions: Poison
+                            MiscVars:
+                                AutoSelectValidTiles: True
+                Range: 99
+                Target: 1
+                AnimOverload: ShadowAttack
+                # xp should be awarded only if the attack went through
+                MiscVars:
+                    ExplicitlyDoesNothing: True
+        XP: 2
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BPoison:
+                Poison: True
+                Filter: Enemy
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Target: 1
+                AnimOverload: Debuff        
+Layout:
+    Top:
+        - Row: "<b><size=130%> <sprite name=Attack> *TAttack* @TAttack@"
+        - Row: "<size=20%> "
+        - Row: "$FH/098_character_ability_cards_deathwalker_lingering_rot_2$, <sprite name=Poison>"
+        - Row: "<size=20%> "
+        - Row: "$FH/098_character_ability_cards_deathwalker_lingering_rot_3$"
+    Bottom:
+        - Row: "<b><size=130%> <sprite name=Move> *BMove* @BMove@"
+        - Row: "<size=20%> "
+        - Divider:
+        - Row: "<sprite name=Poison> <sprite name=Range>1"

@@ -1,0 +1,83 @@
+Parser: AbilityCard
+Name: $FH/239_character_ability_cards_pyroclast_swelter_1$
+Character: PyroclastID
+ID: 239
+Level: 7
+Initiative: 32
+Discard: [Discard,Lost]
+Prefab: 239_Pyroclast_Swelter
+Data:
+    Top:
+        XP: 1
+        Infuse: [Fire]
+        Abilities:    
+            TDestroyHazardous:
+                NullHex: True
+                Range: 4
+                MiscVars:
+                    PrintedProperties: list("Range")
+                TileFilter: Custom
+                MiscVars:
+                    IsValidTile: obj.FindHazardousProp(true) != null
+                    DontCancelIfNoTiles: True
+                    DontPreviewDescription: True
+                    includeCasterTile: True
+                AnimOverload: ObstacleExplosion
+                PerformVars:
+                    Perform:
+                        SelectedTile: TilesSelected[0]
+                        Prop: SelectedTile.FindHazardousProp(true)
+                        DestroyProp: Prop.DestroyPropFromAbility(obj) 
+                SubAbilities:
+                    TAttack:
+                        TreatAsNonSubAbility: True
+                        SkipAnim: True
+                        Attack: 3
+                        Pierce: 2
+                        MiscVars:
+                            PrintedProperties: list("Attack","Range","Pierce")
+                        Target: 99
+                        MiscVars:
+                            AutoSelectValidTiles: True
+                        Targeting: Custom
+                        TargetingVars:
+                            ParentTiles: ParentAbility.TilesSelected
+                            AttackingActor: TargetingActor
+                            AddValidActorsInRange: CustomAbility.GetTilesInRange(ParentTiles, 1, true).Select(obj.LivingActor).Where(obj != null && obj.GetDistanceTo(AttackingActor) <= 5)
+                            AddTilesInRange: AddValidActorsInRange.Select(obj.Tile)
+
+    Bottom:
+        XP: 2
+        Abilities:
+            BDamage:
+                Damage: 0      
+                Filter: Enemy
+                MiscVars:
+                    DontCancelIfNoTiles: True
+                    HelpTextWhenCancelled: "'FH/239_character_ability_cards_pyroclast_swelter_5'"
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    Vars:
+                        ValidateNotInDoor: Actor.Tile.FindDoor() == null
+                        ValidateHasTiles: Actor.Tile.m_HexMap.MapTiles.Select(ScenarioManager.GetTile(obj.ArrayIndex.ToPoint())).Where(obj.FindHazardousProp() != null).Count > 0
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: Vars
+                        Vars:
+                            HazardousTiles: TargetingActor.Tile.m_HexMap.MapTiles.Select(ScenarioManager.GetTile(obj.ArrayIndex.ToPoint())).Where(obj.FindHazardousProp() != null)
+                            Value: min(5, HazardousTiles.Count)
+                Target: -1
+                Targeting: Room
+                Range: -1
+                AnimOverload: Swelter
+Layout:
+    Top:
+        - Row: "$FH/239_character_ability_cards_pyroclast_swelter_2$"
+        - Row:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack*"
+            - Column:            
+                - Conditional:
+                    Layout: "$FH/239_character_ability_cards_pyroclast_swelter_3$"
+        - Infuse: [Fire]
+    Bottom:
+        - Row: "$FH/239_character_ability_cards_pyroclast_swelter_4$"

@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 120.3
+Name: Frozenfist Retires
+SkipNarration: True
+SkipCompletedNotification: False
+Effects:
+      - Type: AddCalendarCampaignSection
+        Param1: 185.4
+        Param2: 10

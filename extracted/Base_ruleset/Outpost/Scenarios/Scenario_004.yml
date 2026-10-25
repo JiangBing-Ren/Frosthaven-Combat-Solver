@@ -1,0 +1,42 @@
+Parser: FHScenario
+ID: 4
+Name: Heart of Ice
+LevelID: FS_004A_Heart_of_Ice
+AlternativeLevelID: FS_004B_Heart_of_Ice
+LevelCondition: FS4
+Chain: Introduction
+Location: CopperneckMountaions
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: UnlockClass
+          Param1: FrozenFistID
+        - Type: GainMorale
+          Param1: 1
+        - Type: UnlockScenario
+          Param1: 6
+        - Type: AddProsperity
+          Param1: 1
+        - Type: AddCalendarCampaignSection
+          Param1: 156.1
+          Param2: 4
+        - Type: UnlockScenario
+          Param1: 7
+        - Type: UnlockScenario
+          Param1: 8
+    - Effects:
+        - Type: UnlockClass
+          Param1: SnowdancerID
+        - Type: UnlockScenario
+          Param1: 5
+        - Type: GainMorale
+          Param1: 1
+        - Type: AddProsperity
+          Param1: 1
+        - Type: AddCalendarCampaignSection
+          Param1: 156.1
+          Param2: 4
+        - Type: UnlockScenario
+          Param1: 7
+        - Type: UnlockScenario
+          Param1: 8

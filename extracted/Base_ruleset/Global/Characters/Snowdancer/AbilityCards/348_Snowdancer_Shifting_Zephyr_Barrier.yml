@@ -1,0 +1,64 @@
+Parser: AbilityCard
+Name: $FH/348_character_ability_cards_snowdancer_zephyr_barrier_1$
+Character: SnowdancerID
+ID: 348
+Level: 4
+Initiative: 40
+Discard: [Discard,Lost]
+Prefab: 348_Snowdancer_ZephyrBarrier
+Data:
+    Top:
+        Abilities:
+            THeal: 
+                Heal:
+                    Amount: 1
+                    SquareEnhancements: 1
+                Target: 2
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Heal","Target","Range")
+                Filter: [Self, Ally]
+                Condition: Ward
+                AnimOverload: Heal
+        Consumes:
+            TCAir:
+                Elements: Air
+                AbilityOverrides:
+                    TCAirHealBuff:
+                        ParentName: THeal
+                        Strength: 1
+                        Range: 1
+                XP: 1
+    Bottom:
+        Abilities:
+            BShield:
+                Shield: 1
+                Filter:
+                    TargetType: Ally
+                    ActorType: Player
+                ActiveBonus:
+                    Duration: Persistent
+                    GiveAbilityCardToActor: True
+                    ListLayoutOverride: ["<sprite name=Shield> *BShield*", Positive_Shield]
+        XP: 2
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "20,20,30,20,20"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Heal> *THeal* <size=100%><voffset=1>@THeal@"
+            - Column:
+                - Row: "<mark=#80919922><size=100%><sprite name=Target>*THeal.Target*,<sprite name=Range>*THeal.Range*</mark>"
+            - Column:
+                - Row: "<mark=#80919922><sprite name=Ward></mark>"
+            - Column:
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCAir
+                    Text: "<size=100%>+1 <sprite name=Heal>, +1<sprite name=Range>,<sprite name=XP1>"
+    Bottom:
+        - Row: "$FH/348_character_ability_cards_snowdancer_zephyr_barrier_2$"
+        - Row: "<b><size=200%><sprite name=Shield> 1"

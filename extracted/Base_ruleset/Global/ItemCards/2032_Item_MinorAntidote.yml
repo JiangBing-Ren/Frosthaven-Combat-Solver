@@ -1,0 +1,27 @@
+Parser: ItemCard
+ID: 2032
+StringID: MinorAntidoteID
+Name: $FH/2032_item_cards_minor_antidote_1$
+Art: Minor Antidote
+TotalInGame: 2
+Cost: 25
+Slot: SmallItem
+Rarity: Rare
+Usage: Consumed
+Trigger: PassiveEffect
+Data:
+    Abilities:
+        AImmunity:
+            ImmunityTo: [Poison]
+            AutoTrigger: True
+            Filter: Self
+            ActiveBonus:
+                Behaviour: ChooseCondition
+                Duration: Persistent
+                XPTracker: [0,0,0]
+Layout:
+    - Active:
+        Ability: AImmunity
+        ListLayout: $FH/2032_item_cards_minor_antidote_2$
+        Layout: $FH/2032_item_cards_minor_antidote_2$
+        Icon: "Positive_ConditionPrevent_Poison_Item"

@@ -1,0 +1,16 @@
+Parser: EnemyCard
+ID: 812
+Name: $Monster_Ability_812_ShrikeFiend_FiendishCharge$
+Initiative: 73
+Shuffle: False
+Data:
+    Abilities: 
+        AMove:
+            Move: 2
+        AAttack:
+            Attack: 0
+            Filter: Enemy
+            SubAbilities:
+                ASubPush:
+                    Push: 2
+                    IsInlineSubAbility: True

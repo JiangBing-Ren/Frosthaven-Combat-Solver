@@ -1,0 +1,14 @@
+Parser: FHScenario
+ID: 79
+Name: Relic
+LevelID: FS_079_Relic
+RequiresSled: true
+Chain: JobPosting
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: GainMorale
+          Param1: 3
+        - Type: AddCalendarCampaignSection
+          Param1: 45.2
+          Param2: 3

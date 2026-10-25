@@ -1,0 +1,64 @@
+Parser: AbilityCard
+Name: $FH/115_character_ability_cards_deathwalker_hungry_grasps_1$
+Character: DeathwalkerID
+ID: 115
+Level: 7
+Initiative: 25
+Discard: [Discard,Lost]
+Prefab: 115_Deathwalker_HungryGrasps
+Data:
+    Top:
+        Abilities:
+            TPerformAttackFromShadow:
+                PerformFromShadow:
+                    Abilities:
+                        PFSAttack:
+                            Filter: Enemy
+                            Attack: 
+                                Amount: 3
+                                DiamondEnhancements: 1
+                            Range: 
+                                Amount: 2
+                                SquareEnhancements: 1
+                            MiscVars:
+                                PrintedProperties: list("Attack","Range")
+                            Target: 1
+                            SubAbilities:
+                                PFSPull:
+                                    IsInlineSubAbility: True
+                                    Pull:
+                                        Amount: 2
+                                        SquareEnhancements: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Pull")
+                Range: -1
+                Target: 2
+                AnimOverload: ShadowAttackRanged
+    Bottom:
+        Abilities:
+            BPerformHealBlessFromShadow:
+                PerformFromShadow:
+                    Abilities:
+                        PFSHeal:
+                            Filter: [Self,Ally]
+                            Heal: 
+                                Amount: 3
+                                DiamondPlusEnhancements: 1
+                            Range: 1
+                            Target: 1
+                            MiscVars:
+                                PrintedProperties: list("Heal","Range")
+                            Conditions: Bless
+                Range: -1
+                Target: -1
+                # xp should be awarded only if the heal went through
+                MiscVars:
+                    ExplicitlyDoesNothing: True
+        XP: 2
+Layout:
+    Top:
+        - Row: "$FH/115_character_ability_cards_deathwalker_hungry_grasps_2$"
+        - Row: "$FH/115_character_ability_cards_deathwalker_hungry_grasps_3$"
+    Bottom:
+        - Row: "$FH/115_character_ability_cards_deathwalker_hungry_grasps_4$ @PFSHeal@"
+        - Row: "$FH/115_character_ability_cards_deathwalker_hungry_grasps_5$"

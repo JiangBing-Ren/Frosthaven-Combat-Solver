@@ -1,0 +1,77 @@
+Parser: AbilityCard
+Name: $FH/189_character_ability_cards_infuser_emerald_edge_1$
+Character: InfuserID
+ID: 189
+Level: 1
+Initiative: 70
+Discard: [Discard,Discard]
+Prefab: 189_Infuser_EmeraldEdge
+Data:
+    Top:
+        Abilities:
+            ConsumeAbility:
+                Consume: 
+                    Elements: [Earth, Dark]
+                    Abilities:
+                        CNull:
+                            Null: True
+                            AutoTrigger: True
+            TAttack:
+                Attack: 5
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Target: 1
+                Range: 1
+                Filter: Enemy
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Consume]
+            TWard:
+                Ward: True
+                Filter: Self
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Consume]
+        XP: 1
+    Bottom:
+        Abilities:
+            BHeal:
+                Heal: 2
+                Target: 2
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Heal","Target","Range")
+                Filter: [Self, Ally]
+                AnimOverload: RangedCast
+        Consumes:
+            BCHeal:
+                PreviewEffectId: M1Target
+                AbilityOverrides:
+                    BCHealBuff:
+                        ParentName: BHeal
+                        Target: -1
+                        SubAbilities:
+                            BInfuse:
+                                TreatAsNonSubAbility: True
+                                AutoTrigger: True
+                                Infuse: [Earth]
+                                SkipAnim: True
+
+Layout:
+    Top:
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<sprite name=ConsumeEarth>, <sprite name=ConsumeDark>:"
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack*"
+        - Divider:
+        - Row: "$FH/189_character_ability_cards_infuser_emerald_edge_2$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Heal> *BHeal*, <sprite name=Target> *BHeal.Target*, <sprite name=Range> *BHeal.Range*"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: BCHeal
+                    Text: "-1<sprite name=Target>: <sprite name=CreateEarth>"

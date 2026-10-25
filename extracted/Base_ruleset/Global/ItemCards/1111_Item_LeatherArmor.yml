@@ -1,0 +1,27 @@
+Parser: ItemCard
+ID: 1111
+StringID: LeatherArmorID
+Name: $FH/1111_item_cards_leather_armor_1$
+Art: Leather Armor
+TotalInGame: 2
+Cost: 15
+Rarity: Rare
+Slot: Body 
+Usage: Spent
+Trigger: OnAttackedBeforeAttackModifiers
+Data: 
+    ItemRequirements:
+        Vars:
+            AttackedActor: Ability.VarsContext.parentContext.ActorToAttack
+            ItemOwner: Ability.VarsContext.parentContext.ItemOwner
+            ValidateItemOwnerIsAttackTarget: AttackedActor == ItemOwner
+            ValidateAttackersGainDisadvantage: TargetSummary?.AttackersGainDisadvantage == false
+            ValidateAttackerHasMuddle: Ability.TargetingActor.Tokens.HasKey(CCondition.ENegativeCondition.Muddle) == false
+    CompareAbility:
+        AbilityType: Attack
+        Filter: Enemy
+    Overrides:
+        OAttackModifierOverrideBonus:
+            AttackHasDisadvantage: True
+Layout: 
+    - Row: "$FH/1111_item_cards_leather_armor_2$"

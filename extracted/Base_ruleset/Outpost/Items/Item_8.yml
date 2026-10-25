@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 8
+ScenarioItemID: 896
+Name: Crude Spear
+Quantity: 2
+Type: TwoHandWeapon
+CraftingCost:
+    Lumber: 1
+    Metal: 1

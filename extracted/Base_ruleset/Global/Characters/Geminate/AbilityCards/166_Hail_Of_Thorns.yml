@@ -1,0 +1,79 @@
+Parser: AbilityCard
+Name: $FH/166_character_ability_cards_geminate_hail_of_thorns_1$
+Character: GeminateID
+ID: 166
+Level: 1
+ProgressionOrder: 13
+Initiative: 88
+Discard: [Lost,Discard]
+RequiredForm: Range
+Prefab: 166_Geminate_HailOfThorns
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 2
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                Filter: Enemy
+                Target: 99
+                MultiPassAttack: False
+                Conditions: [Muddle]
+                AnimOverload: RangedAttack_HailOfThorns
+                MiscVars:
+                    AutoSelectValidTiles: True
+            TAttackSubMuddle:
+                Muddle: True
+                MiscVars:
+                    PrintedProperties: list("Range")
+                AutoTrigger: True
+                Target: -1
+                Range: 2
+                Filter: Ally
+                SkipAnim: True
+        Infuse: Ice
+        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BConsume:
+                Consume:
+                    Elements: Light
+                    PreviewEffectText: "<sprite name=Wound>, <sprite name=Range> 1"
+                    Abilities:
+                        CAWound:
+                            Wound: True
+                            Filter: Enemy
+                            Range: 1
+                            MiscVars:
+                                PrintedProperties: list("Range")
+                            RangeIsBase: True
+                            Target: 1
+                            TargetIsBase: True
+                            CanUndo: False
+                            AnimOverload: Cast Negative
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@ $FH/166_character_ability_cards_geminate_hail_of_thorns_2$, <sprite name=Range>2, <sprite name=Muddle>"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<sprite name=Muddle> $FH/166_character_ability_cards_geminate_hail_of_thorns_3$"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Ice
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* @BMove@"
+        - Row: "<size=20%> "
+        - Conditional:
+                Layout:
+                    # - Consume:
+                    #     Name: BCLight
+                    - Row: "<size=200%><sprite name=ConsumeLight><nobr><size=130%>: <sprite name=Wound></nobr>, <nobr><size=100%><sprite name=Range>1</nobr>"

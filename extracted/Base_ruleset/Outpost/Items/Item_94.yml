@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 94
+ScenarioItemID: 1053
+Name: Frenzy Potion
+Quantity: 2
+Type: Small
+Brewing:
+    Herb1: Corpsecap
+    Herb2: Axenut

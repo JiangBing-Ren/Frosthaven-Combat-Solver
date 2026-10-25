@@ -1,0 +1,7 @@
+Parser: Perk
+ID: BannerSpear05
+Name: FH/PERK_BannerSpear_05_Name
+Description: FH/PERK_BannerSpear_05_Desc
+CharacterID: BannerSpearID
+Available: 2
+CardsToAdd: [AMC_P1_R, AMC_P1_R]

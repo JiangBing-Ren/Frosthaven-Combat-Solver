@@ -1,0 +1,7 @@
+Parser: Perk
+ID: PainConduit07
+Name: FH/PERK_PainConduit_07_Name
+Description: FH/PERK_PainConduit_07_Desc
+CharacterID: PainConduitID
+Available: 2
+CardsToAdd: [AMC_Heal1_R_PainConduit, AMC_Heal1_R_PainConduit, AMC_Heal1_R_PainConduit]

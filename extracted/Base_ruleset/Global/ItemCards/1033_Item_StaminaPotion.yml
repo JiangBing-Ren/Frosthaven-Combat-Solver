@@ -1,0 +1,26 @@
+Parser: ItemCard
+ID: 1033
+StringID: StaminaPotionID
+Name: $FH/1033_item_cards_stamina_potion_1$
+Art: Stamina Potion
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+PermanentlyConsumed: True
+Data: 
+    ItemRequirements:
+        Vars: 
+            DiscardedAbilityCards: Actor.CharacterClass.DiscardedAbilityCards.Where(obj.Level <= 1)
+            ValidateHasCards: DiscardedAbilityCards.Count > 0
+    Abilities:
+        ARecoverCard:
+            Filter: Self
+            RecoverDiscardedCards: 1
+            Vars:
+                CardLevel: 1
+                OverrideCardSelectionKey: "'$FH/1033_item_cards_stamina_potion_3$'"
+Layout: 
+    - Row: "$FH/1033_item_cards_stamina_potion_2$"

@@ -1,0 +1,7 @@
+Parser: AttackModifier
+Name: AMC_Muddle_P3
+MathModifier: "+3"
+AbilityOverrides:
+    NegCon:
+        ParentName: AMC_Muddle_P3
+        Conditions: [Muddle]

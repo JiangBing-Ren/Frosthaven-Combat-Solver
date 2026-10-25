@@ -1,0 +1,128 @@
+Parser: AbilityCard
+Name: $FH/44_character_ability_cards_blinkblade_borrowed_time_1$
+Character: BlinkbladeID
+ID: 44
+Level: X
+Initiative: 02
+Discard: [Lost,Discard]
+Prefab: 44_Blinkblade_BorrowedTime
+Data:
+    Top:
+        Abilities:
+            TActive:
+                AddActiveBonus:
+                    Immobilize: True
+                    MiscVars:
+                        PrintedProperties: list("Range")
+                    Range: 3
+                    Target: 1
+                    Targeting: Range
+                    Filter: Enemy
+                    AnimOverload: CastNegativeSlow
+                Filter: Self
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: DuringActionAbilityOnActionEnded
+                    Restriction: OncePerAction
+                    TriggerOnCaster: True
+                    Flags: [IgnoreSlowEffects, WhenSlow]
+                    XPTracker: [0,1,0,1,0,1]
+                AnimOverload: ChargeUp
+                ConditionalOverrides:
+                    AnimCO_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            BAnim:
+                                AnimOverload: ChargeUpSlow
+    Bottom:
+        Abilities:
+            BDebuffMove:
+                Move: -1
+                Filter: Self
+                ActiveBonus:
+                    Duration: Round
+                    Behaviour: BuffMove
+                    IsAura: True
+                    AuraTargeting: All
+                    ListLayoutOverride: [$FH/044_character_ability_cards_blinkblade_borrowed_time_3$, Negative_MoveMinus_Ally]
+                    AuraFilter:
+                        TargetType: Ally
+                        UseTargetOriginalType: True
+                CanSkip: False
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Fast
+                AnimOverload: CastNegative
+            BBuffMove:
+                Move: 1
+                Filter: Self
+                ActiveBonus:
+                    Duration: Round
+                    Behaviour: BuffMove
+                    IsAura: True
+                    AuraTargeting: All
+                    ListLayoutOverride: [$FH/044_character_ability_cards_blinkblade_borrowed_time_4$, Positive_MovePlus_Ally]
+                    AuraFilter:
+                        TargetType: Ally
+                        UseTargetOriginalType: True
+                CanSkip: False
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Slow
+                AnimOverload: PowerUpSlow
+            BMove:
+                Move: 0
+                MiscVars:
+                    PrintedProperties: list("Move")
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: ActorCount
+                        Filter: Ally
+                        Multiplier: 2
+                        AddTo: True
+                #CanSkip: False
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Fast
+Layout:
+    Top:
+        - Active:
+            Ability: TActive
+            ListLayout: "$FH/044_character_ability_cards_blinkblade_borrowed_time_2$ <sprite name=Immobilize> <sprite name=Range>3"
+            Layout: "$FH/044_character_ability_cards_blinkblade_borrowed_time_2$ <sprite name=Immobilize> <sprite name=Range>3"
+            Icon: "Positive_SlowPrevent_Blinkblade_Immobilize"
+        - Row: "<size=50%> "
+        - XPTracker:
+            Ability: TActive
+            # ShowPersistentIcon: False       
+    Bottom:
+        - Row:
+            - ColumnWidths: "50,50"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Layout: 
+                        - Active:
+                            Ability: BDebuffMove
+                            Icon: Negative_MoveMinus_Ally
+                            ListLayout: "$FH/044_character_ability_cards_blinkblade_borrowed_time_3$"
+                            Layout: "$FH/044_character_ability_cards_blinkblade_borrowed_time_3$"
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Layout: 
+                        - Active:
+                            Ability: BBuffMove
+                            Icon: Positive_MovePlus_Ally
+                            ListLayout: "$FH/044_character_ability_cards_blinkblade_borrowed_time_4$"
+                            Layout: "$FH/044_character_ability_cards_blinkblade_borrowed_time_4$"
+        - Divider:
+        - Row:
+            - ColumnWidths: "80,20"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "$FH/044_character_ability_cards_blinkblade_borrowed_time_5$"
+            - Column:

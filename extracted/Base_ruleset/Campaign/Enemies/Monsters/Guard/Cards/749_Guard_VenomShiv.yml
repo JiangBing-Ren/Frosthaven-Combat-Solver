@@ -1,0 +1,18 @@
+Parser: EnemyCard
+ID: 749
+Name: $Monster_Ability_749_Guard_VenomShiv$
+Initiative: 15
+Shuffle: False
+Data:
+    Abilities:
+        Attack1:
+            Attack: 0
+            Conditions: Poison
+            Filter: Enemy
+        Shield1:
+            Shield: 1
+            Filter: Self
+            AnimOverload: PowerUp
+            ActiveBonus:
+                Duration: Round
+                ListLayoutOverride: ["<sprite name=Shield> *Shield1*", Positive_Shield]

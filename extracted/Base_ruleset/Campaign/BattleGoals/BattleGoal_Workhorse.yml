@@ -1,0 +1,15 @@
+Parser: BattleGoal
+ID: BattleGoal_Workhorse
+LocalisedName: BATTLEGOAL_Workhorse
+LocalisedDescription: BATTLEGOAL_Workhorse_Desc
+#Gain 13 or more experience points during the scenario - 1
+PerkChecks: 1
+BattleGoalCondition:
+    - Targets:
+        Filter: XPGain
+        Conditional:
+            Type: EndScenario
+            Amount: "> 12"
+        Value: 13
+        SubFilter: Scenario
+TreasureTables: [TT_Battle_Goals_1]

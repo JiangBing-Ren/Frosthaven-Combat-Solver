@@ -1,0 +1,34 @@
+Parser: ItemCard
+ID: 1285
+StringID: EnticingBellID
+Name: $FH/1285_item_cards_enticing_bell_1$
+Art: Enticing Bell
+TotalInGame: 1
+Cost: 25
+Slot: SmallItem
+Rarity: Relic
+Usage: Consumed
+Trigger: AtEndOfTurn
+Data: 
+    Abilities:
+        AFocusOverride:
+            NullTargeting: True
+            Range: 3
+            Filter: Enemy
+            PerformVars:
+                ApplyToActors: 
+                    Target: ActorsToTarget[0]
+                    RememberOldOverride: Target.SetTempVar("OldFocusOverride", CustomAbility.GetCurrentFocusOverride(Target))
+                    ApplyFocusOverride: CustomAbility.SetFocusOverride(Target, TargetingActor)
+            ActiveBonus:
+                Duration: Round
+                MiscVars:
+                    IgnoreImpair: True
+                    OnFinishRemoveOverride: CustomAbility.SetFocusOverride(ActiveBonus.Actor, ActiveBonus.Actor.OldFocusOverride)
+
+Layout: 
+    - Active:
+        Ability: AFocusOverride
+        Icon: "Negative_Move_Item"
+        ListLayout: "$FH/1285_item_cards_enticing_bell_2$"
+        Layout: "$FH/1285_item_cards_enticing_bell_2$"

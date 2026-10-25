@@ -1,0 +1,108 @@
+Parser: AbilityCard
+Name: $FH/429_character_ability_cards_metal_mosaic_release_valve_1$
+Character: MetalMosaicID
+ID: 429
+Level: 2
+Initiative: 30
+Discard: [Discard,Discard]
+Prefab: 429_MetalMosaic_ReleaseValve
+Data:
+    Top:
+        Abilities:
+            TDamageAdjacent:
+                Damage: 2
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Target: -1
+                Range: 1
+                Filter: Enemy
+                AnimOverload: SteamBlast 
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: Vars
+                        AddTo: True
+                        Vars:
+                            OverPressure: TargetingActor.Pressure.ToString() == 'Over'
+                            Value: OverPressure && 1 || 0
+                SubAbilities:
+                    SubPressureChangeLow:
+                        Null: True
+                        SkipAnim: True
+                        IgnoreStun: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Over
+                        PerformVars:
+                            NullBegin:
+                                ChangePressure: CustomAbility.PressureChange(TargetingActor, -1)
+                    SubPressureChangeRegular:
+                        Null: True
+                        SkipAnim: True
+                        IgnoreStun: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: High
+                        PerformVars:
+                            NullBegin:
+                                ChangePressure: CustomAbility.PressureChange(TargetingActor, -1)
+                    BPressureChangeLose:
+                        Null: True
+                        SkipAnim: True
+                        IgnoreStun: True
+                        PerformVars:
+                            NullBegin:
+                                ChangePressure: CustomAbility.PressureChange(TargetingActor, -1)
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BHeal:
+                Heal: 3
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredPressure: Over
+                CanSkip: False
+                StatIsBasedOnX:
+                    XP:
+                        BasedOn: Vars
+                        AddTo: True
+                        Vars:
+                            OverPressure: TargetingActor.Pressure.ToString() == 'Over'
+                            Value: OverPressure && 1 || 0
+                SubAbilities:
+                    SubPressureChangeLow:
+                        Null: True
+                        SkipAnim: True
+                        IgnoreStun: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Over
+                        PerformVars:
+                            NullBegin:
+                                ChangePressure: CustomAbility.PressureChange(TargetingActor, -1)
+
+Layout:
+    Top:
+        - Row: "$FH/429_character_ability_cards_metal_mosaic_release_valve_2$"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureOver><size=100%> +1 <sprite name=Damage>, <sprite name=MMLosePressure>"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureHigh><size=100%> <sprite name=MMLosePressure>"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMLosePressure>"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureOver><size=100%> <sprite name=Heal> 3 $Self$, <sprite name=XP1>, <sprite name=MMLosePressure>"

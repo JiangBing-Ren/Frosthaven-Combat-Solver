@@ -1,0 +1,23 @@
+Parser: ItemCard
+ID: 958
+StringID: AbyssAxeID
+Name: $FH/0958_item_cards_abyss_axe_1$
+Art: Abyss Axe
+TotalInGame: 2
+Cost: 0
+Slot: TwoHand 
+Rarity: Rare
+Usage: Spent
+Trigger: SingleTarget
+Data:     
+    ItemRequirements:
+        Vars:
+            ValidateTargetIsCorrectClass: Actor.Class.ID == "FrozenCorpseID" || Actor.Class.ID == "FrozenCorpseEliteID" || Actor.Class.ID == "IceWraithID" || Actor.Class.ID == "IceWraithEliteID" || Actor.Class.ID == "LivingDoomID" || Actor.Class.ID == "LivingDoomEliteID"
+    Overrides:
+        OAttack:
+            Strength: 3
+            Pierce: 1
+    CompareAbility:
+        AbilityType: Attack
+Layout: 
+    - Row: $FH/0958_item_cards_abyss_axe_2$

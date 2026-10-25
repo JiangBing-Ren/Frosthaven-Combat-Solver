@@ -1,0 +1,159 @@
+Parser: AbilityCard
+Name: $FH/207_character_ability_cards_infuser_propulsive_tailwind_1$
+Character: InfuserID
+ID: 207
+Level: 6
+Initiative: 91
+Discard: [Lost,Discard]
+Prefab: 207_Infuser_PropulsiveTailwind
+Data:
+    Top:
+        Abilities:
+            ConsumeAbility:
+                Consume: 
+                    Elements: [Air, Earth]
+                    Abilities:
+                        CNull:
+                            Null: True
+                            AutoTrigger: True
+            TPassive:
+                AddActiveBonus:
+                    Move: 2
+                    MiscVars:
+                        PrintedProperties: list("Move")
+                AutoTrigger: True
+                Filter: Self
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Consume]
+                Vars:
+                    ResetInfusionTurnRestriction: CustomAbility.ResetInfusionTurnRestriction()
+                AnimOverload: GatherElements  
+                ActiveBonus:
+                    Duration: Persistent
+                    ListLayoutOverride: ["$FH/207_character_ability_cards_infuser_propulsive_tailwind_2$ <sprite name=Move> 2", Positive_Move_Attack]
+                    IsAura: True
+                    AuraFilter: [Self, OwnSummon]
+                    AuraTargeting: All
+                    Behaviour: DuringActionAbilityOnAttackAbilityFinished
+                    ValidAbilityTypes: [Attack]
+                    MiscVars:
+                        InfusionBonus: True
+            TActive:
+                AddActiveBonus:
+                    HelpBoxTooltipLocKey: "$FH/185_character_ability_cards_infuser_boon_of_the_tempest_4$"
+                    Filter:
+                        TargetType: [Self,OwnSummon]
+                        PlayerClasses: [InfuserID]
+                        HeroSummonClasses: [SpiritboundFalchionID]
+                    Target: 1
+                    Targeting: All
+                    IgnoreLOS: True
+                    SkipAnim: True
+                    MiscVars:
+                        TreatThisAsParent: True
+                    PerformVars:
+                        ActorIsSelectingTargetingFocus:
+                            AutoSelSelf: CustomAbility.AutoControlSelfIfOnlyValidTarget(obj)
+                    ControlActor:
+                        ControlDurationType: ControlForOneAction
+                        Abilities:
+                            InfusedPush:
+                                Push: 2
+                                Range: 1
+                                MiscVars:
+                                    PrintedProperties: list("Push","Range")
+                                TreatAsNonSubAbility: True
+                                Target: 1
+                                Conditions: [Immobilize]
+                                CanUndo: False
+                Filter: Self
+                AutoTrigger: True
+                SkipAnim: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Consume]
+                MiscVars:
+                    Infusion: True
+                ActiveBonus:
+                    Duration: Persistent
+                    ListLayoutOverride: ["$185_character_ability_cards_infuser_boon_of_the_tempest_4$ <sprite name=Push>2 <sprite name=Range>1, <sprite name=Immobilize>", Positive_Push_Immobilize_Infusion]
+                    Behaviour: DuringTurnAbility
+                    Restriction: OncePerTurn
+                    TriggerOnCaster: True
+                    IsToggleBonus: True
+                    MiscVars:
+                        OverrideIcon: "'PropulsiveTailwindTopInfusion'"
+                    Requirements:
+                        Vars:
+                            ValidateHasPlayedInfusion: CustomAbility.HasPlayedInfusion(Actor)
+        XP: 2
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 4
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BMoveGrant:
+                ControlActor:
+                    Abilities:
+                        BAllyMove:
+                            Move:
+                                Amount: 3
+                                SquareEnhancements: 1
+                            MiscVars:
+                                PrintedProperties: list("Move")
+                            StrengthIsBase: True
+                    ControlActorType: Player
+                Range: 1
+                Filter: Ally
+                AnimOverload: RangedCast
+        Consumes:
+            BMoveGrantBuff:
+                PreviewEffectId: M1Move
+                PreviewEffectText: "<size=130%>-1<sprite name=Move>: <sprite name=CreateAir>"    
+                AbilityOverrides:
+                    TAllyShieldOverride:
+                        ParentName: BAllyMove
+                        Strength: -1
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            DoesntHaveNegativeCondition: [Stun]     
+                        SubAbilities:
+                            SubInfuse:
+                                Infuse: [Air]
+                                SkipAnim: True
+            BCMoveBuff:
+                PreviewEffectId: M1Move
+                AbilityOverrides:
+                    BCOMove:
+                        ParentName: BMove
+                        Strength: -1
+                        SubAbilities:
+                            SubInfuse:
+                                Infuse: [Earth]
+                                SkipAnim: True
+Layout:
+    Top:
+        - Row: "$FH/207_character_ability_cards_infuser_propulsive_tailwind_5$"
+        - Row: "$FH/207_character_ability_cards_infuser_propulsive_tailwind_2$"
+        - Row: "$FH/207_character_ability_cards_infuser_propulsive_tailwind_3$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove*"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: BCMoveBuff
+                    Text: "-1<sprite name=Move>: <sprite name=CreateEarth>"
+        - Row: "$FH/207_character_ability_cards_infuser_propulsive_tailwind_4$"
+        - Row: "<b><size=130%><sprite name=Move> *BAllyMove* <size=100%><voffset=1>@BAllyMove@"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: BMoveGrantBuff
+                    Text: "-1<sprite name=Move>: <sprite name=CreateAir>"
+        

@@ -1,0 +1,22 @@
+Parser: ItemCard
+ID: 1291
+StringID: ScavengersMagnetID
+Name: $FH/1291_item_cards_scavengers_magnet_1$
+Art: Scavenger's Magnet
+TotalInGame: 2
+Cost: 0
+Slot: OneHand 
+Rarity: Rare
+Usage: Spent
+Trigger: DuringOwnTurn
+Consumes: Earth
+Data: 
+    Abilities:
+        ALoot:
+            Loot: 1
+            LootData:
+                LootableObjectImportTypes: MoneyToken
+            Target: 1
+            AnimOverload: Loot
+Layout: 
+    - Row: $FH/1291_item_cards_scavengers_magnet_2$

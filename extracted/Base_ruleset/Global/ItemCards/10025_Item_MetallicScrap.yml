@@ -1,0 +1,22 @@
+Parser: ItemCard
+ID: 10025
+StringID: MetallicScrapID
+Name: $FH/10025_item_cards_metallic_scrap_1$
+Art: Metallic Scrap
+TotalInGame: 2
+Cost: 30
+Slot: OneHand 
+Rarity: Rare
+Usage: Spent
+Trigger: SingleTarget
+ProsperityRequirement: 3
+Data:     
+    Overrides:
+        OWound:
+            Conditions: Wound
+    CompareAbility:
+        AbilityType: Attack
+        IsMelee: True
+        Filter: Enemy
+Layout: 
+    - Row: $FH/10025_item_cards_metallic_scrap_2$

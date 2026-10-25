@@ -1,0 +1,8 @@
+Parser: Perk
+ID: Frozenfist04
+Name: FH/PERK_Frozenfist_04_Name
+Description: FH/PERK_Frozenfist_04_Desc
+CharacterID: FrozenFistID
+Available: 2
+CardsToAdd: [AMC_Shield1_R_Frozen_Fist]
+CardsToRemove: [AMC_Basic_P0]

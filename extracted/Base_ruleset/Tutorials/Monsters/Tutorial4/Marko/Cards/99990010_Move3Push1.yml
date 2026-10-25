@@ -1,0 +1,13 @@
+Parser: EnemyCard
+ID: 99990010
+Initiative: 50
+Shuffle: True
+Name: $Monster_Ability_99990010_Marko_FollowingOrders$
+Data:
+    Abilities:
+        AMove:
+            Move: 0
+        APush:
+            Push: 1
+            AnimOverload: Attack
+            Filter: Enemy

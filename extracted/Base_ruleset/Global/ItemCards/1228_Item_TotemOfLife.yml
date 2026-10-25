@@ -1,0 +1,37 @@
+Parser: ItemCard
+ID: 1228
+StringID: TomeOfLifeID
+Name: $FH/1228_item_cards_tome_of_life_1$
+Art: Tome of Life
+TotalInGame: 1
+Cost: 50
+Slot: OneHand
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        ARemoveCondition:
+            Target: -1
+            Filter: All
+            Range: 99
+            RemoveConditions: "All"
+            CanTargetInvisible: True
+            IgnoreLOS: True
+            # both negative and positive conditions
+            Conditions: [Wound,Brittle,Bane,Poison,Immobilize,Disarm,Impair,Stun,Muddle,StopFlying,Invisible,Strengthen,Bless,Advantage,Immovable,Regenerate,Ward]
+        AGrantHeal:
+            Target: -1
+            Range: 99
+            Filter: All
+            AutoTrigger: True
+            MiscVars:
+                # let ai auto control themselves, otherwise host player chooses for everyone
+                TreatAsNonControl: True
+            ControlActor:
+                Abilities:
+                    AHeal:
+                        Filter: Self
+                        Heal: 2
+Layout: 
+    - Row: "$FH/1228_item_cards_tome_of_life_2$"

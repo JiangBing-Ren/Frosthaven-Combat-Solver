@@ -1,0 +1,16 @@
+Parser: ItemCard
+ID: 1251
+StringID: ShimmeringPowderID
+Name: $FH/1251_item_cards_shimmering_powder_1$
+Art: Shimmering Powder
+TotalInGame: 1
+Cost: 40
+Slot: SmallItem
+Rarity: Rare
+Usage: Consumed
+Trigger: OnLootFromDeck
+Data:    
+    Vars:
+        DrawAdditionalLootCards: 1
+Layout: 
+    - Row: "$FH/1251_item_cards_shimmering_powder_2$"

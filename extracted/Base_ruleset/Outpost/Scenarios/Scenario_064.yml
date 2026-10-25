@@ -1,0 +1,18 @@
+Parser: FHScenario
+ID: 64
+Name: The Frosthaven Seal
+LevelID: FS_064_The_Frosthaven_Seal
+Chain: PuzzleBook
+Location: Frosthaven
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: AddProsperity
+          Param1: 3
+        - Type: GainMorale
+          Param1: 3
+        - Type: AllCharactersAddPerkCheck
+          Param1: 3
+        - Type: GainCampaignSticker
+          Param1: NewGrowth
+        - Type: ShowCredits

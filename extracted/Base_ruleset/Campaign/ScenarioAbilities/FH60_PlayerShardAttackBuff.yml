@@ -1,0 +1,22 @@
+Parser: ScenarioAbility
+ID: FH60_PlayerShardAttackBuff
+ScenarioAbility:
+    FH60_PlayerShardAttackBuff:
+        Attack: 0
+        StatIsBasedOnX:
+           Strength:
+               BasedOn: Vars
+               Vars:
+                   Value: ScenarioScript_FH060.NumPlayerShards(TargetingActor)
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: BuffSingleAttack
+            ValidAbilityTypes: [Attack]
+            Restriction: OncePerTurn
+            RestrictPerActor: True
+            IsToggleBonus: True
+            IsSingleTargetBonus: True
+            Vars:
+                IsValidTarget: not TriggerTarget.IsBoss
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_060_ShardsAttackBonus$, Positive_AttackPlus_Campaign]
+        Text: "$FH/FH_Scenario_Campaign_060_ShardsAttackBonus$"

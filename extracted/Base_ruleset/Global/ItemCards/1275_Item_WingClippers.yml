@@ -1,0 +1,26 @@
+Parser: ItemCard
+ID: 1275
+StringID: WingClippersID
+Name: $FH/1275_item_cards_wing_clippers_1$
+Art: Wing Clippers
+TotalInGame: 1
+Cost: 40
+Slot: TwoHand
+Rarity: Rare
+Usage: Spent
+Trigger: SingleTarget
+PersistentBonus: True
+Data: 
+    ItemRequirements:
+        Vars: 
+            ValidateTargetIsFlying: Actor.Flying
+    Overrides:
+        OStopFlying:
+            Conditions: StopFlying
+    CompareAbility:
+        AbilityType: Attack
+        IsMelee: True
+        Filter: Enemy
+
+Layout: 
+    - Row: $FH/1275_item_cards_wing_clippers_2$

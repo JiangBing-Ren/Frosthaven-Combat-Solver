@@ -1,0 +1,71 @@
+Parser: AbilityCard
+Name: $FH/280_character_ability_cards_trapper_exploding_decoy_1$
+Character: TrapperID
+ID: 280
+Level: 1
+Initiative: 62
+Discard: [Discard,Discard]
+Prefab: 280_Trapper_ExplodingDecoy
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                Range: 
+                    Amount: 4
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                RangeIsBase: True
+                AnimOverload: RangedAttack
+                SubAbilities:
+                    TAttackSubPull:
+                        Pull:
+                            Amount: 2
+                            SquareEnhancements: 1
+                        MiscVars:
+                            PrintedProperties: list("Push")
+                        IsInlineSubAbility: True
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+                Vars:
+                    StartTile: TargetingActor.Tile    # remember actor tile at move start
+            BTrap:
+                # we don't want to deselect
+                Target: -1
+                Trap:
+                    TrapName: TrapperTrap
+                    Damage: 2
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                AnimOverload: TrapThrow
+                Vars:
+                    StartTile: TargetingActor.LastAbilityPerformed?.StartTile    # get the StartTile from the move ability (can be null if the move was skipped or another ability was injected after the move)
+                    ValidateStartTileEmpty: "!!StartTile?.IsEmpty"    # cancel the ability if the start tile is null or not empty
+                Targeting: Custom
+                TargetingVars:
+                    AddTileInRange: StartTile
+                    AddSelectedTile: StartTile
+Layout:
+    Top:
+        - ColumnWidths: "30,30,30,10"
+        - Column:
+            - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Column:
+            - Row: " <sprite name=Range>*TAttack.Range* @TAttack.Range@"
+        - Column:
+            - Row: ", <sprite name=Pull>*TAttackSubPull* @TAttackSubPull@"
+        - Column:
+    Bottom:
+        - Row: $FH/280_character_ability_cards_trapper_exploding_decoy_2$
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Row: "<size=20%> "
+        - Row: $FH/280_character_ability_cards_trapper_exploding_decoy_3$

@@ -1,0 +1,81 @@
+Parser: AbilityCard
+Name: $FH/364_character_ability_cards_frozen_fist_encased_punch_1$
+Character: FrozenFistID
+ID: 364
+Level: 1
+ProgressionOrder: 4
+Initiative: 19
+Discard: [Discard,Discard]
+Prefab: 364_FrozenFist_EncasedPunch
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 3
+                Target: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Range: 1
+                Filter: [Enemy]
+                AnimOverload: Attack
+                ConditionalOverrides:
+                    TAttackCO:
+                        AbilityOverrides:
+                            TIceTerrainBuff:
+                                StatIsBasedOnX:
+                                    Strength:
+                                        BasedOn: Vars
+                                        AddTo: True
+                                        Vars:
+                                            IceTerrain: TargetActor.Tile.GetIceTerrain()
+                                            TargetOccupiesIceTerrain: IceTerrain != null
+                                            Value: TargetOccupiesIceTerrain and 1 or 0
+            TActive:
+                AddActiveBonus:
+                    Damage: 1
+                    MiscVars:
+                        PrintedProperties: list("Damage")
+                    Target: 1
+                    Range: 1
+                    Filter: [Enemy]
+                    IgnoreStun: True
+                    AnimOverload: Roar
+                ActiveBonus:
+                    Duration: Round
+                    Behaviour: DuringActionAbilityOnDamaged
+                    TriggerAbilitiesImmediately: True
+                Filter: [Self]
+                AnimOverload: FistsSparks
+                AutoTrigger: True
+        Infuse: [Ice]
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 4
+                Jump: True
+                MiscVars:
+                    PrintedProperties: list("Move")
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack*"
+        - Row: "$FH/364_character_ability_cards_frozen_fist_encased_punch_2$"
+        - Divider:
+        - Row:
+            - Active:
+                Ability: TActive
+                Icon: Positive_Thorns
+                ListLayout: "$FH/364_character_ability_cards_frozen_fist_encased_punch_3$"
+                Layout: "$FH/364_character_ability_cards_frozen_fist_encased_punch_3$"
+        - Row: "<size=20%> "
+        - Row:
+            - MandatoryTrigger:
+                Layout:
+                    - Infuse: [Ice]
+    Bottom:
+        - Row:
+            - ColumnWidths: "30,20,20,30"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Move> *BMove*"
+            - Column:
+                - AddedEffect: "<sprite name=Jump>"
+            - Column:

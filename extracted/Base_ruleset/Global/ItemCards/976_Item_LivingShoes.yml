@@ -1,0 +1,35 @@
+Parser: ItemCard
+ID: 976
+StringID: LivingShoesID
+Name: $FH/0976_item_cards_living_shoes_1$
+Art: Living Shoes
+TotalInGame: 2
+Cost: 0
+Rarity: Rare
+Slot: Legs 
+Usage: Unrestricted
+Trigger: OnAbilityApplied
+Data: 
+    ItemRequirements:
+        Vars: 
+            ValidateHasParentContext: Ability?.VarsContext?.parentContext != null
+            ValidateIsHeal: Ability.AbilityType == "Heal"
+            CastingActor: Ability.TargetingActor
+            TargetedActor: Ability.VarsContext.parentContext.AppliedActor
+            ItemOwner: Ability.VarsContext.parentContext.ItemOwner
+            ValidateItemOwnerIsTargetedActor: ItemOwner == TargetedActor
+            ValidateIsFromAlly: CustomAbility.IsAlly(CastingActor, TargetedActor)
+    Abilities:
+        AMove:
+            ControlActor:
+                Abilities:
+                    BAllyMove:
+                        Move: 2
+                        StrengthIsBase: True
+            AutoTrigger: True
+            SkipAnim: True
+            Filter: Self
+            MiscVars: 
+                StackNextToCurrent: True
+Layout:
+    - Row: $FH/0976_item_cards_living_shoes_2$

@@ -1,0 +1,32 @@
+Parser: EnemyCard
+ID: 568
+Name: $Monster_Ability_568_WindDemon_BlastOfAir$
+Initiative: 43
+Shuffle: False
+Data:
+    Abilities: 
+        Push1:
+            Push: 1
+            Range: 1
+            Target: -1
+            ShowRange: False
+            RangeIsBase: True
+            TargetIsBase: True
+            Filter: Enemy
+            AnimOverload: BlastOfAir
+            TextOnly: True
+            Text: "$FH/0568_monster_ability_cards_wind_demon_blast_of_air_2$"
+        Attack1:
+            Attack: 0
+            Range: 4
+            RangeIsBase: True
+            Conditions: [Disarm]
+            Filter: Enemy
+            AnimOverload: RangedAttack
+    Consumes:
+        CEarth:
+            Elements: Earth
+            AbilityOverrides:
+                CEarthAttackDebuff:
+                    ParentName: Attack1
+                    Range: -2

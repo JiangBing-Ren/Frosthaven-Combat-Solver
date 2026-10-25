@@ -1,0 +1,14 @@
+Parser: Mastery
+ID: Trapper_MASTERY_2
+LocalisedName: Trapper_MASTERY_2_Name
+LocalisedDescription: Trapper_MASTERY_2_Desc
+PerkPoints: 1
+BattleGoalCondition:
+    - Targets:
+        # check if we've moved/pushed/pulled actors through X traps in 1 card activation
+        Filter: ForceActorsIntoXTraps
+        # throughout the entire scenario
+        SubFilter: Round
+        # 1 card, with 7 or more successful actor trap triggerings
+        Targets: 7
+        Value: 1

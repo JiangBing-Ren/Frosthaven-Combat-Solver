@@ -1,0 +1,108 @@
+Parser: AbilityCard
+Name: $FH/59_character_ability_cards_blinkblade_reverse_the_flow_1$
+Character: BlinkbladeID
+ID: 59
+Level: 9
+Initiative: 58
+Discard: [Discard,Permanently Lost]
+Prefab: 59_Blinkblade_ReverseTheFlow
+Data:
+    Top:
+        Abilities:
+            TOverrideMove:
+                AddActiveBonus:
+                    Move: 0
+                ActiveBonus:
+                    Behaviour: OverrideMoveAbility
+                    Duration: Round
+                    IsToggleBonus: True
+                    ValidAbilityType: Move
+                    ActiveBonusAbilityOverrides:
+                        BCTypeOverride:
+                            AbilityType: Attack
+                            Target: 1
+                            TargetIsBase: True
+                            Range: 1
+                            RangeIsBase: True
+                            Filter:
+                                TargetType: Enemy
+                AnimOverload: PowerUp
+                ConditionalOverrides:
+                    COAnim_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            COAnim:
+                                AnimOverload: PowerUpSlow
+            TPlayDiscardCard:        
+                SelectAndPlayCard:       
+                    CardPile: Discarded          
+                MiscVars:
+                    IsActionValid: ActionType == "BottomAction"
+                AnimOverload: ChargeUp
+                ConditionalOverrides:
+                    COAnim_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            COAnim:
+                                AnimOverload: ChargeUpSlow
+        XP: 1
+    Bottom:
+        Abilities:
+            BTeleport:
+                Teleport2: 99
+                Range: 1
+                Target: -1
+                Flags: TargetStartingPositions
+                Filter: Self
+                AnimOverload: Teleport Into
+                AnimOverload2: Teleport Outof
+            BHeal:
+                Heal: 10
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self
+                AnimOverload: ChargeUp
+                ConditionalOverrides:
+                    COAnim_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            COAnim:
+                                AnimOverload: ChargeUpSlow
+            BRecoverCards:
+                RecoverLostCards: 2
+                Filter: Self
+                CanSkip: True
+                AnimOverload: ChargeUp
+                AutoTrigger: True
+                ConditionalOverrides:
+                    COAnim_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            COAnim:
+                                AnimOverload: ChargeUpSlow
+Layout:
+    Top:
+        - Active:
+            Ability: TOverrideMove
+            Icon: Positive_Blinkblade_Attack_Move
+            ListLayout: "$FH/059_character_ability_cards_blinkblade_reverse_the_flow_2$"
+            Layout: "$FH/059_character_ability_cards_blinkblade_reverse_the_flow_2$"
+        - Divider:
+        - Row: "<size=50%> "
+        - Row: "$FH/059_character_ability_cards_blinkblade_reverse_the_flow_3$"
+    Bottom:
+        - Row: "$FH/059_character_ability_cards_blinkblade_reverse_the_flow_4$"
+        - Divider:
+        - Row: "<size=50%> "
+        - Row: "$FH/059_character_ability_cards_blinkblade_reverse_the_flow_5$"
+        - Divider:
+        - Row: "<size=50%> "
+        - Row: "$FH/059_character_ability_cards_blinkblade_reverse_the_flow_6$"

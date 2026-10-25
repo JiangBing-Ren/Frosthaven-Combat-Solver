@@ -1,0 +1,16 @@
+Parser: EnemyCard
+ID: 57310002
+Initiative: 14
+Shuffle: False
+Data:
+    Abilities: 
+        Summon1:
+            Summons: 
+                - LivingBonesID
+                - LivingBonesID
+                - LivingBonesEliteID
+                - LivingBonesEliteID
+            Target: 1
+            TargetIsBase: True
+            AnimOverload: Summon
+

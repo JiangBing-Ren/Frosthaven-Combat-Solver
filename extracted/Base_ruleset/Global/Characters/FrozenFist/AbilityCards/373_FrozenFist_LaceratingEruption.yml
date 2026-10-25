@@ -1,0 +1,72 @@
+Parser: AbilityCard
+Name: $FH/373_character_ability_cards_frozen_fist_lacerating_eruption_1$
+Character: FrozenFistID
+ID: 373
+Level: 3
+ProgressionOrder: 13
+Initiative: 51
+Discard: [Discard,Discard]
+Prefab: 373_FrozenFist_LaceratingEruption
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 3
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AreaEffect: "0,0,G|2,0,R|1,1,R"
+                AreaEffectLayoutOverride: "0,0,G|2,0,R|1,1,R"
+                MultiPassAttack: False
+                AnimOverload: Spikes_AOE
+        Consumes:
+            TCIce:
+                Elements: Ice
+                AbilityOverrides:
+                    TCWound:
+                        ParentName: TAttack
+                        Conditions: Wound
+            TCEarth:
+                Elements: Earth
+                AbilityOverrides:
+                    TCAreaIncrease:
+                        ParentName: TAttack
+                        PreviewEffectText: "TCAreaIncrease.Area£"
+                        AreaEffect: "0,0,G|2,0,R|4,0,R|1,1,R|3,1,R|2,2,R"
+                        AreaEffectLayoutOverride: "0,0,G|2,0,R|4,0,R|1,1,R|3,1,R|2,2,R"
+                XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+        Infuse: Ice
+Layout:
+    Top:
+        - Row:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Attack> *TAttack*"
+                - Divider:
+                - Conditional:
+                    Layout:
+                        - Consume:
+                            Name: TCIce
+                            Text: "<b><size=130%> <sprite name=Wound>"
+            - Column:
+                - Row: "£TAttack.Area£"
+                - Divider:
+                - Conditional:
+                    Layout:
+                        - Consume:
+                            Name: TCEarth
+                            Text: ""
+                        - Row:
+                            - Column: "£TCAreaIncrease.Area£"
+                            - Column: "<sprite name=XP1>"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Ice]

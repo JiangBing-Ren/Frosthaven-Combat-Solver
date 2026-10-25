@@ -1,0 +1,57 @@
+Parser: AbilityCard
+Name: $FH/474_character_ability_cards_crashing_tide_overwhelming_wave_1$
+Character: CrashingTideID
+ID: 474
+Level: 1
+ProgressionOrder: 474
+Initiative: 86
+Discard: [Discard,Discard]
+Prefab: 474_CrashingTide_OverwhelmingWave
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AreaEffect: "0,0,G|2,0,R|1,1,R|1,-1,R"
+                MultiPassAttack: False
+                AnimOverload: OverwhelmingWave
+        XP: 1
+    Bottom:
+        Abilities:
+            BThreeCards:
+                NullTargeting:
+                Target: 1
+                Filter: [Self]
+                ActiveBonus:
+                    Duration: Persistent
+                    Flags: [Tide]
+                    Vars:
+                        ExtraRoundCards: 1
+                AnimOverload: Tide
+        Infuse: Dark
+Layout:
+    Top:
+        - ColumnWidths: "50,50"
+        - Column:
+            - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Column:
+            - Row: "£Area£"
+    Bottom:
+        - Row:
+            - ColumnWidths: "34,33,33"
+            - Column: "$FH/CrashingTide_Tide$"
+            - Column:
+            - Column:
+        - Active:
+            Ability: BThreeCards
+            Icon: Positive_Cards
+            Layout: "$FH/474_character_ability_cards_crashing_tide_overwhelming_wave_3$"
+            ListLayout: "$FH/474_character_ability_cards_crashing_tide_overwhelming_wave_3$"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark

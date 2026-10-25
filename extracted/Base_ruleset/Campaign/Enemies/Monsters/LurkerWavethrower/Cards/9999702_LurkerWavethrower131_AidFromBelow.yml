@@ -1,0 +1,21 @@
+Parser: EnemyCard
+ID: 9999702
+Name: $Monster_Ability_S131_LurkerWavethrower_ShiftingStrike$
+Initiative: 98
+Shuffle: False
+Data:
+    Abilities: 
+        TAttack:
+            Attack: 1
+            Range: 4
+            RangeIsBase: True
+            Filter: Enemy
+        TTeleport:
+            Teleport2: 99
+            AutoTrigger: True
+            Filter: Self
+            CanSkip: False
+            Targeting: Custom
+            TargetingVars:
+                AddValidActorInRange: TargetingActor
+                AddTileInRange: ScenarioScript.current.GetTeleportTile(TargetingActor)

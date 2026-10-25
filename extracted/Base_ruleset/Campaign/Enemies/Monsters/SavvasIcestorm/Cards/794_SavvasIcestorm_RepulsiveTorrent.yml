@@ -1,0 +1,31 @@
+Parser: EnemyCard
+ID: 794
+Name: $Monster_Ability_794_SavvasIcestorm_RepulsiveTorrent$
+Initiative: 70
+Shuffle: False
+Data:
+    Abilities:
+        Push1:
+            Push: 2
+            Range: 1
+            Target: -1
+            RangeIsBase: True
+            TargetIsBase: True
+            ShowRange: False
+            Filter: Enemy
+            AnimOverload: CastPush
+            Text: $Target_AllAdjacentEnemies$
+        Attack1:
+            Attack: 1
+            Range: 5
+            RangeIsBase: True
+            AnimOverload: RangedAttack_Wind
+    Consumes:
+        CAir:
+            Elements: Air
+            LayoutPriorTo: Attack1
+            AbilityOverrides:
+                CEarthPushBuff:
+                    ParentName: Push1
+                    Strength: 2
+

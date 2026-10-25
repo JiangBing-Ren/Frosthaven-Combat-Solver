@@ -1,0 +1,20 @@
+Parser: HeroSummon
+ID: LeaperID
+LocKey: $FH/390_character_ability_cards_hive_coiled_limbs_2$
+Model: Leaper
+Health:
+    Amount: 7
+    SquareEnhancements: 1
+Move:
+    Amount: 5
+Attack:
+    Amount: 1
+    SquareEnhancements: 1
+Shield: 1
+MoveOverride:
+    Jump: True
+AIFocusOverride:
+    OverrideType: OverrideFocus
+    OverrideTargetType: Actor
+    UseFurthestFocus: True
+    UseSummonerToMeasureFrom: True

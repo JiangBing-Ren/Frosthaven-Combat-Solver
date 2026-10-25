@@ -1,0 +1,26 @@
+Parser: EnemyCard
+ID: 873
+Name: $Monster_Ability_873_Ooze_Feed$
+Initiative: 66
+Shuffle: False
+Data:
+    Abilities:
+        Move1:
+            Move: -1
+        Loot1:
+            Loot: 1
+            Target: -1
+            AnimOverload: LootHeal
+            RangeIsBase: True
+            TargetIsBase: True
+        Heal1:
+            Heal: 2
+            Filter: Self
+            AnimOverload: PowerUp
+    Consumes:
+        TCDark:
+            Elements: Dark
+            AbilityOverrides:
+                TCDarkHealBuff:
+                    ParentName: Heal1
+                    Strength: 1

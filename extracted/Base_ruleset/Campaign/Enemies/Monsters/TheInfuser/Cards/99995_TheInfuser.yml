@@ -1,0 +1,15 @@
+Parser: EnemyCard
+ID: 99995
+Name: $Monster_Ability_Advance$
+Initiative: 99
+Shuffle: True
+Data:
+    Abilities:
+        BAllyMove:
+            Move:
+                Amount: 0
+            MiscVars:
+                IgnoreDifficultTerrain: ScenarioScript_FH119.Room2Revealed()
+            AIFocusOverride:
+                OverrideType: OverrideFocus
+                OverrideTargetType: Actor

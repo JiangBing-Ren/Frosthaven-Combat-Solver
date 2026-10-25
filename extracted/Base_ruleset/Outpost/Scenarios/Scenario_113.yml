@@ -1,0 +1,11 @@
+Parser: FHScenario
+ID: 113
+Name: Lush Grotto
+LevelID: FS_113_Lush_Grotto
+Chain: Other
+Location: WhitefireWood
+Difficulty: 1
+Conclusions:
+    - Effects:
+        - Type: GainHerbs
+          Param1: 4

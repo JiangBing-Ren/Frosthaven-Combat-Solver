@@ -1,0 +1,82 @@
+Parser: Enemy
+ID: CityGuardEliteID
+LocKey: $CityGuardElite$
+MonsterType: Monster
+StandeeLimit: 6
+Model: City Guard Elite
+NonEliteVariant: CityGuardID
+PredominantlyMelee: True
+AbilityCards: [746, 747, 748, 749, 750, 751, 752, 753]
+# Base Stats
+Level0:
+    Health: 6
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 1
+    Retaliate: 0
+    RetaliateRange: 0
+Level1:
+    Health: 6
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 2
+    Retaliate: 0
+    RetaliateRange: 0
+Level2:
+    Health: 9
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 2
+    Retaliate: 0
+    RetaliateRange: 0
+Level3:
+    Health: 9
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 2
+    Retaliate: 1
+    RetaliateRange: 1
+Level4:
+    Health: 10
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 2
+    Retaliate: 2
+    RetaliateRange: 1
+Level5:
+    Health: 13
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 2
+    Retaliate: 2
+    RetaliateRange: 1
+Level6:
+    Health: 15
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 3
+    Retaliate: 3
+    RetaliateRange: 1
+Level7:
+    Health: 20
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    Shield: 3
+    Retaliate: 3
+    RetaliateRange: 1

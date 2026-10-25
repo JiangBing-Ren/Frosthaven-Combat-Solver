@@ -1,0 +1,93 @@
+Parser: AbilityCard
+Name: $FH/217_character_ability_cards_pyroclast_flowing_fire_1$
+Character: PyroclastID
+ID: 217
+Level: 1
+Initiative: 20
+Discard: [Discard,Discard]
+Prefab: 217_Pyroclast_FlowingFire
+Data:
+    Top:
+        Abilities:    
+            TAttack:
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AreaEffect: "0,0,G|2,0,R|4,0,R|6,0,R"
+                MultiPassAttack: False
+                AnimOverload: FlowingFire
+        Consumes:
+            TCFire:
+                Elements: Fire
+                XP: 1
+                AbilityOverrides:
+                    TCFireTerrainBuff:
+                        ParentName: TAttack
+                        SubAbilities:
+                            TCreateHazardousTerrainOnPath220:
+                                AutoTrigger: True
+                                Target: -1
+                                TreatAsNonSubAbility: True
+                                CreateLimitedHazardousTerrain: True
+                                Vars:
+                                    OverridePropName: "'PyroclastHazardTerrain'"
+                                TileFilter: EmptyHex
+                                Targeting: Custom
+                                TargetingVars:
+                                    AddTilesInRange: ParentAbility.ValidTilesInAreaAffected
+                                AnimOverload: TerrainFormation
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 6
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BDamageSelf:
+                Filter: Self
+                AutoTrigger: True       
+                MiscVars: 
+                    MandatoryBonus: True
+                AddActiveBonus:
+                    Damage: 1
+                    MiscVars:
+                        PrintedProperties: list("Damage")
+                    Filter: Self       
+                    AutoTrigger: True     
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: StartTurnAbility
+                    XPTracker: [0,0]
+                AnimOverload: CastLava
+                SubAbilities:
+                    BDamageSelfNow:
+                        TreatAsNonSubAbility: True
+                        Damage: 1
+                        Filter: Self
+                        AutoTrigger: True
+
+Layout:
+    Top:
+        - Column:
+            - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Divider: 
+            - Conditional:
+                Layout:
+                    - Consume:
+                        Name: TCFire
+                        Text: "$FH/217_character_ability_cards_pyroclast_flowing_fire_2$"
+        - Column:
+            - Row: "£Area£"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Active:
+            Ability: BDamageSelf
+            ListLayout: "$FH/217_character_ability_cards_pyroclast_flowing_fire_3$"
+            Layout:
+                - MandatoryTrigger: "$FH/217_character_ability_cards_pyroclast_flowing_fire_3$"
+            Icon: "Negative_DamageSelf"
+        - XPTracker: BDamageSelf

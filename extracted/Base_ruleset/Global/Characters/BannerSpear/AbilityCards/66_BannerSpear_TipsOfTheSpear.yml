@@ -1,0 +1,41 @@
+Parser: AbilityCard
+Name: $FH/066_character_ability_cards_banner_spear_tip_of_the_spear$
+#CustomImage: KRO_BANNER_SPEAR_AbilityCards_TipOfTheSpear
+Character: BannerSpearID
+ID: 66
+Level: 1
+Initiative: 67
+Discard: [Discard,Discard]
+Prefab: 66_Bannerspear_TipsOfTheSpear
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                    Pierce: 3
+                MiscVars:
+                    PrintedProperties: list("Attack", "Pierce")
+                AreaEffect: "0,0,G|-2,0,B|2,0,R|4,0,R|6,0,E"
+                AreaEffectLayoutOverride: "0,0,G|-1,-1,B|1,1,R|2,2,R|3,3,E"
+                MultiPassAttack: False
+                AnimOverload: Attack1_TipOfTheSpear
+        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 4
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+Layout:
+    Top:
+        - ColumnWidths: "60,40"
+        - Column:
+            - Row: "<b><size=130%><sprite name=Attack> *TAttack* <mark=#FCD06E22><size=100%><voffset=1><sprite name=Pierce> *TAttack.Pierce*</mark>"
+            - Row: "<size=20%> "
+        - Column:
+            - Row: "£Area£"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=130%><voffset=1>@BMove@"

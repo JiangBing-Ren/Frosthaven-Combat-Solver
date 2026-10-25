@@ -1,0 +1,48 @@
+Parser: AbilityCard
+Name: $FH/414_character_ability_cards_hive_burning_slash_1$
+Character: HIVEID
+ID: 414
+Level: 8
+Initiative: 29
+Discard: [Discard,Discard]
+Prefab: 414_HIVE_BurningSlash
+Data:
+    Top:
+        XP: 1
+        Abilities:
+            TAttack:
+                Attack: 3
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Conditions: Wound
+                AreaEffect: "0,0,G|2,0,R|1,1,R|1,-1,R|-1,1,E"
+                MultiPassAttack: False
+                AnimOverload: AttackAOE
+    Bottom:
+        Abilities:
+            BModeTransfer:
+                Mode: Transfer
+            BMove:
+                Move:
+                    Amount: 1
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BWound:
+                Wound: True
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Target: -1
+                Filter: Enemy
+                AnimOverload: CastAOE
+Layout:
+    Top:
+        - Column: "<sprite name=Attack>*TAttack* <sprite name=Wound>"
+        - Column: "£TAttack.Area£"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=HIVETransfer>"
+        - Divider: 
+        - Row: "<b><size=130%><sprite name=Move> *BMove* @BMove@"
+        - Divider: 
+        - Row: "$FH/414_character_ability_cards_hive_burning_slash_2$"

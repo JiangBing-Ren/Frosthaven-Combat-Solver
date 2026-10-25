@@ -1,0 +1,81 @@
+Parser: AbilityCard
+Name: $FH/117_character_ability_cards_deathwalker_frozen_in_fear_1$
+Character: DeathwalkerID
+ID: 117
+Level: 8
+Initiative: 21
+Discard: [Discard,Lost]
+Prefab: 117_Deathwalker_FrozenInFear
+Data:
+    Top:
+        Abilities:
+            TPerformImmobilizeFromShadow:
+                PerformFromShadow:
+                    Abilities:
+                        TImmobilize:
+                            Immobilize: True
+                            Filter: Enemy
+                            Range: 1
+                            MiscVars:
+                                PrintedProperties: list("Range")
+                            Target: 99
+                            MiscVars:
+                                AutoSelectValidTiles: True
+                Range: 99
+                Target: 1
+                AnimOverload: Debuff
+                # xp should be awarded only if the immobilize went through
+                MiscVars:
+                    ExplicitlyDoesNothing: True
+            TDamageImmobilized:
+                Damage: 1
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Target: -1
+                Targeting: Custom
+                AnimOverload: Debuff
+                TargetingVars:
+                    Actors: AllEnemyMonsters.Where(obj.Tokens.HasKey(CCondition.ENegativeCondition.Immobilize))
+                    AddValidActorsInRange: Actors
+                    AddTilesInRange: Actors.Select(obj.Tile)
+        Consumes:
+            TCDark:
+                Elements: Dark
+                AbilityOverrides:
+                    TCDarkDamageBuff:
+                        ParentName: TDamageImmobilized
+                        Strength: 1
+        XP: 1
+    Bottom:
+        Abilities:
+            BCreateShadows:
+                CreateShadow:
+                HelpBoxTooltipLocKey: "FH/GUI_PLACE_SHADOWS_HELPBOX"
+                Range: 1
+                Target: 2
+                AnimOverload: Shadow Manipulation
+                MiscVars:
+                    includeCasterTile: True
+            BMoveShadows:
+                MoveShadow:
+                Target: -1
+                Range:
+                    Amount: 5
+                    SquareEnhancements: 1
+                AnimOverload: Shadow Manipulation  
+        Infuse: Dark
+        XP: 1
+Layout:
+    Top:
+        - Row: "$FH/117_character_ability_cards_deathwalker_frozen_in_fear_2$"
+        - Row: "$FH/117_character_ability_cards_deathwalker_frozen_in_fear_3$"
+        - Divider: 
+        - Row: "$FH/117_character_ability_cards_deathwalker_frozen_in_fear_4$"
+        - Consume:
+            Name: TCDark
+            Text: "+1 <sprite name=Damage>"
+    Bottom:
+        - Row: "$FH/117_character_ability_cards_deathwalker_frozen_in_fear_5$"
+        - Divider: 
+        - Row: "$FH/117_character_ability_cards_deathwalker_frozen_in_fear_6$ @BMoveShadows.Range@"
+

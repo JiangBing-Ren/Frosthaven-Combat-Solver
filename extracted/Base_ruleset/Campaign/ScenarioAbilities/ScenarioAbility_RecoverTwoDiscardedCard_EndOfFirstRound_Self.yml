@@ -1,0 +1,19 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_RecoverTwoDiscardedCard_EndOfFirstRound_Self
+ScenarioAbility:
+    TBuff:
+        Filter: Self
+        AutoTrigger: True
+        SkipAnim: True
+        AddActiveBonus:
+            RecoverDiscardedCards: 2
+            Filter: Self
+            AutoTrigger: True
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: StartRoundAbility
+            ListLayoutOverride: [$FH/ScenarioAbility_RecoverTwoDiscardedCard_EndOfFirstRound_Self$, RecoverIcon]
+            XPTracker: [0]
+            Requirement:
+                Vars:
+                    ValidateIsFirstRound: ScenarioManager.CurrentScenarioState.RoundNumber == 2

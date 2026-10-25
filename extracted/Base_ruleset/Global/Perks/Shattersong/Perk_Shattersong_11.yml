@@ -1,0 +1,29 @@
+Parser: Perk
+ID: Shattersong11
+Name: FH/PERK_Shattersong_11_Name
+Description: FH/PERK_Shattersong_11_Desc
+CharacterID: ShattersongID
+Available: 1
+Flags: [Passive, ApplyActiveBonusesAtScenarioStart]
+Abilities:
+    OnRoomRevealedBonus:
+        Filter: Self
+        AutoTrigger: True
+        SkipAnim: True
+        AddActiveBonus:
+            ShowNextAttackModifier: 1
+            AutoTrigger: True
+            Filter: [Enemy,Ally]
+            Targeting: All
+            Target: -1
+            AnimOverload: Cast_Concentrate
+            MiscVars:
+                # has to happen he moment we open the door, not after we finish the move
+                InterruptCurrentAbility: True
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: GenericRoomRevealed
+            # shows up once per round, but only finishes if you actually do the infuse
+            Restriction: OncePerRound
+            Hidden: True
+            TriggerOnCaster: True

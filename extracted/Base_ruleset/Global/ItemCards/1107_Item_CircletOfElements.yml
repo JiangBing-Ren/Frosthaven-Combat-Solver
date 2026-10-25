@@ -1,0 +1,28 @@
+Parser: ItemCard
+ID: 1107
+StringID: CircletOfElementsID
+Name: $FH/1107_item_cards_circlet_of_elements_1$
+Art: Circlet of Elements
+TotalInGame: 2
+Cost: 25
+Slot: Head
+Rarity: Rare
+Usage: Spent
+Consumes: Any
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        # EmptyAbility:
+        #     Null: True
+        #     SubAbilities:
+        BCInfuseSub:
+            CanUndo: False
+            # TreatAsNonSubAbility: True
+            Infuse: [Any]
+            ShowElementPicker: True
+            MiscVars:
+                SkipInitAbilitySaveInfusionsState: True
+    Vars:
+        SkipSaveInfusionsState: True
+Layout: 
+    - Row: $FH/1107_item_cards_circlet_of_elements_2$

@@ -1,0 +1,22 @@
+Parser: ItemCard
+ID: 1218
+StringID: TitanNailID
+Name: $FH/1218_item_cards_titan_nail_1$
+Art: Titan Nail
+TotalInGame: 1
+Cost: 35
+Slot: TwoHand
+Rarity: Rare
+Usage: Spent
+Trigger: SingleTarget
+Data: 
+    ItemRequirements:
+        HP: "<= 4"
+    Overrides:
+        OAttackPierceOverrideBonus:
+            Pierce: 3
+    CompareAbility:
+        AbilityType: Attack
+        Filter: Enemy
+Layout: 
+    - Row: "$FH/1218_item_cards_titan_nail_2$"

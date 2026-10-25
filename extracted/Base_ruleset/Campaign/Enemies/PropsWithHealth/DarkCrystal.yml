@@ -1,0 +1,29 @@
+Parser: Enemy
+ID: DarkCrystalID
+LocKey: $FH/FH_Scenario_Campaign_19_SCENARIO_OBJECT_1$
+MonsterType: Object
+Model: DarkCrystalExposed
+StandeeLimit: 100
+FocusingInitiative: 1
+# Base Stats
+Level0:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersTimesLevelPlusX
+            Multiplier: 2
+            AddTo: True
+Level1:
+    Health: 1
+Level2:
+    Health: 1
+Level3:
+    Health: 1
+Level4:
+    Health: 1
+Level5:
+    Health: 1
+Level6:
+    Health: 1
+Level7:
+    Health: 1

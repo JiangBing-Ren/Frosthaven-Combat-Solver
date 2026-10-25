@@ -1,0 +1,73 @@
+Parser: AbilityCard
+Name: $FH/030_character_ability_cards_drifter_everlasting_1$
+Character: DrifterID
+ID: 30
+Level: 9
+ProgressionOrder: 29
+Initiative: 96
+Discard: [Lost,Discard]
+Prefab: 30_Drifter_Everlasting
+Data:
+    Top:
+        Abilities:
+            TPreventDamage:
+                PreventDamage: -1
+                ActiveBonus:
+                    Duration: Persistent
+                    XPTracker: [1,0,1,0]
+                Filter: [Self]
+                MiscVars:
+                    DamageToTakeMustBeOrLessThan: 4
+                AnimOverload: Persistent Buff
+    Bottom:
+        Abilities:
+            BHeal:
+                Heal:
+                    Amount: 3
+                    DiamondPlusEnhancements: 1
+                Target: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Heal","Range")
+                Targeting: Range
+                Filter: [Self, Ally]
+                Conditions: [Regenerate, Strengthen]
+                AnimOverload: Heal
+        Consumes:
+            BCMoveTracker:
+                CostAbility:
+                    ParentName: BHeal
+                    MoveActiveBonusTracker: 1
+                    MiscVars:
+                        CheckCanBePerformedWhenAugment: True
+                    Vars:
+                        NumberOfCardsToSelect: 1
+                    Filter: [Self]
+                AbilityOverrides:
+                    BCHealBuff:
+                        ParentName: BHeal
+                        Target: 1
+                        MiscVars:
+                            PrintedProperties: list("Target")
+Layout:
+    Top:
+        - Active:
+            Ability: TPreventDamage
+            Icon: Positive_DamagePrevent_DamageSelf
+            ListLayout: "$FH/030_character_ability_cards_drifter_everlasting_2$"
+            Layout: "$FH/030_character_ability_cards_drifter_everlasting_2$"
+        - XPTracker: TPreventDamage
+    Bottom:
+        - Row:
+            - ColumnWidths: "20,30,40,10"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Heal> *BHeal*<size=100%><voffset=1>@BHeal@"
+            - Column:
+                - AddedEffect: "<sprite name=Range>3, <sprite name=Regenerate>, <sprite name=Strengthen>"
+            - Column:
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: BCMoveTracker
+                    Text: "<size=70%>$FH/030_character_ability_cards_drifter_everlasting_3$"

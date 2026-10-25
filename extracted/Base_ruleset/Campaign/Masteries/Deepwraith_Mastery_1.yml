@@ -1,0 +1,17 @@
+Parser: Mastery
+ID: Deepwraith_MASTERY_1
+LocalisedName: Deepwraith_MASTERY_1_Name
+LocalisedDescription: Deepwraith_MASTERY_1_Desc
+PerkPoints: 1
+CheckAtEndOfScenario: True
+# 0 = no attacks, 1 = all attacks with advantage, 2 = not all attacks have advantage
+BattleGoalCondition:
+    - Targets:
+        Filter: AttackWithAdvantage
+        SubFilter: Scenario
+        Value: 1
+BattleGoalFailCondition:
+    - Targets:
+        Filter: AttackWithAdvantage
+        SubFilter: Scenario
+        Value: 2

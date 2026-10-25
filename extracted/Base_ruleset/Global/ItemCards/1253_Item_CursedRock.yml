@@ -1,0 +1,23 @@
+Parser: ItemCard
+ID: 1253
+StringID: CursedRockID
+Name: $FH/1253_item_cards_cursed_rock_1$
+Art: Cursed Rock
+TotalInGame: 1
+Cost: 10
+Slot: SmallItem
+Rarity: Rare
+Usage: Consumed
+Trigger: PassiveEffect
+Data: 
+    Abilities:
+        ACurse:
+            Curse: True
+            Filter: Self
+            AutoTrigger: True
+        ABless:
+            Bless: True
+            Filter: Self
+            AutoTrigger: True
+Layout: 
+    - Row: "$FH/1253_item_cards_cursed_rock_3$"

@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 124
+ScenarioItemID: 1113
+Name: Winged Shoes
+Quantity: 2
+GoldCost: 15
+Type: Feet
+IsNewCharacterItem: True

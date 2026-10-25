@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    FHSolver 离线测试台。
+    只编译 Solver/ + Model/ —— 这两层是纯 POCO，不引用任何游戏类型，
+    所以能在普通控制台里跑，不需要启动游戏。
+    Bridge/ 层（读游戏状态）不进来，由测试自己喂假数据。
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <AssemblyName>FHSolver.Tests</AssemblyName>
+    <RootNamespace>FHSolver.Tests</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="../FHSolver/Solver/*.cs" />
+    <Compile Include="../FHSolver/Model/*.cs" />
+  </ItemGroup>
+
+</Project>

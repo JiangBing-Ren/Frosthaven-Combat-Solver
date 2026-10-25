@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 170
+ScenarioItemID: 1263
+Name: Eye of Truth
+Quantity: 1
+GoldCost: 25
+Type: Head
+IsNewCharacterItem: False

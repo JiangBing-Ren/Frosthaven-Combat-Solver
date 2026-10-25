@@ -1,0 +1,34 @@
+Parser: ScenarioAbility
+ID: FH119_InfuserHeal
+ScenarioAbility:
+    AInfuserMoveIgnoreTerrain:
+        Filter: Self
+        SkipAnim: True
+        AddActiveBonus:                                
+            Heal: 0
+            StrengthIsBase: True
+            Filter: Self
+            StatIsBasedOnX:
+                Strength:
+                    BasedOn: XAddedToYTimesLevel
+                    Multiplier: 2
+                    SecondVariable: 1
+            PreviewEffectText: "FH_Scenario_Campaign_119_Activate_Dust_Ability_3_Heal"
+            MiscVars: 
+                PreviewEffectTextWhenSelected: "'<sprite name=Heal>{L+2}'"
+                DustCost: 2
+        ActiveBonus:
+            ListLayoutOverride: ["$FH/FH_Scenario_Campaign_119_Activate_Dust_Ability_3_Heal$", Empty]
+            Hidden: True
+            Behaviour: DuringTurnAbility
+            Duration: Persistent
+            ValidAbilityType: NullTargeting
+            IsToggleBonus: True
+            MiscVars:
+                OverrideIcon: "'FH_UI_dust_2'"
+            Requirements:
+                Vars:
+                    CurrentAbility: PhaseManager.CurrentPhaseAction?.CurrentPhaseAbility?.m_Ability
+                    ValidateAbility: CurrentAbility != null && CurrentAbility.Name == "AChooseInfuserDust"
+                    ValidateDusts: ScenarioScript_FH119.current.GetNumDusts() >= 2
+

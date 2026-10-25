@@ -1,0 +1,78 @@
+Parser: AbilityCard
+Name: $FH/206_character_ability_cards_infuser_obsidian_spear$
+Character: InfuserID
+ID: 206
+Level: 5
+Initiative: 84
+Discard: [Discard,Discard]
+Prefab: 206_Infuser_ObsidianSpear
+Data:
+    Top:
+        Abilities:
+            TObisidianSpearAttack:
+                Attack:
+                    Amount: 4
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AreaEffect: "0,0,G|2,0,S|4,0,R|6,0,R|8,0,E"
+                MultiPassAttack: False
+                AnimOverload: ObsidianSpear 
+        Consumes:
+            TCAttackBuff:
+                PreviewEffectId: M1Attack
+                AbilityOverrides:
+                    TCOAttack:
+                        ParentName: TObisidianSpearAttack
+                        Attack: -1
+                        SubAbilities:
+                            SubPush:
+                                Pull: 1
+                                MiscVars:
+                                    PrintedProperties: list("Pull")
+                                IsInlineSubAbility: True
+                            SubInfuse:
+                                Infuse: [Dark]
+                                SkipAnim: True
+                                XP: 1
+    Bottom:
+        Abilities:
+            ConsumeAbility:
+                SkipAnim: True
+                Consume: 
+                    Elements: [Earth, Dark]
+                    Abilities:
+                        CNull:
+                            Null: True
+                            AutoTrigger: True
+                            SkipAnim: True
+            BAttack:
+                Attack:
+                    Amount: 4
+                    SquareEnhancements: 1
+                Range:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                Conditions: [Stun]
+                AnimOverload: RangedAttack 
+        XP: 1
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TObisidianSpearAttack* <size=100%><voffset=1>@TObisidianSpearAttack@"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCAttackBuff
+                    Text: "-1<sprite name=Attack>: <sprite name=Pull> 1, <sprite name=CreateDark>, <sprite name=XP1>"
+        - Row: "£Area£"
+    Bottom:
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<sprite name=ConsumeEarth>, <sprite name=ConsumeDark>:"
+        - Row: "<b><size=130%><sprite name=Attack> *BAttack* <size=100%><voffset=1>@BAttack@"
+        - Row: "<b><size=130%><sprite name=Range> *BAttack.Range* <size=100%><voffset=1>@BAttack.Range@"
+        - Row: "<sprite name=Stun>"
+        

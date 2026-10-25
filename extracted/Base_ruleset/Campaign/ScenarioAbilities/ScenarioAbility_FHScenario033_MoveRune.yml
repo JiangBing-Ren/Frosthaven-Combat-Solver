@@ -1,0 +1,27 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH33_MoveRune
+ScenarioAbility:
+    AActive:
+        AddActiveBonus:
+            LoseCards: 1
+            Filter: Self
+            SkipAnim: True
+            SubAbilities:
+                MoveRune:
+                    NullHex: True
+                    Range: 1
+                    Target: 1
+                    TileFilter: Custom
+                    CanSkip: False
+                    MiscVars:
+                        IsValidTile: ScenarioScript.current.IsValidMoveRuneTile(obj)
+                    SkipAnim: True
+                    UseParentTargets: False
+                    Flags: [Special2]            
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringTurnAbility
+            XPTracker: [0]
+            IsToggleBonus: True
+            Hidden: True
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_033_MoveRuneAbility$, Move]

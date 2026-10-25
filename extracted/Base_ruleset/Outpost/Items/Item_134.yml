@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 134
+ScenarioItemID: 1133
+Name: Comfortable Shoes
+Quantity: 2
+GoldCost: 30
+Type: Feet
+IsNewCharacterItem: False

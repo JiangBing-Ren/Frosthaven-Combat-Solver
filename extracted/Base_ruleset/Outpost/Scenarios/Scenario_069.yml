@@ -1,0 +1,22 @@
+Parser: FHScenario
+ID: 69
+Name: Sacred Soil
+LevelID: FS_069_Sacred_Soil
+Chain: PersonalQuest
+Location: RadiantForest
+RequiresFinishedPrologue: True
+InvalidWhileChainActive: RoadToFrosthaven
+RequiresPersonalQuest: PQ_2
+Difficulty: 2
+# RequiresSticker: IntoTheForest
+Conclusions:
+    - Effects:
+        - Type: GainArrowvine
+          Param1: 1
+        - Type: GainAxenut
+          Param1: 1
+        - Type: GainFlamefruit
+          Param1: 1
+        - Type: AddCalendarCampaignSection
+          Param1: 15.4
+          Param2: 3

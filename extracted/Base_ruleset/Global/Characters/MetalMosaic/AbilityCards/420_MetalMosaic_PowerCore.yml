@@ -1,0 +1,124 @@
+Parser: AbilityCard
+Name: $FH/420_character_ability_cards_metal_mosaic_power_core_1$
+Character: MetalMosaicID
+ID: 420
+Level: 1
+Initiative: 83
+Discard: [Lost,Discard]
+Prefab: 420_MetalMosaic_PowerCore
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 4
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Conditions: [Stun]
+                AnimOverload: ElectricalDischarge_Attack
+                PerformVars:
+                    PreActorIsAttacking:
+                        ChangePressureHigh: TargetingActor.Pressure.ToString() == 'High' && CustomAbility.PressureChange(TargetingActor, -1)
+                        ChangePressureOver: TargetingActor.Pressure.ToString() == 'Over' && CustomAbility.PressureChange(TargetingActor, -1)
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: Vars
+                        AddTo: True
+                        Vars:
+                            HighPressure: TargetingActor.Pressure.ToString() == 'High'
+                            Value: HighPressure && 1 || 0
+                    Target:
+                        BasedOn: Vars
+                        AddTo: True
+                        Vars:
+                            OverPressure: TargetingActor.Pressure.ToString() == 'Over'
+                            Value: OverPressure && 1 || 0
+                    XP:
+                        BasedOn: Vars
+                        Vars:
+                            OverOrHighPressure: TargetingActor.Pressure.ToString() == 'Over' || TargetingActor.Pressure.ToString() == 'High'
+                            Value: OverOrHighPressure && 1 || 0
+                ConditionalOverrides:
+                    TAttackCOver:
+                        Requirements:
+                            RequiredPressure: Over
+                        AbilityOverrides:
+                            TWound:
+                                Conditions: [Wound]
+                                MiscVars:
+                                    PrintedProperties: list("Target")
+                    TAttackCHigh:
+                        Requirements:
+                            RequiredPressure: High
+                        AbilityOverrides:
+                            TWound:
+                                Conditions: [Wound]
+                SubAbilities:
+                    SelfDamage:
+                        Damage: 1
+                        MiscVars:
+                            PrintedProperties: list("Damage")
+                        AutoTrigger: True
+                        Filter: Self
+                        AnimOverload: SelfHurt 
+                        MiscVars:
+                            MetalMosaicSelfDamage: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Over
+        XP: 1
+    Bottom:
+        Abilities:
+            BHeal:
+                Heal:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: Vars
+                        AddTo: True
+                        Vars:
+                            RegularPressure: TargetingActor.Pressure.ToString() == 'Regular'
+                            LowPressure: TargetingActor.Pressure.ToString() == 'Low'
+                            Value: RegularPressure && 1 || LowPressure && 2 || 0
+                    XP:
+                        BasedOn: Vars
+                        Vars:
+                            LowPressure: TargetingActor.Pressure.ToString() == 'Low'
+                            Value: LowPressure && 1 || 0
+                SubAbilities:
+                    BPressureChangeRegular:
+                        Null: True
+                        SkipAnim: True
+                        IgnoreStun: True
+                        PerformVars:
+                            NullBegin:
+                                ChangePressure: CustomAbility.PressureChange(TargetingActor, 1)
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <sprite name=Stun>"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureOver><size=100%> +1<sprite name=Target>, <sprite name=Wound>, <sprite name=XP1>, <sprite name=MMSelfDamage>, <sprite name=MMLosePressure>"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureHigh><size=100%> +1<sprite name=Attack>, <sprite name=Wound>, <sprite name=XP1>, <sprite name=MMLosePressure>"
+    Bottom:
+
+        - Row: 
+            - ColumnWidths: "50,50"
+            - Column: "<b><size=130%><sprite name=Heal> *BHeal* <size=100%><voffset=1>@BHeal@"
+            - Column: "$Self$"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureRegular><size=100%> +1<sprite name=Heal>"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureLow><size=100%> +2<sprite name=Heal>, <sprite name=XP1>"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMGainPressure>"

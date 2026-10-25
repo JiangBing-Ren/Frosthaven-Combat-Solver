@@ -1,0 +1,17 @@
+Parser: Perk
+ID: Blinkblade07
+Name: FH/PERK_Blinkblade_07_Name
+Description: FH/PERK_Blinkblade_07_Desc
+CharacterID: BlinkbladeID
+Available: 1
+Flags: [Passive, ApplyActiveBonusesAtScenarioStart]
+Abilities:
+    TActive:
+        AutoTrigger: True
+        ImmunityTo: [Immobilize]
+        Filter: Self
+        SkipAnim: True
+        ActiveBonus:
+            Duration: Persistent
+            Hidden: True
+           

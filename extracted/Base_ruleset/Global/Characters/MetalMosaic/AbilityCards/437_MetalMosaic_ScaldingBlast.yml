@@ -1,0 +1,127 @@
+Parser: AbilityCard
+Name: $FH/437_character_ability_cards_metal_mosaic_scalding_blast$
+Character: MetalMosaicID
+ID: 437
+Level: 6
+Initiative: 45
+Discard: [Discard,Discard]
+Prefab: 437_MetalMosaic_ScaldingBlast
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 5
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AnimOverload: RangedAttack
+                PerformVars:
+                    PreActorIsAttacking:
+                        ChangePressureHigh: TargetingActor.Pressure.ToString() == 'High' && CustomAbility.PressureChange(TargetingActor, -1)
+                        ChangePressureOver: TargetingActor.Pressure.ToString() == 'Over' && CustomAbility.PressureChange(TargetingActor, -2)
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: Vars
+                        AddTo: True
+                        Vars:
+                            RegularPressure: TargetingActor.Pressure.ToString() == 'Regular'
+                            Value: RegularPressure && 1 || 0
+                    Target:
+                        BasedOn: Vars
+                        AddTo: True
+                        Vars:
+                            OverPressure: TargetingActor.Pressure.ToString() == 'Over'
+                            HighPressure: TargetingActor.Pressure.ToString() == 'High'
+                            Value: OverPressure && 2 || HighPressure && 1 || 0
+                    XP:
+                        BasedOn: Vars
+                        Vars:
+                            OverOrHighPressure: TargetingActor.Pressure.ToString() == 'Over' || TargetingActor.Pressure.ToString() == 'High'
+                            Value: OverOrHighPressure && 1 || 0
+                ConditionalOverrides:
+                    TAttackCOver:
+                        Self: True
+                        Requirements:
+                            RequiredPressure: Over
+                        AbilityOverrides:
+                            TAttack:
+                                MiscVars:
+                                    PrintedProperties: list("Target")
+                                AnimOverload: SteamBlast
+                                MultiPassAttack: False
+                    TAttackCHigh:
+                        Self: True
+                        Requirements:
+                            RequiredPressure: High
+                        AbilityOverrides:
+                            TAttack:
+                                MiscVars:
+                                    PrintedProperties: list("Target")
+                SubAbilities:
+                    SubSelfDamageOver:
+                        Damage: 2
+                        MiscVars:
+                            PrintedProperties: list("Damage")
+                        AutoTrigger: True
+                        Filter: Self
+                        SkipAnim: True
+                        MiscVars:
+                            MetalMosaicSelfDamage: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Over
+                    SubSelfDamageHigh:
+                        Damage: 1
+                        MiscVars:
+                            PrintedProperties: list("Damage")
+                        AutoTrigger: True
+                        Filter: Self
+                        SkipAnim: True
+                        MiscVars:
+                            MetalMosaicSelfDamage: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: High
+    Bottom:
+        Abilities:
+            BAttack:
+                Attack: 
+                    Amount: 3
+                    SquareEnhancements: 1
+                Pierce: 2
+                MiscVars:
+                    PrintedProperties: list("Attack","Pierce")
+                AnimOverload: RangedAttack
+            BPressureChangeGain:
+                Null: True
+                SkipAnim: True
+                IgnoreStun: True
+                PerformVars:
+                    NullBegin:
+                        ChangePressure: CustomAbility.PressureChange(TargetingActor, 1)
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    Vars: 
+                        ValidateActionHasHappened: CustomAbility.HasPerformedAction(Ability) 
+        Infuse: [Fire]
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack*"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureOver><size=100%> +2<sprite name=Target>, <sprite name=XP1>, 2 <sprite name=MMSelfDamage>, <sprite name=MMLosePressure> <sprite name=MMLosePressure>"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureHigh><size=100%> +1<sprite name=Target>, <sprite name=XP1>, <sprite name=MMSelfDamage>, <sprite name=MMLosePressure>"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureRegular><size=100%> +1<sprite name=Attack>"
+    Bottom:
+        - Row:
+            - ColumnWidths: "50,50"
+            - Column:
+                - Row: "<b><size=130%><sprite name=Attack> *BAttack* <size=100%><voffset=1>@BAttack@"
+            - Column:
+                - Row: "<sprite name=Pierce> 2"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMGainPressure> <sprite name=CreateFire>"

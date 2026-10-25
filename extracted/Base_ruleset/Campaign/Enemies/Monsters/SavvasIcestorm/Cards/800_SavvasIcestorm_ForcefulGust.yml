@@ -1,0 +1,27 @@
+Parser: EnemyCard
+ID: 800
+Name: $Monster_Ability_800_SavvasIcestorm_ForcefulGust$
+Initiative: 47
+Shuffle: True
+Data:
+    Abilities:
+        Disarm1:
+            Disarm: True
+            Range: 1
+            RangeIsBase: True
+            Target: -1
+            RangeIsBase: True
+            TargetIsBase: True
+            ShowRange: False
+            Filter: Enemy
+            AnimOverload: CastPush
+            Text: "$Target_AllAdjacentEnemies$"
+        Move1:
+            Move: 0
+        Attack1:
+            Attack: -1
+            Filter: Enemy
+            Range: 4
+            RangeIsBase: True
+            AnimOverload: RangedAttack_Wind
+    Infuse: Air

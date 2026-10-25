@@ -1,0 +1,20 @@
+Parser: Mastery
+ID: Shattersong_MASTERY_2
+LocalisedName: Shattersong_MASTERY_2_Name
+LocalisedDescription: Shattersong_MASTERY_2_Desc
+PerkPoints: 1
+# use 5 wave abilities, each spending 5 resonance tokens
+BattleGoalCondition:
+    - Targets:
+        # check end turns
+        Filter: UseWaveAbilityWithXResonance
+        HasHappened: True
+        # with 5 resonance tokens
+        CompareVal1: 5
+        # throughout the entire scenario
+        SubFilter: Scenario
+        # only for the shattersong
+        CharacterIDs: 
+            ActorID: ShattersongID
+        StopCheckingAfterDeath: True
+        Value: 5

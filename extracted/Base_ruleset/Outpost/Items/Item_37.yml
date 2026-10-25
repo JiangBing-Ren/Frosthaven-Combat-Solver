@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 37
+ScenarioItemID: 954
+Name: Ghost Cloak
+Quantity: 2
+Type: Body
+CraftingCost:
+    Corpsecap: 1
+RequiredCraftingItemIDs: [ 3, 114 ]

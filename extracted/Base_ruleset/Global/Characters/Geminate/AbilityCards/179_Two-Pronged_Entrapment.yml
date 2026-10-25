@@ -1,0 +1,106 @@
+Parser: AbilityCard
+Name: $FH/179_character_ability_cards_geminate_two_pronged_entrapment_1$
+Character: GeminateID
+ID: 179
+Level: 7
+ProgressionOrder: 28
+Initiative: 21
+Discard: [Discard, Lost]
+RequiredForm: Melee
+Prefab: 179_Geminate_TwoProngedEntrapment
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 4
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AnimOverload: Attack_Melee
+            TShield:
+                Shield: 1
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                ActiveBonus:
+                    Duration: Round
+                    ListLayoutOverride: ["<sprite name=Shield> *TShield*", Positive_Shield]
+
+            TInfuse:              
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    DoesntHaveNegativeCondition: [Stun]
+                Consume:
+                    Elements: [Any]
+                    Abilities:
+                        TCInfuse:
+                            Infuse: [Ice, Light]
+    Bottom:
+        Abilities:
+            BPush:
+                NullTargeting:
+                SubAbilities:
+                    BPushSub:
+                        Push: 2
+                        MiscVars:
+                            PrintedProperties: list("Push")
+                        IsInlineSubAbility: True
+                        Conditions: Brittle
+                Filter: Enemy
+                AnimOverload: Cast Negative
+                Target: -1
+                AreaEffect: "0,0,G|2,0,R|4,0,R|1,-1,R|2,-2,R"
+                AreaEffectLayoutOverride: "0,0,G|2,0,R|4,0,R|1,-1,R|2,-2,R"
+        Consumes:
+            BCIce:
+                Elements: Ice
+                AbilityOverrides:
+                    BCIceStrengthen:
+                        ParentName: BPushSub
+                        Conditions: [Immobilize]
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            DoesntHaveNegativeCondition: [Stun]
+                XP: 1
+            BCLight:
+                Elements: Light
+                AbilityOverrides:
+                    BCLightStrengthen:
+                        ParentName: BPushSub
+                        Conditions: [Disarm]
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            DoesntHaveNegativeCondition: [Stun]
+        XP: 1
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Shield> *TShield*"
+        - Conditional:
+            Layout:
+                - Row:
+                    - ColumnWidths: "40,10,40"
+                    - Column:
+                        - Row: "<size=200%><sprite name=ConsumeWild>:"
+                    - Column:
+                    - Column:
+                        - Row:
+                            - MandatoryTrigger:
+                                Layout:
+                                    - Row: "<sprite name=CreateIce> <sprite name=CreateLight>"
+    Bottom:
+        - Row:
+            - Column:
+                - Row: "<size=130%><sprite name=Push>*BPushSub* <sprite name=Brittle>"
+                - Conditional:
+                    Layout:
+                        - Consume:
+                            Name: BCIce
+                            Text: "<nobr><sprite name=Immobilize>, <sprite name=XP1></nobr>"
+                        - Consume:
+                            Name: BCLight
+                            Text: "<nobr><sprite name=Disarm></nobr>"
+
+            - Column:
+                - Row: "£BPush.Area£"

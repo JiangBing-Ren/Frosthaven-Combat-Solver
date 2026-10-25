@@ -1,0 +1,130 @@
+Parser: AbilityCard
+Name: $FH/176_character_ability_cards_geminate_chitinous_horde_1$
+Character: GeminateID
+ID: 176
+Level: 5
+ProgressionOrder: 25
+Initiative: 15
+Discard: [Discard,Lost]
+RequiredForm: Range
+Prefab: 176_Geminate_ChitinousHorde
+Data:
+    Top:
+        Abilities:
+            TShield:
+                ControlActor:
+                    Abilities:
+                        TAllyShield:
+                            Shield:
+                                Amount: 2
+                                SquareEnhancements: 1
+                            MiscVars:
+                                PrintedProperties: list("Shield")
+                            Target: Self
+                            ActiveBonus:
+                                Duration: Round
+                                ListLayoutOverride: ["<sprite name=Shield> *Shield*", Positive_Shield]
+                    ControlActorType: Player
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Filter: Ally
+                ActiveBonusDuration: Ability
+        Consumes:
+            TCFire:
+                PreviewEffectText: "<size=130%><sprite name=Strengthen>"
+                Elements: [Fire]       
+                AbilityOverrides:
+                    TAllyShieldOverride:
+                        ParentName: TAllyShield
+                        ActiveBonusDuration: Round
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            DoesntHaveNegativeCondition: [Stun]     
+                        SubAbilities:
+                            TStrengthen:
+                                Strengthen: True
+                                Filter: Self
+                                #IsInlineSubAbility: True
+                                Flags: [SubAbilityPreview]
+    Bottom:
+        Abilities:
+            BDamage:
+                Damage: 2
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Range: 1
+                Target: -1
+                Filter: Enemy
+                AnimOverload: Cast Negative
+            BInfuse:
+                AutoTrigger: True
+                AddActiveBonus:
+                    IgnoreStun: True
+                    Damage: 2
+                    MiscVars:
+                        PrintedProperties: list("Damage")
+                    Filter: Ally
+                    Range: 1
+                    Target: 1
+                    Targeting: Range
+                    AnimOverload: Cast Negative
+                    SubAbilities:
+                        TInfuse:
+                            IgnoreStun: True
+                            IsInlineSubAbility: True
+                            CanUndo: False
+                            Infuse: [Ice,Light]
+                            ShowElementPicker: True
+                    PreviewEffectText: "<sprite name=Damage>2, <sprite name=CreateMixed-IL>"
+                Filter: Self
+                ActiveBonus:
+                    Behaviour: [DuringTurnAbility, BetweenActionAbilities]
+                    IsToggleBonus: True
+                    Restriction: OncePerTurn
+                    Duration: Persistent
+                    ListLayoutOverride: ["$FH/176_character_ability_cards_geminate_chitinous_horde_5$: <sprite name=CreateMixed-IL>", Positive_IceLightInfuse_Damage]
+                    Requirements:
+                        OnYourTurn: True
+            BSwitchForm:
+                Null: True
+                Flags: [SwitchFormRangeToMelee]
+                AutoTrigger: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [AddActiveBonus, Damage]
+        XP: 1
+Layout:
+    Top:
+        - Row: "$FH/176_character_ability_cards_geminate_chitinous_horde_2$"
+        - Active:
+            Ability: TAllyShield
+            Layout: "<sprite name=Shield> *TAllyShield* <voffset=1>@TAllyShield@"    
+            ListLayout: "<sprite name=Shield> *TAllyShield*"    
+            Icon: Positive_Shield   
+        - Divider:
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCFire
+                    Text: "<size=150%><nobr>$FH/176_character_ability_cards_geminate_chitinous_horde_3$</nobr>"
+
+        # these are necessary, otherwise we get icon errors after the control action finishes 
+        - Active:
+            Ability: TShield    
+            Icon: Positive_Shield
+            Layout: "<sprite name=Shield> *TShield* <voffset=1>"    
+            ListLayout: "<sprite name=Shield> *TShield*"  
+            
+    Bottom:
+        - Row: "$FH/176_character_ability_cards_geminate_chitinous_horde_4$"
+        - Divider:
+        - Row: "$FH/176_character_ability_cards_geminate_chitinous_horde_5$"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=GMRangedToMelee>"
+        - Active:
+            Ability: BInfuse
+            Icon: Damage
+            ListLayout: "$FH/176_character_ability_cards_geminate_chitinous_horde_5$: <sprite name=CreateMixed-IL>"

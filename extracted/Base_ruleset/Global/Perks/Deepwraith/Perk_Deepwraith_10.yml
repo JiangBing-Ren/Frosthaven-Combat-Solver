@@ -1,0 +1,15 @@
+Parser: Perk
+ID: Deepwraith10
+Name: FH/PERK_Deepwraith_10_Name
+Description: FH/PERK_Deepwraith_10_Desc
+CharacterID: DeepwraithID
+Available: 1
+Flags: [Passive, ExecuteAbilitiesAfterLongRest]
+Abilities:
+    ALoot:
+        Loot: 1
+        Target: 1
+        PerformVars:
+            CheckForLootQuestItems:
+                LootedMoneyToken: m_PropsLooted.Any(obj.ObjectType == "MoneyToken")
+                GainTrophy: LootedMoneyToken && CustomAbility.GainTrophyTokens(1, TargetingActor)

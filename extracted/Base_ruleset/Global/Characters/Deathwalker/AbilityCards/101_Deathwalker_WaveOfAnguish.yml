@@ -1,0 +1,55 @@
+Parser: AbilityCard
+Name: $FH/101_character_ability_cards_deathwalker_wave_of_anguish_1$
+Character: DeathwalkerID
+ID: 101
+Level: X
+Initiative: 58
+Discard: [Lost,Discard]
+Prefab: 101_Deathwalker_WaveOfAnguish
+Data:
+    Top:
+        Abilities:
+            TPerformAttackFromShadow:
+                PerformFromShadow:
+                    Abilities:
+                        PFSAttack:
+                            Filter: Enemy
+                            Attack: 3
+                            Range: 1
+                            Target: 1
+                            MiscVars:
+                                PrintedProperties: list("Attack")
+                Range: 99
+                Target: -1
+                AnimOverload: ShadowAttack
+                # xp should be awarded only if the attack went through
+                MiscVars:
+                    ExplicitlyDoesNothing: True
+        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BMoveShadows:
+                MoveShadow:
+                Target: -1
+                Range:
+                    Amount: 1
+                    SquareEnhancements: 1
+                AnimOverload: Shadow Manipulation   
+Layout:
+    Top:
+        - Row: "$FH/101_character_ability_cards_deathwalker_wave_of_anguish_2$"
+        - Row: "<size=20%> "
+        - Row: "<b><size=130%><sprite name=Attack> *PFSAttack*"
+        - Row: "<size=20%> "
+        - Row: "$FH/101_character_ability_cards_deathwalker_wave_of_anguish_3$"
+        - Row: "<size=150%> "
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* @BMove@"
+        - Divider:
+        - Row: "$FH/101_character_ability_cards_deathwalker_wave_of_anguish_4$ @BMoveShadows.Range@"

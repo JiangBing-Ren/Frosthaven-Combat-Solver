@@ -1,0 +1,28 @@
+Parser: Perk
+ID: Boneshaper06
+Name: FH/PERK_Boneshaper_06_Name
+Description: FH/PERK_Boneshaper_06_Desc
+CharacterID: BoneshaperID
+Available: 1
+Flags: [Passive, ApplyActiveBonusesAtScenarioStart]
+Abilities:
+    TActive:
+        AutoTrigger: True
+        PreventDamage: 1
+        PreventOnlyIfLethal: True
+        PreventDamageSetTargetHealthTo: 1
+        CasterDamageToTakeOnPrevent: 2
+        Filter: [Self]
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: PreventAndDamageActiveBonusCaster
+            XPTracker: [0]
+            IsAura: True
+            AuraFilter: 
+                TargetType: Ally
+                ActorType: Player
+            AuraTargeting: All
+            Hidden: True
+            ToggleIsOptional: True
+            ListLayoutOverride: [$FH/PERK_Boneshaper_06_Desc$, FH_UI_PERKS_Boneshaper_SoulPact]
+        NameKeyOverride: "FH/PERK_Boneshaper_06_Name"

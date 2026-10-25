@@ -1,0 +1,46 @@
+Parser: AbilityCard
+Name: $FH/473_character_ability_cards_deepwraith_consume_the_helpless_1$
+Character: DeepwraithID
+ID: 473
+Level: 9
+Initiative: 12
+Discard: [Discard,Lost]
+Prefab: 473_Deepwraith_ConsumeTheHelpless
+Data:
+    Top:
+        Abilities:
+            TBane:
+                Bane:
+                    DiamondEnhancements: 1
+                Target: 1
+                MiscVars:
+                    PrintedProperties: list("Target")
+                Filter:
+                    TargetType: Enemy
+                    Vars:
+                        ValidateConditions: target.Tokens.HasKey(CCondition.ENegativeCondition.Immobilize) || target.Tokens.HasKey(CCondition.ENegativeCondition.Stun)
+                AnimOverload: Intimidate
+        XP: 1
+    Bottom:
+        Abilities: 
+            BActive:
+                AddActiveBonus:
+                    Heal: 3
+                    MiscVars:
+                        PrintedProperties: list("Heal")
+                    Filter: Self
+                    PreviewEffectText: <sprite name="Heal">
+                Filter: Self
+                ActiveBonus:
+                    Behaviour: EndRoundAbility
+                    Duration: Persistent
+                    ListLayoutOverride: [$FH/473_character_ability_cards_deepwraith_consume_the_helpless_3$<br><sprite name=Heal> 3 $Self$, Positive_HealSelf_DWRTrophy]                
+                    Requirements:
+                        Type: ThisAbility
+                        TrophyTokensGainedThisRound: "> 0"
+        XP: 2
+Layout:
+    Top:
+        - Row: "$FH/473_character_ability_cards_deepwraith_consume_the_helpless_2$"
+    Bottom:
+        - Row: "$FH/473_character_ability_cards_deepwraith_consume_the_helpless_3$"

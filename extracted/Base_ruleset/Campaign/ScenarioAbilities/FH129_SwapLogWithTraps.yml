@@ -1,0 +1,64 @@
+Parser: ScenarioAbility
+ID: FH129_SwapLogWithTraps
+ScenarioAbility:
+    SwapLogWithTraps:
+        Filter: Self
+        SkipAnim: True
+        AddActiveBonus:
+            CanUndo: False
+            CanSkip: False
+            PreviewEffectText: "1 AP"
+            HelpBoxTooltipLocKey: "FH_Scenario_Campaign_129_SCENARIO_MODIFIER_5"
+            NullHex: True
+            Target: 1
+            IgnoreLOS: True
+            Range: 99
+            TileFilter: Custom
+            MiscVars:
+                IsValidTile: ScenarioScript_FH129.HasTwoHexDifficultTerrain(obj)
+                DontCancelIfNoTiles: True
+                DontPreviewDescription: True
+                SelectMultiHexProps: True
+                DontMoveCamera: True
+            PerformVars:
+                AnimateCharacter:
+                    SelectedTile: TilesSelected[0]
+                    Prop: ScenarioScript_FH129.FindTwoHexDifficultTerrain(SelectedTile)
+                    DestroyProp: Prop.DestroyPropFromAbility(obj)
+            SubAbilities:
+                CreateTrapsSub:
+                    #CanUndo: False
+                    TreatAsNonSubAbility: True
+                    Trap:
+                        TrapName: BearTrap
+                        Damage: 0
+                    Target: 2
+                    AutoTrigger: True
+                    IgnoreLOS: True
+                    Range: 99
+                    TileFilter: EmptyHex
+                    Targeting: Custom
+                    TargetingVars:
+                        AddTilesInRange: ??ParentAbility.TilesSelected
+                        AddSelectedTiles: ??ParentAbility.TilesSelected
+                    MiscVars:
+                        APCost: 1
+                        ScenarioTrap: True
+                        DontMoveCamera: True
+        ActiveBonus:
+            ListLayoutOverride: ["$FH/FH_Scenario_Campaign_129_SCENARIO_MODIFIER_5$", Empty]
+            Hidden: True
+            Behaviour: DuringTurnAbility
+            Duration: Persistent
+            ValidAbilityType: NullTargeting
+            IsToggleBonus: True
+            MiscVars:
+                OverrideIcon: "'Traps'"
+                OverrideLayoutName: "''"
+                ShowCounter: (6 - ScenarioScript_FH129.CountTraps())
+            Requirements:
+                Vars:
+                    CurrentAbility: PhaseManager.CurrentPhaseAction?.CurrentPhaseAbility?.m_Ability
+                    ValidateAbility: CurrentAbility != null && CurrentAbility.Name == "ChooseAPAbility"            
+                    ValidateMaxCount: ScenarioScript_FH129.CountTraps() < 6
+

@@ -1,0 +1,135 @@
+Parser: AbilityCard
+Name: $FH/246_character_ability_cards_shattersong_heartening_harmony_1$
+Character: ShattersongID
+ID: 246
+Level: 1
+Initiative: 30
+Discard: [Discard,Discard]
+Prefab: 246_Shattersong_HearteningHarmony
+Data:
+    Top:
+        Abilities:
+            TWaveAttack:
+                Filter: Self          
+                HelpBoxTooltipLocKey: "$FH/GUI_CHOOSE_RESONANCE_TOKEN_COUNT$"
+                PreviewEffectText: "<sprite name=Heal>X+2 <sprite name=Range>X+1"           
+                MiscVars:
+                    # doing the chosen ability as a sub ability so we can preview the effect
+                    DontPerformChosenAbility: True                     
+                    OverrideIcon: "'Ability_Shattersong_Icon'"
+                Choose:
+                    Choices:
+                        D1:
+                            PreviewEffectText: "1"
+                            Strength: 1
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 1
+                        D2:
+                            PreviewEffectText: "2"
+                            Strength: 2
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 2
+                        D3:
+                            PreviewEffectText: "3"
+                            Strength: 3
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 3
+                        D4:
+                            PreviewEffectText: "4"
+                            Strength: 4
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 4
+                        D5:
+                            PreviewEffectText: "5"
+                            Strength: 5
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 5
+                PerformVars:
+                    ApplyToActors:
+                        Resonance: ChosenAbility?.Strength || 0
+                        Tokens: Resonance * -1
+                Flags: [ModifiesResonanceTokens]
+                SubAbilities:
+                    THeal:
+                        Flags: [SubAbilityPreview]
+                        TreatAsNonSubAbility: True
+                        UseParentTargets: False
+                        MiscVars:
+                            PrintedProperties: list("Heal","Range")     
+                        Heal: 
+                            Amount: 0
+                            SquareEnhancements: 1
+                        Range:
+                            Amount: 0               
+                        Target: 1
+                        Filter: [Ally,Self]
+                        Vars:
+                            ParentStrength: ParentAbility.ChosenAbility?.Strength || 0
+                            AnimOverload: ((ParentStrength == 1 || ParentStrength == 2) && "CastTargetWeak") ||
+                                          ((ParentStrength == 3 || ParentStrength == 4) && "CastTargetMedium") ||
+                                          ((ParentStrength == 5) && "CastTargetStrong")  
+                        StatIsBasedOnX:
+                            Strength:
+                                BasedOn: Vars
+                                Vars:
+                                    Strength: 2 + ParentAbility.ChosenAbility?.Strength || 0
+                                    Value: max(1, Strength)
+                            Range:
+                                BasedOn: Vars
+                                Vars:
+                                    Strength: 1 + ParentAbility.ChosenAbility?.Strength || 0
+                                    Value: max(1, Strength)
+                        PerformVars:
+                            OnAbilityEnded:
+                                StackSubAbilities: obj.AbilityHasHappened && CustomAbility.StackNonInlineSubabilities(obj)
+                        SubAbilities:
+                            TFinishWave:
+                                NullTargeting: True
+                                Filter: Self
+                                SkipAnim: True
+                                AutoTrigger: True
+                                TreatAsNonSubAbility: True
+                                Flags: [Wave]
+        XP: 1
+        Infuse: Light
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 1
+                MiscVars:
+                    PrintedProperties: list("Move")     
+            BConsume:
+                PreviewEffectText: "<sprite name=SSResonance>"
+                SkipAnim: True
+                Consume:
+                    Resonance: 1
+                    Abilities:
+                        BStrengthen:
+                            Strengthen: True
+                            Filter: [Self]
+                            AnimOverload: Cast_Concentrate
+Layout:
+    Top:
+        - Row: "$FH/character_ability_cards_shattersong_wave$"
+        - Row: "<sprite name=Heal>X+2 @THeal@"
+        - Row: "<sprite name=Range>X+1"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Light
+    Bottom:
+        - Row: "<sprite name=Move> *BMove*"
+        - Divider:
+        - Conditional:
+            Layout:
+                - Row: "$FH/246_character_ability_cards_shattersong_heartening_harmony_2$"

@@ -1,0 +1,33 @@
+Parser: ItemCard
+ID: 1013
+StringID: ShockGrenadesID
+Name: $FH/1013_item_cards_shock_grenades_1$
+Art: Shock Grenades
+TotalInGame: 2
+Cost: 0
+Slot: OneHand 
+Rarity: Rare
+Usage: Spent
+Trigger: DuringOwnTurn
+ProsperityRequirement: 3
+Data: 
+    ItemRequirements:
+        Vars: 
+            # 3 instead of 2 because you can rotate the area effect i guess
+            EnemiesInRange: GameState.GetAllEnemiesInRange(Actor, Actor.ArrayIndex, 3)
+            ValidateHasEnemiesInRange: EnemiesInRange.Count > 0
+    Abilities:
+        AMuddleArea:
+            Muddle: True
+            Filter: Enemy
+            Range: 2
+            AreaEffect: "0,0,R|1,1,R|2,0,R"
+            AreaEffectLayoutOverride: "0,0,R|1,1,R|2,0,R"
+Layout: 
+    - Row: "$FH/1013_item_cards_shock_grenades_2$"
+    - Row:
+        - ColumnWidths: "70,30"
+        - Column:
+            - Row: "<size=130%><sprite name=Muddle> <size=100%><sprite name=Range> 2"
+        - Column:
+            - Row: "£Area£"

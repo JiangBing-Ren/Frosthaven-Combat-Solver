@@ -1,0 +1,58 @@
+Parser: AbilityCard
+Name: $FH/279_character_ability_cards_trapper_enticing_bait_1$
+Character: TrapperID
+ID: 279
+Level: 1
+Initiative: 30
+Discard: [Discard,Lost]
+Prefab: 279_Trapper_EnticingBait
+Data:
+    Top:
+        Abilities:
+            TTrap:
+                Trap:
+                    TrapName: TrapperTrap
+                    Heal: 4
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Range: 1
+                RangeIsBase: True
+                AnimOverload: CreateTrap
+        XP: 1
+    Bottom:
+        Abilities:
+            BMuddle:
+                Muddle: True
+                Target: 99
+                TargetIsBase: True
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Filter: Enemy
+                AnimOverload: FishingRod
+                MiscVars:
+                    AutoSelectValidTiles: True
+                SubAbilities:
+                    BControl:
+                        SkipAnim: True
+                        Filter: Enemy
+                        ControlActor:
+                            #UseControllingActorPlayerControl: True
+                            Abilities:
+                                BMove:
+                                    Move:
+                                        Amount: 2
+                                    MiscVars:
+                                        PrintedProperties: list("Move")
+                                    StrengthIsBase: True
+        XP: 2
+Layout:
+    Top:
+        - Row: "$FH/279_character_ability_cards_trapper_enticing_bait_2$ <sprite name=Heal>*TTrap* @TTrap@"
+        - Row: $FH/279_character_ability_cards_trapper_enticing_bait_3$
+    Bottom:
+        - Row: $FH/279_character_ability_cards_trapper_enticing_bait_4$
+        - Row: "<size=20%> "
+        - Row: $FH/279_character_ability_cards_trapper_enticing_bait_5$
+        - Row: "<b><size=130%><sprite name=Move><size=100%><voffset=1>2"

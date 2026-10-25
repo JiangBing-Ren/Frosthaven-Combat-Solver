@@ -1,0 +1,23 @@
+Parser: EnemyCard
+ID: 581
+Name: $Monster_Ability_581_NightDemon_BlackThorns$
+Initiative: 26
+Shuffle: False
+Data:
+    Abilities: 
+        Attack1:
+            Attack: -2
+            Range: 3
+            RangeIsBase: True
+            Target: 3
+            TargetIsBase: True
+            Filter: Enemy
+            AnimOverload: BlackThorns
+            MultiPassAttack: False
+    Consumes:
+        CDark:
+            Elements: Dark
+            AbilityOverrides:
+                CDarkMuddle:
+                    ParentName: Attack1
+                    Conditions: Muddle

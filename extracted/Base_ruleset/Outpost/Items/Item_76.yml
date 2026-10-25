@@ -1,0 +1,10 @@
+Parser: FHItem
+ID: 76
+ScenarioItemID: 1017
+Name: Horn of Command
+Quantity: 2
+Type: OneHandWeapon
+CraftingCost:
+    Metal: 1
+    Hide: 1
+    Rockroot: 1

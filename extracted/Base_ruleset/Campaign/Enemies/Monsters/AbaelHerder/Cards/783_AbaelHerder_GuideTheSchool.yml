@@ -1,0 +1,23 @@
+Parser: EnemyCard
+ID: 783
+Name: $Monster_Ability_783_AbaelHerder_GuideTheSchool$
+Initiative: 12
+Shuffle: False
+Data:
+    Abilities: 
+        Attack1:
+            Attack: 0
+            Range: 3
+            RangeIsBase: True
+            AnimOverload: RangedAttack
+        Strengthen1:
+            Strengthen: True
+            Range: 3
+            RangeIsBase: True
+            Target: 99
+            TargetIsBase: True
+            Filter:
+                EnemyClasses: [PiranhaPigID,PiranhaPigEliteID]
+            TextOnly: True
+            Text: "$FH/0783_monster_ability_cards_abael_herder_guide_the_school_2$"
+            AnimOverload: Control

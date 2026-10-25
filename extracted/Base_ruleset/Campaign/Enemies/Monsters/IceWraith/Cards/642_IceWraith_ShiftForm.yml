@@ -1,0 +1,31 @@
+Parser: EnemyCard
+ID: 642
+Name: $Monster_Ability_642_IceWraith_ShiftForm$
+Initiative: 95
+Shuffle: True
+Data:
+    Abilities:
+        ShiftForm1:
+            ShiftForm: True
+            Text: "$FH/0642_monster_ability_cards_ice_wraith_shift_form_2$"
+            TextOnly: True
+        WaitIdle:
+            Null: True
+        Heal1:
+            Heal: 1
+            Filter: Self
+        Move1:
+            Move: 0
+        Attack1:
+            Attack: -1
+            Text: $FH/0643_monster_ability_cards_ice_wraith_renewed_aggression_3$
+            ConditionalOverrides:
+                Attack1CO:
+                    Self: True
+                    Requirement:
+                        IsElite: False
+                    AbilityOverrides:
+                        Attack1:
+                            Range: 4
+                            RangeIsBase: True
+                            AnimOverload: RangedAttack

@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 140.3
+Name: The Work Continues
+SkipCompletedNotification: False
+Effects:
+    # puzzle book is linear, library is the only building we haven't been able to guarantee, unless we force player to start and complete both PQ 9/10
+    # ensuring that by the time hidden numbers puzzle is started, library will be unlocked
+    - Type: OpenEnvelope
+      Param1: 83

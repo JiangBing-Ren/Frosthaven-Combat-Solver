@@ -1,0 +1,12 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH10_Shield4
+ScenarioAbility:
+    AScenarioShield3:
+        Shield: 4
+        Filter: Self
+        ActiveBonus:
+            Duration: Persistent
+            ListLayoutOverride: ["<sprite name=Shield> *AScenarioShield2*", Positive_Shield_Campaign]
+            MiscVars:
+                OverrideLayoutName: "'$Scenario_010_PylonShield_Title$'"
+        #AnimOverload: PowerUp

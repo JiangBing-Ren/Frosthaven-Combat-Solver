@@ -1,0 +1,7 @@
+Parser: Perk
+ID: Deathwalker01
+Name: FH/PERK_Deathwalker_01_Name
+Description: FH/PERK_Deathwalker_01_Desc
+CharacterID: DeathwalkerID
+Available: 1
+CardsToRemove: [AMC_Basic_M1, AMC_Basic_M1]

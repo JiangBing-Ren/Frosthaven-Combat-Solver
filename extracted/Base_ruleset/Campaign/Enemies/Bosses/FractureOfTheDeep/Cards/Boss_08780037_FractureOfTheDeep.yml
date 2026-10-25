@@ -1,0 +1,46 @@
+Parser: EnemyCard
+ID: 08780037
+Name: $Monster_Ability_Boss_FractureOfTheDeep_Special1$
+Initiative: 79
+Shuffle: False
+Data:
+    Abilities:
+        APush:
+            Push: 1
+            Range: 1
+            RangeIsBase: True
+            Target: -1
+            TargetIsBase: True
+            Filter: Enemy
+            AnimOverload: PushAOE
+            Text: "$FH/boss_stat_cards_fracture_of_the_deep_1$"
+            TextOnly: True
+        ASummon1:
+            Summons: 
+                - LurkerClawcrusherID
+                - LurkerClawcrusherID
+                - LurkerClawcrusherEliteID
+                - LurkerClawcrusherEliteID
+            Vars:
+                ElementPriority: list("Earth", "Light", "Fire", "Air", "Dark")
+                ValidateConsume: ScenarioScript_FH060.ValidateBossConsume("Ice", 2, ElementPriority)
+            Target: 1
+            TargetIsBase: True
+            AnimOverload: Summon
+            #SkipAnim: True
+            Text: "$FH/boss_stat_cards_fracture_of_the_deep_2$"
+            TextOnly: True
+        ASummon2:
+            Summons: 
+                - LurkerMindsnipperID
+                - LurkerMindsnipperID
+                - LurkerMindsnipperID
+                - LurkerMindsnipperEliteID
+            Vars:
+                ValidateConsume: ScenarioScript_FH060.ValidateBossConsume("Dark", 2)
+            Target: 1
+            TargetIsBase: True
+            AnimOverload: Summon
+            #SkipAnim: True
+            Text: "$FH/boss_stat_cards_fracture_of_the_deep_3$"
+            TextOnly: True

@@ -1,0 +1,32 @@
+Parser: ScenarioAbility
+ID: FH131_MoveCorpseDuringMove
+ScenarioAbility:
+    AActive:
+        PreviewEffectText: ""
+        Filter: Self
+        SkipAnim: True
+        NullTargeting: True
+        ActiveBonus:
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_131_SCENARIO_MODIFIER_3$, Push]
+            Duration: Persistent
+            ValidAbilityType: Move
+            IsToggleBonus: True
+            Hidden: True
+            Requirements:
+                DoesntHaveNegativeCondition: [Stun, Immobilize]
+                Vars:
+                    ValidateHasValidTargets: CustomAbility.GetAdjacentSpecificPropsCount(Actor, ScenarioScript_FH131.CorpseSpecificPropType) > 0
+            CostAbility:        
+                Push: 1
+                CanUndo: False
+                Flags: [Special1]
+                Filter:
+                    ActorType: Neutral
+                    EnemyType: Object
+                Vars:
+                    CacheActiveBonus: PhaseManager.CurrentPhaseAction.CurrentTriggeredActiveBonus
+                # handled in code since i have no access to when this is skipped here, still needs to be untoggled then
+                # PerformVars:
+                #     ActorFinalizePush:
+                #         UntoggleBonus: CacheActiveBonus.ToggleActiveBonusFromVars(TargetingActor, true)
+                #         PayMovement: CustomAbility.PayMovementPoints(0, TargetingActor, CacheActiveBonus)

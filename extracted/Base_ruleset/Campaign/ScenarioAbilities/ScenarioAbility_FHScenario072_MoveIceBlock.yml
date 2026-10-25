@@ -1,0 +1,36 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH72_MoveIceBlock
+ScenarioAbility:
+    AControlMove:
+        ControlActor:
+            #UseControllingActorPlayerControl: True
+            Abilities:
+                CAMove72:
+                    Move: 
+                        Amount: 1
+                        IgnoreDifficultTerrain: True
+                        IgnoreHazardousTerrain: True
+                        #IgnoreBlockedTileMoveCost: True
+                    MiscVars:
+                        MoveEnded: TargetingActor.PlayVFX("IceDestructionGeneric")
+                        IgnoreForcedMoveBuffs: True
+                        IgnoreDoorLocks: True
+                        CanOpenDoors: True
+                    ConditionalOverrides:
+                        CAMove72COTwoPlayers:
+                            Self: True
+                            AbilityOverrides:
+                                CMoveStrength:
+                                    Strength: 1
+                            Requirements:
+                                Vars:
+                                    ValidatePlayerCount: ScenarioScript.PartySize == 2
+        Vars:
+            IceBlockActor: ScenarioManager.Scenario.AllObjects.Find(Class.ID == "IceBlockID")
+        Targeting: Custom
+        Target: -1
+        Filter: 
+            EnemyType: Object
+        TargetingVars:
+            AddTileInRange: IceBlockActor.Tile
+            AddValidActorInRange: IceBlockActor

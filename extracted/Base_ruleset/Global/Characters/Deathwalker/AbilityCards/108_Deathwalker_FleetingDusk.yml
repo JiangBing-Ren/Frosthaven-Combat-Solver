@@ -1,0 +1,56 @@
+Parser: AbilityCard
+Name: $FH/108_character_ability_cards_deathwalker_fleeting_dusk_1$
+Character: DeathwalkerID
+ID: 108
+Level: 4
+Initiative: 36
+Discard: [Lost,Discard]
+Prefab: 108_Deathwalker_FleetingDusk
+Data:
+    Top:
+        Abilities:
+            TPerformAttackFromShadow:
+                PerformFromShadow:
+                    Abilities:
+                        PFSAttack:
+                            Attack:
+                                Amount: 3
+                                DiamondEnhancements: 1
+                            MiscVars:
+                                PrintedProperties: list("Attack")
+                            Range: 1
+                            Target: 99
+                            Conditions: [Wound] 
+                            MiscVars:
+                                AutoSelectValidTiles: True
+                Range: 99
+                Target: 1
+                AnimOverload: ShadowAttack
+                # xp should be awarded only if the attack went through
+                MiscVars:
+                    ExplicitlyDoesNothing: True
+        XP: 1        
+    Bottom:
+        Abilities:
+            BCreateShadows:
+                CreateShadow:
+                HelpBoxTooltipLocKey: "FH/GUI_PLACE_SHADOWS_HELPBOX"
+                Range: 1
+                Target: 1
+                AnimOverload: Shadow Manipulation
+                MiscVars:
+                    includeCasterTile: True
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "10,25,65"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%> <sprite name=Attack> *PFSAttack*<b><size=130%> @PFSAttack@"
+            - Column:
+                - Row: "$FH/108_character_ability_cards_deathwalker_fleeting_dusk_2$"
+
+        - Row: "<size=100%> "
+        - Row: "$FH/108_character_ability_cards_deathwalker_fleeting_dusk_3$"
+    Bottom:
+        - Row: "$FH/108_character_ability_cards_deathwalker_fleeting_dusk_4$"

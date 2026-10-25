@@ -1,0 +1,14 @@
+Parser: EnemyCard
+ID: 0879000306
+Name: $Monster_Ability_Boss_GiantPiranhaPig_Special1$
+Initiative: 73
+Shuffle: False
+Data:
+    Abilities: 
+        ANull:
+            Null: True
+            Text: "$FH/FH_Scenario_Campaign_083_BOSS_SPECIAL_1$"
+            TextOnly: True
+            AnimOverload: PowerUp
+            Flags: [Special1]
+            AnimOverload: CastWaterTile

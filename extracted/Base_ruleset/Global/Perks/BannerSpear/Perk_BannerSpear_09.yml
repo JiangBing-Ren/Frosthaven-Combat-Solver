@@ -1,0 +1,14 @@
+Parser: Perk
+ID: BannerSpear09
+Name: FH/PERK_BannerSpear_09_Name
+Description: FH/PERK_BannerSpear_09_Desc
+CharacterID: BannerSpearID
+Available: 1
+Flags: [Passive, ApplyOverridesAfterRoomRevealed]
+Overrides:
+    OMove:
+        Strength: 3
+        Vars:
+            CanRepeatOverride: True
+CompareAbility:
+    AbilityType: Move

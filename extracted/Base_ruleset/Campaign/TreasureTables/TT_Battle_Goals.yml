@@ -1,0 +1,7 @@
+Parser: TreasureTable
+
+TT_Battle_Goals_1:
+  PerkCheck: 1
+
+TT_Battle_Goals_2:
+  PerkCheck: 2    

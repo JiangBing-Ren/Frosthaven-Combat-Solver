@@ -1,0 +1,174 @@
+Parser: AbilityCard
+Name: $FH/271_character_ability_cards_shattersong_barbaric_yawp_1$
+Character: ShattersongID
+ID: 271
+Level: 9
+Initiative: 66
+Discard: [Discard,Discard]
+Prefab: 271_Shattersong_BarbaricYawp
+Data:
+    Top:
+        XP: 1
+        Abilities:
+            TWaveAttack:
+                Filter: Self          
+                HelpBoxTooltipLocKey: "$FH/GUI_CHOOSE_RESONANCE_TOKEN_COUNT$"
+                PreviewEffectText: "<sprite name=Damage> X"           
+                MiscVars:
+                    # doing the chosen ability as a sub ability so we can preview the effect
+                    DontPerformChosenAbility: True        
+                    OverrideIcon: "'Ability_Shattersong_Icon'"
+                Choose:
+                    Choices:
+                        D1:
+                            PreviewEffectText: "1"
+                            Strength: 1
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 1
+                        D2:
+                            PreviewEffectText: "2"
+                            Strength: 2
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 2
+                        D3:
+                            PreviewEffectText: "3"
+                            Strength: 3
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 3
+                        D4:
+                            PreviewEffectText: "4"
+                            Strength: 4
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 4
+                        D5:
+                            PreviewEffectText: "5"
+                            Strength: 5
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 5
+                PerformVars:
+                    ApplyToActors:
+                        Resonance: ChosenAbility?.Strength || 0
+                        Tokens: Resonance * -1
+                Flags: [ModifiesResonanceTokens]
+                SubAbilities:
+                    TAttack:
+                        Flags: [SubAbilityPreview]
+                        TreatAsNonSubAbility: True
+                        UseParentTargets: False
+                        Filter: Enemy
+                        Target: -1
+                        Damage: 0
+                        Range: 2
+                        MiscVars:
+                            PrintedProperties: list("Damage","Range")     
+                        Filter: [Ally,Enemy]
+                        NegativeAbilityIsOptional: True
+                        Vars:
+                            ParentStrength: ParentAbility.ChosenAbility?.Strength || 0
+                            AnimOverload: (ParentStrength == 1 && "CalamitousYawp Lv1") ||
+                                          (ParentStrength == 2 && "CalamitousYawp Lv2") ||
+                                          (ParentStrength == 3 && "CalamitousYawp Lv3") ||
+                                          (ParentStrength == 4 && "CalamitousYawp Lv4") ||
+                                          (ParentStrength == 5 && "CalamitousYawp Lv5")  
+                        StatIsBasedOnX:
+                            Strength:
+                                BasedOn: Vars
+                                Vars:
+                                    Strength: (ParentAbility.ChosenAbility?.Strength || 0)
+                                    Value: max(1, Strength)
+                        PerformVars:
+                            OnAbilityEnded:
+                                StackSubAbilities: obj.AbilityHasHappened && CustomAbility.StackNonInlineSubabilities(obj)
+                        SubAbilities:
+                            TFinishWave:
+                                NullTargeting: True
+                                Filter: Self
+                                SkipAnim: True
+                                AutoTrigger: True
+                                TreatAsNonSubAbility: True
+                                Flags: [Wave]
+        Consumes:
+            TCAny1:
+                Elements: Any
+                PreviewEffectText: "+1<sprite name=Range>"
+                AbilityOverrides:
+                    TCAnyRangeBuff1:
+                        ParentName: TAttack
+                        Range: 1
+            TCAny2:
+                Elements: Any
+                PreviewEffectText: "+1<sprite name=Range>"
+                AbilityOverrides:
+                    TCAnyRangeBuff2:
+                        ParentName: TAttack
+                        Range: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")     
+            BAdvantage:
+                Attack: 0
+                AttackHasAdvantage: True
+                AttackEffect:
+                    Type: BasedOnVarsCondition
+                Filter: Self
+                Range: 1
+                AnimOverload: PowerUp
+                ActiveBonus:
+                    Duration: Round
+                    Behaviour: BuffAttack    
+                    IsAura: True              
+                    AuraFilter: [Self, Ally]
+                    AuraTargeting: Range
+                    ListLayoutOverride: [$FH/271_character_ability_cards_shattersong_barbaric_yawp_3$, Positive_Advantage_Aura]
+        Consumes:
+            BCResonance:
+                Resonance: 1
+                PreviewEffectText: "+2<sprite name=Move>"
+                AbilityOverrides:
+                    BCBuffMove:
+                        ParentName: BMove
+                        Strength: 2
+Layout:
+    Top:
+        - Row: "$FH/271_character_ability_cards_shattersong_barbaric_yawp_2$"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCAny1
+                    Text: "+1 <sprite name=Range>"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCAny2
+                    Text: "+1 <sprite name=Range>"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: BCResonance
+                    Text: "+2 <sprite name=Move>"
+        - Divider:
+        - Active:
+            Ability: BAdvantage
+            Icon: Advantage
+            ListLayout: "$FH/271_character_ability_cards_shattersong_barbaric_yawp_3$"
+            Layout: "$FH/271_character_ability_cards_shattersong_barbaric_yawp_3$"

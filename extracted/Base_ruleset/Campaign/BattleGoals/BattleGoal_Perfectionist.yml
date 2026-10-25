@@ -1,0 +1,18 @@
+Parser: BattleGoal
+ID: BattleGoal_Perfectionist
+LocalisedName: FH/BATTLEGOAL_Perfectionist
+LocalisedDescription: FH/BATTLEGOAL_Perfectionist_Desc
+#Your current hit point value must be equal to your maximum
+#hit point value at the end of the scenario
+PerkChecks: 1
+CheckAtEndOfScenario: True
+BattleGoalCondition:
+    - Targets:
+        Filter: Health
+        CharacterTypes:
+            Target: [Player]
+        Conditional:
+            Type: EndScenario
+            HPPercentOfMax: "== 100%"
+        Value: 1
+        SubFilter: Scenario

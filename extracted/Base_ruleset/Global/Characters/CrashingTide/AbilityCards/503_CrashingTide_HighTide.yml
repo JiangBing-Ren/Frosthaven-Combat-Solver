@@ -1,0 +1,64 @@
+Parser: AbilityCard
+Name: $FH/503_character_ability_cards_crashing_tide_high_tide_1$
+Character: CrashingTideID
+ID: 503
+Level: 9
+ProgressionOrder: 503
+Initiative: 90
+Discard: [Discard,Lost]
+Prefab: 503_CrashingTide_HighTide
+Data:
+    Top:
+        Abilities:
+            TMove:
+                Move:
+                    Amount: 0
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: Vars
+                        Vars:
+                            Value: CustomAbility.GetTideActiveBonuses(TargetingActor).Count
+            TAttack:
+                Attack:
+                    Amount: 0
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Range: 1
+                Target: 1
+                Targeting: Range
+                Filter: [Enemy]
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: Vars
+                        Vars:
+                            Value: CustomAbility.GetTideActiveBonuses(TargetingActor).Count
+        XP: 1
+    Bottom:
+        Abilities:
+            BHighTide:
+                NullTargeting:
+                Filter: Self
+                AnimOverload: Tide
+                ActiveBonus:
+                    Duration: Persistent
+                    Flags: [DontCancelTidesOnRest, ForbidLongRest]
+        XP: 2
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Move> X <size=100%><voffset=1>@TMove@"
+        - Row: "$FH/503_character_ability_cards_crashing_tide_high_tide_2$"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Attack> X <size=100%><voffset=1>@TAttack@"
+        - Row: "$FH/503_character_ability_cards_crashing_tide_high_tide_3$"
+    Bottom:
+        - Active:
+            Ability: BHighTide
+            Icon: Positive_Tide
+            Layout: "$FH/503_character_ability_cards_crashing_tide_high_tide_4$"
+            ListLayout: "$FH/503_character_ability_cards_crashing_tide_high_tide_4$ $FH/503_character_ability_cards_crashing_tide_high_tide_5$"
+        - Divider:
+        - MandatoryTrigger: "$FH/503_character_ability_cards_crashing_tide_high_tide_5$"

@@ -1,0 +1,14 @@
+Parser: CampaignSection
+ID: 184.1
+Name: The Third Year
+SkipCompletedNotification: False
+Effects:
+    - Type: EnableEventsFromTo
+      Param1: WO-48
+      Param2: WO-56
+    - Type: EnableEvent
+      Param1: WR-31
+    - Type: EnableEvent
+      Param1: SR-52
+    - Type: AddSoldiers
+      Param1: 3

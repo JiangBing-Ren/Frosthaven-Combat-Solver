@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 180
+ScenarioItemID: 1273
+Name: Boots of Greed
+Quantity: 1
+GoldCost: 35
+Type: Feet
+IsNewCharacterItem: False

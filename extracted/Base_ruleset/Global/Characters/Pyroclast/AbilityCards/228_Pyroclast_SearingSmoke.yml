@@ -1,0 +1,63 @@
+Parser: AbilityCard
+Name: $FH/228_character_ability_cards_pyroclast_searing_smoke_1$
+Character: PyroclastID
+ID: 228
+Level: 2
+Initiative: 45
+Discard: [Discard,Discard]
+Prefab: 228_Pyroclast_SearingSmoke
+Data:
+    Top:
+        Abilities:    
+            TAttack:
+                Attack: 2
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Target: 99
+                MultiPassAttack: False
+                AnimOverload: SteamCloud_CastLava
+                MiscVars:
+                    AutoSelectValidTiles: True
+        Consumes:
+            TCFire:
+                Elements: Fire
+                XP: 1
+                AbilityOverrides:
+                    TCFireTerrainBuff:
+                        ParentName: TAttack
+                        Strength: 1
+            TCEarth:
+                Elements: Earth
+                XP: 1
+                AbilityOverrides:
+                    TCFireTerrainBuff:
+                        ParentName: TAttack
+                        Conditions: [Muddle]
+    Bottom:
+        Abilities:
+            BJump:
+                Move:
+                    Amount: 4
+                    CircleEnhancements: 1
+                    Jump: True
+                MiscVars:
+                    PrintedProperties: list("Move")
+                AllTargetsOnMovePath: True
+                Conditions: Muddle
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <mark=#80919922><size=100%>$FH/228_character_ability_cards_pyroclast_searing_smoke_2$</mark>"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCFire
+                    Text: "+1 <sprite name=Attack>, <sprite name=XP1>"
+                - Consume:
+                    Name: TCEarth
+                    Text: "<sprite name=Muddle>, <sprite name=XP1>"
+    Bottom:
+        - Row:
+            - Column: "<b><size=130%><sprite name=Move> *BJump* <size=100%><voffset=1>@BJump@"
+            - Column: "<mark=#80919922><sprite name=Jump></mark>"
+        - Row: "$FH/228_character_ability_cards_pyroclast_searing_smoke_3$"

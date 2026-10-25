@@ -1,0 +1,113 @@
+Parser: Enemy
+ID: TheRelicID
+LocKey: $FH/TheRelic$
+MonsterType: Boss
+StandeeLimit: 1
+Model: TheRelic
+PredominantlyMelee: True
+AbilityCards: [08740060, 08750061, 08760062, 08770063, 08780064, 08790065, 08800066, 08810067]
+# Base Stats
+Level0:
+    Health: 0
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Retaliate: 1
+    RetaliateRange: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 12
+    Immunities: [Wound, Poison, Immobilize, Disarm, Stun]
+Level1:
+    Health: 0
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+    Retaliate: 1
+    RetaliateRange: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 13
+    Immunities: [Wound, Poison, Immobilize, Disarm, Stun]
+Level2:
+    Health: 0
+    Move: 4
+    Attack: 5
+    Range: 1
+    Target: 1
+    Retaliate: 1
+    RetaliateRange: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 15
+    Immunities: [Wound, Poison, Immobilize, Disarm, Stun]
+Level3:
+    Health: 0
+    Move: 5
+    Attack: 5
+    Range: 1
+    Target: 1
+    Retaliate: 2
+    RetaliateRange: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 18
+    Immunities: [Wound, Poison, Immobilize, Disarm, Stun]
+Level4:
+    Health: 0
+    Move: 5
+    Attack: 6
+    Range: 1
+    Target: 1
+    Retaliate: 2
+    RetaliateRange: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 21
+    Immunities: [Wound, Poison, Immobilize, Disarm, Stun]
+Level5:
+    Health: 0
+    Move: 6
+    Attack: 6
+    Range: 1
+    Target: 1
+    Retaliate: 2
+    RetaliateRange: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 25
+    Immunities: [Wound, Poison, Immobilize, Disarm, Stun]
+Level6:
+    Health: 0
+    Move: 6
+    Attack: 7
+    Range: 1
+    Target: 1
+    Retaliate: 3
+    RetaliateRange: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 33
+    Immunities: [Wound, Poison, Immobilize, Disarm, Stun]
+Level7:
+    Health: 0
+    Move: 6
+    Attack: 8
+    Range: 1
+    Target: 1
+    Retaliate: 3
+    RetaliateRange: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 43
+    Immunities: [Wound, Poison, Immobilize, Disarm, Stun]

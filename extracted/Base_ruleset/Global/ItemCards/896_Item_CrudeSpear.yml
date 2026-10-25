@@ -1,0 +1,29 @@
+Parser: ItemCard
+ID: 896
+StringID: CrudeSpearID
+Name: $FH/0896_item_cards_crude_spear_1$
+Art: Crude Spear
+TotalInGame: 2
+Cost: 0
+Slot: TwoHand
+Rarity: Rare
+Usage: Spent
+Trigger: EntireAction
+ProsperityRequirement: 1
+Data:     
+    ItemRequirements:
+        Vars:
+            # TreatAsMelee with range should still not be allowed to give itself a melee area effect (eg infuser obsidian spear)
+            ValidateIsReallyMelee: Ability.Range == 1
+    Overrides:
+        ORangeBuff:
+            Range: 1
+            TreatAsMelee: True
+    CompareAbility:
+        AbilityType: Attack
+        Target: 1
+        IsMelee: True
+        Filter: Enemy
+        HasAreaEffect: False
+Layout: 
+    - Row: $FH/0896_item_cards_crude_spear_2$ # During your turn, one of your single-target melee attack abilities may target an enemy two hexes away.

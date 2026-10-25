@@ -1,0 +1,75 @@
+Parser: AbilityCard
+Name: $FH/311_character_ability_cards_pain_conduit_delayed_malady_1$
+Character: PainConduitID
+ID: 311
+Level: X
+Initiative: 90
+Discard: [Discard,Lost]
+Prefab: 311_PainConduit_DelayedMalady
+Data:
+    Top:
+        Abilities:
+            TRemoveConditions:
+                IgnoreStun: True
+                Filter: Self
+                RemoveConditions: "All"
+                Conditions: [Wound,Brittle,Bane,Poison,Immobilize,Disarm,Impair,Stun,Muddle,StopFlying]
+                AnimOverload: Cast
+            TSelectAndPlay:
+                # "select an ability card"
+                HelpBoxTooltipLocKey: $GUI_TOOLTIP_SELECT_ACTIVE_BONUS_CARD$
+                Filter: Self
+                SelectCard: 
+                    PileToMoveFrom: Hand
+                SubAbilities:
+                    TPlaySelectedCardBonus:
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateChoseCard: ParentAbility.selectedAbilityCardsOutOfPhase.Count > 0
+                        Filter: Self
+                        AutoTrigger: True
+                        MiscVars:
+                            SelectedAbility: CustomAbility.GetCardFromBonusVars("SaveVarIntParentSelectedAbility", ActiveBonus)
+                            ListLayoutParamVar0: SelectedAbility.Name
+                        AddActiveBonus:
+                            SelectAndPlayCard:
+                            Filter: Self
+                            Vars:
+                                AutoSelCardID: SaveVarIntParentSelectedAbility
+                            MiscVars:
+                                IsActionValid: ActionType == "DefaultAttackAction" || ActionType == "TopAction" 
+                        ActiveBonus:
+                            Behaviour: DuringTurnAbility
+                            Duration: Turn
+                            IsToggleBonus: True
+                            Vars:
+                                SaveVarIntParentSelectedAbility: Ability.ParentAbility.selectedAbilityCardsOutOfPhase[0].ID
+                            MiscVars:
+                                OnFinish: CustomAbility.DiscardVarIfHasntHappened("SaveVarIntParentSelectedAbility", ActiveBonus)
+                            XPTracker: [0]
+                            ListLayoutOverride: [$311_character_ability_cards_pain_conduit_delayed_malady_5$, Positive_PainConduit]
+                SkipAnim: True
+    Bottom:
+        Abilities:
+            BIgnoreConditions:
+                Filter: Self
+                NullTargeting: True
+                AnimOverload: Cast
+                MiscVars:
+                    IgnoreNegativeConditions: True
+                ActiveBonus:
+                    Duration: Persistent
+                    XPTracker: [1,0,1,0,1]
+                    Behaviour: GenericEndRound
+Layout:
+    Top:
+        - Row: "$FH/311_character_ability_cards_pain_conduit_delayed_malady_2$"
+        - Row: "$FH/311_character_ability_cards_pain_conduit_delayed_malady_3$"
+    Bottom:
+        - Active:
+            Ability: BIgnoreConditions
+            Icon: Positive_PainConduit
+            ListLayout: "$FH/311_character_ability_cards_pain_conduit_delayed_malady_4$"
+            Layout: "$FH/311_character_ability_cards_pain_conduit_delayed_malady_4$"
+        - XPTracker: BIgnoreConditions

@@ -1,0 +1,12 @@
+Parser: FHScenario
+ID: 87
+Name: The Colletion
+LevelID: FS_087_The_Collection
+Chain: JobPosting
+Location: WhitefireWood
+Difficulty: 1
+Conclusions:
+    - Effects:
+        - Type: FS87ConclusionEffect
+        - Type: UnlockMandatoryScenario
+          Param1: 88

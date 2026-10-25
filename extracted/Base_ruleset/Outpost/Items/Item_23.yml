@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 23
+ScenarioItemID: 926
+Name: Sturdy Greaves
+Quantity: 2
+Type: Feet
+CraftingCost:
+    Metal: 2
+    Hide: 2

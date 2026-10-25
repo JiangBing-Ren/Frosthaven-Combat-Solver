@@ -1,0 +1,223 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <TargetFramework>net40</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>14.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="Unity.RenderPipelines.Core.Runtime">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="SharedLibrary">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\SharedLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Snapshot.Libs.GameConsole">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\Snapshot.Libs.GameConsole.dll</HintPath>
+    </Reference>
+    <Reference Include="Snapshot.Libs.Utils">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\Snapshot.Libs.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="ScenarioRuleLibrary">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\ScenarioRuleLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClothModule">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\UnityEngine.ClothModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Apparance.Unity">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\Apparance.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\Unity.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.DirectorModule">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\UnityEngine.DirectorModule.dll</HintPath>
+    </Reference>
+    <Reference Include="SETUtil">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\SETUtil.dll</HintPath>
+    </Reference>
+    <Reference Include="ForsthavenRuleLibrary">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\ForsthavenRuleLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="MapRuleLibrary">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\MapRuleLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Logger">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\Logger.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Addressables">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\Unity.Addressables.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ResourceManager">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\Unity.ResourceManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Apparance.Net">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\Apparance.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VideoModule">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\UnityEngine.VideoModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="GH.Shared">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\GH.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InputSystem">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\Unity.InputSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Snapshot.Libs.Penumbra">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\Snapshot.Libs.Penumbra.dll</HintPath>
+    </Reference>
+    <Reference Include="Snapshot.Libs.Analysis">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\Snapshot.Libs.Analysis.dll</HintPath>
+    </Reference>
+    <Reference Include="Snapshot.Libs.Threading">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\Snapshot.Libs.Threading.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="DevLocker.GFrame.Input">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\DevLocker.GFrame.Input.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\UnityEngine.UIElementsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="ZloediUtils">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\ZloediUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="IKPn">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\IKPn.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip.Unity">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\Ionic.Zip.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.WindModule">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\UnityEngine.WindModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\UnityEngine.Physics2DModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AIModule">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\UnityEngine.AIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainModule">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\UnityEngine.TerrainModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VehiclesModule">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\UnityEngine.VehiclesModule.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenPro">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\DOTweenPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Snapshot.Libs.Time">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\Snapshot.Libs.Time.dll</HintPath>
+    </Reference>
+    <Reference Include="com.Epic.OnlineServices">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\com.Epic.OnlineServices.dll</HintPath>
+    </Reference>
+    <Reference Include="com.playeveryware.eos.core">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\com.playeveryware.eos.core.dll</HintPath>
+    </Reference>
+    <Reference Include="Facepunch.Steamworks.Win64">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\Facepunch.Steamworks.Win64.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\Unity.Mathematics.dll</HintPath>
+    </Reference>
+    <Reference Include="LeTai.TrueShadow">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\LeTai.TrueShadow.dll</HintPath>
+    </Reference>
+    <Reference Include="Backtrace.Unity">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\Backtrace.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="CorgiCachedShadows">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\CorgiCachedShadows.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Snapshot.Libs.RuntimeBuildInfo">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\Snapshot.Libs.RuntimeBuildInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="ProcGen.Watchman">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\ProcGen.Watchman.dll</HintPath>
+    </Reference>
+    <Reference Include="RuntimeInspector.Runtime">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\RuntimeInspector.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Snapshot.Libs.RenderUtils">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\Snapshot.Libs.RenderUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.Scripting">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\Microsoft.CodeAnalysis.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp.Scripting">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\Microsoft.CodeAnalysis.CSharp.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="Snapshot.Libs.Scripting">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\Snapshot.Libs.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ScreenCaptureModule">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\UnityEngine.ScreenCaptureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+  </ItemGroup>
+</Project>

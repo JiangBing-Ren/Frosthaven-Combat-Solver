@@ -1,0 +1,7 @@
+Parser: FHItem
+ID: 45
+ScenarioItemID: 970
+Name: Master Scepter
+Quantity: 2
+Type: OneHandWeapon
+RequiredCraftingItemIDs: [ 9, 25 ]

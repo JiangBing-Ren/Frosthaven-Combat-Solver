@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 71
+ScenarioItemID: 1007
+Name: Bone Boots
+Quantity: 2
+Type: Feet
+CraftingCost:
+    Corpsecap: 1
+RequiredCraftingItemIDs: [ 18 ]

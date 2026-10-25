@@ -1,0 +1,22 @@
+Parser: ItemCard
+ID: 1059
+StringID: ExplosiveVialID
+Name: $FH/1059_item_cards_explosive_vial_1$
+Art: Explosive Vial
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        ADamage:
+            Filter: Enemy
+            Range: 2
+            Damage: 2
+            PerformVars:
+                ActorBeenDamaged: 
+                    VFX: AbilityHasHappened || CustomAbility.PlayVFX("ItemExplosiveVialEffect",TilesSelected)
+Layout: 
+    - Row: "$FH/1059_item_cards_explosive_vial_2$"

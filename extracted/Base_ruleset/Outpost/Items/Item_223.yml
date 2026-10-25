@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 223
+ScenarioItemID: 1233
+Name: Lightning Rod
+Quantity: 1
+GoldCost: 20
+Type: OneHandWeapon
+IsNewCharacterItem: False

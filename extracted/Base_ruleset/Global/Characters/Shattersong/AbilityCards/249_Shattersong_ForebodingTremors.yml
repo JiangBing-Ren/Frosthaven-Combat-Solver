@@ -1,0 +1,68 @@
+Parser: AbilityCard
+Name: $FH/249_character_ability_cards_shattersong_foreboding_tremors_1$
+Character: ShattersongID
+ID: 249
+Level: 1
+Initiative: 21
+Discard: [Discard,Discard]
+Prefab: 249_Shattersong_ForebodingTremors
+Data:
+    Top:
+        Abilities:            
+            TAttack:
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")     
+                AreaEffect: "0,0,G|2,0,R|1,1,R"
+                MultiPassAttack: False
+                Conditions: [Immobilize]
+                AnimOverload: ForebodingTremors
+        Consumes:
+            TCResonance:
+                Resonance: 2
+                AbilityOverrides:
+                    CBuffAttack:
+                        ParentName: TAttack
+                        Strength: 1
+                        XP: 1
+                        SubAbilities:
+                            SubPush:
+                                Push: 1
+                                MiscVars:
+                                    PrintedProperties: list("Push")     
+                                IsInlineSubAbility: True
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")     
+            BMuddle:
+                Muddle: True
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Range")   
+                Filter: [Enemy]
+                Target: 99  
+                AnimOverload: Cast_Negative AOE 1hex
+                MiscVars:
+                    AutoSelectValidTiles: True
+Layout:
+    Top:
+        - ColumnWidths: "50,50"
+        - Column:
+            - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@ <sprite name=Immobilize>"
+            - Conditional:
+                Layout:
+                    - Consume:
+                        Name: TCResonance
+                        Text: "<size=100%>+1 <sprite name=Attack>, <sprite name=Push> 1, <sprite name=XP1>"
+        - Column: "£Area£"
+    Bottom:
+        - Row: "<sprite name=Move> *BMove* @BMove@"
+        - Divider:
+        - Row: "$FH/249_character_ability_cards_shattersong_foreboding_tremors_2$"

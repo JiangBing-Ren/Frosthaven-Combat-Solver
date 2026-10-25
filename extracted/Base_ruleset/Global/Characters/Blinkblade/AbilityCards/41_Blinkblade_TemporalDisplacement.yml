@@ -1,0 +1,81 @@
+Parser: AbilityCard
+Name: $FH/41_character_ability_cards_blinkblade_temporal_displacement_1$
+Character: BlinkbladeID
+ID: 41
+Level: 1
+Initiative: 44
+Discard: [Discard,Discard]
+Prefab: 41_Blinkblade_TemporalDisplacement
+Data:
+    Top:
+        Abilities:
+            TMove:
+                Move: 2
+                MiscVars:
+                    PrintedProperties: list("Move")
+                #CanSkip: False
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Fast
+            TLoot:
+                Loot: 1
+                MiscVars:
+                    PrintedProperties: list("Loot")
+                Target: -1
+                AnimOverload: Loot
+    Bottom:
+        Abilities:
+            BAttack:
+                Attack:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Range: 1
+                Target: 1
+                Targeting: Range
+                Filter: [Enemy]
+                ConditionalOverrides:
+                    BAttackCO_Fast:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Fast
+                        AbilityOverrides:
+                            BAttack:
+                                Range: 2
+                                AnimOverload: RangedAttack
+                                MiscVars:
+                                    PrintedProperties: list("Range")
+                    BAttackCO_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            BAttack:
+                                Strength: -1
+                                AnimOverload: AttackSlow
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "50,50"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "<b><size=130%><sprite name=Move> *TMove*"
+            - Column:
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Loot> *TLoot*"
+    Bottom:
+        - Row:
+            - ColumnWidths: "33,34,33"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "+2 <sprite name=Range>"
+            - Column:
+                - Row: "<b><size=130%><sprite name=Attack> *BAttack* <size=100%><voffset=1>@BAttack@"
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Text: "-1 <sprite name=Attack>"
+

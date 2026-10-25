@@ -1,0 +1,14 @@
+Parser: FHScenario
+ID: 66
+Name: Elemental Cores
+LevelID: FS_066_Elemental_Cores
+Chain: PersonalQuest
+RequiresPersonalQuest: PQ_7
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: GainItem
+          Param1: 212
+        - Type: AddCalendarCampaignSection
+          Param1: 29.3
+          Param2: 6

@@ -1,0 +1,33 @@
+Parser: EnemyCard
+ID: 553
+Name: $Monster_Ability_553_FlameDemon_RagingBlaze$
+Initiative: 30
+Shuffle: True
+Data:
+    Abilities:           
+        Move1:
+            Move: 0
+        Attack1:
+            Attack: -2
+            Conditions: Wound
+            Target: 2
+            TargetIsBase: True
+            Range: 4
+            RangeIsBase: True
+            Filter: Enemy
+            AnimOverload: RangedAttack
+    Consumes:
+        CFire:
+            Elements: Fire
+            LayoutPriorTo: Move1
+            Abilities:
+                CFireDamage:
+                    ParentName: Move1 #Happens before Move1
+                    Damage: 2
+                    Range: 1
+                    RangeIsBase: True
+                    Target: -1
+                    Filter: Enemy        
+                    Text: "$10634$"
+                    TextOnly: True
+                    AnimOverload: FlameAura

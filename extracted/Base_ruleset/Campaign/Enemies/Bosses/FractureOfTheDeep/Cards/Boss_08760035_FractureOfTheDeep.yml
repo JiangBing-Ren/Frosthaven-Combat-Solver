@@ -1,0 +1,47 @@
+Parser: EnemyCard
+ID: 08760035
+Name: $Monster_Ability_Boss_FractureOfTheDeep_Special2$
+Initiative: 17
+Shuffle: True
+Data:
+    Abilities:
+        AMove:
+            Move: 0            
+            Text: "$FH/boss_stat_cards_fracture_of_the_deep_4$"
+            TextOnly: True
+        AAttack:
+            Attack: 0
+            Text: "$FH/boss_stat_cards_fracture_of_the_deep_5$"
+            TextOnly: True
+        ASummon:
+            Summons: 
+                - LurkerWavethrowerID
+                - LurkerWavethrowerID
+                - LurkerWavethrowerID
+                - LurkerWavethrowerEliteID
+            Vars:
+                ValidateConsume: ScenarioScript_FH060.ValidateBossConsume("Light", 2)
+            Target: 1
+            TargetIsBase: True
+            AnimOverload: Summon
+            #SkipAnim: True
+            Text: "$FH/boss_stat_cards_fracture_of_the_deep_6$"
+            TextOnly: True
+    Consumes:
+        TCAir:
+            Hidden: True
+            Elements: Air
+            AbilityOverrides:
+                TAirBuff:
+                    ParentName: AMove
+                    Jump: True
+        TCFire:
+            Hidden: True
+            Elements: Fire
+            AbilityOverrides:
+                TFireBuff:
+                    ParentName: AAttack
+                    StatIsBasedOnX:
+                        Strength:
+                            AddTo: True
+                            BasedOn: InitialPlayerCharacterCount

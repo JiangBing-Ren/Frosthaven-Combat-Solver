@@ -1,0 +1,14 @@
+Parser: EnemyCard
+ID: 711
+Name: $Monster_Ability_711_LightningEel_LeapingDive$
+Initiative: 12
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: 2
+            Jump: True
+        Attack1:
+            Attack: -1
+            Filter: Enemy
+    Infuse: Light

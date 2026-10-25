@@ -1,0 +1,27 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH114_PlaceCharge
+ScenarioAbility:
+    AActive:
+        AddActiveBonus:
+            NullHex: True
+            Target: 1
+            Targeting: Custom
+            TargetingVars:
+                AddTilesInRange: CustomAbility.GetAdjacentTiles(TargetingActor.Tile).Where(obj.IsEmpty && obj.Trap == null)
+            AnimOverload: UseItem
+            PerformVars:
+                Perform:
+                    SelectedTile: TilesSelected[0]
+                    PlaceCharge: ScenarioScript_FH114.current.PlaceDetonationCharge(TargetingActor, SelectedTile)
+        ActiveBonus:
+            Duration: Persistent
+            ValidAbilityType: Move
+            Behaviour: DuringTurnAbility
+            IsToggleBonus: True
+            Hidden: True
+            Requirements:
+                Vars:
+                    Actor: obj.Actor
+                    ValidateCarriesCharge: Actor.CarriedQuestItems.Count > 0
+                    ValidateCanPlace: CustomAbility.GetAdjacentTiles(Actor.Tile).Any(obj.IsEmpty && obj.Trap == null)
+            ListLayoutOverride: [$FH/ScenarioAbility_FH114_PlaceCharge$, Positive_Unique_Campaign]

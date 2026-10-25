@@ -1,0 +1,47 @@
+Parser: EnemyCard
+ID: 18780005
+Name: $Monster_Ability_Boss_HarbingerOfShadow_Special1$
+Initiative: 79
+Shuffle: False
+Data:
+    Abilities: 
+        ANull1:
+            Null: True
+            Text: "$FH/boss_harbinger_of_shadow_boss_special_1_1$"
+            TextOnly: True
+        Move1:
+            Move: 0
+            StartAbilityRequirements:
+                Type: ThisAbility
+                # Harbinger of Shadow 1
+                ActorGuids: ["fa8ea114-e8a1-c18c-3428-0bd82427a51f"]
+                Vars:
+                    ValidateTest: ScenarioScript.current.IsHarbinger1Active()
+        Attack1:
+            Attack: -1
+            Filter: Enemy
+            StartAbilityRequirements:
+                Type: ThisAbility
+                # Harbinger of Shadow 1
+                ActorGuids: ["fa8ea114-e8a1-c18c-3428-0bd82427a51f"]
+                Vars:
+                    ValidateTest: ScenarioScript.current.IsHarbinger1Active()
+        Summon1:
+            Summons: 
+                - BlackImpID
+                - BlackImpID
+                - BlackImpID
+                - BlackImpID
+            Target: 1
+            TargetIsBase: True
+            AnimOverload: Summon
+            StartAbilityRequirements:
+                Type: ThisAbility
+                # Harbinger of Shadow 1
+                ActorGuids: ["fa8ea114-e8a1-c18c-3428-0bd82427a51f"]
+                Vars:
+                    ValidateTest: ScenarioScript.current.IsHarbinger1Active()
+        ANull1:
+            Null: True
+            Text: "$FH/boss_harbinger_of_shadow_boss_special_1_2$"
+            TextOnly: True

@@ -1,0 +1,16 @@
+Parser: ScenarioAbility
+ID: FH133_CatIdolAdvantage
+ScenarioAbility:
+    ABuffSpeedCatIdol:
+        Attack: 0
+        AttackHasAdvantage: True
+        Filter: Self
+        AutoTrigger: True
+        SkipAnim: True
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: BuffAttack     
+            ListLayoutOverride: [$FH/FH_Scenariro_Campaign_133_CatIdolAdvantageBonus$, Positive_Advantage_Campaign]
+            MiscVars:
+                HiddenInCombatLog: True
+                CatIdolTransferable: True

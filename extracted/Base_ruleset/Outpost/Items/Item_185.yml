@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 185
+ScenarioItemID: 1278
+Name: Mirrored Knife
+Quantity: 1
+GoldCost: 20
+Type: OneHandWeapon
+IsNewCharacterItem: False

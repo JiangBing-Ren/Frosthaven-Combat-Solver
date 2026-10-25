@@ -1,0 +1,8 @@
+Parser: CampaignSection
+ID: 42.2
+Name: Request from Infuser
+ShowAsUnknownInCalendar: True
+SkipCompletedNotification: False
+Effects:
+      - Type: UnlockScenario
+        Param1: 119

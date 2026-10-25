@@ -1,0 +1,11 @@
+Parser: HeroSummon
+ID: ReinforcementID
+LocKey: $FH/061_character_ability_cards_banner_spear_at_all_costs_4$
+Model: Reinforcement
+PlayerControlled: True
+Health:
+    Amount: 1
+    SquareEnhancements: 1
+Move:
+    Amount: 2
+    SquareEnhancements: 1

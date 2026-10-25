@@ -1,0 +1,8 @@
+Parser: Perk
+ID: CrashingTide03
+Name: FH/PERK_CrashingTide_03_Name
+Description: FH/PERK_CrashingTide_03_Desc
+CharacterID: CrashingTideID
+Available: 2
+CardsToRemove: [AMC_Basic_P0]
+CardsToAdd: [AMC_Shield1_P1_R]

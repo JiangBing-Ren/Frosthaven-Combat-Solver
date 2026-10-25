@@ -1,0 +1,14 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_HealPrimeDemonWhenHealed
+ScenarioAbility:
+    TActive:
+        AddHeal: 0
+        Filter: Self
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: HealOnHealingReceived
+            Filter:
+                EnemyClasses: [PrimeDemon21ID]
+            Hidden: True
+        AnimOverload: None
+        AutoTrigger: True

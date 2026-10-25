@@ -1,0 +1,13 @@
+Parser: BattleGoal
+ID: BattleGoal_Acrobat
+LocalisedName: BATTLEGOAL_Acrobat
+LocalisedDescription: BATTLEGOAL_Acrobat_Desc
+HideCounter: True
+#Lose a card to negate suffering 5 or more damage.
+PerkChecks: 1
+BattleGoalCondition:
+    - Targets:
+        Filter: LoseCardToDamage
+        Amount: 5
+        ScenarioResult: Win
+        SubFilter: Scenario

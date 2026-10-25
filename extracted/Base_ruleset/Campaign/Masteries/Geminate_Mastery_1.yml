@@ -1,0 +1,34 @@
+Parser: Mastery
+ID: Geminate_MASTERY_1
+LocalisedName: Geminate_MASTERY_1_Name
+LocalisedDescription: Geminate_MASTERY_1_Desc
+PerkPoints: 1
+# check if you changed form at least once in each round
+CheckAtEndOfScenario: True
+BattleGoalCondition:
+    - Targets:
+        # check agility
+        Filter: ChangedForm
+        # each round
+        SubFilter: EveryRoundCharactersOnly
+        StopCheckingAfterDeath: True
+        # only for the geminate
+        CharacterIDs: 
+            ActorID: GeminateID
+        # at least 1 form change
+        Targets: 1
+        Value: 1
+# check if you failed to change form in a round
+BattleGoalFailCondition:
+    - Targets:
+        # check agility
+        Filter: ChangedForm
+        # each round
+        SubFilter: EveryRoundCharactersOnly
+        StopCheckingAfterDeath: True
+        # only for the geminate
+        CharacterIDs: 
+            ActorID: GeminateID
+        # at least 1 form change
+        Targets: 0
+        Value: 1

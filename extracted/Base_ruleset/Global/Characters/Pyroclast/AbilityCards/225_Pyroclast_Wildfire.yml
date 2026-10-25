@@ -1,0 +1,89 @@
+Parser: AbilityCard
+Name: $FH/225_character_ability_cards_pyroclast_wildfire_1$
+Character: PyroclastID
+ID: 225
+Level: X
+Initiative: 72
+Discard: [Discard,Discard]
+Prefab: 225_Pyroclast_Wildfire
+Data:
+    Top:
+        Abilities:    
+            TDestroyHazardous:
+                NullHex: True
+                Range: 1
+                TileFilter: Custom
+                MiscVars:
+                    IsValidTile: obj.FindHazardousProp(true) != null
+                    DontCancelIfNoTiles: True
+                    DontPreviewDescription: True
+                    includeCasterTile: True
+                PerformVars:
+                    Perform:
+                        SelectedTile: TilesSelected[0]
+                        Prop: SelectedTile.FindHazardousProp(true)
+                        DestroyProp: Prop.DestroyPropFromAbility(obj)
+                AnimOverload: TerrainFormation
+                SubAbilities:
+                    TWaitForIdle:
+                        Null: True
+                        TreatAsNonSubAbility: True
+                        AutoTrigger: True
+                    TBuffAttack:
+                        AutoTrigger: True
+                        TreatAsNonSubAbility: True
+                        AnimOverload: Cast
+                        Attack: 0
+                        Filter: [Self]
+                        Conditions: [Wound,Poison]
+                        AttackEffect:
+                            Type: StandardBuff
+                            SubAbilities:
+                                TInfuse:
+                                    IsInlineSubAbility: True
+                                    Infuse: Fire
+                                    AutoTrigger: True
+                        ActiveBonus:
+                            Duration: Persistent
+                            Behaviour: BuffAttack
+                            XPTracker: [0,1,0]
+                            IsSingleTargetBonus: True
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 4
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BWoundTwo:
+                Wound: True
+                Target: 2
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Target","Range")
+                Filter: Enemy
+                AnimOverload: Wildfire
+            BWoundSelf: #for visual purposes the places of the wound and self-wound are switched. Requested by Hristian Hristov
+                Wound: True
+                Filter: Self
+                CanSkip: False
+                SkipAnim: True
+                AutoTrigger: True
+
+Layout:
+    Top:
+        - Active:
+            Ability: TBuffAttack
+            ListLayout: "$FH/225_character_ability_cards_pyroclast_wildfire_3$"
+            Layout: "$FH/225_character_ability_cards_pyroclast_wildfire_2$"
+            Icon: "Positive_WoundPoison_Attack"
+        - XPTracker: TBuffAttack
+    Bottom:
+        - Row: "<b><size=130%>$Move$ <sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<sprite name=Wound> <mark=#80919922>$Self$</mark>"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Wound> <mark=#80919922><size=100%><sprite name=Target> 2, <sprite name=Range> 1</mark>"

@@ -1,0 +1,12 @@
+Parser: FHScenario
+ID: 115
+Name: Pylon Problems
+LevelID: FS_115_Pylon_Problem
+Chain: Other
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: AllCharactersGainExperience
+          Param1: 15
+        - Type: FS115ConclusionEffect
+          Param1: 1

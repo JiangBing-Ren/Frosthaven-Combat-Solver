@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 64.3
+Name: PuzzleSolution
+SkipCompletedNotification: True
+Effects:
+    - Type: UnlockScenario
+      Param1: 62
+    - Type: UnlockPuzzle
+      Param1: Epilogue

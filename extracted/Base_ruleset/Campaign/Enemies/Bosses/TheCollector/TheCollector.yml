@@ -1,0 +1,97 @@
+Parser: Enemy
+ID: TheCollectorID
+LocKey: $FH/TheCollector$
+MonsterType: Boss
+Model: TheCollector
+StandeeLimit: 1
+PredominantlyMelee: True
+AbilityCards: [0874000401, 0875000402, 0876000403, 0877000404, 0878000405, 0879000406, 0880000407, 0881000408]
+# Base Stats
+Level0:
+    Health: 0
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Immunities: [Poison, Immobilize, Disarm, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 12
+Level1:
+    Health: 0
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Immunities: [Poison, Immobilize, Disarm, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 15
+Level2:
+    Health: 0
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+    Immunities: [Poison, Immobilize, Disarm, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 19
+Level3:
+    Health: 0
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+    Immunities: [Poison, Immobilize, Disarm, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 25
+Level4:
+    Health: 0
+    Move: 4
+    Attack: 5
+    Range: 1
+    Target: 1
+    Immunities: [Poison, Immobilize, Disarm, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 30
+Level5:
+    Health: 0
+    Move: 5
+    Attack: 5
+    Range: 1
+    Target: 1
+    Immunities: [Poison, Immobilize, Disarm, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 38
+Level6:
+    Health: 0
+    Move: 5
+    Attack: 6
+    Range: 1
+    Target: 1
+    Immunities: [Poison, Immobilize, Disarm, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 53
+Level7:
+    Health: 0
+    Move: 5
+    Attack: 7
+    Range: 1
+    Target: 1
+    Immunities: [Poison, Immobilize, Disarm, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 68

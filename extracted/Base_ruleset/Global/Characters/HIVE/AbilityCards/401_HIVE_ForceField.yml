@@ -1,0 +1,53 @@
+Parser: AbilityCard
+Name: $FH/401_character_ability_cards_hive_force_field_1$
+Character: HIVEID
+ID: 401
+Level: 2
+Initiative: 78
+Discard: [Lost,Discard]
+Prefab: 401_HIVE_ForceField
+Data:
+    Top:
+        XP: 2
+        Abilities:
+            TSummon:
+                Summon: DampeningUnitID
+                AnimOverload: Summon
+        Mode:
+            BuffShield:
+                AutoTrigger: True
+                Shield: 2
+                Filter: Self
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: BuffShield
+                    Restriction: OncePerRound
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 
+                    Amount: 5
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+Layout:
+    Top:
+        - Active:
+              Ability: "TSummon"
+              Icon: "Summon"
+              Layout:
+                  - Summon:
+                        Ability: TSummon
+                        SummonName: $FH/401_character_ability_cards_hive_force_field_2$
+                        SpecialText:
+                            - Row: "$FH/401_character_ability_cards_hive_force_field_3$"
+        - Row:
+            - Column: "<sprite name=HIVEMode>"
+            - Column:
+                - Active:
+                    Ability: "BuffShield"
+                    Icon: "Positive_Shield_HIVEMode"
+                    ListLayout: "$FH/401_character_ability_cards_hive_force_field_4$"
+                    Layout: "$FH/401_character_ability_cards_hive_force_field_4$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%> @BMove@"

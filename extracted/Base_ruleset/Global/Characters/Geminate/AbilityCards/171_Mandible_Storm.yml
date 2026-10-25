@@ -1,0 +1,105 @@
+Parser: AbilityCard
+Name: $FH/171_character_ability_cards_geminate_mandible_storm_1$
+Character: GeminateID
+ID: 171
+Level: 3
+ProgressionOrder: 20
+Initiative: 30
+Discard: [Discard,Lost]
+RequiredForm: Melee
+Prefab: 171_Geminate_MandibleStorm
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                AreaEffect: "-1,1,R|1,1,R|-1,-1,R|1,-1,R|0,0,G"
+                AreaEffectLayoutOverride: "-1,1,R|1,1,R|-1,-1,R|1,-1,R|0,0,G"
+                Filter: [Enemy]
+                Attack: 3
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Conditions: [Immobilize]
+                MultiPassAttack: False
+                AnimOverload: Attack_Melee_Strong
+
+            TMuddleSelf:
+                Filter: [Self]
+                Muddle: True
+                AutoTrigger: True
+                AnimOverload: Hit
+            TTransformToRange:
+                Null: True
+                Flags: [SwitchFormMeleeToRange]
+                AutoTrigger: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Attack, Muddle]
+
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BShield:
+                Shield: 2 
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                ActiveBonus:
+                    Duration: Round
+        Consumes:
+            TCIce:
+                Elements: [Ice]
+                ConsumeOnlyOneElement: True
+                AbilityOverrides:
+                    TCIceBuff:
+                        ParentName: BShield
+                        Strength: 1
+                        ActiveBonusDuration: Round
+                        StartAbilityRequirements:
+                            DoesntHaveNegativeCondition: [Stun]
+                XP: 1
+            TCLight:
+                Elements: [Light]
+                ConsumeOnlyOneElement: True
+                AbilityOverrides:
+                    TCLightBuff:
+                        ParentName: BShield
+                        Strength: 1
+                        ActiveBonusDuration: Round
+                        StartAbilityRequirements:
+                            DoesntHaveNegativeCondition: [Stun]
+                XP: 1
+        XP: 1
+Layout:
+    Top:
+        - ColumnWidths: "55,45"
+        - Column:
+            - Row: "<b><size=130%><sprite name=Attack> *TAttack* <sprite name=Immobilize>"
+            - Divider:
+            - MandatoryTrigger:
+                Layout:
+                    - Row: "<sprite name=Muddle> self" #todo, localize monday
+            - MandatoryTrigger:
+                Layout:
+                    - Row: "<size=130%><sprite name=GMMeleeToRanged>"
+        - Column: "£Area£"
+    Bottom:
+        - Active:
+            Ability: BShield
+            Icon: "Positive_Shield"
+            ListLayout: "<sprite name=Shield> *BShield*"
+            Layout: "<sprite name=Shield> *BShield*"
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <voffset=1>@BMove@"
+        - Row: "<b><size=130%><sprite name=Shield> *BShield*"
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCIce
+                    Text: "+1<sprite name=Shield>, <sprite name=XP1>"
+                - Consume:
+                    Name: TCLight
+                    Text: "+1<sprite name=Shield>, <sprite name=XP1>"

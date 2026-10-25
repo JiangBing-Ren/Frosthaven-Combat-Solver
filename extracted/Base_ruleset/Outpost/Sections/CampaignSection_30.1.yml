@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 30.1
+Name: Puzzle Solution
+SkipCompletedNotification: True
+Effects:
+    - Type: UnlockPuzzle
+      Param1: MuttonSandwich
+    - Type: OpenEnvelope
+      Param1: 74

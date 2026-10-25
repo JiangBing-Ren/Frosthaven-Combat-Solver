@@ -1,0 +1,10 @@
+Parser: CampaignSection
+ID: 104.3
+Name: Tome of Elements (Fire)
+SkipCompletedNotification: True
+Effects:
+    - Type: PartyElementWaningToInertDisabled
+      Param1: Fire
+    - Type: GainItem
+      Param1: 216
+    - Type: SkipNextOutpostEvent

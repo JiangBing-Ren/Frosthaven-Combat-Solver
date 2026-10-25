@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 7.3
+Name: Carpenter built
+SkipCompletedNotification: False
+Effects:
+    - Type: EnableEvent
+      Param1: SO-53
+    - Type: EnableEvent
+      Param1: SO-60

@@ -1,0 +1,16 @@
+Parser: HeroSummon
+ID: SledgeDriverID
+LocKey: $FH/415_character_ability_cards_hive_heavy_metal_2$
+Model: SledgeDriver
+Health:
+    Amount: 9
+    SquareEnhancements: 1
+Move:
+    Amount: 2
+    SquareEnhancements: 1
+Attack:
+    Amount: 4
+    SquareEnhancements: 1
+Shield: 1
+Pierce: 3
+

@@ -1,0 +1,22 @@
+Parser: EnemyCard
+ID: 881000502
+Name: $Monster_Ability_MirroredCharacter111Simplified_MirroredAid$
+Initiative: 55
+Shuffle: True
+Data:
+    Abilities:
+        Move1:
+            Move: 2
+            StrengthIsBase: True
+        Heal1:
+            Heal: 4
+            StrengthIsBase: True
+            Filter: Ally
+            StatIsBasedOnX:
+                Strength:
+                    AddTo: True
+                    BasedOn: InitialPlayerCharacterCount
+                    Multiplier: 0.5
+                    RoundingType: ToCeil
+
+

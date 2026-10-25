@@ -1,0 +1,9 @@
+Parser: AttackModifier
+Name: AMC_P1_ModeTransfer
+MathModifier: "+1"
+TryToPerformAsSummoner: True
+Abilities:
+    ModeTransferAbility:
+        Mode: Transfer
+        Range: 99
+        Filter: OwnSummon

@@ -1,0 +1,23 @@
+Parser: EnemyCard
+ID: 0875000302
+Name: $Monster_Ability_Boss_GiantPiranhaPig_Special2$
+Initiative: 14
+Shuffle: False
+Data:
+    Abilities: 
+        ANull:
+            Null: True
+            Text: "$FH/FH_Scenario_Campaign_083_BOSS_SPECIAL_2$"
+            TextOnly: True
+            AnimOverload: PowerUp
+            Flags: [Special2]
+            AnimOverload: CastWaterTile
+        Summon1:
+            Summons: 
+                - PiranhaPigID
+                - PiranhaPigID
+                - PiranhaPigID
+                - PiranhaPigEliteID
+            Target: 1
+            TargetIsBase: True
+            AnimOverload: Summon

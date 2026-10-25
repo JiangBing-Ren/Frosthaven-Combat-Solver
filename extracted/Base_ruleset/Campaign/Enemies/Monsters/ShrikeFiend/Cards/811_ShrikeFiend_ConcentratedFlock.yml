@@ -1,0 +1,17 @@
+Parser: EnemyCard
+ID: 811
+Name: $Monster_Ability_811_ShrikeFiend_ConcentratedFlock$
+Initiative: 10
+Shuffle: True
+Data:
+    Abilities: 
+        AMove:
+            Move: -1
+        AAttack:
+            Attack: 0
+            Range: 5
+            RangeIsBase: True
+            Target: 2
+            TargetIsBase: True
+            Filter: Enemy
+            AnimOverload: RangedAttack

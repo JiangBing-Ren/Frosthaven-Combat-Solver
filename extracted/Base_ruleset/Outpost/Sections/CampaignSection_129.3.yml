@@ -1,0 +1,26 @@
+Parser: CampaignSection
+ID: 129.3
+Name: The Second Year
+SkipCompletedNotification: False
+Effects:
+    - Type: AddSoldiers
+      Param1: 2
+
+    - Type: EnableEventsFromTo
+      Param1: WO-21
+      Param2: WO-47
+
+    - Type: EnableEventsFromTo
+      Param1: SO-21
+      Param2: SO-35
+
+    - Type: EnableEvent
+      Param1: SO-46
+
+    - Type: EnableEventsFromTo
+      Param1: WR-21
+      Param2: WR-30
+
+    - Type: EnableEventsFromTo
+      Param1: SR-21
+      Param2: SR-32

@@ -1,0 +1,8 @@
+Parser: Perk
+ID: MetalMosaic04
+Name: FH/PERK_MetalMosaic_04_Name
+Description: FH/PERK_MetalMosaic_04_Desc
+CharacterID: MetalMosaicID
+Available: 2
+CardsToRemove: [AMC_Basic_P0, AMC_Basic_P0]
+CardsToAdd: [AMC_Pierce3_R, AMC_Retaliate2_P0_R]

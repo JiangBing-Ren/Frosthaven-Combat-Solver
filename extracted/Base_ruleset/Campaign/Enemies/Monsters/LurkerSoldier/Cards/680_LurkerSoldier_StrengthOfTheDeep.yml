@@ -1,0 +1,20 @@
+Parser: EnemyCard
+ID: 680
+Name: $Monster_Ability_680_LurkerSoldier_StrengthOfTheDeep$
+Initiative: 41
+Shuffle: False
+Data:
+    Abilities:
+        CIce:
+            Consume:
+                Elements: Ice
+                Abilities:
+                    CFireCondition:
+                        Strengthen: True
+                        Filter: Self
+        Move1:
+            Move: 0
+        Attack1:
+            Attack: -1
+            Filter: Enemy
+            Condition: Wound

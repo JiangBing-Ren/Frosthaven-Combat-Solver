@@ -1,0 +1,39 @@
+Parser: PetCard
+ID: 362
+StringID: HoundPetID
+Name: $FH/362_pet_cards_hound_1$
+Description: $FH/362_pet_cards_hound_2$
+Art: Hound
+Usage: Consumed
+Trigger: DuringOwnTurn
+PetUnlockedBy: HoundID
+Cost: 0
+Data: 
+    Abilities:
+        AGrantAttack:
+            Attack: 0
+            AttackEffect:
+                Type: BuffIfAttackIsMelee
+                Strength: 1
+            AnimOverload: UseItem
+            PerformVars:
+                AttackBuff: 
+                    VFX: TargetingActor.PlayVFX("PetHoundEffect")
+            ActiveBonus:
+                Duration: Round
+                Behaviour: BuffAttack
+                IsAura: True
+                AuraTargeting: All
+                AuraFilter:
+                    ActorType: Player
+                    TargetType: [Self, Ally]
+                ListLayoutOverride: [$FH/362_pet_cards_hound_2$, Attack]
+                Filter: 
+                    TargetType: Enemy
+                    Vars: 
+                        Parent: activeBonus.Caster
+                        AdjacentAllies: GameState.GetAllAlliesInRange(Parent, target.ArrayIndex, 1)
+                        ValidateAdjacentToParentAlly: AdjacentAllies.Count > 0
+            Filter: [Self]
+Layout: 
+    - Row: "$FH/362_pet_cards_hound_2$"

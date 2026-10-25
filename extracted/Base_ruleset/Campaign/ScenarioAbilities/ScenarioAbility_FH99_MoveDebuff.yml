@@ -1,0 +1,11 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH99_MoveDebuff
+ScenarioAbility:
+    AddActiveBonus:
+        Move: -10
+        Filter: Self
+        ActiveBonus:
+            Duration: Round
+            Behaviour: BuffMove
+            ValidAbilityType: Move
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_099_SCENARIO_MODIFIER_2$, Move]

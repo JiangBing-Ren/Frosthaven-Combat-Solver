@@ -1,0 +1,85 @@
+Parser: AbilityCard
+Name: $FH/208_character_ability_cards_infuser_gale_barrage_1$
+Character: InfuserID
+ID: 208
+Level: 6
+Initiative: 44
+Discard: [Discard,Discard]
+Prefab: 208_Infuser_GaleBarrage
+Data:
+    Top:
+        Abilities:
+            ConsumeAbility:
+                Consume: 
+                    Elements: [Air, Dark]
+                    Abilities:
+                        CNull:
+                            Null: True
+                            AutoTrigger: True
+            TAttack:
+                Attack:
+                    Amount: 2
+                    Pierce: 2
+                    PierceEnhancements: 1
+                Target: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Target","Pierce")
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Consume]
+                PerformVars:
+                    OnAbilityEnded:
+                        TryRepeat: CustomAbility.RepeatOnSameTargets(obj)
+        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 1
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BAttackBuff:
+                Attack: 2
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Filter: Self
+                AnimOverload: RangedCast
+                ActiveBonus:
+                    Duration: Round
+                    XPTracker: [0]
+                    Behaviour: BuffAttack
+                    ListLayoutOverride: [$FH/208_character_ability_cards_infuser_gale_barrage_3$, Positive_AttackPlus]
+        Consumes:
+            BAttackBuffConsume:  
+                PreviewEffectId: M1Attack
+                AbilityOverrides:
+                    BAttackBuffOverride:
+                        ParentName: BAttackBuff
+                        Strength: -1
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            DoesntHaveNegativeCondition: [Stun]     
+                        SubAbilities:
+                            SubInfuse:
+                                Infuse: [Air]
+                                SkipAnim: True
+                                XP: 1
+Layout:
+    Top:
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<sprite name=ConsumeAir>, <sprite name=ConsumeDark>:"
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <sprite name=Target> *TAttack.Target*, <sprite name=Pierce> *TAttack.Pierce* <size=100%><voffset=1>@TAttack@"
+        - Row: "$FH/208_character_ability_cards_infuser_gale_barrage_2$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Row: "$FH/208_character_ability_cards_infuser_gale_barrage_3$"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: BAttackBuffConsume
+                    Text: "$FH/208_character_ability_cards_infuser_gale_barrage_4$"
+        

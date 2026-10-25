@@ -1,0 +1,10 @@
+Parser: EnemyCard
+ID: 99994
+Name: $Monster_Ability_S89_Faye_TendWounds$
+Initiative: 99
+Shuffle: False
+Data:
+    Abilities:
+        AHeal:
+            Heal: 2
+            Filter: [Self]

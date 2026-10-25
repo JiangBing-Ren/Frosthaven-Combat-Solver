@@ -1,0 +1,24 @@
+Parser: ItemCard
+ID: 1289
+StringID: RestfulSlippersID
+Name: $FH/1289_item_cards_restful_slippers_1$
+Art: Restful Slippers
+TotalInGame: 2
+Cost: 0
+Slot: Legs
+Rarity: Rare
+Usage: Spent
+Trigger: BeforeShortRest
+Data:    
+    ItemRequirements:
+        ValidateWhileSelected: true
+        Vars:
+            ValidateNotImprovedShortRest: "!Actor.CharacterClass.ImprovedShortRest"
+            ValidateNoOtherISRItems: "!Actor.Inventory.AllItems.Any(obj != Item && obj.SlotState == 'Selected' && obj.FindAbilityOnItemCard(CAbility.EAbilityType.ImprovedShortRest))"
+    Abilities:
+        AShortRest:
+            Filter: Self
+            AutoTrigger: True
+            ImprovedShortRest: 3
+Layout: 
+    - Row: $FH/1289_item_cards_restful_slippers_2$

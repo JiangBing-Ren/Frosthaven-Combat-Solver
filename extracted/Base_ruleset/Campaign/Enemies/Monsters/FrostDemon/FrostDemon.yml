@@ -1,0 +1,73 @@
+Parser: Enemy
+ID: FrostDemonID
+LocKey: $FrostDemon$
+MonsterType: Monster
+StandeeLimit: 6
+Model: Frost Demon
+PredominantlyMelee: True
+AbilityCards: [554, 555, 556, 557, 558, 559, 560, 561]
+# Base Stats
+Level0:
+    Health: 5
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+    Retaliate: 0
+    RetaliateRange: 0
+Level1:
+    Health: 6
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+    Retaliate: 1
+    RetaliateRange: 1
+Level2:
+    Health: 7
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Retaliate: 2
+    RetaliateRange: 1
+Level3:
+    Health: 8
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Retaliate: 2
+    RetaliateRange: 1
+Level4:
+    Health: 11
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Retaliate: 2
+    RetaliateRange: 1
+Level5:
+    Health: 13
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Retaliate: 3
+    RetaliateRange: 1
+Level6:
+    Health: 18
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1    
+    Retaliate: 3
+    RetaliateRange: 1
+Level7:
+    Health: 25
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1    
+    Retaliate: 3
+    RetaliateRange: 1

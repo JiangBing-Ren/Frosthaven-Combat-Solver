@@ -1,0 +1,13 @@
+Parser: AttackModifier
+Name: AMC_Shield1_R_BannerSpear
+MathModifier: "+0"
+Rolling: True
+Abilities:
+    AShield:
+        Shield: 1
+        Filter: Self
+        ActiveBonus:
+            Duration: Round
+        CanUndo: False
+        AnimOverload: SelfBuff
+        AutoTrigger: True

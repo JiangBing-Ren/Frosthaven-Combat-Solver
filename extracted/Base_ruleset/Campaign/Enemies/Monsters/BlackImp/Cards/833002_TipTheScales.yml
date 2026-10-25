@@ -1,0 +1,27 @@
+Parser: EnemyCard
+ID: 833002
+Name: $Monster_Ability_833_Imp_TipTheScales$
+Initiative: 24
+Shuffle: False
+Data:
+    Abilities: 
+        Strengthen1:
+            Strengthen: True
+            Target: -1
+            TargetIsBase: True
+            Range: 2
+            RangeIsBase: True
+            ShowRange: False
+            Filter: [Self, Ally]
+            AnimOverload: Cast Strong 
+            Text: "$Affect_AllAlliesWithin$ <nobr>$Range$ <sprite name=Range> 2</nobr>"
+        Muddle1:
+            Muddle: True
+            Target: -1
+            TargetIsBase: True
+            Range: 2
+            RangeIsBase: True
+            ShowRange: False
+            Filter: Enemy
+            SkipAnim: True
+            Text: "$Target_AllEnemiesWithin$ <nobr>$Range$ <sprite name=Range> 2</nobr>"

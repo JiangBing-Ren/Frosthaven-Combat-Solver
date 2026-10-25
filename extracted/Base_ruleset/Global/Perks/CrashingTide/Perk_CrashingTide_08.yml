@@ -1,0 +1,16 @@
+Parser: Perk
+ID: CrashingTide08
+Name: FH/PERK_CrashingTide_08_Name
+Description: FH/PERK_CrashingTide_08_Desc
+CharacterID: CrashingTideID
+Available: 1
+Cost: 1
+Flags: [Passive, IgnoreNegativeItemEffects, ApplyActiveBonusesAtScenarioStart]
+Abilities:
+    TActive:
+        AutoTrigger: True
+        Filter: Self
+        ImmunityTo: [Impair]
+        ActiveBonus:
+            Duration: Persistent
+            Hidden: True

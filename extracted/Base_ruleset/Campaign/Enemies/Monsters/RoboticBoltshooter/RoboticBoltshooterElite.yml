@@ -1,0 +1,66 @@
+Parser: Enemy
+ID: RoboticBoltshooterEliteID
+LocKey: $FH/RoboticBoltshooterElite$
+MonsterType: Monster
+StandeeLimit: 6
+Model: RoboticBoltshooter Elite
+NonEliteVariant: RoboticBoltshooterID
+PredominantlyMelee: True
+AbilityCards: [602, 603, 604, 605, 606, 607, 608, 609]
+# Base Stats
+Level0:
+    Health: 7
+    Move: 1
+    Attack: 1
+    Range: 1
+    Target: 3
+    Immunities: [Wound]
+Level1:
+    Health: 7
+    Move: 1
+    Attack: 2
+    Range: 1
+    Target: 3
+    Immunities: [Wound]
+Level2:
+    Health: 9
+    Move: 1
+    Attack: 2
+    Range: 1
+    Target: 3
+    Immunities: [Wound]
+Level3:
+    Health: 10
+    Move: 1
+    Attack: 2
+    Range: 1
+    Target: 4
+    Immunities: [Wound]
+Level4:
+    Health: 11
+    Move: 1
+    Attack: 3
+    Range: 1
+    Target: 4
+    Immunities: [Wound]
+Level5:
+    Health: 14
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 4
+    Immunities: [Wound]
+Level6:
+    Health: 17
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 4
+    Immunities: [Wound, Disarm]
+Level7:
+    Health: 23
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 4
+    Immunities: [Wound, Disarm]

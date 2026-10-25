@@ -1,0 +1,16 @@
+Parser: FHScenario
+ID: 48
+Name: Blizzard Island
+LevelID: FS_048_Blizzard_Island
+RequiresBoat: true
+Chain: Algox3
+Location: TheBitingSea
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: AllCharactersGainExperience
+          Param1: 10
+        - Type: GainMetal
+          Param1: 2
+        - Type: UnlockLinkedScenario
+          Param1: 57

@@ -1,0 +1,11 @@
+Parser: FHItem
+ID: 132
+ScenarioItemID: 1129
+Name: Cloak of Pockets
+Quantity: 2
+GoldCost: 30
+Type: Body
+Effects:
+    - Type: IncreaseMaxSmallItem 
+      Param1: 1
+IsNewCharacterItem: False

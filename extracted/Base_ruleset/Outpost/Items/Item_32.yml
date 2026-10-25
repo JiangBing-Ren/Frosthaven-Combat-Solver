@@ -1,0 +1,10 @@
+Parser: FHItem
+ID: 32
+ScenarioItemID: 944
+Name: Shell Armor
+Quantity: 2
+Type: Body
+CraftingCost:
+    Lumber: 1
+    Metal: 2
+    Hide: 2

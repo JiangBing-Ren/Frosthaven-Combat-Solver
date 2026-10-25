@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 146
+ScenarioItemID: 1157
+Name: Hooked Chain
+Quantity: 2
+GoldCost: 35
+Type: TwoHandWeapon
+IsNewCharacterItem: False

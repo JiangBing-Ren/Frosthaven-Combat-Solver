@@ -1,0 +1,11 @@
+Parser: FHScenario
+ID: 94
+Name: A Grand View
+LevelID: FS_094_A_Grand_View
+RequiresSled: true
+Chain: JobPosting
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: AllCharactersGainExperience
+          Param1: 10

@@ -1,0 +1,13 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH74_PlaceLog
+ScenarioAbility:
+    TPlaceLog:
+        CreateTerrain: Rubble
+        TileFilter: Obstacle
+        Target: 2
+        MiscVars:
+            RecalculateTargetingOnTileSelection: True
+        Targeting: Custom
+        TargetingVars:
+            AddTilesInRange: CustomAbility.GetActorsNextToTerrain(Ability).Select(Tile)
+            AddValidActorsInRange: CustomAbility.GetActorsNextToTerrain(Ability)

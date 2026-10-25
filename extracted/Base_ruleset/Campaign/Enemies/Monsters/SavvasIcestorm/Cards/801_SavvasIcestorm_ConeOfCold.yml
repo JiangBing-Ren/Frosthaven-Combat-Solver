@@ -1,0 +1,16 @@
+Parser: EnemyCard
+ID: 801
+Name: $Monster_Ability_801_SavvasIcestorm_ConeOfCold$
+Initiative: 35
+Shuffle: True
+Data:
+    Abilities:
+        Move1:
+            Move: -1
+        Attack1:
+            Attack: -1
+            Filter: Enemy
+            AreaEffect: "0,0,G|2,0,R|4,0,R|1,1,R|3,1,R|2,2,R"
+            AnimOverload: ConeOfCold
+            MultiPassAttack: False
+    Infuse: Ice

@@ -1,0 +1,14 @@
+Parser: FHScenario
+ID: 68
+Name: The Face of Torment
+LevelID: FS_068_The_Face_of_Torment
+Chain: PersonalQuest
+RequiresPersonalQuest: PQ_7
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: AddCalendarCampaignSection
+          Param1: 133.1
+          Param2: 2
+        - Type: GainCampaignSticker
+          Param1: AestherOutpost

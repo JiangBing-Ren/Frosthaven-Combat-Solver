@@ -1,0 +1,22 @@
+Parser: EnemyCard
+ID: 820
+Name: $Monster_Ability_820_BurrowingBlade_Descend$
+Initiative: 75
+Shuffle: False
+Data:
+    Abilities:
+        ADamage:
+            Damage: 2
+            Range: 0
+            Target: -1
+            TargetIsBase: True
+            Targeting: Range
+            Filter: Enemy
+            Text: "$FH/820$"
+            TextOnly: True
+            AnimOverload: Burrow
+        AInvisible:
+            Invisible: True
+            Filter: Self
+            SkipAnim: True
+    Infuse: Earth

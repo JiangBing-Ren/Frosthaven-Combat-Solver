@@ -1,0 +1,114 @@
+Parser: AbilityCard
+Name: $FH/417_character_ability_cards_metal_mosaic_steam_armor$
+Character: MetalMosaicID
+ID: 417
+Level: 1
+Initiative: 17
+Discard: [Discard,Discard]
+Prefab: 417_MetalMosaic_SteamArmor
+Data:
+    Top:
+        Abilities:
+            TShield:
+                Shield: 1
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                PerformVars:
+                    ApplyToActors:
+                        ChangePressureHigh: TargetingActor.Pressure.ToString() == 'High' && CustomAbility.PressureChange(TargetingActor, -1)
+                        ChangePressureOver: TargetingActor.Pressure.ToString() == 'Over' && CustomAbility.PressureChange(TargetingActor, -2)
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: Vars
+                        AddTo: True
+                        Vars:
+                            OverPressure: TargetingActor.Pressure.ToString() == 'Over'
+                            HighPressure: TargetingActor.Pressure.ToString() == 'High'
+                            Value: OverPressure && 2 || HighPressure && 1 || 0
+                    XP:
+                        BasedOn: Vars
+                        Vars:
+                            OverOrHighPressure: TargetingActor.Pressure.ToString() == 'Over' || TargetingActor.Pressure.ToString() == 'High'
+                            Value: OverOrHighPressure && 1 || 0
+                SubAbilities:
+                    SelfDamage:
+                        Damage: 1
+                        MiscVars:
+                            PrintedProperties: list("Damage")
+                        AutoTrigger: True
+                        Filter: Self
+                        SkipAnim: True 
+                        MiscVars:
+                            MetalMosaicSelfDamage: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Over
+        Infuse: Ice
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+                SubAbilities:
+                    BPressureChangeRegular:
+                        Null: True
+                        SkipAnim: True
+                        IgnoreStun: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Regular
+                        PerformVars:
+                            NullBegin:
+                                ChangePressure: CustomAbility.PressureChange(TargetingActor, 1)
+                    SubXP:
+                        IgnoreStun: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Low
+                        GainXP: 1
+                    BPressureChangeLow:
+                        Null: True
+                        SkipAnim: True
+                        IgnoreStun: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Low
+                        PerformVars:
+                            NullBegin:
+                                ChangePressure: CustomAbility.PressureChange(TargetingActor, 1)
+        Infuse: Fire
+Layout:
+    Top:
+        - Active:
+            Ability: TShield
+            Icon: Positive_Shield
+            ListLayout: "<sprite name=Shield> *TShield*"
+            Layout: "<sprite name=Shield> *TShield*"
+        - Row: "<b><size=130%><sprite name=Shield> *TShield*"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureOver><size=100%> +2<sprite name=Shield>, <sprite name=XP1>, <sprite name=MMSelfDamage>, <sprite name=MMLosePressure> <sprite name=MMLosePressure>"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureHigh><size=100%> +1<sprite name=Shield>, <sprite name=XP1>, <sprite name=MMLosePressure>"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Ice
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureRegular><size=100%> <sprite name=MMGainPressure>"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureLow><size=100%> <sprite name=XP1>, <sprite name=MMGainPressure>"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Fire

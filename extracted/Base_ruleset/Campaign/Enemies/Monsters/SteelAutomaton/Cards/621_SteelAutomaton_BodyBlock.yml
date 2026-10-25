@@ -1,0 +1,19 @@
+Parser: EnemyCard
+ID: 621
+Name: $Monster_Ability_621_SteelAutomaton_BodyBlock$
+Initiative: 24
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: 1
+        Shield1:
+            Shield: 1
+            ActiveBonus:
+                ListLayoutOverride: ["<sprite name=Shield> *Shield1*", Positive_Shield]
+        Retaliate2:
+            Retaliate: 2
+            ActiveBonus:
+                Duration: Round
+                ListLayoutOverride: ["<sprite name=Retaliate> *Retaliate2*", Positive_Retaliate]
+            SkipAnim: True

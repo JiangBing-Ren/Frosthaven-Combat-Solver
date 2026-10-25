@@ -1,0 +1,19 @@
+Parser: EnemyCard
+ID: 648
+Name: $Monster_Ability_648_IceWraith_RestoreEssence$
+Initiative: 13
+Shuffle: False
+Data:
+    Abilities: 
+        Heal1:
+            Heal: 3
+            Filter: Self
+    Consumes:
+        CIce:
+            Elements: Ice
+            Abilities:
+                CIceBuff:
+                    Shield: 2
+                    ActiveBonus:
+                        ListLayoutOverride: ["<sprite name=Shield> *CIceBuff*", Positive_Shield]
+                    SkipAnim: True

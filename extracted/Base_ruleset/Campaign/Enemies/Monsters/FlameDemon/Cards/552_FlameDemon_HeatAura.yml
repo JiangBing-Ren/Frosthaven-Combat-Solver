@@ -1,0 +1,27 @@
+Parser: EnemyCard
+ID: 552
+Name: $Monster_Ability_552_FlameDemon_HeatAura$
+Initiative: 77
+Shuffle: False
+Data:
+    Abilities: 
+        Attack1:
+            Attack: 0
+            Range: 1
+            RangeIsBase: True
+            ShowRange: False
+            Target: -1
+            TargetIsBase: True
+            Filter: Enemy
+            Text: "$Target_AllAdjacentEnemies$"
+            AnimOverload: FlameAura
+            MultiPassAttack: False            
+    Consumes:
+        CIce:
+            Elements: Ice
+            Abilities:
+                CIceDamage:
+                    Damage: 1
+                    Filter: Self
+                    Text: "$10633$"
+                    TextOnly: True

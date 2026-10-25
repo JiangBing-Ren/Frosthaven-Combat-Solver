@@ -1,0 +1,62 @@
+Parser: AbilityCard
+Name: $FH/451_character_ability_cards_deepwraith_staring_into_the_abyss$
+Character: DeepwraithID
+ID: 451
+Level: 1
+Initiative: 63
+Discard: [Discard,Discard]
+Prefab: 451_Deepwraith_StaringIntoTheAbyss
+Data:
+    Top:
+        Abilities:
+            TStun:
+                Stun: True
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Target: 1
+                Filter: Enemy
+                AnimOverload: Intimidate
+        Consumes:
+            TCTrophyDark:
+                Trophies: 1
+                Element: Dark
+                AbilityOverrides:
+                    CBuffStun:
+                        ParentName: TStun
+                        Target: 1
+                XP: 1
+                PreviewEffectId: M1TrophyDarkTarget
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BConsume:
+                PreviewEffectText: "<sprite name=DWRTrophy>"
+                Consume:
+                    Trophies: 1
+                    PreviewEffectId: M1TrophyDisarm
+                    Abilities:
+                        BDisarm:
+                            Disarm: True
+                            AnimOverload: Intimidate
+                            Filter: Enemy
+                            Range: 1
+Layout:
+    Top:
+        - Row: "<sprite name=Stun> <sprite name=Range> 1"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCTrophyDark
+                    Text: "+1 <sprite name=Target>, <sprite name=XP1>"
+    Bottom:
+        - Row: "<sprite name=Move> *BMove* @BMove@"
+        - Divider:
+        - Row: "-1<sprite name=DWRTrophy>: <sprite name=Disarm> <sprite name=Range> 1"
+

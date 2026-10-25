@@ -1,0 +1,35 @@
+Parser: ItemCard
+ID: 1210
+StringID: EventideScepter1ID
+Name: $FH/1210_eventide_scepter_front$
+Art: Eventide Scepter
+TotalInGame: 1
+Cost: 50
+Slot: OneHand
+Rarity: Rare
+Usage: Flip
+FlipItemID: 1209
+FlipItemSide: Front
+Trigger: OnAbilityEnded
+Consumes: Light
+Data:
+    ItemRequirements:
+        Vars: 
+            ItemOwner: Ability.VarsContext.parentContext.ItemOwner
+            ValidateIsMyHeal: Ability.TargetingActor == ItemOwner
+            ValidateHasParentContext: Ability?.VarsContext?.parentContext != null
+            ValidateParentIsHeal: Ability.AbilityType == "Heal"
+            ValidateTargetedAlly: Ability.ActorsTargeted.Any(CustomAbility.IsAlly(obj, Ability.TargetingActor))
+            ValidateHasConsumes: CAbilityConsume.CanConsume(list(ElementInfusionBoardManager.EElement.Light))
+    Abilities:
+        HealOneAlly:
+            AddCondition: True
+            Conditions: Regenerate
+            Target: 1
+            Filter: Ally
+            Targeting: Custom
+            TargetingVars:
+                Self: TargetingActor
+                AddValidActorsInRange: AppliedCondition.ActorsTargeted.Where(CustomAbility.IsAlly(obj, Self))
+Layout: 
+    - Row: "$FH/1210_eventide_scepter_2$"

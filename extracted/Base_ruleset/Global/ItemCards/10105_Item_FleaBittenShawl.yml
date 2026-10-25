@@ -1,0 +1,27 @@
+Parser: ItemCard
+ID: 10105
+StringID: FleaBittenShawlID
+Name: $FH/10105_item_cards_flea_bitten_shawl_1$
+Art: Flea Bitten Shawl
+TotalInGame: 1
+Cost: 10
+Slot: Body 
+Rarity: Rare
+UsedWhenEquipped: true
+Usage: Unrestricted
+Trigger: PassiveEffect
+ProsperityRequirement: 6
+Data: 
+    Abilities:
+        AAdjustInitiative:
+            AdjustInitiative: 99
+            Filter: Self
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: FocusInitiative
+Layout: 
+    - Active:
+        Ability: AAdjustInitiative
+        ListLayout: "$FH/10105_item_cards_flea_bitten_shawl_2$"
+        Layout: "$FH/10105_item_cards_flea_bitten_shawl_2$"
+        Icon: "Positive_Target_Item"

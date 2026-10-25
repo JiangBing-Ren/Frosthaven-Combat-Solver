@@ -1,0 +1,12 @@
+Parser: EnemyCard
+ID: 12001
+Initiative: 40
+Shuffle: True
+Data:
+    Abilities:
+        TBlessStrengthen:
+                AddCondition: True
+                Condition: Regenerate
+                Range: 3
+                Filter: Ally
+                AnimOverload: PositiveBuffTargeted

@@ -1,0 +1,81 @@
+Parser: AbilityCard
+Name: $FH/293_character_ability_cards_trapper_persistent_pitfalls_1$
+Character: TrapperID
+ID: 293
+Level: 6
+Initiative: 13
+Discard: [Discard,Discard]
+Prefab: 293_Trapper_PersistentPitfalls
+Data:
+    Top:
+        Abilities:
+            TDestroyTrap:
+                DisarmTrap: true
+                Range: 1
+                RangeIsBase: true
+                SkipAnim: True
+                PerformVars:
+                    DisarmTrap:
+                        DisarmedTrapTile: TilesSelected[0]
+            TTrap:
+                Trap:
+                    TrapName: TrapperTrap
+                    Damage: 6
+                    SquareEnhancements: 1
+                    Conditions: Stun
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Vars:
+                    DisarmedTrapTile: TargetingActor.LastAbilityPerformed?.DisarmedTrapTile
+                    ValidateDisarmedTrap: "!!DisarmedTrapTile"
+                Targeting: Custom
+                AnimOverload: CreateTrap
+                TargetingVars:
+                    AddTileInRange: DisarmedTrapTile
+                    AddSelectedTile: DisarmedTrapTile
+                AutoTrigger: True
+
+        XP: 1
+    Bottom:
+        Abilities:
+            BCreateTrapOnDamageTrapSprung:
+                AddActiveBonus:
+                    Trap:
+                        TrapName: TrapperTrap
+                        Damage: 0
+                    HelpBoxTooltipLocKey: "$FH/293_character_ability_cards_trapper_persistent_pitfalls_5$"
+                    AnimOverload: TrapThrow
+                    MiscVars:
+                        InterruptCurrentAbility: True
+                        InterruptRegardlessOfStrength: True
+                    Targeting: Custom
+                    TargetingVars:
+                        AddTilesInRange: GameState.GetNearestEmptyTiles(SprungTrapTile)
+                    PerformVars:
+                        TrapPlaced:
+                            NewTrap: TilesSelected?.First?.Trap
+                            AddTrapEffects: CustomAbility.AddTrapEffects(NewTrap, SprungTrap)
+                            HalveDamage: NewTrap.SetCustomDamageValue(SprungTrapDamage / 2)
+                            RemoveHeal: NewTrap.SetHealValue(0)
+                    #AutoTrigger: True
+                AnimOverload: PowerUpStrong
+                ActiveBonus:
+                    Duration: Round
+                    Behaviour: GenericTrapActivated
+                    TriggerOnCaster: true
+                    Vars:
+                        SprungTrap: trap
+                        SprungTrapTile: SprungTrap.PropTile
+                        SprungTrapDamage: trap.Damage and trap.GetTrapDamage() or 0
+                        ValidateDamage: SprungTrapDamage >= 2
+Layout:
+    Top:
+        - Row: $FH/293_character_ability_cards_trapper_persistent_pitfalls_2$
+        - Row: "<sprite name=Damage>*TTrap* @TTrap@"
+        - Row: $FH/293_character_ability_cards_trapper_persistent_pitfalls_3$
+    Bottom:
+        - Active:
+            Ability: BCreateTrapOnDamageTrapSprung
+            Icon: Positive_TrapCreate
+            ListLayout: $FH/293_character_ability_cards_trapper_persistent_pitfalls_4$
+            Layout: $FH/293_character_ability_cards_trapper_persistent_pitfalls_4$

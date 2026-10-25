@@ -1,0 +1,73 @@
+Parser: Enemy
+ID: SteelAutomatonID
+LocKey: $FH/SteelAutomaton$
+MonsterType: Monster
+StandeeLimit: 6
+Model: SteelAutomaton
+PredominantlyMelee: True
+AbilityCards: [618,619,620,621,622,623,624,625]
+# Base Stats
+Level0:
+    Health: 9
+    Move: 1
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 1
+    Immunities: [Poison,Disarm]
+Level1:
+    Health: 9
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 2
+    Immunities: [Poison,Disarm]
+Level2:
+    Health: 12
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 2
+    Immunities: [Poison,Disarm]
+Level3:
+    Health: 14
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 2
+    Immunities: [Poison,Disarm]
+Level4:
+    Health: 18
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 2
+    Immunities: [Poison,Disarm]
+Level5:
+    Health: 21
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 2
+    Immunities: [Poison,Disarm]
+Level6:
+    Health: 22
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 3
+    Immunities: [Poison,Disarm]
+Level7:
+    Health: 27
+    Move: 4
+    Attack: 5
+    Range: 1
+    Target: 1
+    Shield: 3
+    Immunities: [Poison,Disarm]

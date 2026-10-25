@@ -1,0 +1,37 @@
+Parser: EnemyCard
+ID: 881000625
+Name: $Monster_Ability_625_SteelAutomaton_ImmovableObject$
+Initiative: 10
+Shuffle: True
+Data:
+    Abilities:
+        Shield4:
+            Shield: 4
+        Control1:
+            Filter:
+                TargetType: Enemy
+                ActorType: [Player,Summon]
+            Range: 3
+            RangeIsBase: True
+            AnimOverload: Control
+            ControlActor:
+                Abilities:
+                    ControlMove:
+                        Move: 2
+                        StrengthIsBase: True
+                    ControlAttack:
+                        Attack: 0
+                        StrengthIsBase: True
+                        Range: 1
+                        RangeIsBase: True
+                        ShowRange: False
+                        Target: 1
+                        TargetIsBase: True
+                        ShowTarget: False
+                        StatIsBasedOnX:
+                            Strength:
+                                BasedOn: Vars
+                                Vars:
+                                    Value: MonsterClassManager.Find("AugmentedMindthiefID")?.CurrentMonsterStat?.Attack || 0
+                ControlDurationType: ControlForOneAction
+                ControlActorType: Enemy

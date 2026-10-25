@@ -1,0 +1,16 @@
+Parser: EnemyCard
+ID: 816
+Name: $Monster_Ability_BasicAttack$
+Initiative: 90
+Shuffle: True
+Data:
+    Abilities: 
+        AMove:
+            Move: 0
+        AAttack:
+            Attack: 0
+        AInfuse:
+            Infuse: [Dark]
+            TextOnly: True
+            Text: "<size=200%><sprite name=Dark></size>"
+            SkipAnim: True

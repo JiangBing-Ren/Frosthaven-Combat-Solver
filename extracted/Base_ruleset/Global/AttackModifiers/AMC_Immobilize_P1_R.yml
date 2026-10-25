@@ -1,0 +1,8 @@
+Parser: AttackModifier
+Name: AMC_Immobilize_P1_R
+MathModifier: "+1"
+Rolling: True
+AbilityOverrides:
+    NegCon:
+        ParentName: AMC_Immobilize_P1_R
+        Conditions: [Immobilize]

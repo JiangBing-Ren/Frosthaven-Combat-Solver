@@ -1,0 +1,51 @@
+Parser: ItemCard
+ID: 1091
+StringID: ExpertisePoionID
+Name: $FH/1091_item_cards_expertise_potion_1$
+Art: Expertise Potion
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data:    
+    # only allow item activation after you've played 1 card this turn, but before you've played all your cards
+    ItemRequirements:
+        Vars:
+            PlayedCards: GameState.GetPlayedActionsCount()
+            ValidatePlayedAtLeastOneCard: PlayedCards >= 1 && PlayedCards < Actor.MaxRoundCardsCount
+            ValidateNormalTurn: GameState.IsPerformingCardOutOfPhase == False
+            SelectAndPlayCardAbility: Item.YMLData.Data.Abilities[0].SubAbilities[0]
+            ValidateHasCardsInPiles: SelectAndPlayCardAbility.HasValidCards(Actor)
+    Abilities:
+        # discard one yet to be played round card (to prevent you from activating it afterwards)
+        ADiscardOneRoundCard:
+            Filter: Self
+            HelpBoxTooltipLocKey: "$GUI_TOOLTIP_SELECT_DISCARD_CARD_TITLE$"
+            SelectAndMoveCard:
+                PileToMoveFrom: Round
+                PileToMoveTo: Discarded
+                Amount: 1
+            # play the remaining action of one of your played round cards
+            SubAbilities:
+                AConsume:
+                    CanSkip: False
+                    AutoTrigger: True
+                    TreatAsNonSubAbility: True
+                    SelectAndPlayCard: 
+                        # select cards that have been played - so they'd only be in these piles
+                        CardPile: [Discarded, Lost, PermanentlyLost]  
+                    Filter: Self
+                    MiscVars:
+                        LoseCardsIfTheyWereLost: True
+                        # "round" card that is no longer in the round pile, have to check if it really was from the round cards
+                        # this can be before/during this ability, so check both the parent ability, and the round pile
+                        IsCardValid: (ParentAbility == null || (ParentAbility.selectedAbilityCardsOutOfPhase.Contains(AbilityCard) == False)) && (TargetingActor.CharacterClass.RoundAbilityCards.Contains(AbilityCard) == False) && TargetingActor.CharacterClass.RoundAbilityCardsSelectedInCardSelection.Contains(AbilityCard)
+                        # allow selecting the other unplayed action
+                        IsActionValid: LastPlayedActionInfo?.LastAction == null || (IsTop != LastPlayedActionInfo.LastActionWasTop && (!IsLoss || !LastPlayedActionInfo.LastActionWasLoss))
+                    PerformVars:
+                        Done:
+                            ProgressCardActionFlags: CustomAbility.ProgressCardActionFlags(playerActor, obj)
+Layout: 
+    - Row: "$FH/1091_item_cards_expertise_potion_2$"

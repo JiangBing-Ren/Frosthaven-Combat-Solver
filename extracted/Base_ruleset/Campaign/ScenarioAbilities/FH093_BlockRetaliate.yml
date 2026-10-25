@@ -1,0 +1,17 @@
+Parser: ScenarioAbility
+ID: FH093_BlockRetaliate
+ScenarioAbility:
+    AActive:
+        PreventDamage: -1
+        Target: -1
+        Filter: Self
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: BlockRetaliate
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_093_SCENARIO_MODIFIER_3$, Positive_RetaliatePrevent_Campaign]
+            IsToggleBonus: False
+            Requirements:
+                Vars:
+                    ValidateAttacker: Actor.Class.ID == "YoglangID"
+        AnimOverload: None
+        AutoTrigger: True

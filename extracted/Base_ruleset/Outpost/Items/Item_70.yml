@@ -1,0 +1,7 @@
+Parser: FHItem
+ID: 70
+ScenarioItemID: 1005
+Name: Aesther Robe
+Quantity: 2
+Type: Body
+RequiredCraftingItemIDs: [ 27, 113 ]

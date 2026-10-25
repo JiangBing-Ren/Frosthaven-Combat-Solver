@@ -1,0 +1,36 @@
+Parser: AttackModifier
+Name: AMC_KillSummon_P1
+MathModifier: "+1"
+# if you chose to use this modifier instead, only then the abilities will apply
+DescriptionForToggleAlternate: "$FH/PERK_Boneshaper_08_AttackModifier_Desc$"
+AlternateModifier: "+4"
+# only show up as a choice when it's the summon drawing this
+AlternateFilter:
+    ActorType: Summon
+Abilities:
+    # summon starts the process - controls his summoner, the summoner kills the attacking hero summon, so summoner gets kill credit
+    ControlSummoner:
+        AutoTrigger: True
+        SkipAnim: True
+        Targeting: Custom
+        TargetingVars:
+            AddValidActorInRange: TargetingActor.Summoner
+        Filter: Ally
+        ControlActor:
+            Abilities:
+                KillAbility:
+                    Kill: True
+                    AutoTrigger: True
+                    SkipAnim: True
+                    Targeting: Custom
+                    TargetingVars:
+                        Summon: parentContext.parentContext.obj.TargetingActor
+                        AddTileInRange: Summon.Tile
+                        AddValidActorInRange: Summon
+                        AddActorToTarget: Summon
+                        AddSelectedTile: Summon.Tile
+                    PerformVars:
+                        ApplyToActors: 
+                            PlayVFX: ActorsToTarget[0].PlayVFX("BoneshaperExplodingCorpse")
+                    Filter: OwnSummon
+

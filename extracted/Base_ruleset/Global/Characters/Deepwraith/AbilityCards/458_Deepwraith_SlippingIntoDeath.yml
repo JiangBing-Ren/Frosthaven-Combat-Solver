@@ -1,0 +1,78 @@
+Parser: AbilityCard
+Name: $FH/458_character_ability_cards_deepwraith_slipping_into_death_1$
+Character: DeepwraithID
+ID: 458
+Level: 2
+Initiative: 89
+Discard: [Discard,Discard]
+Prefab: 458_Deepwraith_SlippingIntoDeath
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 1
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                SubAbilities:
+                    TBane:
+                        Bane: True
+                        Target: 1
+                        MiscVars:
+                            PrintedProperties: list("Target")
+                        Flags: [SubAbilityPreview]
+                        Filter:
+                            TargetType: Enemy
+                            Vars:
+                                ValidateElite: not target.IsElite && not target.IsBoss
+                        AllTargetsAdjacentToParentTargets: True
+                        TreatAsNonSubAbility: True
+                        AnimOverload: Intimidate
+                        XP: 1
+                        StartAbilityRequirements:
+                            Type: SubAbility
+                            ActorsKilledByAbility: "> 0"
+                            RequirementActorFilter:
+                                TargetType: Enemy
+                                EnemyType: [Normal,Elite,Boss]
+        Consumes:
+            TCDark:
+                Element: Dark
+                AbilityOverrides:
+                    CAttackBuffImmobilize:
+                        ParentName: TAttack
+                        Strength: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BBane:
+                Bane: True
+                MiscVars:
+                    PrintedProperties: list("Target")
+                AnimOverload: Intimidate
+                Filter:
+                    TargetType: Enemy
+                    Vars:
+                        ValidateHealth: target.Health <= 4
+                        ValidateMaxHealth: target.Health < target.MaxHealth
+Layout:
+    Top:
+        - Row: "<sprite name=Attack> *TAttack* @TAttack@"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCDark
+                    Text: ": +1 <sprite name=Attack>"
+        - Divider:
+        - Row: "$FH/458_character_ability_cards_deepwraith_slipping_into_death_2$"
+    Bottom:
+        - Row: "<sprite name=Move> *BMove* @BMove@"
+        - Divider:
+        - Row: "$FH/458_character_ability_cards_deepwraith_slipping_into_death_3$"

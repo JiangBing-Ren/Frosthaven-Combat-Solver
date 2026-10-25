@@ -1,0 +1,27 @@
+Parser: Character
+ID: PyroclastID
+LocKey: $FH/FS_Character_Pyroclast$
+Model: Pyroclast
+DefaultSkin: 1
+Race: Savvas
+Traits: [ Arcane, Chaotic, Intimidating ]
+# PlayerLevel:  [  1,   2,   3,   4,   5,   6,   7,   8,   9 ]
+HealthTable:    [  8, 9, 11, 12, 14, 15, 17, 18, 20 ]
+NumberAbilityCardsInBattle: 10
+Role: $Pyroclast_ROLE$
+Description: $Pyroclast_DESCRIPTION$
+Difficulty: $DIFFICULTY_HIGH$
+Strengths: $Pyroclast_STRENGTHS$
+Weaknesses: $Pyroclast_WEAKNESSES$
+Adventure_Description: $Pyroclast_ADVENTURE_DESCRIPTION$
+Complexity: 3
+ElementalAffinities: [Fire, Earth]
+MasteryIDs: [Pyroclast_MASTERY_1, Pyroclast_MASTERY_2]
+RetireCampaignSection: 51.3
+HeroStats:
+    Melee: 4
+    Ranged: 3
+    Mobility: 3
+    Support: 1
+    Defense: 3
+    Control: 5

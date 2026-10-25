@@ -1,0 +1,12 @@
+Parser: HeroSummon
+ID: SniperTurretID
+LocKey: $FH/391_character_ability_cards_hive_aimed_assault_2$
+Model: SniperTurret
+Health:
+    Amount: 3
+    SquareEnhancements: 1
+Move: 0
+Attack: 2
+Range:
+    Amount: 4
+    SquareEnhancements: 1

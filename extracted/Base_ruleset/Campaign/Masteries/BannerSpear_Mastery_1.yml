@@ -1,0 +1,24 @@
+Parser: Mastery
+ID: BannerSpear_MASTERY_1
+LocalisedName: BannerSpear_MASTERY_1_Name
+LocalisedDescription: BannerSpear_MASTERY_1_Desc
+PerkPoints: 1
+BattleGoalCondition:
+    - Targets:
+        # check abilities
+        Filter: UseAbility
+        # specifically check attack abilities
+        AbilityTypes: [Attack]
+        # that have attacked at least 3 targets
+        Targets: 3
+        # throughout the entire scenario
+        SubFilter: Scenario
+        # with area effects
+        AreaEffect: True
+        # only for the bannerspear
+        CharacterIDs: 
+            ActorID: BannerSpearID
+        # out of the succesful stats, group them by card id and then just count the first one in each group
+        DistinctAbilities: True
+        # and we have to have done 3 of these abilities
+        Value: 3

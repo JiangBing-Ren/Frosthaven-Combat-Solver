@@ -1,0 +1,7 @@
+Parser: CampaignSection
+ID: 146.1
+Name: Artificer Recovered
+SkipCompletedNotification: False
+Effects:
+    - Type: UnlockScenario
+      Param1: 74

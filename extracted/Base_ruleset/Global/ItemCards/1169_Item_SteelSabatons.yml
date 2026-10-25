@@ -1,0 +1,41 @@
+Parser: ItemCard
+ID: 1169
+StringID: SteelSabatonsID
+Name: $FH/1169_item_cards_steel_sabatons_1$
+Art: Steel Sabatons
+TotalInGame: 2
+Cost: 55
+Slot: Legs 
+Rarity: Rare
+Usage: Unrestricted
+Trigger: PassiveEffect
+Data: 
+    Abilities:
+        TActive:
+            AutoTrigger: True
+            AddActiveBonus:
+                AutoTrigger: True
+                Shield: 1
+                CanUndo: False
+                ActiveBonus:
+                    Duration: Round
+                    ListLayoutOverride: ["<sprite name=Shield> 1", Positive_Shield_Item]
+                    MiscVars:
+                        IgnoreImpair: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    HexesMovedThisTurn: "<= 1"
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: EndTurnAbility
+                Requirements:
+                    Vars:
+                        ValidateNotImpaired: Actor.Tokens.HasKey(CCondition.ENegativeCondition.Impair) == false && Actor.Tokens.HasKey(CCondition.ENegativeCondition.Stun) == false
+    AddModifiers:
+        - [AMC_Basic_M1, 2]
+Layout: 
+    - Active:
+        Ability: TActive
+        ListLayout: "$FH/1169_item_cards_steel_sabatons_2$"
+        Layout: "$FH/1169_item_cards_steel_sabatons_2$"
+        Icon: "Positive_Shield_Move_Item"

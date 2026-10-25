@@ -1,0 +1,10 @@
+Parser: FHScenario
+ID: 127
+Name: Derelict Freighter
+LevelID: FS_127_Derelict_Freighter
+Chain: Other
+Location: Frosthaven
+Difficulty: 1
+Conclusions:
+    - Effects:
+        - Type: FS127ConclusionEffect

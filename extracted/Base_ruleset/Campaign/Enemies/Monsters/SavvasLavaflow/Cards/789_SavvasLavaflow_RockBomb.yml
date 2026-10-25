@@ -1,0 +1,27 @@
+Parser: EnemyCard
+ID: 789
+Name: $Monster_Ability_789_SavvasLavaflow_RockBomb$
+Initiative: 68
+Shuffle: True
+Data:
+    Abilities:
+        Move1:
+            Move: -1
+        Attack1:
+            AnimOverload: RockBomb      
+            Attack: +1
+            RangeIsBase: True
+            Range: 3
+            Filter: Enemy
+            Text: "$AdjacentAlliesAndEnemies2Damage$"
+            SubAbilities:
+                Attack1SubDamage:
+                    Damage: 2
+                    Range: 1
+                    RangeIsBase: True
+                    Target: -1
+                    TargetIsBase: True
+                    Filter: [Enemy, Ally]
+                    AnimOverload: FireBuff
+                    AllTargetsAdjacentToParentTargets: True
+    Infuse: Earth              

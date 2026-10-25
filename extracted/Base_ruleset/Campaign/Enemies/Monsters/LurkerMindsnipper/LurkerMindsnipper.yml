@@ -1,0 +1,64 @@
+Parser: Enemy
+ID: LurkerMindsnipperID
+LocKey: $FH/LurkerMindsnipper$
+MonsterType: Monster
+StandeeLimit: 6
+Model: LurkerMindsnipper
+PredominantlyMelee: True
+AbilityCards: [682, 683, 684, 685, 686, 687, 688, 689]
+# Base Stats
+Level0:
+    Health: 5
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 2
+Level1:
+    Health: 6
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 2
+    Pierce: 2
+Level2:
+    Health: 6
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 2
+    Pierce: 2
+Level3:
+    Health: 7
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 2
+    Pierce: 3
+Level4:
+    Health: 9
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 2
+    Pierce: 3
+Level5:
+    Health: 12
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 2
+    Pierce: 3
+Level6:
+    Health: 15
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 2
+    Pierce: 3
+Level7:
+    Health: 20
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 2
+    Pierce: 3

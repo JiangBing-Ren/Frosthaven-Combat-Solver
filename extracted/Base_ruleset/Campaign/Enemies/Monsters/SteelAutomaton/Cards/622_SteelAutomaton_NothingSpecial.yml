@@ -1,0 +1,11 @@
+Parser: EnemyCard
+ID: 622
+Name: $Monster_Ability_BasicAttack$
+Initiative: 70
+Shuffle: False
+Data:
+    Abilities: 
+        Move0:
+            Move: 0
+        Attack0:
+            Attack: 0

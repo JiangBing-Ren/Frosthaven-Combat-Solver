@@ -1,0 +1,31 @@
+Parser: EnemyCard
+ID: 08822004
+Name: $Monster_Ability_Boss_ProgramDirector_Special1$
+Initiative: 79
+Shuffle: False
+Data:
+    Abilities:
+        ABossSpecial1Teleport:
+            Teleport2: 99
+            Filter: Self
+            Vars:
+                ValidteValidTile: ScenarioScript.current.GetSpecial1TeleportTile() != null
+            MiscVars:
+                TeleportToTile: ScenarioScript.current.GetSpecial1TeleportTile()
+            AnimOverload: Teleport Into
+            AnimOverload2: Teleport Outof
+            Text: "$FH/boss_stat_cards_program_director_1_1$"
+            TextOnly: True
+        Attack1:
+            Attack: 0
+            Target: 2
+            TargetIsBase: True
+            Filter: Enemy
+        ABossSpecial1Damage:
+            Null: True
+            Text: "$FH/boss_stat_cards_program_director_1_2$"
+            TextOnly: True
+            PerformVars:
+                NullPerform:
+                    ExecuteProgramDirectorSpecial1PressurePlatesDamage: ScenarioScript.current.ExecuteSpecial1PressurePlatesDamage()
+            AnimOverload: ElectricShock

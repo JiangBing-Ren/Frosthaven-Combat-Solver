@@ -1,0 +1,38 @@
+Parser: ItemCard
+ID: 10116
+StringID: AncientFuelFalchionID
+Name: $FH/10116_item_cards_ancient_fuel_falchion_1$
+Art: Ancient Fuel Falchion
+TotalInGame: 2
+Cost: 20
+Slot: OneHand 
+Rarity: Rare
+Usage: Consumed
+Trigger: SingleTarget
+Data: 
+    Overrides:
+        ODamage:
+            SubAbilities:
+                AttackSubDamage:
+                    # specifically has to trigger right after the single target attack, but before retaliates
+                    IsInlineSubAbility: True
+                    AutoTrigger: True
+                    TreatAsNonSubAbility: True
+                    Damage: 1
+                    Range: 1
+                    Target: -1
+                    Filter: Enemy
+                    UseParentTiles: True
+                    SkipAnim: True
+                    Flags: SubAbilityPreview
+                    MiscVars:
+                        TriggerBeforeRetaliate: True
+                        TreatAsNonInlineForTargeting: True
+    CompareAbility:
+        AbilityType: Attack
+        IsMelee: True
+        Filter: Enemy
+        Target: 1
+        # allowed to work on area effects that have only 1 target
+Layout: 
+    - Row: $FH/10116_item_cards_ancient_fuel_falchion_2$

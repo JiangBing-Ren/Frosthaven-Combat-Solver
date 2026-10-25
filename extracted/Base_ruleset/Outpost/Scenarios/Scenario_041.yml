@@ -1,0 +1,17 @@
+Parser: FHScenario
+ID: 41
+Name: Unfettered Shard
+LevelID: FS_041_Unfettered_Shard
+Chain: Algox3
+Location: CopperneckMountaions
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: AllCharactersGainGold
+          Param1: 15
+        - Type: GainAxenut
+          Param1: 2
+        - Type: AddCoralShard
+        # - Type: AddCalendarCampaignSection
+        #   Param1: 36.7
+        #   Param2: 1

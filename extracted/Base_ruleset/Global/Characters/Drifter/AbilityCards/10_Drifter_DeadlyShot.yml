@@ -1,0 +1,39 @@
+Parser: AbilityCard
+Name: $FH/010_character_ability_cards_drifter_deadly_shot_1$
+Character: DrifterID
+ID: 10
+Level: 1
+ProgressionOrder: 9
+Initiative: 32
+Discard: [Discard,Discard]
+Prefab: 10_Drifter_DeadlyShot
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 1
+                    DiamondEnhancements: 1
+                Range: 4
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                Filter: [Enemy]
+                Conditions: [Poison]
+                AnimOverload: RangedAttack
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 4
+                MiscVars:
+                    PrintedProperties: list("Move")
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "5,40,40,15"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack*<size=100%><voffset=1>@TAttack@"
+            - Column:
+                - AddedEffect: "<sprite name=Range>4, <size=130%><sprite name=Poison></size>"
+            - Column:
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove*"

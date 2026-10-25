@@ -1,0 +1,7 @@
+Parser: FHEnhancement
+ID: ElementDark
+Name: Glossary_Enhancement_Dark
+Cost: 100
+Mark: Circle
+Effect: ElementDark
+ForEffect: Other

@@ -1,0 +1,72 @@
+Parser: AbilityCard
+Name: $FH/143_character_ability_cards_boneshaper_rotting_multitude_1$
+Character: BoneshaperID
+ID: 143
+Level: 6
+Initiative: 66
+Discard: [Discard,Discard]
+Prefab: 143_Boneshaper_RottingMultitude
+Data:
+    Top:
+        Abilities:
+            TSummon1:
+                Summon: ShamblingSkeletonID
+                Target: 2
+                AnimOverload: Summon
+                SubAbilities:
+                    TDamage1:
+                        Damage: 6
+                        MiscVars:
+                            PrintedProperties: list("Damage")
+                        Filter: Self
+                        AutoTrigger: True
+                        #Suffer animation triggers from the self damage, no animation overload needed
+        XP: 1
+    Bottom:
+        Abilities:
+            TCDark:
+                Consume:
+                    Elements: Dark
+                    #PreviewEffectText: "<sprite name=Wound>, <sprite name=Range> 1"
+                    Abilities:
+                        BMove:
+                            Move:
+                                Amount: 4
+                            MiscVars:
+                                PrintedProperties: list("Move")
+                            StrengthIsBase: True
+                        BGainXP:
+                            GainXP: 1
+            TAlly:
+                ControlActor:
+                    Abilities:
+                        BAllyMove:
+                            Move:
+                                Amount: 4
+                            MiscVars:
+                                PrintedProperties: list("Move")
+                            StrengthIsBase: True
+                Target: 1
+                Range: 99
+                Filter:
+                    TargetType: OwnSummon
+                AnimOverload: ControlSummon
+Layout:
+    Top:
+        - Active:
+              Ability: "TSummon1"
+              Icon: "Summon"
+              Layout:
+                  - Summon:
+                        Ability: TSummon1
+                        SummonName: $FH/143_character_ability_cards_boneshaper_rotting_multitude_2$
+        - Row: "<size=20%> "
+        - MandatoryTrigger: "$FH/143_character_ability_cards_boneshaper_rotting_multitude_3$"
+    Bottom:
+        - Conditional:
+            Layout:
+                # - Consume:
+                #     Name: TCDark
+                - Row: "<size=200%><sprite name=ConsumeDark><nobr><size=130%>: <sprite name=Move> 4, <sprite name=XP1></nobr>"
+        - Row: "<size=50%> "
+        - Row: "$FH/143_character_ability_cards_boneshaper_rotting_multitude_4$"

@@ -1,0 +1,29 @@
+Parser: EnemyCard
+ID: 814
+Name: $Monster_Ability_814_ShrikeFiend_GatherTheFlock$
+Initiative: 72
+Shuffle: False
+Data:
+    Abilities: 
+        APull:
+            Pull: 2
+            Target: -1
+            TargetIsBase: True
+            Range: 5
+            RangeIsBase: True
+            Filter: Enemy
+            TextOnly: True
+            Text: "$FH/814_ShrikeFiend_GatherTheFlock_0$"
+            AnimOverload: PowerUp
+        AWaitIdle:
+            Null: True
+        ADamage:
+            Damage: 2
+            Range: 3
+            RangeIsBase: True
+            Target: -1
+            TargetIsBase: True
+            Filter: Enemy
+            TextOnly: True
+            Text: "$FH/813_ShrikeFiend_AngryCloud_0$"
+            AnimOverload: FlockAttack

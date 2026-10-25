@@ -1,0 +1,105 @@
+Parser: Enemy
+ID: TheShimmerID
+LocKey: $TheShimmer$
+MonsterType: Monster
+StandeeLimit: 2
+Model: TheShimmer
+MiniBoss: True
+PredominantlyMelee: False
+AbilityCards: [794, 795, 796, 797, 798, 799, 800, 801]
+# Base Stats
+Level0:
+    Health: 0
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+    Pierce: 3
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 12
+Level1:
+    Health: 0
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 1
+    Pierce: 3
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 12
+Level2:
+    Health: 0
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 1
+    Pierce: 3
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 15
+Level3:
+    Health: 0
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 1
+    Pierce: 3
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 17
+Level4:
+    Health: 0
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 2
+    Pierce: 3
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 17
+Level5:
+    Health: 0
+    Move: 4
+    Attack: 5
+    Range: 1
+    Target: 1
+    Shield: 2
+    Pierce: 3
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 20
+Level6:
+    Health: 0
+    Move: 4
+    Attack: 6
+    Range: 1
+    Target: 1
+    Shield: 2
+    Pierce: 3
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 26     
+Level7:
+    Health: 0
+    Move: 4
+    Attack: 7
+    Range: 1
+    Target: 1    
+    Shield: 2
+    Pierce: 3
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 33

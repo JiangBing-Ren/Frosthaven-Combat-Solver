@@ -1,0 +1,19 @@
+Parser: Scenario
+ID: SandboxScenario
+Description: SANDBOX_SCENARIO_DESCRIPTION
+BaseBiome: Crypt
+BaseSubBiome: Necropolis
+BaseSubTheme: Undead
+MonsterFamily: City
+ScenarioMeshes: [DGN_Bones_01_DECAL]
+#ChestTreasureTables: [DefaultChest]
+ScenarioLayout:
+    Rooms:
+        Room1:
+            Threat: 0
+            PossibleRooms:
+                - HugeEmptyRoom:
+                    Traps: [0]
+                    TreasureChestChance: [0]
+                    OneHexObstacles: [0]
+                    TwoHexObstacles: [0]

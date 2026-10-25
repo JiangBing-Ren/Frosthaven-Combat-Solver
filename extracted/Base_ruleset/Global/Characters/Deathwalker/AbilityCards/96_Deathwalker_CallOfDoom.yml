@@ -1,0 +1,59 @@
+Parser: AbilityCard
+Name: $FH/096_character_ability_cards_deathwalker_call_of_doom_1$
+Character: DeathwalkerID
+ID: 96
+Level: 1
+Initiative: 32
+Discard: [Discard,Discard]
+Prefab: 96_Deathwalker_CallOfDoom
+Data:
+    Top:
+        Abilities:
+            TPerformAttackFromShadow:
+                PerformFromShadow:
+                    Abilities:
+                        TAttack:
+                            Attack:
+                                Amount: 1
+                                SquareEnhancements: 1
+                            MiscVars:
+                                PrintedProperties: list("Attack")
+                            MultiPassAttack: True
+                            Filter: Enemy
+                            Range: 1
+                            Target: 99
+                            MiscVars:
+                                AutoSelectValidTiles: True
+                Range: 99
+                Target: 1
+                AnimOverload: ShadowAttack
+        Consumes:
+            TCDark:
+                Elements: Dark
+                AbilityOverrides:
+                    TCDarkAttackBuff:
+                        ParentName: TAttack
+                        Conditions: Muddle
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+        Infuse: Dark
+Layout:
+    Top:
+        - Row: "<b><size=130%> <sprite name=Attack> *TAttack* @TAttack@"
+        - Row: "$Target_AllAdjacentEnemies$"
+        - Row: "<size=20%> "
+        - Consume:
+            Name: TCDark
+            Text: "<sprite name=Muddle>"
+        - Row: "<size=20%> "
+        - Row: "$FH/096_character_ability_cards_deathwalker_call_of_doom_3$"
+        - Row: "<size=20%> "
+    Bottom:
+        - Row: "<b><size=130%> <sprite name=Move> *BMove* @BMove@"
+        - Infuse: Dark

@@ -1,0 +1,33 @@
+Parser: ItemCard
+ID: 1001
+StringID: ScaledArmorID
+Name: $FH/1001_item_cards_scaled_armor_1$
+Art: Scaled Armor
+TotalInGame: 2
+Cost: 10
+Slot: Body 
+Rarity: Rare
+Usage: Consumed
+Trigger: PassiveEffect
+Data: 
+    Abilities:
+        AShield:
+            AutoTrigger: True
+            Filter: Self
+            PreventDamage: 1
+            NameKeyOverride: "FH/1001_item_cards_scaled_armor_1"
+            ActiveBonus:
+                Duration: Persistent
+                XPTracker: [0,0,0]
+                Behaviour: PreventFirstDamage
+                Requirements:
+                    Vars:
+                        ValidateHasDamageData: GameState.CurrentDamageData != null
+                        DamageAmount: GameState.CurrentDamageData.DamageSourceStrength
+                        ValidateThreshold: DamageAmount > 0 && DamageAmount <= 2
+Layout: 
+    - Active:
+        Ability: AShield
+        ListLayout: $FH/1001_item_cards_scaled_armor_2$
+        Layout: $FH/1001_item_cards_scaled_armor_2$
+        Icon: Positive_DamagePrevent_Item

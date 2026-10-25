@@ -1,0 +1,19 @@
+Parser: Perk
+ID: HIVE09
+Name: FH/PERK_HIVE_09_Name
+Description: FH/PERK_HIVE_09_Desc
+CharacterID: HIVEID
+Available: 1
+Flags: [Passive, ApplyActiveBonusesAtScenarioStart]
+Abilities:
+    OnShortRest:
+        Filter: Self
+        AutoTrigger: True
+        SkipAnim: True
+        AddActiveBonus:
+            Mode: Transfer
+            Range: 99
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringActionAbilityOnShortRest
+            Hidden: True

@@ -1,0 +1,79 @@
+Parser: AbilityCard
+Name: $FH/309_character_ability_cards_pain_conduit_cleansing_fire_1$
+Character: PainConduitID
+ID: 309
+Level: 1
+Initiative: 64
+Discard: [Discard,Discard]
+Prefab: 309_PainConduit_CleansingFire
+Data:
+    Top:
+        Infuse: Fire
+        Abilities:
+            TAttack: 
+                Attack:
+                    Amount: 1
+                    DiamondEnhancements: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                Conditions: Wound
+                AnimOverload: CleansingFire_Ranged
+                SubAbilities:
+                    TDamageAlliesAndEnemies:
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateHasTarget: ParentAbility.ActorsToTarget.Count > 0
+                        Flags: [SubAbilityPreview]
+                        TreatAsNonSubAbility: True
+                        Filter: [Ally,Enemy]
+                        Damage: 1
+                        MiscVars:
+                            PrintedProperties: list("Damage")
+                        Target: -1
+                        AutoTrigger: True
+                        # targets are all adjacent allies and enemies EXCEPT the target we initially attacked
+                        Targeting: Custom
+                        TargetingVars:
+                            Target: ParentAbility.ActorsToTarget[0]
+                            AddValidActorsInRange: GameState.GetActorsInRange(Target, TargetingActor, 1, null, AbilityFilter, null, null, true).Where(obj != Target)
+    Bottom:
+        Abilities:
+            BHeal1:
+                Heal: 1
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self
+                AnimOverload: Heal
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BHeal2:
+                Heal: 2
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self
+                AnimOverload: Heal
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "20,30,30"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column:
+                - Row: "<mark=#80919922><size=100%><sprite name=Range>*TAttack.Range*, <sprite name=Wound></mark>"
+        - Row: "$FH/309_character_ability_cards_pain_conduit_cleansing_fire_2$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Fire
+    Bottom:
+        - Row: "$FH/309_character_ability_cards_pain_conduit_cleansing_fire_3$"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "$FH/309_character_ability_cards_pain_conduit_cleansing_fire_4$"

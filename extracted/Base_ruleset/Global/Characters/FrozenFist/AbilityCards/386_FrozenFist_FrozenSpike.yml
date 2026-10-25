@@ -1,0 +1,88 @@
+Parser: AbilityCard
+Name: $FH/386_character_ability_cards_frozen_fist_frozen_spike_1$
+Character: FrozenFistID
+ID: 386
+Level: 9
+ProgressionOrder: 26
+Initiative: 33
+Discard: [Discard,Discard]
+Prefab: 386_FrozenFist_FrozenSpike
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                    SquareEnhancements: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                AreaEffect: "0,0,R|-2,0,R|2,0,R|-1,1,R|1,1,R|-1,-1,R|1,-1,R"
+                MultiPassAttack: False
+                AnimOverload: Spikes_AOE
+                SubAbilities:
+                    TConsume:
+                        TreatAsNonSubAbility: True
+                        Vars:
+                            SelectedTiles: ParentAbility.ValidTilesInAreaAffected
+                        # i'd add the localization key here, but apparently PreviewEffectText doesn't get localized, and not having this at all gives even more meaningless text
+                        PreviewEffectText: "<sprite name=FrozenFist>"
+                        Consume:
+                            Elements: Ice
+                            Abilities:
+                                TCreateIce:
+                                    CreateTerrain: Ice
+                                    TileFilter: FeaturelessHex
+                                    Target: 3
+                                    Targeting: Custom
+                                    TargetingVars:
+                                        AddTilesInRange: SelectedTiles
+                                    AnimOverload: TerrainFormation
+                            XP: 1
+                    TAttackSubPull:
+                        Push: 1
+                        MiscVars:
+                            PrintedProperties: list("Push")
+                        IsInlineSubAbility: True       
+        Infuse: Ice
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 6
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BConsume:
+                Consume:
+                    Elements: [Ice]
+                    Abilities:
+                        BDamage:
+                            Damage: 3
+                            MiscVars:
+                                PrintedProperties: list("Damage")
+                            Target: 1
+                            CanSkip: True
+                            Filter: Enemy
+                            Range: 1
+                            AnimOverload: Roar
+                    XP: 1
+                PreviewEffectText: "<sprite name=Damage>3"
+        Infuse: Ice
+Layout:
+    Top:
+        - Row:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@ <sprite name=Range>*TAttack.Range*, <sprite name=Push>"      
+                - AddedEffect: "$FH/386_character_ability_cards_frozen_fist_frozen_spike_2$"
+            - Column: "£TAttack.Area£"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Ice]
+
+    Bottom:
+        - Row: "<b><size=130%>$Move$ <sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - AddedEffect: "$FH/386_character_ability_cards_frozen_fist_frozen_spike_3$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Ice]

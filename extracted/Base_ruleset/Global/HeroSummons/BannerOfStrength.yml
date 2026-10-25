@@ -1,0 +1,33 @@
+Parser: HeroSummon
+ID: BannerOfStrengthID
+LocKey: $FH/062_character_ability_cards_banner_spear_rallying_cry_2$
+Model: BannerOfStrength
+Health:
+    Amount: 4
+    SquareEnhancements: 1
+Move: 0
+Attack: 0
+Range: 0
+OnSummonAbilities:
+    ABuffAttackAura:
+        Range: 2
+        Target: -1
+        Filter: Self
+        Attack: 1
+        ActiveBonus:
+            Behaviour: BuffAttack
+            Duration: Persistent
+            ValidAbilityTypes: [Attack]
+            Restriction: OncePerTurn
+            RestrictPerActor: True
+            IsToggleBonus: True
+            IsSingleTargetBonus: True
+            IsAura: True
+            AuraTargeting: Range
+            AuraFilter: [Ally]
+            Vars:
+                AutoToggle: True
+            ListLayoutOverride: [$FH/062_character_ability_cards_banner_spear_rallying_cry_3$, Positive_AttackPlus_Ally_Aura]
+        Text: "$FH/062_character_ability_cards_banner_spear_rallying_cry_3$"
+        AnimOverload: None
+ 

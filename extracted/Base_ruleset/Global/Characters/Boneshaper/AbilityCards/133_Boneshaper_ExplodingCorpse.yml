@@ -1,0 +1,112 @@
+Parser: AbilityCard
+Name: $FH/133_character_ability_cards_boneshaper_exploding_corpse_1$
+Character: BoneshaperID
+ID: 133
+Level: X
+Initiative: 21
+Discard: [Lost,Discard]
+Prefab: 133_Boneshaper_ExplodingCorpse
+Data:
+    Top:
+        Abilities:
+            TDesignateSummon:
+                NullTargeting: True
+                Target: 1
+                Range: 99
+                Filter: OwnSummon
+                SkipAnim: True
+                MiscVars:
+                    ExplicitlyDoesNothing: True
+                SubAbilities:
+                    TAttack:
+                        Attack:
+                            Amount: 4
+                            DiamondEnhancements: 1
+                        MiscVars:
+                            PrintedProperties: list("Attack")
+                        AttackHasDisadvantage: True
+                        AttackHasAdvantage: True
+                        TreatAsNonSubAbility: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateHasHappened: Ability.ParentAbility.AbilityHasHappened
+                        Target: 99
+                        MiscVars:
+                            AutoSelectValidTiles: True
+                        Vars:
+                            Tiles: CustomAbility.GetAdjacentTiles(Ability.ParentAbility.TilesSelected)
+                            Actors: Tiles.Select(LivingActor).Where(obj != null)
+                        Targeting: Custom
+                        TargetingVars:
+                            AddTilesInRange: Ability.ParentAbility.TilesSelected
+                            AddTilesInRange: Tiles
+                            AddValidActorsInRange: Actors
+                            AddActorsToTarget: Actors
+                            AddSelectedTiles: Actors.Select(Tile)
+                        Filter: Enemy
+                        AnimOverload: ExplodingCorpseTop
+                        SubAbilities:
+                            TAttackSubKill:
+                                Kill: True
+                                Targeting: Custom
+                                TreatAsNonSubAbility: True
+                                IsInlineSubAbility: True
+                                Target: 1
+                                TargetingVars:
+                                    AddTileInRange: Ability.ParentAbility.ParentAbility.TilesSelected[0]
+                                    AddValidActorInRange: Ability.ParentAbility.ParentAbility.ActorsToTarget[0]
+                                    AddActorToTarget: Ability.ParentAbility.ParentAbility.ActorsToTarget[0]
+                                    AddSelectedTile: Ability.ParentAbility.ParentAbility.TilesSelected[0]
+                                Range: 0
+                                Filter: OwnSummon
+                                AutoTrigger: True
+                                SkipAnim: True
+        Infuse: Fire
+        XP: 1
+    Bottom:
+        Abilities:
+            BActive:
+                AddActiveBonus:
+                    Damage: 2
+                    MiscVars:
+                        PrintedProperties: list("Damage")
+                    Filter: [Ally,Enemy]
+                    Range: 1
+                    Target: -1
+                    AutoTrigger: True
+                    MiscVars:
+                        PlayActorBeenDamagedVFX: AbilityHasHappened || TargetingActor.PlayVFX("BoneshaperExplodingCorpse")
+                ActiveBonus:
+                    Duration: Round
+                    Behaviour: DuringActionAbilityOnDeath
+                    IsAura: True
+                    AuraTargeting: All
+                    AuraFilter:
+                        TargetType: Enemy
+                    XPTracker: [0]
+                Range: 1
+                Target: -1
+                Filter: Self
+                AnimOverload: CastNegative
+Layout:
+    Top:
+        - Row: "$FH/133_character_ability_cards_boneshaper_exploding_corpse_2a$"
+        - Row:
+            - ColumnWidths: "40,60"
+            - Column:
+                - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column:
+                - AddedEffect: "<size=80%>$FH/133_character_ability_cards_boneshaper_exploding_corpse_2b$"
+        - Divider:
+        - MandatoryTrigger: "$FH/133_character_ability_cards_boneshaper_exploding_corpse_3$"
+        - Row: "<size=20%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Fire
+    Bottom:
+        - Active:
+            Ability: BActive
+            Icon: Positive_Damage_Enemy_Death
+            ListLayout: "$FH/133_character_ability_cards_boneshaper_exploding_corpse_4$"
+            Layout: "$FH/133_character_ability_cards_boneshaper_exploding_corpse_4$"

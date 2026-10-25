@@ -1,0 +1,16 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH33_RadiantStoneBuff
+ScenarioAbility:
+    AddActiveBonus:
+        Attack: 0
+        AttackEffect:
+            Type: StandardBuff
+            Pierce: 3
+        Filter: [Self]
+        ActiveBonus:
+            Behaviour: BuffAttack
+            Duration: Persistent
+            ValidAbilityTypes: [Attack]
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_033_RadiantStoneBuff$, Positive_Pierce_Campaign]
+            MiscVars:
+                OverrideLayoutName: "'$Scenario_033_RadiantStone_Title$'"

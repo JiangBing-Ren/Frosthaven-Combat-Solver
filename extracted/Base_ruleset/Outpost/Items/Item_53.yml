@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 53
+ScenarioItemID: 1288
+Name: Hobnail Boots
+Quantity: 2
+Type: Feet
+CraftingCost:
+    Metal: 1
+RequiredCraftingItemIDs: [  18, 88 ]

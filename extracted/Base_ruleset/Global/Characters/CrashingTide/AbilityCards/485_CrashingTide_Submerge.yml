@@ -1,0 +1,77 @@
+Parser: AbilityCard
+Name: $FH/485_character_ability_cards_crashing_tide_submerge_1$
+Character: CrashingTideID
+ID: 485
+Level: 1
+ProgressionOrder: 485
+Initiative: 68
+Discard: [Discard,Discard]
+Prefab: 485_CrashingTide_Submerge
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 1
+                    Pierce: 4
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack","Pierce")
+                Target: 1
+                Range: 1
+                Filter: [Enemy]
+                ConditionalOverrides:
+                    TAttackCO:
+                        AbilityOverrides:
+                            TWaterTerrainBuff:
+                                StatIsBasedOnX:
+                                    Strength:
+                                        BasedOn: Vars
+                                        AddTo: True
+                                        Vars:
+                                            TargetOccupiesWater: TargetActor != null && TargetActor.Tile.IsWater
+                                            Value: TargetOccupiesWater and 2 or 0
+                SubAbilities:
+                    TGainXP:
+                        GainXP: 1
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateTargetOccupiesWater: ParentAbility.ActorsTargeted[0].Tile.IsWater
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+                MiscVars:
+                    WaterTilesThatCostZero: 4
+        Consumes:
+            BCDark:
+                Elements: Dark
+                AbilityOverrides:
+                    BCDarkMoveBuff:
+                        ParentName: BMove
+                        Strength: 1
+                XP: 1
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "25,25,25,25"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column:
+                - AddedEffect: "<sprite name=Pierce>4"
+            - Column:
+        - Row: "$FH/485_character_ability_cards_crashing_tide_submerge_2$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: BCDark
+                    Text: "+1<sprite name=Move>, <sprite name=XP1>"
+        - Row: "$FH/485_character_ability_cards_crashing_tide_submerge_3$"

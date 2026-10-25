@@ -1,0 +1,73 @@
+Parser: Enemy
+ID: FractureOfTheDeepID
+LocKey: $FH/FractureOfTheDeep$
+MonsterType: Boss
+Model: FractureOfTheDeep
+StandeeLimit: 1
+PredominantlyMelee: True
+AbilityCards: [08740033, 08750034, 08760035, 08770036, 08780037, 08790038, 08800039, 08810040]
+# Base Stats
+Level0:
+    Health: 20
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Disarm, Stun, Curse]
+    Invulnerable: True
+Level1:
+    Health: 25
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Disarm, Stun, Curse]
+    Invulnerable: True
+Level2:
+    Health: 30
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Disarm, Stun, Curse]
+    Invulnerable: True
+Level3:
+    Health: 36
+    Move: 3
+    Attack: 6
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Disarm, Stun, Curse]
+    Invulnerable: True
+Level4:
+    Health: 42
+    Move: 3
+    Attack: 7
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Disarm, Stun, Curse]
+    Invulnerable: True
+Level5:
+    Health: 50
+    Move: 4
+    Attack: 7
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Disarm, Stun, Curse]
+    Invulnerable: True
+Level6:
+    Health: 70
+    Move: 4
+    Attack: 8
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Disarm, Stun, Curse]
+    Invulnerable: True
+Level7:
+    Health: 90
+    Move: 4
+    Attack: 9
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Disarm, Stun, Curse]
+    Invulnerable: True

@@ -1,0 +1,19 @@
+Parser: EnemyCard
+ID: 576
+Name: $Monster_Ability_576_EarthDemon_RecklessCharge$
+Initiative: 79
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: 1
+        Attack1:
+            Attack: 0
+            Filter: Enemy
+    Consumes:
+        CAir:
+            Elements: Air
+            AbilityOverrides:
+                CAirAttackDebuff:
+                    ParentName: Attack1
+                    Strength: -2

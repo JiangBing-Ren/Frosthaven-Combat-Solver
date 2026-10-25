@@ -1,0 +1,7 @@
+Parser: CampaignSection
+ID: 87.4
+Name: PuzzleSolution
+SkipCompletedNotification: True
+Effects:
+    - Type: UnlockPuzzle
+      Param1: FixingTheFracture

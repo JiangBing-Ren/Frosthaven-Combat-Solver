@@ -1,0 +1,80 @@
+Parser: Enemy
+ID: IceWraithID
+LocKey: $FH/IceWraith$
+MonsterType: Monster
+StandeeLimit: 6
+Model: IceWraith
+PredominantlyMelee: False
+AbilityCards: [642, 643, 644, 645, 646, 647, 648, 649]
+# Base Stats
+Level0:
+    Health: 7
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Flying: True
+    Shield: 1
+Level1:
+    Health: 8
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Flying: True
+    Shield: 2
+Level2:
+    Health: 10
+    Move: 3
+    Attack: 2
+    Range: 1
+    Target: 1
+    Flying: True
+    Shield: 2
+Level3:
+    Health: 10
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Flying: True
+    Shield: 2
+    Conditions: [Curse]
+Level4:
+    Health: 12
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Flying: True
+    Shield: 2
+    Conditions: [Curse]
+Level5:
+    Health: 16
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Flying: True
+    Shield: 2
+    Conditions: [Curse]
+Level6:
+    Health: 21
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Flying: True
+    Shield: 2
+    Conditions: [Curse]
+    Immunities: [Curse]
+Level7:
+    Health: 27
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    Flying: True
+    Shield: 2
+    Conditions: [Curse]
+    Immunities: [Curse]

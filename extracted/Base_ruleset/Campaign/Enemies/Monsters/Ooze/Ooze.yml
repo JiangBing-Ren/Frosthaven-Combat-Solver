@@ -1,0 +1,68 @@
+Parser: Enemy
+ID: OozeID
+LocKey: $Ooze$
+MonsterType: Monster
+StandeeLimit: 10
+Model: Ooze
+PredominantlyMelee: False
+AbilityCards: [866, 867, 868, 869, 870, 871, 872, 873]
+CanMoveOnActorClassID: ElderOozeID
+# Base Stats
+Level0:
+    Health: 4
+    Move: 1
+    Attack: 2
+    Range: 1
+    Target: 1
+Level1:
+    Health: 5
+    Move: 1
+    Attack: 2
+    Range: 1
+    Target: 1
+    Shield: 1
+Level2:
+    Health: 7
+    Move: 1
+    Attack: 2
+    Range: 1
+    Target: 1
+    Shield: 1
+ Level3:
+    Health: 8
+    Move: 1
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 1
+ Level4:
+    Health: 9
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 1
+ Level5:
+    Health: 10
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 1
+    Conditions: [Poison]
+ Level6:
+    Health: 13
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 1
+    Conditions: [Poison]
+ Level7:
+    Health: 17
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 1
+    Conditions: [Poison]

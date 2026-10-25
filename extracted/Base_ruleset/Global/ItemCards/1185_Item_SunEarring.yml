@@ -1,0 +1,28 @@
+Parser: ItemCard
+ID: 1185
+StringID: SunEarringID
+Name: $FH/1185_item_cards_sun_earring_1$
+Art: Sun Earring
+TotalInGame: 2
+Cost: 35
+Slot: SmallItem
+Rarity: Rare
+Usage: Consumed
+Trigger: BeforeShortRest
+Data: 
+    Abilities:
+        ARefreshOtherSpentItem:
+            AutoTrigger: True
+            RefreshItems: 3
+            CanUndo: False
+            Filter: Self
+            MiscVars:
+                MaxSelectIsOptional: True
+            Vars:
+                SpecificItems: TargetingActor.Inventory.AllItems.Where(CustomAbility.IsItemPartiallySpent(obj) && obj.YMLData.Usage.ToString() == "Spent")
+        AHeal:
+            CanUndo: False
+            Filter: Self
+            Heal: 2
+Layout: 
+    - Row: "$FH/1185_item_cards_sun_earring_2$"

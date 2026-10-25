@@ -1,0 +1,23 @@
+Parser: EnemyCard
+ID: 647
+Name: $Monster_Ability_CalculatedStrike$
+Initiative: 71
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: -1
+        Attack1:
+            Attack: +1
+            Text: $FH/0643_monster_ability_cards_ice_wraith_renewed_aggression_3$
+            ConditionalOverrides:
+                Attack1CO:
+                    Self: True
+                    Requirement:
+                        IsElite: False
+                    AbilityOverrides:
+                        Attack1:
+                            Range: 4
+                            RangeIsBase: True
+                            AnimOverload: RangedAttack
+    Infuse: Ice

@@ -1,0 +1,16 @@
+Parser: ItemCard
+ID: 1250
+StringID: DemonsGemID
+Name: $FH/1250_item_cards_demons_gem_1$
+Art: Demons Gem
+TotalInGame: 1
+Cost: 15
+Slot: SmallItem
+Rarity: Rare
+Usage: Unrestricted
+Trigger: PassiveEffect
+Data: 
+    Vars:
+        CanBattleGoalsCompleteOnLoseScenario: True
+Layout: 
+    - Row: "$FH/1250_item_cards_demons_gem_2$"

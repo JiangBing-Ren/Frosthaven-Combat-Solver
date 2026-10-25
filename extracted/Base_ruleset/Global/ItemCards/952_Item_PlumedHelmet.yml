@@ -1,0 +1,30 @@
+Parser: ItemCard
+ID: 952
+StringID: PlumedHelmetID
+Name: $FH/0952_item_cards_plumed_helmet_1$
+Art: Plumed Helmet
+TotalInGame: 2
+Cost: 0
+Slot: Head 
+Rarity: Rare
+Usage: Unrestricted
+ProsperityRequirement: 1
+Trigger: PassiveEffect
+Data: 
+    Abilities:
+        AModifyAttack:
+            ChangeAttackModifier:
+            ReplaceModifiers: ["+0","+1"]
+            ReplaceWithModifier: "-1"
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: AdjustWhenAttacked
+                Vars:
+                    ValidateAttackHasDisadvantage: AdvantageStatus == EAdvantageStatuses.Disadvantage
+Layout:
+    - Active:
+        Ability: AModifyAttack
+        ListLayout: $FH/0952_item_cards_plumed_helmet_2$
+        Layout: $FH/0952_item_cards_plumed_helmet_2$
+        Icon: Positive_-1_Disadvantage_Item
+    - Row: "<size=50%> "

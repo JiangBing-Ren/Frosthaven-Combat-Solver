@@ -1,0 +1,72 @@
+Parser: Enemy
+ID: BurrowingBladeID
+LocKey: $FH/BurrowingBlade$
+MonsterType: Monster
+StandeeLimit: 6
+Model: BurrowingBlade
+PredominantlyMelee: True
+AbilityCards: [818, 819, 820, 821, 822, 823, 824, 825]
+# Base Stats
+Level0:
+    Health: 4
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Shield: 1
+Level1:
+    Health: 4
+    Move: 3
+    Attack: 2
+    Range: 1
+    Target: 1
+    Shield: 2
+    Conditions: [Wound]
+Level2:
+    Health: 5
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 2
+    Conditions: [Wound]
+Level3:
+    Health: 7
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 2
+    Conditions: [Wound]
+Level4:
+    Health: 7
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 3
+    Conditions: [Wound]
+Level5:
+    Health: 8
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 3
+    Conditions: [Wound]
+Level6:
+    Health: 11
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 3  
+    Conditions: [Wound]
+Level7:
+    Health: 13
+    Move: 4
+    Attack: 5
+    Range: 1
+    Target: 1
+    Shield: 3
+    Conditions: [Wound]

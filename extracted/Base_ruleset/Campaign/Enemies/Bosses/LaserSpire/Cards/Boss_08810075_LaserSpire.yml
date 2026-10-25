@@ -1,0 +1,15 @@
+Parser: EnemyCard
+ID: 08810075
+Name: $Monster_Ability_Boss_LaserSpire_Rotate$
+Initiative: 52
+Shuffle: False
+Data:
+    Abilities: 
+        TRotateLasers:
+            Null: True
+            AutoTrigger: True
+            PerformVars:
+                NullBegin:
+                    RotateLasers: ScenarioScript_FH109.current.TryAddRotation(TargetingActor, -1)
+            Text: "$FH/FH_Scenario_Campaign_109_SCENARIO_MODIFIER_4$"
+            TextOnly: True

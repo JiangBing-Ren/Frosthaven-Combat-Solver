@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 41
+ScenarioItemID: 962
+Name: Intricate Charm
+Quantity: 2
+Type: Head
+CraftingCost:
+    Metal: 1
+RequiredCraftingItemIDs: [ 11, 110 ]

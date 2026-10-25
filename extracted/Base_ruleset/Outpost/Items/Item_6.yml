@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 6
+ScenarioItemID: 892
+Name: Flexible Slippers
+Quantity: 2
+Type: Feet
+CraftingCost:
+    Hide: 1

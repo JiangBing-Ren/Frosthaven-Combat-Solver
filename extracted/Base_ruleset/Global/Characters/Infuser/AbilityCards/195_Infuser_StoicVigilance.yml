@@ -1,0 +1,67 @@
+Parser: AbilityCard
+Name: $FH/195_character_ability_cards_infuser_stoic_vigilance_1$
+Character: InfuserID
+ID: 195
+Level: 1
+Initiative: 12
+Discard: [Discard,Discard]
+Prefab: 195_Infuser_StoicVigilance
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Range: 1
+                Target: 1
+                Filter: Enemy
+            TShield:
+                Shield:
+                    Amount: 1
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                Filter: Self
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 1
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BActive:
+                Redirect:
+                    Filter: Ally
+                    Range: 1
+                    IgnoreLOS: False
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Range")
+                MiscVars:
+                    ProjectileName: "'InfuserDamageTransference'"
+                Filter: Self
+                ActiveBonusDuration: Round
+                AnimOverload: RangedCast
+
+Layout:
+    Top:
+        - Row: "<b><size=100%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Divider:
+        - Active:
+            Ability: TShield
+            Icon: Positive_Shield
+            ListLayout: "<sprite name=Shield> *TShield*"
+            Layout: "<sprite name=Shield> *TShield*"
+        - Row: "<b><size=100%><sprite name=Shield> *TShield* <size=100%><voffset=1>@TShield@"
+    Bottom:
+        - Row: "<b><size=100%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider: 
+        - Active:
+            Ability: BActive
+            ListLayout: "$FH/195_character_ability_cards_infuser_stoic_vigilance_2$"
+            Layout: "$FH/195_character_ability_cards_infuser_stoic_vigilance_2$"
+            Icon: "Positive_Redirect_Ally_Attack_Aura"

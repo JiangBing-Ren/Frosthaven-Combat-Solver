@@ -1,0 +1,151 @@
+Parser: AbilityCard
+Name: $FH/254_character_ability_cards_shattersong_calamitous_yawp_1$
+Character: ShattersongID
+ID: 254
+Level: X
+Initiative: 65
+Discard: [Discard,Discard]
+Prefab: 254_Shattersong_CalamitousYawp
+Data:
+    Top:
+        Abilities:            
+            TWaveAttack:
+                Filter: Self          
+                HelpBoxTooltipLocKey: "$FH/GUI_CHOOSE_RESONANCE_TOKEN_COUNT$"
+                PreviewEffectText: "<sprite name=Damage>X/2"           
+                MiscVars:
+                    # doing the chosen ability as a sub ability so we can preview the effect
+                    DontPerformChosenAbility: True              
+                    IsNegative: True
+                    OverrideIcon: "'Ability_Shattersong_Icon'"
+                Vars:
+                    PreviewTiles: GameState.GetTilesInRange(TargetingActor, 2)
+                    ForcePreviewTiles: GameState.GetTilesInRange(TargetingActor, 2).Where(obj.LivingActor != null)
+                Choose:
+                    Choices:
+                        D1:
+                            PreviewEffectText: "1"
+                            Strength: 1
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 1
+                        D2:
+                            PreviewEffectText: "2"
+                            Strength: 2
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 2
+                        D3:
+                            PreviewEffectText: "3"
+                            Strength: 3
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 3
+                        D4:
+                            PreviewEffectText: "4"
+                            Strength: 4
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 4
+                        D5:
+                            PreviewEffectText: "5"
+                            Strength: 5
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 5
+                PerformVars:
+                    ApplyToActors:
+                        Resonance: ChosenAbility?.Strength || 0
+                        Tokens: Resonance * -1
+                Flags: [ModifiesResonanceTokens]
+                SubAbilities:
+                    TDamage:
+                        AutoTrigger: True
+                        Flags: [SubAbilityPreview]
+                        TreatAsNonSubAbility: True
+                        UseParentTargets: False
+                        Filter: [Enemy,Ally]
+                        Damage: 0
+                        Range: 2
+                        MiscVars:
+                            PrintedProperties: list("Damage","Range")     
+                        Target: -1
+                        Vars:
+                            ParentStrength: ParentAbility.ChosenAbility?.Strength || 0
+                            AnimOverload: (ParentStrength == 1 && "CalamitousYawp Lv1") ||
+                                          (ParentStrength == 2 && "CalamitousYawp Lv2") ||
+                                          (ParentStrength == 3 && "CalamitousYawp Lv3") ||
+                                          (ParentStrength == 4 && "CalamitousYawp Lv4") ||
+                                          (ParentStrength == 5 && "CalamitousYawp Lv5")
+                        StatIsBasedOnX:
+                            Strength:
+                                BasedOn: Vars
+                                Vars:
+                                    ChosenResonance: max(ParentAbility.ChosenAbility?.Strength || 0, 1)
+                                    Strength: (ChosenResonance / 2 + ChosenResonance % 2)
+                                    Value: max(1, Strength)
+                        PerformVars:
+                            OnAbilityEnded:
+                                StackSubAbilities: obj.AbilityHasHappened && CustomAbility.StackNonInlineSubabilities(obj)
+                        SubAbilities:
+                            TFinishWave:
+                                NullTargeting: True
+                                Filter: Self
+                                SkipAnim: True
+                                AutoTrigger: True
+                                TreatAsNonSubAbility: True
+                                Flags: [Wave]
+        XP: 1
+        Infuse: Earth
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")     
+            BConsumeForStun:
+                Consume:
+                    Resonance: 1
+                    Abilities:
+                        BStun:
+                            Stun: True
+                            Range: 1
+                            MiscVars:
+                                PrintedProperties: list("Range")     
+                            Filter: [Enemy]
+                            AnimOverload: NegativeCast
+        Consumes:
+            BCLight:
+                Element: Light
+                AbilityOverrides:
+                    CBuffReveal:
+                        ParentName: BStun
+                        Target: 1
+                        MiscVars:
+                            PrintedProperties: list("Target")     
+
+Layout:
+    Top:
+        - Row: "$FH/character_ability_cards_shattersong_wave$"
+        - Row: "$FH/254_character_ability_cards_shattersong_calamitous_yawp_2$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Earth
+    Bottom:
+        - Row: "<sprite name=Move> *BMove* @BMove@"
+        - Divider:
+        - Conditional:
+            Layout:
+                - Row: "<b><size=130%> -1<sprite name=SSResonance>: <sprite name=Stun> <sprite name=Range> 1"
+                - Conditional:
+                    Layout:
+                        - Consume:
+                            Name: BCLight
+                            Text: "<size=100%>+1 <sprite name=Target>"

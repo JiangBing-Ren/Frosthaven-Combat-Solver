@@ -1,0 +1,7 @@
+Parser: CampaignSection
+ID: 183.4
+Name: Mail Call (183.4)
+SkipCompletedNotification: True
+Effects:
+    - Type: GainItem
+      Param1: 206

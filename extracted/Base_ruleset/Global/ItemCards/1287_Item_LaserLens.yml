@@ -1,0 +1,21 @@
+Parser: ItemCard
+ID: 1287
+StringID: LaserLensID
+Name: $FH/1287_item_cards_laser_lens_1$
+Art: Laser Lens
+TotalInGame: 2
+Cost: 0
+Slot: Head 
+Rarity: Rare
+Usage: Spent
+Trigger: DuringOwnTurn
+Consumes: Fire
+Data: 
+    Abilities:
+        EShield:
+            Damage: 1
+            Filter: Enemy
+            Range: 4
+            Target: 2
+Layout: 
+    - Row: $FH/1287_item_cards_laser_lens_2$

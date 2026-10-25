@@ -1,0 +1,8 @@
+Parser: CampaignSection
+ID: 118.3
+Name: Enhancer Built
+ShowAsUnknownInCalendar: True
+SkipCompletedNotification: False
+Effects:
+    - Type: UnlockScenario
+      Param1: 82

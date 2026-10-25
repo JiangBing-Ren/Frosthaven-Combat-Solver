@@ -1,0 +1,8 @@
+Parser: CampaignSection
+ID: 41.3
+Name: Former Prisoner Guests
+ShowAsUnknownInCalendar: True
+SkipCompletedNotification: True
+Effects:
+    - Type: GainGold
+      Param1: 10

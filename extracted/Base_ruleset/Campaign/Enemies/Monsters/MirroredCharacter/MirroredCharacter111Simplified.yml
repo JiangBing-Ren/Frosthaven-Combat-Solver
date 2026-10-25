@@ -1,0 +1,89 @@
+Parser: Enemy
+ID: MirroredCharacter111SimplifiedID
+LocKey: $FH/MirroredCharacterID$
+MonsterType: Monster
+StandeeLimit: 6
+Model: [MirroredCharacter111Simplified]
+PredominantlyMelee: True
+AbilityCards: [881000501, 881000502, 881000503, 881000504]
+# Base Stats
+Level0:
+    Health: 1
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Attack:
+            BasedOn: InitialPlayerCharacterCount
+            AddTo: True
+Level1:
+    Health: 1
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Attack:
+            BasedOn: InitialPlayerCharacterCount
+            AddTo: True
+Level2:
+    Health: 1
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Attack:
+            BasedOn: InitialPlayerCharacterCount
+            AddTo: True
+Level3:
+    Health: 1
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Attack:
+            BasedOn: InitialPlayerCharacterCount
+            AddTo: True
+Level4:
+    Health: 1
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Attack:
+            BasedOn: InitialPlayerCharacterCount
+            AddTo: True
+Level5:
+    Health: 1
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Attack:
+            BasedOn: InitialPlayerCharacterCount
+            AddTo: True
+Level6:
+    Health: 1
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Attack:
+            BasedOn: InitialPlayerCharacterCount
+            AddTo: True
+Level7:
+    Health: 1
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Attack:
+            BasedOn: InitialPlayerCharacterCount
+            AddTo: True

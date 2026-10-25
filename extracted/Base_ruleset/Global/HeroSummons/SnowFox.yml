@@ -1,0 +1,26 @@
+Parser: HeroSummon
+ID: SnowFoxID
+LocKey: $FH/334_character_ability_cards_snowdancer_natures_breath_2$
+Model: SnowFox
+Health:
+    Amount: 5
+    SquareEnhancements: 1
+Move:
+    Amount: 3
+    SquareEnhancements: 1
+Attack:
+    Amount: 2
+    SquareEnhancements: 1
+Range: 1
+OnSummonAbilities:
+    TActive:
+        AdjustInitiative: 200
+        Filter: Self
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: FocusInitiative
+            ValidAbilityType: AdjustInitiative
+            ListLayoutOverride: ["$FH/334_character_ability_cards_snowdancer_natures_breath_3$", Positive_Summon]
+        TextOnly: True
+        Text: "$FH/334_character_ability_cards_snowdancer_natures_breath_3$"     
+            

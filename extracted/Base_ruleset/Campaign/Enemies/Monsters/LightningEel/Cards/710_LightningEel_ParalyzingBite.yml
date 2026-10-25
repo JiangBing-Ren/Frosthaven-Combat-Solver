@@ -1,0 +1,20 @@
+Parser: EnemyCard
+ID: 710
+Name: $Monster_Ability_710_LightningEel_ParalyzingBite$
+Initiative: 67
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: -1
+        Attack1:
+            Attack: 0
+            Filter: Enemy
+    Consumes:
+        TCLight:
+            Elements: Light
+            AbilityOverrides:
+                TCLightAttackBuff:
+                    ParentName: Attack1
+                    Strength: 1
+                    Condition: Stun

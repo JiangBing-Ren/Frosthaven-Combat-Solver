@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 178.2
+Name: Hall of Revelry Built (1)
+SkipCompletedNotification: False
+Effects:
+    - Type: IfRaceActivateCampaignSections
+      Param1: Aesther
+      Param2: 153.2
+      Param3: 196.1

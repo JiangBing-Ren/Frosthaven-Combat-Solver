@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 120
+ScenarioItemID: 1105
+Name: Amulet of Life
+Quantity: 2
+GoldCost: 15
+Type: Head
+IsNewCharacterItem: True

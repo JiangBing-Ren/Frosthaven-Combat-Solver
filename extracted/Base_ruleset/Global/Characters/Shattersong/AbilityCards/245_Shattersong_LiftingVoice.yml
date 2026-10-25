@@ -1,0 +1,140 @@
+Parser: AbilityCard
+Name: $FH/245_character_ability_cards_shattersong_lifting_voice_1$
+Character: ShattersongID
+ID: 245
+Level: 1
+Initiative: 29
+Discard: [Discard,Discard]
+Prefab: 245_Shattersong_LiftingVoice
+Data:
+    Top:
+        Abilities:
+            TWaveAttack:
+                Filter: Self          
+                HelpBoxTooltipLocKey: "$FH/GUI_CHOOSE_RESONANCE_TOKEN_COUNT$"
+                PreviewEffectText: "<sprite name=Move>X"           
+                MiscVars:
+                    # doing the chosen ability as a sub ability so we can preview the effect
+                    DontPerformChosenAbility: True              
+                    OverrideIcon: "'Ability_Shattersong_Icon'"
+                Choose:
+                    Choices:
+                        D1:
+                            PreviewEffectText: "1"
+                            Strength: 1
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 1
+                        D2:
+                            PreviewEffectText: "2"
+                            Strength: 2
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 2
+                        D3:
+                            PreviewEffectText: "3"
+                            Strength: 3
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 3
+                        D4:
+                            PreviewEffectText: "4"
+                            Strength: 4
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 4
+                        D5:
+                            PreviewEffectText: "5"
+                            Strength: 5
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 5
+                PerformVars:
+                    ApplyToActors:
+                        Resonance: ChosenAbility?.Strength || 0
+                        Tokens: Resonance * -1
+                Flags: [ModifiesResonanceTokens]
+                SubAbilities:
+                    TControl:
+                        Flags: [SubAbilityPreview]
+                        TreatAsNonSubAbility: True
+                        UseParentTargets: False
+                        Filter: [Ally, Self]
+                        Target: -1
+                        Range: 3
+                        MiscVars:
+                            PrintedProperties: list("Range")     
+                        Vars:
+                            ParentStrength: ParentAbility.ChosenAbility?.Strength || 0
+                            AnimOverload: ((ParentStrength == 1 || ParentStrength == 2) && "CastTargetControlWeak") ||
+                                          ((ParentStrength == 3 || ParentStrength == 4) && "CastTargetControlMedium") ||
+                                          ((ParentStrength == 5) && "CastTargetControlStrong")  
+                        ControlActor:
+                            TreatControlAbilityParentAsParent: True
+                            Abilities:
+                                TMove:
+                                    Move:
+                                        Amount: 0
+                                    MiscVars:
+                                        PrintedProperties: list("Move")     
+                                    TreatAsNonSubAbility: True
+                                    UseParentTargets: False
+                                    StatIsBasedOnX:
+                                        Strength:
+                                            BasedOn: Vars
+                                            Vars:
+                                                Strength: ParentAbility.ChosenAbility?.Strength || 0
+                                                Value: max(1, Strength)
+
+                        PerformVars:
+                            OnAbilityEnded:
+                                StackSubAbilities: obj.AbilityHasHappened && CustomAbility.StackNonInlineSubabilities(obj)
+                        SubAbilities:
+                            TFinishWave:
+                                NullTargeting: True
+                                Filter: Self
+                                SkipAnim: True
+                                AutoTrigger: True
+                                TreatAsNonSubAbility: True
+                                Flags: [Wave]
+        XP: 1
+        Infuse: Air
+    Bottom:
+        Abilities:
+            BMuddle:
+                Muddle: True
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Range")  
+                Target: 99   
+                Filter: [Enemy]
+                AnimOverload: Cast_Negative AOE 2hex
+                MiscVars:
+                    AutoSelectValidTiles: True
+        Consumes:
+            BCResonance:
+                Resonance: 1
+                AbilityOverrides:
+                    CBuffMuddle:
+                        ParentName: BMuddle
+                        Range: 3
+                        AnimOverload: Cast_Negative AOE 5hex
+Layout:
+    Top:
+        - Row: "$FH/245_character_ability_cards_shattersong_lifting_voice_2$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Air
+    Bottom:
+        - Row: "$FH/245_character_ability_cards_shattersong_lifting_voice_3$"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: BCResonance
+                    Text: ": +3 <sprite name=Range>,"

@@ -1,0 +1,16 @@
+Parser: EnemyCard
+ID: 786
+Name: $Monster_Ability_786_SavvasLavaflow_CallOfTheFlame$
+Initiative: 97
+Shuffle: False
+Data:
+    Abilities:
+        Summon1:
+            Summon: FlameDemonID
+            Target: 1
+            TargetIsBase: True
+            AnimOverload: SummonFlameDemon
+            Text: "$FH/0786_monster_ability_cards_savvas_lavaflow_call_to_the_flame_2$"
+            TextOnly: True
+    Infuse: Fire       
+

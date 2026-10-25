@@ -1,0 +1,19 @@
+Parser: ItemCard
+ID: 930
+StringID: SoothingScepterID
+Name: $FH/0930_item_cards_soothing_scepter_1$
+Art: Soothing Scepter
+TotalInGame: 2
+Cost: 0
+Slot: OneHand
+Rarity: Rare
+Usage: Spent
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        AAttackPull:
+            Regenerate: True
+            Range: 2
+            Filter: Ally
+Layout: 
+    - Row: "$FH/0930_item_cards_soothing_scepter_2$"

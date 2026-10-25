@@ -1,0 +1,101 @@
+Parser: AbilityCard
+Name: $FH/362_character_ability_cards_frozen_fist_frost_eruption_1$
+Character: FrozenFistID
+ID: 362
+Level: 1
+ProgressionOrder: 2
+Initiative: 61
+Discard: [Discard,Discard]
+Prefab: 362_FrozenFist_FrostEruption
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 2
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AreaEffect: "0,0,G|1,1,R|3,1,R|2,0,R"
+                MultiPassAttack: False
+                AnimOverload: Spikes_AOE
+                Vars:
+                    AttackAbility: obj
+                SubAbilities:
+                    TSubPush:
+                        Push: 2
+                        MiscVars:
+                            PrintedProperties: list("Push")
+                        IsInlineSubAbility: True
+                    TCreateIce:
+                        CreateTerrain: Ice
+                        TileFilter: FeaturelessHex
+                        Target: 1
+                        Targeting: Custom
+                        TargetingVars:
+                            AddTilesInRange: ParentAbility.ValidTilesInAreaAffected.Where(CAbilityFilter.IsTileFeatureless(obj))
+                        TreatAsNonSubAbility: True
+                        AnimOverload: TerrainFormation
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateHasHappened: Ability.ParentAbility.AbilityHasHappened
+        Infuse: [Ice]
+    Bottom:
+        Abilities:
+            BHeal:
+                Heal: 2
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: [Self]
+                AnimOverload: Heal
+        Consumes:
+            BCIce:
+                Elements: [Ice]
+                AbilityOverrides:
+                    BCIceHealBuff:
+                        ParentName: BHeal
+                        Conditions: Bless
+            BCEarth:
+                Elements: [Earth]
+                AbilityOverrides:
+                    BCEarthHealBuff:
+                        ParentName: BHeal
+                        Strength: 2
+                XP: 1
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "60,40"
+            - Column:
+                - ColumnWidths: "25,25,25,25"
+                - Column:
+                - Column:
+                    - Row: "<b><size=130%><sprite name=Attack> 2"
+                - Column:
+                    - AddedEffect: "<sprite name=Push> 2"
+                - Column:
+            - Column:
+                - Row: "£Area£"
+        - Divider:
+        - Row: "$FH/362_character_ability_cards_frozen_fist_frost_eruption_2$"
+        - Row: "<size=20%> "
+        - Row:
+            - MandatoryTrigger:
+                Layout:
+                    - Infuse: [Ice]
+    Bottom:
+        - Row:
+            - ColumnWidths: "30,20,20,30"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Heal> *BHeal*"
+            - Column:
+                - AddedEffect: "$FH/target_self$"
+            - Column:
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: BCIce
+                    Text: "<sprite name=Bless>"
+                - Consume:
+                    Name: BCEarth
+                    Text: "<size=90%>+2<sprite name=Heal>, <sprite name=XP1>"

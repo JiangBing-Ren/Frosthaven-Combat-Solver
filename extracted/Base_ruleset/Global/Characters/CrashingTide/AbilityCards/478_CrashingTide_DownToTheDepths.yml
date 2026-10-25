@@ -1,0 +1,62 @@
+Parser: AbilityCard
+Name: $FH/478_character_ability_cards_crashing_tide_down_to_the_depths_1$
+Character: CrashingTideID
+ID: 478
+Level: 1
+ProgressionOrder: 478
+Initiative: 74
+Discard: [Discard,Discard]
+Prefab: 478_CrashingTide_DownToTheDepths
+Data:
+    Top:
+        Abilities:
+            TBuffAttack:
+                AddActiveBonus:
+                    AddCondition: True
+                    Condition: Bane
+                    AutoTrigger: True
+                    Target: -1
+                    Targeting: Custom
+                    SkipAnim: True
+                    TargetingVars:
+                        AddValidActorInRange: ActorTarget
+                        AddTileInRange: ActorTarget.Tile
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: GenericAttackFinished
+                    Flags: [Tide]
+                    Vars:
+                        Attacker: TriggerActor
+                        ValidateCasterIsDrifter: Attacker.Class.ID == "CrashingTideID"
+                        ActorTarget: TriggerTarget
+                        ValidateTargetHealth: ActorTarget.Health <= 3
+                AnimOverload: Tide
+        Infuse: Light
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 
+                    Amount: 3
+                    IgnoreHazardousTerrain: True
+                MiscVars:
+                    PrintedProperties: list("Move")
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "34,33,33"
+            - Column: "$FH/CrashingTide_Tide$"
+            - Column:
+            - Column:
+        - Active:
+            Ability: TBuffAttack
+            Icon: Positive_Bane_Attack_Health
+            Layout: "$FH/478_character_ability_cards_crashing_tide_down_to_the_depths_2$"
+            ListLayout: "$FH/478_character_ability_cards_crashing_tide_down_to_the_depths_2$"
+        - Row: "<size=100%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Light
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove*"
+        - Row: "<size=20%> "
+        - Row: "$FH/478_character_ability_cards_crashing_tide_down_to_the_depths_3$"

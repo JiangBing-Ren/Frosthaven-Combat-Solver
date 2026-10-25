@@ -1,0 +1,15 @@
+Parser: EnemyCard
+ID: 795
+Name: $Monster_Ability_795_SavvasIcestorm_CallOfTheWind$
+Initiative: 98
+Shuffle: False
+Data:
+    Abilities:
+        Summon1:
+            Summon: WindDemonID
+            Target: 1
+            TargetIsBase: True
+            AnimOverload: Summon_Wind
+            Text: "$FH/0795_monster_ability_cards_savvas_icestorm_call_to_the_wind_2$"
+            TextOnly: True
+    Infuse: Air  

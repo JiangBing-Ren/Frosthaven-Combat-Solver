@@ -1,0 +1,105 @@
+Parser: AbilityCard
+Name: $FH/182_character_ability_cards_geminate_oscillating_entity_1$
+Character: GeminateID
+ID: 182
+Level: 8
+ProgressionOrder: 31
+Initiative: 55
+Discard: [Lost,Discard]
+RequiredForm: Range
+Prefab: 182_Geminate_OscillatingEntity
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 4
+                    DiamondEnhancements: 2
+                Range: 3
+                MinRange: 2
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                AnimOverload: RangedAttack
+            TExtraTurn:
+                AutoTrigger: True
+                AddActiveBonus:
+                    SelectAndPlayCard:
+                        CardPile: Hand
+                    MiscVars:
+                        IsCardValid: AbilityCard.GetAbilityCardYML.RequiredForm == CPlayerActor.EForm.Range
+                        IsActionValid: ActionType != "DefaultAttackAction" && ActionType != "DefaultMoveAction" 
+                    Filter: Self
+                    SkipAnim: True
+                    AutoTrigger: True
+                ActiveBonus:
+                    Behaviour: StartTurnAbility
+                    Duration: Persistent
+                    XPTracker: [0]
+
+            TSwitchFormRangeToMelee:
+                Null: True
+                Flags: [SwitchFormRangeToMelee]
+                AutoTrigger: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Attack,AddActiveBonus]
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 4
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BBless:
+                Bless: True
+                Filter: Self
+
+        Consumes:
+            BCFire:
+                PreviewEffectText: "<size=130%><sprite name=Strengthen>"
+                Elements: Fire
+                ConsumeOnlyOneElement: True
+                AbilityOverrides:
+                    BCFireReplace:
+                        ParentName: BBless
+                        Bless: True
+                        Filter: Self
+                        Conditions: Strengthen
+
+            BCIce:
+                PreviewEffectText: "<size=130%><sprite name=Strengthen>"
+                Elements: Ice
+                ConsumeOnlyOneElement: True
+                AbilityOverrides:
+                    BCIceReplace:
+                        ParentName: BBless
+                        Bless: True
+                        Filter: Self
+                        Conditions: Strengthen
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack.Attack* <size=100%><voffset=1>@TAttack@ $FH/182_character_ability_cards_geminate_oscillating_entity_2$"
+        - Row: "<size=50%> "
+        - Divider:
+        - Row: "$FH/182_character_ability_cards_geminate_oscillating_entity_3$"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=GMRangedToMelee>"
+        - Active:
+            Ability: TExtraTurn
+            ListLayout: "$FH/182_character_ability_cards_geminate_oscillating_entity_3$"
+            Icon: "Positive_Cards_RangedForm"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove*"
+        - Divider:
+        - Row: "<size=150%><sprite name=Bless> <size=100%>@BBless@ $Self$"
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: BCFire
+                    Text: "<size=150%><nobr><sprite name=Strengthen></nobr></nobr>"
+                - Consume:
+                    Name: BCIce
+                    Text: "<size=150%><nobr><sprite name=Strengthen></nobr></nobr>"

@@ -1,0 +1,15 @@
+Parser: FHScenario
+ID: 75
+Name: Infiltrating the Lair
+LevelID: FS_075_Infiltrating_the_Lair
+RequiresBoat: true
+Chain: PersonalQuest
+Location: TheBitingSea
+RequiresPersonalQuest: PQ_12
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: AllCharactersGainGold
+          Param1: 10
+        - Type: UnlockMandatoryScenario
+          Param1: 77

@@ -1,0 +1,18 @@
+Parser: Perk
+ID: Infuser9
+Name: FH/PERK_Infuser_09_Name
+Description: FH/PERK_Infuser_09_Desc
+CharacterID: InfuserID
+Available: 1
+Cost: 2
+Flags: [Passive, IgnoreNegativeItemEffects, ApplyActiveBonusesAtScenarioStart]
+Abilities:
+    TActive:
+        AutoTrigger: True
+        NullTargeting: True
+        Filter: Self
+        MiscVars:
+            SummonsContinueAfterSummonerDeath: True
+        ActiveBonus:
+            Duration: Persistent
+            Hidden: True

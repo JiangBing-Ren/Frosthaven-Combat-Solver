@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 33
+ScenarioItemID: 946
+Name: Volatile Boots
+Quantity: 2
+Type: Feet
+CraftingCost:
+    Metal: 1
+RequiredCraftingItemIDs: [ 18, 96 ]

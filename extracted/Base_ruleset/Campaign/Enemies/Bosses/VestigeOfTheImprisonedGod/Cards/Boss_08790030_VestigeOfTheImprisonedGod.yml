@@ -1,0 +1,20 @@
+Parser: EnemyCard
+ID: 08790030
+Name: $Monster_Ability_Boss_VestigeOfTheImprisonedGod_Special1$
+Initiative: 73
+Shuffle: False
+Data:
+    Abilities:  
+       Attack1:
+            Attack: +0
+            AreaEffect: "0,0,R|2,0,R|1,1,R|-1,1,R|-2,0,R|-1,-1,R|1,-1,R"
+            AreaEffectSymmetrical: true
+            Filter: Enemy
+            MultiPassAttack: False
+            TreatAsMelee: True
+            #Text: "$FH/boss_stat_cards_vestige_of_the_imprisoned_god_1$"
+            AnimOverload: Shockwave
+            MiscVars:
+                AnimOverloadBasedOnRangeToTarget: (Range == 1 && "Shockwave1") ||
+                                                  (Range == 2 && "Shockwave2") ||
+                                                  ("Shockwave3")  

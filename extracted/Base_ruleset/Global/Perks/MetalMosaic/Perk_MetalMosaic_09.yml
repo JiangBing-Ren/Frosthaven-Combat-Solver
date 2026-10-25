@@ -1,0 +1,29 @@
+Parser: Perk
+ID: MetalMosaic09
+Name: FH/PERK_MetalMosaic_09_Name
+Description: FH/PERK_MetalMosaic_09_Desc
+CharacterID: MetalMosaicID
+Available: 1
+Flags: [Passive, ApplyActiveBonusesAtScenarioStart]
+Abilities:
+  PreventPoisonDamageSelf:
+    Filter: Self
+    AutoTrigger: True
+    SkipAnim: True
+    AddActiveBonus:
+      Damage: 1
+      Filter: Self
+      AutoTrigger: True
+      AnimOverload: CastNeutral
+      IgnoreStun: True
+    ActiveBonus:
+      Duration: Persistent
+      Behaviour: GenericOnNegativeCondition
+      TriggerOnCaster: True
+      IsToggleBonus: True
+      Hidden: True
+      ListLayoutOverride: [$FH/PERK_MetalMosaic_09_Desc$, FH_UI_PERKS_MetalMosaic_FullyMechanical]
+      Vars:
+        ValidateIsCaster: TriggerTarget == ActiveBonus.Caster
+        ValidateIsPoison: TriggerAbility.AbilityType == "Poison"
+        PreventCondition: True

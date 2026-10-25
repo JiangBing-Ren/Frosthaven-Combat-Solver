@@ -1,0 +1,33 @@
+Parser: ItemCard
+ID: 1273
+StringID: BootsOfGreedID
+Name: $FH/1273_item_cards_boots_of_greed_1$
+Art: Boots of Greed
+TotalInGame: 1
+Cost: 35
+Slot: Legs
+Rarity: Relic
+Usage: Unrestricted
+Trigger: PassiveEffect
+Data: 
+    Abilities:
+        AOnLootAtLeastTwo:
+            Filter: Self
+            AutoTrigger: True
+            AddActiveBonus:
+                Bless: True
+                Filter: Self
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: GenericOnFinishLooting
+                Vars:           
+                    ValidateIsItemOwner: TriggerActor == ActiveBonus.Caster
+                    LootTokens: propsLooted.Where(obj.PropType == "LootToken")
+                    ValidateLootedAtLeastTwo: LootTokens.Count >= 2
+Layout:
+    - Active:
+        Ability: AOnLootAtLeastTwo
+        Icon: "Positive_BlessSelf_Loot_Item"
+        ListLayout: "$FH/1273_item_cards_boots_of_greed_2$"
+        Layout: 
+            - Row: "$FH/1273_item_cards_boots_of_greed_2$"

@@ -1,0 +1,5 @@
+Parser: AttackModifier
+Name: AMC_AddTarget_R
+MathModifier: "+0"
+AddTarget: True
+Rolling: True

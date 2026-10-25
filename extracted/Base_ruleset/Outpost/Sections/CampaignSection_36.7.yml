@@ -1,0 +1,7 @@
+Parser: CampaignSection
+ID: 36.7
+Name: Ancient Technology
+SkipCompletedNotification: True
+Effects:
+    - Type: UnlockPuzzle
+      Param1: MetalMosaic

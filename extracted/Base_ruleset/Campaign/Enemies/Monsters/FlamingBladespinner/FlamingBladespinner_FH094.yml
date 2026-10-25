@@ -1,0 +1,82 @@
+Parser: Enemy
+ID: FlamingBladespinner_FH094ID
+LocKey: $FH/FlamingBladespinner$
+MonsterType: Monster
+StandeeLimit: 6
+Model: FlamingBladespinner
+PredominantlyMelee: True
+TreatAsNonMonster: True
+#AbilityCards: []
+# Base Stats
+Level0:
+    Health: 6
+    Move: 1
+    Attack: 1
+    Range: 1
+    Target: 1
+    Flying: True
+    Immunities: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Sleep, Push, Pull, ControlActor]
+    ImmuneToForcedMovement: True
+Level1:
+    Health: 6
+    Move: 1
+    Attack: 1
+    Range: 1
+    Target: 1
+    Flying: True
+    Immunities: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Sleep, Push, Pull, ControlActor]
+    ImmuneToForcedMovement: True
+Level2:
+    Health: 7
+    Move: 1
+    Attack: 1
+    Range: 1
+    Target: 1
+    Flying: True
+    Immunities: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Sleep, Push, Pull, ControlActor]
+    ImmuneToForcedMovement: True
+Level3:
+    Health: 8
+    Move: 1
+    Attack: 1
+    Range: 1
+    Target: 1
+    Flying: True
+    Immunities: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Sleep, Push, Pull, ControlActor]
+    ImmuneToForcedMovement: True
+Level4:
+    Health: 11
+    Move: 1
+    Attack: 1
+    Range: 1
+    Target: 1
+    Flying: True
+    Immunities: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Sleep, Push, Pull, ControlActor]
+    ImmuneToForcedMovement: True
+Level5:
+    Health: 13
+    Move: 1
+    Attack: 1
+    Range: 1
+    Target: 1
+    Flying: True
+    Immunities: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Sleep, Push, Pull, ControlActor]
+    ImmuneToForcedMovement: True
+Level6:
+    Health: 19
+    Move: 1
+    Attack: 1
+    Range: 1
+    Target: 1
+    Flying: True
+    Immunities: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Sleep, Push, Pull, ControlActor]
+    ImmuneToForcedMovement: True
+Level7:
+    Health: 22
+    Move: 1
+    Attack: 1
+    Range: 1
+    Target: 1
+    Flying: True
+    Immunities: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Sleep, Push, Pull, ControlActor]
+    ImmuneToForcedMovement: True

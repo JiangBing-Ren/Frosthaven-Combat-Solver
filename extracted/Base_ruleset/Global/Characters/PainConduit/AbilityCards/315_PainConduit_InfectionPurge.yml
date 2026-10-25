@@ -1,0 +1,74 @@
+Parser: AbilityCard
+Name: $FH/315_character_ability_cards_pain_conduit_infection_purge_1$
+Character: PainConduitID
+ID: 315
+Level: 2
+Initiative: 45
+Discard: [Discard,Lost]
+Prefab: 315_PainConduit_InfectionPurge
+Data:
+    Top:
+        XP: 1
+        Infuse: Fire
+        Abilities:
+            TDamageSelf: 
+                # 1 + X
+                Damage: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Target: 2
+                Filter: Enemy
+                NegativeAbilityIsOptional: True
+                AnimOverload: CastGivingPain
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: Vars
+                        AddTo: True
+                        Vars:
+                            Value: TargetingActor.Tokens.CountNegativeConditions()
+                # separate targeting since we can't do self + other targets in one ability
+                SubAbilities:
+                    TDamageEnemies:
+                        TreatAsNonSubAbility: True
+                        Damage: 0
+                        AnimOverload: CastGivingPain
+                        Filter: Self
+                        SkipAnim: True
+                        StatIsBasedOnX:
+                            Strength:
+                                BasedOn: Vars
+                                AddTo: True
+                                Vars:
+                                    Value: ParentAbility.Strength
+    Bottom:
+        XP: 2
+        Abilities:
+            BPreventDamage:
+                # reduce damage taken by 0 so caster takes the full damage
+                PreventDamage: 0 
+                Filter: Self
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Range")
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: PreventAndApplyToActiveBonusCaster
+                    ToggleIsOptional: True              
+                    DisplayAuraOnCaster: True              
+                    MiscVars:
+                        RedirectAnim: "'CastTakingPain'"
+                    IsAura: True
+                    AuraFilter: Ally
+                    AuraTargeting: Range
+Layout:
+    Top:
+        - Row: "$FH/315_character_ability_cards_pain_conduit_infection_purge_2$"
+        - Infuse: Fire
+    Bottom:      
+        - Active:
+            Ability: BPreventDamage
+            Icon: Negative_Redirect_Ally_Damage
+            ListLayout: "$FH/315_character_ability_cards_pain_conduit_infection_purge_3$"
+            Layout: "$FH/315_character_ability_cards_pain_conduit_infection_purge_3$"
+

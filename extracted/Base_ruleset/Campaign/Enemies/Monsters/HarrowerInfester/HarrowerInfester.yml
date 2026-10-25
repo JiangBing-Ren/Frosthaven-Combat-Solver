@@ -1,0 +1,72 @@
+Parser: Enemy
+ID: HarrowerInfesterID
+LocKey: $HarrowerInfester$
+MonsterType: Monster
+StandeeLimit: 4
+Model: Harrower Infester
+PredominantlyMelee: True
+AbilityCards: [802, 803, 804, 805, 806, 807, 808, 809]
+# Base Stats
+Level0:
+    Health: 6
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+Level1:
+    Health: 7
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Retaliate: 1
+    RetaliateRange: 1
+Level2:
+    Health: 8
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Retaliate: 2
+    RetaliateRange: 1
+Level3:
+    Health: 10
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+    Retaliate: 2
+    RetaliateRange: 1
+Level4:
+    Health: 12
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Retaliate: 2
+    RetaliateRange: 1
+Level5:
+    Health: 12
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Retaliate: 3
+    RetaliateRange: 1
+Level6:
+    Health: 15
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1    
+    Retaliate: 3
+    RetaliateRange: 1
+Level7:
+    Health: 18
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    Retaliate: 4
+    RetaliateRange: 1
+    Immunities: [Poison]

@@ -1,0 +1,89 @@
+Parser: AbilityCard
+Name: $FH/075_character_ability_cards_banner_spear_pinning_charge_1$
+#CustomImage: KRO_BANNER_SPEAR_AbilityCards_PinningCharge
+Character: BannerSpearID
+ID: 75
+Level: 2
+Initiative: 17
+Discard: [Discard,Discard]
+Prefab: 75_Bannerspear_PinningCharge
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Attack", "Range")
+                AnimOverload: RangedAttack
+                ConditionalOverrides:
+                    TAttackCO:
+                        Filter:
+                            TargetType: Enemy
+                            TargetAdjacentAllies: "> 0"
+                        AbilityOverrides:
+                            TAdjAllyBuff:
+                                StatIsBasedOnX:
+                                    Strength:
+                                        BasedOn: TargetAdjacentAllies
+                                        AddTo: True
+        Consumes:
+            TCAir:
+                Elements: Air
+                AbilityOverrides:
+                    TCAirAttackBuff:
+                        ParentName: TAttack
+                        Range: 1
+                        Conditions: Immobilize
+                XP: 1
+        XP: 0
+    Bottom:
+        Abilities:
+             BAlly:
+                ControlActor:
+                    #UseControllingActorPlayerControl: True
+                    Abilities:
+                        BAllyMove:
+                            Move:
+                                Amount: 2
+                                SquareEnhancements: 1
+                            MiscVars:
+                                PrintedProperties: list("Move")
+                            StrengthIsBase: True
+                Range: 4
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Target: 3
+                Filter: Ally
+                AnimOverload: Grant      
+        XP: 0
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "25,25,25,25"
+            - Column:
+            - Column: 
+                - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column: 
+                - Row: "<mark=#FCD06E22><b><size=130%><sprite name=Range> *TAttack.Range*</mark>"
+            - Column:
+        - Row: "<size=50%> "
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCAir
+                    Text: "<size=100%>+1 <sprite name=Range>, <sprite name=Immobilize>, <sprite name=XP1>"
+        - Row: "<size=50%> "
+        - Row: "$FH/075_character_ability_cards_banner_spear_pinning_charge_2$"
+    Bottom:
+        - Row: 
+            - ColumnWidths: "10,80,10"
+            - Column:
+            - Column: 
+                - Row: "$FH/075_character_ability_cards_banner_spear_pinning_charge_3$"
+                - Row: "<size=50%> "
+                - Row: "<size=130%><sprite name=Move> 2 <size=100%><voffset=1>@BAllyMove@"
+            - Column:
+        - Row: "<size=50%> "

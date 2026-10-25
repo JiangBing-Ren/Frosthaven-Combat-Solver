@@ -1,0 +1,13 @@
+Parser: HeroSummon
+ID: MachineBolterID
+LocKey: $FH/403_character_ability_cards_hive_rapid_fire_2$
+Model: MachineBolter
+Health:
+    Amount: 3
+    SquareEnhancements: 1
+Move: 0
+Attack: 2
+Range: 3
+AttackOverride:
+    ParentName: DefaultAttack
+    Target: 1

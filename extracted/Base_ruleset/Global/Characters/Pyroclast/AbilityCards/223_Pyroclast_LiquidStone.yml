@@ -1,0 +1,63 @@
+Parser: AbilityCard
+Name: $FH/223_character_ability_cards_pyroclast_liquid_stone$
+Character: PyroclastID
+ID: 223
+Level: 1
+Initiative: 28
+Discard: [Discard,Discard]
+Prefab: 223_Pyroclast_LiquidStone
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                SubAbilities:
+                    TPush:
+                        Push:
+                            Amount: 2
+                            SquareEnhancements: 1
+                        MiscVars:
+                            PrintedProperties: list("Push")
+                        IsInlineSubAbility: True
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BPush:
+                Push: 1
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Push","Target")
+                Target: 1
+                Filter: Enemy
+                AnimOverload: Push
+        Consumes:
+            BCEarth:
+                Elements: Earth
+                XP: 1
+                AbilityOverrides:
+                    TCEarthRangeBuff:
+                        ParentName: BPush
+                        Strength: 2
+Layout:
+    Top:
+        - Row:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column: "<mark=#80919922><size=100%><sprite name=Push> *TPush* <voffset=1>@TPush@ </mark>"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Push> *BPush* <size=100%><mark=#80919922><sprite name=Range> *BPush.Range*</mark>"
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: BCEarth
+                    Text: "<size=100%>+2 <sprite name=Push>, <sprite name=XP1>"

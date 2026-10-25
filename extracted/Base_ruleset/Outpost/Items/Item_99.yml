@@ -1,0 +1,10 @@
+Parser: FHItem
+ID: 99
+ScenarioItemID: 1063
+Name: Major Healing Potion
+Quantity: 2
+Type: Small
+Brewing:
+    Herb1: Arrowvine
+    Herb2: Snowthistle
+    Herb3: Rockroot

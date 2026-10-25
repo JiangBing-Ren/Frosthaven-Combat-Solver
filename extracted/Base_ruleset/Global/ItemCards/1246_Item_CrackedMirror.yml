@@ -1,0 +1,52 @@
+Parser: ItemCard
+ID: 1246
+StringID: CrackedMirror
+Name: $FH/1246_item_cards_cracked_mirror_1$
+Art: Cracked Mirror
+TotalInGame: 1
+Cost: 30
+Slot: SmallItem
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data:    
+    ItemRequirements:
+        Vars:
+            HandCards: CustomAbility.GetCardPileList(Actor, CBaseCard.ECardPile.Hand)
+            LostCards: CustomAbility.GetCardPileList(Actor, CBaseCard.ECardPile.Lost)
+            ValidateHasHandCards: HandCards.Count > 0
+            ValidateHasLostCards: LostCards.Count > 0
+            ValidateHasHighLevelHandCards: HandCards.Where(CustomAbility.GetEqualOrLowerLevelCards(obj.Level, LostCards).Count > 0).Count > 0
+    Abilities:
+        TLose:
+            Filter: Self
+            SelectAndMoveCard:
+                PileToMoveFrom: Hand
+                PileToMoveTo: Lost
+                Amount: 1
+            Vars: 
+                LostCards: CustomAbility.GetCardPileList(TargetingActor, CBaseCard.ECardPile.Lost)
+            # only select hand cards that have a high enough level equivalent in the lost cards
+            MiscVars:
+                IsCardValid: CustomAbility.GetEqualOrLowerLevelCards(AbilityCard.Level, LostCards).Count > 0
+            PerformVars:
+                Swap:
+                    SelectedCards: CustomAbility.GetCardPileList(TargetingActor, CBaseCard.ECardPile.SelectedAbilityCardsOutOfPhase)
+                    RememberCards: TargetingActor.SetTempVar("CardLostForCrackedMirror", SelectedCards[0])
+            SubAbilities:
+                TAddToHand:
+                    CanSkip: False
+                    AutoTrigger: True
+                    Filter: Self
+                    SelectAndMoveCard:
+                        PileToMoveFrom: Lost
+                        PileToMoveTo: Hand
+                        Amount: 1
+                    MiscVars:
+                        IsCardValid: TargetingActor.CardLostForCrackedMirror != AbilityCard && TargetingActor.CardLostForCrackedMirror.Level >= AbilityCard.Level
+                    StartAbilityRequirements:
+                        Type: ThisAbility
+                        Vars:
+                            ValidateDiscardedCards: "!!TargetingActor.CardLostForCrackedMirror"
+Layout: 
+    - Row: "$FH/1246_item_cards_cracked_mirror_2$"

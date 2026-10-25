@@ -1,0 +1,127 @@
+Parser: AbilityCard
+Name: $FH/259_character_ability_cards_shattersong_shape_the_path_1$
+Character: ShattersongID
+ID: 259
+Level: 3
+Initiative: 40
+Discard: [Discard,Discard]
+Prefab: 259_Shattersong_ShapeThePath
+Data:
+    Top:
+        Abilities:
+            TWaveAttack:
+                Filter: Self          
+                HelpBoxTooltipLocKey: "$FH/GUI_CHOOSE_RESONANCE_TOKEN_COUNT$"
+                PreviewEffectText: "<sprite name=Bless>"           
+                MiscVars:
+                    # doing the chosen ability as a sub ability so we can preview the effect
+                    DontPerformChosenAbility: True              
+                    OverrideIcon: "'Ability_Shattersong_Icon'"
+                Choose:
+                    Choices:
+                        D1:
+                            PreviewEffectText: "1"
+                            Strength: 1
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 1
+                        D2:
+                            PreviewEffectText: "2"
+                            Strength: 2
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 2
+                        D3:
+                            PreviewEffectText: "3"
+                            Strength: 3
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 3
+                        D4:
+                            PreviewEffectText: "4"
+                            Strength: 4
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 4
+                        D5:
+                            PreviewEffectText: "5"
+                            Strength: 5
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 5
+                PerformVars:
+                    ApplyToActors:
+                        Resonance: ChosenAbility?.Strength || 0
+                        Tokens: Resonance * -1
+                Flags: [ModifiesResonanceTokens]
+                SubAbilities:
+                    TPerformXTimes:
+                        Vars:
+                            Resonance: ParentAbility.ChosenAbility?.Strength || 0
+                        TreatAsNonSubAbility: True
+                        UseParentTargets: False
+                        AutoTrigger: True
+                        Filter: Self
+                        NullTargeting: True
+                        AnimOverload: CastTargetControlMedium
+                        MiscVars:
+                            ExplicitlyDoesNothing: True
+                        ActiveBonus:
+                            AbilityData:
+                                CanUndo: False
+                                Bless: True
+                                Range: 1
+                                Filter: [Self,Ally]
+                                MiscVars:
+                                    ShapeThePathBless: True
+                                    PrintedProperties: list("Range")     
+                        PerformVars:
+                            ApplyToActors:
+                                PerformXTimes: CustomAbility.InjectActiveBonusAbilityXTimes(Resonance, ActiveBonusData, TargetingActor, thisContext)
+                            OnAbilityEnded:
+                                StackSubAbilities: obj.AbilityHasHappened && CustomAbility.StackNonInlineSubabilities(obj)
+                        SubAbilities:
+                            TFinishWave:
+                                StartAbilityRequirements:
+                                    Type: ThisAbility
+                                    Vars:
+                                        ValidateHasBlessed: CustomAbility.HasPerformedAbilityWithMiscVarThisAction(Ability, "ShapeThePathBless")
+                                NullTargeting: True
+                                Filter: Self
+                                SkipAnim: True
+                                AutoTrigger: True
+                                TreatAsNonSubAbility: True
+                                Flags: [Wave]
+        XP: 1
+        Infuse: Light
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")     
+            BToken:
+                NullTargeting:
+                Tokens: 1
+                Flags: [ModifiesResonanceTokens]
+                Filter: [Self]
+                AnimOverload: Cast_Concentrate
+Layout:
+    Top:
+        - Row: "$FH/character_ability_cards_shattersong_wave$"
+        - Row: "$FH/259_character_ability_cards_shattersong_shape_the_path_2$"
+        - Row: "<size=130%><sprite name=Bless><mark=#FCD06E22><size=100%><sprite name=Range>1</mark>"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Light
+    Bottom:
+        - Row: "<sprite name=Move> *BMove* @BMove@"
+        - Divider:
+        - Row: "$FH/259_character_ability_cards_shattersong_shape_the_path_3$"

@@ -1,0 +1,17 @@
+Parser: FHScenario
+ID: 80
+Name: Relic Renewed
+LevelID: FS_080_Relic_Renewed
+Chain: JobPosting
+Location: Frosthaven
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: GainLumber
+          Param1: 2
+        - Type: GainMetal
+          Param1: 2
+        - Type: GainHide
+          Param1: 2
+        - Type: GainMorale
+          Param1: 2

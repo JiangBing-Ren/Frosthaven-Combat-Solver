@@ -1,0 +1,24 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_RFS007_TransferDamage
+ScenarioAbility:
+    AddActiveBonus:
+        TransferDamage:
+            Filter:
+                TargetType: Ally
+                EnemyClasses: ["VermlingScoutID","VermlingScoutEliteID"]
+            Range: 99
+            IgnoreLOS: True
+        MiscVars:
+            ProjectileName: "'WarchiefDamageTransfer'"
+            ActiveBonusName: "'FH/RFS_Scenario_Campaign_007_SCENARIO_MODIFIER_2_NAME'"
+        Filter: Self
+        ActiveBonus:
+            Duration: Persistent
+            XPTracker: [0,0]
+            Vars:
+                PersistentCasterVFX: "'VermlingWarchiefShield'"
+            ListLayoutOverride: [$FH/RFS_Scenario_Campaign_007_SCENARIO_MODIFIER_2_DESC$, Positive_DamageRedirect_Campaign]
+            Requirements:
+                Vars:
+                    ValidateVermlingScouts: AllEnemyMonsters.Where(!obj.IsDead && (obj.Class.ID == "VermlingScoutID" || obj.Class.ID == "VermlingScoutEliteID")).Count > 0
+        SkipAnim: True

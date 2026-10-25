@@ -1,0 +1,19 @@
+Parser: EnemyCard
+ID: 577
+Name: $Monster_Ability_577_EarthDemon_EarthenEruption$
+Initiative: 87
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: 0
+        Attack1:
+            Attack: -1
+            Filter: Enemy
+            AreaEffect: "0,0,G|2,0,R|1,1,R|3,1,R"
+            MultiPassAttack: False
+            AnimOverload: EarthenEruption          
+    Consumes:
+        CAny:
+            Elements: Any
+            Infuse: Earth

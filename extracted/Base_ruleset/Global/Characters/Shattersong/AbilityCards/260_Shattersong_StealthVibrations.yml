@@ -1,0 +1,58 @@
+Parser: AbilityCard
+Name: $FH/260_character_ability_cards_shattersong_stealth_vibrations_1$
+Character: ShattersongID
+ID: 260
+Level: 3
+Initiative: 35
+Discard: [Discard,Discard]
+Prefab: 260_Shattersong_StealthVibrations
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")     
+                Filter: [Enemy]
+                AnimOverload: RangedAttack
+            TToken:
+                NullTargeting:
+                Tokens: 1
+                Flags: [ModifiesResonanceTokens]
+                Filter: [Self]
+                AnimOverload: Cast_Concentrate
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")     
+            BConsume:
+                PreviewEffectText: "$FH/260_character_ability_cards_shattersong_stealth_vibrations_3$"
+                Consume:
+                    Resonance: 2
+                    Abilities:
+                        BInvisible:
+                            Invisible: True
+                            Filter: Self
+                            AutoTrigger: True
+                            XP: 1
+                            AnimOverload: Cast_Concentrate
+Layout:
+    Top:
+        - Row:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column: "<mark=#FCD06E22><b><size=130%><sprite name=Range> *TAttack.Range*</mark>"
+        - Divider:
+        - Row: "$FH/260_character_ability_cards_shattersong_stealth_vibrations_2$"
+    Bottom:
+        - Row: "<sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Conditional:
+            Layout:
+                - Row: "$FH/260_character_ability_cards_shattersong_stealth_vibrations_3$"

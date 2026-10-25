@@ -1,0 +1,6 @@
+Parser: AttackModifier
+Name: AMC_Earth
+MathModifier: "+0"
+Abilities:
+    InfuseAbility:
+        Infuse: [Earth]

@@ -1,0 +1,10 @@
+Parser: FHItem
+ID: 119
+ScenarioItemID: 1103
+Name: Deadly Mixture
+Quantity: 2
+Type: Small
+Brewing:
+    Herb1: Any
+    Herb2: Any
+    Herb3: Any

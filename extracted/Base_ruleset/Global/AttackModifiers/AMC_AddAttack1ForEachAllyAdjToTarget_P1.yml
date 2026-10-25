@@ -1,0 +1,10 @@
+Parser: AttackModifier
+Name: AMC_AddAttack1ForEachAllyAdjToTarget_P1
+MathModifier: "+1"
+AbilityOverrides:
+    ABuffAttack:
+        Flags: [AttackModifierAbilityOverride]
+        StatIsBasedOnX:
+            Strength:
+                BasedOn: TargetAdjacentAllies
+                AddTo: True

@@ -1,0 +1,67 @@
+Parser: AbilityCard
+Name: $FH/131_character_ability_cards_boneshaper_malicious_conversion_1$
+Character: BoneshaperID
+ID: 131
+Level: 1
+Initiative: 26
+Discard: [Lost,Discard]
+Prefab: 131_Boneshaper_MaliciousConversion
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 4
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                SubAbilities:
+                    TSummon:
+                        AutoTrigger: True
+                        Filter: Self
+                        TreatAsNonSubAbility: True
+                        SelectAndPlayCard:       
+                            CardPile: Discarded  
+                        MiscVars:
+                            IsActionValid: Action.Abilities.Any(obj.AbilityType == CAbility.EAbilityType.Summon)
+                            ReduceNextDamage: 2
+                        StartAbilityRequirements:
+                            Type: SubAbility
+                            ActorsKilledByAbility: "> 0"
+                            RequirementActorFilter:
+                                TargetType: Enemy
+                                EnemyType: [Normal,Elite,Boss]
+                        SkipAnim: True
+        Infuse: [Dark, Earth]
+        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                MiscVars:
+                    PrintedProperties: list("Move")
+        Consumes:
+            BCEarth:
+                Elements: Earth
+                AbilityOverrides:
+                    BCEarthMoveBuff:
+                        ParentName: BMove
+                        Strength: 2
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack>4"
+        - Row: "$FH/131_character_ability_cards_boneshaper_malicious_conversion_2$"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Earth, Dark]
+    Bottom:
+        - Row: "<b><size=130%> <sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Row: "<size=20%> "
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: BCEarth
+                    Text: "+2 <sprite name=Move>"

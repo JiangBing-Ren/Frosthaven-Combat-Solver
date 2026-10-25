@@ -1,0 +1,4 @@
+Parser: AttackModifier
+Name: Curse
+MathModifier: "*0"
+IsCurse: True

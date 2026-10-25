@@ -1,0 +1,93 @@
+Parser: AbilityCard
+Name: $FH/155_character_ability_cards_geminate_flailing_tendrils_1$
+Character: GeminateID
+ID: 155
+Level: 1
+ProgressionOrder: 4
+Initiative: 12
+Discard: [Discard,Lost]
+RequiredForm: Melee
+Prefab: 155_Geminate_FlailingTendrils
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Conditions: [Muddle]
+                AreaEffect: "0,0,G|1,1,R|2,2,R|1,-1,R|2,-2,R|-2,0,R|-4,0,R|-1,1,E|2,0,E|-1,-1,E"
+                AreaEffectLayoutOverride: "0,0,G|1,1,R|2,2,R|1,-1,R|2,-2,R|-2,0,R|-4,0,R|-1,1,E|2,0,E|-1,-1,E"
+                MultiPassAttack: False
+                SubAbilities:
+                    TMuddleAliies:
+                        Muddle: True
+                        Filter: Ally
+                        CanSkip: False
+                        AutoTrigger: True
+                        Target: -1
+                        UseParentTargets: True
+                        #SkipAnim: True
+                AnimOverload: Attack_Melee_Tendrils
+        Consumes:
+            TCLight:
+                Elements: Light
+                PreviewEffectText: "+1 <sprite name=Attack>"
+                AbilityOverrides:
+                    TCIceBuff:
+                        ParentName: TAttack
+                        Attack: 1
+    Bottom:
+        Abilities:
+            BWound:
+                Wound: True
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Target: 99
+                Filter: Enemy
+                Range: 2
+                RangeIsBase: True
+                AnimOverload: Cast Negative
+                MiscVars:
+                    AutoSelectValidTiles: True
+            BWoundAllies:
+                Wound: True
+                MiscVars:
+                    PrintedProperties: list("Range")
+                AutoTrigger: True
+                Target: -1
+                Filter: Ally
+                Range: 2
+                RangeIsBase: True
+                CanSkip: False
+                AnimOverload: Cast Negative
+        Infuse: Fire
+        XP: 1
+Layout:
+    Top:
+        - ColumnWidths: "55,45"
+        - Column:
+            - Row: "<b><size=130%><sprite name=Attack> *TAttack* <sprite name=Muddle>"
+            - Row: "<size=20%> "
+            - Conditional:
+                Layout:
+                    - Consume:
+                        Name: TCLight
+                        Text: "+1 <sprite name=Attack>"
+            - Divider:
+            - MandatoryTrigger:
+                Layout:
+                    - Row: "$FH/155_character_ability_cards_geminate_flailing_tendrils_2$"
+        - Column: "£Area£"
+    Bottom:
+        - Row: "$FH/155_character_ability_cards_geminate_flailing_tendrils_3$"
+        - Row: "<size=50%> "
+        - Divider:
+        - MandatoryTrigger:
+            Layout:
+                - Row: "$FH/155_character_ability_cards_geminate_flailing_tendrils_4$"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Fire

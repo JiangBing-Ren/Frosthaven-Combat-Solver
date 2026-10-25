@@ -1,0 +1,19 @@
+Parser: FHScenario
+ID: 38
+Name: The Way Forward
+LevelID: FS_038_The_Way_Forward
+Chain: Algox2
+Location: WhitefireWood
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: AllCharactersGainExperience
+          Param1: 10
+        - Type: AllCharactersAddPerkCheck
+          Param1: 1
+        - Type: GainInspiration
+          Param1: 1
+        - Type: UnlockScenario
+          Param1: 45
+        - Type: UnlockScenario
+          Param1: 46

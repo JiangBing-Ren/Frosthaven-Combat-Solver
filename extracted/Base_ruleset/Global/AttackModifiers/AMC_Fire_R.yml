@@ -1,0 +1,7 @@
+Parser: AttackModifier
+Name: AMC_Fire_R
+MathModifier: "+0"
+Rolling: True
+Abilities:
+    InfuseAbility:
+        Infuse: [Fire]

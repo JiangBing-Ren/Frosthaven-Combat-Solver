@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 200
+ScenarioItemID: 1210
+Name: Eventide Scepter
+Quantity: 1
+GoldCost: 50
+Type: OneHandWeapon
+IsNewCharacterItem: False

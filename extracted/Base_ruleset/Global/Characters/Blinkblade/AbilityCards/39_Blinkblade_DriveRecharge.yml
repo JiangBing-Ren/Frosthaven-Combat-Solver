@@ -1,0 +1,72 @@
+Parser: AbilityCard
+Name: $FH/039_character_ability_cards_blinkblade_drive_recharge_1$
+Character: BlinkbladeID
+ID: 39
+Level: 1
+Initiative: 69
+Discard: [Lost, Discard]
+Prefab: 39_Blinkblade_DriveRecharge
+Data:
+    Top:
+        Abilities:
+            TGainTimeTokens:
+                NullTargeting:
+                Tokens: 2
+                Flags: [ModifiesTimeTokens]
+                Filter: [Self]
+                AnimOverload: PowerUp
+                ConditionalOverrides:
+                    TGainTimeTokensCO_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            BAnim:
+                                AnimOverload: PowerUpSlow
+            TAddConditions:
+                AddCondition: True
+                Condition: [Bless, Ward]
+                AutoTrigger: True
+                Filter: [Self]
+                AnimOverload: PowerUp
+                ConditionalOverrides:
+                    TAddConditionsCO_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            BAnim:
+                                AnimOverload: PowerUpSlow
+    Bottom:
+        Abilities:
+            BHeal:
+                Heal: 2
+                Target: -1
+                Filter: [Self]
+                AnimOverload: PowerUp
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                ConditionalOverrides:
+                    BHealCO_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            BHeal:
+                                Condition: Regenerate
+                                AnimOverload: PowerUpSlow
+Layout:
+    Top:
+        - Row: "$FH/039_character_ability_cards_blinkblade_drive_recharge_2$"
+        - Divider:
+        - Row: "$FH/039_character_ability_cards_blinkblade_drive_recharge_3$"
+    Bottom:
+        - ColumnWidths: "33,34,33"
+        - Column:
+        - Column:
+            - Row: "$FH/039_character_ability_cards_blinkblade_drive_recharge_4$"
+        - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Text: "<size=130%><sprite name=Regenerate></size>"
+        

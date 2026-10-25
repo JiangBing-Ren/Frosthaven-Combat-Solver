@@ -1,0 +1,29 @@
+Parser: Mastery
+ID: FrozenFist_MASTERY_1
+LocalisedName: FrozenFist_MASTERY_1_Name
+LocalisedDescription: FrozenFist_MASTERY_1_Desc
+PerkPoints: 1
+CheckAtEndOfScenario: True
+# suceed if you recovered a discarded card every round
+BattleGoalCondition:
+    - Targets:
+        Filter: RecoverDiscardedCard
+        # each round
+        SubFilter: EveryRoundCharactersOnly
+        StopCheckingAfterDeath: True
+        # only for the frozenfist
+        CharacterIDs: 
+            ActorID: FrozenFistID
+        Value: 1
+# fail if you didn't recover a discarded card every round
+# same as top condition, checks if checking for failures internally
+BattleGoalFailCondition:
+    - Targets:
+        Filter: RecoverDiscardedCard
+        # each round
+        SubFilter: EveryRoundCharactersOnly
+        StopCheckingAfterDeath: True
+        # only for the frozenfist
+        CharacterIDs: 
+            ActorID: FrozenFistID
+        Value: 1

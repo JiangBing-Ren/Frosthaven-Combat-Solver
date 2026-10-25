@@ -1,0 +1,94 @@
+Parser: ItemCard
+ID: 1221
+StringID: BoomBarrelID
+Name: $FH/1221_item_cards_boom_barrel_1$
+Art: Boom Barrel
+TotalInGame: 1
+Cost: 30
+Slot: TwoHand
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data:
+    Abilities:
+        BoomBarrel:
+            NullHex: True
+            Range: 1
+            PerformVars:
+                Perform:
+                    SpawnBarrel: CustomAbility.SpawnVFXProp(TilesSelected[0], "ItemBoomBarrelModel")
+            SubAbilities:
+                BoomBarrelSub:
+                    TreatAsNonSubAbility: True
+                    AddActiveBonus:
+                        Damage: 1
+                        Target: -1
+                        CanUndo: False
+                        CanSkip: False
+                        SkipAnim: True
+                        Range: 2
+                        AutoTrigger: True
+                        Vars:
+                            CanClearTargets: False
+                        MiscVars:
+                            PlayActorBeenDamagedVFX: AbilityHasHappened || CustomAbility.PlayVFX("ItemBoomBarrelEffect",  list(CustomAbility.FindPropByName("ItemBoomBarrelModel").PropTile)) || CustomAbility.DestroyPropByName("ItemBoomBarrelModel") 
+                        Targeting: Custom
+                        TargetingVars:
+                            Prop:  CustomAbility.FindPropByName("ItemBoomBarrelModel")
+                            SelectedTiles: list(Prop.PropTile)
+                            AddTilesInRange: SelectedTiles
+                            AddValidActorsInRange: CustomAbility.GetActorsOnTiles(SelectedTiles)
+                            AdjacentTiles: CustomAbility.GetAdjacentTiles(SelectedTiles)
+                            AddTilesInRange: AdjacentTiles
+                            AddValidActorsInRange: CustomAbility.GetActorsOnTiles(AdjacentTiles)
+                            AdjAdjTiles: CustomAbility.GetAdjacentTiles(AdjacentTiles)
+                            AddTilesInRange: AdjAdjTiles
+                            AddValidActorsInRange: CustomAbility.GetActorsOnTiles(AdjAdjTiles)
+                    ActiveBonus:
+                        Duration: Round
+                        Behaviour: EndTurnAbility
+                        XPTracker: [0]
+                        Hidden: True
+                    AutoTrigger: True
+                    Filter: Self
+                    SkipAnim: True
+                BoomBarrelSubOnDeath:
+                    TreatAsNonSubAbility: True
+                    AddActiveBonus:
+                        Damage: 1
+                        Target: -1
+                        CanUndo: False
+                        CanSkip: False
+                        SkipAnim: True
+                        Range: 2
+                        AutoTrigger: True
+                        Vars:
+                            CanClearTargets: False
+                        MiscVars:
+                            PlayActorBeenDamagedVFX: AbilityHasHappened || CustomAbility.PlayVFX("ItemBoomBarrelEffect",  list(CustomAbility.FindPropByName("ItemBoomBarrelModel").PropTile)) || CustomAbility.DestroyPropByName("ItemBoomBarrelModel") 
+                        Targeting: Custom
+                        TargetingVars:
+                            Prop:  CustomAbility.FindPropByName("ItemBoomBarrelModel")
+                            SelectedTiles: list(Prop.PropTile)
+                            AddTilesInRange: SelectedTiles
+                            AddValidActorsInRange: CustomAbility.GetActorsOnTiles(SelectedTiles)
+                            AdjacentTiles: CustomAbility.GetAdjacentTiles(SelectedTiles)
+                            AddTilesInRange: AdjacentTiles
+                            AddValidActorsInRange: CustomAbility.GetActorsOnTiles(AdjacentTiles)
+                            AdjAdjTiles: CustomAbility.GetAdjacentTiles(AdjacentTiles)
+                            AddTilesInRange: AdjAdjTiles
+                            AddValidActorsInRange: CustomAbility.GetActorsOnTiles(AdjAdjTiles)
+                    ActiveBonus:
+                        Duration: Turn
+                        Behaviour: [DuringActionAbilityOnDeath]
+                        XPTracker: [0]
+                        Hidden: True
+                        TriggerAbilitiesImmediately: True
+                        MiscVars:
+                            DontCancelOnDeath: True
+                    AutoTrigger: True
+                    Filter: Self
+                    SkipAnim: True
+                    
+Layout: 
+    - Row: "$FH/1221_item_cards_boom_barrel_2$"

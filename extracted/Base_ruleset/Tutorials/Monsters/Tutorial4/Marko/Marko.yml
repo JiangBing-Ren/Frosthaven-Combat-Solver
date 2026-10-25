@@ -1,0 +1,81 @@
+Parser: Enemy
+ID: MarkoID
+LocKey: $FH/Marko$
+MonsterType: Monster
+StandeeLimit: 6
+Model: Marko
+PredominantlyMelee: True
+AbilityCards: [99990009, 99990010]
+# Base Stats
+Level0:
+    Health: 8
+    Move: 3
+    Attack: 1
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+Level1:
+    Health: 8
+    Move: 3
+    Attack: 1
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+Level2:
+    Health: 10
+    Move: 3
+    Attack: 2
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+Level3:
+    Health: 10
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+Level4:
+    Health: 14
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+Level5:
+    Health: 16
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+Level6:
+    Health: 23
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+Level7:
+    Health: 33
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0

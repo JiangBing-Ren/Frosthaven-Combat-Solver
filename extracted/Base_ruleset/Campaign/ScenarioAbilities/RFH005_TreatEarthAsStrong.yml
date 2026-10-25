@@ -1,0 +1,16 @@
+Parser: ScenarioAbility
+ID: RFH005_TreatEarthAsStrong
+ScenarioAbility:
+    AActive:
+        Target: -1
+        Filter: Self
+        AnimOverload: None
+        AutoTrigger: True
+        NullTargeting: True
+        MiscVars:
+            TreatElementAsStrong: "'Earth'"
+        ActiveBonus:
+            Duration: Persistent
+            ListLayoutOverride: [$FH/RFH_Scenario_Campaign_005_SCENARIO_MODIFIER_2$, Positive_Earth_Campaign]
+            MiscVars:
+                HiddenInCombatLog: True

@@ -1,0 +1,112 @@
+Parser: Enemy
+ID: VanjalID
+LocKey: $FH/Vanjal$
+MonsterType: Boss
+StandeeLimit: 1
+Model: Vanjal
+PredominantlyMelee: True
+AbilityCards: [730, 731, 732, 733, 734, 735, 736, 737]
+# Base Stats
+Level0:
+    Health: 0
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 2
+    Immunities: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Sleep]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 8
+Level1:
+    Health: 0
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 2
+    Conditions: [Brittle]
+    Immunities: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Sleep]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 8
+Level2:
+    Health: 0
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 2
+    Conditions: [Brittle]
+    Immunities: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Sleep]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 10
+Level3:
+    Health: 0
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    Shield: 2
+    Conditions: [Brittle]
+    Immunities: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Sleep]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 12
+Level4:
+    Health: 0
+    Move: 4
+    Attack: 5
+    Range: 1
+    Target: 1
+    Shield: 2
+    Conditions: [Brittle]
+    Immunities: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Sleep]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 15
+Level5:
+    Health: 0
+    Move: 4
+    Attack: 6
+    Range: 1
+    Target: 1
+    Shield: 2
+    Conditions: [Brittle]
+    Immunities: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Sleep]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 18
+Level6:
+    Health: 0
+    Move: 4
+    Attack: 6
+    Range: 1
+    Target: 1
+    Shield: 2
+    Conditions: [Brittle]
+    Immunities: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Sleep]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 26
+Level7:
+    Health: 0
+    Move: 4
+    Attack: 6
+    Range: 1
+    Target: 1
+    Shield: 2
+    Conditions: [Brittle]
+    Immunities: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Sleep]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 35

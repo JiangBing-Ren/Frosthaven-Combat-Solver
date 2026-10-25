@@ -1,0 +1,21 @@
+Parser: ScenarioAbility
+ID: RFH004_PreventDamageMarko
+ScenarioAbility:
+    AActive:
+        PreventDamage: 99
+        AutoTrigger: True
+        Target: -1
+        Filter: Self
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: PreventFirstDamage
+            ListLayoutOverride: [$FH/RFH_Scenario_Campaign_004_SCENARIO_MODIFIER_2$, Move]
+            Hidden: True
+            # IsToggleBonus: True
+            # ToggleIsOptional: True
+            Vars:
+                ExecuteMoveAbility: ScenarioScript.current.ExecuteMoveAbility(CurrentAbility, CurrentAbility.TargetingActor, Actor, PreventedDamage)
+        AnimOverload: None
+        AutoTrigger: True
+        MiscVars:
+            AllowOnEnemyActors: True

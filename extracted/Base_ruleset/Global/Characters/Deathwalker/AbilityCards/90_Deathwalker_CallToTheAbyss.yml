@@ -1,0 +1,45 @@
+Parser: AbilityCard
+Name: $FH/090_character_ability_cards_deathwalker_call_to_the_abyss_1$
+Character: DeathwalkerID
+ID: 90
+Level: 1
+Initiative: 82
+Discard: [Lost,Discard]
+Prefab: 90_Deathwalker_CallToTheAbyss
+Data:
+    Top:
+        Abilities:
+            TOverrideMove:
+                AddActiveBonus:
+                    Attack: 0
+                    PreviewEffectText: " "
+                ActiveBonus:
+                    Behaviour: ShadowBuffAttack
+                    Duration: Persistent
+                    IsAura: True
+                    AuraTargeting: All
+                    AuraFilter: [Self, OwnSummon]
+                    ValidAbilityTypes: [Attack]
+    Bottom:
+        Abilities:
+            BCreateShadows:
+                CreateShadow:
+                HelpBoxTooltipLocKey: "FH/GUI_PLACE_SHADOWS_HELPBOX"
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Target: 1
+                AnimOverload: Shadow Manipulation
+Layout:
+    Top:
+        - Active:
+            Ability: TOverrideMove
+            Icon: Positive_Shadow_Enemy_Death
+            ListLayout: "$FH/090_character_ability_cards_deathwalker_call_to_the_abyss_2$"
+            Layout:
+                - Row: "$FH/090_character_ability_cards_deathwalker_call_to_the_abyss_2$"
+                - Row: "<size=50%> "
+                - Row: "$FH/090_character_ability_cards_deathwalker_call_to_the_abyss_3$"
+       
+    Bottom:
+        - Row: "$FH/090_character_ability_cards_deathwalker_call_to_the_abyss_4$"

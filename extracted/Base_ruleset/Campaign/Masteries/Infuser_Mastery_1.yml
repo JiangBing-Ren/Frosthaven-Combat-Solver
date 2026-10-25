@@ -1,0 +1,17 @@
+Parser: Mastery
+ID: Infuser_MASTERY_1
+LocalisedName: Infuser_MASTERY_1_Name
+LocalisedDescription: Infuser_MASTERY_1_Desc
+PerkPoints: 1
+BattleGoalCondition:
+    - Targets:
+        # check active bonuses at any given moment
+        Filter: HaveActiveBonusWithMiscVar
+        # throughout the entire scenario
+        SubFilter: Scenario
+        CompareVal2: [InfusionBonus]
+        # only for the infuser
+        CharacterIDs: 
+            ActorID: InfuserID
+        # we need 5 active bonuses at once with the infusion misc var
+        Value: 5

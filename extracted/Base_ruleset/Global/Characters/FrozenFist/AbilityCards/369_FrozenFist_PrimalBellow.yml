@@ -1,0 +1,65 @@
+Parser: AbilityCard
+Name: $FH/369_character_ability_cards_frozen_fist_primal_bellow_1$
+Character: FrozenFistID
+ID: 369
+Level: X
+ProgressionOrder: 9
+Initiative: 84
+Discard: [Discard,Discard]
+Prefab: 369_FrozenFist_PrimalBellow
+Data:
+    Top:
+        Abilities:
+            TDamage:
+                Damage: 1
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Target: -1
+                Range: 1
+                Filter: Enemy
+                MultiPassAttack: False
+                AnimOverload: Roar
+            TCreateIce:
+                CreateTerrain: Ice
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Range")
+                TileFilter: FeaturelessHex
+                Target: 1
+                AnimOverload: TerrainFormation
+                MiscVars:
+                    includeCasterTile: True
+            TPush:
+                Push: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Push","Range")
+                Target: -1
+                AnimOverload: FistsSparks
+        Infuse: Ice
+    Bottom:
+        Abilities:
+            BHeal:
+                Heal: 3
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self
+                AnimOverload: Heal
+        Infuse: Earth
+Layout:
+    Top:
+        - Row: "$FH/369_character_ability_cards_frozen_fist_primal_bellow_2$"
+        - Divider:
+        - Row: "$FH/369_character_ability_cards_frozen_fist_primal_bellow_3$"
+        - Divider:
+        - Row: "$FH/369_character_ability_cards_frozen_fist_primal_bellow_4$"
+        - Row:
+            - MandatoryTrigger:
+                Layout:
+                    - Infuse: [Ice]
+    Bottom:
+        - Row: "$FH/369_character_ability_cards_frozen_fist_primal_bellow_5$"
+        - Row:
+            - MandatoryTrigger:
+                Layout:
+                    - Infuse: [Earth]

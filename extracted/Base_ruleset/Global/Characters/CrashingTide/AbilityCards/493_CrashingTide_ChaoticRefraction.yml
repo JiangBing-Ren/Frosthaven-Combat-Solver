@@ -1,0 +1,75 @@
+Parser: AbilityCard
+Name: $FH/493_character_ability_cards_crashing_tide_chaotic_refraction_1$
+Character: CrashingTideID
+ID: 493
+Level: 4
+ProgressionOrder: 493
+Initiative: 26
+Discard: [Discard,Discard]
+Prefab: 493_CrashingTide_ChaoticRefraction
+Data:
+    Top:
+        Abilities:
+            TShield:
+                Shield: 1
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                ActiveBonus:
+                    Duration: Persistent
+                    Flags: [Tide, ShieldMelee]
+                    ListLayoutOverride: [<sprite name=Shield> *BShield*, Positive_ShieldMelee]
+                Filter: [Self]
+                AnimOverload: Tide
+            TRetaliate:
+                Retaliate: 2
+                MiscVars:
+                    PrintedProperties: list("Retaliate")
+                ActiveBonus:
+                    Duration: Persistent
+                    ListLayoutOverride: [<sprite name=Retaliate> *TRetaliate*, Positive_Retaliate]
+                Filter: [Self]
+                AutoTrigger: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Shield]
+                AnimOverload: MightyClaws
+        Infuse: Light
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 1
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BLoot:
+                Loot: 1
+                MiscVars:
+                    PrintedProperties: list("Loot")
+                Target: -1
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "34,33,33"
+            - Column: "$FH/CrashingTide_Tide$"
+            - Column:
+            - Column:
+        - Active:
+            Ability: TShield
+            Icon: Positive_ShieldMelee
+            Layout: "<sprite name=Shield> 1</size></b><br>$FH/493_character_ability_cards_crashing_tide_chaotic_refraction_2$"
+            ListLayout: "$FH/493_character_ability_cards_crashing_tide_chaotic_refraction_2$"
+        - Row: "<size=50%> "
+        - Active:
+            Ability: TRetaliate
+            Icon: Positive_Retaliate
+            Layout: "<sprite name=Retaliate> 2"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Light
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Loot> *BLoot*"

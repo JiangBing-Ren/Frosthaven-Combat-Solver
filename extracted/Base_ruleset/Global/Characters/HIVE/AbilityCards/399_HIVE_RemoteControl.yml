@@ -1,0 +1,44 @@
+Parser: AbilityCard
+Name: $FH/399_character_ability_cards_hive_remote_control_1$
+Character: HIVEID
+ID: 399
+Level: X
+Initiative: 48
+Discard: [Discard,Discard]
+Prefab: 399_HIVE_RemoteControl
+Data:
+    Top:
+        XP: 1
+        Abilities:
+            TControl:
+                ControlActor:
+                    #UseControllingActorPlayerControl: True
+                    Abilities:
+                        BSummonAttack:
+                            Attack:
+                                Amount: 1
+                            MiscVars:
+                                PrintedProperties: list("Attack")
+                            Range: 0
+                Range: 99
+                Filter: OwnSummon
+                AnimOverload: Grant         
+    Bottom:
+        Abilities:
+            BControl:
+                ControlActor:
+                    #UseControllingActorPlayerControl: True
+                    Abilities:
+                        BSummonMove:
+                            Move:
+                                Amount: 1
+                            MiscVars:
+                                PrintedProperties: list("Move")
+                Range: 99
+                Filter: OwnSummon
+                AnimOverload: Grant
+Layout:
+    Top:
+        - Row: "$FH/399_character_ability_cards_hive_remote_control_2$"
+    Bottom:
+        - Row: "$FH/399_character_ability_cards_hive_remote_control_3$"

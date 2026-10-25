@@ -1,0 +1,13 @@
+Parser: FHScenario
+ID: 43
+Name: Overrun Barricade
+LevelID: FS_043_Overrun_Barricade
+Chain: Unfettered
+Location: CrystalFields
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: AllCharactersGainExperience
+          Param1: 10
+        - Type: UnlockMandatoryScenario
+          Param1: 51

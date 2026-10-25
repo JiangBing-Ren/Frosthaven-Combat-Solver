@@ -1,0 +1,82 @@
+Parser: AbilityCard
+Name: $FH/314_character_ability_cards_pain_conduit_reversal_of_fate_1$
+Character: PainConduitID
+ID: 314
+Level: 2
+Initiative: 23
+Discard: [Lost,Discard]
+Prefab: 314_PainConduit_ReversalOfFate
+Data:
+    Top:
+        Abilities:
+            THeal:
+                Heal:
+                    Amount: 5
+                    DiamondPlusEnhancements: 1
+                Range: 4
+                MiscVars:
+                    PrintedProperties: list("Heal","Range")
+                Filter: [Self,Ally]
+                Conditions: Bless
+                AnimOverload: CastTakingPain
+            TAttack:
+                Attack:
+                    Amount: 5
+                    DiamondEnhancements: 1
+                Range: 4
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                Filter: Enemy
+                Conditions: Curse
+                AnimOverload: CastGivingPain
+        XP: 2
+    Bottom:
+        Abilities:
+            TReflectDamage:
+                AddActiveBonus:
+                    AutoTrigger: True
+                    Damage: 0
+                    Filter: [Enemy]
+                    AnimOverload: CastGivingPain
+                    # target the enemy that damaged you
+                    Targeting: Custom
+                    TargetingVars:
+                        AddValidActorInRange: TriggerAbility.TargetingActor
+                    # do the same amount of damage
+                    StatIsBasedOnX:
+                        Strength:
+                            BasedOn: Vars
+                            Vars: 
+                                Value: DamageAmount
+                AnimOverload: Cast
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: DuringActionAbilityOnDamaged
+                    TriggerAbilitiesImmediately: True
+                    XPTracker: [0]
+                    Vars:
+                        DamageSourceAbility: TriggerAbility
+                        ValidateIsDamageFromAnAttack: DamageSourceAbility != null && DamageSourceAbility.AbilityType == CAbility.EAbilityType.Attack
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "20,20,30"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Heal> *THeal* @THeal@"
+            - Column:
+                - Row: "<mark=#80919922><size=100%><sprite name=Range> *THeal.Range*, <sprite name=Bless></mark>"
+        - Divider:
+        - Row:
+            - ColumnWidths: "20,20,30"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Attack> *TAttack* @TAttack@"
+            - Column:
+                - Row: "<mark=#80919922><size=100%><sprite name=Range> *TAttack.Range*, <sprite name=Curse></mark>"
+    Bottom:
+        - Active:
+            Ability: TReflectDamage
+            ListLayout: "$FH/314_character_ability_cards_pain_conduit_reversal_of_fate_2$"
+            Layout: "$FH/314_character_ability_cards_pain_conduit_reversal_of_fate_2$"
+            Icon: Positive_Thorns

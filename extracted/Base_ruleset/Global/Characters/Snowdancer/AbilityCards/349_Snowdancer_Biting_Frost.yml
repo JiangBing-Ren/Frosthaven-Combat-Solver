@@ -1,0 +1,75 @@
+Parser: AbilityCard
+Name: $FH/349_character_ability_cards_snowdancer_biting_frost_1$
+Character: SnowdancerID
+ID: 349
+Level: 4
+Initiative: 16
+Discard: [Lost,Discard]
+Prefab: 349_Snowdancer_BitingFrost
+Data:
+    Top:
+        Abilities:
+            TAlly:
+                ControlActor:
+                    Abilities:
+                        TAllyMove:
+                            Move: 
+                                Amount: 3
+                                SquareEnhancements: 1
+                            MiscVars:
+                                PrintedProperties: list("Move")
+                            StrengthIsBase: True
+                        TAllyAttack:
+                            Attack: 
+                                Amount: 6
+                                DiamondEnhancements: 1
+                            MiscVars:
+                                PrintedProperties: list("Attack")
+                            StrengthIsBase: True
+                            Range: 1
+                            RangeIsBase: True
+                Target: 1
+                Range: 99
+                AnimOverload: Control 
+                Filter:
+                    TargetType: Ally
+        Consumes:
+            TCIce:
+                Elements: Ice
+                AbilityOverrides:
+                    TCIceAttackBuff:
+                        ParentName: TAllyAttack
+                        Strength: 2
+                XP: 1
+        XP: 1
+    Bottom:
+        Abilities: 
+            BMove:
+                Move:
+                    Amount: 4
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BImmobilize:
+                Immobilize: True
+                Target: -1
+                Targeting: Custom
+                TargetingVars:
+                    AddValidActorsInRange: AllEnemyMonsters.Where(obj.IsOnHazardousTerrain())
+                AnimOverload: Cast Negative
+Layout:
+    Top:
+       - Row: "$FH/349_character_ability_cards_snowdancer_biting_frost_2$"
+       - Row: "<b><size=130%><sprite name=Move> *TAllyMove* <size=100%><voffset=1>@TAllyMove@"
+       - Row: "<b><size=130%><sprite name=Attack> *TAllyAttack* <size=100%><voffset=1>@TAllyAttack@"
+       - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCIce
+                    Text: "+2<sprite name=Attack>,<sprite name=XP1>"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "$FH/349_character_ability_cards_snowdancer_biting_frost_3$"
+

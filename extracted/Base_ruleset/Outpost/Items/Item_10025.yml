@@ -1,0 +1,7 @@
+Parser: FHItem
+ID: 10025
+ScenarioItemID: 10025
+Name: MetallicScrap
+Quantity: 2
+Type: OneHandWeapon
+GoldCost: 30

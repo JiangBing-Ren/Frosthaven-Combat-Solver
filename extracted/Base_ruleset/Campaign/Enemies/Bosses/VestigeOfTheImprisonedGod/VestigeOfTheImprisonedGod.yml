@@ -1,0 +1,121 @@
+Parser: Enemy
+ID: VestigeOfTheImprisonedGodID
+LocKey: $FH/VestigeOfTheImprisonedGod$
+MonsterType: Boss
+Model: VestigeOfTheImprisonedGod
+StandeeLimit: 1
+PredominantlyMelee: True
+AbilityCards: [08740025, 08750026, 08760027, 08770028, 08780029, 08790030, 08800031, 08810032]
+# Base Stats
+Level0:
+    Health: 0
+    Move: 0
+    Attack: 3
+    Range: 99
+    Target: 1
+    Retaliate: 1
+    RetaliateRange: 3
+    Immunities: [Wound, Immobilize, Disarm, Stun, Muddle, Curse, Push, Pull, Move, Teleport2]
+    ImmuneToForcedMovement: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 16
+Level1:
+    Health: 0
+    Move: 0
+    Attack: 4
+    Range: 99
+    Target: 1
+    Retaliate: 1
+    RetaliateRange: 3
+    Immunities: [Wound, Immobilize, Disarm, Stun, Muddle, Curse, Push, Pull, Move, Teleport2]
+    ImmuneToForcedMovement: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 20
+Level2:
+    Health: 0
+    Move: 0
+    Attack: 4
+    Range: 99
+    Target: 1
+    Retaliate: 1
+    RetaliateRange: 3
+    Immunities: [Wound, Immobilize, Disarm, Stun, Muddle, Curse, Push, Pull, Move, Teleport2]
+    ImmuneToForcedMovement: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 25
+Level3:
+    Health: 0
+    Move: 0
+    Attack: 5
+    Range: 99
+    Target: 1
+    Retaliate: 2
+    RetaliateRange: 3
+    Immunities: [Wound, Immobilize, Disarm, Stun, Muddle, Curse, Push, Pull, Move, Teleport2]
+    ImmuneToForcedMovement: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 30
+Level4:
+    Health: 0
+    Move: 0
+    Attack: 5
+    Range: 99
+    Target: 1
+    Retaliate: 2
+    RetaliateRange: 3
+    Immunities: [Wound, Immobilize, Disarm, Stun, Muddle, Curse, Push, Pull, Move, Teleport2]
+    ImmuneToForcedMovement: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 37
+Level5:
+    Health: 0
+    Move: 0
+    Attack: 6
+    Range: 99
+    Target: 1
+    Retaliate: 2
+    RetaliateRange: 3
+    Immunities: [Wound, Immobilize, Disarm, Stun, Muddle, Curse, Push, Pull, Move, Teleport2]
+    ImmuneToForcedMovement: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 44
+Level6:
+    Health: 0
+    Move: 0
+    Attack: 7
+    Range: 99
+    Target: 1
+    Retaliate: 3
+    RetaliateRange: 3
+    Immunities: [Wound, Immobilize, Disarm, Stun, Muddle, Curse, Push, Pull, Move, Teleport2]
+    ImmuneToForcedMovement: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 60
+Level7:
+    Health: 0
+    Move: 0
+    Attack: 8
+    Range: 99
+    Target: 1
+    Retaliate: 3
+    RetaliateRange: 3
+    Immunities: [Wound, Immobilize, Disarm, Stun, Muddle, Curse, Push, Pull, Move, Teleport2]
+    ImmuneToForcedMovement: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 80

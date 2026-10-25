@@ -1,0 +1,83 @@
+Parser: AbilityCard
+Name: $FH/257_character_ability_cards_shattersong_transparency_1$
+Character: ShattersongID
+ID: 257
+Level: 2
+Initiative: 13
+Discard: [Discard,Discard]
+Prefab: 257_Shattersong_Transparency
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                Range: 4
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")     
+                Filter: [Enemy]
+                AnimOverload: RangedAttack
+                SubAbilities:
+                    TRevealCard:
+                        TreatAsNonSubAbility: True
+                        NullTargeting: True
+                        AutoTrigger: True
+                        Filter: Enemy
+                        MiscVars:
+                            DontCopy: True
+                        AnimOverload: Cast_Concentrate
+                        PerformVars:
+                            ApplyToActors:
+                                Target: ParentAbility.ActorsTargeted[0]
+                                # show next monster cards
+                                ShowMonsterCards: CustomAbility.ShowTopMonsterCards(Target)
+        Consumes:
+            TCResonance:
+                Resonance: 1
+                AbilityOverrides:
+                    CBuffAttack:
+                        ParentName: TAttack
+                        Strength: 1
+                        Pierce: 1
+                        MiscVars:
+                            PrintedProperties: list("Pierce")     
+                        AnimOverload: RangedAttackMedium
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 3
+                MiscVars:
+                    PrintedProperties: list("Move")     
+            BDisadvantage:
+                AttackersGainDisadvantage: 1
+                Range: 0
+                Target: -1
+                Filter: Self
+                AnimOverload: PowerUp
+                ActiveBonus:
+                    Duration: Round        
+        Infuse: Light
+Layout:
+    Top:
+        - Row:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column: "<mark=#FCD06E22><b><size=130%><sprite name=Range> *TAttack.Range*</mark>"
+        - Row: "$FH/257_character_ability_cards_shattersong_transparency_2$"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCResonance
+                    Text: "<size=100%>+1 <sprite name=Attack>, <sprite name=Pierce> 1"
+    Bottom:
+        - Row: "<sprite name=Move> *BMove*"
+        - Divider:
+        - Active:
+            Ability: BDisadvantage
+            ListLayout: "$FH/065_character_ability_cards_banner_spear_deflecting_maneuver_3$"
+            Layout: "$FH/065_character_ability_cards_banner_spear_deflecting_maneuver_3$"
+            Icon: "Positive_Disadvantage_Enemy_Attack"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Light

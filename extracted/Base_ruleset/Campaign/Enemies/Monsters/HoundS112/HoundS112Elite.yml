@@ -1,0 +1,74 @@
+Parser: Enemy
+ID: HoundS112EliteID
+LocKey: $HoundElite$
+MonsterType: Monster
+StandeeLimit: 6
+Model: Hound Elite
+NonEliteVariant: HoundS112ID
+PredominantlyMelee: True
+AbilityCards: [842, 843, 844, 845, 846, 847, 848, 849]
+# Base Stats
+Level0:
+    Health: 12
+    Move: 5
+    Attack: 2
+    Range: 1
+    Target: 1
+    Retaliate: 0
+    RetaliateRange: 0
+Level1:
+    Health: 12
+    Move: 5
+    Attack: 2
+    Range: 1
+    Target: 1
+    Retaliate: 2
+    RetaliateRange: 1
+Level2:
+    Health: 14
+    Move: 5
+    Attack: 3
+    Range: 1
+    Target: 1
+    Retaliate: 2
+    RetaliateRange: 1
+Level3:
+    Health: 16
+    Move: 5
+    Attack: 4
+    Range: 1
+    Target: 1
+    Retaliate: 2
+    RetaliateRange: 1
+Level4:
+    Health: 22
+    Move: 5
+    Attack: 4
+    Range: 1
+    Target: 1
+    Retaliate: 2
+    RetaliateRange: 1
+Level5:
+    Health: 26
+    Move: 5
+    Attack: 4
+    Range: 1
+    Target: 1
+    Retaliate: 3
+    RetaliateRange: 1
+Level6:
+    Health: 34
+    Move: 6
+    Attack: 5
+    Range: 1
+    Target: 1    
+    Retaliate: 3
+    RetaliateRange: 1
+Level7:
+    Health: 46
+    Move: 6
+    Attack: 6
+    Range: 1
+    Target: 1    
+    Retaliate: 3
+    RetaliateRange: 1

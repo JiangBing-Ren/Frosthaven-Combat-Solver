@@ -1,0 +1,66 @@
+Parser: Enemy
+ID: LightningEelEliteID
+LocKey: $FH/LightningEelElite$
+MonsterType: Monster
+StandeeLimit: 10
+Model: LightningEel Elite
+NonEliteVariant: LightningEelID
+PredominantlyMelee: True
+AbilityCards: [706, 707,708,709,710,711,712,713]
+# Base Stats
+Level0:
+    Health: 3
+    Move: 3
+    Attack: 2
+    Range: 1
+    Target: 1
+    IsWaterMonster: True
+Level1:
+    Health: 3
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    IsWaterMonster: True
+Level2:
+    Health: 5
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    IsWaterMonster: True
+Level3:
+    Health: 6
+    Move: 4
+    Attack: 3
+    Range: 1
+    Target: 1
+    IsWaterMonster: True
+Level4:
+    Health: 7
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+    IsWaterMonster: True
+Level5:
+    Health: 9
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+    IsWaterMonster: True
+Level6:
+    Health: 13
+    Move: 4
+    Attack: 5
+    Range: 1
+    Target: 1
+    IsWaterMonster: True
+Level7:
+    Health: 17
+    Move: 4
+    Attack: 6
+    Range: 1
+    Target: 1
+    IsWaterMonster: True

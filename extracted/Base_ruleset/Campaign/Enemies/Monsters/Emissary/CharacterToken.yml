@@ -1,0 +1,64 @@
+Parser: Enemy
+ID: CharacterTokenID
+LocKey: $FH/CharacterToken$
+MonsterType: Monster
+StandeeLimit: 6
+Model: [Barduu, Gurndel]
+PredominantlyMelee: True
+# Base Stats
+Level0:
+    Health: 1
+    Move: 0
+    Attack: 0
+    Range: 0
+    Target: 0
+    Immunities: [Push, Pull, Swap, Teleport2, ControlActor]
+Level1:
+    Health: 1
+    Move: 0
+    Attack: 0
+    Range: 0
+    Target: 0
+    Immunities: [Push, Pull, Swap, Teleport2, ControlActor]
+Level2:
+    Health: 1
+    Move: 0
+    Attack: 0
+    Range: 0
+    Target: 0
+    Immunities: [Push, Pull, Swap, Teleport2, ControlActor]
+Level3:
+    Health: 1
+    Move: 0
+    Attack: 0
+    Range: 0
+    Target: 0
+    Immunities: [Push, Pull, Swap, Teleport2, ControlActor]
+Level4:
+    Health: 1
+    Move: 0
+    Attack: 0
+    Range: 0
+    Target: 0
+    Immunities: [Push, Pull, Swap, Teleport2, ControlActor]
+Level5:
+    Health: 1
+    Move: 0
+    Attack: 0
+    Range: 0
+    Target: 0
+    Immunities: [Push, Pull, Swap, Teleport2, ControlActor]
+Level6:
+    Health: 1
+    Move: 0
+    Attack: 0
+    Range: 0
+    Target: 0
+    Immunities: [Push, Pull, Swap, Teleport2, ControlActor]
+Level7:
+    Health: 1
+    Move: 0
+    Attack: 0
+    Range: 0
+    Target: 0
+    Immunities: [Push, Pull, Swap, Teleport2, ControlActor]

@@ -1,0 +1,13 @@
+Parser: CampaignSection
+ID: 116.3
+Name: Library Upgraded (1)
+SkipCompletedNotification: False
+Effects:
+    - Type: EnableEvent
+      Param1: WR-46
+    - Type: EnableEvent
+      Param1: SR-48
+    - Type: UnlockClass
+      Param1: InfuserID
+    - Type: UnlockScenario
+      Param1: 134

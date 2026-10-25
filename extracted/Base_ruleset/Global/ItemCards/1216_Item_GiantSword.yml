@@ -1,0 +1,35 @@
+Parser: ItemCard
+ID: 1216
+StringID: GiantSwordID
+Name: $FH/1216_item_cards_giant_sword_1$
+Art: Giant Sword
+TotalInGame: 1
+Cost: 40
+Slot: TwoHand 
+Rarity: Rare
+Usage: Spent
+Trigger: SingleTarget
+Data:     
+    ItemRequirements:
+        Vars:
+            ItemOwner: Ability.TargetingActor
+            ValidateHasntMoved: ItemOwner.TilesMovedThisRound == 0
+    Overrides:
+        OAttack:
+            Strength: 2
+            SubAbilities:
+                APreventMove:
+                    Filter: Self
+                    AutoTrigger: True
+                    ImmunityTo: Move
+                    ActiveBonus:
+                        Duration: Turn
+                        ListLayoutOverride: [$FH/1216_item_cards_giant_sword_3$, Negative_MovePrevent_Item]
+    CompareAbility:
+        AbilityType: Attack
+        IsMelee: True
+        Filter: Enemy
+    AddModifiers:
+        - [AMC_Basic_M1, 3]
+Layout: 
+    - Row: $FH/1216_item_cards_giant_sword_2$

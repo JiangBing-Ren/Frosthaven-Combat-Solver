@@ -1,0 +1,6 @@
+Parser: AttackModifier
+Name: AMC_Shield1_P1
+MathModifier: "+1"
+Abilities:
+    ShieldAbility:
+        Shield: 1

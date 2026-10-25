@@ -1,0 +1,24 @@
+Parser: ItemCard
+ID: 956
+StringID: DuelistsShoesID
+Name: $FH/0956_item_cards_duelists_shoes_1$
+Art: Duelists Shoes
+TotalInGame: 2
+Cost: 0
+Slot: Legs 
+Rarity: Rare
+Usage: Spent
+Trigger: DuringOwnTurn
+Data: 
+    ItemRequirements:
+        Vars:
+            ItemOwner: Actor
+            ValidateHasEnemiesInRange: GameState.GetAllEnemiesInRange(Actor, Actor.ArrayIndex, 3).Count > 0
+    Abilities:
+        AMove:
+            Move:
+                Amount: 2
+            MoveRestrictionType: MustEndNextToEnemy
+Layout: 
+    - Row: "$FH/0956_item_cards_duelists_shoes_2$"
+    - Row: "$FH/0956_item_cards_duelists_shoes_3$"

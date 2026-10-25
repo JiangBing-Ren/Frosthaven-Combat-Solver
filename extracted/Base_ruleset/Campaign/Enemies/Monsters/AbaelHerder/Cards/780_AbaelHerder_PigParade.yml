@@ -1,0 +1,14 @@
+Parser: EnemyCard
+ID: 780
+Name: $Monster_Ability_780_AbaelHerder_PigParade$
+Initiative: 68
+Shuffle: True
+Data:
+    Abilities:
+        Summon1:
+            Summon: PiranhaPigID
+            Target: 1
+            TargetIsBase: True
+            AnimOverload: Summon
+            TextOnly: True
+            Text: "$FH/0780_monster_ability_cards_abael_herder_pig_parade_2$"

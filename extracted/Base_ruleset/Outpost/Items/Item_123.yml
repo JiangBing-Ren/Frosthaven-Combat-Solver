@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 123
+ScenarioItemID: 1111
+Name: Leather Armor
+Quantity: 2
+GoldCost: 15
+Type: Body
+IsNewCharacterItem: True

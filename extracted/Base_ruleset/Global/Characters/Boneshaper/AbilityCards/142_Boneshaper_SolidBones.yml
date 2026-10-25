@@ -1,0 +1,99 @@
+Parser: AbilityCard
+Name: $FH/142_character_ability_cards_boneshaper_solid_bones_1$
+Character: BoneshaperID
+ID: 142
+Level: 5
+Initiative: 32
+Discard: [Lost,Discard]
+Prefab: 142_Boneshaper_SolidBones
+Data:
+    Top:
+        XP: 2
+        Abilities:
+            TBuffSkeletons:
+                Range: 99
+                NullTargeting:
+                AnimOverload: PowerUpPotent
+                Filter: [Self]
+                SubAbilities:
+                    BuffPierce:
+                        SkipAnim: true
+                        AutoTrigger: true
+                        Attack: 0
+                        MiscVars:
+                            PrintedProperties: list("Pierce")
+                        AttackEffect:
+                            Type: StandardBuff
+                            Pierce: 1
+                        ActiveBonus:
+                            Duration: Persistent
+                            IsAura: True
+                            AuraTargeting: All
+                            Behaviour: BuffAttack
+                            AuraFilter:
+                                TargetType: [OwnSummon]
+                                HeroSummonClasses: [ShamblingSkeletonID]
+                    BuffMove:
+                        SkipAnim: true
+                        AutoTrigger: true
+                        Move:
+                            Amount: 1
+                        MiscVars:
+                            PrintedProperties: list("Move")
+                        MiscVars:
+                            ApplyToMonsterStats: True
+                        ActiveBonus:
+                            Duration: Persistent
+                            IsAura: True
+                            AuraTargeting: All
+                            Behaviour: BuffMove
+                            AuraFilter:
+                                TargetType: [OwnSummon]
+                                HeroSummonClasses: [ShamblingSkeletonID]
+                    BuffHealth:
+                        SkipAnim: true
+                        AutoTrigger: true
+                        AllowOverheal: 1
+                        MiscVars:
+                            PrintedProperties: list("Heal")
+                        ActiveBonus:
+                            Duration: Persistent
+                            IsAura: True
+                            AuraTargeting: All
+                            Behaviour: AddAccumulativeOverhealAndHeal
+                            AuraFilter:
+                                TargetType: [OwnSummon]
+                                HeroSummonClasses: [ShamblingSkeletonID]
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 4
+                    SquareEnhancements: 1  
+                MiscVars:
+                    PrintedProperties: list("Move")      
+
+        Infuse: Earth
+Layout:
+    Top:
+        - Row: "$FH/142_character_ability_cards_boneshaper_solid_bones_2$"
+        - Active:
+            Ability: BuffHealth
+            ListLayout: "$FH/142_character_ability_cards_boneshaper_solid_bones_2$ +1<sprite name=Health>"
+            Layout: "+1<sprite name=Health>"
+            Icon: Positive_HealthPlus_Summon
+        - Active:
+            Ability: BuffMove
+            ListLayout: "$FH/142_character_ability_cards_boneshaper_solid_bones_2$ +1<sprite name=Move>"
+            Layout: "+1<sprite name=Move>"
+            Icon: Positive_MovePlus_Summon
+        - Active:
+            Ability: BuffPierce
+            ListLayout: "$FH/142_character_ability_cards_boneshaper_solid_bones_2$ +1<sprite name=Pierce>"
+            Layout: "+1<sprite name=Pierce>"
+            Icon: Positive_Pierce_Summon
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=130%><voffset=1>@BMove@"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Earth

@@ -1,0 +1,44 @@
+Parser: PetCard
+ID: 367
+StringID: SnowImpPetID
+Name: $FH/367_pet_cards_snow_imp_1$
+Description: $FH/367_pet_cards_snow_imp_2$
+Art: Snow Imp
+Usage: Consumed
+Trigger: DuringOwnTurn
+PetUnlockedBy: SnowImpID
+Cost: 0
+Data: 
+    Abilities:
+        # fake ability first, in order to give us something to undo before triggering the in-order abilities
+        AChooseToGrantMove:
+            NullTargeting:
+            Filter: Self
+            Range: -1
+            Target: 1
+            AnimOverload: UseItem
+            PerformVars:
+                ActorIsApplying: 
+                    VFX: TargetingActor.PlayVFX("PetSnowImpEffect")
+            PreviewEffectText: ""
+            SubAbilities:
+                AGrantMove:
+                    PreviewEffectText: ""
+                    TreatAsNonSubAbility: True
+                    ControlActor:
+                        Abilities:
+                            AMove:
+                                AutoTrigger: True
+                                Move: 2
+                                Target: 1
+                    Target: -1
+                    Targeting: Custom
+                    TargetingVars:
+                        AddValidActorsInRange: CustomAbility.PlayersSortedByInitiative()
+                    Filter: [Ally,Self]
+                    AutoTrigger: True            
+                    SkipAnim: True
+                    MiscVars:
+                        DontPreviewDescription: True
+Layout: 
+    - Row: "$FH/367_pet_cards_snow_imp_2$"

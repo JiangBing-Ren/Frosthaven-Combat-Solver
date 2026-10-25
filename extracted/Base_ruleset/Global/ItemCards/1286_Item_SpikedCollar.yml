@@ -1,0 +1,18 @@
+Parser: ItemCard
+ID: 1286
+StringID: SpikedCollarID
+Name: $FH/1286_item_cards_spiked_collar_1$
+Art: Spiked Collar
+TotalInGame: 2
+Cost: 0
+Slot: Head
+Rarity: Rare
+Usage: Spent
+Trigger: DuringOwnTurn
+Data:    
+    Abilities:
+        WoundSelf:
+            Wound: True
+            Filter: Self
+Layout: 
+    - Row: $FH/1286_item_cards_spiked_collar_2$

@@ -1,0 +1,13 @@
+Parser: ScenarioAbility
+ID: FH061_Door1Moon
+ScenarioAbility:
+    AAttackBuffRanged:
+        Attack: 1
+        ActiveBonus:
+            ListLayoutOverride: ["+{0} <sprite name=Attack> $To_AllAttacks$", Positive_AttackPlus_Campaign]
+            Duration: Persistent
+            Behaviour: BuffAttack
+            GroupID: "Moonshard"
+        AnimOverload: None
+        Filter: Self
+        AutoTrigger: True

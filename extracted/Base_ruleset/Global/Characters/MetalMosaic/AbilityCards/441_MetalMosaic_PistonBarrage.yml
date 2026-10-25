@@ -1,0 +1,125 @@
+Parser: AbilityCard
+Name: $FH/441_character_ability_cards_metal_mosaic_piston_barrage_1$
+Character: MetalMosaicID
+ID: 441
+Level: 8
+Initiative: 33
+Discard: [Discard,Discard]
+Prefab: 441_MetalMosaic_PistonBarrage
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 
+                    Amount: 4
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Filter: Enemy
+            TAttackOver:
+                Attack: 3
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Filter: Enemy
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredPressure: Over
+                CanSkip: False
+            TAttackOver2:
+                Attack: 3
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Filter: Enemy
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredPressure: Over
+                CanSkip: False
+            OverSelfDamage:
+                Damage: 1
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                AutoTrigger: True
+                Filter: Self
+                SkipAnim: True
+                MiscVars:
+                    MetalMosaicSelfDamage: True
+                PerformVars:
+                    OnAbilityEnded:
+                        ChangePressureOver: AbilityHasHappened && TargetingActor.Pressure.ToString() == 'Over' && CustomAbility.PressureChange(TargetingActor, -1)
+                StatIsBasedOnX:
+                    XP:
+                        BasedOn: Vars
+                        Vars:
+                            OverPressure: TargetingActor.Pressure.ToString() == 'Over'
+                            Value: OverPressure && 1 || 0
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredPressure: Over
+                    Vars:
+                        AttackOver1: CustomAbility.FindAbilityInPhaseByName("TAttackOver")
+                        AttackOver2: CustomAbility.FindAbilityInPhaseByName("TAttackOver2")
+                        ValidateHasAttacked: (AttackOver1 != null && AttackOver1.AbilityHasHappened) || (AttackOver2 != null && AttackOver2.AbilityHasHappened)
+            TAttackHigh:
+                Attack: 3
+                Filter: Enemy
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredPressure: High
+                CanSkip: False
+                PerformVars:
+                    PreActorIsAttacking:
+                        ChangePressureHigh: TargetingActor.Pressure.ToString() == 'High' && CustomAbility.PressureChange(TargetingActor, -1)
+                XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BDamage:
+                Damage: 2
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Target: -1
+                Range: 1
+                Filter: Enemy
+                AnimOverload: SteamBlast
+            BDestroyObstacles:
+                DestroyObstacle: True
+                Range: 1
+                Target: -1
+                CanSkip: False
+                SkipAnim: True
+            BPressureChangeGain:
+                Null: True
+                SkipAnim: True
+                IgnoreStun: True
+                PerformVars:
+                    NullBegin:
+                        ChangePressure: CustomAbility.PressureChange(TargetingActor, 1)
+                
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Divider:
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureOver><size=100%> <sprite name=Attack> 3"
+                - Divider:
+                - Row: "<size=130%><sprite name=MMPressureOver><size=100%> <sprite name=Attack> 3, <sprite name=XP1>, <sprite name=MMSelfDamage>, <sprite name=MMLosePressure>"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureHigh><size=100%> <sprite name=Attack> 3, <sprite name=XP1>, <sprite name=MMLosePressure>"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "$FH/441_character_ability_cards_metal_mosaic_piston_barrage_2$"
+        - Divider:
+        - MandatoryTrigger:
+            Layout:
+                - Row: "$FH/441_character_ability_cards_metal_mosaic_piston_barrage_3$"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<sprite name=MMGainPressure>"

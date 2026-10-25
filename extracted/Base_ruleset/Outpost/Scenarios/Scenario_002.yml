@@ -1,0 +1,15 @@
+Parser: FHScenario
+ID: 2
+Name: Algox Scouting
+LevelID: FS_002_Algox_Scouting
+Chain: Introduction
+Location: CopperneckMountaions
+Difficulty: 1
+Conclusions:
+    - Effects:
+        - Type: AllCharactersAddPerkCheck
+          Param1: 1
+        - Type: LockScenario
+          Param1: 3
+        - Type: UnlockMandatoryScenario
+          Param1: 4

@@ -1,0 +1,41 @@
+Parser: AbilityCard
+Name: $FH/019_character_ability_cards_drifter_dual_bow_1$
+Character: DrifterID
+ID: 19
+Level: 3
+ProgressionOrder: 18
+Initiative: 26
+Discard: [Discard,Lost]
+Prefab: 19_Drifter_DualBow
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 2
+                    SquareEnhancements: 1
+                Range: 3
+                Target: 2
+                MiscVars:
+                    PrintedProperties: list("Attack","Target","Range")
+                Filter: [Enemy]
+                AnimOverload: RangedAttack
+    Bottom:
+        Abilities:
+            BMoveTracker:
+                Filter: Self
+                MoveActiveBonusTracker: -4
+                Vars:
+                    NumberOfCardsToSelect: 2
+                AnimOverload: PowerUp
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "15,35,35,15"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack*<size=100%><voffset=1>@TAttack@"
+            - Column:
+                - AddedEffect: "<sprite name=Target>2, <sprite name=Range>3"
+            - Column:
+    Bottom:
+        - Row: "$FH/019_character_ability_cards_drifter_dual_bow_2$"

@@ -1,0 +1,11 @@
+Parser: ScenarioAbility
+ID: FH061_Door1Player
+ScenarioAbility:
+    BDisadvantage:
+        Attack: 0
+        AttackHasDisadvantage: True
+        ActiveBonus:
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_061_SCENARIO_MODIFIER_3$, Negative_Disadvantage_Campaign]
+            Behaviour: BuffAttack
+            Duration: Persistent
+            ValidAbilityType: Attack

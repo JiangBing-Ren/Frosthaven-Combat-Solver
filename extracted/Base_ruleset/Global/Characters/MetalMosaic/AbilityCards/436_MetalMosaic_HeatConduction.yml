@@ -1,0 +1,135 @@
+Parser: AbilityCard
+Name: $FH/436_character_ability_cards_metal_mosaic_heat_conduction_1$
+Character: MetalMosaicID
+ID: 436
+Level: 5
+Initiative: 11
+Discard: [Discard,Discard]
+Prefab: 436_MetalMosaic_HeatConduction
+Data:
+    Top:
+        Abilities:
+            TRetaliate:
+                Retaliate: 3
+                MiscVars:
+                    PrintedProperties: list("Retaliate")
+                Filter: Self
+                AnimOverload: CastNeutral
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredPressure: Over
+                CanSkip: False
+                StatIsBasedOnX:
+                    XP:
+                        BasedOn: Vars
+                        AddTo: True
+                        Vars:
+                            OverPressure: TargetingActor.Pressure.ToString() == 'Over'
+                            Value: OverPressure && 1 || 0
+                SubAbilities:
+                    SubPressureChangeLow:
+                        Null: True
+                        SkipAnim: True
+                        IgnoreStun: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Over
+                        PerformVars:
+                            NullBegin:
+                                ChangePressure: CustomAbility.PressureChange(TargetingActor, -1)
+            TShield:
+                Shield:
+                    Amount: 1
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                PerformVars:
+                    ApplyToActors:
+                        ChangePressureLow: TargetingActor.Pressure.ToString() == 'Low' && CustomAbility.PressureChange(TargetingActor, 1)
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: Vars
+                        AddTo: True
+                        Vars:
+                            LowPressure: TargetingActor.Pressure.ToString() == 'Low'
+                            Value: LowPressure && 2 || 0
+                    XP:
+                        BasedOn: Vars
+                        Vars:
+                            LowPressure: TargetingActor.Pressure.ToString() == 'Low'
+                            Value: LowPressure && 1 || 0
+        Infuse: Ice
+    Bottom:
+        Abilities:
+            BActive:
+                AddActiveBonus:
+                    HelpBoxTooltipLocKey: $FH/436_character_ability_cards_metal_mosaic_heat_conduction_2$
+                    Heal: 2
+                    MiscVars:
+                        PrintedProperties: list("Heal")
+                    Filter: Self
+                    PerformVars:
+                        ApplyToActors:
+                            ChangePressure: CustomAbility.PressureChange(TargetingActor, 1)
+                HelpBoxTooltipLocKey: $FH/436_character_ability_cards_metal_mosaic_heat_conduction_2$
+                AnimOverload: CastNeutral
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: DuringActionAbilityOnFinishedMovement
+                    ListLayoutOverride: [$FH/436_character_ability_cards_metal_mosaic_heat_conduction_2$, Positive_HealSelf_Ally_Move]
+                    IsAura: True
+                    TriggerOnCaster: True
+                    # card specifically says "finishes a move ability" so push/pull/teleport shouldn't trigger this
+                    ValidAbilityType: Move
+                    AuraTargeting: Range
+                    AuraFilter: 
+                        TargetType: [Ally]     
+                        UseTargetOriginalType: True                
+                        Vars:
+                            ValidateActorIsAdjacent: target.GetDistanceTo(self) <= 1
+                Range: 1
+                Target: -1
+                Filter: Self
+                MiscVars:
+                    FinishPressure: Over
+            BPressureChangeLose:
+                Null: True
+                SkipAnim: True
+                IgnoreStun: True
+                PerformVars:
+                    NullBegin:
+                        ChangePressure: CustomAbility.PressureChange(TargetingActor, -1)
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    Vars: 
+                        ValidateActionHasHappened: CustomAbility.HasPerformedAction(Ability) 
+        XP: 1
+Layout:
+    Top:
+        - Active:
+            Ability: TRetaliate
+            Icon: Positive_Retaliate
+            ListLayout: "<sprite name=Shield> *TRetaliate*"
+            Layout: "<sprite name=Shield> *TRetaliate*"
+        - Active:
+            Ability: TShield
+            Icon: Positive_Shield
+            ListLayout: "<sprite name=Shield> *TShield*"
+            Layout: "<sprite name=Shield> *TShield* @TShield@"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureOver><size=100%><sprite name=Retaliate> 3, <sprite name=XP1>, <sprite name=MMLosePressure>"
+        - Divider:
+        - Row: "<sprite name=Shield> *TShield* <size=100%><voffset=1>@TShield@"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureLow><size=100%> +2<sprite name=Shield>, <sprite name=XP1>, <sprite name=MMGainPressure>"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Ice
+    Bottom:
+        - Row: "$FH/436_character_ability_cards_metal_mosaic_heat_conduction_2$"
+        - Row: "$FH/436_character_ability_cards_metal_mosaic_heat_conduction_3$"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<sprite name=MMLosePressure>"

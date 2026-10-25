@@ -1,0 +1,76 @@
+Parser: AbilityCard
+Name: $FH/089_character_ability_cards_banner_spear_hail_of_spears_1$
+#CustomImage: KRO_BANNER_SPEAR_AbilityCards_HailOfSpears
+Character: BannerSpearID
+ID: 89
+Level: 9
+Initiative: 44
+Discard: [Discard, Permanently Lost]
+Prefab: 89_Bannerspear_HailOfSpears
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 5
+                    DiamondEnhancements: 1
+                Range: 4
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                Target: 1
+                StatIsBasedOnX:
+                    Target:
+                        BasedOn: TargetAdjacentBannerSummonsOfCaster
+                        AddTo: True
+                        Multiplier: 1
+                AnimOverload: RangedAttack
+            TTeleport:
+                Teleport2: 99
+                Range: 1
+                Target: -1
+                Filter: OwnBannerSummon
+                Flags: AdjacentToAttackTargets
+                CanSkip: false
+                MiscVars:
+                    UseFade: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [ Attack ]
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 4
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BSummon:
+                AutoTrigger: True
+                Filter: Self
+                HelpBoxTooltipLocKey: $089_character_ability_cards_banner_spear_hail_of_spears_4$
+                SelectAndPlayCard:
+                    CardPile: Lost  
+                    Amount: 2
+                    MinRequiredCards: 1
+                MiscVars:
+                    SpecificCards: list(62, 73, 76, 82, 88)
+                    IsCardValid: SpecificCards.Contains(AbilityCard.ID)
+                    IsActionValid: Action.Abilities.Any(obj.AbilityType == CAbility.EAbilityType.Summon)
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "25,25,25,25"
+            - Column:
+            - Column: 
+                - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column: 
+                - Row: "<b><size=130%><sprite name=Range> *TAttack.Range*"
+            - Column:
+        - Row: "<size=50%> "
+        - Row: $FH/089_character_ability_cards_banner_spear_hail_of_spears_2$
+        - Row: "<size=50%> "
+        - Row: $FH/089_character_ability_cards_banner_spear_hail_of_spears_3$
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%>"
+        - Row: "<size=100%> "
+        - Row: $FH/089_character_ability_cards_banner_spear_hail_of_spears_4$

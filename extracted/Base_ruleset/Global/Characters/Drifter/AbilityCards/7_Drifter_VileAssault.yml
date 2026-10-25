@@ -1,0 +1,61 @@
+Parser: AbilityCard
+Name: $FH/7_character_ability_cards_drifter_vile_assault_1$
+Character: DrifterID
+ID: 7
+Level: 1
+ProgressionOrder: 6
+Initiative: 27
+Discard: [Lost,Discard]
+Prefab: 7_Drifter_VileAssault
+Data:
+    Top:
+        Abilities:
+            TAttack1:
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Conditions: [Poison]
+            TAttack2:
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Conditions: [Wound]
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BHeal:
+                Heal: 2
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: [Self]
+                AnimOverload: Heal
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "30,20,20,30"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack1*<size=100%><voffset=1>@TAttack1@"
+            - Column:
+                - AddedEffect: "<size=130%><sprite name=Poison></size>"
+            - Column:
+        - Divider:
+        - Row:
+            - ColumnWidths: "30,20,20,30"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack2*<size=100%><voffset=1>@TAttack2@"
+            - Column:
+                - AddedEffect: "<size=130%><sprite name=Wound></size>"
+            - Column:
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove*<size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "$FH/7_character_ability_cards_drifter_vile_assault_2$"

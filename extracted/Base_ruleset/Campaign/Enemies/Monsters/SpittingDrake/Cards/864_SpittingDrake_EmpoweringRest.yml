@@ -1,0 +1,22 @@
+Parser: EnemyCard
+ID: 864
+Name: $Monster_Ability_Drake_EmpoweringRest$
+Initiative: 06
+Shuffle: False
+Data:
+    Abilities: 
+        Shield1:
+            Shield: 2
+            Filter: Self
+            AnimOverload: PowerUp   
+            ActiveBonus:
+                Duration: Round
+                ListLayoutOverride: ["<sprite name=Shield> *Shield1*", Positive_Shield]
+        Heal1:
+            Heal: 2
+            Filter: Self
+            SkipAnim: True 
+        Strengthen1:
+            Strengthen: True
+            Filter: Self
+            SkipAnim: True

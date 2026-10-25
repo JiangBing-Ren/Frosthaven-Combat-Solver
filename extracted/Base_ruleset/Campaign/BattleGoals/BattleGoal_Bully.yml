@@ -1,0 +1,15 @@
+Parser: BattleGoal
+ID: BattleGoal_Bully
+LocalisedName: FH/1306_battle_goals_bully_1
+LocalisedDescription: FH/1306_battle_goals_bully_2
+# kill 1 actor with 2 or more negative conditions at the time
+PerkChecks: 1
+BattleGoalCondition:
+    - Targets:
+        Filter: KillTargetWithXNegativeConditions
+        MonsterType: [Normal, Elite, Boss]
+        CharacterTypes:
+            Target: [Enemy,Enemy2]
+        Value: 1
+        CompareVal1: 2
+        SubFilter: Scenario

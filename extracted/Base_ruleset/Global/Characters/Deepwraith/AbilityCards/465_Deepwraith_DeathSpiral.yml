@@ -1,0 +1,72 @@
+Parser: AbilityCard
+Name: $FH/465_character_ability_cards_deepwraith_death_spiral_1$
+Character: DeepwraithID
+ID: 465
+Level: 5
+Initiative: 48
+Discard: [Discard,Discard]
+Prefab: 465_Deepwraith_DeathSpiral
+Data:
+    Top:
+        Abilities:
+            TBuffNextBane:
+                AddActiveBonus:
+                    Null: True
+                Filter: Self
+                ActiveBonus:
+                    Duration: Persistent
+                    IsAura: True
+                    AuraFilter: [Self]
+                    AuraTargeting: All
+                    Behaviour: OverrideAbility
+                    ValidAbilityTypes: [Bane]
+                    XPTracker: [0]
+                    ActiveBonusAbilityOverrides:
+                        TCOverride:
+                            Conditions: [Stun, Curse, Curse]
+        Infuse: Dark
+    Bottom:
+        Abilities:
+            BGainAdvantagePierce:
+                Filter: [Self]
+                Attack: 0
+                AttackEffect:
+                    Type: StandardBuff
+                    Pierce: 2 
+                MiscVars:
+                    PrintedProperties: list("PierceBuff")
+                AttackHasAdvantage: True
+                ActiveBonus:
+                    Duration: Round
+                    Behaviour: BuffAttack   
+            BTeleport:
+                Teleport2: 
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Teleport")
+                Filter: Self
+                AnimOverload: Teleport Into
+                AnimOverload2: Teleport Outof
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    Vars:
+                        ValidateHasInvisibility: TargetingActor.Tokens.HasKey(CCondition.EPositiveCondition.Invisible)
+Layout:
+    Top:
+        - Active:
+              Ability: TBuffNextBane
+              ListLayout: "$FH/465_character_ability_cards_deepwraith_death_spiral_2$"
+              Layout: "$FH/465_character_ability_cards_deepwraith_death_spiral_2$"
+              Icon: "Positive_Bane_Stun_Curse"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark
+    Bottom:
+        - Active:
+              Ability: BGainAdvantagePierce
+              ListLayout: "$FH/465_character_ability_cards_deepwraith_death_spiral_3$"
+              Layout: "$FH/465_character_ability_cards_deepwraith_death_spiral_3$"
+              Icon: "Positive_Advantage_Pierce"
+        - Divider:
+        - Row: "$FH/465_character_ability_cards_deepwraith_death_spiral_4$"

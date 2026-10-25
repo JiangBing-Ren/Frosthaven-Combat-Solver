@@ -1,0 +1,97 @@
+Parser: Enemy
+ID: FishKingAllyID
+LocKey: $FH/FishKingAlly$
+MonsterType: Boss
+Model: FishKing
+StandeeLimit: 1
+PredominantlyMelee: True
+# AbilityCards: [08740017, 08750018, 08760019, 08770020, 08780021, 08790022, 08800023, 08810024]
+# Base Stats
+Level0:
+    Health: 0
+    Move: 3
+    Attack: 3
+    Range: 0
+    Target: 1
+    Immunities: [Poison, Wound, Immobilize, Disarm, Stun, Muddle, Curse, Sleep, Bane, Brittle, Invisible, Strengthen, Bless, Heal, Regenerate, Ward, ControlActor]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 5
+Level1:
+    Health: 0
+    Move: 3
+    Attack: 4
+    Range: 0
+    Target: 1
+    Immunities: [Poison, Wound, Immobilize, Disarm, Stun, Muddle, Curse, Sleep, Bane, Brittle, Invisible, Strengthen, Bless, Heal, Regenerate, Ward, ControlActor]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 5       
+Level2:
+    Health: 0
+    Move: 3
+    Attack: 5
+    Range: 0
+    Target: 1
+    Immunities: [Poison, Wound, Immobilize, Disarm, Stun, Muddle, Curse, Sleep, Bane, Brittle, Invisible, Strengthen, Bless, Heal, Regenerate, Ward, ControlActor]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 6           
+Level3:
+    Health: 0
+    Move: 4
+    Attack: 5
+    Range: 0
+    Target: 1
+    Immunities: [Poison, Wound, Immobilize, Disarm, Stun, Muddle, Curse, Sleep, Bane, Brittle, Invisible, Strengthen, Bless, Heal, Regenerate, Ward, ControlActor]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 8
+Level4:
+    Health: 0
+    Move: 4
+    Attack: 6
+    Range: 0
+    Target: 1
+    Immunities: [Poison, Wound, Immobilize, Disarm, Stun, Muddle, Curse, Sleep, Bane, Brittle, Invisible, Strengthen, Bless, Heal, Regenerate, Ward, ControlActor]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 9
+Level5:
+    Health: 0
+    Move: 4
+    Attack: 6
+    Range: 0
+    Target: 1
+    Immunities: [Poison, Wound, Immobilize, Disarm, Stun, Muddle, Curse, Sleep, Bane, Brittle, Invisible, Strengthen, Bless, Heal, Regenerate, Ward, ControlActor]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 12
+Level6:
+    Health: 0
+    Move: 4
+    Attack: 7
+    Range: 0
+    Target: 1
+    Immunities: [Poison, Wound, Immobilize, Disarm, Stun, Muddle, Curse, Sleep, Bane, Brittle, Invisible, Strengthen, Bless, Heal, Regenerate, Ward, ControlActor]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 16
+Level7:
+    Health: 0
+    Move: 4
+    Attack: 8
+    Range: 0
+    Target: 1
+    Immunities: [Poison, Wound, Immobilize, Disarm, Stun, Muddle, Curse, Sleep, Bane, Brittle, Invisible, Strengthen, Bless, Heal, Regenerate, Ward, ControlActor]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 20

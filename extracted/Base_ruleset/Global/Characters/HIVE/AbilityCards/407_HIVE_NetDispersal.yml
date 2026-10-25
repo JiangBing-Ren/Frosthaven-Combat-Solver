@@ -1,0 +1,68 @@
+Parser: AbilityCard
+Name: $FH/407_character_ability_cards_hive_net_dispersal_1$
+Character: HIVEID
+ID: 407
+Level: 5
+Initiative: 94
+Discard: [Lost,Discard]
+Prefab: 407_HIVE_NetDispersal
+Data:
+    Top:
+        XP: 2
+        Abilities:
+            TSummon:
+                Summon: TrappingUnitID
+                AnimOverload: Summon
+        Mode:
+            DebuffMove:
+                AutoTrigger: True
+                ImmunityTo: Move
+                Filter: Self
+                ActiveBonus:
+                    Duration: Persistent
+            BuffImmobilize:
+                AutoTrigger: True
+                Attack: 0
+                Conditions: Immobilize
+                Filter: Self
+                ActiveBonus:
+                    Behaviour: BuffAttack
+                    Duration: Persistent
+    Bottom:
+        Abilities:
+            BImmobilize:
+                Immobilize: True
+                Target: 3
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Range","Target")
+                Filter: Enemy
+                AnimOverload: NetDispersal
+Layout:
+    Top:
+        - Active:
+              Ability: "TSummon"
+              Icon: "Summon"
+              Layout:
+                  - Summon:
+                        Ability: TSummon
+                        SummonName: $FH/407_character_ability_cards_hive_net_dispersal_2$
+                        SpecialText:
+                            - Row: "$FH/407_character_ability_cards_hive_net_dispersal_3$"
+                            - Row: "<sprite name=Immobilize>"
+        - Row:
+            - Column: "<sprite name=HIVEMode>"
+            - Column:
+                - Active:
+                    Ability: "DebuffMove"
+                    Icon: "Negative_MovePrevent_HIVEMode"
+                    ListLayout: "$FH/407_character_ability_cards_hive_net_dispersal_4$"
+                    Layout: "$FH/407_character_ability_cards_hive_net_dispersal_4$"
+            - Column:
+                - Active:
+                    Ability: "BuffImmobilize"
+                    Icon: "Positive_Immobilize_Attack_HIVEMode"
+                    ListLayout: "$FH/407_character_ability_cards_hive_net_dispersal_5$"
+                    Layout: "$FH/407_character_ability_cards_hive_net_dispersal_5$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Immobilize> <size=100%> <sprite name=Target>*BImmobilize.Target*, <sprite name=Range>*BImmobilize.Range*"

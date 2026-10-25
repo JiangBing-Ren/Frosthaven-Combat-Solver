@@ -1,0 +1,97 @@
+Parser: Enemy
+ID: Ormi2ID
+LocKey: $Ormi$
+MonsterType: Monster
+Model: City Guard
+StandeeLimit: 1
+PredominantlyMelee: True
+AbilityCards: [9999751]
+# Base Stats
+Level0:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            xVariable: 8
+            yVariable: 2
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+Level1:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            xVariable: 8
+            yVariable: 2
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+Level2:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            xVariable: 8
+            yVariable: 2
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+Level3:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            xVariable: 8
+            yVariable: 2
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+Level4:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            xVariable: 8
+            yVariable: 2
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+Level5:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            xVariable: 8
+            yVariable: 2
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+Level6:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            xVariable: 8
+            yVariable: 2
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+Level7:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            xVariable: 8
+            yVariable: 2
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1

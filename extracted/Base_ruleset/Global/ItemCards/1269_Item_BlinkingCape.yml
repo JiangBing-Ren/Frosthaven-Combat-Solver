@@ -1,0 +1,24 @@
+Parser: ItemCard
+ID: 1269
+StringID: BlinkingCapeID
+Name: $FH/1269_item_cards_blinking_cape_1$
+Art: Blinking Cape
+TotalInGame: 1
+Cost: 50
+Slot: Body
+Rarity: Relic
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        ATeleport:
+            Teleport2: 4
+            Filter: Self
+            Vars:
+                ParentCaster: TargetingActor
+            MiscVars:
+                IsValidTeleportTile: GameState.GetAdjacentEnemies(ParentCaster, tile.m_ArrayIndex).Count > 0
+Layout: 
+    - Row: "$FH/1269_item_cards_blinking_cape_2$"
+    - Row: "<sprite name=Teleport> *ATeleport*"
+    - Row: "$FH/1269_item_cards_blinking_cape_3$"

@@ -1,0 +1,24 @@
+Parser: Mastery
+ID: Infuser_MASTERY_2
+LocalisedName: Infuser_MASTERY_2_Name
+LocalisedDescription: Infuser_MASTERY_2_Desc
+PerkPoints: 1
+# kill 4 targets, fail if you ever attack
+BattleGoalCondition:
+    - Targets: 
+        Filter: Kill
+        MonsterType: [Normal, Elite, Boss]
+        CharacterTypes:
+            Target: [Enemy,Enemy2]
+        SubFilter: Scenario
+        Value: 4
+BattleGoalFailCondition:
+    - Targets: 
+        Filter: UseAbility
+        AbilityTypes: [Attack]
+        HasHappened: True
+        SubFilter: Scenario
+        # only for the infuser
+        CharacterIDs: 
+            ActorID: InfuserID
+        Value: 1

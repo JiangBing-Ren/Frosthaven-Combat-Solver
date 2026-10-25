@@ -1,0 +1,12 @@
+Parser: FHScenario
+ID: 123
+Name: The Titan
+LevelID: FS_123_The_Titan
+Chain: Other
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: GainMorale
+          Param1: 1
+        - Type: GainInspiration
+          Param1: 1

@@ -1,0 +1,32 @@
+Parser: ItemCard
+ID: 964
+StringID: OrnateArmorID
+Name: $FH/0964_item_cards_ornate_armor_1$
+Art: Ornate Armor
+TotalInGame: 2
+Cost: 0
+Slot: Body
+Rarity: Rare
+Usage: Spent
+Trigger: PassiveEffect
+Data: 
+    Abilities:
+        AShield:
+            Shield: 2
+            Filter: Self
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: ShieldIncomingAttacks
+                XPTracker: [0,0]
+                IsToggleBonus: True
+                ValidAbilityType: Attack
+    CompareAbility:
+        AbilityType: Attack
+    AddModifiers:
+        - [AMC_Basic_M1, 4]
+Layout:
+    - Active:
+        Ability: AShield
+        ListLayout: $FH/0964_item_cards_ornate_armor_2$
+        Layout: $FH/0964_item_cards_ornate_armor_2$
+        Icon: Positive_Shield_Item

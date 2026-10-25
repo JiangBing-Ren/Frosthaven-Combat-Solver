@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 54
+ScenarioItemID: 1289
+Name: Restful Slippers
+Quantity: 2
+Type: Feet
+CraftingCost:
+    Snowthistle: 1
+RequiredCraftingItemIDs: [  6, 92 ]

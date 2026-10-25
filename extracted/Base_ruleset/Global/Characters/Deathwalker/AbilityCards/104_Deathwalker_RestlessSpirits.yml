@@ -1,0 +1,118 @@
+Parser: AbilityCard
+Name: $FH/104_character_ability_cards_deathwalker_restless_spirits_1$
+Character: DeathwalkerID
+ID: 104
+Level: 2
+Initiative: 20
+Discard: [Discard,Discard]
+Prefab: 104_Deathwalker_RestlessSpirits
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Conditions: [Curse]
+                Range: 1
+                Target: 1
+        Consumes:
+            TCBuffAttack:
+                CostAbility:
+                    ParentName: TAttack
+                    Vars:
+                        CanClearTargets: False
+                    RemoveShadow:
+                    Targeting: Custom
+                    TargetingVars:
+                        AddTileInRange: Ability.TargetingActor.Tile
+                        AddSelectedTile: Ability.TargetingActor.Tile
+                    #Range: 0
+                    AnimOverload: Shadow Manipulation
+                    StartAbilityRequirements:
+                        Type: ThisAbility
+                        Vars:
+                            ValidateHasValidTargets: CustomAbility.SteppedOnShadow(Actor.Tile)
+                AbilityOverrides:
+                    TCAttackBuff:
+                        ParentName: TAttack
+                        Strength: 3
+                        StatIsBasedOnX:
+                            XP:
+                                BasedOn: LevelTimesXPlusY
+                                Multiplier: 0
+                                SecondVariable: 1
+    Bottom:
+        Abilities:
+            BMoveShadows:
+                MoveShadow:
+                Target: 1
+                Range:
+                    Amount: 4
+                    SquareEnhancements: 1
+                AnimOverload: Shadow Manipulation
+            BNullSubDamage:
+                Damage: 3
+                Filter: Enemy
+                #IsInlineSubAbility: True
+                #AutoTrigger: True
+                #SkipAnim: True
+                CanUndo: False
+                Vars:
+                    CanClearTargets: False
+                    Shadow: CustomAbility.GetLastMovedShadowTile()
+                    ActorOnShadow: Shadow == null || CustomAbility.GetActorOnShadow(Ability, Shadow)
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    Vars:
+                        ValidateShadowIsUnderEnemy: ActorOnShadow != null
+                Targeting: Custom
+                TargetingVars:
+                    AddValidActorInRange: ActorOnShadow
+                    AddActorToTarget: ActorOnShadow
+                    AddTileInRange: Shadow
+                AnimOverload: Debuff    
+            BRemoveShadow:
+                RemoveShadow:
+                Target: 1
+                AutoTrigger: True
+                SkipAnim: True
+                Targeting: Custom
+                TargetingVars:
+                    Shadow: CustomAbility.GetLastMovedShadowTile()
+                    AddTileInRange: Shadow
+                    AddSelectedTile: Shadow
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Damage]
+            BGainXP:
+                GainXP: 1
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [RemoveShadow]
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "10,40,40,10"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%> <sprite name=Attack> *TAttack* <b><size=130%> @TAttack@"
+            - Column:
+                - Row: "<size=130%> <sprite name=Curse>"
+            - Column:
+        - Row: "<size=20%> "
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCBuffAttack
+                    Text: "$FH/104_character_ability_cards_deathwalker_restless_spirits_2$"
+    Bottom:
+        - Row: "$FH/104_character_ability_cards_deathwalker_restless_spirits_3$ @BMoveShadows.Range@"
+        - Row: "<size=20%> "
+        - Divider:
+        - Row: "<size=20%> "
+        - Row: "$FH/104_character_ability_cards_deathwalker_restless_spirits_4$"

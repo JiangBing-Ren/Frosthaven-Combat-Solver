@@ -1,0 +1,27 @@
+Parser: Perk
+ID: Trapper08
+Name: FH/PERK_Trapper_08_Name
+Description: FH/PERK_Trapper_08_Desc
+CharacterID: TrapperID
+Available: 1
+Flags: [Passive, ApplyActiveBonusesAtScenarioStart]
+Abilities:
+    OnLongRest:
+        Filter: Self
+        AutoTrigger: True
+        SkipAnim: True
+        AddActiveBonus:
+            CanUndo: False
+            Trap:
+                TrapName: TrapperTrap
+                Damage: 1                    
+            Range:
+                Amount: 1
+            RangeIsBase: True
+            Target: 1
+            TargetIsBase: True
+            AnimOverload: CreateTrap
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringActionAbilityOnLongRest
+            Hidden: True

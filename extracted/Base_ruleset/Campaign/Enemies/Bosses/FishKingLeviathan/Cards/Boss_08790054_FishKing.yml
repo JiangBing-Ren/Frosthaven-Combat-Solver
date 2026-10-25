@@ -1,0 +1,38 @@
+Parser: EnemyCard
+ID: 08790054
+Name: $Monster_Ability_Boss_FishKing_Special1$
+Initiative: 73
+Shuffle: False
+Data:
+    Abilities:  
+        AMove:
+            Move: 0
+        AAttack:
+            Attack: -1
+            MultiPassAttack: False
+            Targeting: Custom
+            TargetingVars:
+                AdjacentTiles: CustomAbility.GetAdjacentTiles(TargetingActor.MultiHexTiles)
+                AddTilesInRange: AdjacentTiles
+                AddValidActorsInRange: AdjacentTiles.Select(LivingActor).Where(obj != null && CActor.AreActorsEnemies(obj.Type, CActor.EType.Enemy, obj, null))
+            Vars:
+                Target: -1
+            Text: "$FH/boss_stat_cards_fish_king_2$"
+            TextOnly: True
+            AnimOverload: Attack AOE
+            SubAbilities:
+                TSubPush:
+                    Push:
+                        Amount: 2
+                    IsInlineSubAbility: True
+                    Target: -1
+                    UseParentTargets: True
+        ASummon:
+            Summons: 
+                - PiranhaPigID
+                - PiranhaPigID
+                - PiranhaPigEliteID
+                - PiranhaPigEliteID
+            Target: 1
+            TargetIsBase: True
+            AnimOverload: Summon

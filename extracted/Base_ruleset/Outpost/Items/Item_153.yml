@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 153
+ScenarioItemID: 1171
+Name: Long Spear
+Quantity: 2
+GoldCost: 40
+Type: TwoHandWeapon
+IsNewCharacterItem: False

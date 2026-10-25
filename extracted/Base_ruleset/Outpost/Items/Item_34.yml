@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 34
+ScenarioItemID: 948
+Name: Shrapnel Bomb
+Quantity: 2
+Type: OneHandWeapon
+CraftingCost:
+    Metal: 2
+RequiredCraftingItemIDs: [ 97 ]

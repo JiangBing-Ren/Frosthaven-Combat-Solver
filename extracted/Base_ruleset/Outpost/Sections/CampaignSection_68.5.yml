@@ -1,0 +1,7 @@
+Parser: CampaignSection
+ID: 68.5
+Name: PuzzleSolution
+SkipCompletedNotification: True
+Effects:
+    - Type: UnlockPuzzle
+      Param1: HiddenNumbers_PartTwo

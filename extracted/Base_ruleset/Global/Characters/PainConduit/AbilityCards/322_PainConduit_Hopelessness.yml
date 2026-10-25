@@ -1,0 +1,36 @@
+Parser: AbilityCard
+Name: $FH/322_character_ability_cards_pain_conduit_hopelessness_1$
+Character: PainConduitID
+ID: 322
+Level: 6
+Initiative: 83
+Discard: [Discard,Discard]
+Prefab: 322_PainConduit_Hopelessness
+Data:
+    Top:
+        Abilities:
+            TBane:
+                Bane: True
+                Filter: Self
+                AnimOverload: Heal
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 6
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BDamage:
+                Damage: 4
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Filter: Self
+                CanSkip: False
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Bane> <mark=#80919922><size=100%>$Self$</mark>"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - MandatoryTrigger: "<sprite name=Damage> *BDamage* <mark=#80919922><size=100%>$Self$</mark>"

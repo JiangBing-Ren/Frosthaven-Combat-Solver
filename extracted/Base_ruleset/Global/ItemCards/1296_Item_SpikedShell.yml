@@ -1,0 +1,37 @@
+Parser: ItemCard
+ID: 1296
+StringID: SpikedShellID
+Name: $FH/1296_item_cards_spiked_shell_1$
+Art: Spiked Shell
+TotalInGame: 2
+Cost: 0
+Slot: Body
+Rarity: Rare
+Usage: Spent
+Trigger: AfterAttackedIgnoringDamageTaken
+Data:    
+    ItemRequirements:
+        Vars:
+            ActorBeingAttacked: Ability.VarsContext.parentContext.ActorBeingAttacked
+            ItemOwner: Ability.VarsContext.parentContext.ItemOwner
+            ValidateIsOwner: ActorBeingAttacked == ItemOwner
+    Abilities:
+        DamageX:
+            AutoTrigger: True
+            Targeting: Custom
+            TargetingVars:
+                AddValidActorInRange: AppliedActor
+            Damage: 0
+            StatIsBasedOnX:
+                Strength:
+                    BasedOn: Vars
+                    Vars:
+                        Value: ShieldDuringAttack
+    CompareAbility:
+        AbilityType: Attack
+        Filter: Enemy
+        Adjacent: True
+        TargetShield: 1
+        AbilityActorHealth: 1
+Layout: 
+    - Row: $FH/1296_item_cards_spiked_shell_2$

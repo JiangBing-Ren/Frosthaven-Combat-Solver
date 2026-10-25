@@ -1,0 +1,37 @@
+Parser: EnemyCard
+ID: 702
+Name: $Monster_Ability_701_702_LurkerWavethrower_AidFromBelow$
+Initiative: 98
+Shuffle: True
+Data:
+    Abilities: 
+       CreateTerrain:
+            CreateTerrain: Water
+            TileFilter: EmptyHex
+            Target: 1
+            Range: 1
+            RangeIsBase: True
+            Vars:
+                OverridePropName: "'LurkerWavethrowerWater'"
+            TextOnly: True
+            Text: "$FH/0701_monster_ability_cards_lurker_wavethrower_aid_from_below_2$"
+            AnimOverload: TerrainFormation
+        AWaitForIdle:
+            Null: True
+        SummonNormal:
+            Summon: LightningEelID
+            Target: 1
+            TargetIsBase: True
+            AnimOverload: Summon
+            Vars:
+                ValidateIsElite: TargetingActor.IsElite() == false
+            TextOnly: True
+            Text: "$FH/0701_monster_ability_cards_lurker_wavethrower_aid_from_below_3$"
+        SummonElite:
+            Summon: LightningEelEliteID
+            Target: 1
+            TargetIsBase: True
+            AnimOverload: Summon
+            Vars:
+                ValidateIsElite: TargetingActor.IsElite()
+            TextOnly: True

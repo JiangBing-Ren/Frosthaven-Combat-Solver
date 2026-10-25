@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 89.2
+Name: Library Upgraded (2)
+SkipCompletedNotification: False
+Effects:
+    - Type: EnableEvent
+      Param1: WR-47
+    - Type: EnableEvent
+      Param1: SR-49

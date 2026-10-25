@@ -1,0 +1,15 @@
+Parser: FHScenario
+ID: 7
+Name: Edge of the World
+LevelID: FS_007_Edge_Of_The_World
+Chain: Lurker
+Difficulty: 1
+Conclusions:
+    - Effects:
+        - Type: AllCharactersGainExperience
+          Param1: 10
+        - Type: AddCoralShard
+        - Type: UnlockScenario
+          Param1: 13
+        - Type: UnlockScenario
+          Param1: 14

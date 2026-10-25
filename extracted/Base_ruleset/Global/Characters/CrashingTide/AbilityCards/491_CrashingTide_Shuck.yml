@@ -1,0 +1,327 @@
+Parser: AbilityCard
+Name: $FH/491_character_ability_cards_crashing_tide_shuck_1$
+Character: CrashingTideID
+ID: 491
+Level: 3
+ProgressionOrder: 491
+Initiative: 55
+Discard: [Discard,Lost]
+Prefab: 491_CrashingTide_Shuck
+Data:
+    Top:
+        Abilities:
+            TBuffAttack:
+                Attack: 0
+                AttackEffect:
+                    Type: StandardBuff
+                    Pierce: 2
+                    Conditions: [Wound]
+                MiscVars:
+                    PrintedProperties: list("PierceBuff")
+                Filter: Self
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: BuffAttack
+                    Flags: [Tide]
+                AnimOverload: Tide
+        Infuse: Light
+    Bottom:
+        Abilities:
+            BPerformXTimes:
+                Vars:
+                    TideCount: CustomAbility.GetTideActiveBonuses(TargetingActor)?.Count || 0
+                TreatAsNonSubAbility: True
+                Strength: 0
+                Filter: Self
+                NullTargeting: True
+                SubAbilities: 
+                    BMove0:
+                        Move: 1
+                        StatIsBasedOnX:
+                            Strength:
+                                BasedOn: Vars
+                                AddTo: True
+                                Vars:
+                                    Value: ParentAbility.Strength
+                        TreatAsNonSubAbility: True
+                        MiscVars:
+                            PrintedProperties: list("Move")
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateAnyTides: CustomAbility.GetTideActiveBonuses(TargetingActor).Count > 0
+                    BAttack0:
+                        Attack: 1
+                        TreatAsNonSubAbility: True
+                        Filter: Enemy
+                        MiscVars:
+                            PrintedProperties: list("Attack")
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateAnyTides: CustomAbility.GetTideActiveBonuses(TargetingActor).Count > 0
+                    BMove1:
+                        Move: 1
+                        StatIsBasedOnX:
+                            Strength:
+                                BasedOn: Vars
+                                AddTo: True
+                                Vars:
+                                    Value: ParentAbility.Strength
+                        TreatAsNonSubAbility: True
+                        MiscVars:
+                            PrintedProperties: list("Move")
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateAnyTides: CustomAbility.GetTideActiveBonuses(TargetingActor).Count > 1
+                    BAttack1:
+                        Attack: 1
+                        TreatAsNonSubAbility: True
+                        Filter: Enemy
+                        MiscVars:
+                            PrintedProperties: list("Attack")
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateAnyTides: CustomAbility.GetTideActiveBonuses(TargetingActor).Count > 1
+                    BMove2:
+                        Move: 1
+                        StatIsBasedOnX:
+                            Strength:
+                                BasedOn: Vars
+                                AddTo: True
+                                Vars:
+                                    Value: ParentAbility.Strength
+                        TreatAsNonSubAbility: True
+                        MiscVars:
+                            PrintedProperties: list("Move")
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateAnyTides: CustomAbility.GetTideActiveBonuses(TargetingActor).Count > 2
+                    BAttack2:
+                        Attack: 1
+                        TreatAsNonSubAbility: True
+                        Filter: Enemy
+                        MiscVars:
+                            PrintedProperties: list("Attack")
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateAnyTides: CustomAbility.GetTideActiveBonuses(TargetingActor).Count > 2
+                    BMove3:
+                        Move: 1
+                        StatIsBasedOnX:
+                            Strength:
+                                BasedOn: Vars
+                                AddTo: True
+                                Vars:
+                                    Value: ParentAbility.Strength
+                        TreatAsNonSubAbility: True
+                        MiscVars:
+                            PrintedProperties: list("Move")
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateAnyTides: CustomAbility.GetTideActiveBonuses(TargetingActor).Count > 3
+                    BAttack3:
+                        Attack: 1
+                        TreatAsNonSubAbility: True
+                        Filter: Enemy
+                        MiscVars:
+                            PrintedProperties: list("Attack")
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateAnyTides: CustomAbility.GetTideActiveBonuses(TargetingActor).Count > 3
+                    BMove4:
+                        Move: 1
+                        StatIsBasedOnX:
+                            Strength:
+                                BasedOn: Vars
+                                AddTo: True
+                                Vars:
+                                    Value: ParentAbility.Strength
+                        TreatAsNonSubAbility: True
+                        MiscVars:
+                            PrintedProperties: list("Move")
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateAnyTides: CustomAbility.GetTideActiveBonuses(TargetingActor).Count > 4
+                    BAttack4:
+                        Attack: 1
+                        TreatAsNonSubAbility: True
+                        Filter: Enemy
+                        MiscVars:
+                            PrintedProperties: list("Attack")
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateAnyTides: CustomAbility.GetTideActiveBonuses(TargetingActor).Count > 4
+                    BMove5:
+                        Move: 1
+                        StatIsBasedOnX:
+                            Strength:
+                                BasedOn: Vars
+                                AddTo: True
+                                Vars:
+                                    Value: ParentAbility.Strength
+                        TreatAsNonSubAbility: True
+                        MiscVars:
+                            PrintedProperties: list("Move")
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateAnyTides: CustomAbility.GetTideActiveBonuses(TargetingActor).Count > 5
+                    BAttack5:
+                        Attack: 1
+                        TreatAsNonSubAbility: True
+                        Filter: Enemy
+                        MiscVars:
+                            PrintedProperties: list("Attack")
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateAnyTides: CustomAbility.GetTideActiveBonuses(TargetingActor).Count > 5
+                    BMove6:
+                        Move: 1
+                        StatIsBasedOnX:
+                            Strength:
+                                BasedOn: Vars
+                                AddTo: True
+                                Vars:
+                                    Value: ParentAbility.Strength
+                        TreatAsNonSubAbility: True
+                        MiscVars:
+                            PrintedProperties: list("Move")
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateAnyTides: CustomAbility.GetTideActiveBonuses(TargetingActor).Count > 6
+                    BAttack6:
+                        Attack: 1
+                        TreatAsNonSubAbility: True
+                        Filter: Enemy
+                        MiscVars:
+                            PrintedProperties: list("Attack")
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateAnyTides: CustomAbility.GetTideActiveBonuses(TargetingActor).Count > 6
+                    BMove7:
+                        Move: 1
+                        StatIsBasedOnX:
+                            Strength:
+                                BasedOn: Vars
+                                AddTo: True
+                                Vars:
+                                    Value: ParentAbility.Strength
+                        TreatAsNonSubAbility: True
+                        MiscVars:
+                            PrintedProperties: list("Move")
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateAnyTides: CustomAbility.GetTideActiveBonuses(TargetingActor).Count > 7
+                    BAttack7:
+                        Attack: 1
+                        TreatAsNonSubAbility: True
+                        Filter: Enemy
+                        MiscVars:
+                            PrintedProperties: list("Attack")
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateAnyTides: CustomAbility.GetTideActiveBonuses(TargetingActor).Count > 7
+                    BMove8:
+                        Move: 1
+                        StatIsBasedOnX:
+                            Strength:
+                                BasedOn: Vars
+                                AddTo: True
+                                Vars:
+                                    Value: ParentAbility.Strength
+                        TreatAsNonSubAbility: True
+                        MiscVars:
+                            PrintedProperties: list("Move")
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateAnyTides: CustomAbility.GetTideActiveBonuses(TargetingActor).Count > 8
+                    BAttack8:
+                        Attack: 1
+                        TreatAsNonSubAbility: True
+                        Filter: Enemy
+                        MiscVars:
+                            PrintedProperties: list("Attack")
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateAnyTides: CustomAbility.GetTideActiveBonuses(TargetingActor).Count > 8
+                    BMove9:
+                        Move: 1
+                        StatIsBasedOnX:
+                            Strength:
+                                BasedOn: Vars
+                                AddTo: True
+                                Vars:
+                                    Value: ParentAbility.Strength
+                        TreatAsNonSubAbility: True
+                        MiscVars:
+                            PrintedProperties: list("Move")
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateAnyTides: CustomAbility.GetTideActiveBonuses(TargetingActor).Count > 9
+                    BAttack9:
+                        Attack: 1
+                        TreatAsNonSubAbility: True
+                        Filter: Enemy
+                        MiscVars:
+                            PrintedProperties: list("Attack")
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateAnyTides: CustomAbility.GetTideActiveBonuses(TargetingActor).Count > 9
+        Consumes:
+            BCLight0:
+                Elements: Light
+                AbilityOverrides:
+                    BCLightMoveBuff:
+                        ParentName: BPerformXTimes
+                        Strength: 1
+                        XP: 1
+                        Vars:
+                            # this is necessary since it thinks we're overriding the first ability and would otherwise end up generating the wrong description
+                            PreviewOverride: "'+1 <sprite name=Move>, <sprite name=XP1>'"
+        XP: 1
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "34,33,33"
+            - Column: "$FH/CrashingTide_Tide$"
+            - Column:
+            - Column:
+        - Active:
+            Ability: TBuffAttack
+            Icon: Positive_Pierce_Wound_Attack
+            Layout: "$FH/491_character_ability_cards_crashing_tide_shuck_2$"
+            ListLayout: "$FH/491_character_ability_cards_crashing_tide_shuck_2$"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Light
+    Bottom:
+        - Row: "$FH/491_character_ability_cards_crashing_tide_shuck_3$"
+        - Row: "<size=50%> "
+        - Row: "<b><size=130%><sprite name=Move> 1"
+        - Row: "<size=50%> "
+        - Row: "<b><size=130%><sprite name=Attack> 1"
+        - Row: "<size=50%> "
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: BCLight0
+                    Text: "<size=90%>+1<sprite name=Move>, <sprite name=XP1>"

@@ -1,0 +1,20 @@
+Parser: EnemyCard
+ID: 792
+Name: $Monster_Ability_792_SavvasLavaflow_StrengthOfTheMountain$
+Initiative: 31
+Shuffle: False
+Data:
+    Abilities:
+        Heal1:
+            Heal: 4
+            Range: 3
+            RangeIsBase: True
+            Filter: [Self, Ally]
+            AnimOverload: EarthBuff 
+    Consumes:
+        CEarth:
+            Elements: Earth
+            AbilityOverrides:
+                CLightTargetAll:
+                    ParentName: Heal1
+                    Target: 2

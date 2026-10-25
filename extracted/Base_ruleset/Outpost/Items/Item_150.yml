@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 150
+ScenarioItemID: 1165
+Name: Robes of the Oak
+Quantity: 2
+GoldCost: 30
+Type: Body
+IsNewCharacterItem: False

@@ -1,0 +1,100 @@
+Parser: AbilityCard
+Name: $FH/325_character_ability_cards_pain_conduit_penance_1$
+Character: PainConduitID
+ID: 325
+Level: 7
+Initiative: 12
+Discard: [Discard,Discard]
+Prefab: 325_PainConduit_Penance
+Data:
+    Top:
+        Abilities:
+            TDamage:
+                Damage: 3
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Target: -1
+                Filter: Enemy
+                AnimOverload: CleansingFire_GivingPain
+                SubAbilities:
+                    WaitForIdle:
+                        Null: True
+                    TDamageSelf:
+                        Flags: [SubAbilityPreview]
+                        TreatAsNonSubAbility: True
+                        Filter: Self
+                        AutoTrigger: True
+                        Damage: 0                 
+                        StatIsBasedOnX:
+                            Strength:
+                                BasedOn: Vars
+                                Vars:
+                                    # Damage abilities clear ActorsToTarget after executing, so i'm checking different lists depending on preview/perform
+                                    Targets: (ParentAbility.AbilityHasHappened && ParentAbility.ActorsTargeted) || ParentAbility.ActorsToTarget
+                                    Value: Targets.Count
+        Consumes:
+            TCFire:
+                Elements: Fire
+                XP: 1
+                AbilityOverrides:
+                    TCFireHealBuff:
+                        ParentName: TDamage
+                        Strength: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 1
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BRetaliate:
+                Retaliate: 
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Retaliate","RetaliateRange")
+                Filter: Self
+                RetaliateRange: 2
+                AnimOverload: Cast
+                ActiveBonus:
+                    Duration: Round
+                    ListLayoutOverride: ["<sprite name=Retaliate> *BRetaliate* <sprite name=Range> 2", Positive_Retaliate_Range]
+        Consumes:
+            BCAir:
+                Elements: Air
+                XP: 1
+                AbilityOverrides:
+                    TCFireHealBuff:
+                        ParentName: BRetaliate
+                        RetaliateRange: 1
+Layout:
+    Top:
+        - Row: "$FH/325_character_ability_cards_pain_conduit_penance_2$"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCFire
+                    Text: "+1 <sprite name=Damage>, <sprite name=XP1>"
+        - Divider:
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<sprite name=Damage> X <mark=#80919922>$Self$</mark>"
+                - Row: "$FH/325_character_ability_cards_pain_conduit_penance_3$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row:
+            - ColumnWidths: "20,30,30"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Retaliate> *BRetaliate* <size=100%><voffset=1>@BRetaliate@"
+            - Column:
+                - Row: "<mark=#80919922><size=100%><sprite name=Range>*BRetaliate.RetaliateRange*</mark>"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: BCAir
+                    Text: "+1 <sprite name=Range>, <sprite name=XP1>"

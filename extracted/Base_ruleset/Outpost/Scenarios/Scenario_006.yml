@@ -1,0 +1,15 @@
+Parser: FHScenario
+ID: 6
+Name: Avalanche
+LevelID: FS_006_Avalanche
+Chain: Algox3
+Location: CopperneckMountaions
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: GainMetal
+          Param1: 2
+        - Type: UnlockScenario
+          Param1: 11
+        - Type: UnlockScenario
+          Param1: 12

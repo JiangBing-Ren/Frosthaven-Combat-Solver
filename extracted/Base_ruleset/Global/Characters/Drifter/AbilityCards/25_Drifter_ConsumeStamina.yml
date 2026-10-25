@@ -1,0 +1,96 @@
+Parser: AbilityCard
+Name: $FH/025_character_ability_cards_drifter_consume_stamina_1$
+Character: DrifterID
+ID: 25
+Level: 6
+ProgressionOrder: 24
+Initiative: 21
+Discard: [Discard,Discard]
+Prefab: 25_Drifter_ConsumeStamina
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 2
+                    SquareEnhancements: 1
+                Range: 4
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                Filter: [Enemy]
+                AnimOverload: RangedAttack
+            THeal:
+                Heal: 0
+                Range: 4
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Filter: [Self, Ally]
+                AnimOverload: Heal
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: Vars
+                        Vars:
+                            AttackAbility: CustomAbility.FindAbilityInPhaseByName("TAttack", TargetingActor)
+                            Value: CustomAbility.GetDamageDealt(AttackAbility)
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Attack]
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 2
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BRetaliate:
+                Retaliate:
+                    Amount: 2
+                    CircleEnhancements: 1
+                ActiveBonus:
+                    ListLayoutOverride: ["<sprite name=Retaliate> *BRetaliate*", Positive_Retaliate]
+                MiscVars:
+                    PrintedProperties: list("Retaliate")
+                AnimOverload: PowerUp
+            BMoveTracker:
+                AddActiveBonus:
+                    Filter: Self
+                    MoveActiveBonusTracker: -1
+                    Vars:
+                        NumberOfCardsToSelect: 1
+                    IgnoreStun: True
+                ActiveBonus:
+                    Duration: Round
+                    Behaviour: DuringActionAbilityOnDeath
+                    TriggerOnCaster: True
+                    TriggerAbilitiesImmediately: True
+                    IsAura: True
+                    AuraTargeting: Range
+                    AuraFilter:
+                        TargetType: Enemy                        
+                        UseTargetOriginalType: True
+                Range: 1
+                Target: -1
+                Filter: Self
+                AnimOverload: PowerUp
+                AutoTrigger: True
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "25,25,25,25"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack*<size=100%><voffset=1>@TAttack@"
+            - Column:
+                - AddedEffect: "<sprite name=Range>4"
+            - Column:
+        - Divider:
+        - Row: "$FH/025_character_ability_cards_drifter_consume_stamina_2$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove*"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Retaliate> *BRetaliate*<size=100%><voffset=1>@BRetaliate@"
+        - Divider:
+        - Active:
+            Ability: BMoveTracker
+            Icon: Positive_Drifter_Enemy_Death
+            ListLayout: "$FH/025_character_ability_cards_drifter_consume_stamina_3$"
+            Layout: "$FH/025_character_ability_cards_drifter_consume_stamina_3$"

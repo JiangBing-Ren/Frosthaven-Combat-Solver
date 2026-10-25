@@ -1,0 +1,6 @@
+Parser: AttackModifier
+Name: AMC_Ice_P0
+MathModifier: "+0"
+Abilities:
+    InfuseAbility:
+        Infuse: [Ice]

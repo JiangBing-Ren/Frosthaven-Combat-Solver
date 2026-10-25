@@ -1,0 +1,197 @@
+Parser: Rooms
+# A Large Room with multiple doors to allow BanditCommanderID Teleportation
+CommandersQuarters:
+    MapTiles: [M,N]
+
+# All of the Corridor Pieces including T Junction
+Corridor:
+    MapTiles: [A,F,G,H,J,K]
+    OneHexObstacles: [20]
+    TwoHexObstacles: [0]
+    Traps: [10,10]
+    #HazardousTerrain: [10,10]
+    #DifficultTerrain: [10,10]
+    GoldPiles: [50,20]
+    TreasureChestChance: [0]
+
+# A medium/Large room with a high % of obstacles for ranged creatures to stand behind
+DefensiveBulwark:
+    MapTiles: [H,I,L,M]
+    OneHexObstacles: [40, 20]
+    TwoHexObstacles: [100, 100]
+    Traps: [50,30, 10]
+    GoldPiles: [80,60,40,20]
+    TreasureChestChance: [80]
+
+# Mid-sized room to fit between corridors, at least 3 doorways
+Hallway:
+    MapTiles: [B,D,E,H]
+    OneHexObstacles: [40, 20]
+    TwoHexObstacles: [10]
+    Traps: [20, 10]
+    #HazardousTerrain: [30,10]
+    #DifficultTerrain: [30,10]
+    GoldPiles: [40,20]
+    TreasureChestChance: [10]
+
+# Large Entrance Hall themed Room big enough for larger encounters
+LargeEntrance:
+    MapTiles: [L,M]
+    OneHexObstacles: [30,20]
+    TwoHexObstacles: [30]
+    Traps: [50,20,10]
+    #HazardousTerrain: [30,10]
+    #DifficultTerrain: [30,10]
+    GoldPiles: [100,50,20]
+    TreasureChestChance: [0]
+    
+# Medium Entrance Hall 
+MediumEntrance:
+    MapTiles: [E,I]
+    GoldPiles: [100,20]
+    TreasureChestChance: [0]
+
+# Thin passageway of varying length
+NarrowPassage:
+    MapTiles: [A,F,G]
+    OneHexObstacles: [20]
+    TwoHexObstacles: [0]
+    Traps: [10,10]
+    #HazardousTerrain: [10,10]
+    #DifficultTerrain: [10,10]
+    GoldPiles: [20]
+    TreasureChestChance: [0]
+
+# Medium/Large room with sarcophagi on the walls
+SarcophagusRoom:
+    MapTiles: [D,E,I,L,M,N]
+    OneHexObstacles: [40, 20]
+    TwoHexObstacles: [10]
+    Traps: [40, 10]
+    #HazardousTerrain: [30,10]
+    #DifficultTerrain: [30,10]
+    GoldPiles: [60,40,20]
+    TreasureChestChance: [40]
+
+# Very short corridor
+ShortCorridor:
+    MapTiles: [A]
+    OneHexObstacles: [20]
+    TwoHexObstacles: [0]
+    Traps: [10,10]
+    #HazardousTerrain: [10,10]
+    #DifficultTerrain: [10,10]
+    GoldPiles: [20]
+    TreasureChestChance: [0]
+
+# Small starting room
+SmallEntrance:
+    MapTiles: [B,D]
+    OneHexObstacles: [20]
+    TwoHexObstacles: [0]
+    Traps: [10,10]
+    #HazardousTerrain: [10,10]
+    #DifficultTerrain: [10,10]
+    GoldPiles: [20]
+    TreasureChestChance: [0]
+
+# Large final room with Summoning Circle
+SummoningCircle:
+    MapTiles: [C,D,M]
+    OneHexObstacles: [40, 20]
+    TwoHexObstacles: [10]
+    Traps: [20, 10]
+    #HazardousTerrain: [30,10]
+    #DifficultTerrain: [30,10]
+    GoldPiles: [40,20]
+    TreasureChestChance: [100]
+
+# Small Side chamber decked out with treasure
+TreasureChamber:
+    MapTiles: [A,B,C]
+    OneHexObstacles: [20]
+    TwoHexObstacles: [0]
+    Traps: [10,10]
+    #HazardousTerrain: [10,10]
+    #DifficultTerrain: [10,10]
+    GoldPiles: [20, 20, 20, 20, 20]
+    TreasureChestChance: [0]
+
+# Small Side chamber decked out with treasure
+TreasureRoom:
+    MapTiles: [B,C,D,E]
+    OneHexObstacles: [20]
+    TwoHexObstacles: [0]
+    Traps: [10,10]
+    #HazardousTerrain: [10,10]
+    #DifficultTerrain: [10,10]
+    GoldPiles: [20, 20, 20, 20, 20]
+    TreasureChestChance: [0]
+
+# Winding corridor pieces
+WindingPassage:
+    MapTiles: [J,K]
+    OneHexObstacles: [10, 10, 10]
+    TwoHexObstacles: [0]
+    Traps: [10, 10,10]
+    #HazardousTerrain: [10,10]
+    #DifficultTerrain: [10,10]
+    GoldPiles: [20, 10]
+    TreasureChestChance: [10]
+    
+BanditCommanderRoom:
+    MapTiles: [M]
+    OneHexObstacles: [10, 10, 10]
+    TwoHexObstacles: [100, 100]
+    Traps: [100, 10,10]
+    #HazardousTerrain: [20,10]
+    #DifficultTerrain: [20,10]
+    GoldPiles: [100, 10]
+    TreasureChestChance: [100]
+    
+UndeadCommanderRoom:
+    MapTiles: [N]
+    OneHexObstacles: [50, 50, 50]
+    TwoHexObstacles: [50, 100]
+    Traps: [100, 100, 100]
+    #HazardousTerrain: [20,10]
+    #DifficultTerrain: [20,10]
+    GoldPiles: [100, 100, 100]
+    TreasureChestChance: [100]
+
+SmallEmptyRoom:
+    MapTiles: [B, C]
+    
+MediumEmptyRoom:
+    MapTiles: [D, E]
+
+LargeEmptyRoom:
+    MapTiles: [I, L, M]    
+    
+HugeEmptyRoom:
+    MapTiles: [N]
+
+ShortEmptyCorridor:
+    MapTiles: [A]
+    
+LongEmptyCorridor:
+    MapTiles: [F, G]
+
+EmptyWindingCorridor:
+    MapTiles: [J, K]
+    
+EmptyTJunction:
+    MapTiles: [H]
+    
+EmptyRandomCorridor:
+    MapTiles: [A, F, G, J, K, H]
+
+EmptyRandomLongCorridor:
+    MapTiles: [F, G, J, K, H]
+
+EmptySummoningCircle:
+    MapTiles: [C,D,M]
+
+EmptyRoomTileM:
+    MapTiles: [M]    
+

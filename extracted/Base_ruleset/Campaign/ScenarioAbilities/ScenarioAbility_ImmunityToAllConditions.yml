@@ -1,0 +1,11 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_ImmunityToAllConditions
+ScenarioAbility:
+    AImmunity:
+        ImmunityTo: [Poison, Wound, Stun, Disarm, Immobilize, Muddle, Curse, Brittle, Bane, Impair, Bless, Invisible, Strengthen, StopFlying, Sleep, Regenerate, Ward]
+        AutoTrigger: True
+        Filter: Self
+        Flags: [FromScenarioModifier]
+        ActiveBonus:
+            Duration: Persistent            
+            ListLayoutOverride: [$ImmunityTo$ $AllConditions$, AA_Immune]

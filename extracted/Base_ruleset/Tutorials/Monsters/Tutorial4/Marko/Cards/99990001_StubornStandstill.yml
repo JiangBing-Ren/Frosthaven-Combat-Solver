@@ -1,0 +1,14 @@
+Parser: EnemyCard
+ID: 99990001
+Initiative: 27
+Shuffle: True
+Data:
+    Abilities:
+        AMoveImmunityy:
+            ImmunityTo: [Push, Pull, Teleport2, Move]
+            AutoTrigger: True
+            Filter: Self
+            Text: "$99990001_monster_ability_cards_marko_stuborn_stand_still_2$"
+            ActiveBonus:
+                Duration: Round
+            SkipAnim: True

@@ -1,0 +1,28 @@
+Parser: Character
+ID: BannerSpearID
+LocKey: $FH/BannerSpear$
+Model: BannerSpear
+Race: Human
+Traits: [ Armored, Persuasive, Resourceful ]
+DefaultSkin: 1
+# PlayerLevel:  [  1,   2,   3,   4,   5,   6,   7,   8,   9 ]
+HealthTable:    [ 10,  12,  14,  16,  18,  20,  22,  24,  26 ]
+NumberAbilityCardsInBattle: 10
+Role: $BannerSpear_ROLE$
+Description: $BannerSpear_DESCRIPTION$
+Difficulty: $DIFFICULTY_LOW$
+Strengths: $BannerSpear_STRENGTHS$
+Weaknesses: $BannerSpear_WEAKNESSES$
+Adventure_Description: $BannerSpear_ADVENTURE_DESCRIPTION$
+Complexity: 2
+ElementalAffinities: [Air]
+MasteryIDs: [ BannerSpear_MASTERY_1, BannerSpear_MASTERY_2 ]
+RetireCampaignSection: 50.2
+HeroStats:
+    Melee: 4
+    Ranged: 3
+    Mobility: 3
+    Support: 4
+    Defense: 5
+    Control: 3
+

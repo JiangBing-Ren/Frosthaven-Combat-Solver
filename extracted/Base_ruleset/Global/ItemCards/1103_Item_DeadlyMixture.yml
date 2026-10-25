@@ -1,0 +1,19 @@
+Parser: ItemCard
+ID: 1103
+StringID: DeadlyMixtureID
+Name: $FH/1103_item_cards_deadly_mixture_1$
+Art: Deadly Mixture
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        AWoundPoisonSelf:
+            Filter: Self
+            Wound: True
+            Conditions: [Poison, Immobilize, Disarm]
+Layout: 
+    - Row: "$FH/1103_item_cards_deadly_mixture_2$"

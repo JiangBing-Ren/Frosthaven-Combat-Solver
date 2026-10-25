@@ -1,0 +1,28 @@
+Parser: ItemCard
+ID: 1248
+StringID: CrackedIdolID
+Name: $FH/1248_item_cards_cracked_idol_1$
+Art: Cracked Idol
+TotalInGame: 1
+Cost: 30
+Slot: SmallItem
+Rarity: Rare
+Usage: Consumed
+Trigger: PassiveEffect
+Data: 
+    Abilities:
+        APreventLethal:
+            PreventDamage: 1
+            PreventOnlyIfLethal: True
+            PreventDamageSetTargetHealthTo: 1
+            Filter: Self
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: PreventAndDamageActiveBonusCaster
+                XPTracker: [0]
+Layout: 
+    - Active:
+        Ability: APreventLethal
+        Icon: "Positive_DamagePrevent_Death_Item"
+        ListLayout: "$FH/1248_item_cards_cracked_idol_2$"
+        Layout: "$FH/1248_item_cards_cracked_idol_2$"

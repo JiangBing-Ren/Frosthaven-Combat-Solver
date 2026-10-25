@@ -1,0 +1,22 @@
+Parser: ItemCard
+ID: 1212
+StringID: GiantPiranhaPigSpineID
+Name: $FH/1212_item_cards_giant_piranha_pig_spine_1$
+Art: Giant Piranha Pig Spine
+TotalInGame: 1
+Cost: 40
+Slot: TwoHand 
+Rarity: Rare
+Usage: Spent
+Trigger: SingleTarget
+Data:     
+    Overrides:
+        OAttack:
+            Pierce: 2
+            Conditions: Wound
+    CompareAbility:
+        AbilityType: Attack
+        IsMelee: True
+        Filter: Enemy
+Layout: 
+    - Row: $FH/1212_item_cards_giant_piranha_pig_spine_2$

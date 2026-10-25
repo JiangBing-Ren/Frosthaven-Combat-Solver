@@ -1,0 +1,95 @@
+Parser: AbilityCard
+Name: $FH/222_character_ability_cards_pyroclast_melted_armor_1$
+Character: PyroclastID
+ID: 222
+Level: 1
+Initiative: 62
+Discard: [Discard,Discard]
+Prefab: 222_Pyroclast_MeltedArmor
+Data:
+    Top:
+        Infuse: [Fire]
+        Abilities:    
+            TAttack:
+                Attack:
+                    Amount: 3
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AnimOverload: FireSwipe                       
+                ConditionalOverrides:
+                    TAttackCO:
+                        TargetRequirements:
+                            Vars:
+                                HazardousTerrain: Actor.Tile.FindHazardousProp()
+                                ValidateTargetOccupiesHazardousTerrain: HazardousTerrain != null                    
+                        AbilityOverrides:
+                            THazardousTerrainBuff:
+                                Strength: 1
+                                Pierce: 3
+                                MiscVars:
+                                    PrintedProperties: list("Pierce")
+                                AbilityXP: 1
+    Bottom:
+        Abilities:       
+            BDebuffAttack:
+                Attack: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Filter: Self
+                MiscVars: 
+                    MandatoryBonus: True
+                AnimOverload: CastLava
+                ActiveBonus:
+                    Behaviour: BuffAttack
+                    Duration: Persistent
+                    IsAura: True
+                    # enemies get +1 attack
+                    AuraFilter: Enemy
+                    AuraTargeting: All
+                    ListLayoutOverride: [$FH/222_character_ability_cards_pyroclast_melted_armor_3$, Negative_AttackPlus_Enemy]
+                    HiddenWhenAura: True
+                    TriggerOnCaster: True
+                    # against the caster of this bonus
+                    Filter: 
+                        Vars: 
+                            ValidateWater: target == activeBonus.Caster  
+                SubAbilities:   
+                    BBuffAttacks:
+                        TreatAsNonSubAbility: True
+                        Attack: 1
+                        MiscVars:
+                            PrintedProperties: list("Attack")
+                        Filter: Self
+                        AutoTrigger: True
+                        SkipAnim: True
+                        MiscVars:
+                            DontTriggerFromBuffAttack: True
+                        ActiveBonus:
+                            Behaviour: BuffAttack
+                            Duration: Persistent
+                            XPTracker: [0,0,1]
+                            MiscVars:             
+                                OnFinishEndBonuses: CustomAbility.RemoveCardBonuses(ActiveBonus.BaseCard)
+               
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Row: "$FH/222_character_ability_cards_pyroclast_melted_armor_2$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Fire]
+    Bottom:
+        - Active:
+           Ability: BDebuffAttack
+           ListLayout: "$FH/222_character_ability_cards_pyroclast_melted_armor_3$"
+           Layout:
+                - MandatoryTrigger: "$FH/222_character_ability_cards_pyroclast_melted_armor_3$"
+           Icon: "Negative_AttackPlus_Enemy"
+        - Divider:
+        - Active:
+           Ability: BBuffAttacks
+           ListLayout: "$FH/222_character_ability_cards_pyroclast_melted_armor_4$"
+           Layout: "$FH/222_character_ability_cards_pyroclast_melted_armor_4$"
+           Icon: "Positive_AttackPlus"
+        - XPTracker: BBuffAttacks

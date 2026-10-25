@@ -1,0 +1,12 @@
+Parser: FHScenario
+ID: 109
+Name: Furious Factory
+LevelID: FS_109_Furious_Factory
+RequiresSled: true
+Chain: RandomScenario
+Location: CrystalFields
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: GainMetal
+          Param1: 5

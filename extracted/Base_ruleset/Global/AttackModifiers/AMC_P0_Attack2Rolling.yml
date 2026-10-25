@@ -1,0 +1,51 @@
+Parser: AttackModifier
+Name: AMC_P0_Attack2Rolling
+MathModifier: "+0"
+Rolling: True
+TryToPerformAsSummoner: True
+Abilities:
+    RollingAbility:
+        Attack: 2
+        Filter: Self
+        AutoTrigger: True
+        ActiveBonus:
+            Behaviour: BuffAttack
+            XPTracker: [0]
+            Duration: Persistent
+            IsSingleTargetBonus: True
+            ListLayoutOverride: [$FH/0029_attack_mods_blinkblade_general_1$,Positive_AttackPlus]
+            Vars:
+                Caster: TriggerActor
+            MiscVars:
+                OverrideLayoutName: "'$PERK_Blinkblade_08_Name$'"
+            HiddenInLog: True
+        AnimOverload: ChargeUp 
+        ConditionalOverrides:
+            COAnim_Slow:
+                Self: True
+                Requirement:
+                    RequiredAgility: Slow
+                AbilityOverrides:
+                    COAnim:
+                        AnimOverload: ChargeUpSlow
+    AddModifierBackToDeck:
+        SkipAnim: True
+        AutoTrigger: True
+        Filter: Self
+        AddActiveBonus:
+            SkipAnim: True
+            AddAttackModifier: AMC_P0_Attack2Rolling
+            ToDiscardPile: True
+            Filter: Self
+            AutoTrigger: True
+            ActiveBonus:
+                HiddenInLog: True
+                Hidden: True
+        ActiveBonus:
+            HiddenInLog: True
+            Hidden: True
+            Duration: Persistent
+            Behaviour: GenericAttackFinished
+            XPTracker: [0]
+            Vars:
+                ValidateCasterAttacked: TriggerActor == Caster

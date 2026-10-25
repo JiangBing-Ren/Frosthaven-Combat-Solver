@@ -1,0 +1,57 @@
+Parser: AbilityCard
+Name: $FH/092_character_ability_cards_deathwalker_sunless_apparition_1$
+Character: DeathwalkerID
+ID: 92
+Level: 1
+Initiative: 96
+Discard: [Discard,Discard]
+Prefab: 92_Deathwalker_SunlessApparition
+Data:
+    Top:
+        Abilities:
+            TRemoveShadow:
+                RemoveShadow:
+                Target: 1
+                Range: 1
+                AnimOverload: Shadow Manipulation
+                CanSkip: False
+                SubAbilities:
+                    TSummon:
+                        CanSkip: False
+                        CanUndo: True
+                        TreatAsNonSubAbility: True
+                        Summon: ShadowBeastID
+                        AnimOverload: Summon
+        XP: 1
+    Bottom:
+        Abilities:
+            BLoot:
+                Loot: 1
+                MiscVars:
+                    PrintedProperties: list("Loot")
+                Target: -1
+                AnimOverload: Loot
+            BTeleport:
+                Teleport2: 99
+                Range: 1
+                Target: -1
+                Filter: Self
+                Vars:
+                    TargetShadows: True
+Layout:
+    Top:
+        - Active:
+            Ability: "TSummon"
+            Icon: "Summon"
+            Layout:
+                - Summon:
+                    Ability: TSummon
+                    SummonName: $FH/092_character_ability_cards_deathwalker_sunless_apparition_2$
+        - Row: "<size=20%> "
+        - Row: "$FH/092_character_ability_cards_deathwalker_sunless_apparition_3$"
+        - Row: "<size=150%> "
+    Bottom:
+        - Row: "<b><size=130%> <sprite name=Loot> *BLoot*"
+        - Divider:
+        - Row: "<size=20%> "
+        - Row: "$FH/092_character_ability_cards_deathwalker_sunless_apparition_4$"

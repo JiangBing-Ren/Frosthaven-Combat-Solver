@@ -1,0 +1,93 @@
+Parser: AbilityCard
+Name: $FH/243_character_ability_cards_pyroclast_calamity_1$
+Character: PyroclastID
+ID: 243
+Level: 9
+Initiative: 35
+Discard: [Lost,Discard]
+Prefab: 243_Pyroclast_Calamity
+Data:
+    Top:
+        XP: 2
+        Abilities:
+            TCreateHazardous:
+                Target: 3
+                Targeting: Room
+                TileFilter: FeaturelessHex
+                AnimOverload: TerrainFormation
+                Range: 99
+                CreateLimitedHazardousTerrain: True
+                Vars:
+                    OverridePropName: "'PyroclastHazardTerrain'"
+                MiscVars:
+                    SpawnTypePreview: "'TerrainHotCoals'"
+                    SpawnPropPreview: "'PyroclastHazardTerrain'"
+                    includeCasterTile: True
+            TCreateObstacle:
+                Target: 3
+                Targeting: Room
+                TileFilter: [EmptyHex,Custom]
+                Range: 99
+                Create: OneHexObstacle
+                Vars:
+                    OverridePropName: "'PyroclastObstacle'"
+                AnimOverload: VolcanicEruption
+                MiscVars:
+                    SpawnTypePreview: "'Obstacle'"
+                    SpawnPropPreview: "'PyroclastObstacle'"
+                    DontCancelIfNoTiles: True
+                    DontPreviewDescription: True
+                    IsValidTile: ParentAbility.TilesSelected.Contains(obj) == false
+            TDamage:
+                AnimOverload: Swelter
+                Damage: 4
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Filter: Enemy
+                Target: -1
+                Targeting: Room
+                Range: 99
+        Consumes:
+            ТCFire:
+                Elements: Fire
+                AbilityOverrides:
+                    TCFireTargetBuff:
+                        ParentName: TCreateHazardous
+                        Target: 2
+            TCEarth:
+                Elements: Earth
+                AbilityOverrides:
+                    TCEarthTargetBuff:
+                        ParentName: TCreateObstacle
+                        Target: 2
+    Bottom:
+        Abilities:
+            BControl:
+                ControlActor:
+                    Abilities:
+                        BMove:
+                            Move: 1
+                            MiscVars:
+                                PrintedProperties: list("Move")
+                            StrengthIsBase: True
+                    ControlActorType: Player
+                Target: -1
+                Filter: [Enemy]
+                Targeting: Room
+                AnimOverload: Push
+Layout:
+    Top:
+        - Row: "$FH/243_character_ability_cards_pyroclast_calamity_2$"    
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: ТCFire
+                    Text: "$FH/243_character_ability_cards_pyroclast_calamity_3$"
+                - Consume:
+                    Name: TCEarth
+                    Text: "$FH/243_character_ability_cards_pyroclast_calamity_4$"
+    Bottom:
+        - Row: "$FH/243_character_ability_cards_pyroclast_calamity_5$"
+        - Row: "<b><size=130%><sprite name=Move>1"
+        - Row: "$FH/243_character_ability_cards_pyroclast_calamity_6$"

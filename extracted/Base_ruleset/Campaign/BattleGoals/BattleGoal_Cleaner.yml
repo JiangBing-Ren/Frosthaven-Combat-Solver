@@ -1,0 +1,12 @@
+Parser: BattleGoal
+ID: BattleGoal_Cleaner
+LocalisedName: FH/1307_battle_goals_cleaner_1
+LocalisedDescription: FH/1307_battle_goals_cleaner_2
+# loot 3 times in 1 turn. I don't have an exact subfilter for a turn, so i've made another Loot filter and i'm checking the round
+PerkChecks: 1
+BattleGoalCondition:
+    - Targets:
+        Filter: LootDuringOwnTurn
+        LootType: [MoneyToken]
+        Value: 3
+        SubFilter: RoundCharactersOnly

@@ -1,0 +1,10 @@
+Parser: FHItem
+ID: 100
+ScenarioItemID: 1065
+Name: Major Stamina Potion
+Quantity: 2
+Type: Small
+Brewing:
+    Herb1: Arrowvine
+    Herb2: Snowthistle
+    Herb3: Axenut

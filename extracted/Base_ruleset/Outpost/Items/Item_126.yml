@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 126
+ScenarioItemID: 1117
+Name: Weighted Net
+Quantity: 2
+GoldCost: 20
+Type: TwoHandWeapon
+IsNewCharacterItem: True

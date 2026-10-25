@@ -1,0 +1,17 @@
+Parser: FHScenario
+ID: 35
+Name: Scrap Pit
+LevelID: FS_035_Scrap_Pit
+Chain: Unfettered
+Location: CrystalFields
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: GainLumber
+          Param1: 2
+        - Type: GainMetal
+          Param1: 2
+        - Type: GainHide
+          Param1: 2
+        - Type: UnlockScenario
+          Param1: 43

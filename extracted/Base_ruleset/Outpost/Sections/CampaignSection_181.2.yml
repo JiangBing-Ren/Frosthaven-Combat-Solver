@@ -1,0 +1,13 @@
+Parser: CampaignSection
+ID: 181.2
+Name: HE-RO-IC-S
+SkipCompletedNotification: True
+ConditionalEffects:
+    - Type: ReadSectionIfHasRequiredBuilding
+      # require party has stables built
+      Param1: Stables
+      # read this section
+      Param2: 135.4
+Effects:
+    - Type: ActivateCampaignSection
+      Param1: 33.1

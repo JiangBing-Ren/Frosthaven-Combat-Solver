@@ -1,0 +1,23 @@
+Parser: EnemyCard
+ID: 636
+Name: $Monster_Ability_636_637_FrozenCorpse_ColdSnap$
+Initiative: 42
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: +1
+            Vars:
+                ValidateIsActive: ScenarioScript_FH090.ValidateIsFrozenCorpseActive(TargetingActor)
+        Attack1:
+            Attack: -1
+            Filter: Enemy
+            Vars:
+                ValidateIsActive: ScenarioScript_FH090.ValidateIsFrozenCorpseActive(TargetingActor)
+    Consumes:
+        CIce:
+            Elements: Ice
+            AbilityOverrides:
+                CIceAttack:
+                    ParentName: Attack1
+                    Condition: Brittle

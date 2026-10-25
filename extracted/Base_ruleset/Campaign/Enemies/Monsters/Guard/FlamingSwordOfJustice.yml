@@ -1,0 +1,92 @@
+Parser: Enemy
+ID: CityGuardSwordOfJusticeID
+LocKey: $CityGuardSwordOfJustice$
+MonsterType: Boss
+StandeeLimit: 1
+Model: FlamingSwordOfJustice
+CardsPoolClass: CityGuardID
+IgnoreCardPoolStandeeLimit: True
+PredominantlyMelee: True
+MiniBoss: True
+AbilityCards: [746, 747, 748, 749, 750, 751, 752, 753]
+# Base Stats
+Level0:
+    Health: 6
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 1
+    Retaliate: 0
+    RetaliateRange: 0
+    Conditions: [Wound]
+Level1:
+    Health: 6
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 2
+    Retaliate: 0
+    RetaliateRange: 0
+    Conditions: [Wound]
+Level2:
+    Health: 9
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 2
+    Retaliate: 0
+    RetaliateRange: 0
+    Conditions: [Wound]
+Level3:
+    Health: 9
+    Move: 2
+    Attack: 5
+    Range: 1
+    Target: 1
+    Shield: 2
+    Retaliate: 1
+    RetaliateRange: 1
+    Conditions: [Wound]
+Level4:
+    Health: 10
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    Shield: 2
+    Retaliate: 2
+    RetaliateRange: 1
+    Conditions: [Wound]
+Level5:
+    Health: 12
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    Shield: 3
+    Retaliate: 2
+    RetaliateRange: 1
+    Conditions: [Wound]
+Level6:
+    Health: 13
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    Shield: 3
+    Retaliate: 3
+    RetaliateRange: 1
+    Conditions: [Wound]
+Level7:
+    Health: 14
+    Move: 3
+    Attack: 6
+    Range: 1
+    Target: 1
+    Shield: 3
+    Retaliate: 3
+    RetaliateRange: 1
+    Conditions: [Wound]

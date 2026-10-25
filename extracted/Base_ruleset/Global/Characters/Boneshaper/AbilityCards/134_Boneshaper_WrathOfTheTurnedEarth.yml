@@ -1,0 +1,64 @@
+Parser: AbilityCard
+Name: $FH/134_character_ability_cards_boneshaper_wrath_of_the_turned_earth_1$
+Character: BoneshaperID
+ID: 134
+Level: X
+Initiative: 80
+Discard: [Discard,Lost]
+Prefab: 134_Boneshaper_WrathOfTheTurnedEarth
+Data:
+    Top:
+        Abilities:
+            TAlly:
+                ControlActor:
+                    Abilities:
+                        TAllyAttack:
+                            Attack: +1
+                            Range: +0
+                            MiscVars:
+                                PrintedProperties: list("Attack")
+                Target: 1
+                Range: 99
+                AnimOverload: ControlSummon
+                Filter:
+                    TargetType: OwnSummon
+        Consumes:
+            TCEarth:
+                Elements: Earth
+                AbilityOverrides:
+                    TCEarthAttackBuff:
+                        ParentName: TAllyAttack
+                        Condition: Poison
+                XP: 1
+    Bottom:
+        Abilities:
+            BPrevent:
+                PreventDamage: 3
+                Target: -1
+                Targeting: All
+                Filter: Self
+                ActiveBonus:
+                    Duration: Persistent
+                    XPTracker: [1, 0, 1]
+                    IsAura: True
+                    AuraTargeting: All
+                    AuraFilter: OwnSummon
+                AnimOverload: PowerUpPotent
+Layout:
+    Top:
+        - Row: "$FH/134_character_ability_cards_boneshaper_wrath_of_the_turned_earth_2$"
+        - Row: "<b><size=130%><sprite name=Attack> +*TAllyAttack*"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCEarth
+                    Text: "<sprite name=Poison>, <sprite name=XP1>"
+    Bottom:
+        - Active:
+            Ability: BPrevent
+            ListLayout: $FH/134_character_ability_cards_boneshaper_wrath_of_the_turned_earth_3$
+            Layout: $FH/134_character_ability_cards_boneshaper_wrath_of_the_turned_earth_3$
+            Icon: Positive_DamagePrevent_Summon
+        - Row: "<size=50%> "
+        - XPTracker: BPrevent

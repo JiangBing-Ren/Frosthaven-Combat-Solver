@@ -1,0 +1,28 @@
+Parser: ItemCard
+ID: 1238
+StringID: ExtendablePoleID
+Name: $FH/1238_item_cards_extendable_pole_1$
+Art: Extendable Pole
+TotalInGame: 1
+Cost: 20
+Slot: OneHand
+Rarity: Rare
+Usage: Spent
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        AOpenDoor:
+            NullHex: True
+            Range: 2
+            TileFilter: Custom
+            MiscVars:
+                IsValidTile: CustomAbility.IsDoorAvailableForOpen(obj)
+                DontCancelIfNoTiles: True
+                AllowClosedDoorTiles: True
+            PerformVars:
+                AnimateCharacter:
+                    SelectedTile: TilesSelected[0]
+                    Door: SelectedTile.FindDoor()
+                    OpenDoor: CustomAbility.TryOpenDoor(TargetingActor, Door)
+Layout: 
+    - Row: "$FH/1238_item_cards_extendable_pole_2$"

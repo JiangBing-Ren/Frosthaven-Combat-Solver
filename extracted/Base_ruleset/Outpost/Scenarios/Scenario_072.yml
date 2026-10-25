@@ -1,0 +1,13 @@
+Parser: FHScenario
+ID: 72
+Name: A Giant Block of Ice
+LevelID: FS_072_A_Giant_Block_of_Ice
+Chain: PersonalQuest
+RequiresPersonalQuest: PQ_12
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: AllCharactersAddPerkCheck
+          Param1: 1
+        - Type: UnlockMandatoryScenario
+          Param1: 73

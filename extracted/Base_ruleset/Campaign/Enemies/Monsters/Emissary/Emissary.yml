@@ -1,0 +1,98 @@
+Parser: Enemy
+ID: EmissaryID
+LocKey: $FH/Emissary$
+MonsterType: Monster
+StandeeLimit: 6
+Model: [Barduu, Gurndel]
+PredominantlyMelee: True
+AbilityCards: [99999]
+# Base Stats
+Level0:
+    Health: 1
+    Move: 1
+    Attack: 0
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            xVariable: 6
+            yVariable: 3
+            MinLValue: 1
+Level1:
+    Health: 1
+    Move: 1
+    Attack: 0
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            xVariable: 6
+            yVariable: 3
+Level2:
+    Health: 1
+    Move: 1
+    Attack: 0
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            xVariable: 6
+            yVariable: 3
+Level3:
+    Health: 1
+    Move: 1
+    Attack: 0
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            xVariable: 6
+            yVariable: 3
+Level4:
+    Health: 1
+    Move: 1
+    Attack: 0
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            xVariable: 6
+            yVariable: 3
+Level5:
+    Health: 1
+    Move: 1
+    Attack: 0
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            xVariable: 6
+            yVariable: 3
+Level6:
+    Health: 1
+    Move: 1
+    Attack: 0
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            xVariable: 6
+            yVariable: 3
+Level7:
+    Health: 1
+    Move: 1
+    Attack: 0
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            xVariable: 6
+            yVariable: 3

@@ -1,0 +1,60 @@
+Parser: Enemy
+ID: BenchmarkID
+LocKey: $Benchmark$
+MonsterType: Monster
+StandeeLimit: 69
+Model: Benchmark
+PredominantlyMelee: True
+AbilityCards: [12000]
+# Base Stats
+Level0:
+    Health: 7
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+Level1:
+    Health: 9
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+Level2:
+    Health: 11
+    Move: 4
+    Attack: 3
+    Range: 1
+    Target: 1
+Level3:
+    Health: 13
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+Level4:
+    Health: 16
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+Level5:
+    Health: 17
+    Move: 5
+    Attack: 4
+    Range: 1
+    Target: 1
+    Conditions: [Wound]
+Level6:
+    Health: 19
+    Move: 5
+    Attack: 5
+    Range: 1
+    Target: 1    
+    Conditions: [Wound]
+Level7:
+    Health: 22
+    Move: 5
+    Attack: 5
+    Range: 1
+    Target: 1    
+    Conditions: [Wound]

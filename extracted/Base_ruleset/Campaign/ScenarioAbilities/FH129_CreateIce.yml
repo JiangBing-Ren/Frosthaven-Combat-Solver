@@ -1,0 +1,36 @@
+Parser: ScenarioAbility
+ID: FH129_CreateIce
+ScenarioAbility:
+    CreateIce:
+        Filter: Self
+        SkipAnim: True
+        AddActiveBonus:
+            CanUndo: False
+            PreviewEffectText: "1 AP"
+            HelpBoxTooltipLocKey: "FH_Scenario_Campaign_129_SCENARIO_MODIFIER_6"
+            CreateTerrain: Ice
+            TileFilter: FeaturelessHex
+            Target: 1
+            IgnoreLOS: True
+            Targeting: All
+            Range: 99
+            MiscVars:
+                includeCasterTile: True
+                APCost: 1
+                DontMoveCamera: True
+        ActiveBonus:
+            ListLayoutOverride: ["$FH/FH_Scenario_Campaign_129_SCENARIO_MODIFIER_6$", Empty]
+            Hidden: True
+            Behaviour: DuringTurnAbility
+            Duration: Persistent
+            ValidAbilityType: NullTargeting
+            IsToggleBonus: True
+            MiscVars:
+                OverrideIcon: "'Create_Icy_Terrain'"
+                OverrideLayoutName: "''"
+                ShowCounter: (6 - ScenarioScript_FH129.CountIce())
+            Requirements:
+                Vars:
+                    CurrentAbility: PhaseManager.CurrentPhaseAction?.CurrentPhaseAbility?.m_Ability
+                    ValidateAbility: CurrentAbility != null && CurrentAbility.Name == "ChooseAPAbility"    
+                    ValidateMaxCount: ScenarioScript_FH129.CountIce() < 6

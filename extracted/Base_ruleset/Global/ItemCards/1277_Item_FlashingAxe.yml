@@ -1,0 +1,28 @@
+Parser: ItemCard
+ID: 1277
+StringID: FlashingAxeID
+Name: $FH/1277_item_cards_flashing_axe_1$
+Art: Flashing Axe
+TotalInGame: 2
+Cost: 20
+Slot: OneHand
+Rarity: Rare
+Usage: Spent
+Trigger: SingleAbility
+Data: 
+    ItemRequirements:
+        Vars:
+            ValidateHasAbility: Ability != null
+            OriginalTargetCount: Ability.OriginalTargetCount
+            IsMoreThanOneTarget: OriginalTargetCount != 1 && OriginalTargetCount != -1  && OriginalTargetCount != 99 && Ability.Targeting != "All"
+            HasAreaEffect: Ability.AreaEffect != null
+            ValidateIsMultiTarget: IsMoreThanOneTarget || HasAreaEffect
+    Overrides:
+        OAddTarget:
+            Target: 1
+    CompareAbility:
+        AbilityType: Attack
+        Filter: Enemy
+        IsMelee: True
+Layout: 
+    - Row: $FH/1277_item_cards_flashing_axe_2$

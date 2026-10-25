@@ -1,0 +1,7 @@
+Parser: CampaignSection
+ID: 94.4
+Name: Sneak Past the Lurkers
+SkipCompletedNotification: True
+Effects:
+    - Type: UnlockScenario
+      Param1: 49

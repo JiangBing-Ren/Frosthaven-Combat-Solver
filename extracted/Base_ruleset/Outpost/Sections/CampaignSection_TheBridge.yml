@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: TheBridge
+Name: The Bridge
+TravelTo: TheBridge
+SkipNarration: True
+SkipCompletedNotification: True
+Effects:
+    - Type: ActivateEvent
+      Param1: CustomEvent_TheBridge

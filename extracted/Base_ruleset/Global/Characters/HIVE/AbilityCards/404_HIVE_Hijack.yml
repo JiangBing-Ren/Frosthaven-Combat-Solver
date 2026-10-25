@@ -1,0 +1,65 @@
+Parser: AbilityCard
+Name: $FH/404_character_ability_cards_hive_hijack_1$
+Character: HIVEID
+ID: 404
+Level: 3
+Initiative: 40
+Discard: [Discard,Discard]
+Prefab: 404_HIVE_Hijack
+Data:
+    Top:
+        XP: 1
+        Abilities:
+            TModeTransfer:
+                Mode: Transfer
+                PerformVars:
+                    # after we've summoned the new actor, remember him for the next ability
+                    ActivateModeAbilities: 
+                        SetVar: TargetingActor.SetTempVar("ActorSummonedByLastMode", ActorBeingSummoned)
+                SubAbilities:
+                    TControlSummon:         
+                        TreatAsNonSubAbility: True  
+                        ControlActor:
+                            #UseControllingActorPlayerControl: True
+                            Abilities:
+                                TSummonAttack:
+                                    Attack: 1
+                                    Range: +0
+                                    MiscVars:
+                                        PrintedProperties: list("Attack")
+                        Range: 99
+                        Filter: OwnSummon
+                        AnimOverload: Grant
+                        Targeting: Custom
+                        TargetingVars:
+                            AddValidActorInRange: TargetingActor.ActorSummonedByLastMode
+    Bottom:
+        Abilities:
+            BControl:
+                ControlActor:
+                    #UseControllingActorPlayerControl: True
+                    Abilities:
+                        BEnemyMove:
+                            Move: 1
+                            StrengthIsBase: True
+                            MiscVars:
+                                PrintedProperties: list("Move")
+                        BEnemyAttack:
+                            Attack: 2
+                            MiscVars:
+                                PrintedProperties: list("Attack")
+                            Range: 1
+                            RangeIsBase: True
+                            StrengthIsBase: True
+                Range: 4
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Filter: Enemy
+                AnimOverload: Grant
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=HIVETransfer>"
+        - Divider: 
+        - Row: "$FH/404_character_ability_cards_hive_hijack_2$"
+    Bottom:
+        - Row: "$FH/404_character_ability_cards_hive_hijack_3$"

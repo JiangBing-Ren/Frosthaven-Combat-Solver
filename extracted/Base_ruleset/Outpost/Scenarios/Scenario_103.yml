@@ -1,0 +1,15 @@
+Parser: FHScenario
+ID: 103
+Name: The Lead Door
+LevelID: FS_103_The_Lead_Door
+Chain: JobPosting
+Location: ImperialMountains
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: AllCharactersGainGold
+          Param1: 10
+        - Type: AllCharactersGainExperience
+          Param1: 30
+        - Type: AllCharactersAddPerkCheck
+          Param1: 1

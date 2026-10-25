@@ -1,0 +1,13 @@
+Parser: FHScenario
+ID: 104
+Name: Ruins of the Solstice
+LevelID: FS_104_Ruins_of_the_Solstice
+RequiresSled: true
+Chain: RandomScenario
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: GainSnowthistle
+          Param1: 2
+        - Type: EnableEvent
+          Param1: WR-49

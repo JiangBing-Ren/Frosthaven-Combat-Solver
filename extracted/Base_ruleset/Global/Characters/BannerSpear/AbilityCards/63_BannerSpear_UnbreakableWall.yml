@@ -1,0 +1,70 @@
+Parser: AbilityCard
+Name: $FH/063_character_ability_cards_banner_spear_unbreakable_wall_1$
+#CustomImage: KRO_BANNER_SPEAR_AbilityCards_UnbreakableWill
+Character: BannerSpearID
+ID: 63
+Level: 1
+Initiative: 83
+Discard: [Discard,Lost]
+Prefab: 63_Bannerspear_UnbreakableWall
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AreaEffect: "0,0,G|1,1,B|1,-1,R|2,0,R|3,1,R"
+                AreaEffectLayoutOverride: "0,0,G|-2,0,B|-3,1,R|-1,1,R|1,1,R"
+                MultiPassAttack: False
+                AnimOverload: Attack2
+                SubAbilities:
+                    TAttackSubPush:
+                        Push:
+                            Amount: 1
+                        MiscVars:
+                            PrintedProperties: list("Push")
+                        IsInlineSubAbility: True
+        XP: 1
+    Bottom:
+        Abilities:
+            BShield:
+                Shield: 1
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                ActiveBonus:
+                    Duration: Persistent
+                AnimOverload: SelfBuff
+                SubAbilities:
+                    BRangeDebuff:
+                        AddRange: -1
+                        Filter: Self
+                        ActiveBonus:
+                            Duration: Persistent
+                            Behaviour: BuffRange
+                            AttackType: Ranged
+                        AutoTrigger: True
+                        SkipAnim: True
+        XP: 2
+Layout:
+    Top:
+        - ColumnWidths: "60,40"
+        - Column:
+            - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%> <sprite name=Push> *TAttackSubPush*"
+            - Row: "<size=20%> "
+        - Column:
+            - Row: "£Area£"
+    Bottom:
+        - Active:
+            Ability: BShield
+            Icon: Positive_Shield
+            Layout: "<sprite name=Shield> *BShield*</size></b>"
+            ListLayout: "<sprite name=Shield> *BShield*"
+        - Row: "<size=50%> "
+        - Active:
+            Ability: BRangeDebuff
+            Icon: Negative_RangeMinus
+            Layout: "$FH/063_character_ability_cards_banner_spear_unbreakable_wall_2$"
+            ListLayout: "$FH/063_character_ability_cards_banner_spear_unbreakable_wall_2$"
+

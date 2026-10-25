@@ -1,0 +1,65 @@
+Parser: Enemy
+ID: PiranhaPigEliteID
+LocKey: $FH/PiranhaPigElite$
+MonsterType: Monster
+StandeeLimit: 10
+Model: PiranhaPig Elite
+NonEliteVariant: PiranhaPigID
+PredominantlyMelee: True
+AbilityCards: [714,715,716,717,718,719,720,721]
+# Base Stats
+Level0:
+    Health: 7
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+Level1:
+    Health: 7
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Conditions: [Wound]
+Level2:
+    Health: 9
+    Move: 4
+    Attack: 3
+    Range: 1
+    Target: 1
+    Conditions: [Wound]
+Level3:
+    Health: 11
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+    Conditions: [Wound]
+Level4:
+    Health: 15
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+    Conditions: [Wound]
+Level5:
+    Health: 19
+    Move: 5
+    Attack: 4
+    Range: 1
+    Target: 1
+    Conditions: [Wound]
+Level6:
+    Health: 25
+    Move: 5
+    Attack: 5
+    Range: 1
+    Target: 1    
+    Conditions: [Wound]
+Level7:
+    Health: 33
+    Move: 5
+    Attack: 6
+    Range: 1
+    Target: 1    
+    Conditions: [Wound]

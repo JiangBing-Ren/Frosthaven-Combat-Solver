@@ -1,0 +1,35 @@
+Parser: ScenarioAbility
+ID: FH133_GiveCatIdolDuringTurn
+ScenarioAbility:
+    AGiveIdolToAdjacentPlayerDuringTurn:
+        PreviewEffectText: ""
+        Filter: Self
+        SkipAnim: True
+        NullTargeting: True
+        AutoTrigger: True
+        MiscVars:
+            InterruptCurrentAbility: True
+            StackNextToCurrent: True
+        AddActiveBonus:
+            NullTargeting: True
+            Filter:
+                TargetType: Ally
+                ActorType: Player
+            Range: 1
+            Target: 1
+            PerformVars:
+                ApplyToActors:
+                    GiveIdol: ScenarioScript_FH133.GiveCatIdol(TargetingActor, ActorsToTarget[0])
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringTurnAbility
+            ListLayoutOverride: [$FH/FH_Scenariro_Campaign_133_CatIdolTransferBonus$, Move]
+            IsToggleBonus: True
+            MiscVars:
+                CatIdolTransferable: True
+                HiddenInCombatLog: True
+            Requirements:
+                DoesntHaveNegativeCondition: [Stun]
+                Vars:
+                    AlliesInRange: GameState.GetAllAlliesInRange(Actor, Actor.ArrayIndex, 1).Where(obj.OriginalType == "Player")
+                    ValidateHasAlliesInRange: AlliesInRange.Count > 0

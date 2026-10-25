@@ -1,0 +1,8 @@
+Parser: CampaignSection
+ID: 189.3
+Name: Xain Returns
+ShowAsUnknownInCalendar: True
+SkipCompletedNotification: False
+Effects:
+    - Type: GainMorale
+      Param1: 2

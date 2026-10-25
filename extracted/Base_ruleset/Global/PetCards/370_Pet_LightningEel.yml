@@ -1,0 +1,61 @@
+Parser: PetCard
+ID: 370
+StringID: LightningEelPetID
+Name: $FH/370_pet_cards_lightning_eel_1$
+Description: $FH/370_pet_cards_lightning_eel_2$
+Art: Lightning Eel
+Usage: Consumed
+Trigger: DuringOwnTurn
+PetUnlockedBy: LightningEelID
+Cost: 0
+Data: 
+    Abilities:
+        # fake ability first, in order to give us something to undo before triggering the in-order abilities
+        AChooseToGrantDamage:
+            NullTargeting:
+            Filter: Self
+            Range: -1
+            Target: 1
+            AnimOverload: UseItem
+            PerformVars:
+                ActorIsApplying: 
+                    VFX: TargetingActor.PlayVFX("PetLightningEelEffect")
+            PreviewEffectText: ""
+            SubAbilities:
+                AGrantDamage:
+                    PreviewEffectText: ""
+                    TreatAsNonSubAbility: True
+                    ControlActor:
+                        Abilities:
+                            ADamageSelf:
+                                PreviewEffectText: "<sprite name=Damage> 2, <sprite name=RecoverIcon> 1"
+                                Damage: 2
+                                Filter: Self
+                                NegativeAbilityIsOptional: True
+                                CanSkip: True
+                                StartAbilityRequirements:
+                                    Type: ThisAbility
+                                    Vars:
+                                        SubAbility: Ability.SubAbilities[0]
+                                        ValidateHasCards: SubAbility.HasCardsToRecover(Actor.CharacterClass.DiscardedAbilityCards)
+                                SubAbilities:
+                                    ARecover:
+                                        MiscVars:
+                                            DontPreviewDescription: True
+                                        IsInlineSubAbility: True
+                                        AutoTrigger: True
+                                        RecoverDiscardedCards: 1
+                                        Filter: Self
+                                        Vars:
+                                            CardLevel: 1
+                    Target: -1
+                    Targeting: All
+                    Filter:
+                        ActorType: Player
+                        TargetType: [Self, Ally]
+                    SkipAnim: True
+                    AutoTrigger: True
+                    MiscVars:
+                        DontPreviewDescription: True
+Layout: 
+    - Row: "$FH/370_pet_cards_lightning_eel_2$"

@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 140
+ScenarioItemID: 1145
+Name: Mantle of Summoning
+Quantity: 2
+GoldCost: 40
+Type: Body
+IsNewCharacterItem: False

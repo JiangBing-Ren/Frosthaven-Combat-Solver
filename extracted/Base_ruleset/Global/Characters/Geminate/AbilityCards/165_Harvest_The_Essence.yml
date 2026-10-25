@@ -1,0 +1,73 @@
+Parser: AbilityCard
+Name: $FH/165_character_ability_cards_geminate_harvest_the_essence_1$
+Character: GeminateID
+ID: 165
+Level: 1
+ProgressionOrder: 12
+Initiative: 60
+Discard: [Lost,Discard]
+RequiredForm: Range
+Prefab: 165_Geminate_HarvestTheEssence
+Data:
+    Top:
+        Abilities:
+            BWard:
+                Ward:
+                    DiamondPlusEnhancements: 1
+                Filter: Self 
+            TInfuse:
+                AddActiveBonus:
+                    IgnoreStun: True
+                    Consume:
+                        Elements: Any
+                        Abilities:
+                            CAInfuse:
+                                IgnoreStun: True
+                                Infuse: [Light, Ice]
+                                ShowElementPicker: True
+                    Filter: Self
+                    SkipAnim: True
+                Filter: Self
+                ActiveBonus:
+                    Behaviour: EndTurnAbility
+                    Duration: Persistent
+                    ValidAbilityType: Consume
+                    Restriction: OncePerAction
+            TSwitchFormMeleeToRange:
+                Null: True
+                Flags: [SwitchFormRangeToMelee]
+                AutoTrigger: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Ward]
+        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 2
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BHeal:
+                Heal:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self
+Layout:
+    Top:
+        - Row: "<size=150%><sprite name=Ward> <size=100%>@BWard@ $Self$"
+        - Row: "<size=50%> "
+        - Active:
+           Ability: TInfuse
+           ListLayout: "$FH/165_character_ability_cards_geminate_harvest_the_essence_3$"
+           Layout: "$FH/165_character_ability_cards_geminate_harvest_the_essence_3$"
+           Icon: "Positive_IceLightInfuse_Wild"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=200%><sprite name=GMRangedToMelee>"
+    Bottom:
+        - Row: "<size=150%><sprite name=Move> *BMove*"
+        - Row: "<size=150%><sprite name=Heal> *BHeal* <size=100%>@BHeal@ $Self$"

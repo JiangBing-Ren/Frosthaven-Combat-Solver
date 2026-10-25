@@ -1,0 +1,7 @@
+Parser: CampaignSection
+ID: 95.4
+Name: Aesther Outpost
+SkipCompletedNotification: False
+Effects:
+    - Type: UnlockScenario
+      Param1: 66

@@ -1,0 +1,6 @@
+Parser: AttackModifier
+Name: AMC_Fire_P0
+MathModifier: "+0"
+Abilities:
+    InfuseAbility:
+        Infuse: [Fire]

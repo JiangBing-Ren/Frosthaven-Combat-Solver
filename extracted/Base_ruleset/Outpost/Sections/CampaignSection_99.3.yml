@@ -1,0 +1,8 @@
+Parser: CampaignSection
+ID: 99.3
+Name: Deepwraith Retires
+SkipNarration: True
+SkipCompletedNotification: False
+Effects:
+    - Type: EnableEvent
+      Param1: SO-65

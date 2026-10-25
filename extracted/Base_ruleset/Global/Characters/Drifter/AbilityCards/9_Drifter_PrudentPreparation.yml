@@ -1,0 +1,68 @@
+Parser: AbilityCard
+Name: $FH/009_character_ability_cards_drifter_prudent_preparation_1$
+Character: DrifterID
+ID: 9
+Level: 1
+ProgressionOrder: 8
+Initiative: 14
+Discard: [Discard,Discard]
+Prefab: 9_Drifter_PrudentPreparation
+Data:
+    Top:
+        Abilities:
+            TShield:
+                Shield:
+                    Amount: 1
+                    DiamondPlusEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                Filter: Self
+                ActiveBonus:
+                    Duration: Round
+                    ListLayoutOverride: ["<sprite name=Shield> *TShield*", Positive_Shield]
+                AnimOverload: PowerUp
+            TRataliate:
+                Retaliate:
+                    Amount: 1
+                    DiamondPlusEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Retaliate")
+                RetaliateRange: 1
+                Filter: Self
+                AnimOverload: PowerUp
+                ActiveBonus:
+                    ListLayoutOverride: ["<sprite name=Retaliate> *TRataliate*", Positive_Retaliate]
+    Bottom:
+        Abilities:
+            BHeal:
+                Heal:
+                    Amount: 2
+                    CircleEnhancements: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Heal","Range")
+                Filter: [Self, Ally]
+                AnimOverload: Heal
+Layout:
+    Top:
+        - Row:
+            - Active:
+                Ability: TShield
+                Icon: Positive_Shield
+                ListLayout: "<sprite name=Shield> *TShield*"
+                Layout: "<sprite name=Shield> *TShield* <size=100%><voffset=1>@TShield@"
+        - Divider:
+        - Row:
+            - Active:
+                Ability: TRataliate
+                Icon: Positive_Retaliate
+                ListLayout: "<sprite name=Retaliate> *TRataliate*"
+                Layout: "<sprite name=Retaliate> *TRataliate* <voffset=1>@TRataliate@"
+    Bottom:
+        - Row:
+            - ColumnWidths: "25,25,25,25"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Heal> *BHeal*<size=100%><voffset=1>@BHeal@"
+            - Column:
+                - AddedEffect: "<sprite name=Range>3"
+            - Column:

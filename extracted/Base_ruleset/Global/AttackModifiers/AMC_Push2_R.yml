@@ -1,0 +1,7 @@
+Parser: AttackModifier
+Name: AMC_Push2_R
+MathModifier: "+0"
+Rolling: True
+Abilities:
+    PushAbility:
+        Push: 2

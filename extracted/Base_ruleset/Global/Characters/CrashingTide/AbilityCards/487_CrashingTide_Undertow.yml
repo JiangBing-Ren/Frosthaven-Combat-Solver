@@ -1,0 +1,57 @@
+Parser: AbilityCard
+Name: $FH/487_character_ability_cards_crashing_tide_undertow_1$
+Character: CrashingTideID
+ID: 487
+Level: X
+ProgressionOrder: 487
+Initiative: 15
+Discard: [Lost,Discard]
+Prefab: 487_CrashingTide_Undertow
+Data:
+    Top:
+        Abilities:
+            TBane:
+                Bane: True
+                MiscVars:
+                    PrintedProperties: list("Target")
+                Filter:
+                    TargetType: Enemy
+                    Vars:
+                        ValidateOnWater: target.Tile.IsWater
+                        ValidateNonBoss: not target.IsBoss
+                AnimOverload: Attack
+        XP: 2
+    Bottom:
+        Abilities:
+            BHeal:
+                Heal:
+                    Amount: 1
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: [Self]
+            BShield:
+                Shield: 1
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                Filter: [Self]
+                ActiveBonus:
+                    Duration: Round
+                    ListLayoutOverride: ["<sprite name=Shield> *BShield*", Positive_Shield]
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "30,70"
+            - Column: "<b><size=130%><sprite name=Bane>"
+            - Column:
+                - AddedEffect: "$FH/487_character_ability_cards_crashing_tide_undertow_2$"
+    Bottom:
+        - Row:
+            - ColumnWidths: "25,25,25,25"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Heal> *BHeal* <size=100%><voffset=1>@BHeal@"
+            - Column:
+                - AddedEffect: "$FH/target_self$"
+            - Column:
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Shield> *BShield*"

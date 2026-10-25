@@ -1,0 +1,35 @@
+Parser: ItemCard
+ID: 1226
+StringID: TomeOfElementsID
+Name: $FH/1226_item_cards_tome_of_elements_1$
+Art: Tome of Elements
+TotalInGame: 1
+Cost: 50
+Slot: OneHand
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        ADontWane:
+            NullTargeting: True
+            Filter: Self
+            MiscVars: 
+                ElementsDontWane: True
+            ActiveBonus:
+                Duration: Round
+                Hidden: True
+                MiscVars:
+                    IgnoreImpair: True
+            # reordered the infuse to be after the buff, since the infuse with no wild element, and no picker, auto starts with no confirmation
+            SubAbilities:
+                AInfuse:
+                    TreatAsNonSubAbility: True
+                    Infuse: [Fire,Ice,Air,Earth,Light,Dark]
+                    SkipAnim: True
+Layout: 
+    - Row: "$FH/1226_item_cards_tome_of_elements_2$"
+    - Active:
+        Ability: ADontWane
+        Icon: "CreateWild"
+        ListLayout: "$FH/1226_item_cards_tome_of_elements_3$"

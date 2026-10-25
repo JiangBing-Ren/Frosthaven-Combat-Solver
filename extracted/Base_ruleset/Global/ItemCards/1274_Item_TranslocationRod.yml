@@ -1,0 +1,38 @@
+Parser: ItemCard
+ID: 1274
+StringID: TranslocationRodID
+Name: $FH/1274_item_cards_translocation_rod_1$
+Art: Translocation Rod
+TotalInGame: 1
+Cost: 30
+Slot: TwoHand 
+Rarity: Relic
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        AChooseTargets:
+            NullTargeting: True
+            Target: 2
+            Range: 99
+            Filter: 
+                TargetType: [Ally, Enemy]
+                Vars:
+                    ValidateMonsterType: (target.IsBoss == false) || (CustomAbility.IsAlly(target, self, true))
+                    ValidateNotImmuneToTeleport: (target.Immunities.Contains(CAbility.EAbilityType.Teleport2) == False) && (target.Immunities.Contains(CAbility.EAbilityType.Teleport) == False)
+                    ValidateNotObject: CustomAbility.IsObjectActor(target) == False
+            MiscVars:
+                MinTargets: 2
+                ShouldPerformOnTileSelected: True
+            PerformVars: 
+                ActorIsSelectingTargetingFocus: 
+                    RefreshTargets: CustomAbility.TranslocationRodValidateTargets(obj)
+                ApplyToActors:
+                    Actor1: ActorsToTarget[0]
+                    Actor2: ActorsToTarget[1]
+                    Tile1: Actor1.Tile
+                    Tile2: Actor2.Tile
+                    Teleport1: GameState.TeleportActor(Actor1, Tile2, false, obj, true)
+                    Teleport2: GameState.TeleportActor(Actor2, Tile1, false, obj, true)
+Layout:
+    - Row: "$FH/1274_item_cards_translocation_rod_2$"

@@ -1,0 +1,38 @@
+Parser: EnemyCard
+ID: 0877000204
+Name: $Monster_Ability_Boss_TheTormentor_Special1$
+Initiative: 85
+Shuffle: True
+Data:
+    Abilities: 
+        Move1:
+            Move: 0
+        Attack1:
+            Attack: +0
+            Range: 4
+            RangeIsBase: True
+            Filter: Enemy
+            StatIsBasedOnX:
+                Strength:
+                    BasedOn: XAddedToInitialPlayerCharacterCount
+                    Multiplier: -4
+                    AddTo: True
+            Text: "$FH/boss_special_the_tormentor_1_2$"
+            TextOnly: True
+            AnimOverload: RangedAttackOther
+        Dummy:
+          Null: True
+          Flags: [Special1]
+          TextOnly: True
+          AnimOverload: ViolentTerrainFormation
+          Text: "$FH/boss_special_the_tormentor_1_1$"
+        Dummy:
+          Null: True # wait for idle
+    Infuse: Light
+    Consumes:
+        CEarth:
+            Elements: Earth
+            AbilityOverrides:
+                CAttackBuff:
+                    ParentName: Attack1
+                    Condition: Immobilize

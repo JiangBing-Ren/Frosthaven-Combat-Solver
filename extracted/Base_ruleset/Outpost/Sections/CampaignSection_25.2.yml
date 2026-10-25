@@ -1,0 +1,11 @@
+Parser: CampaignSection
+ID: 25.2
+Name: Trading Post Built
+SkipCompletedNotification: False
+Effects:
+    - Type: EnableEvent
+      Param1: WO-80
+    - Type: EnableEvent
+      Param1: SO-61
+    - Type: EnableEvent
+      Param1: WR-41

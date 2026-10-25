@@ -1,0 +1,65 @@
+Parser: Enemy
+ID: NightDemonID
+LocKey: $NightDemon$
+MonsterType: Monster
+StandeeLimit: 6
+Model: Night Demon
+PredominantlyMelee: True
+AbilityCards: [578, 579, 580, 581, 582, 583, 584, 585]
+# Base Stats
+Level0:
+    Health: 3
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    AttackersGainDisadvantage: True
+Level1:
+    Health: 5
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    AttackersGainDisadvantage: True
+Level2:
+    Health: 6
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    AttackersGainDisadvantage: True
+Level3:
+    Health: 7
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+    AttackersGainDisadvantage: True
+Level4:
+    Health: 8
+    Move: 4
+    Attack: 5
+    Range: 1
+    Target: 1
+    AttackersGainDisadvantage: True
+Level5:
+    Health: 11
+    Move: 4
+    Attack: 5
+    Range: 1
+    Target: 1
+    AttackersGainDisadvantage: True
+Level6:
+    Health: 16
+    Move: 4
+    Attack: 5
+    Range: 1
+    Target: 1    
+    AttackersGainDisadvantage: True
+Level7:
+    Health: 20
+    Move: 4
+    Attack: 6
+    Range: 1
+    Target: 1    
+    AttackersGainDisadvantage: True

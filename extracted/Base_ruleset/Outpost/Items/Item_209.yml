@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 209
+ScenarioItemID: 1219
+Name: Sword of Mastery
+Quantity: 1
+GoldCost: 60
+Type: TwoHandWeapon
+IsNewCharacterItem: False

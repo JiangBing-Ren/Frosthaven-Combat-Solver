@@ -1,0 +1,41 @@
+Parser: AbilityCard
+Name: $FH/276_character_ability_cards_trapper_spike_pit_1$
+Character: TrapperID
+ID: 276
+Level: 1
+Initiative: 47
+Discard: [Discard,Discard]
+Prefab: 276_Trapper_SpikePit
+Data:
+    Top:
+        Abilities:
+            TTrap:
+                Trap:
+                    TrapName: TrapperTrap
+                    Damage: 3
+                    SquareEnhancements: 1
+                    Conditions: Immobilize
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Damage","Range")
+                RangeIsBase: True
+                AnimOverload: TrapThrow
+        XP: 1
+    Bottom:
+        Abilities:
+            BMoveTraps:
+                MoveTrap:
+                Range: 2
+                RangeIsBase: True
+                Target: 2
+                MiscVars:
+                    PrintedProperties: list("Range")
+                TargetIsBase: True
+                MoveTrapRange: 4
+                AnimOverload: FishingRodTrap
+Layout:
+    Top:
+        - Row: "$FH/276_character_ability_cards_trapper_spike_pit_2$ <sprite name=Damage>*TTrap* @TTrap@"
+        - Row: $FH/276_character_ability_cards_trapper_spike_pit_3$
+    Bottom:
+        - Row: $FH/276_character_ability_cards_trapper_spike_pit_4$

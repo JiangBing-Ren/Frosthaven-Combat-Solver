@@ -1,0 +1,16 @@
+Parser: CampaignSection
+ID: 115.1
+Name: Mysterious Crate (115.1)
+SkipCompletedNotification: False
+ConditionalEffects: 
+    - Type: ReadSectionIfHasRequiredBuilding
+      # require party has stables built
+      Param1: Library
+      # read this section
+      Param2: 28.1
+      # if true, show this AFTER 115.1 narrative
+      Param3: True 
+Effects:
+    - Type: AddCalendarCampaignSection
+      Param1: 178.1
+      Param2: 3

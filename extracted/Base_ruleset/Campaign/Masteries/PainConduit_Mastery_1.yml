@@ -1,0 +1,12 @@
+Parser: Mastery
+ID: PainConduit_MASTERY_1
+LocalisedName: PainConduit_MASTERY_1_Name
+LocalisedDescription: PainConduit_MASTERY_1_Desc
+PerkPoints: 1
+BattleGoalCondition:
+    - Targets:
+        Filter: DealDamage
+        CharacterTypes:
+            Target: NotSelf
+        SubFilter: RoundCharactersOnly
+        Value: 40

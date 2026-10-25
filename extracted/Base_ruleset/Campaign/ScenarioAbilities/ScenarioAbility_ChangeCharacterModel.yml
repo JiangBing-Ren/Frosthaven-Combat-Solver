@@ -1,0 +1,7 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_ChangeCharacterModel
+ScenarioAbility:
+    AActive:
+        ChangeCharacterModel: BannerSpear
+        Filter: Self
+        AnimOverload: None

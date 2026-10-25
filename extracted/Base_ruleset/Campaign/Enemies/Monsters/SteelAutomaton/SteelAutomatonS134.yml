@@ -1,0 +1,113 @@
+Parser: Enemy
+ID: SteelAutomatonS134ID
+LocKey: $FH/SteelAutomatonElite$
+MonsterType: Monster
+StandeeLimit: 6
+Model: SteelAutomaton Elite
+PredominantlyMelee: True
+AbilityCards: [618,619,620,621,622,623,624,625]
+# Base Stats
+Level0:
+    Health: 0
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 2
+    Immunities: [Poison,Disarm]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToCeil
+            Multiplier: 5
+Level1:
+    Health: 0
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 3
+    Immunities: [Poison,Disarm]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToCeil
+            Multiplier: 6
+Level2:
+    Health: 0
+    Move: 2
+    Attack: 5
+    Range: 1
+    Target: 1
+    Shield: 3
+    Immunities: [Poison,Disarm]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToCeil
+            Multiplier: 7
+Level3:
+    Health: 0
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    Shield: 3
+    Immunities: [Poison,Disarm]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToCeil
+            Multiplier: 8.5
+Level4:
+    Health: 0
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    Shield: 3
+    Immunities: [Poison,Disarm]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToCeil
+            Multiplier: 11
+Level5:
+    Health: 0
+    Move: 3
+    Attack: 6
+    Range: 1
+    Target: 1
+    Shield: 3
+    Immunities: [Poison,Disarm]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToCeil
+            Multiplier: 12.5
+Level6:
+    Health: 0
+    Move: 3
+    Attack: 7
+    Range: 1
+    Target: 1
+    Shield: 4
+    Immunities: [Poison,Disarm]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToCeil
+            Multiplier: 13
+Level7:
+    Health: 0
+    Move: 4
+    Attack: 7
+    Range: 1
+    Target: 1
+    Shield: 4
+    Immunities: [Poison,Disarm]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToCeil
+            Multiplier: 18

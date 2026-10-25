@@ -1,0 +1,8 @@
+Parser: Perk
+ID: Geminate03
+Name: FH/PERK_Geminate_03_Name
+Description: FH/PERK_Geminate_03_Desc
+CharacterID: GeminateID
+Available: 2
+CardsToRemove: [AMC_Basic_P0]
+CardsToAdd: [AMC_Wound_P1]

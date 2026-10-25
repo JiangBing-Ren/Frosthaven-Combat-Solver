@@ -1,0 +1,26 @@
+Parser: ItemCard
+ID: 1208
+StringID: OpulentShoesID
+Name: $FH/1208_item_cards_opulent_shoes_1$
+Art: Opulent Shoes
+TotalInGame: 2
+Cost: 30
+Slot: Legs
+Rarity: Rare
+Usage: Unrestricted
+Trigger: PassiveEffect
+Data:
+    Abilities:
+        AFocusInitiative:
+            AdjustInitiative: 1
+            Filter: Self
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: FocusInitiativeBeforeSummons
+                ValidAbilityType: AdjustInitiative
+Layout: 
+    - Active:
+        Ability: AFocusInitiative
+        ListLayout: $FH/1208_item_cards_opulent_shoes_2$
+        Layout: $FH/1208_item_cards_opulent_shoes_2$
+        Icon: "Positive_Summon_Item"

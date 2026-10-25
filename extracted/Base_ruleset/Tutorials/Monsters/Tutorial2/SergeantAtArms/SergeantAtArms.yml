@@ -1,0 +1,81 @@
+Parser: Enemy
+ID: SergeantAtArmsID
+LocKey: $SergeantAtArms$
+MonsterType: Monster
+StandeeLimit: 6
+Model: City Guard
+PredominantlyMelee: True
+AbilityCards: [9040]
+# Base Stats
+Level0:
+    Health: 5
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+Level1:
+    Health: 5
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+Level2:
+    Health: 5
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+Level3:
+    Health: 5
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+Level4:
+    Health: 5
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+Level5:
+    Health: 5
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+Level6:
+    Health: 5
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+Level7:
+    Health: 5
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0

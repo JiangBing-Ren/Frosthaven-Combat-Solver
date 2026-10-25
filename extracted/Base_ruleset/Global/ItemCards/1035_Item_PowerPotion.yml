@@ -1,0 +1,25 @@
+Parser: ItemCard
+ID: 1035
+StringID: PowerPotionID
+Name: $FH/1035_item_cards_power_potion_1$
+Art: Power Potion
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        ABuffAttack:
+            Filter: Self
+            Attack: 1
+            ActiveBonus:
+                Behaviour: BuffAttack
+                Duration: Turn
+Layout: 
+    - Active:
+        Ability: ABuffAttack
+        Layout: "$FH/1035_item_cards_power_potion_2$"
+        ListLayout: "$FH/1035_item_cards_power_potion_2$"
+        Icon: "Positive_AttackPlus_Item"        

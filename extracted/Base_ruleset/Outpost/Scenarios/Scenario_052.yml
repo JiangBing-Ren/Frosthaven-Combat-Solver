@@ -1,0 +1,15 @@
+Parser: FHScenario
+ID: 52
+Name: Fleeting Permanence
+LevelID: FS_052_Fleeting_Permanence
+Chain: Algox2
+Location: WhitefireWood
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: GainMorale
+          Param1: 1
+        - Type: GainInspiration
+          Param1: 1
+        - Type: UnlockScenario
+          Param1: 55

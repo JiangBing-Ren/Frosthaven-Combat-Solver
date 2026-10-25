@@ -1,0 +1,8 @@
+Parser: AttackModifier
+Name: AMC_Wound_R
+MathModifier: "+0"
+Rolling: True
+AbilityOverrides:
+    NegCon:
+        ParentName: AMC_Wound_R
+        Conditions: [Wound]

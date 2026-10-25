@@ -1,0 +1,106 @@
+Parser: AbilityCard
+Name: $FH/422_character_ability_cards_metal_mosaic_pressure_buildup$
+Character: MetalMosaicID
+ID: 422
+Level: 1
+Initiative: 20
+Discard: [Discard,Discard]
+Prefab: 422_MetalMosaic_PressureBuild-Up
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Filter: Enemy
+            TPressureChange:
+                Null: True
+                SkipAnim: True
+                IgnoreStun: True
+                PerformVars:
+                    NullBegin:
+                        ChangePressure: CustomAbility.PressureChange(TargetingActor, 1)
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    Vars: 
+                        ValidateActionHasHappened: CustomAbility.HasPerformedAction(Ability) 
+        Consumes:
+            TCIce:
+                Elements: Ice
+                AbilityOverrides:
+                    TCAttackBuff:
+                        ParentName: TAttack
+                        Strength: 2
+                        SubAbilities:
+                            CSubXP:
+                                GainXP: 1
+    Bottom:
+        Abilities:
+            BShieldLow:
+                Shield: 1
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                Filter: Self
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredPressure: Low
+                CanSkip: False
+                StatIsBasedOnX:
+                    XP:
+                        BasedOn: Vars
+                        Vars:
+                            Value: 1
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+        Consumes:
+            BCFire:
+                Elements: Fire
+                AbilityOverrides:
+                    BCFirePressureOverride:
+                        ParentName: BMove
+                        SubAbilities:
+                            BCPressureChange:
+                                ParentName: BMove
+                                Null: True
+                                SkipAnim: True
+                                IgnoreStun: True
+                                PerformVars:
+                                    NullBegin:
+                                        ChangePressure: CustomAbility.PressureChange(TargetingActor, 1)
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCIce
+                    Text: "+2<sprite name=Attack>, <sprite name=XP1>"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMGainPressure>"
+    Bottom:
+        - Active:
+            Ability: BShieldLow
+            Icon: Positive_Shield
+            ListLayout: "<sprite name=Shield> *BShieldLow*"
+            Layout: "<sprite name=Shield> *BShieldLow*"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureLow><size=100%> <sprite name=Shield> 1, <sprite name=XP1>"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: BCFire
+                    Text: "<size=130%><sprite name=MMGainPressure>"

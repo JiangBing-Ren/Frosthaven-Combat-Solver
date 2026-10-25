@@ -1,0 +1,19 @@
+Parser: ItemCard
+ID: 954
+StringID: GhostCloakID
+Name: $FH/0954_item_cards_ghost_cloak_1$
+Art: Ghost Cloak
+TotalInGame: 2
+Cost: 0
+Slot: Body 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        ADamageSelf:
+            Damage: 3
+            Filter: Self
+            Conditions: Invisible
+Layout: 
+    - Row: $FH/0954_item_cards_ghost_cloak_2$

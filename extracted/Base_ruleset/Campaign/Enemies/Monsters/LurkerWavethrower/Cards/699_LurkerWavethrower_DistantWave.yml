@@ -1,0 +1,15 @@
+Parser: EnemyCard
+ID: 699
+Name: $Monster_Ability_699_LurkerWavethrower_DistantWave$
+Initiative: 51
+Shuffle: False
+Data:
+    Abilities: 
+        Attack1:
+            Attack: 1
+            Range: 6
+            RangeIsBase: True
+            AttackFurthestTarget: True
+            Filter: Enemy
+            AnimOverload: RangedAttack
+            Text: "$FH/0699_monster_ability_cards_lurker_wavethrower_distant_wave_2$"

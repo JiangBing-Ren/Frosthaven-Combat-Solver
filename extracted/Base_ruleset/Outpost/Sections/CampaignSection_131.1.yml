@@ -1,0 +1,10 @@
+Parser: CampaignSection
+ID: 131.1
+# for debugging
+Repeatable: True
+Name: Xain's Gambit
+ShowAsUnknownInCalendar: True
+SkipCompletedNotification: True
+Effects:
+    - Type: GainItem
+      Param1: 98

@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 219
+ScenarioItemID: 1229
+Name: Tome of Conflict
+Quantity: 1
+GoldCost: 50
+Type: OneHandWeapon
+IsNewCharacterItem: False

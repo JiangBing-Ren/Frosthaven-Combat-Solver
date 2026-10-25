@@ -1,0 +1,87 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH66_ActivateCore
+ScenarioAbility:
+   AChoose:
+        Filter: Self
+        HelpBoxTooltipLocKey: "$FH_Scenario_Campaign_066_Activate_Element_1$"
+        PreviewEffectText: "FH_Scenario_Campaign_066_Activate_Element_1"
+        Choose:
+            Abilities:
+                BCAbilityIce:
+                    NullTargeting:
+                    Flags: [Special1]
+                    Filter: [Self]
+                    PreviewEffectText: "<sprite name=Ice>"
+                    AutoTrigger: True
+                    AnimOverload: "UseItem"
+                    Vars:
+                        Element: "'Ice'"
+                    StartAbilityRequirements:
+                        Type: ThisAbility
+                        Vars:
+                            ValidateElement: ScenarioScript_FH066.ValidateActivateCore("Ice")
+                BCAbilityEarth:
+                    NullTargeting:
+                    Flags: [Special1]
+                    Filter: [Self]
+                    PreviewEffectText: "<sprite name=Earth>"
+                    AutoTrigger: True
+                    AnimOverload: "UseItem"
+                    Vars:
+                        Element: "'Earth'"
+                    StartAbilityRequirements:
+                        Type: ThisAbility
+                        Vars:
+                            ValidateElement: ScenarioScript_FH066.ValidateActivateCore("Earth")
+                BCAbilityFire:
+                    NullTargeting:
+                    Flags: [Special1]
+                    Filter: [Self]
+                    PreviewEffectText: "<sprite name=Fire>"
+                    AutoTrigger: True
+                    AnimOverload: "UseItem"
+                    Vars:
+                        Element: "'Fire'"
+                    StartAbilityRequirements:
+                        Type: ThisAbility
+                        Vars:
+                            ValidateElement: ScenarioScript_FH066.ValidateActivateCore("Fire")
+                BCAbilityAir:
+                    NullTargeting:
+                    Flags: [Special1]
+                    Filter: [Self]
+                    PreviewEffectText: "<sprite name=Air>"
+                    AutoTrigger: True
+                    AnimOverload: "UseItem"
+                    Vars:
+                        Element: "'Air'"
+                    StartAbilityRequirements:
+                        Type: ThisAbility
+                        Vars:
+                            ValidateElement: ScenarioScript_FH066.ValidateActivateCore("Air")
+                BCAbilityLight:
+                    NullTargeting:
+                    Flags: [Special1]
+                    Filter: [Self]
+                    PreviewEffectText: "<sprite name=Light>"
+                    AutoTrigger: True
+                    AnimOverload: "UseItem"
+                    Vars:
+                        Element: "'Light'"
+                    StartAbilityRequirements:
+                        Type: ThisAbility
+                        Vars:
+                            ValidateElement: ScenarioScript_FH066.ValidateActivateCore("Light")
+                BCAbilityDark:
+                    NullTargeting:
+                    Flags: [Special1]
+                    Filter: [Self]
+                    PreviewEffectText: "<sprite name=Dark>"
+                    AutoTrigger: True
+                    AnimOverload: "UseItem"
+                    Vars:
+                        Element: "'Dark'"
+                    StartAbilityRequirements:
+                        Type: ThisAbility
+                        Vars:
+                            ValidateElement: ScenarioScript_FH066.ValidateActivateCore("Dark")

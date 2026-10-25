@@ -1,0 +1,22 @@
+Parser: EnemyCard
+ID: 08740009
+Name: $Monster_Ability_Boss_FrozenFist_Special2$
+Initiative: 11
+Shuffle: False
+Data:
+    Abilities:
+        Shield0:
+            Shield: SpecialBaseStat
+            AnimOverload: Cast
+            ActiveBonus:
+                ListLayoutOverride: ["<sprite name=Shield> *Shield0*", Positive_Shield]
+        Move1:
+            Move: 1
+        Attack2:
+            Attack: 0
+            Target: 3
+            TargetIsBase: True
+            MultiPassAttack: False
+            Range: 1
+            RangeIsBase: True
+            AnimOverload: Ground Slam

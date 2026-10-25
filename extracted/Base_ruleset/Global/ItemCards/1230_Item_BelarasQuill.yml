@@ -1,0 +1,26 @@
+Parser: ItemCard
+ID: 1230
+StringID: BelarasQuillID
+Name: $FH/1230_item_cards_belaras_quill_1$
+Art: Belaras Quill
+TotalInGame: 1
+Cost: 50
+Slot: OneHand 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    ItemRequirements:
+        Vars:
+            SpecificItems: Actor.Inventory.AllItems.Where((obj.SlotState.ToString() == "Spent" || obj.SlotState.ToString() == "Consumed") && obj.YMLData.Name.ToLower().Contains("tome"))
+            ValidateHasItems: SpecificItems.Count > 0
+    Abilities:
+        ARefreshOtherSpentItem:
+            RefreshItems: 2
+            Filter: Self
+            MiscVars:
+                MaxSelectIsOptional: True
+            Vars:
+                SpecificItems: TargetingActor.Inventory.AllItems.Where((obj.SlotState.ToString() == "Spent" || obj.SlotState.ToString() == "Consumed") && obj.YMLData.Name.ToLower().Contains("tome"))
+Layout: 
+    - Row: "$FH/1230_item_cards_belaras_quill_2$"

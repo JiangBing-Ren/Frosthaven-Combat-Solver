@@ -1,0 +1,20 @@
+Parser: FHScenario
+ID: 130
+Name: And Then, a Stream
+LevelID: FS_130_And_Then_a_Stream
+Location: WhitefireWood
+Chain: Other
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: LoseMorale
+          Param1: 3
+        - Type: AddProsperity
+          Param1: 1
+          # 10 gold per token
+        - Type: FS130ConclusionEffect
+          Param1: 10
+    - Effects:
+          # 5 gold per token
+        - Type: FS130ConclusionEffect
+          Param1: 5

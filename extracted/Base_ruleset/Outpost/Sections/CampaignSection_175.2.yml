@@ -1,0 +1,12 @@
+Parser: CampaignSection
+ID: 175.2
+Name: Low Morale
+Repeatable: True
+SkipNarration: True
+SkipCompletedNotification: False
+Effects:
+    - Type: GainMorale
+      Param1: 5
+    - Type: LoseProsperity
+      Param1: 2
+    - Type: RebuildAllBuildings

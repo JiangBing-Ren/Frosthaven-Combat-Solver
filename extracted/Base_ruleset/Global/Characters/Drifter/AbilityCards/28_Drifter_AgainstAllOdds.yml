@@ -1,0 +1,226 @@
+Parser: AbilityCard
+Name: $FH/028_character_ability_cards_drifter_against_all_odds_1$
+Character: DrifterID
+ID: 28
+Level: 8
+ProgressionOrder: 27
+Initiative: 37
+Discard: [Discard,Lost]
+Prefab: 28_Drifter_AgainstAllOdds
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 1
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                TreatAsMelee: true
+                Target: 99
+                MultiPassAttack: False
+                AnimOverload: Attack_AOE_Radial
+                MiscVars:
+                    AutoSelectValidTiles: True
+                SubAbilities:
+                    BMoveTracker0:
+                        MoveActiveBonusTracker: -1
+                        Vars:
+                            NumberOfCardsToSelect: 1
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                AttackAbility: CurrentAbility.ParentAbility
+                                EnemiesTargeted: AttackAbility.ActorsTargeted
+                                ValidateAnyEnemiesTargeted: EnemiesTargeted.Count > 0
+                        Filter: [Self]
+                        TreatAsNonSubAbility: True
+                        AnimOverload: PowerUp
+                    BMoveTracker1:
+                        MoveActiveBonusTracker: -1
+                        Vars:
+                            NumberOfCardsToSelect: 1
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                AttackAbility: CurrentAbility.ParentAbility
+                                EnemiesTargeted: AttackAbility.ActorsTargeted.Skip(1)
+                                ValidateAnyEnemiesTargeted: EnemiesTargeted.Count > 0
+                        Filter: [Self]
+                        TreatAsNonSubAbility: True
+                        AnimOverload: PowerUp
+                    BMoveTracker2:
+                        MoveActiveBonusTracker: -1
+                        Vars:
+                            NumberOfCardsToSelect: 1
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                AttackAbility: CurrentAbility.ParentAbility
+                                EnemiesTargeted: AttackAbility.ActorsTargeted.Skip(2)
+                                ValidateAnyEnemiesTargeted: EnemiesTargeted.Count > 0
+                        Filter: [Self]
+                        TreatAsNonSubAbility: True
+                        AnimOverload: PowerUp
+                    BMoveTracker3:
+                        MoveActiveBonusTracker: -1
+                        Vars:
+                            NumberOfCardsToSelect: 1
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                AttackAbility: CurrentAbility.ParentAbility
+                                EnemiesTargeted: AttackAbility.ActorsTargeted.Skip(3)
+                                ValidateAnyEnemiesTargeted: EnemiesTargeted.Count > 0
+                        Filter: [Self]
+                        TreatAsNonSubAbility: True
+                        AnimOverload: PowerUp
+                    BMoveTracker4:
+                        MoveActiveBonusTracker: -1
+                        Vars:
+                            NumberOfCardsToSelect: 1
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                AttackAbility: CurrentAbility.ParentAbility
+                                EnemiesTargeted: AttackAbility.ActorsTargeted.Skip(4)
+                                ValidateAnyEnemiesTargeted: EnemiesTargeted.Count > 0
+                        Filter: [Self]
+                        TreatAsNonSubAbility: True
+                        AnimOverload: PowerUp
+                    BMoveTracker5:
+                        MoveActiveBonusTracker: -1
+                        Vars:
+                            NumberOfCardsToSelect: 1
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                AttackAbility: CurrentAbility.ParentAbility
+                                EnemiesTargeted: AttackAbility.ActorsTargeted.Skip(5)
+                                ValidateAnyEnemiesTargeted: EnemiesTargeted.Count > 0
+                        Filter: [Self]
+                        TreatAsNonSubAbility: True
+                        AnimOverload: PowerUp
+                    BMoveTracker6:
+                        MoveActiveBonusTracker: -1
+                        Vars:
+                            NumberOfCardsToSelect: 1
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                AttackAbility: CurrentAbility.ParentAbility
+                                EnemiesTargeted: AttackAbility.ActorsTargeted.Skip(6)
+                                ValidateAnyEnemiesTargeted: EnemiesTargeted.Count > 0
+                        Filter: [Self]
+                        TreatAsNonSubAbility: True
+                        AnimOverload: PowerUp
+                    BMoveTracker7:
+                        MoveActiveBonusTracker: -1
+                        Vars:
+                            NumberOfCardsToSelect: 1
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                AttackAbility: CurrentAbility.ParentAbility
+                                EnemiesTargeted: AttackAbility.ActorsTargeted.Skip(7)
+                                ValidateAnyEnemiesTargeted: EnemiesTargeted.Count > 0
+                        Filter: [Self]
+                        TreatAsNonSubAbility: True
+                        AnimOverload: PowerUp
+                    BMoveTracker8:
+                        MoveActiveBonusTracker: -1
+                        Vars:
+                            NumberOfCardsToSelect: 1
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                AttackAbility: CurrentAbility.ParentAbility
+                                EnemiesTargeted: AttackAbility.ActorsTargeted.Skip(8)
+                                ValidateAnyEnemiesTargeted: EnemiesTargeted.Count > 0
+                        Filter: [Self]
+                        TreatAsNonSubAbility: True
+                        AnimOverload: PowerUp
+                    BMoveTracker9:
+                        MoveActiveBonusTracker: -1
+                        Vars:
+                            NumberOfCardsToSelect: 1
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                AttackAbility: CurrentAbility.ParentAbility
+                                EnemiesTargeted: AttackAbility.ActorsTargeted.Skip(9)
+                                ValidateAnyEnemiesTargeted: EnemiesTargeted.Count > 0
+                        Filter: [Self]
+                        TreatAsNonSubAbility: True
+                        AnimOverload: PowerUp
+                    BMoveTracker10:
+                        MoveActiveBonusTracker: -1
+                        Vars:
+                            NumberOfCardsToSelect: 1
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                AttackAbility: CurrentAbility.ParentAbility
+                                EnemiesTargeted: AttackAbility.ActorsTargeted.Skip(10)
+                                ValidateAnyEnemiesTargeted: EnemiesTargeted.Count > 0
+                        Filter: [Self]
+                        TreatAsNonSubAbility: True
+                        AnimOverload: PowerUp
+                    BMoveTracker11:
+                        MoveActiveBonusTracker: -1
+                        Vars:
+                            NumberOfCardsToSelect: 1
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                AttackAbility: CurrentAbility.ParentAbility
+                                EnemiesTargeted: AttackAbility.ActorsTargeted.Skip(11)
+                                ValidateAnyEnemiesTargeted: EnemiesTargeted.Count > 0
+                        Filter: [Self]
+                        TreatAsNonSubAbility: True
+                        AnimOverload: PowerUp
+    Bottom: 
+        Abilities:
+            BActive:
+                AddActiveBonus:
+                    Damage: 3
+                    MiscVars:
+                        PrintedProperties: list("Damage")
+                    Filter: Self
+                    AutoTrigger: True
+                    MiscVars:
+                        PlayActorBeenDamagedVFX: AbilityHasHappened || TargetingActor.PlayVFX("DrifterDangerZoneImpact")
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: DuringActionAbilityOnMoved
+                    TriggerAbilitiesImmediately: True
+                    XPTracker: [1,0,1,0,1,0]
+                    IsAura: True
+                    HiddenWhenAura: True
+                    AuraTargeting: Range         
+                    DisplayAuraOnCaster: True 
+                    AuraFilter:
+                        TargetType: Enemy
+                        UseTargetOriginalType: True
+                    Vars:
+                        PersistentCasterVFX: "'DrifterDangerZone'"
+                        ValidateAdjacent: ActiveBonus.Caster.Tile != TriggerActor.Tile
+                Range: 1
+                Target: -1
+                Filter: Self
+                AnimOverload: DangerArea
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "40,60"
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack*"
+            - Column:
+                - AddedEffect: "$FH/028_character_ability_cards_drifter_against_all_odds_2$"
+        - Divider:
+        - Row: "$FH/028_character_ability_cards_drifter_against_all_odds_3$"
+    Bottom:
+        - Active:
+            Ability: BActive
+            Icon: Positive_Damage_Enemy_Move
+            ListLayout: "$FH/028_character_ability_cards_drifter_against_all_odds_4$"
+            Layout: "$FH/028_character_ability_cards_drifter_against_all_odds_4$"
+        - XPTracker: BActive

@@ -1,0 +1,20 @@
+Parser: ItemCard
+ID: 1009
+StringID: OakStaffID
+Name: $FH/1009_item_cards_oak_staff_1$
+Art: Oak Staff
+TotalInGame: 2
+Cost: 0
+Slot: TwoHand
+Rarity: Rare
+Usage: Spent
+Consumes: Light
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        ABless:
+            Bless: True
+            Range: 3
+            Filter: [Self, Ally]
+Layout: 
+    - Row: "$FH/1009_item_cards_oak_staff_2$"

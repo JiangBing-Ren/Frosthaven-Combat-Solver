@@ -1,0 +1,25 @@
+Parser: EnemyCard
+ID: 562
+Name: $Monster_Ability_562_WindDemon_IntoThinAir$
+Initiative: 9
+Shuffle: False
+Data:
+    Abilities: 
+        Attack1:
+            Attack: -1
+            Range: 2
+            RangeIsBase: True
+            Filter: Enemy
+            AnimOverload: RangedAttack
+        Heal1:
+            Heal: 1
+            Filter: Self
+            AnimOverload: PowerUp
+    Consumes:
+        CAir:
+            Elements: Air
+            Abilities:
+                CAirInvis:
+                    Invisible: True
+                    Filter: Self
+                    SkipAnim: True

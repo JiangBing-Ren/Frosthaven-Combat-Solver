@@ -1,0 +1,11 @@
+Parser: EnemyCard
+ID: 9021
+Initiative: 99
+Shuffle: False
+Data:
+    Abilities:
+        Pull:
+            Pull: 5
+            Range: 4
+            Filter: Enemy
+            AnimOverload: PowerUp

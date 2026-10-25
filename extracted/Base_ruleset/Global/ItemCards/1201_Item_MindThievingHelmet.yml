@@ -1,0 +1,31 @@
+Parser: ItemCard
+ID: 1201
+StringID: MindThievingHelmetID
+Name: $FH/1201_item_cards_mindthieving_helmet_1$
+Art: Mind Thieving Helmet
+TotalInGame: 1
+Cost: 30
+Slot: Head
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    ItemRequirements:
+        Vars:
+            ItemAbility: Item.YMLData.Data.Abilities[0]
+            ValidateHasTargets: CustomAbility.GetActorsInRangeForAbility(Actor, ItemAbility).Count > 0
+    Abilities:
+        AControl:
+            ControlActor:
+                Abilities:
+                    AAttack:
+                        Range: 1
+                        Attack: 3
+                        StrengthIsBase: True
+                        RangeIsBase: True
+                ControlActorType: Player
+            Target: 1
+            Filter: [Enemy]
+            Range: 3
+Layout: 
+    - Row: "$FH/1201_item_cards_mindthieving_helmet_2$"

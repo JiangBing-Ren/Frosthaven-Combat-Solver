@@ -1,0 +1,16 @@
+Parser: EnemyCard
+ID: 861
+Name: $Monster_Ability_Drake_VenomGlands$
+Initiative: 27
+Shuffle: False
+Data:
+    Abilities:
+        Attack1:
+            Attack: 0
+            Target: 2
+            TargetIsBase: True
+            Conditions: Poison
+            Filter: Enemy
+            Range: 4
+            RangeIsBase: True
+            AnimOverload: RangedAttack

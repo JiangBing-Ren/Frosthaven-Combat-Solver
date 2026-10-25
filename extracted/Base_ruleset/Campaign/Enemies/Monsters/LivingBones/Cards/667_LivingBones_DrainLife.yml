@@ -1,0 +1,16 @@
+Parser: EnemyCard
+ID: 667
+Name: $Monster_Ability_667_LivingBones_DrainLife$
+Initiative: 20
+Shuffle: True
+Data:
+    Abilities: 
+        Move1:
+            Move: -2
+        Attack1:
+            Attack: 0
+            Filter: Enemy
+            AnimOverload: DrainLife
+        Heal1:
+            Heal: 2
+            Filter: Self

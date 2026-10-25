@@ -1,0 +1,47 @@
+Parser: EnemyCard
+ID: 818
+Name: $Monster_Ability_818_819_BurrowingBlade_TunnelingSlices$
+Initiative: 68
+Shuffle: True
+Data:    
+    Abilities:
+        ADamageAura:
+            AddActiveBonus:
+                Attack: -2
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: BaseStat
+                        BaseStatType: Attack
+                        AddTo: True
+                Range: 1
+                AllTargetsInRangeAlongPath: True
+                Filter: Enemy
+                Vars:
+                    AddNegativeConditions: TriggerActor.MonsterClass.OriginalBaseStats.Conditions
+                SkipAnim: True
+            ActiveBonus:
+                Duration: Turn
+                Behaviour: DuringActionAbilityOnFinishedMovement
+            Range: 1
+            Target: -1
+            Filter: Self
+            ShowRange: False
+            SkipAnim: True
+        AMove:
+            Move:
+                Amount: 1
+                Jump: True
+            AIFocusOverride:
+                OverrideType: OverrideFocus
+                OverrideTargetType: Actor
+                UseFurthestFocus: True
+            MiscVars:
+                CasterEffectsSMBAbilityName: "'TunnelingSlices'"
+        # For Layout Only
+        ADummyAttack:
+            Attack: -2
+            StartAbilityRequirements:
+                Type: ThisAbility
+                ActorHasPerformedValidAbilityTypesThisAction: "> 100"
+                AbilityTypes: [Attack]
+            Text: "$FH/818$"

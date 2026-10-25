@@ -1,0 +1,15 @@
+Parser: EnemyCard
+ID: 602
+Name: $Monster_Ability_CalculatedStrike$
+Initiative: 83
+Shuffle: False
+Data:
+    Abilities:
+        AMove:
+            Move: -1
+        AAttack:
+            Attack: +1
+            Range: 5
+            RangeIsBase: True
+            AnimOverload: Ranged Attack Multiple Targets
+            MultiPassAttack: False

@@ -1,0 +1,11 @@
+Parser: AttackModifier
+Name: AMC_Resonance_P1
+MathModifier: "+1"
+Abilities:
+    AResonance:
+        Filter: Self
+        AutoTrigger: True
+        NullTargeting: True
+        SkipAnim: True
+        Tokens: 1
+        Flags: [ModifiesResonanceTokens]

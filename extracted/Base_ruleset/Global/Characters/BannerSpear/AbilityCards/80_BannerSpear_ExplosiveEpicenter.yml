@@ -1,0 +1,127 @@
+Parser: AbilityCard
+Name: $FH/080_character_ability_cards_banner_spear_explosive_epicenter_1$
+#CustomImage: KRO_BANNER_SPEAR_AbilityCards_ExplosiveEpicenter
+Character: BannerSpearID
+ID: 80
+Level: 5
+Initiative: 78
+Discard: [Discard,Lost]
+Prefab: 80_Bannerspear_ExplosiveEpicenter
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AreaEffect: "0,0,G|-1,-1,B|-3,-1,R|-2,0,R|-1,1,R|0,-2,R|1,-1,R|2,0,R"
+                AreaEffectLayoutOverride: "0,0,G|-2,0,B|-3,1,R|-1,1,R|1,1,R|-3,-1,R|-1,-1,R|1,-1,R"
+                MultiPassAttack: False
+                SubAbilities:
+                    TSubPush:
+                        Push:
+                            Amount: 1
+                        IsInlineSubAbility: True
+                        Target: -1
+                        UseParentTargets: True
+                    TSubMove:
+                        ControlActor:
+                            Abilities:
+                                TAllyMove:
+                                    Move:
+                                        Amount: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Move")
+                                    StrengthIsBase: True
+                            ControlActorType: Player
+                        AnimOverload: Grant
+                        Target: -1
+                        Targeting: Custom
+                        TargetingVars:
+                            AddValidActorsInRange: CustomAbility.ActorsOnBlueHexes(ParentAbility, true)
+                        Filter: [Ally, Self]
+                        TreatAsNonSubAbility: True
+                        IsInlineSubAbility: False
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateHasHappened: Ability.ParentAbility.AbilityHasHappened
+                AnimOverload: Epicenter
+        XP: 1        
+    Bottom:
+        Abilities:
+            BGrantMove:
+                Target: -1
+                Range: 0
+                AddActiveBonus:
+                    # target ally or self in any order
+                    IgnoreStun: True
+                    ControlActor:
+                        Abilities:
+                            BAllyMove:
+                                Move:
+                                    Amount: 1
+                                MiscVars:
+                                    PrintedProperties: list("Move")
+                                StrengthIsBase: True
+                        ControlActorType: Player
+                    AnimOverload: Grant
+                    Target: 1
+                    Range: 1
+                    Filter: [Self,Ally]
+                    SubAbilities:
+                        BControlRemaining:
+                            StartAbilityRequirements:
+                                Type: ParentAbility
+                                AbilityHasHappened: True
+                            # target ally or self, depending on what the previous ability targeted
+                            TreatAsNonSubAbility: True
+                            IgnoreStun: True
+                            ControlActor:
+                                Abilities:
+                                    BAllyMove:
+                                        Move:
+                                            Amount: 1
+                                        MiscVars:
+                                            PrintedProperties: list("Move")
+                                        StrengthIsBase: True
+                                ControlActorType: Player
+                            AnimOverload: Grant
+                            Target: 1
+                            Range: 1
+                            UseParentTargets: False
+                            Filter:
+                                TargetType: [Self,Ally]
+                                Vars:
+                                    CurrentAbility: PhaseManager.CurrentPhaseAction?.CurrentPhaseAbility?.m_Ability
+                                    PreviousAbility: CurrentAbility?.ParentAbility
+                                    ValidateIsAllyOrSelfBasedOnPreviousAbility: CustomAbility.ValidateTargetAllyOrSelf(PreviousAbility, self, target)
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: DuringTurnAbility
+                    IsToggleBonus: True
+                    Restriction: OncePerRound
+                    Requirements: 
+                        ValidActorsInRangeOfRequirementRange: "> 0"
+                        RequirementRange: 3
+                        RequirementActorFilter: Enemy
+                        OnYourTurn: True
+                AnimOverload: SelfBuff
+        XP: 2 
+Layout:
+    Top:
+        - ColumnWidths: "60,40"
+        - Column:
+            - Row: "<b><size=130%><sprite name=Attack> *TAttack* <sprite name=Push> *TSubPush* <sprite name=XP1>"
+            - Row: "<size=50%> "
+            - Row: "<size=80%>$FH/080_character_ability_cards_banner_spear_explosive_epicenter_2$"
+            - Row: "<size=50%> "
+        - Column:
+            - Row: "£Area£"
+    Bottom:
+        - Active:
+            Ability: BGrantMove
+            Icon: Positive_Move_Ally_Grant
+            ListLayout: "$FH/080_character_ability_cards_banner_spear_explosive_epicenter_3$"
+            Layout: "$FH/080_character_ability_cards_banner_spear_explosive_epicenter_3$"

@@ -1,0 +1,29 @@
+Parser: ItemCard
+ID: 1237
+StringID: DataDriveID
+Name: $FH/1237_item_cards_data_drive_1$
+Art: Data Drive
+TotalInGame: 1
+Cost: 40
+Slot: OneHand 
+Rarity: Rare
+Usage: Spent
+Trigger: BeforeShortRest
+Data:
+    ItemRequirements:
+        ValidateWhileSelected: true
+        Vars:
+            ValidateNotImprovedShortRest: "!Actor.CharacterClass.ImprovedShortRest"
+            ValidateNoOtherISRItems: "!Actor.Inventory.AllItems.Any(obj != Item && obj.SlotState == 'Selected' && obj.FindAbilityOnItemCard(CAbility.EAbilityType.ImprovedShortRest))"
+    Abilities:
+        AImprovedShortRest:
+            Filter: Self
+            AutoTrigger: True
+            ImprovedShortRest:
+                CanExcludeCards: True
+Layout: 
+    - Active:
+        Ability: AImprovedShortRest
+        ListLayout: "$1237_item_cards_data_drive_2$"
+        Layout: "$1237_item_cards_data_drive_2$"
+        Icon: "_Item_Placeholder"

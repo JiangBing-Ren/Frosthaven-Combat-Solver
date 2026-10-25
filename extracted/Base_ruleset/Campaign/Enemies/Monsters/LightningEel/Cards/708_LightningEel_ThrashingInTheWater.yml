@@ -1,0 +1,18 @@
+Parser: EnemyCard
+ID: 708
+Name: $Monster_Ability_708_LightningEel_ThrashingInTheWater$
+Initiative: 9
+Shuffle: True
+Data:
+    Abilities: 
+        Move1:
+            Move: 1
+        Attack1:
+            Attack: -1
+            Target: -1
+            TargetIsBase: True
+            Filter: Enemy
+            TextOnly: True
+            MultiPassAttack: False
+            AnimOverload: Attack AOE
+            Text: "$FH/0708_monster_ability_cards_lightning_eel_thrashing_in_the_water_2$"

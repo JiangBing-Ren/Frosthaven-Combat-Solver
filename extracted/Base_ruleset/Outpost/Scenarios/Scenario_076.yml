@@ -1,0 +1,18 @@
+Parser: FHScenario
+ID: 76
+Name: Apotheosis
+LevelID: FS_076_Apotheosis
+RequiresBoat: true
+Chain: PersonalQuest
+Location: TheBitingSea
+RequiresPersonalQuest: PQ_12
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: GainItem
+          Param1: 201
+        - Type: EnableEvent
+          Param1: B-18
+    - Effects:
+        - Type: UnlockMandatoryScenario
+          Param1: 77

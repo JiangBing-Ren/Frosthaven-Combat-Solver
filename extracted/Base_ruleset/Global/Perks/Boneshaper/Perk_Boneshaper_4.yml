@@ -1,0 +1,7 @@
+Parser: Perk
+ID: Boneshaper04
+Name: FH/PERK_Boneshaper_04_Name
+Description: FH/PERK_Boneshaper_04_Desc
+CharacterID: BoneshaperID
+Available: 3
+CardsToAdd: [AMC_EarthOrDark_P2]

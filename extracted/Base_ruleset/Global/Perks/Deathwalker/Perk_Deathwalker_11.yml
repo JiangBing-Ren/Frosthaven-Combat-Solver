@@ -1,0 +1,23 @@
+Parser: Perk
+ID: Deathwalker11
+Name: FH/PERK_Deathwalker_11_Name
+Description: FH/PERK_Deathwalker_11_Desc
+CharacterID: DeathwalkerID
+Available: 1
+Flags: [Passive, ApplyActiveBonusesAtScenarioStart]
+Abilities:
+    TActive:
+        AttackersGainDisadvantage: 1
+        Range: 0
+        Target: -1
+        Filter: Self
+        AutoTrigger: True
+        SkipAnim: True
+        ActiveBonus:
+            Duration: Persistent
+            IsAura: True
+            Hidden: True
+            AuraFilter: 
+                TargetType: Self            
+                Vars:
+                    ValidateActorOnOrAdjacentToTile: CustomAbility.SteppedOnShadow(target.Tile)

@@ -1,0 +1,13 @@
+Parser: CampaignSection
+ID: 160.2
+Name: Tavern Built
+SkipCompletedNotification: False
+Effects:
+    - Type: EnableEvent
+      Param1: WO-79
+    - Type: EnableEvent
+      Param1: SR-50
+    - Type: AddAdditionalLootCard
+      Param1: 1418
+    - Type: AddAdditionalLootCard
+      Param1: 1419

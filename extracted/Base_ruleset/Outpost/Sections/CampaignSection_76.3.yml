@@ -1,0 +1,7 @@
+Parser: CampaignSection
+ID: 76.3
+Name: Mindtheif Found
+SkipCompletedNotification: False
+Effects:
+    - Type: UnlockScenario
+      Param1: 121

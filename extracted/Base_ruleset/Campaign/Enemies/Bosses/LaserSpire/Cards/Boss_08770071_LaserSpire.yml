@@ -1,0 +1,24 @@
+Parser: EnemyCard
+ID: 08770071
+Name: $Monster_Ability_Boss_LaserSpire_Special1$
+Initiative: 85
+Shuffle: True
+Data:
+    Abilities:
+        TDamage:
+            Damage: 0
+            StatIsBasedOnX:
+                Strength:
+                    BasedOn: ScenarioHazardousTerrainDamage
+            TargetIsBase: True
+            Target: -1
+            PerformVars:
+                ActorHasDamaged:
+                    LightningVFX: TargetingActor.PlayVFX("S109LaserSpireLightingVFX")
+                    LightningVFX2: CustomAbility.PlayVFX("S109LaserSpireLightingVFX",ScenarioScript.current.GetActorIteractionTile(TargetingActor))
+            Targeting: Custom
+            TargetingVars:
+                AdjacentTiles: CustomAbility.GetAdjacentTiles(TargetingActor.AttachedProp.PathingBlockers.Select(ScenarioManager.GetTile(obj)))
+                AddTilesInRange: AdjacentTiles
+                AddValidActorsInRange: AdjacentTiles.Select(LivingActor).Where(obj != null && CActor.AreActorsAllied(obj.Type, CActor.EType.Player, obj, null))
+            Text: "$FH/FH_Scenario_Campaign_109_SCENARIO_MODIFIER_5$"

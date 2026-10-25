@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 79.4
+Name: Puzzle Solution
+SkipCompletedNotification: True
+Effects:
+    - Type: UnlockScenario
+      Param1: 61
+    - Type: UnlockPuzzle
+      Param1: HiddenNumbers

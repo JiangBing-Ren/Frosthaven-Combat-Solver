@@ -1,0 +1,17 @@
+Parser: CampaignSection
+ID: 122.4
+Name: Great Dallum (122.4)
+SkipCompletedNotification: True
+ConditionalEffects:
+    - Type: ReadSectionIfPartyHasTrait
+      # require party has educated trait
+      Param1: Educated
+      # read this section
+      Param2: 120.5
+Effects:
+      # do this only if the previous conditional effect isn't valid
+    - Type: LoseMaterials
+      Param1: 3
+    - Type: GainInspiration
+      Param1: 1
+    - Type: SkipNextOutpostEvent

@@ -1,0 +1,62 @@
+Parser: AbilityCard
+Name: $FH/024_character_ability_cards_drifter_accurate_strikes_1$
+Character: DrifterID
+ID: 24
+Level: 6
+ProgressionOrder: 23
+Initiative: 56
+Discard: [Lost,Discard]
+Prefab: 24_Drifter_AccurateStrikes
+Data:
+    Top:
+        Abilities:
+            TBuffAttack:
+                Attack: 0
+                AttackEffect:
+                    Type: BasedOnVarsCondition
+                    Pierce: 3
+                MiscVars:
+                    PrintedProperties: list("PierceBuff")
+                Filter: Self
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: BuffAttack
+                    XPTracker: [1,0,1,0,1,0]
+                    Flags: [EnhancedEffects]
+                    Vars:
+                        ActorTarget: TriggerTarget
+                        ValidateActorTargetHasShield: ActorTarget.CalculateShield() > 0
+                AnimOverload: Persistent Buff
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BAdvantage:
+                Advantage:
+                    DecrementTrigger: Rounds
+                Filter: Self
+                AnimOverload: PowerUp
+                ActiveBonus:
+                    Duration: Round
+                AutoTrigger: True
+Layout:
+    Top:
+        - Active:
+            Ability: TBuffAttack
+            Icon: Positive_Pierce_Enemy_Shield
+            ListLayout: "$FH/024_character_ability_cards_drifter_accurate_strikes_2$"
+            Layout: "$FH/024_character_ability_cards_drifter_accurate_strikes_2$"
+        - XPTracker: TBuffAttack
+    Bottom:
+        - Active:
+            Ability: BAdvantage
+            Icon: Positive_Advantage
+            ListLayout: "$FH/024_character_ability_cards_drifter_accurate_strikes_3$"
+            Layout: "$FH/024_character_ability_cards_drifter_accurate_strikes_3$"
+        - Row: "<b><size=130%><sprite name=Move> *BMove*<size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "$FH/024_character_ability_cards_drifter_accurate_strikes_3$"

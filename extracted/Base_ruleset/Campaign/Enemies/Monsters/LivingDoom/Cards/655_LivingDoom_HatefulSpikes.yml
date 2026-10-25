@@ -1,0 +1,14 @@
+Parser: EnemyCard
+ID: 655
+Name: $Monster_Ability_655_LivingDoom_HatefulSpikes$
+Initiative: 17
+Shuffle: False
+Data:
+    Abilities:
+        Attack1:
+            Attack: +1
+        Retaliate1:
+            Retaliate: 2
+            ActiveBonus:
+                ListLayoutOverride: ["<sprite name=Retaliate> *Retaliate1*", Positive_Retaliate]
+    Infuse: Dark

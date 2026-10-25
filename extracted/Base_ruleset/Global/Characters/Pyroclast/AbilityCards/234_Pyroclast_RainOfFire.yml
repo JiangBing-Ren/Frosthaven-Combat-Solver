@@ -1,0 +1,56 @@
+Parser: AbilityCard
+Name: $FH/234_character_ability_cards_pyroclast_rain_of_fire_1$
+Character: PyroclastID
+ID: 234
+Level: 5
+Initiative: 21
+Discard: [Discard,Discard]
+Prefab: 234_Pyroclast_RainOfFire
+Data:
+    Top:
+        XP: 1
+        Abilities:    
+            TCreateHazardous:              
+                Target: 2
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Range")
+                CreateLimitedHazardousTerrain: True
+                Vars:
+                    OverridePropName: "'PyroclastHazardTerrain'"
+                MiscVars:
+                    includeCasterTile: True
+                TileFilter: FeaturelessHex
+                AnimOverload: TerrainFormation
+                SubAbilities:
+                    TDamage:
+                        TreatAsNonSubAbility: True
+                        Filter: [Ally,Enemy]
+                        Damage: 1
+                        MiscVars:
+                            PrintedProperties: list("Damage")
+                        Target: -1
+                        Targeting: Custom
+                        TargetingVars:
+                            AddValidActorsInRange: CustomAbility.GetAdjacentTiles(ParentAbility.CachedSpawnTiles, true).Select(obj.LivingActor).Where(obj != null)
+                        AnimOverload: LivingMagma
+                        NegativeAbilityIsOptional: True
+
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 5
+                    CircleEnhancements: 1
+                    Jump: True
+                MiscVars:
+                    PrintedProperties: list("Move")
+Layout:
+    Top:
+        - Row: "$FH/234_character_ability_cards_pyroclast_rain_of_fire_2$"
+        - Divider:
+        - Row: "$FH/234_character_ability_cards_pyroclast_rain_of_fire_3$"
+    Bottom:
+        - Row:
+            - Column: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+            - Column: "<mark=#80919922><sprite name=Jump></mark>"

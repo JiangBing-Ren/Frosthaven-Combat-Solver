@@ -1,0 +1,8 @@
+Parser: AttackModifier
+Name: AMC_Ice_Air_P1
+MathModifier: "+1"
+Abilities:
+    InfuseAbility:
+        Infuse: [Ice,Air]
+        ShowElementPicker: True
+        CanUndo: False

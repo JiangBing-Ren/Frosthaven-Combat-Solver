@@ -1,0 +1,79 @@
+Parser: AbilityCard
+Name: $FH/405_character_ability_cards_hive_plague_protocol_1$
+Character: HIVEID
+ID: 405
+Level: 4
+Initiative: 98
+Discard: [Lost,Discard]
+Prefab: 405_HIVE_PlagueProtocol
+Data:
+    Top:
+        XP: 2
+        Abilities:
+            TSummon:
+                Summon: ToxinDistributorID
+                AnimOverload: Summon
+        Mode:
+            DebuffHeal:
+                AutoTrigger: True
+                ImmunityTo: Heal
+                Filter: Self
+                ActiveBonus:
+                    Duration: Persistent
+            BuffPoison:
+                AutoTrigger: True
+                Attack: 0
+                Conditions: Poison
+                Filter: Self
+                ActiveBonus:
+                    Behaviour: BuffAttack
+                    Duration: Persistent
+                    ListLayoutOverride: [$405_character_ability_cards_hive_plague_protocol_4$, Positive_Poison_Attack]
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 1
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BModeTransfer:
+                Mode: Transfer
+            BShield:
+                Shield: 2
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                ActiveBonus:
+                    Duration: Round
+                    ListLayoutOverride: ["<sprite name=Shield> *BShield*", Positive_Shield]
+Layout:
+    Top:
+        - Active:
+              Ability: "TSummon"
+              Icon: "Summon"
+              Layout:
+                  - Summon:
+                        Ability: TSummon
+                        SummonName: $FH/405_character_ability_cards_hive_plague_protocol_2$
+                        SpecialText:
+                            - Row: "<sprite name=Poison>"
+        - Row:
+            - Column: "<sprite name=HIVEMode>"
+            - Column:
+                - Active:
+                    Ability: "DebuffHeal"
+                    Icon: "Negative_HealPrevent_Cannot-be-healed_HIVEMode"
+                    ListLayout: "$FH/405_character_ability_cards_hive_plague_protocol_3$"
+                    Layout: "$FH/405_character_ability_cards_hive_plague_protocol_3$"
+            - Column:
+                - Active:
+                    Ability: "BuffPoison"
+                    Icon: "Positive_Poison_Attack"
+                    ListLayout: "$FH/405_character_ability_cards_hive_plague_protocol_4$"
+                    Layout: "$FH/405_character_ability_cards_hive_plague_protocol_4$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* @BMove@"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=HIVETransfer>"
+        - Divider:
+        - Row: "<sprite name=Shield> *BShield*"

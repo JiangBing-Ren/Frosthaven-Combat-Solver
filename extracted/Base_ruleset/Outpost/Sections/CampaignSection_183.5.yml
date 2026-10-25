@@ -1,0 +1,8 @@
+Parser: CampaignSection
+ID: 183.5
+Name: Alchemist Upgrade
+SkipCompletedNotification: False
+Effects:
+    - Type: GainItemBlueprint
+      Param1: 59
+      Param2: 65

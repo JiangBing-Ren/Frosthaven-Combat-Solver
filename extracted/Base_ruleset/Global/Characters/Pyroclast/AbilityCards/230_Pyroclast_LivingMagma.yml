@@ -1,0 +1,144 @@
+Parser: AbilityCard
+Name: $FH/230_character_ability_cards_pyroclast_living_magma_1$
+Character: PyroclastID
+ID: 230
+Level: 3
+Initiative: 22
+Discard: [Discard,Discard]
+Prefab: 230_Pyroclast_LivingMagma
+Data:
+    Top:
+        Abilities:    
+            TBuffAttackStartTurn:
+                AddActiveBonus:
+                    Attack: 1
+                    Pierce: 2
+                    MiscVars:
+                        PrintedProperties: list("Attack","Target","Pierce")
+                        CheckLOS: True
+                    Conditions: Wound
+                    AnimOverload: LivingMagma
+                    Targeting: All
+                    TreatAsMelee: True
+                    Filter:
+                        TargetType: Enemy
+                        Vars:
+                            ValidateActorOccupiesValidTerrain: GameState.GetTilesInRange(target, 1).Where(obj.FindHazardousProp() != null && obj != target.Tile).Count > 0
+                    SubAbilities:
+                        TInfuse:
+                            IsInlineSubAbility: True
+                            Infuse: Fire
+                            AutoTrigger: True                          
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: StartTurnAbility
+                    XPTracker: [0,1]
+                SkipAnim: True
+                SubAbilities:
+                    TAttack:
+                        TreatAsNonSubAbility: True
+                        Attack: 1
+                        Pierce: 2
+                        MiscVars:
+                            PrintedProperties: list("Attack","Range","Pierce")
+                        Range: 99
+                        TreatAsMelee: True
+                        Conditions: Wound
+                        AnimOverload: LivingMagma
+                        Filter:
+                            TargetType: Enemy
+                            Vars:
+                                ValidateActorOccupiesValidTerrain: GameState.GetTilesInRange(target, 1).Where(obj.FindHazardousProp() != null && obj != target.Tile).Count > 0
+                        SubAbilities:
+                            TInfuse:
+                                IsInlineSubAbility: True
+                                Infuse: Fire
+                                AutoTrigger: True
+                                SkipAnim: True
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 1
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BSelectHazardousTerrain:
+                NullHex: True
+                Range: 1
+                Target: 1
+                SkipAnim: True
+                TileFilter: Custom
+                MiscVars:
+                    IsValidTile: obj.FindHazardousProp() != null
+                    includeCasterTile: True
+                    ExplicitlyDoesNothing: True
+                SubAbilities:
+                    BSelectTargetTile:                 
+                        MiscVars:
+                            # SelectedTiles passed as var when calculating PreviewPath
+                            PreviewPath: CustomAbility.GetTilesForPreviewFromTile(Ability, Ability.ParentAbility.TilesSelected[0], MouseoverTile)
+                            # can move where there are no other feature tiles, OR back to the original position, since presumably i'm moving back and forth
+                            IsValidTile: CAbilityFilter.IsTileFeatureless(obj) || obj == parentContext.obj.From
+                        TreatAsNonSubAbility: True
+                        NullHex: True
+                        TileFilter: Custom
+                        # 2 targets as in 2 tiles that form a path
+                        Target: 2
+                        Targeting: Custom
+                        AnimOverload: TerrainFormationLateEarthPuff
+                        Vars:
+                            From: ParentAbility.TilesSelected[0]                            
+                        TargetingVars:
+                            CalcTilesInRange: CustomAbility.RecalcValidTilesToFormPath(parentContext.obj)
+                        PerformVars:                
+                            SelectHexPositions:
+                                CalcTilesInRange: CustomAbility.RecalcValidTilesToFormPath(obj)
+                            Perform:
+                                Prop: From.FindHazardousProp()
+                                To: CustomAbility.TryGetLastTile(TilesSelected)
+                                MoveProp: CustomAbility.MoveHazardousTerrain(Prop, To, obj)
+                            OnTileDeselected:
+                                RemoveFurtherTiles: CustomAbility.RemoveRemovedTilesToFormPath(obj)
+                    BDealDamage:
+                        SkipAnim: True
+                        AutoTrigger: True
+                        TreatAsNonSubAbility: True
+                        Damage: 0
+                        StatIsBasedOnX:
+                            Strength:
+                                BasedOn: ScenarioHazardousTerrainDamage
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                PrevAbility: CustomAbility.FindAbilityInPhaseByName("BSelectTargetTile")
+                                ValidatePrevAbilityHappened: PrevAbility != null && PrevAbility.TilesSelected != null && PrevAbility.TilesSelected.Count > 0 && PrevAbility.AbilityHasHappened
+                        Targeting: Custom
+                        TargetingVars:
+                            PrevAbility: CustomAbility.FindAbilityInPhaseByName("BSelectTargetTile")
+                            Path: PrevAbility.TilesSelected
+                            AddValidActorsInRange: Path.Select(obj.LivingActor).Where(obj != null)
+
+
+Layout:
+    Top:
+        - Active:
+            Ability: TBuffAttackStartTurn
+            ListLayout: "$FH/388_character_ability_cards_hive_reconstructive_aid_4$ \n<sprite name=Attack> *TAttack* <mark=#80919922>$FH/230_character_ability_cards_pyroclast_living_magma_4$, <sprite name=CreateFire></mark>"
+            Layout: 
+                - Row: "$FH/230_character_ability_cards_pyroclast_living_magma_2$"
+                - Row:
+                    - ColumnWidths: "20, 80"
+                    - Column: "<sprite name=Attack> *TAttack* "
+                    - Column: 
+                        - Column: "<mark=#80919922>$FH/230_character_ability_cards_pyroclast_living_magma_4$</mark>"
+                        - Column: 
+                            - MandatoryTrigger:
+                                Layout:
+                                    - Infuse: [Fire]
+            Icon: "Positive_Attack_Enemy_Hazard"     
+        - XPTracker: TBuffAttackStartTurn  
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "$FH/230_character_ability_cards_pyroclast_living_magma_5$"

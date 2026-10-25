@@ -1,0 +1,13 @@
+Parser: FHScenario
+ID: 97
+Name: Program Control Nexus
+LevelID: FS_097_Program_Control_Nexus
+Chain: JobPosting
+Location: CopperneckMountaions
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: GainMetal
+          Param1: 5
+        - Type: UnlockMandatoryScenario
+          Param1: 98

@@ -1,0 +1,22 @@
+Parser: EnemyCard
+ID: 809
+Name: $Monster_Ability_809_HarrowerInfester_CloudsOfHate$
+Initiative: 38
+Shuffle: False
+Data:
+    Abilities:
+        Move1:
+            Move: 0
+        Attack1:
+            Attack: -1
+            Target: 2
+            TargetIsBase: True
+            Condition: Impair
+            Filter: Enemy
+    Consumes:
+        CDark:
+            Elements: Dark
+            AbilityOverrides:
+                CDarkAttackBuff:
+                    ParentName: Attack1
+                    Strength: 1

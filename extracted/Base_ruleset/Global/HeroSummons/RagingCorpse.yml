@@ -1,0 +1,14 @@
+Parser: HeroSummon
+ID: RagingCorpseID
+LocKey: $FH/135_character_ability_cards_boneshaper_unearthed_horror_2$
+Model: RagingCorpse
+Health:
+    Amount: 6
+    SquareEnhancements: 1
+Move:
+    Amount: 2
+    SquareEnhancements: 1
+Attack:
+    Amount: 3
+    SquareEnhancements: 1
+Range: 1

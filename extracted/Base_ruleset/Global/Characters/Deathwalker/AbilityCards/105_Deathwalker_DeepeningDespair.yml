@@ -1,0 +1,67 @@
+Parser: AbilityCard
+Name: $FH/105_character_ability_cards_deathwalker_deepening_despair_1$
+Character: DeathwalkerID
+ID: 105
+Level: 2
+Initiative: 11
+Discard: [Discard,Lost]
+Prefab: 105_Deathwalker_DeepeningDespair
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 4
+                    DiamondEnhancements: 1
+                Target: 1
+                MiscVars:
+                    PrintedProperties: list("Attack","Target")
+                Filter: [Enemy]
+                Range: 99
+                Vars:
+                    ValidTargets: CustomAbility.GetActorsWithAdjacentShadows(Ability, 2)
+                Targeting: Custom
+                TargetingVars:
+                    AddTilesInRange: ValidTargets.Select(obj.Tile)
+                    AddValidActorsInRange: ValidTargets
+                AnimOverload: RangedAttack
+        Infuse: Dark
+    Bottom:
+        Abilities:
+            BBuffMove:
+                Move: 0
+                ActiveBonus:
+                    Duration: Round
+                    Behaviour: ShadowBuff
+                    IsAura: True
+                    AuraTargeting: All
+                    AuraFilter: [Self, Ally]
+            BMove:
+                Move: 
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+        XP: 1
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "10,40,40,10"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%> <sprite name=Attack> *TAttack* <b><size=130%> @TAttack@"
+            - Column:
+                - Row: "$FH/105_character_ability_cards_deathwalker_deepening_despair_2$"
+            - Column:
+        - Row: "<size=20%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark
+    Bottom:
+        - Active:
+            Ability: BBuffMove
+            Icon: Positive_Teleport_Shadow
+            ListLayout: "$FH/105_character_ability_cards_deathwalker_deepening_despair_3$"
+            Layout: "$FH/105_character_ability_cards_deathwalker_deepening_despair_3$"
+        - Divider:
+        - Row: "<sprite name=Move> *BMove* @BMove@"

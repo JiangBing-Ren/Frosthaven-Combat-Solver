@@ -1,0 +1,20 @@
+Parser: EnemyCard
+ID: 9999787
+Name: $Monster_Ability_787_SavvasLavaflow_CallToTheEarth$
+Initiative: 97
+Shuffle: False
+Data:
+    Abilities:
+        Summon1:
+            Summon: EarthDemonID
+            Summons: 
+                - EarthDemonID
+                - EarthDemonID
+                - EarthDemonEliteID
+                - EarthDemonEliteID
+            Target: 1
+            TargetIsBase: True
+            AnimOverload: SummonEarthDemon
+            Text: "$FH/9999787_monster_ability_cards_savvas_lavaflow_call_to_the_earth_2$"
+            TextOnly: True
+    Infuse: Earth

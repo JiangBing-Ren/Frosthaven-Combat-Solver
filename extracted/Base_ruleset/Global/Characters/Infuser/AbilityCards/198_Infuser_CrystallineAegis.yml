@@ -1,0 +1,39 @@
+Parser: AbilityCard
+Name: $FH/198_character_ability_cards_infuser_crystalline_aegis_1$
+Character: InfuserID
+ID: 198
+Level: X
+Initiative: 17
+Discard: [Discard,Discard]
+Prefab: 198_Infuser_CrystallineAegis
+Data:
+    Top:
+        Abilities:
+            TBrittle:
+                Brittle: True
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Filter: Enemy
+                Target: 1
+                AnimOverload: NegativeCast 
+                StatIsBasedOnX:
+                    Target:
+                        BasedOn: Vars
+                        AddTo: True
+                        Vars:
+                            Value: CustomAbility.GetNumberOfActiveInfusionPairs(TargetingActor)
+        XP: 1
+    Bottom:
+        Abilities:
+            BRegen:
+                Regenerate: True
+                Conditions: [Ward]
+                Filter: Self
+Layout:
+    Top:
+        - Row: "<b><size=100%><sprite name=Brittle> <sprite name=Range> *TBrittle.Range*"
+        - Row: "$FH/198_character_ability_cards_infuser_crystalline_aegis_2$"
+    Bottom:
+        - Row: "$FH/198_character_ability_cards_infuser_crystalline_aegis_3$"
+        

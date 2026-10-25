@@ -1,0 +1,16 @@
+Parser: FHScenario
+ID: 11
+Name: Snowscorn Peak
+LevelID: FS_011_Snowscorn_Peak
+RequiresClimbingGear: true
+Chain: Algox3
+Location: CopperneckMountaions
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: GainMorale
+          Param1: 1
+        - Type: GainInspiration
+          Param1: 1
+        - Type: UnlockMandatoryScenario
+          Param1: 19

@@ -1,0 +1,88 @@
+Parser: AbilityCard
+Name: $FH/415_character_ability_cards_hive_heavy_metal_1$
+Character: HIVEID
+ID: 415
+Level: 9
+Initiative: 76
+Discard: [Lost,Discard]
+Prefab: 415_HIVE_HeavyMetal
+Data:
+    Top:
+        XP: 2
+        Abilities:
+            TSummon:
+                Summon: SledgeDriverID
+                AnimOverload: Summon
+        Mode:
+            DebuffInitiative:
+                AutoTrigger: True
+                AdjustInitiative: 15
+                Filter: Self
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: AdjustInitiative
+                    ValidAbilityType: AdjustInitiative
+            BuffFirstAttack:
+                AutoTrigger: True
+                Attack: 3
+                Filter: Self
+                ActiveBonus:
+                    Behaviour: BuffAttack
+                    Duration: Persistent
+                    Restriction: OncePerTurn
+                    IsSingleTargetBonus: True
+    Bottom:
+        Abilities:
+            BMove: 
+                Move: 
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BDamage:
+                Damage: 2
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Target: -1
+                Range: 1
+                Filter: [Enemy,Ally]
+                AnimOverload: CastAOE
+            BShield:
+                Shield: 2
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                ActiveBonus:
+                    Duration: Round
+                    ListLayoutOverride: ["<sprite name=Shield> *BShield*", Positive_Shield]
+Layout:
+    Top:
+        - Active:
+              Ability: "TSummon"
+              Icon: "Summon"
+              Layout:
+                  - Summon:
+                        Ability: TSummon
+                        SummonName: $FH/415_character_ability_cards_hive_heavy_metal_2$
+                        SpecialText:
+                            - Row: "<sprite name=Shield>1"
+                            - Row: "<sprite name=Pierce>3"
+        - Row:
+            - Column: "<sprite name=HIVEMode>"
+            - Column:
+                - Active:
+                    Ability: "DebuffInitiative"
+                    Icon: "Negative_HIVE_HIVEMode"
+                    ListLayout: "$FH/415_character_ability_cards_hive_heavy_metal_3$"
+                    Layout: "$FH/415_character_ability_cards_hive_heavy_metal_3$"
+            - Column:
+                - Active:
+                    Ability: "BuffFirstAttack"
+                    Icon: "Positive_AttackPlus_HIVEMode"
+                    ListLayout: "$FH/415_character_ability_cards_hive_heavy_metal_4$"
+                    Layout: "$FH/415_character_ability_cards_hive_heavy_metal_4$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%> @BMove@"
+        - Divider:
+        - Row: "$FH/415_character_ability_cards_hive_heavy_metal_5$"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Shield> *BShield*"

@@ -1,0 +1,96 @@
+Parser: AbilityCard
+Name: $FH/341_character_ability_cards_snowdancer_white_winds_1$
+Character: SnowdancerID
+ID: 341
+Level: X
+Initiative: 11
+Discard: [Lost,Discard]
+Prefab: 341_Snowdancer_WhiteWinds
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 3
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AreaEffect: "0,0,G|2,0,E|4,0,R|6,0,E|8,0,R|1,-1,R|3,-1,R|5,1,R|7,1,R"
+                MultiPassAttack: False
+                AreaEffectLayoutOverride: "0,0,G|1,1,E|2,0,R|3,1,R|2,2,R|1,3,R|3,3,E|2,4,R|4,4,R"
+                AnimOverload: WhiteWinds
+        Consumes:
+            TCAir:
+                Elements: Air
+                AbilityOverrides:
+                    TCAirAttackBuff:
+                        ParentName: TAttack
+                        Strength: 1
+                        SubAbilities:
+                            SubPush:
+                                Push: 1
+                                IsInlineSubAbility: True
+                XP: 1
+        XP: 1
+    Bottom:
+        Abilities:
+            BHeal:
+                Heal:
+                    Amount: 2
+                    SquareEnhancements: 1
+                Range:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Heal","Range")
+                Filter: [Self, Ally]
+                AnimOverload: Heal
+                SubAbilities:
+                    BGrantAlly:
+                        AutoTrigger: True
+                        TreatAsNonSubAbility: True
+                        Filter:
+                            TargetType: Ally
+                            EnemyType: [Normal, Elite, Boss]
+                        Target: -1
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                Target: Ability.ParentAbility.ActorsToTarget[0]
+                                ValidateIsAlly: CustomAbility.IsAlly(TargetingActor, Target)
+                        Targeting: Custom
+                        TargetingVars:
+                            AddTilesInRange: Ability.ParentAbility.TilesSelected
+                            AddValidActorsInRange: Ability.ParentAbility.ActorsToTarget
+                            AddActorsToTarget: Ability.ParentAbility.ActorsToTarget
+                            AddSelectedTiles: Ability.ParentAbility.TilesSelected
+                        AnimOverload: Control
+                        ControlActor:
+                            Abilities:
+                                BAllyMove:
+                                    Move: 2
+                                    MiscVars:
+                                        PrintedProperties: list("Move")
+                                    StrengthIsBase: True
+Layout:
+    Top:
+        - ColumnWidths: "50,50"
+        - Column:
+            - Row: "<size=130%><sprite name=Attack> *TAttack*"
+            - Row: "<size=100%>"
+            - Conditional:
+                Layout:
+                    - Consume:
+                        Name: TCAir
+                        Text: "<size=100%>+1 <sprite name=Attack>, <sprite name=Push> 1, <sprite name=XP1>"
+        - Column: "£Area£"
+    Bottom:
+        - Row: 
+            - ColumnWidths: "25,25,25,25"
+            - Column:
+            - Column: "<size=130%><sprite name=Heal> *BHeal* <size=100%><voffset=1>@BHeal@"
+            - Column: "<size=100%><sprite name=Range> *BHeal.Range* <size=100%><voffset=1>@BHeal.Range@"
+            - Column:
+        - Row: "<size=150%>"
+        - Divider:
+        - Row: "$FH/341_character_ability_cards_snowdancer_white_winds_2$"
+        - Row: "<size=100%>"
+        - Row: "<size=130%><sprite name=Move> *BAllyMove*"

@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 51.3
+Name: Pyroclast Retires
+SkipNarration: True
+SkipCompletedNotification: False
+Effects:
+    - Type: AddCalendarCampaignSectionNextSummer
+      Param1: 174.2
+      Param2: 5

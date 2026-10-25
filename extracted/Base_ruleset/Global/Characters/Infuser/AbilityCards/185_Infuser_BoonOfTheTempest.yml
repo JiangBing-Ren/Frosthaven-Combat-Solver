@@ -1,0 +1,129 @@
+Parser: AbilityCard
+Name: $FH/185_character_ability_cards_infuser_boon_of_the_tempest_1$
+Character: InfuserID
+ID: 185
+Level: 1
+Initiative: 28
+Discard: [Lost,Discard]
+Prefab: 185_Infuser_BoonOfTheTempest
+Data:
+    Top:
+        Abilities:
+            ConsumeAbility:
+                Consume: 
+                    Elements: [Air, Any]
+                    Abilities:
+                        CNull:
+                            Null: True
+                            AutoTrigger: True
+            TPassive:
+                Move: 
+                    Amount: 1
+                    Jump: True
+                AutoTrigger: True
+                Filter: Self
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Consume]
+                Vars:
+                    ResetInfusionTurnRestriction: CustomAbility.ResetInfusionTurnRestriction()
+                AnimOverload: GatherElements
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: BuffMove
+                    ListLayoutOverride: [$FH/185_character_ability_cards_infuser_boon_of_the_tempest_3$, Positive_MovePlus_Jump]
+                    IsAura: True
+                    AuraFilter: [Self, OwnSummon]
+                    AuraTargeting: All
+                    MiscVars:
+                        InfusionBonus: True
+            TActive:
+                AddActiveBonus:
+                    HelpBoxTooltipLocKey: "$FH/185_character_ability_cards_infuser_boon_of_the_tempest_4$"
+                    Filter:
+                        TargetType: [Self,OwnSummon]
+                        PlayerClasses: [InfuserID]
+                        HeroSummonClasses: [SpiritboundFalchionID]
+                    Target: 1
+                    Targeting: All
+                    IgnoreLOS: True
+                    SkipAnim: True
+                    MiscVars:
+                        TreatThisAsParent: True
+                    PerformVars:
+                        ActorIsSelectingTargetingFocus:
+                            AutoSelSelf: CustomAbility.AutoControlSelfIfOnlyValidTarget(obj)
+                    ControlActor:
+                        ControlDurationType: ControlForOneAction
+                        Abilities:
+                            InfusedAttack:
+                                Attack: 3
+                                MiscVars:
+                                    PrintedProperties: list("Attack")
+                                TreatAsNonSubAbility: True
+                                StrengthIsBase: True
+                                Target: 1
+                                TargetIsBase: True
+                                Filter: Enemy
+                                Range: 1
+                                RangeIsBase: True
+                                CanUndo: False
+                Filter: Self
+                AutoTrigger: True
+                SkipAnim: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Consume]
+                MiscVars:
+                    Infusion: True
+                    IncludeCasterTile: True
+                ActiveBonus:
+                    Duration: Persistent
+                    ListLayoutOverride: ["$185_character_ability_cards_infuser_boon_of_the_tempest_4$ <sprite name=Attack> 3", Positive_Attack_Infusion]
+                    Behaviour: DuringTurnAbility
+                    Restriction: OncePerTurn
+                    TriggerOnCaster: True
+                    IsToggleBonus: True
+                    MiscVars:
+                        OverrideIcon: "'BoonOfTheTempestTopInfusion'"
+                    Requirements:
+                        Vars:
+                            ValidateHasPlayedInfusion: CustomAbility.HasPlayedInfusion(Actor)
+        XP: 2
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 4
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+        Consumes:
+            BCMove:
+                PreviewEffectId: M1Move
+                AbilityOverrides:
+                    BCMoveBuff:
+                        ParentName: BMove
+                        Move: -1
+                        SubAbilities:
+                            BInfuse:
+                                TreatAsNonSubAbility: True
+                                AutoTrigger: True
+                                Infuse: [Air]
+                                SkipAnim: True
+
+Layout:
+    Top:
+        - Row: "$FH/185_character_ability_cards_infuser_boon_of_the_tempest_2$"
+        - Row: "$FH/185_character_ability_cards_infuser_boon_of_the_tempest_3$"
+        - Row: "$FH/185_character_ability_cards_infuser_boon_of_the_tempest_4$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: BCMove
+                    Text: "-1<sprite name=Move>: <sprite name=CreateAir>"

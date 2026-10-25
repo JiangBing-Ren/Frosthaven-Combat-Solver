@@ -1,0 +1,7 @@
+Parser: Perk
+ID: Deathwalker05
+Name: FH/PERK_Deathwalker_05_Name
+Description: FH/PERK_Deathwalker_05_Desc
+CharacterID: DeathwalkerID
+Available: 2
+CardsToAdd: [AMC_Dark_P2]

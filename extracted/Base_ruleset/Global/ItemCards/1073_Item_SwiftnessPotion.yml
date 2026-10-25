@@ -1,0 +1,20 @@
+Parser: ItemCard
+ID: 1073
+StringID: SwiftnessPotionID
+Name: $FH/1073_item_cards_swiftness_potion_1$
+Art: Swiftness Potion
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: SingleAbility
+Data:     
+    Overrides:
+        OMove:
+            Strength: 3
+            Jump: True
+    CompareAbility:
+        AbilityType: Move
+Layout: 
+    - Row: $FH/1073_item_cards_swiftness_potion_2$

@@ -1,0 +1,110 @@
+Parser: AbilityCard
+Name: $FH/233_character_ability_cards_pyroclast_heat_wave_1$
+Character: PyroclastID
+ID: 233
+Level: 4
+Initiative: 8
+Discard: [Discard,Discard]
+Prefab: 233_Pyroclast_HeatWave
+Data:
+    Top:
+        Abilities:    
+            TDamage:
+                Damage: 2
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Target: -1
+                Filter: Enemy
+                Range: 1
+                AnimOverload: SteamCloud_CastLava
+            TPush:
+                Push: 2
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Push","Range")
+                Filter: Enemy
+                Target: -1
+                AnimOverload: Push
+            TDamageSelf:
+                Filter: Self
+                AutoTrigger: True       
+                MiscVars: 
+                    MandatoryBonus: True
+                AddActiveBonus:
+                    Damage: 2
+                    MiscVars:
+                        PrintedProperties: list("Damage")
+                    Filter: Self       
+                    AutoTrigger: True     
+                AnimOverload: CastLava
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: StartTurnAbility
+                    XPTracker: [0]
+        Consumes:
+            TCFire:
+                Elements: Fire
+                XP: 1
+                AbilityOverrides:
+                    TCFirePushBuff:
+                        ParentName: TPush
+                        Range: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BConsumeFire:
+                Consume:
+                    Elements: Fire
+                    Abilities:
+                        BCreateOneHexObstacle:            
+                            PreviewEffectText: "$OBSTACLE_TOOLTIP$"
+                            Create: OneHexObstacle
+                            Vars:
+                                OverridePropName: "'PyroclastObstacle'"
+                            TileFilter: EmptyHex
+                            Range: 1
+                            AnimOverload: TerrainFormation
+                        BInfuse:
+                            Infuse: Earth
+                            AutoTrigger: True
+                            SkipAnim: True
+Layout:
+    Top:
+        - Row: "$FH/233_character_ability_cards_pyroclast_heat_wave_2$"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Push> *TPush* <mark=#80919922><size=100%>$FH/233_character_ability_cards_pyroclast_heat_wave_3$</mark>"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCFire
+                    Text: "+1 <sprite name=Range>, <sprite name=XP1>" 
+        - Divider:
+        - Row:
+            - ColumnWidths: "10,60,20"
+            - Column:
+            - Column:
+                - Active:
+                    Ability: TDamageSelf
+                    ListLayout: "$FH/233_character_ability_cards_pyroclast_heat_wave_4$ <sprite name=Damage>2 $target_self$"
+                    Layout:
+                        - MandatoryTrigger: "$FH/233_character_ability_cards_pyroclast_heat_wave_4$"
+                    Icon: "Negative_DamageSelf"
+            - Column:
+                - XPTracker: TDamageSelf
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Conditional:
+            Layout:
+                - Column: "<sprite name=ConsumeFire>"
+                - Column: "$FH/233_character_ability_cards_pyroclast_heat_wave_5$"
+                - Column:
+                    - MandatoryTrigger:
+                        Layout:
+                            - Infuse: [Earth]

@@ -1,0 +1,27 @@
+Parser: Character
+ID: GeminateID
+LocKey: $FH/FS_Character_Geminate$
+Model: Geminate
+DefaultSkin: 1
+Race: Harrower
+Traits: [ Arcane, Chaotic, Nimble ]
+# PlayerLevel:    [  1,   2,   3,   4,   5,   6,   7,   8,   9 ]
+HealthTable:      [  8, 9, 11, 12, 14, 15, 17, 18, 20 ]
+NumberAbilityCardsInBattle: 14
+Role: $Geminate_ROLE$
+Description: $Geminate_DESCRIPTION$
+Difficulty: $DIFFICULTY_HIGH$
+Strengths: $Geminate_STRENGTHS$
+Weaknesses: $Geminate_WEAKNESSES$
+Adventure_Description: $Geminate_ADVENTURE_DESCRIPTION$
+Complexity: 5
+ElementalAffinities: [Fire, Ice, Light]
+MasteryIDs: [Geminate_MASTERY_1, Geminate_MASTERY_2]
+RetireCampaignSection: 160.3
+HeroStats:
+    Melee: 4
+    Ranged: 4
+    Mobility: 3
+    Support: 2
+    Defense: 3
+    Control: 3

@@ -1,0 +1,18 @@
+Parser: FHScenario
+ID: 45
+Name: Living Glacier
+LevelID: FS_045_Living_Glacier
+RequiresClimbingGear: true
+RequiresBoat: true
+Chain: Algox2
+Location: TheBitingSea
+Difficulty: 1
+Conclusions:
+    - Effects:
+        - Type: AllCharactersAddPerkCheck
+          Param1: 1
+        - Type: GainMorale
+          Param1: 1
+        - Type: UnlockScenarioIfScenarioComplete
+          Param1: 52
+          Param2: 46

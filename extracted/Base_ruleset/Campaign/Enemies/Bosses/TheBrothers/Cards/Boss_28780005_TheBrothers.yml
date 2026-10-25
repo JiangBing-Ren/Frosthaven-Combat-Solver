@@ -1,0 +1,14 @@
+Parser: EnemyCard
+ID: 28770005
+Name: $Monster_Ability_Boss_Render_Special1$
+Initiative: 79
+Shuffle: False
+Data:
+    Abilities: 
+        Attack1:
+            Attack: 0
+            Filter: Enemy
+            StartAbilityRequirements:
+                Type: ThisAbility
+                Vars:
+                     ValidateCanUseAbility: ScenarioScript_FH087.ShouldBrotherUseAbility(TargetingActor)

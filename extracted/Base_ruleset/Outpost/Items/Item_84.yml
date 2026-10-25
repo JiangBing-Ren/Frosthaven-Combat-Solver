@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 84
+ScenarioItemID: 1033
+Name: Stamina Potion
+Quantity: 2
+Type: Small
+Brewing:
+    Herb1: Arrowvine
+    Herb2: Snowthistle

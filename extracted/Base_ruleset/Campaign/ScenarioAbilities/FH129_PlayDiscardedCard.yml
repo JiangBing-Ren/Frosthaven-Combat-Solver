@@ -1,0 +1,73 @@
+Parser: ScenarioAbility
+ID: FH129_PlayDiscardedCard
+ScenarioAbility:
+    CreateLog:
+        Filter: Self
+        SkipAnim: True
+        AddActiveBonus:
+            # host selects this ability, grants it to any player
+            PreviewEffectText: "2 AP"
+            HelpBoxTooltipLocKey: "FH_Scenario_Campaign_129_SCENARIO_MODIFIER_2"
+            Target: 1
+            Range: 99
+            IgnoreLOS: True
+            Filter:
+                TargetType: [Ally,Self]
+                ActorType: Player
+                Vars:
+                    ValidateHasValidCards: CustomAbility.HasDiscardedPersistentCards(target)
+                    ValidateHasntRecovered: ScenarioScript_FH129.HasNotPlayedPersistent(target)
+            MiscVars:
+                DontMoveCamera: True
+            PerformVars:
+                ApplyToActors:
+                    CachePersistentBonuses: ScenarioScript_FH129.CachePersistentBonuses(ActorsToTarget[0])
+            ControlActor:
+                Abilities:
+                    PlayDiscarded:
+                        AutoTrigger: True
+                        CanUndo: False
+                        CanSkip: False
+                        HelpBoxTooltipLocKey: "FH_Scenario_Campaign_129_SCENARIO_MODIFIER_2"
+                        MiscVars:
+                            DontMoveCamera: True
+                            IsActionValid: Action.Abilities.Any(obj.ActiveBonusData?.Duration == CActiveBonus.EActiveBonusDurationType.Persistent || obj.ActiveBonusData?.Duration == CActiveBonus.EActiveBonusDurationType.Summon)
+                        SelectAndPlayCard:       
+                            CardPile: Discarded  
+                        Filter: Self
+                        Target: 1
+                        Range: 99
+                        TileFilter: EmptyHex
+                        PerformVars:
+                            OnAbilityEnded:
+                                ValidateHasHappened: AbilityHasHappened
+                                ValidateHasNewPersistents: ScenarioScript_FH129.HasNewPersistents(TargetingActor)
+                                Cache: ScenarioScript_FH129.CacheHasPlayedPersistent(TargetingActor)
+            SubAbilities:
+                PayCost:
+                    Null: True
+                    TreatAsNonSubAbility: True
+                    AutoTrigger: True
+                    StartAbilityRequirements:
+                        Type: ParentAbility
+                        AbilityHasHappened: True
+                        Vars:
+                            ValidateHasNewPersistents: ScenarioScript_FH129.HasNewPersistents(Ability.ActorsTargeted[0])
+                    MiscVars:
+                        APCost: 2
+        ActiveBonus:
+            ListLayoutOverride: ["$FH/FH_Scenario_Campaign_129_SCENARIO_MODIFIER_2$", Empty]
+            Hidden: True
+            Behaviour: DuringTurnAbility
+            Duration: Persistent
+            ValidAbilityType: NullTargeting
+            IsToggleBonus: True
+            MiscVars:
+                #OverrideIcon: "''" - Need icon for this
+                OverrideLayoutName: "''"
+            Requirements:
+                Vars:
+                    CurrentAbility: PhaseManager.CurrentPhaseAction?.CurrentPhaseAbility?.m_Ability
+                    ValidateAbility: CurrentAbility != null && CurrentAbility.Name == "ChooseAPAbility"
+                    ValidateHasTargets: AllPlayers.Any(CustomAbility.HasDiscardedPersistentCards(obj) && ScenarioScript_FH129.HasNotPlayedPersistent(obj))
+                    ValidateAP: ScenarioScript_FH129.HasEnoughAP(2)

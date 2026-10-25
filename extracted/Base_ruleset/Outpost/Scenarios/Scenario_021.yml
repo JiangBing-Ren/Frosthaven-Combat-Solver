@@ -1,0 +1,11 @@
+Parser: FHScenario
+ID: 21
+Name: Realm of Endless Frost
+LevelID: FS_021_Realm_of_Endless_Frost
+RequiresSled: true
+Chain: Lurker
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: AddProsperity
+          Param1: 2

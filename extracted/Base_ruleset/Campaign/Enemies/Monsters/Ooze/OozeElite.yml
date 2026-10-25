@@ -1,0 +1,70 @@
+Parser: Enemy
+ID: OozeEliteID
+LocKey: $OozeElite$
+MonsterType: Monster
+StandeeLimit: 10
+Model: Ooze Elite
+NonEliteVariant: OozeID
+PredominantlyMelee: False
+AbilityCards: [866, 867, 868, 869, 870, 871, 872, 873]
+# Base Stats
+Level0:
+    Health: 8
+    Move: 1
+    Attack: 2
+    Range: 1
+    Target: 1
+Level1:
+    Health: 9
+    Move: 1
+    Attack: 2
+    Range: 1
+    Target: 1
+    Shield: 1
+Level2:
+    Health: 11
+    Move: 1
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 1
+ Level3:
+    Health: 11
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 1
+    Conditions: [Poison]
+ Level4:
+    Health: 12
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 1
+    Conditions: [Poison]
+ Level5:
+    Health: 15
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 1
+    Conditions: [Poison]
+ Level6:
+    Health: 21
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 1
+    Conditions: [Poison]
+ Level7:
+    Health: 27
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    Shield: 1
+    Conditions: [Poison]

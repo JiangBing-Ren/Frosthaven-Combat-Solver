@@ -1,0 +1,31 @@
+Parser: Perk
+ID: PainConduit10
+Name: FH/PERK_PainConduit_10_Name
+Description: FH/PERK_PainConduit_10_Desc
+CharacterID: PainConduitID
+Available: 1
+Flags: [Passive, ApplyActiveBonusesAtScenarioStart]
+Abilities:
+    PreventConditions:
+        Filter: Self
+        AutoTrigger: True
+        SkipAnim: True
+        AddActiveBonus:
+            NullTargeting: True
+            Filter: Self
+            SkipAnim: True
+            AutoTrigger: True
+            MiscVars:
+                IgnoreNegativeConditions: True
+            ActiveBonus:
+                Duration: Round
+                Hidden: True
+        ActiveBonus:
+            Duration: Persistent
+            Hidden: True
+            Behaviour: PreCalcInitiativeAbility
+            IsToggleBonus: True
+            ListLayoutOverride: [$PERK_PainConduit_10_Desc$, FH_UI_PERKS_PainConduit_Unfeeling]
+            Requirement:
+                Vars: 
+                    ValidateIsInWater: Actor.IsLongRestSelected

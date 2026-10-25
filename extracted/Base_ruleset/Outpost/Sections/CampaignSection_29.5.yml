@@ -1,0 +1,7 @@
+Parser: CampaignSection
+ID: 29.5
+Name: Puzzle Solution
+SkipCompletedNotification: True
+Effects:
+    - Type: UnlockPuzzle
+      Param1: Alphabet

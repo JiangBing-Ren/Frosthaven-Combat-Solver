@@ -1,0 +1,32 @@
+Parser: ScenarioAbility
+ID: FH071_SwingFromMastFirstTime
+ScenarioAbility:
+    SkipMove2ToTeleportToNextRoom:
+        PreviewEffectText: ""
+        Filter: Self
+        SkipAnim: True
+        NullTargeting: True
+        ActiveBonus:
+            ListLayoutOverride: [$FH_Scenario_Campaign_071_SpendMovePoints_NextRoom$, Move]
+            Duration: Persistent
+            ValidAbilityType: Move
+            IsToggleBonus: True
+            Hidden: True
+            Requirements:
+                DoesntHaveNegativeCondition: [Stun, Immobilize]
+                Vars:
+                    CurrentAbility: PhaseManager.CurrentPhaseAction.CurrentPhaseAbility?.m_Ability
+                    ValidateHasEnoughMovePoints: CurrentAbility != null && CurrentAbility.RemainingMoves >= 2
+                    ValidateIsOnStairs: ScenarioScript_FH071.CanTeleportToNextRoom(Actor)
+            CostAbility:
+                NullTargeting: True
+                Filter: Self
+                MiscVars:
+                    TreatAsNewStart: True
+                Vars:
+                    CacheActiveBonus: PhaseManager.CurrentPhaseAction.CurrentTriggeredActiveBonus
+                PerformVars:
+                    ApplyToActors:
+                        UntoggleBonus: CacheActiveBonus.ToggleActiveBonusFromVars(TargetingActor, true)
+                        PayMovement: CustomAbility.PayMovementPoints(2, TargetingActor, CacheActiveBonus)
+                        TeleportActor: ScenarioScript_FH071.TeleportToNextRoom(TargetingActor)

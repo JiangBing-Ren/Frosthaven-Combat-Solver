@@ -1,0 +1,13 @@
+Parser: AttackModifier
+Name: AMC_Shield1_R_Frozen_Fist
+MathModifier: "+1"
+Rolling: True
+Abilities:
+    AShield:
+        Shield: 1
+        Filter: Self
+        ActiveBonus:
+            Duration: Round
+        CanUndo: False
+        AnimOverload: Heal
+        #AutoTrigger: True

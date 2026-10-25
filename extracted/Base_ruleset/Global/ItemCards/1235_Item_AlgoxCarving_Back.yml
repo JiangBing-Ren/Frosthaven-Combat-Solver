@@ -1,0 +1,27 @@
+Parser: ItemCard
+ID: 12350
+StringID: AlgoxCarving2ID
+Name: $FH/1235_item_cards_algox_carving_1$
+Art: Algox Carving
+TotalInGame: 1
+Cost: 60
+Slot: Body 
+Rarity: Rare
+Trigger: SingleTarget
+Consumes: Air
+Usage: Flip
+FlipItemID: 1235
+FlipItemSide: Back
+Data:     
+    Overrides:
+        OPush:
+            SubAbilities:
+                AttackSubPush:
+                    Push: 2
+                    IsInlineSubAbility: True
+    CompareAbility:
+        AbilityType: Attack
+        IsRanged: True
+        Filter: Enemy
+Layout: 
+    - Row: $FH/1235_item_cards_algox_carving_3$

@@ -1,0 +1,106 @@
+Parser: Enemy
+ID: AugmentedMindthiefID
+LocKey: $FH/AugmentedMindthief$
+MonsterType: Boss
+StandeeLimit: 1
+Model: AugmentedMindthief
+PredominantlyMelee: True
+AbilityCards: [881000618,881000619,881000620,881000621,881000622,881000623,881000624,881000625]
+# Base Stats
+# formula used to be h*(c-1), changing it to h*c as per redesign
+Level0:
+    Health: 0
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Immunities: [Poison,Disarm,Stun,Muddle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCountMinusYTimesX
+            xVariable: 9
+            yVariable: 0
+Level1:
+    Health: 0
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Immunities: [Poison,Disarm,Stun,Muddle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCountMinusYTimesX
+            xVariable: 9
+            yVariable: 0
+Level2:
+    Health: 0
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Immunities: [Poison,Disarm,Stun,Muddle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCountMinusYTimesX
+            xVariable: 12
+            yVariable: 0
+Level3:
+    Health: 0
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+    Immunities: [Poison,Disarm,Stun,Muddle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCountMinusYTimesX
+            xVariable: 14
+            yVariable: 0
+Level4:
+    Health: 0
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+    Immunities: [Poison,Disarm,Stun,Muddle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCountMinusYTimesX
+            xVariable: 18
+            yVariable: 0
+Level5:
+    Health: 0
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+    Immunities: [Poison,Disarm,Stun,Muddle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCountMinusYTimesX
+            xVariable: 21
+            yVariable: 0
+Level6:
+    Health: 0
+    Move: 4
+    Attack: 5
+    Range: 1
+    Target: 1
+    Immunities: [Poison,Disarm,Stun,Muddle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCountMinusYTimesX
+            xVariable: 22
+            yVariable: 0
+Level7:
+    Health: 0
+    Move: 5
+    Attack: 5
+    Range: 1
+    Target: 1
+    Immunities: [Poison,Disarm,Stun,Muddle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCountMinusYTimesX
+            xVariable: 27
+            yVariable: 0

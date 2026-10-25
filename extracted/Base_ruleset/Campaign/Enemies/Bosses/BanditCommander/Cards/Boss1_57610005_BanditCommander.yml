@@ -1,0 +1,11 @@
+Parser: EnemyCard
+ID: 57610005
+Initiative: 79
+Shuffle: False
+Data:
+    Abilities: 
+        ANull:
+            Null: True
+            Text: "$Boss_BanditCommander_Special1$"
+            TextOnly: True
+

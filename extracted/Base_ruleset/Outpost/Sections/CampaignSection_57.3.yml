@@ -1,0 +1,7 @@
+Parser: CampaignSection
+ID: 57.3
+Name: Harvest Festival
+SkipCompletedNotification: False
+Effects:
+    - Type: GainMorale
+      Param1: 2

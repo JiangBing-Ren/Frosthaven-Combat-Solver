@@ -1,0 +1,91 @@
+Parser: AbilityCard
+Name: $FH/242_character_ability_cards_pyroclast_stone_armor_1$
+Character: PyroclastID
+ID: 242
+Level: 9
+Initiative: 9
+Discard: [Lost,Discard]
+Prefab: 242_Pyroclast_StoneArmor
+Data:
+    Top:
+        Infuse: [Earth]
+        XP: 2
+        Abilities:
+            TPreventDamage:
+                PreventDamage: 1
+                Filter: Self
+                AnimOverload: Cast_CastStone
+                ActiveBonus:
+                    ToggleIsOptional: True
+                    IsToggleBonus: True
+                    Behaviour: PreventFirstDamage
+                    Duration: Persistent
+                    Requirements:
+                        Vars:
+                            ValidateHasAdjacentObstacle: CustomAbility.GetAdjacentTiles(Actor.Tile).Where(obj.FindObstacleProp(true, true) != null).Count > 0
+                    Vars:
+                        TriggerDestroyObstacle: CustomAbility.PerformActiveBonusAbility(ActiveBonus, thisContext)
+                    AbilityData:
+                        CanSkip: False
+                        NullHex: True
+                        Range: 1
+                        TileFilter: Custom
+                        MiscVars:
+                            IsValidTile: obj.FindObstacleProp(true, true) != null
+                            SelectMultiHexProps: True
+                        AnimOverload: ObstacleDestruction
+                        PerformVars:
+                            Perform:
+                                SelectedTile: TilesSelected[0]
+                                Prop: SelectedTile.FindObstacleProp(true, true)
+                                DestroyProp: Prop.DestroyPropFromAbility(obj)
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                    Jump: True
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BShield:
+                Shield: 0
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                AnimOverload: Cast_CastStone
+                ConditionalOverrides:
+                    TShieldCO:
+                        Self: True
+                        AbilityOverrides:
+                            TShield_Override:
+                                StatIsBasedOnX:
+                                    Strength:
+                                        BasedOn: Vars
+                                        Vars:
+                                            Value:  CustomAbility.GetAdjacentTiles(TargetingActor.Tile).Where(obj.FindObstacleProp(true, true) != null).Count
+                ActiveBonus:
+                    Behaviour: BuffShield
+                    Duration: Round
+
+Layout:
+    Top:
+        - Active:
+            Ability: TPreventDamage
+            ListLayout: "$FH/242_character_ability_cards_pyroclast_stone_armor_2$"
+            Layout: "$FH/242_character_ability_cards_pyroclast_stone_armor_2$"
+            Icon: "Positive_DamagePrevent_Obstacle_Death"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Earth]
+    Bottom:
+        - Row:
+            - Column: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+            - Column: " <mark=#80919922><size=100%><sprite name=Jump></mark>"
+        - Divider:
+        - Active:
+            Ability: BShield
+            ListLayout: "<sprite name=Shield>X $FH/242_character_ability_cards_pyroclast_stone_armor_3$"
+            Layout: 
+                - Row: "<sprite name=Shield>X"
+                - Row: "$FH/242_character_ability_cards_pyroclast_stone_armor_3$"
+            Icon: "Positive_Shield"

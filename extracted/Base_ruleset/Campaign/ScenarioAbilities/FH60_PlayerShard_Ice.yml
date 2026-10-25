@@ -1,0 +1,9 @@
+Parser: ScenarioAbility
+ID: FH60_PlayerShard_Ice
+ScenarioAbility:
+    FH60_PlayerShard_Ice:
+        NullTargeting: True
+        Filter: Self
+        ActiveBonus:
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_060_PlayerShard_Ice$, Positive_AttackPlus_Enemy_Campaign]
+            Duration: Persistent

@@ -1,0 +1,25 @@
+Parser: EnemyCard
+ID: 830
+Name: $Monster_Ability_830_Imp_RottenSting$
+Initiative: 43
+Shuffle: True
+Data:
+    Abilities: 
+        Move1:
+            Move: 0
+        Attack1:
+            Attack: -1
+            Range: 3
+            RangeIsBase: True
+            Target: 1
+            TargetIsBase: True
+            Conditions: Poison
+            Filter: Enemy
+            AnimOverload: RangedAttack
+    Consumes:
+        CAny:
+            Elements: Any
+            AbilityOverrides:
+                CAnyBuffs:
+                    ParentName: Attack1
+                    Target: 1

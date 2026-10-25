@@ -1,0 +1,134 @@
+Parser: AbilityCard
+Name: $FH/54_character_ability_cards_blinkblade_the_knife's_edge_1$
+Character: BlinkbladeID
+ID: 54
+Level: 6
+Initiative: 65
+Discard: [Discard,Discard]
+Prefab: 54_Blinkblade_TheKnifesEdge
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 3
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Target: 1
+                Conditions: Wound
+                AnimOverload: AttackSlow
+                MultiPassAttack: False
+                ConditionalOverrides:
+                    TAttackCO_Fast:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Fast
+                            Vars:
+                                ValidateDoesntHaveTreatSlowAgilityAsFast: not TargetingActor.HasActiveBonusFlag(AbilityData.EActiveBonusFlag.TreatSlowAgilityAsFast)
+                        AbilityOverrides:
+                            TAttack:
+                                Target: 99
+                                TargetIsBase: True
+                                AnimOverload: Attack2
+                                MiscVars:
+                                    AutoSelectValidTiles: True
+                    TAttackCO_FastBuffed:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Fast
+                            Vars:
+                                ValidateHasTreatSlowAgilityAsFast: TargetingActor.HasActiveBonusFlag(AbilityData.EActiveBonusFlag.TreatSlowAgilityAsFast)
+                        AbilityOverrides:
+                            TAttack:
+                                Target: 99
+                                TargetIsBase: True
+                                AnimOverload: Attack2Slow
+                                MiscVars:
+                                    AutoSelectValidTiles: True
+                SubAbilities:
+                    TDamageForAttackFast:
+                        Damage: 0
+                        MiscVars:
+                            PrintedProperties: list("Damage")
+                        AutoTrigger: True
+                        Filter: Self
+                        Target: -1
+                        Flags: [SubAbilityPreview]
+                        TreatAsNonSubAbility: True
+                        StatIsBasedOnX:
+                            Strength:
+                                BasedOn: ActorsTargetedByParentAbility
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredAgility: Fast
+            TDamageSelfWhenSlow:
+                Damage: 1
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                AutoTrigger: True
+                Filter: Self
+                Target: -1
+                CanSkip: False
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Slow
+    Bottom:
+        Abilities:
+            BHeal:
+                Heal: 
+                    Amount: 4
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self
+                Target: -1
+                ConditionalOverrides:
+                    BHeal_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            BHeal:
+                                AnimOverload: PowerUpSlow
+            BMove:
+                Move: 2
+                MiscVars:
+                    PrintedProperties: list("Move")
+                #CanSkip: False
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Fast
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "45,30"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "$FH/054_character_ability_cards_blinkblade_the_knifes_edge_2$"
+            - Column:
+                - Row: "<b><size=130%><sprite name=Attack>*TAttack* <sprite name=Wound>"
+        - Divider:
+        - Row:
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "$FH/054_character_ability_cards_blinkblade_the_knifes_edge_3$"
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Text: "$FH/054_character_ability_cards_blinkblade_the_knifes_edge_4$ <sprite name=BBSlow>"
+    Bottom:
+        - Row:
+            - ColumnWidths: "20,30,20"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Heal>*BHeal* <size=100%><voffset=1>@BHeal@"
+            - Column:
+                - Row: "$FH/054_character_ability_cards_blinkblade_the_knifes_edge_5$"
+        - Divider:
+        - Row: 
+            - ColumnWidths: "50"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "<b><size=130%><sprite name=Move> *BMove*"

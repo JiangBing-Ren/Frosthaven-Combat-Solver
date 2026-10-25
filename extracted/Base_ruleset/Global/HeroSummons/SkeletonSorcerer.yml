@@ -1,0 +1,16 @@
+Parser: HeroSummon
+ID: SkeletonSorcererID
+LocKey: $FH/149_character_ability_cards_boneshaper_unholy_prowess_2$
+Model: SkeletonSorcerer
+Health:
+    Amount: 6
+    SquareEnhancements: 1
+Move:
+    Amount: 3
+    SquareEnhancements: 1
+Attack:
+    Amount: 3
+    SquareEnhancements: 1
+Range:
+    Amount: 3
+    SquareEnhancements: 1

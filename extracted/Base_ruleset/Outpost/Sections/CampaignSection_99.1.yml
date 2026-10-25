@@ -1,0 +1,8 @@
+Parser: CampaignSection
+ID: 99.1
+Name: Camilla’s Funeral
+ShowAsUnknownInCalendar: True
+SkipCompletedNotification: False
+Effects:
+    - Type: UnlockScenario
+      Param1: 95

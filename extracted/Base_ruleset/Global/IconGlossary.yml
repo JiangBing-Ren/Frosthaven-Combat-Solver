@@ -1,0 +1,337 @@
+Parser: IconGlossary
+# ---------------------------------------------------------------------------------------------------------
+# Main-line Abilities
+Move:
+    Text: "$Move$"
+    Definition: "$Glossary_Move$"
+    Sprite: "<sprite name=Move>"
+    ShowSymbol: True
+Attack:
+    Text: "$Attack$"
+    Definition: "$Glossary_Attack$"
+    Sprite: "<sprite name=Attack>"
+    ShowSymbol: True
+Heal:
+    Text: "$Heal$"
+    Definition: "$Glossary_Heal$"
+    Sprite: "<sprite name=Heal>"
+    ShowSelf: True
+Shield:
+    Text: "$Shield$"
+    Definition: "$Glossary_Shield$"
+    Sprite: "<sprite name=Shield>"
+Retaliate:
+    Text: "$Retaliate$"
+    Definition: "$Glossary_Retaliate$"
+    Sprite: "<sprite name=Retaliate>"
+Loot:
+    Text: "$Loot$"
+    Definition: "$Glossary_Loot$"
+    Sprite: "<sprite name=Loot>"
+
+# ---------------------------------------------------------------------------------------------------------
+# Other Abilities
+Recover:
+    Text: "$Recover$"
+    Definition: "$Glossary_Recover$"
+    Sprite: "<sprite name=Recover>"
+Refresh:
+    Text: "$Refresh$"
+    Definition: "$Glossary_Refresh$"
+    Sprite: "<sprite name=Refresh>"
+Damage:
+    Text: "$Damage$"
+    Definition: "$Glossary_Damage$"
+    Sprite: "<sprite name=Damage>"
+Kill:
+    Text: "$Kill$"
+    Definition: "$Glossary_Kill$"
+    Sprite: "<sprite name=AA_Kill>"
+Summon:
+    Text: "$Summon$"
+    Definition: "$Glossary_Summon$"
+    Sprite: "<sprite name=Summon>"
+Trap:
+    Text: "$Trap$"
+    Definition: "$Glossary_Trap$"
+    Sprite: "<sprite name=Trap>"
+
+# ---------------------------------------------------------------------------------------------------------
+# Ability Targeting
+Range:
+    Text: "$Range$"
+    Definition: "$Glossary_Range$"
+    Sprite: "<sprite name=Range>"
+    ShowSymbol: True
+Target:
+    Text: "$Target$"
+    Definition: "$Glossary_Target$"
+    Sprite: "<sprite name=Target>"
+    ShowSymbol: True
+NumberOfTargets:
+    Text: "$Target$"
+    Definition: "$Glossary_Target$"
+    Sprite: "<sprite name=Target>"
+    ShowSymbol: True  
+RetaliateRange:
+    Text: "$Retaliate$ $Range$"
+    Definition: "$Glossary_Range$"
+    Sprite: "<sprite name=Range>"
+    ShowSymbol: True
+
+# ---------------------------------------------------------------------------------------------------------
+# Alt Move Types
+Jump:
+    Text: "$Jump$"
+    Definition: "$Glossary_Jump$"
+    Sprite: "<sprite name=Jump>"
+Flying:
+    Text: "$Flying$"
+    Definition: "$Glossary_Flying$"
+    Sprite: "<sprite name=Flying>"
+
+# ---------------------------------------------------------------------------------------------------------
+# Area Effect Hexes
+RedHex:
+    Text: "$RedHex$"
+    Definition: "$Glossary_RedHex$"
+    Sprite: "<sprite name=RedHex>"
+GreyHex:
+    Text: "$GreyHex$"
+    Definition: "$Glossary_GreyHex$"
+    Sprite: "<sprite name=GreyHex>"
+DotHex:
+    Text: "$DotHex$"
+    Definition: "$Glossary_DotHex$"
+    Sprite: "<sprite name=DotHex>"
+
+# ---------------------------------------------------------------------------------------------------------
+# Attack Effects
+Push:
+    Text: "$Push$"
+    Definition: "$Glossary_Push$"
+    Sprite: "<sprite name=Push>"
+Pull:
+    Text: "$Pull$"
+    Definition: "$Glossary_Pull$"
+    Sprite: "<sprite name=Pull>"
+Pierce:
+    Text: "$Pierce$"
+    Definition: "$Glossary_Pierce$"
+    Sprite: "<sprite name=Pierce>"
+
+# ---------------------------------------------------------------------------------------------------------
+# Conditions
+Poison:
+    Text: "$Poison$"
+    Definition: "$Glossary_Poison$"
+    Sprite: "<sprite name=Poison>"
+    ShowSelf: True
+Wound:
+    Text: "$Wound$"
+    Definition: "$Glossary_Wound$"
+    Sprite: "<sprite name=Wound>"
+    ShowSelf: True
+Immobilize:
+    Text: "$Immobilize$"
+    Definition: "$Glossary_Immobilize$"
+    Sprite: "<sprite name=Immobilize>"
+    ShowSelf: True
+Disarm:
+    Text: "$Disarm$"
+    Definition: "$Glossary_Disarm$"
+    Sprite: "<sprite name=Disarm>"
+    ShowSelf: True
+Stun:
+    Text: "$Stun$"
+    Definition: "$Glossary_Stun$"
+    Sprite: "<sprite name=Stun>"
+    ShowSelf: True
+Muddle:
+    Text: "$Muddle$"
+    Definition: "$Glossary_Muddle$"
+    Sprite: "<sprite name=Muddle>"
+    ShowSelf: True
+Curse:
+    Text: "$Curse$"
+    Definition: "$Glossary_Curse$"
+    Sprite: "<sprite name=Curse>"
+    ShowSelf: True
+Invisible:
+    Text: "$Invisible$"
+    Definition: "$Glossary_Invisible$"
+    Sprite: "<sprite name=Invisible>"
+    ShowSelf: True
+Strengthen:
+    Text: "$Strengthen$"
+    Definition: "$Glossary_Strengthen$"
+    Sprite: "<sprite name=Strengthen>"
+    ShowSelf: True
+Bless:
+    Text: "$Bless$"
+    Definition: "$Glossary_Bless$"
+    Sprite: "<sprite name=Bless>"
+    ShowSelf: True
+Bane:
+    Text: "$Bane$"
+    Definition: "$Glossary_Bane$"
+    Sprite: "<sprite name=Bane>"
+    ShowSelf: True
+Brittle:
+    Text: "$Brittle$"
+    Definition: "$Glossary_Brittle$"
+    Sprite: "<sprite name=Brittle>"
+    ShowSelf: True
+Impair:
+    Text: "$Impair$"
+    Definition: "$Glossary_Impair$"
+    Sprite: "<sprite name=Impair>"
+    ShowSelf: True
+Regenerate:
+    Text: "$Regenerate$"
+    Definition: "$Glossary_Regenerate$"
+    Sprite: "<sprite name=Regenerate>"
+    ShowSelf: True
+Ward:
+    Text: "$Ward$"
+    Definition: "$Glossary_Ward$"
+    Sprite: "<sprite name=Ward>"
+    ShowSelf: True
+Mutate:
+    Text: "$Mutate$"
+    Definition: "$Glossary_Mutate$"
+    Sprite: "<sprite name=Regenerate>"  # HACK: Mutate is used in FS-32 only and doesn't have it's own icon for now. :(
+    ShowSelf: True
+
+# ---------------------------------------------------------------------------------------------------------
+# Advantage
+Advantage:
+    Text: "$Advantage$"
+    Definition: "$Glossary_Advantage$"
+    Sprite: "<sprite name=Advantage>"
+Disadvantage:
+    Text: "$Disdvantage$"
+    Definition: "$Glossary_Disadvantage$"
+    Sprite: "<sprite name=Disadvantage>"
+AttackersGainDisadvantage:
+    Text: "$AttackersGainDisadvantage$"
+    Definition: "$Glossary_AttackersGainDisadvantage$"
+    Sprite: "<sprite name=Disadvantage>"
+    ShowSelf: True
+
+# ---------------------------------------------------------------------------------------------------------
+# Elements
+Fire:
+    Text: "$Fire$"
+    Definition: "$Glossary_Fire$"
+    Sprite: "<sprite name=Fire>"
+Ice:
+    Text: "$Ice$"
+    Definition: "$Glossary_Ice$"
+    Sprite: "<sprite name=Ice>"
+Earth:
+    Text: "$Earth$"
+    Definition: "$Glossary_Earth$"
+    Sprite: "<sprite name=Earth>"
+Air:
+    Text: "$Air$"
+    Definition: "$Glossary_Air$"
+    Sprite: "<sprite name=Air>"
+Light:
+    Text: "$Light$"
+    Definition: "$Glossary_Light$"
+    Sprite: "<sprite name=Light>"
+Dark:
+    Text: "$Dark$"
+    Definition: "$Glossary_Dark$"
+    Sprite: "<sprite name=Dark>"
+Any:
+    Text: "$Any$"
+    Definition: "$Glossary_Any$"
+    Sprite: "<sprite name=Any>"
+ConsumeFire:
+    Text: "$ConsumeFire$"
+    Definition: "$Glossary_ConsumeFire$"
+    Sprite: "<sprite name=ConsumeFire>"
+ConsumeIce:
+    Text: "$ConsumeIce$"
+    Definition: "$Glossary_ConsumeIce$"
+    Sprite: "<sprite name=ConsumeIce>"
+ConsumeEarth:
+    Text: "$ConsumeEarth$"
+    Definition: "$Glossary_ConsumeEarth$"
+    Sprite: "<sprite name=ConsumeEarth>"
+ConsumeAir:
+    Text: "$ConsumeAir$"
+    Definition: "$Glossary_ConsumeAir$"
+    Sprite: "<sprite name=ConsumeAir>"
+ConsumeLight:
+    Text: "$ConsumeLight$"
+    Definition: "$Glossary_ConsumeLight$"
+    Sprite: "<sprite name=ConsumeLight>"
+ConsumeDark:
+    Text: "$ConsumeDark$"
+    Definition: "$Glossary_ConsumeDark$"
+    Sprite: "<sprite name=ConsumeDark>"
+ConsumeAny:
+    Text: "$ConsumeAny$"
+    Definition: "$Glossary_ConsumeAny$"
+    Sprite: "<sprite name=ConsumeAny>"
+
+# ---------------------------------------------------------------------------------------------------------
+#Active Durations
+Round:
+    Text: "$Round$"
+    Definition: "$Glossary_Round$"
+    Sprite: "<sprite name=Round>"
+Persistent:
+    Text: "$Persistent$"
+    Definition: "$Glossary_Persistent$"
+    Sprite: "<sprite name=Persistent>"
+
+# ---------------------------------------------------------------------------------------------------------
+# Discard Types
+Lost:
+    Text: "$Lost$"
+    Definition: "$Glossary_Lost$"
+    Sprite: "<sprite name=Lost>"
+PermanentlyLost:
+    Text: "$PermanentlyLost$"
+    Definition: "$Glossary_PermanentlyLost$"
+    Sprite: "<sprite name=PermanentlyLost>"
+
+# ---------------------------------------------------------------------------------------------------------
+# XP
+XP:
+    Text: "$XP$"
+    Definition: "$Glossary_XP$"
+    Sprite: "<sprite name=XP>"
+XP1:
+    Text: "$XP1$"
+    Definition: "$Glossary_XP1$"
+    Sprite: "<sprite name=XP1>"
+XP2:
+    Text: "$XP2$"
+    Definition: "$Glossary_XP2$"
+    Sprite: "<sprite name=XP2>"
+XP3:
+    Text: "$XP3$"
+    Definition: "$Glossary_XP3$"
+    Sprite: "<sprite name=XP3>"
+
+# ---------------------------------------------------------------------------------------------------------
+# Misc
+Self:
+    Text: "$Self$"
+    Definition: "$Glossary_Self$"
+    Sprite: ""
+# Not used in FH, but left here just in case. No icon or localization.
+#Augment:
+#    Text: "$Augment$"
+#    Definition: "$Glossary_Augment$"
+#    Sprite: "<sprite name=MindthiefIcon>"
+# Not used in FH, but left here just in case. No icon or localization.
+#Aura:
+#    Text: "$Aura$"
+#    Definition: "$Glossary_Aura$"
+#    Sprite: "<sprite name=Aura>"

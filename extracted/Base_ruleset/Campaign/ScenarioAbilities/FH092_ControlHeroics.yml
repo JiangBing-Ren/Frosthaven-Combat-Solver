@@ -1,0 +1,64 @@
+Parser: ScenarioAbility
+ID: FH092_ControlHeroics
+ScenarioAbility:
+    SkipMove3ToLoot:
+        PreviewEffectText: ""
+        Filter: Self
+        SkipAnim: True
+        AddActiveBonus:
+            Filter: Self
+            HelpBoxTooltipLocKey: $FH/FH_Scenario_Campaign_092_SkipMove3ToLoot_HelpText$
+            Choose:
+                Abilities:
+                    ControlHeroicsMove:
+                        PreviewEffectText: "<sprite name=Move>5"
+                        Filter:
+                            TargetType: Ally
+                            CanTargetUntargetable: True
+                        AutoTrigger: True
+                        Range: -1
+                        Target: -1
+                        Targeting: Custom
+                        TargetingVars:
+                            AddValidActorInRange: ScenarioManager.Scenario.AllAliveActors.Find(Class.ID == "HEROICS92ID")
+                        ControlActor:
+                            Abilities:
+                                HEROICSMove:
+                                    Move: 5
+                                    StrengthIsBase: True
+                    ControlHeroicsAttack:
+                        PreviewEffectText: "<sprite name=Attack>{0}"
+                        MiscVars:
+                            PreviewEffectTextVar0: ScenarioManager.CurrentScenarioState.Level + 2
+                        Filter:
+                            TargetType: Ally
+                            CanTargetUntargetable: True
+                        AutoTrigger: True
+                        Range: -1
+                        Target: -1
+                        Targeting: Custom
+                        TargetingVars:
+                            AddValidActorInRange: ScenarioManager.Scenario.AllAliveActors.Find(Class.ID == "HEROICS92ID")
+                        ControlActor:
+                            Abilities:
+                                HEROICSAttack:
+                                    Attack: 2
+                                    StrengthIsBase: True
+                                    RangeIsBase: True
+                                    TargetIsBase: True
+                                    StatIsBasedOnX:
+                                        Strength:
+                                            BasedOn: XPlusLevel
+                                            AddTo: True
+                                            xVariable: 0
+            PerformVars:
+                OnAbilityEnded:
+                    TryEscape: ScenarioScript.current.TryEscapeMap(TargetingActor)
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: EndTurnAbility
+            Hidden: True
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_092_ControlHeroicsAbility$, Positive_Unique_Campaign]
+            Requirements:
+                Vars:
+                    ValidateHeroicsHasntEscaped:  ScenarioManager.Scenario.AllAliveActors.Find(Class.ID == "HEROICS92ID" && CAIMoveNew.CheckLoS(ArrayIndex, Actor.ArrayIndex)) != null

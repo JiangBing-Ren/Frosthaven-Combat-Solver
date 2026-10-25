@@ -1,0 +1,18 @@
+Parser: ItemCard
+ID: 1294
+StringID: CharmOfExpertiseID
+Name: $FH/1294_item_cards_charm_of_expertise_1$
+Art: Charm of Expertise
+TotalInGame: 2
+Cost: 0
+Rarity: Rare
+Slot: Head 
+Usage: Consumed
+Trigger: PassiveEffect
+Data:
+    Abilities:
+        AAttackMod:
+            Filter: Self
+            AddAttackModifier: [AMC_Basic_P2, AMC_Basic_P2]
+Layout:
+    - Row: $FH/1294_item_cards_charm_of_expertise_2$

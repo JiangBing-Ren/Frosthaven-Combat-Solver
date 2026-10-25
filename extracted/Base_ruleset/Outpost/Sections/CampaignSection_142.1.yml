@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 142.1
+Name: Tome of Life (142.1)
+SkipCompletedNotification: True
+SkipNarration: True
+ShowAsUnknownInCalendar: True
+Effects:
+    - Type: ActivateEvent
+      Param1: "CustomEvent_142.1"

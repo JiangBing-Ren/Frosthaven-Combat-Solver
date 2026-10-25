@@ -1,0 +1,31 @@
+Parser: EnemyCard
+ID: 08750058
+Name: $Monster_Ability_Boss_FishKing_Special2$
+Initiative: 14
+Shuffle: False
+Data:
+    Abilities:  
+        ANull:
+            Null: True
+            TextOnly: True
+            Text: "$FH/boss_stat_cards_fish_king_4$"
+        AMove:
+            Move: 0
+            AIFocusOverride:
+                OverrideType: OverrideFocus
+                OverrideTargetType: Actor
+                UseFurthestFocus: True
+        AAttack:
+            Attack: 0
+            Range: 5
+            RangeIsBase: True
+            Conditions: [Poison]
+            AnimOverload: RangedAttack
+            AIFocusOverride:
+                OverrideType: OverrideFocus
+                OverrideTargetType: Actor
+                UseFurthestFocus: True
+            SubAbilities:
+                SubPush1:
+                    Pull: 4
+                    UseParentTargets: True

@@ -1,0 +1,67 @@
+Parser: ScenarioAbility
+ID: FH082_SkipMoveXToSearch
+ScenarioAbility:
+    SkipMove3ToSearch:
+        Filter: Self
+        SkipAnim: True
+        NullTargeting: True
+        ActiveBonus:
+            ListLayoutOverride: ["$FH/FH_Scenario_Campaign_082_SCENARIO_MODIFIER_2$", Loot]
+            Duration: Persistent
+            ValidAbilityType: Move
+            IsToggleBonus: True
+            Requirements:
+                DoesntHaveNegativeCondition: [Stun, Immobilize]
+                Vars:
+                    CurrentAbility: PhaseManager.CurrentPhaseAction.CurrentPhaseAbility?.m_Ability
+                    ValidateHasEnoughMovePoints: CurrentAbility != null && CurrentAbility.RemainingMoves >= 1
+                    ValidateHasValidTargets: ScenarioScript_FH082.GetSnowDriftsInRange(GameState.CurrentActor).Count > 0
+            MiscVars:
+                Hidden: True
+            CostAbility:
+                MiscVars:
+                    # doing the chosen ability as a sub ability so we can preview the effect
+                    DontPerformChosenAbility: True
+                HelpBoxTooltipLocKey: $FH/FH_Scenario_Campaign_082_SCENARIO_MODIFIER_2_CHOOSE_PILE_DAMAGE$
+                Choose:
+                    # up to 8 (L + 1, L only goes up to 7)
+                    Choices: [1,2,3,4,5,6,7,8]
+                SubAbilities:
+                    BDamage82:
+                        TreatAsNonSubAbility: True
+                        Flags: [SubAbilityPreview]
+                        Filter:
+                            ActorType: Neutral
+                            EnemyType: Object
+                        Damage: 0
+                        AutoTrigger: True
+                        StatIsBasedOnX:
+                            Strength:
+                                BasedOn: Vars
+                                Vars:
+                                    DamageToTake: max(1, ParentAbility.ChosenAbility?.Strength || 0)
+                                    Value: DamageToTake
+                        PerformVars:
+                            ActorBeenDamaged:
+                                CacheActiveBonus: ParentAbility.CacheActiveBonus
+                                UntoggleBonus: CacheActiveBonus.ToggleActiveBonusFromVars(TargetingActor, true)
+                                PayMovement: CustomAbility.PayMovementPoints(Strength, TargetingActor, CacheActiveBonus)
+                        Target: -1
+                        Targeting: Custom
+                        TargetingVars:
+                            AddValidActorsInRange: ParentAbility.ActorsToTarget
+                        MiscVars:
+                            TargetUntargetAbleEnd: True
+                Filter:
+                    ActorType: Neutral
+                    EnemyType: Object
+                Target: 1
+                Targeting: Custom
+                TargetingVars:
+                    AddValidActorsInRange: ScenarioScript_FH082.GetSnowDriftsInRange(GameState.CurrentActor)
+                MiscVars:
+                    TreatAsNewStart: True
+                    TargetUntargetAbleStart: True
+                    IsValidChooseAbility: Ability.Strength <= min(Target.Health, PhaseManager.LastMoveAbility(TargetingActor).RemainingMoves)
+                Vars:
+                    CacheActiveBonus: PhaseManager.CurrentPhaseAction.CurrentTriggeredActiveBonus

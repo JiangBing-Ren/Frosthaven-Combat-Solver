@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 195
+ScenarioItemID: 1203
+Name: Tri-Corner Hat
+Quantity: 2
+GoldCost: 30
+Type: Head
+IsNewCharacterItem: False

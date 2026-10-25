@@ -1,0 +1,28 @@
+Parser: ItemCard
+ID: 912
+StringID: InspiringHelmetID
+Name: $FH/0912_item_cards_inspiring_helmet_1$
+Art: Inspiring helmet
+TotalInGame: 2
+Cost: 0
+Slot: Head
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    ItemRequirements:
+        Vars:
+            AlliesInRange: GameState.GetAllAlliesInRange(Actor, Actor.ArrayIndex, 1)
+            ValidateHasAlliesInRange: AlliesInRange.Count > 0
+    Abilities:
+        AShield:
+            ControlActor:
+                Abilities:
+                    BAllyMove:
+                        Move: 2
+                        StrengthIsBase: True
+            Range: 1
+            Target: -1
+            Filter: Ally      
+Layout: 
+    - Row: "$FH/0912_item_cards_inspiring_helmet_2$ "

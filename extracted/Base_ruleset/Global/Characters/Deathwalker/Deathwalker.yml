@@ -1,0 +1,27 @@
+Parser: Character
+ID: DeathwalkerID
+LocKey: $FH/Deathwalker$
+Model: Deathwalker
+DefaultSkin: 1
+Race: Valrath
+Traits: [ Arcane, Outcast, Persuasive ]
+# PlayerLevel:  [  1,   2,   3,   4,   5,   6,   7,   8,   9 ]
+HealthTable:    [  6,   7,   8,   9,  10,  11,  12,  13,  14 ]
+NumberAbilityCardsInBattle: 11
+Role: $Deathwalker_ROLE$
+Description: $Deathwalker_DESCRIPTION$
+Difficulty: $DIFFICULTY_LOW$
+Strengths: $Deathwalker_STRENGTHS$
+Weaknesses: $Deathwalker_WEAKNESSES$
+Adventure_Description: $Deathwalker_ADVENTURE_DESCRIPTION$
+Complexity: 3
+ElementalAffinities: [Dark]
+MasteryIDs: [Deathwalker_MASTERY_1, Deathwalker_MASTERY_2]
+RetireCampaignSection: 53.3
+HeroStats:
+    Melee: 4
+    Ranged: 5
+    Mobility: 3
+    Support: 1
+    Defense: 2
+    Control: 2

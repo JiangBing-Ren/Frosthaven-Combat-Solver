@@ -1,0 +1,49 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH43_Splash
+ScenarioAbility:
+    AActive:
+        MiscVars:
+            ListLayoutParamVar1: 3 + ScenarioManager.CurrentScenarioState.Level
+        AddActiveBonus:
+            Attack:
+                Amount: 3
+                Pierce: 5
+            AnimOverload: UseItem
+            Flags: [Special2]
+            StatIsBasedOnX:
+                Strength:
+                    BasedOn: XPlusLevel
+                    Multiplier: 0
+                    AddTo: True
+            MultiPassAttack: False
+            Range: 1
+            Target: 99
+            Targeting: Range
+            Filter: Enemy
+            PreviewEffectText: <sprite name="Damage">
+            CanSkip: False
+            MiscVars:
+                # to allow skipping this even if we have no valid targets
+                TreatAsAlwaysPerformable: True 
+            # exception - deathwalker attacks have to be one by one to handle shadow marking
+            ConditionalOverrides:
+                MultiPassIfDeathwalkerCO:
+                    Self: True
+                    Requirement:
+                        Vars:
+                            ValidateIsDeathwalkerShadowMarked: CustomAbility.IsDeathwalkerShadowMarked(Ability)
+                    AbilityOverrides:
+                        Attack1:
+                            MultiPassAttack: True
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringTurnAbility
+            XPTracker: [0]
+            Restriction: OncePerTurn
+            IsToggleBonus: True
+            Hidden: True
+            Requirements: 
+                ForgoTopAction: True
+                Vars:
+                    ValidateNotOutOfPhase: GameState.IsPerformingCardOutOfPhase == False
+            ListLayoutOverride: ["$FH/FH_Scenario_Campaign_043_SCENARIO_ABILITY_2_1$ {1} $FH/FH_Scenario_Campaign_043_SCENARIO_ABILITY_2_2$", Positive_Unique_Campaign]

@@ -1,0 +1,22 @@
+Parser: BattleGoal
+ID: BattleGoal_Slowpoke
+LocalisedName: FH/1357_battle_goals_slowpoke_1
+LocalisedDescription: FH/1357_battle_goals_slowpoke_2
+#Move no more than two hexes on each turn.
+PerkChecks: 2
+CheckAtEndOfScenario: True
+HideCounter: True
+BattleGoalCondition:
+    - Targets:
+        Filter: UseAbility
+        AbilityTypes: Move
+        Value: 0
+        SubFilter: TurnCharactersOnly
+# fail if you move more than 2 
+BattleGoalFailCondition:
+    - Targets:
+        Filter: UseAbility
+        AbilityTypes: Move
+        Amount: 3
+        Value: 1
+        SubFilter: TurnCharactersOnly

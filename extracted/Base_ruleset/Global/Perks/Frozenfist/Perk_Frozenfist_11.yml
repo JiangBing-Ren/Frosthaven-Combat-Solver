@@ -1,0 +1,21 @@
+Parser: Perk
+ID: Frozenfist11
+Name: FH/PERK_Frozenfist_11_Name
+Description: FH/PERK_Frozenfist_11_Desc
+CharacterID: FrozenFistID
+Available: 1
+Cost: 2
+Flags: [Passive, ApplyActiveBonusesAtScenarioStart]
+Abilities:
+    APreventDamage:
+        AutoTrigger: True
+        Filter: Self
+        PreventDamage: 1
+        NameKeyOverride: "FH/PERK_Frozenfist_11_Name"
+        ActiveBonus:
+            Duration: Persistent
+            XPTracker: [0]
+            Behaviour: PreventFirstDamage
+            Hidden: True
+            ToggleIsOptional: True
+            ListLayoutOverride: [$FH/PERK_Frozenfist_11_Desc$, FH_UI_PERKS_FrozenFist_Thick-Skinned]

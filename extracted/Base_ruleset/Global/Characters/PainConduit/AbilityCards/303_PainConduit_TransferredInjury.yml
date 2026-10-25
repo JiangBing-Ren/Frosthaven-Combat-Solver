@@ -1,0 +1,94 @@
+Parser: AbilityCard
+Name: $FH/303_character_ability_cards_pain_conduit_transferred_injury_1$
+Character: PainConduitID
+ID: 303
+Level: 1
+Initiative: 74
+Discard: [Discard,Discard]
+Prefab: 303_PainConduit_TransferredInjury
+Data:
+    Top:
+        Abilities:
+            THeal: 
+                Heal: 1
+                Range:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Heal","Range")
+                Filter: [Self, Ally]
+                AnimOverload: CastTakingPain
+                SubAbilities:
+                    TAttack:
+                        TreatAsNonSubAbility: True
+                        Filter: Enemy
+                        Attack: 0
+                        Range:
+                            Amount: 3
+                            SquareEnhancements: 1         
+                        MiscVars:
+                            PrintedProperties: list("Range")
+                        AnimOverload: CastGivingPain
+                        StatIsBasedOnX:
+                            Strength:
+                                BasedOn: Vars
+                                Vars: 
+                                    Value: ParentAbility.AmountReallyHealed
+        Consumes:
+            TCFire:
+                Elements: Fire
+                AbilityOverrides:
+                    TCFireHealBuff:
+                        ParentName: THeal
+                        Strength: 1
+            TCAir:
+                Elements: Air
+                AbilityOverrides:
+                    TCAirHealBuff:
+                        ParentName: THeal
+                        Strength: 1
+                XP: 1
+    Bottom:
+        Abilities:
+            BHeal:
+                Heal: 
+                    Amount: 3
+                    CircleEnhancements: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Heal","Range")
+                Filter: [Self, Ally]
+                AnimOverload: CastTakingPain
+                SubAbilities:
+                    BWoundSelf:
+                        TreatAsNonSubAbility: True
+                        Flags: [SubAbilityPreview]
+                        Filter: Self
+                        Wound: True
+                        AutoTrigger: True
+                        AnimOverload: Hit
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Heal> *THeal* <mark=#80919922><size=100%><sprite name=Range>*THeal.Range* @THeal.Range@</mark>"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCFire
+                    Text: "<size=100%>+1 <sprite name=Heal>, +1<sprite name=Range>"
+                - Consume:
+                    Name: TCAir
+                    Text: "<size=100%>+1 <sprite name=Heal>, +1<sprite name=Range>,<sprite name=XP1>"
+        - Divider:
+        - Row: "$FH/303_character_ability_cards_pain_conduit_transferred_injury_2$"
+    Bottom:
+        - Row:
+            - ColumnWidths: "20,30,30"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Heal> *BHeal* <size=100%><voffset=1>@BHeal@"
+            - Column:
+                - Row: "<mark=#80919922><size=100%><sprite name=Range>*BHeal.Range*</mark>"
+        - Divider:
+        - MandatoryTrigger: "$FH/303_character_ability_cards_pain_conduit_transferred_injury_3$"
+

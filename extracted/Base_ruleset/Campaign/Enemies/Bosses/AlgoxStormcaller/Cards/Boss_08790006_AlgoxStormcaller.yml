@@ -1,0 +1,33 @@
+Parser: EnemyCard
+ID: 08790006
+Name: $Monster_Ability_Boss_AlgoxStormcaller_Special1$
+Initiative: 73
+Shuffle: False
+Data:
+    Abilities:
+        Attack1:
+            Attack: -1
+            Range: 5
+            RangeIsBase: True
+            Target: 1
+            TargetIsBase: True
+            MultiPassAttack: False
+            StatIsBasedOnX:
+                Target:
+                    BasedOn: InitialPlayerCharacterCount
+                    AddTo: False
+            AnimOverload: WindStorm
+            SubAbilities:
+                SubPush1:
+                    Push: 2
+                    UseParentTargets: True
+                    IsInlineSubAbility: True
+        Summon1:
+            Summons: 
+                - WindDemonID
+                - WindDemonID
+                - WindDemonID
+                - WindDemonEliteID
+            Target: 1
+            TargetIsBase: True
+            AnimOverload: Summon

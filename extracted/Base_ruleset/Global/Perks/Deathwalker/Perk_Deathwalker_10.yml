@@ -1,0 +1,25 @@
+Parser: Perk
+ID: Deathwalker10
+Name: FH/PERK_Deathwalker_10_Name
+Description: FH/PERK_Deathwalker_10_Desc
+CharacterID: DeathwalkerID
+Available: 1
+Flags: [Passive, ExecuteAbilitiesAfterShortRest]
+Abilities:
+    BConsume:
+        Consume:
+            Elements: [Dark]
+            Abilities:
+                CPerform:
+                    PerformFromShadow:
+                        Abilities:
+                            PFSMuddle:
+                                Filter: Enemy
+                                Muddle: True
+                                Conditions: [Curse]
+                                Range: 2
+                                Target: 1
+                    Range: 99
+                    Target: 1
+                    AnimOverload: Debuff
+                

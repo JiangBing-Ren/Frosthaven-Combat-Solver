@@ -1,0 +1,31 @@
+Parser: FHScenario
+ID: 90
+Name: Frozen Treasure
+LevelID: FS_090_Frozen_Treasure
+Chain: JobPosting
+Location: TheBitingSea
+Difficulty: 2
+Conclusions:
+    - Effects:
+        # each character gets 10 gold per looted token, number of looted tokens has to be passed from scenario script
+        - Type: FS90ConclusionEffect
+          Param1: 10
+        - Type: AllCharactersAddPerkCheck
+          Param1: 1 
+        - Type: LoseGold
+          Param1: 10
+        - Type: UnlockMandatoryScenario
+          Param1: 91
+    - Effects:
+        # each character gets 10 gold per looted token, number of looted tokens has to be passed from scenario script
+        - Type: FS90ConclusionEffect
+          Param1: 10
+        - Type: AllCharactersAddPerkCheck
+          Param1: 1
+        - Type: LoseGold
+          Param1: 5
+        - Type: PartyCurse
+          Param1: 1
+        - Type: PartyMuddle
+        - Type: UnlockMandatoryScenario
+          Param1: 91

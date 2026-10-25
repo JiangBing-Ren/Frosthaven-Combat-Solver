@@ -1,0 +1,99 @@
+Parser: AbilityCard
+Name: $FH/172_character_ability_cards_geminate_dragonfly_surge_1$
+Character: GeminateID
+ID: 172
+Level: 3
+ProgressionOrder: 21
+Initiative: 50
+Discard: [Lost,Discard]
+RequiredForm: Range
+Prefab: 172_Geminate_DragonflySurge
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 6
+                    DiamondEnhancements: 1
+                Range: 5
+                MinRange: 4
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                AnimOverload: RangedAttack_DragonflySurge
+        Consumes:
+            TCFire:
+                Elements: [Fire]
+                ConsumeOnlyOneElement: True
+                Requirements:
+                    Type: ThisAbility
+                    DoesntHaveNegativeCondition: [Stun,Disarm]      
+                AbilityOverrides:
+                    TCFireBuff:
+                        ParentName: TAttack
+                        AttackHasAdvantage: True
+                        Conditions: [Wound]
+                XP: 1
+            TCLight:
+                Elements: [Light]
+                ConsumeOnlyOneElement: True   
+                Requirements:
+                    Type: ThisAbility
+                    DoesntHaveNegativeCondition: [Stun,Disarm]                
+                AbilityOverrides:
+                    TCLightBuff:
+                        ParentName: TAttack
+                        AttackHasAdvantage: True
+                        Conditions: [Wound]
+                XP: 1
+        XP: 1
+    Bottom:
+        Abilities:
+            BGainAdvantagePierce:
+                Filter: [Self]
+                Attack: 0
+                AttackEffect:
+                    Type: StandardBuff
+                    Pierce: 2 
+                MiscVars:
+                    PrintedProperties: list("PierceBuff")
+                AttackHasAdvantage: True
+                ActiveBonus:
+                    Duration: Round
+                    Behaviour: BuffAttack            
+            BMuddle:
+                Filter: [Self]
+                Poison: True
+                AutoTrigger: True
+                AnimOverload: Hit
+            BSwitchFormMeleeToRange:
+                Null: True
+                Flags: [SwitchFormRangeToMelee]
+                AutoTrigger: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Poison]
+Layout:
+    Top:
+        - Row: "$FH/172_character_ability_cards_geminate_dragonfly_surge_2$"
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCFire
+                    Text: "$FH/172_character_ability_cards_geminate_dragonfly_surge_3$"
+                - Consume:
+                    Name: TCLight
+                    Text: "$FH/172_character_ability_cards_geminate_dragonfly_surge_3$"
+    Bottom:
+        - Active:
+            Ability: BGainAdvantagePierce
+            Layout: "$FH/172_character_ability_cards_geminate_dragonfly_surge_4$"
+            ListLayout: "$FH/172_character_ability_cards_geminate_dragonfly_surge_4$"
+            Icon: "Positive_Pierce_Advantage_Attack"        
+        - Divider:
+        - MandatoryTrigger:
+            Layout:
+                - Row: "$FH/172_character_ability_cards_geminate_dragonfly_surge_5$"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=GMRangedToMelee>"

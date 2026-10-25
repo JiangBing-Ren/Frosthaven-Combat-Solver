@@ -1,0 +1,31 @@
+Parser: ItemCard
+ID: 1093
+StringID: ForesightPotionID
+Name: $FH/1093_item_cards_foresight_potion_1$
+Art: Foresight Potion
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        AShowMonsterCards:
+            NullTargeting: True
+            Range: 99
+            Targeting: All
+            # you're targeting a class, not a monster, so invisible/LOS doesn't matter
+            CanTargetInvisible: True
+            Filter: Enemy
+            MiscVars:
+                DontCopy: True
+            PerformVars:
+                ApplyToActors:
+                    Target: ActorsToTarget[0]
+                    # show next monster cards
+                    ShowMonsterCards: CustomAbility.ShowTopMonsterCards(Target, true, "FH/1093_item_cards_foresight_potion_3")
+
+
+Layout: 
+    - Row: "$FH/1093_item_cards_foresight_potion_2$"

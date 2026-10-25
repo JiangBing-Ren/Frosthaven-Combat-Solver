@@ -1,0 +1,62 @@
+Parser: AbilityCard
+Name: $FH/346_character_ability_cards_snowdancer_cold_snap_1$
+Character: SnowdancerID
+ID: 346
+Level: 3
+Initiative: 86
+Discard: [Discard,Discard]
+Prefab: 346_Snowdancer_ColdSnap
+Data:
+    Top:
+        Abilities:
+            TCreateHazzard:
+                CreateTerrain: Thorns
+                TileFilter: FeaturelessHex
+                Target: 2
+                Range: 1
+                Vars:
+                    OverridePropName: "'SnowdancerHazardTerrain'"
+                MiscVars:
+                    includeCasterTile: True
+                AnimOverload: TerrainFormation
+            TAttack:
+                Damage: 2 
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Target: 3
+                Targeting: Custom
+                AnimOverload: ColdSnap
+                TargetingVars:
+                    AddValidActorsInRange: AllAliveMonsters.Where(obj.IsOnHazardousTerrain() && (obj.Type == CActor.EType.Enemy || obj.Type == CActor.EType.Enemy2))
+                    AddTilesInRange: AddValidActorsInRange.Select(obj.Tile)
+        Infuse: Ice
+    Bottom:
+        Abilities: 
+            BHeal:
+                Heal:
+                    Amount: 2
+                    DiamondPlusEnhancements: 1
+                Target: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Heal","Target","Range")
+                Filter: [Ally]
+                Condition: Strengthen
+                AnimOverload: Heal
+Layout:
+    Top:
+        - Row: "$FH/346_character_ability_cards_snowdancer_cold_snap_2$"
+        - Divider:
+        - Row: "$FH/346_character_ability_cards_snowdancer_cold_snap_3$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Ice]
+    Bottom:
+        - Row:
+            - ColumnWidths: "20,20,50,20"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Heal> *BHeal* <size=100%><voffset=1>@BHeal@"
+            - Column:
+                - Row: "$FH/346_character_ability_cards_snowdancer_cold_snap_4$"
+            - Column:

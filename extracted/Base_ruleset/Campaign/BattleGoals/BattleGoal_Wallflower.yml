@@ -1,0 +1,22 @@
+Parser: BattleGoal
+ID: BattleGoal_Wallflower
+LocalisedName: FH/1360_battle_goals_wallflower_1
+LocalisedDescription: FH/1360_battle_goals_wallflower_2
+#End each of your turns adjacent to a wall or obstacle.
+# using TurnsWithoutAdjacency instead of TurnsWithAdjacency since has to be checked each round
+# you can still do that properly with an EachRound subfilter, but this is faster and the same in GH so no point in changing it
+PerkChecks: 2
+CheckAtEndOfScenario: True
+BattleGoalCondition:
+    - Targets:
+        Filter: TurnsWithoutAdjacency
+        AdjacentTo: [Wall, Obstacle]
+        Value: 0
+        SubFilter: Scenario
+# fail if you have at least 1 turn without adjacency
+BattleGoalFailCondition:
+    - Targets:
+        Filter: TurnsWithoutAdjacency
+        AdjacentTo: [Wall, Obstacle]
+        Value: 1
+        SubFilter: Scenario

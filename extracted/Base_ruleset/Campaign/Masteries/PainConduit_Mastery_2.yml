@@ -1,0 +1,12 @@
+Parser: Mastery
+ID: PainConduit_MASTERY_2
+LocalisedName: PainConduit_MASTERY_2_Name
+LocalisedDescription: PainConduit_MASTERY_2_Desc
+PerkPoints: 1
+BattleGoalCondition:
+    - Targets:
+        Filter: StartTurnWithConditions
+        Conditions:
+            Self: [Wound, Brittle, Bane, Poison, Immobilize, Disarm, Stun, Muddle]
+        SubFilter: Scenario
+        Value: 1

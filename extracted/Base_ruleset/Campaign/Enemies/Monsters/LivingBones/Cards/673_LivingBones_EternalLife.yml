@@ -1,0 +1,18 @@
+Parser: EnemyCard
+ID: 673
+Name: $Monster_Ability_673_LivingBones_EternalLife$
+Initiative: 12
+Shuffle: True
+Data:
+    Abilities: 
+        Shield1:
+            Shield: 1
+            Filter: Self
+            ActiveBonus:
+                Duration: Round
+                ListLayoutOverride: ["<sprite name=Shield> *Shield1*", Positive_Shield]
+            AnimOverload: PowerUp            
+        Heal1:
+            Heal: 2
+            Filter: Self
+            SkipAnim: True          

@@ -1,0 +1,43 @@
+Parser: Perk
+ID: Shattersong09
+Name: FH/PERK_Shattersong_09_Name
+Description: FH/PERK_Shattersong_09_Desc
+CharacterID: ShattersongID
+Available: 1
+Cost: 2
+Flags: [Passive, ApplyActiveBonusesAtScenarioStart]
+Abilities:
+    OnShortRestAir:
+        Filter: Self
+        AutoTrigger: True
+        SkipAnim: True
+        AddActiveBonus:
+            Consume:
+                Elements: [Air]
+                Abilities:
+                    BStrengthen:
+                        Filter: [Self,Ally]
+                        Strengthen: True
+                        Range: 3
+                        AnimOverload: CastTargetWeak
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringActionAbilityOnShortRest
+            Hidden: True
+    OnShortRestLight:
+        Filter: Self
+        AutoTrigger: True
+        SkipAnim: True
+        AddActiveBonus:
+            Consume:
+                Elements: [Light]
+                Abilities:
+                    BBless:
+                        Filter: [Self,Ally]
+                        Bless: True
+                        Range: 3
+                        AnimOverload: CastTargetWeak
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringActionAbilityOnShortRest
+            Hidden: True

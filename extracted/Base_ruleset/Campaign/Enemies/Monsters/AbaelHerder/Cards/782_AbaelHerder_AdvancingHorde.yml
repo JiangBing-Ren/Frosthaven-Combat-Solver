@@ -1,0 +1,35 @@
+Parser: EnemyCard
+ID: 782
+Name: $Monster_Ability_782_AbaelHerder_AdvancingHorde$
+Initiative: 88
+Shuffle: False
+Data:
+    Abilities: 
+        ControlPig1:
+            ControlActor:
+                ChooseClosestActor: True
+                UseControllingActorType: True
+                Abilities:
+                    AllyMove:
+                        Move: 0
+                        TextOnly: True
+                        Text: "$FH/0782_monster_ability_cards_abael_herder_advancing_horde_2$"
+                    AllyAttack:
+                        Attack: 0
+                        Condition: Muddle
+                        TextOnly: True
+            Range: 4
+            RangeIsBase: True
+            Filter:
+                EnemyClasses: [PiranhaPigID,PiranhaPigEliteID]
+            AnimOverload: Control
+        Summon1:
+            Summon: PiranhaPigID
+            Target: 1
+            TargetIsBase: True
+            AnimOverload: Summon
+            TextOnly: True
+            Text: "$FH/0782_monster_ability_cards_abael_herder_advancing_horde_3$"
+            StartAbilityRequirements:
+                Type: PreviousAbility
+                AbilityHasHappened: False

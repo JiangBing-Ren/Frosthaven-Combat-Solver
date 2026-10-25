@@ -1,0 +1,75 @@
+Parser: AbilityCard
+Name: $FH/251_character_ability_cards_shattersong_precious_gems_1$
+Character: ShattersongID
+ID: 251
+Level: 1
+Initiative: 10
+Discard: [Discard,Discard]
+Prefab: 251_Shattersong_PreciousGems
+Data:
+    Top:
+        Abilities:            
+            TAttack:
+                Attack:
+                    Amount: 3
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")     
+                AnimOverload: Attack
+            TConsume:
+                PreviewEffectText: "<sprite name=SSResonance>"
+                Consume:
+                    Resonance: 1
+                    Abilities:
+                        TLoot:
+                            Loot: 1
+                            MiscVars:
+                                PrintedProperties: list("Loot")     
+                            Target: -1
+                            XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")     
+            BRevealCard:
+                NullTargeting: True
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Range")     
+                    DontCopy: True
+                Target: 1
+                Filter: 
+                    EnemyType: [Normal,Elite,Boss,Object]
+                    Vars:
+                        ValidateHasCards: target.MonsterClass != null && target.MonsterClass.HasCards
+                AnimOverload: Cast_Concentrate
+                PerformVars:
+                    ApplyToActors:
+                        # show next monster cards
+                        ShowMonsterCards: CustomAbility.ShowTopMonsterCards(ActorsToTarget)
+        Consumes:
+            BCResonance:
+                Element: Air
+                AbilityOverrides:
+                    CBuffReveal:
+                        ParentName: BRevealCard
+                        Range: 3
+                        XP: 1
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Conditional:
+            Text: "-1<sprite name=SSResonance>: <size=100%><sprite name=Loot> 1, <sprite name=XP1>"
+    Bottom:
+        - Row: "<sprite name=Move> *BMove* @BMove@"
+        - Divider:
+        - Row: "$FH/251_character_ability_cards_shattersong_precious_gems_2$"
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: BCResonance
+                    Text: "<size=100%>+3<sprite name=Range>, <sprite name=XP1>"

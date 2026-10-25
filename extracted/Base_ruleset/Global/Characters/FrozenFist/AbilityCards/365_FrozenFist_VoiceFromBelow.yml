@@ -1,0 +1,86 @@
+Parser: AbilityCard
+Name: $FH/365_character_ability_cards_frozen_fist_voice_from_below_1$
+Character: FrozenFistID
+ID: 365
+Level: 1
+ProgressionOrder: 5
+Initiative: 22
+Discard: [Discard,Discard]
+Prefab: 365_FrozenFist_VoiceFromBelow
+Data:
+    Top:
+        Abilities:
+            TLoot:
+                Loot: 1
+                MiscVars:
+                    PrintedProperties: list("Loot")
+                Target: -1
+            TConsume:
+                Consume:
+                    Elements: [Earth]
+                    Abilities:
+                        TAttack:
+                            Attack: 2
+                            MiscVars:
+                                PrintedProperties: list("Attack")
+                            Target: 1
+                            Range: 1
+                            Filter: [Enemy]
+                            AnimOverload: Attack2
+                PreviewEffectText: "<sprite name=Attack>2"
+            TBuffHeal:
+                AddHeal: 1
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: [Self]
+                ActiveBonus:
+                    Duration: Round
+                    Behaviour: BuffIncomingHeal
+                AnimOverload: FootStomp
+                AutoTrigger: True
+        Infuse: [Earth]
+    Bottom:
+        Abilities:
+            BHeal:
+                Heal: 2
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Heal","Range")
+                Target: 99
+                Filter: [Self, Ally]
+                AnimOverload: PowerUp
+                MiscVars:
+                    AutoSelectValidTiles: True
+        Infuse: [Earth]
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Loot> *TLoot*"
+        - Divider:
+        - Conditional:
+            Layout:
+                - Row: "<b><size=130%><sprite name=ConsumeEarth>: <sprite name=Attack> 2"
+        - Divider:
+        - Row:
+            - Active:
+                Ability: TBuffHeal
+                Icon: Positive_HealPlus_FrozenFist
+                ListLayout: "$FH/365_character_ability_cards_frozen_fist_voice_from_below_2$"
+                Layout: "$FH/365_character_ability_cards_frozen_fist_voice_from_below_2$"
+        - Row: "<size=20%> "
+        - Row:
+            - MandatoryTrigger:
+                Layout:
+                    - Infuse: [Earth]
+    Bottom:
+        - Row:
+            - ColumnWidths: "20,30,30,20"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Heal> *BHeal*"
+            - Column:
+                - AddedEffect: "$FH/target_all$, <sprite name=Range>1"
+            - Column:
+        - Row: "<size=20%> "
+        - Row:
+            - MandatoryTrigger:
+                Layout:
+                    - Infuse: [Earth]

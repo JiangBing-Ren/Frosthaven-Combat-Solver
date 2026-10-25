@@ -1,0 +1,14 @@
+Parser: FHScenario
+ID: 61
+Name: Life and Death
+LevelID: FS_061_Life_and_Death
+Chain: PuzzleBook
+Location: CopperneckMountaions
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: UnlockClass
+          Param1: ShattersongID
+        - Type: AddCalendarCampaignSection
+          Param1: 140.3
+          Param2: 1

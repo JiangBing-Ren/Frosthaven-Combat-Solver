@@ -1,0 +1,19 @@
+Parser: ItemCard
+ID: 1207
+StringID: HuntersNecklaceID
+Name: $FH/1207_item_cards_hunters_necklace_1$
+Art: Hunters Necklace
+TotalInGame: 1
+Cost: 35
+Slot: Head 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        APull:
+            Pull: 3
+            Range: 4
+            Filter: Enemy
+Layout: 
+    - Row: "$FH/1207_item_cards_hunters_necklace_2$"

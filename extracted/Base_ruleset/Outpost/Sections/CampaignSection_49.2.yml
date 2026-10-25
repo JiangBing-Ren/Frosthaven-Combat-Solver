@@ -1,0 +1,7 @@
+Parser: CampaignSection
+ID: 49.2
+Name: Mining Camp Upgraded
+SkipCompletedNotification: False
+Effects:
+    - Type: UnlockClass
+      Param1: PyroclastID

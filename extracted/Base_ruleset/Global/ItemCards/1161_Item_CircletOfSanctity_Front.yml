@@ -1,0 +1,36 @@
+Parser: ItemCard
+ID: 1161
+StringID: CircletOfSanctityID
+Name: $FH/1161_item_cards_circlet_of_sanctity_1$
+Art: Circlet of Sanctity
+TotalInGame: 2
+Cost: 45
+Slot: Head 
+Rarity: Rare
+Usage: Flip
+FlipItemID: 1160
+FlipItemSide: Front
+Trigger: PassiveEffect
+Data: 
+    Abilities:
+        ATrackAttacks:
+            NullTargeting: True
+            Filter: Self
+            SkipAnim: True
+            AutoTrigger: True
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: GenericAttackFinished
+                XPTracker: [0,0,0]
+                ValidAbilityType: Attack
+                Vars:
+                    ValidateActorAttackedIsAlly: CustomAbility.IsAlly(TriggerTarget, ActiveBonus.Caster)
+                    ValidateActorInRange: TriggerTarget.GetDistanceTo(ActiveBonus.Caster) <= 2
+Layout: 
+    - Active:
+        Ability: ATrackAttacks
+        ListLayout: "$FH/1161_item_cards_circlet_of_sanctity_2$"
+        Layout: "$FH/1161_item_cards_circlet_of_sanctity_2$"
+        Icon: "Positive_Flip_Item"
+    - Row: "<size=50%> "
+    - XPTracker: ATrackAttacks

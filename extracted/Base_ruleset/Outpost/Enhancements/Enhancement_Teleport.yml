@@ -1,0 +1,7 @@
+Parser: FHEnhancement
+ID: Teleport
+Name: Glossary_Enhancement_PlusTeleport
+Cost: 50
+Mark: Square
+Effect: AddOne
+ForEffect: Teleport

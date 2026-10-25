@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 188
+ScenarioItemID: 1281
+Name: Freezing Crystal
+Quantity: 1
+GoldCost: 35
+Type: Small
+IsNewCharacterItem: False

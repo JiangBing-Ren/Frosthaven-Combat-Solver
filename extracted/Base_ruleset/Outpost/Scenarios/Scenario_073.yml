@@ -1,0 +1,23 @@
+Parser: FHScenario
+ID: 73
+Name: Flotsam
+LevelID: FS_073_Flotsam
+Chain: PersonalQuest
+Location: TheBitingSea
+RequiresPersonalQuest: PQ_12
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: GainLumber
+          Param1: 3
+        - Type: GainCampaignSticker
+          Param1: FriendOfTheFishKing
+        - Type: AddCalendarCampaignSection
+          Param1: 146.1
+          Param2: 5
+    - Effects:
+        - Type: GainLumber
+          Param1: 3
+        - Type: AddCalendarCampaignSection
+          Param1: 146.1
+          Param2: 5

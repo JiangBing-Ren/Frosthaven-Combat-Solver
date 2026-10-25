@@ -1,0 +1,7 @@
+Parser: CampaignSection
+ID: 137.2
+Name: End of the calendar
+SkipCompletedNotification: False
+Effects:
+    - Type: AddProsperity
+      Param1: 1

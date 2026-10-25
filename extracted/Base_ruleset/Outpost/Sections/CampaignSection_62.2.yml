@@ -1,0 +1,18 @@
+Parser: CampaignSection
+ID: 62.2
+Name: Bathysphere Plans
+Repeatable: True
+ShowAsUnknownInCalendar: True
+SkipCompletedNotification: False
+ConditionalEffects:
+    - Type: RepeatIfDoesntHaveRequireBuilding
+      # require craftsman building
+      Param1: Craftsman
+      # at level 3 or higher
+      Param2: 3
+      # if not present, repeat section in 1 weeks
+      Param3: 1
+Effects:
+      # do this only if the previous conditional effect isn't valid
+    - Type: UnlockScenario
+      Param1: 33

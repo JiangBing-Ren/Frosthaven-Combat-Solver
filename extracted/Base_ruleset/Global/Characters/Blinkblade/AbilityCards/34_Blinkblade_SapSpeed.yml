@@ -1,0 +1,102 @@
+Parser: AbilityCard
+Name: $FH/034_character_ability_cards_blinkblade_sap_speed_1$
+Character: BlinkbladeID
+ID: 34
+Level: 1
+Initiative: 45
+Discard: [Discard,Discard]
+Prefab: 34_Blinkblade_SapSpeed
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 2
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AreaEffect: "0,0,G|2,0,R|1,1,R"
+                MultiPassAttack: False
+                AnimOverload: Attack2Slow
+                ConditionalOverrides:
+                    TAttackCO_Fast:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Fast
+                        XP: 1
+                        AbilityOverrides:
+                            TAttack:
+                                Strength: 1
+                                AttackHasAdvantage: True
+                                AnimOverload: Attack2
+    Bottom:
+        Abilities:
+            BImmobilize:
+                Immobilize: True
+                Filter: Enemy
+                Range: 1
+                Target: 1
+                Targeting: Range
+                MiscVars:
+                    PrintedProperties: list("Range")
+                AnimOverload: CastNegativeSlow
+                ConditionalOverrides:
+                    BImmobilizeCO_Fast:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Fast
+                        AbilityOverrides:
+                            BImmobilize:
+                                Target: 2
+                                AnimOverload: CastNegative
+                                MiscVars:
+                                    PrintedProperties: list("Target")
+            BIgnoreAgility_Slow:
+                NullTargeting:
+                Filter: [Self]
+                ActiveBonus:
+                    Duration: Turn
+                    Flags: [IgnoreSlowEffects]
+                    ListLayoutOverride: [$FH/034_character_ability_cards_blinkblade_sap_speed_3$, Positive_Blinkblade_Prevent_Slow]
+                CanSkip: False
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Slow
+                AnimOverload: PowerUpSlow
+                AutoTrigger: True
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "50,50"
+            - Column:
+                - Row: "<b><size=130%> <sprite name=Attack> *TAttack*"
+            - Column:
+                - Row: "£Area£"
+        - Row: "<size=50%> "
+        - Row:
+            - ColumnWidths: "70,30"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "$FH/034_character_ability_cards_blinkblade_sap_speed_2$"
+            - Column:
+    Bottom:
+        - Active:
+            Ability: BIgnoreAgility_Slow
+            ListLayout: "$FH/034_character_ability_cards_blinkblade_sap_speed_3$"
+            Icon: "Blinkblade"
+        - Row:
+            - ColumnWidths: "33,34,33"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "+2 <sprite name=Target>"
+            - Column:
+                - Row: "<b><size=130%><sprite name=Immobilize> <sprite name=Range> *BImmobilize.Range*"
+            - Column:
+        - Divider:
+        - Row:
+            - ColumnWidths: "30,70"
+            - Column:
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Text: "$FH/034_character_ability_cards_blinkblade_sap_speed_3$"

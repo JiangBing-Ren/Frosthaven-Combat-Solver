@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 211
+ScenarioItemID: 1221
+Name: Boom Barrel
+Quantity: 1
+GoldCost: 30
+Type: TwoHandWeapon
+IsNewCharacterItem: False

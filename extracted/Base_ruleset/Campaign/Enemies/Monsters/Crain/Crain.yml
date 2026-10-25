@@ -1,0 +1,114 @@
+Parser: Enemy
+ID: CrainID
+LocKey: $FH/Crain$
+MonsterType: Monster
+StandeeLimit: 1
+Model: CrainTallengyr
+PredominantlyMelee: True
+AbilityCards: [13001]
+# Base Stats
+Level0:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToLevelThenTimesCharactersOverY
+            RoundingType: ToFloor
+            xVariable: 3
+            yVariable: 2
+            AddTo: True
+            MinLValue: 1
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+Level1:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToLevelThenTimesCharactersOverY
+            RoundingType: ToFloor
+            xVariable: 3
+            yVariable: 2
+            AddTo: True
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+Level2:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToLevelThenTimesCharactersOverY
+            RoundingType: ToFloor
+            xVariable: 3
+            yVariable: 2
+            AddTo: True
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+Level3:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToLevelThenTimesCharactersOverY
+            RoundingType: ToFloor
+            xVariable: 3
+            yVariable: 2
+            AddTo: True
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+Level4:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToLevelThenTimesCharactersOverY
+            RoundingType: ToFloor
+            xVariable: 3
+            yVariable: 2
+            AddTo: True
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+Level5:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToLevelThenTimesCharactersOverY
+            RoundingType: ToFloor
+            xVariable: 3
+            yVariable: 2
+            AddTo: True
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+Level6:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToLevelThenTimesCharactersOverY
+            RoundingType: ToFloor
+            xVariable: 3
+            yVariable: 2
+            AddTo: True
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+Level7:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToLevelThenTimesCharactersOverY
+            RoundingType: ToFloor
+            xVariable: 3
+            yVariable: 2
+            AddTo: True
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1

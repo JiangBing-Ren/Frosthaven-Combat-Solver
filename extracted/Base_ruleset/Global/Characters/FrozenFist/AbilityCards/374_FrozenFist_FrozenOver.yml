@@ -1,0 +1,99 @@
+Parser: AbilityCard
+Name: $FH/374_character_ability_cards_frozen_fist_frozen_over_1$
+Character: FrozenFistID
+ID: 374
+Level: 3
+ProgressionOrder: 14
+Initiative: 20
+Discard: [Discard,Discard]
+Prefab: 374_FrozenFist_FrozenOver
+Data:
+    Top:
+        Abilities:
+            TCreateIce:
+                CreateTerrain: Ice
+                TileFilter: FeaturelessHex
+                Target: 2
+                Range: 1
+                AnimOverload: TerrainFormation
+                MiscVars:
+                    includeCasterTile: True
+            TWard:
+                Ward:
+                    DiamondPlusEnhancements: 1
+                Filter: Self
+                AnimOverload: Heal
+        Consumes:
+            TCIce:
+                Elements: Ice
+                AbilityOverrides:
+                    BCIceMoveBuff:
+                        ParentName: TCreateIce
+                        SubAbilities:
+                            TBrittle:
+                                Brittle: True
+                                Target: -1
+                                TreatAsNonSubAbility: True
+                                Targeting: Custom
+                                Filter: Enemy
+                                AutoTrigger: True
+                                SkipAnim: True
+                                Flags: [SubAbilityPreview]
+                                TargetingVars:
+                                    ValidateHasActors: ParentAbility.TilesSelected.Where(obj.LivingActor != null)
+                                    AddValidActorsInRange: ValidateHasActors.Select(obj.LivingActor)
+                                    AddTilesInRange: ParentAbility.TilesSelected
+                XP: 1       
+    Bottom:
+        Abilities:
+            BShield:
+                Shield: 1
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                AnimOverload: Heal
+            BConsume:
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    DoesntHaveNegativeCondition: [Stun,Immobilize]
+                Consume:
+                    Elements: [Earth]
+                    Abilities:
+                        BMove:
+                            Move: 3
+                            MiscVars:
+                                PrintedProperties: list("Move")
+                PreviewEffectText: "<sprite name=Move>3"
+        Infuse: [Earth]
+
+Layout:
+    Top:
+        - Row: "$FH/374_character_ability_cards_frozen_fist_frozen_over_2$"
+        - Divider:
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCIce
+                    Text: "<size=75%>$FH/374_character_ability_cards_frozen_fist_frozen_over_3$"
+        - Divider:
+        - Row:
+            - Active:
+                Ability: TWard
+                Icon: Ward
+                ListLayout: "$FH/374_character_ability_cards_frozen_fist_frozen_over_4$"
+                Layout: "$FH/374_character_ability_cards_frozen_fist_frozen_over_4$"
+    Bottom:
+        - Active:
+            Ability: BShield
+            Icon: Positive_Shield
+            ListLayout: "<sprite name=Shield> *BShield*"
+            Layout: "<sprite name=Shield> *BShield*"
+        - Row: "<b><size=130%><sprite name=Shield> *BShield*"
+        - Divider:
+        - Conditional:
+            Layout:
+                - Row: "<b><size=130%><sprite name=ConsumeEarth>: <sprite name=Move>3"
+        - Row: "<size=20%> "
+        - Row:
+            - MandatoryTrigger:
+                Layout:
+                    - Infuse: [Earth]

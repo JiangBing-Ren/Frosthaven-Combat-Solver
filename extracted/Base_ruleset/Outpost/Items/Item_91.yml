@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 91
+ScenarioItemID: 1047
+Name: Holy Water
+Quantity: 2
+Type: Small
+Brewing:
+    Herb1: Corpsecap
+    Herb2: Flamefruit

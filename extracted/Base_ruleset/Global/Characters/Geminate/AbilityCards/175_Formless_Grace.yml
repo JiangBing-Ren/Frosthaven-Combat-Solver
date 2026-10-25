@@ -1,0 +1,100 @@
+Parser: AbilityCard
+Name: $FH/175_character_ability_cards_geminate_formless_grace_1$
+Character: GeminateID
+ID: 175
+Level: 5
+ProgressionOrder: 24
+Initiative: 75
+Discard: [Lost,Discard]
+RequiredForm: Melee
+Prefab: 175_Geminate_FormlessGrace
+Data:
+    Top:
+        Abilities:
+            THeal:
+                Heal: 2
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Heal","Target")
+                Target: 99
+                Filter: Ally
+                MiscVars:
+                    AutoSelectValidTiles: True
+            TDamageInfuse: 
+                AutoTrigger: True
+                AddActiveBonus:
+                    IgnoreStun: True
+                    Filter: Self
+                    Damage: 2
+                    Target: -1
+                    AnimOverload: Hit
+                    SubAbilities:
+                        TInfuse:
+                            IgnoreStun: True
+                            IsInlineSubAbility: True
+                            CanUndo: False
+                            Infuse: [Fire, Light]
+                            ShowElementPicker: True
+                    PreviewEffectText: "<sprite name=Damage>2, <sprite name=CreateMixed-FL>"
+                Filter: Self
+                AnimOverload: Cast Negative
+                ActiveBonus:
+                    Behaviour: [DuringTurnAbility, BetweenActionAbilities]
+                    Duration: Persistent
+                    IsToggleBonus: True
+                    Restriction: OncePerTurn
+                    Requirements:
+                        OnYourTurn: True
+            TSwitchForm:
+                Null: True
+                Flags: [SwitchFormMeleeToRange]
+                AutoTrigger: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [AddActiveBonus]
+        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 4
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+                Jump: True
+            BWard:
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    DoesntHaveNegativeCondition: [Stun]
+                Consume:
+                    Elements: [Ice]
+                    PreviewEffectText: "<size=130%><sprite name=Ward>, <sprite name=XP1>"
+                    Abilities:
+                        BCWard:
+                            Filter: Self
+                            Ward: True
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Heal>*THeal* <size=100%>$FH/175_character_ability_cards_geminate_formless_grace_2$"
+        - Divider:
+        - Row: "$FH/175_character_ability_cards_geminate_formless_grace_3$"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=GMMeleeToRanged>"
+        - Active:
+            Ability: TDamageInfuse
+            Icon: Positive_FireLightInfuse_Damage
+            ListLayout: "$FH/175_character_ability_cards_geminate_formless_grace_3$<br><sprite name=Damage>2 $Self$: <sprite name=CreateMixed-FL>"
+    Bottom:
+        - Row:
+            - ColumnWidths: "30,20,20"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+            - Column:
+                - Row: "<sprite name=Jump>"
+        - Divider:
+        - Conditional:
+            Layout:
+                - Row: "<size=200%><sprite name=ConsumeIce><size=150%><nobr>$FH/175_character_ability_cards_geminate_formless_grace_4$</nobr>"

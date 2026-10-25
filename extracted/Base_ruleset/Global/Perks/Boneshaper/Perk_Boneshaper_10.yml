@@ -1,0 +1,71 @@
+Parser: Perk
+ID: Boneshaper10
+Name: FH/PERK_Boneshaper_10_Name
+Description: FH/PERK_Boneshaper_10_Desc
+CharacterID: BoneshaperID
+Available: 1
+Flags: [Passive, ApplyActiveBonusesAtScenarioStart]
+Abilities:
+    OnLongRest:
+        Filter: Self
+        AutoTrigger: True
+        SkipAnim: True
+        AddActiveBonus:
+            CanUndo: False
+            Kill: True
+            Filter: OwnSummon
+            Range: 99
+            Target: 1
+            IgnoreLOS: True
+            AnimOverload: ControlSummon
+            SubAbilities:
+                TBless:
+                    AutoTrigger: True
+                    Bless: True
+                    Filter: Self
+                    TreatAsNonSubAbility: True
+                    CanUndo: False
+                    StartAbilityRequirements:
+                        Type: ThisAbility
+                        ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                        AbilityTypes: [Kill]
+                    Flags: [SubAbilityPreview]
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringActionAbilityOnLongRest
+            Flags: [PreRestBonus]
+            Hidden: True
+            Vars:
+                ValidateHasSummons: CActiveBonus.FindApplicableActiveBonuses(TriggerActor, CAbility.EAbilityType.Summon).Count > 0
+    OnShortRest:
+        Filter: Self
+        AutoTrigger: True
+        SkipAnim: True
+        AddActiveBonus:
+            CanUndo: False
+            Kill: True
+            Filter: OwnSummon
+            Range: 99
+            Target: 1
+            IgnoreLOS: True
+            AnimOverload: ControlSummon
+            SubAbilities:
+                TBless:
+                    AutoTrigger: True
+                    Bless: True
+                    Filter: Self
+                    TreatAsNonSubAbility: True
+                    CanUndo: False
+                    StartAbilityRequirements:
+                        Type: ThisAbility
+                        ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                        AbilityTypes: [Kill]
+                    Flags: [SubAbilityPreview]
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringActionAbilityOnShortRest
+            Flags: [PreRestBonus]
+            Hidden: True
+            Requirements:
+                Vars:
+                    ValidateHasSummons: CActiveBonus.FindApplicableActiveBonuses(Actor, CAbility.EAbilityType.Summon).Count > 0

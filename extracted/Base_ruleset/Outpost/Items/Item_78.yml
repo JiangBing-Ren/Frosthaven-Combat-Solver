@@ -1,0 +1,10 @@
+Parser: FHItem
+ID: 78
+ScenarioItemID: 1021
+Name: Balanced Scales
+Quantity: 2
+Type: OneHandWeapon
+CraftingCost:
+    Metal: 1
+    Hide: 1
+RequiredCraftingItemIDs: [ 110 ]

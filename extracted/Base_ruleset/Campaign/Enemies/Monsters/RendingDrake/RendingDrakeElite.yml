@@ -1,0 +1,65 @@
+Parser: Enemy
+ID: RendingDrakeEliteID
+LocKey: $RendingDrakeElite$
+MonsterType: Monster
+StandeeLimit: 6
+Model: Rending Drake Elite
+NonEliteVariant: RendingDrakeID
+PredominantlyMelee: True
+AbilityCards: [850, 851, 852, 853, 854, 855, 856, 857]
+# Base Stats
+Level0:
+    Health: 7
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+Level1:
+    Health: 7
+    Move: 4
+    Attack: 5
+    Range: 1
+    Target: 1
+    Conditions: [Wound]
+Level2:
+    Health: 9
+    Move: 5
+    Attack: 5
+    Range: 1
+    Target: 1
+    Conditions: [Wound]
+Level3:
+    Health: 10
+    Move: 5
+    Attack: 6
+    Range: 1
+    Target: 1
+    Conditions: [Wound]
+Level4:
+    Health: 12
+    Move: 6
+    Attack: 6
+    Range: 1
+    Target: 1
+    Conditions: [Wound]
+Level5:
+    Health: 15
+    Move: 6
+    Attack: 6
+    Range: 1
+    Target: 1
+    Conditions: [Wound]
+Level6:
+    Health: 19
+    Move: 6
+    Attack: 7
+    Range: 1
+    Target: 1
+    Conditions: [Wound]
+Level7:
+    Health: 24
+    Move: 6
+    Attack: 8
+    Range: 1
+    Target: 1
+    Conditions: [Wound]

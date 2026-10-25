@@ -1,0 +1,63 @@
+Parser: Enemy
+ID: EarthDemonEliteID
+LocKey: $EarthDemonElite$
+MonsterType: Monster
+StandeeLimit: 6
+Model: Earth Demon Elite
+NonEliteVariant: EarthDemonID
+PredominantlyMelee: True
+AbilityCards: [570, 571, 572, 573, 574, 575, 576, 577]
+# Base Stats
+Level0:
+    Health: 10
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+Level1:
+    Health: 13
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+Level2:
+    Health: 18
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+Level3:
+    Health: 20
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    Conditions: [Immobilize]
+Level4:
+    Health: 21
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    Conditions: [Immobilize]
+Level5:
+    Health: 25
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    Conditions: [Immobilize]
+Level6:
+    Health: 32
+    Move: 3
+    Attack: 6
+    Range: 1
+    Target: 1    
+    Conditions: [Immobilize]
+Level7:
+    Health: 42
+    Move: 3
+    Attack: 7
+    Range: 1
+    Target: 1    
+    Conditions: [Immobilize]

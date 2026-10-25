@@ -1,0 +1,13 @@
+Parser: EnemyCard
+ID: 758
+Name: $Monster_Ability_758_Archer_PowerShot$
+Initiative: 64
+Shuffle: True
+Data:
+    Abilities: 
+        Attack1:
+            Attack: 1
+            Range: 5
+            RangeIsBase: True
+            Filter: Enemy
+            AnimOverload: RangedAttack

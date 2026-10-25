@@ -1,0 +1,98 @@
+Parser: AbilityCard
+Name: $FH/215_character_ability_cards_pyroclast_cooling_1$
+Character: PyroclastID
+ID: 215
+Level: 1
+Initiative: 75
+Discard: [Discard,Discard]
+Prefab: 215_Pyroclast_Cooling
+Data:
+    Top:
+        XP: 1
+        Infuse: [Earth]
+        Abilities:    
+            TDestroyHazardous:
+                NullHex: True
+                Range: 4
+                MiscVars:
+                    PrintedProperties: list("Range4")
+                TileFilter: Custom
+                MiscVars:
+                    IsValidTile: obj.FindHazardousProp(true) != null && obj.LivingActor == null
+                    DontCancelIfNoTiles: True
+                    DontPreviewDescription: True
+                    CheckIfWillBeBlocking: True
+                PerformVars:
+                    Perform:
+                        SelectedTile: TilesSelected[0]
+                        Prop: SelectedTile.FindHazardousProp(true)
+                        DestroyProp: Prop.DestroyPropFromAbility(obj)   
+                AnimOverload: SteamCloud_TerrainFormation2
+                SubAbilities:
+                    TCreateOneHexObstacle:
+                        Target: 1
+                        TreatAsNonSubAbility: True
+                        Create: OneHexObstacle
+                        Vars:
+                            OverridePropName: "'PyroclastObstacle'"
+                        AutoTrigger: True
+                        SkipAnim: True
+                        Targeting: Custom
+                        TargetingVars:
+                            ParentTile: ParentAbility.m_TilesSelected[0]
+                            AddTileInRange: ParentTile
+                    TDealDamage:
+                        TreatAsNonSubAbility: True
+                        Damage: 2
+                        MiscVars:
+                            PrintedProperties: list("Damage")
+                        AutoTrigger: True
+                        SkipAnim: True
+                        Target: -1
+                        Targeting: Custom
+                        TargetingVars:
+                            ParentTile: ParentAbility.m_TilesSelected[0]
+                            AddValidActorsInRange: GameState.GetAdjacentEnemies(TargetingActor, ParentTile.m_ArrayIndex)
+    Bottom:
+        Abilities:
+            BHeal:
+                Heal:
+                    Amount: 5
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self
+                AnimOverload: CastStone
+            BDebuffMove:
+                Move: -1
+                MiscVars:
+                    PrintedProperties: list("Move")
+                Filter: Self
+                AutoTrigger: True
+                SkipAnim: True
+                MiscVars: 
+                    MandatoryBonus: True
+                ActiveBonus:
+                    Behaviour: BuffMove
+                    Duration: Persistent
+                    XPTracker: [0,0,0]
+                    MiscVars: 
+                        TriggerOnSkippedToo: True
+Layout:
+    Top:
+        - Row: "$FH/215_character_ability_cards_pyroclast_cooling_2$"   
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Earth]
+    Bottom:
+        - Row:
+            - Column: "<b><size=130%><sprite name=Heal> *BHeal* <size=100%><voffset=1>@BHeal@"
+            - Column: "<mark=#80919922>$Self$</mark>"
+        - Divider:
+        - Active:
+           Ability: BDebuffMove
+           ListLayout: "$FH/215_character_ability_cards_pyroclast_cooling_4$"
+           Layout:
+                - MandatoryTrigger: "$FH/215_character_ability_cards_pyroclast_cooling_4$"
+           Icon: "Negative_MoveMinus"
+        - XPTracker: BDebuffMove

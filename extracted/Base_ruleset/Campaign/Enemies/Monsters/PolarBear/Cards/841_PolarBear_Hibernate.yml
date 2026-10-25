@@ -1,0 +1,28 @@
+Parser: EnemyCard
+ID: 841
+Name: $Monster_Ability_841_PolarBear_Hibernate$
+Initiative: 3
+Shuffle: False
+Data:
+    Abilities: 
+        Shield1:
+            Shield: 1
+            Filter: Self
+            ActiveBonus:
+                ListLayoutOverride: ["<sprite name=Shield> *Shield1*", Positive_Shield]
+            Vars:
+                ValidateIsNotTrapped: ScenarioScript_FH117.ValidateIsPolarBearNotTrapped(TargetingActor)
+        Retaliate1:
+            Retaliate: 2
+            Filter: Self
+            SkipAnim: True
+            ActiveBonus:
+                ListLayoutOverride: ["<sprite name=Retaliate> *Retaliate1*", Positive_Retaliate]
+            Vars:
+                ValidateIsNotTrapped: ScenarioScript_FH117.ValidateIsPolarBearNotTrapped(TargetingActor)
+        Heal1:
+            Heal: 2
+            Filter: Self
+            SkipAnim: True
+            Vars:
+                ValidateIsNotTrapped: ScenarioScript_FH117.ValidateIsPolarBearNotTrapped(TargetingActor)

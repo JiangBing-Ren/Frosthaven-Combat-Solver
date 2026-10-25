@@ -1,0 +1,26 @@
+Parser: EnemyCard
+ID: 570
+Name: $Monster_Ability_570_EarthDemon_StrongGrowth$
+Initiative: 40
+Shuffle: True
+Data:
+    Abilities: 
+        Heal1:
+            Heal: 4
+            Filter: Self
+            AnimOverload: PowerUp
+    Consumes:
+        CEarth:
+            Elements: Earth
+            Abilities:
+                CEarthImmo:
+                    Immobilize: True
+                    Range: 2
+                    RangeIsBase: True
+                    ShowRange: False
+                    Target: -1
+                    TargetIsBase: True
+                    ShowTarget: False
+                    Filter: Enemy
+                    AnimOverload: StrongGrowth
+                    Text: "$Target_AllEnemiesWithin$ <nobr>$Range$ <sprite name=Range> 2</nobr>"

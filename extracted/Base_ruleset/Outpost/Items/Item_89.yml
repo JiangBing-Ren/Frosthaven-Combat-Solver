@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 89
+ScenarioItemID: 1043
+Name: Stoneskin Potion
+Quantity: 2
+Type: Small
+Brewing:
+    Herb1: Rockroot
+    Herb2: Corpsecap

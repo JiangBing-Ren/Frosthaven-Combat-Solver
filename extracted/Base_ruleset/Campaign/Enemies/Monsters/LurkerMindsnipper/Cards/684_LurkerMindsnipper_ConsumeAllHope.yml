@@ -1,0 +1,17 @@
+Parser: EnemyCard
+ID: 684
+Name: $Monster_Ability_684_LurkerMindsnipper_ConsumeAllHope$
+Initiative: 22
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: 0
+        Attack1:
+            Attack: -1
+            Range: 3
+            RangeIsBase: True
+            Filter: Enemy
+            Condition: Curse
+            AnimOverload: RangedAttack
+    Infuse: Dark

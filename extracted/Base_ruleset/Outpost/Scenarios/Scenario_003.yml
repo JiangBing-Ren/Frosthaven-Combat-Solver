@@ -1,0 +1,15 @@
+Parser: FHScenario
+ID: 3
+Name: Algox Offensive
+LevelID: FS_003_Algox_Offensive
+Chain: Introduction
+Location: CopperneckMountaions
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: AllCharactersAddPerkCheck
+          Param1: 1
+        - Type: LockScenario
+          Param1: 2
+        - Type: UnlockMandatoryScenario
+          Param1: 4

@@ -1,0 +1,73 @@
+Parser: AbilityCard
+Name: $FH/459_character_ability_cards_deepwraith_lie_in_wait_1$
+Character: DeepwraithID
+ID: 459
+Level: 2
+Initiative: 98
+Discard: [Discard,Discard]
+Prefab: 459_Deepwraith_LieInWait
+Data:
+    Top:
+        Abilities:
+            TCurse:
+                Curse: True
+                Target: 3
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Target","Range")
+                Filter: [Enemy]
+                AnimOverload: Intimidate_AOE
+                ConditionalOverrides:
+                    TCurseCO:
+                        Self: True
+                        Filter:
+                            Vars:
+                                ValidateInvisiblity: TargetingActor.Tokens.HasKey(CCondition.EPositiveCondition.Invisible)
+                        AbilityOverrides:
+                            TCurseInvisBuff:
+                                Range: 1
+        Consumes:
+            TCTrophy:
+                Trophies: 1
+                PreviewEffectId: M1TrophyTarget
+                AbilityOverrides:
+                    CAttackBuffImmobilize:
+                        ParentName: TCurse
+                        Target: 1
+    Bottom:
+        Abilities:
+            BTeleport:
+                Teleport2: 
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Teleport")
+                Filter: Self
+                AnimOverload: Teleport Into
+                AnimOverload2: Teleport Outof
+            BConsume:
+                PreviewEffectText: "<sprite name=Heal>"
+                Consume:
+                    Trophies: 1
+                    PreviewEffectId: M1TrophyHealSelf
+                    Abilities:
+                        BHeal:
+                            AutoTrigger: True
+                            Filter: Self
+                            Heal: 3
+                            MiscVars:
+                                PrintedProperties: list("Heal")
+Layout:
+    Top:
+        - Row: "<sprite name=Curse> <sprite name=Target> 3, <sprite name=Range> 1"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCTrophy
+                    Text: ": +1 <sprite name=Target>"
+        - Row: "$FH/459_character_ability_cards_deepwraith_lie_in_wait_2$"
+    Bottom:
+        - Row: "<sprite name=Teleport> *BTeleport* @BTeleport@"
+        - Divider:
+        - Row: "$FH/459_character_ability_cards_deepwraith_lie_in_wait_3$"

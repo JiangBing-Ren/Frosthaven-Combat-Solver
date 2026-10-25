@@ -1,0 +1,106 @@
+Parser: AbilityCard
+Name: $FH/57_character_ability_cards_blinkblade_quantum_uncertainty_1$
+Character: BlinkbladeID
+ID: 57
+Level: 8
+Initiative: 35
+Discard: [Discard,Discard]
+Prefab: 57_Blinkblade_QuantumUncertainty
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 5
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AnimOverload: AttackSlow
+                ConditionalOverrides:
+                    BMoveCO_Fast:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Fast
+                        AbilityOverrides:
+                            BMove:
+                                ReplaceModifiers: ["*0"]
+                                ReplaceWithModifiers: ["*2"]
+                                AnimOverload: Attack
+                    BMoveCO_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            BMove:
+                                ReplaceModifiers: ["*2"]
+                                ReplaceWithModifiers: ["*0"]
+
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+                ConditionalOverrides:
+                    BMoveCO_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            BMove:
+                                Strength: -1
+            BInvisible:
+                Invisible: True
+                Target: -1
+                Filter: [Self]
+                CanSkip: False
+                AnimOverload: PowerUp
+                AutoTrigger: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Fast
+            BStrengthen:
+                Strengthen: True
+                Target: -1
+                Filter: [Self]
+                CanSkip: False
+                AnimOverload: PowerUpSlow
+                AutoTrigger: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Slow
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+         - Row:
+            - ColumnWidths: "50,50"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "$FH/057_character_ability_cards_blinkblade_quantum_uncertainty_2$"
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Text: "$FH/057_character_ability_cards_blinkblade_quantum_uncertainty_3$"
+    Bottom:
+        - Row: 
+            - ColumnWidths: "15,50,35"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Text: "-1 <sprite name=Move>"
+        - Row:
+            - ColumnWidths: "50,50"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "$FH/057_character_ability_cards_blinkblade_quantum_uncertainty_4$"
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Text: "$FH/057_character_ability_cards_blinkblade_quantum_uncertainty_5$"

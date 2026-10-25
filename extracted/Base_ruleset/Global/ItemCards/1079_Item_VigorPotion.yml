@@ -1,0 +1,26 @@
+Parser: ItemCard
+ID: 1079
+StringID: VigorPotionID
+Name: $FH/1079_item_cards_vigor_potion_1$
+Art: Vigor Potion
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        AStrengthenSelf:
+            Strengthen: True
+            Filter: [Self, Ally]
+            # target is up to 3 if we select self and 2 allies
+            # target is up to 2 if we're not selecting self
+            Target: 3
+            MiscVars:
+                ShouldPerformOnTileSelected: True
+            PerformVars:
+                ActorIsSelectingTargetingFocus: 
+                    RefreshTargets: CustomAbility.RecalcValidActorsForSelfAndXOthers(obj)
+Layout: 
+    - Row: "$FH/1079_item_cards_vigor_potion_2$"

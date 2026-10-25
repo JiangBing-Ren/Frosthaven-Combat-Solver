@@ -1,0 +1,20 @@
+Parser: EnemyCard
+ID: 598
+Name: $Monster_Ability_598_RuinedMachine_FuelLeak$
+Initiative: 29
+Shuffle: False
+Data:
+    Abilities: 
+        AMove1:
+            Move: 1
+            SubAbilities:
+                MoveSubDamage1:
+                    Damage: 1
+                    Filter: Self
+                    StartAbilityRequirements:
+                        Type: ThisAbility
+                        HexesMovedThisTurn: "> 0"
+            Text: "$FH/0598$"    
+        Attack1:
+            Attack: 0
+            Filter: Enemy

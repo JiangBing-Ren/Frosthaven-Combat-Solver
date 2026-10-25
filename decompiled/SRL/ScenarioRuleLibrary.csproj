@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>ScenarioRuleLibrary</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <TargetFramework>net40</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>14.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="System.Core" />
+    <Reference Include="KronosEnumPolice">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\KronosEnumPolice.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Snapshot.Libs.Utils">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\Snapshot.Libs.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="Snapshot.Libs.GameConsole">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\Snapshot.Libs.GameConsole.dll</HintPath>
+    </Reference>
+    <Reference Include="SharedLibrary">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\SharedLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Snapshot.Libs.Threading">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\Snapshot.Libs.Threading.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Logger">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\Logger.dll</HintPath>
+    </Reference>
+    <Reference Include="ProcGen.Watchman">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Frosthaven\Frosthaven_Data\Managed\ProcGen.Watchman.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

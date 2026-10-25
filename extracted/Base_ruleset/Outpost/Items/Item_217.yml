@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 217
+ScenarioItemID: 1227
+Name: Tome of Time
+Quantity: 1
+GoldCost: 50
+Type: OneHandWeapon
+IsNewCharacterItem: False

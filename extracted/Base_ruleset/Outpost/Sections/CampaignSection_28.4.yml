@@ -1,0 +1,13 @@
+Parser: CampaignSection
+ID: 28.4
+Name: Crain's Expedition (28.4)
+SkipCompletedNotification: False
+Effects:
+    - Type: GainRandomItemBlueprint
+    - Type: AddTownGuardMod
+      Param1: P20
+    - Type: AddTownGuardMod
+      Param1: S
+    - Type: AddLootCardBonus
+      Param1: Metal
+      Param2: 1

@@ -1,0 +1,16 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH103_Stress
+ScenarioAbility:
+    AddActiveBonus:
+        Move: 0
+        Filter: Self
+        Range: 0
+        Target: 1
+        AutoTrigger: True
+        IgnoreStun: True
+        MiscVars:
+            ListLayoutParamVar0: ScenarioScript_FH103.GetPlayerStress(ActiveBonus.Actor)
+            StressIndicator: True
+        ActiveBonus:
+            Duration: Persistent
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_103_SCENARIO_MODIFIER_3$, Negative_Unique_Campaign]

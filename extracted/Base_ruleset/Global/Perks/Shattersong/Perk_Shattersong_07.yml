@@ -1,0 +1,7 @@
+Parser: Perk
+ID: Shattersong07
+Name: FH/PERK_Shattersong_07_Name
+Description: FH/PERK_Shattersong_07_Desc
+CharacterID: ShattersongID
+Available: 3
+CardsToAdd: [AMC_Resonance_P1]

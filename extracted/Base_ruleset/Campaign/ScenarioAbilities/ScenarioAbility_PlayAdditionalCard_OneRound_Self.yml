@@ -1,0 +1,20 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_PlayAdditionalCard_OneRound_Self
+ScenarioAbility:
+    ANonUsedCard:
+        Filter: Self
+        AddActiveBonus:
+            Filter: Self
+            CanSkip: False
+            SelectAndPlayCard:
+                CardPile: OwnedUnused  
+                Amount: 1
+            MiscVars:
+                DontPreviewDescription: true
+                DiscardPile: CBaseCard.ECardPile.OwnedUnused
+        ActiveBonus:
+            Duration: Round
+            Behaviour: DuringTurnAbility
+            IsToggleBonus: True
+            ListLayoutOverride: [$FH/ScenarioAbility_PlayAdditionalCard_OneRound_Self$, Positive_Cards]
+            XPTracker: [0]

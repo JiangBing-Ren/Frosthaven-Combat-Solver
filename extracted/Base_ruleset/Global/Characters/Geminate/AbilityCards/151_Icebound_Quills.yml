@@ -1,0 +1,64 @@
+Parser: AbilityCard
+Name: $FH/151_character_ability_cards_geminate_icebound_quills_1$
+Character: GeminateID
+ID: 151
+Level: 1
+ProgressionOrder: 0
+Initiative: 14
+Discard: [Lost,Discard]
+RequiredForm: Melee
+Prefab: 151_Geminate_IceboundQuills
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 5
+                    DiamondEnhancements: 1
+                    Pierce: 1
+                MiscVars:
+                    PrintedProperties: list("Attack","Pierce")
+                AnimOverload: Attack_Melee
+        Consumes:
+            TCIce:
+                Elements: Ice
+                AbilityOverrides:
+                    TCIceBuff:
+                        ParentName: TAttack
+                        Attack: 1
+                        Pierce: 1
+                XP: 1
+        XP: 1
+    Bottom:
+        Abilities:
+            Shield1:
+                Shield: 1
+                MiscVars:
+                    PrintedProperties: list("Shield")
+            Retaliate1:
+                Retaliate:
+                    Amount: 1
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Retaliate")
+        
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Row: "<sprite name=Pierce> *TAttack.Pierce*"
+        - Consume:
+           Name: TCIce
+           Text: "<nobr>+1 <sprite name=Attack></nobr>, <nobr>+1 <sprite name=Pierce></nobr>, <nobr><sprite name=XP1></nobr>"
+    Bottom:
+        - Active:
+            Ability: Shield1
+            Icon: Positive_Shield
+            ListLayout: "<sprite name=Shield> *Shield1*"
+            Layout: "<sprite name=Shield> *Shield1*"
+        - Active:
+            Ability: Retaliate1
+            Icon: Positive_Retaliate
+            ListLayout: "<sprite name=Retaliate> *Retaliate1*"
+            Layout: "<sprite name=Retaliate> *Retaliate1* <voffset=1> @Retaliate1@"
+        - Row: "<sprite name=Shield> 1"
+        - Row: "<sprite name=Retaliate> 1 @Retaliate1@"

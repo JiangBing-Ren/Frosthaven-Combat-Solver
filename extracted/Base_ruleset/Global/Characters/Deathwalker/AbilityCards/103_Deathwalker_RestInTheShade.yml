@@ -1,0 +1,44 @@
+Parser: AbilityCard
+Name: $FH/103_character_ability_cards_deathwalker_rest_in_the_shade_1$
+Character: DeathwalkerID
+ID: 103
+Level: X
+Initiative: 26
+Discard: [Discard,Lost]
+Prefab: 103_Deathwalker_RestInTheShade
+Data:
+    Top:
+        Abilities:
+            THeal:
+                Heal:
+                    Amount: 2
+                    DiamondPlusEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: [Self, Ally]
+                Target: 99
+                MiscVars:
+                    AutoSelectValidTiles: True
+                Targeting: Custom
+                TargetingVars:
+                    AddTilesInRange: CustomAbility.GetValidActorsOnShadows(TargetingActor).Select(Tile)
+                    AddTileInRange: TargetingActor.Tile
+                    AddValidActorsInRange: CustomAbility.GetValidActorsOnShadows(TargetingActor)
+                    AddValidActorInRange: TargetingActor
+        Infuse: Dark
+    Bottom:
+        Abilities:
+            BMoveShadows:
+                MoveShadow:
+                Target: -1
+                Range: 6
+                AnimOverload: Shadow Manipulation  
+Layout:
+    Top:
+        - Row: "<b><size=130%> <sprite name=Heal> *THeal* @THeal@"
+        - Row: "<size=20%>"
+        - Row: "$FH/103_character_ability_cards_deathwalker_rest_in_the_shade_2$"
+        - Row: "<size=50%>"
+        - Infuse: Dark
+    Bottom:
+        - Row: "$FH/103_character_ability_cards_deathwalker_rest_in_the_shade_3$"

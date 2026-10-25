@@ -1,0 +1,17 @@
+Parser: FHScenario
+ID: 85
+Name: Deadly Pastimes
+LevelID: FS_085_Deadly_Pastimes
+RequiresClimbingGear: true
+Chain: JobPosting
+Location: ImperialMountains
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: AllCharactersGainExperience
+          Param1: 15
+        - Type: AllCharactersAddPerkCheck
+          Param1: 1
+OnEndScenarioEffects:
+    # if looted tile F in the scenario, gain brummix sticker
+    - Type: FS85ConclusionEffect 

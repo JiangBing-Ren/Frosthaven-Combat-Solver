@@ -1,0 +1,19 @@
+Parser: FHScenario
+ID: 36
+Name: Buried Ducts
+LevelID: FS_036_Buried_Ducts
+Chain: Unfettered
+Location: CrystalFields
+Difficulty: 1
+Conclusions:
+    - Effects:
+        - Type: GainLumber
+          Param1: 3
+        - Type: GainMetal
+          Param1: 3
+        - Type: LockScenario
+          Param1: 37
+        - Type: UnlockMandatoryScenario
+          Param1: 44
+        - Type: GainItemBlueprint
+          Param1: 67

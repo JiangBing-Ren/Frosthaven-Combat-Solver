@@ -1,0 +1,19 @@
+Parser: Perk
+ID: Snowdancer07
+Name: FH/PERK_Snowdancer_07_Name
+Description: FH/PERK_Snowdancer_07_Desc
+CharacterID: SnowdancerID
+Available: 1
+Flags: [Passive, ApplyActiveBonusesAtScenarioStart]
+Abilities:
+    OnLongRest:
+        Filter: Self
+        AutoTrigger: True
+        SkipAnim: True
+        AddActiveBonus:
+            Infuse: [Ice, Air]
+            ShowElementPicker: True
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringActionAbilityOnLongRest
+            Hidden: True

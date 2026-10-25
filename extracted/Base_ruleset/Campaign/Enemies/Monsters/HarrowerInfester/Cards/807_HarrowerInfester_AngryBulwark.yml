@@ -1,0 +1,22 @@
+Parser: EnemyCard
+ID: 807
+Name: $Monster_Ability_807_HarrowerInfester_AngryBulwark$
+Initiative: 02
+Shuffle: True
+Data:
+    Abilities:
+        Shield1:
+            Shield: 2
+            Filter: Self
+            ActiveBonus:
+                Duration: Round
+                ListLayoutOverride: ["<sprite name=Shield> *Shield1*", Positive_Shield]
+            AnimOverload: PowerUp            
+        Retaliate1:
+            Retaliate: 2
+            RetaliateRange: 3
+            Filter: Self
+            ActiveBonus:
+                Duration: Round
+                ListLayoutOverride: ["<sprite name=Retaliate> *Retaliate1*", Positive_Retaliate]
+            SkipAnim: True

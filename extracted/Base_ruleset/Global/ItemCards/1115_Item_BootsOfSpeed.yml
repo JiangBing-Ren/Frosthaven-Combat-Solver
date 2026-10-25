@@ -1,0 +1,33 @@
+Parser: ItemCard
+ID: 1115
+StringID: BootsOfSpeedID
+Name: $FH/1115_item_cards_boots_of_speed_1$
+Art: Boots of Speed
+TotalInGame: 2
+Cost: 30
+Slot: Legs
+Rarity: Rare
+Usage: Spent
+Trigger: PassiveEffect
+Data: 
+    Abilities:
+        AAdjustInitiative:
+            AdjustInitiative: 10
+            Filter: Self
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: AdjustInitiative
+                XPTracker: [0]
+                IsToggleBonus: True
+                ValidAbilityType: AdjustInitiative
+                Hidden: True
+                Requirements:
+                    Vars:
+                        ValidateCanUseItems: Actor.Tokens.HasKey(CCondition.ENegativeCondition.Impair) == false && Actor.Tokens.HasKey(CCondition.ENegativeCondition.Stun) == false
+Layout:
+    - Active:
+        Ability: AAdjustInitiative
+        ListLayout: $FH/1115_item_cards_boots_of_speed_2$
+        Layout: $FH/1115_item_cards_boots_of_speed_2$
+        #Icon: "Shield"
+    - Row: "<size=50%> "

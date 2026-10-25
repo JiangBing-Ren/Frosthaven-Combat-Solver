@@ -1,0 +1,25 @@
+Parser: EnemyCard
+ID: 206201
+Name: $Monster_Ability_Boss_ElderOoze_Special2$
+Initiative: 11
+Shuffle: False
+Data:
+    Abilities: 
+        Attack1:
+            Attack: +1
+            Range: 8
+            RangeIsBase: True
+            Filter: Enemy
+            AnimOverload: RangedAttack
+            AttackFurthestTarget: True
+            Text: "$FH/206201_monster_ability_cards_elder_ooze_boss_special_2_1$"
+        WaitForIdle1:
+            Null: True
+        Push1:
+            Push: 1
+            Range: 1
+            RangeIsBase: True
+            Target: -1
+            TargetIsBase: True
+            Filter: Enemy
+            AnimOverload: PowerUp

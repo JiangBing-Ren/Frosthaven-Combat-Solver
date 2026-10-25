@@ -1,0 +1,91 @@
+Parser: AbilityCard
+Name: $FH/294_character_ability_cards_trapper_cage_of_thorns_1$
+Character: TrapperID
+ID: 294
+Level: 6
+Initiative: 55
+Discard: [Discard,Discard]
+Prefab: 294_Trapper_CageOfThorns
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                    DiamondEnhancements: 1
+                Range: 
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                RangeIsBase: True
+                AnimOverload: TrapProjectile
+            TTrap:
+                Trap:
+                    TrapName: TrapperTrap
+                    Damage: 1
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Vars:
+                    AttackAbility: CustomAbility.FindAbilityInPhaseByName("TAttack")
+                    AttackTargets: AttackAbility?.ActorsTargeted
+                    ValidateAttackTarget: AttackTargets != null && AttackTargets.Count > 0
+                Target: -1
+                Targeting: Custom
+                TargetingVars:
+                    AddTilesInRange: CustomAbility.GetAdjacentTiles(AttackTargets)?.Where(IsEmpty)
+                    AddSelectedTiles: AddTilesInRange
+                AutoTrigger: True
+                SkipAnim: True
+        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BSelectEnemy:
+                NullTargeting: True
+                Filter: Enemy
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Range")
+                HelpBoxTooltipLocKey: "$FH/294_character_ability_cards_trapper_cage_of_thorns_4$"
+                SkipAnim: True
+                MiscVars:
+                    ExplicitlyDoesNothing: True
+                SubAbilities:
+                    BMoveTraps:
+                        TreatAsNonSubAbility: True
+                        MoveTrap:
+                        Range: 4
+                        MiscVars:
+                            PrintedProperties: list("Range")
+                        RangeIsBase: True
+                        Target: 2
+                        TargetIsBase: True
+                        MoveTrapRange: 1
+                        Vars:
+                            SelectEnemyAbility: CustomAbility.FindAbilityInPhaseByName("BSelectEnemy")
+                            MoveAroundTile: SelectEnemyAbility?.TilesSelected?.First
+                            ValidateMoveAroundTile: "!!MoveAroundTile"
+                        MiscVars:
+                            AllowUndoAfterFirst: True
+                        AnimOverload: FishingRodTrap
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "10,40,40,10"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column:
+                - Row: " <sprite name=Range>*TAttack.Range* @TAttack.Range@"
+            - Column:
+        - Row: $FH/294_character_ability_cards_trapper_cage_of_thorns_2$
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Row: "<size=20%> "
+        - Row: $FH/294_character_ability_cards_trapper_cage_of_thorns_3$

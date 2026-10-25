@@ -1,0 +1,55 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH79_SledMovement_ForgoBottomAction
+ScenarioAbility:
+    AActive:
+        AddActiveBonus:
+            NullHex: True
+            Target: 1
+            Targeting: Custom
+            TargetingVars:
+                AddTilesInRange: ScenarioScript_FH079.ValidTilesForSledMovementChoice()
+            MiscVars:
+                # SelectedTiles passed as var when calculating PreviewPath
+                PreviewPath: ScenarioScript_FH079.GetSledPreviewTiles(MouseoverTile)
+            PerformVars:                
+                SelectHexPositions:
+                    CalcTilesInRange: ScenarioScript_FH079.RecalcValidTilesToFormPath(obj)
+                OnTileDeselected:
+                    RemoveFurtherTiles: ScenarioScript_FH079.RemoveRemovedTilesToFormPath(obj)
+            SubAbilities:
+                AMoveSled:
+                    Null: True
+                    AutoTrigger: True
+                    Vars:
+                        ValidateSelected: ParentAbility.TilesSelected.Count > 0
+                    PerformVars:
+                        NullBegin:
+                            SelectedTile: ParentAbility.TilesSelected[0]
+                            MoveSled: ScenarioScript_FH079._script.MoveSled(SelectedTile.m_ArrayIndex)
+                ADamageActorAtEndOfPath:
+                    Damage: 0
+                    AutoTrigger: True
+                    TreatAsNonSubAbility: True
+                    Flags: [SubAbilityPreview]
+                    Filter: All
+                    Targeting: Custom
+                    TargetingVars:
+                        AddValidActorsInRange: ScenarioScript_FH079.GetActorsToDamageAfterSledMove()
+                    StatIsBasedOnX:
+                        Strength:
+                            BasedOn: Vars
+                            Vars:
+                                Value: ScenarioScript_FH079.GetAmountOfDamageAfterSledMove()
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringTurnAbility
+            IsToggleBonus: True
+            Hidden: True
+            Requirements:
+                ForgoBottomAction: True
+                Vars:
+                    Actor: obj.Actor
+                    Sled: CustomAbility.FindProp("Sled")
+                    ValidateIsNextToSled: CustomAbility.IsActorNextToProp(Actor, Sled)
+                    ValidateCanForgoAction: CustomAbility.AnyForgoneAction() == False
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_079_SledMovement_ForgoBottomAction$, Positive_Unique_Campaign]

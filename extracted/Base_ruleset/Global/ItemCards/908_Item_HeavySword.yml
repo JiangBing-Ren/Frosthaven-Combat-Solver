@@ -1,0 +1,22 @@
+Parser: ItemCard
+ID: 908
+StringID: HeavySwordID
+Name: $FH/0908_item_cards_heavy_sword_1$
+Art: Heavy Sword
+TotalInGame: 2
+Cost: 0
+Slot: OneHand
+Rarity: Rare
+Usage: Spent
+Trigger: SingleTarget
+ProsperityRequirement: 1
+Data:
+    Overrides:
+        OAttack:
+            Attack: +1
+    CompareAbility:
+        AbilityType: Attack
+        IsMelee: True
+        Filter: Enemy
+Layout: 
+    - Row: $FH/0908_item_cards_heavy_sword_2$

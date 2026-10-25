@@ -1,0 +1,75 @@
+Parser: Enemy
+ID: AlgoxIcespeakerEliteID
+LocKey: $FH/AlgoxIcespeakerElite$
+MonsterType: Monster
+StandeeLimit: 4
+Model: AlgoxIcespeaker Elite
+NonEliteVariant: AlgoxIcespeakerID
+PredominantlyMelee: True
+AbilityCards: [730, 731, 732, 733, 734, 735, 736, 737]
+# Base Stats
+Level0:
+    Health: 8
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 2
+Level1:
+    Health: 8
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 2
+    Conditions: [Brittle]
+Level2:
+    Health: 10
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 2
+    Conditions: [Brittle]
+Level3:
+    Health: 12
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    Shield: 2
+    Conditions: [Brittle]
+Level4:
+    Health: 15
+    Move: 4
+    Attack: 5
+    Range: 1
+    Target: 1
+    Shield: 2
+    Conditions: [Brittle]
+Level5:
+    Health: 18
+    Move: 4
+    Attack: 6
+    Range: 1
+    Target: 1
+    Shield: 2
+    Conditions: [Brittle]
+Level6:
+    Health: 26
+    Move: 4
+    Attack: 6
+    Range: 1
+    Target: 1
+    Shield: 2
+    Conditions: [Brittle]
+    Immunities: [Brittle]
+Level7:
+    Health: 35
+    Move: 4
+    Attack: 6
+    Range: 1
+    Target: 1
+    Shield: 2
+    Conditions: [Brittle]
+    Immunities: [Brittle]

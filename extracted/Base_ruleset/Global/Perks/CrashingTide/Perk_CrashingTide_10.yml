@@ -1,0 +1,22 @@
+Parser: Perk
+ID: CrashingTide10
+Name: FH/PERK_CrashingTide_10_Name
+Description: FH/PERK_CrashingTide_10_Desc
+CharacterID: CrashingTideID
+Available: 1
+Cost: 3
+Flags: [Passive, ApplyActiveBonusesAtScenarioStart]
+Abilities:
+    TActive:
+        AutoTrigger: True
+        Filter: Self
+        SkipAnim: True
+        Attack: 0
+        AttackHasAdvantage: True
+        ActiveBonus:
+            Duration: Persistent
+            Hidden: True
+            Behaviour: BuffAttack
+            Filter: 
+                Vars: 
+                    ValidateWater: self.IsInWaterTile || target.IsInWaterTile

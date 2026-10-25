@@ -1,0 +1,97 @@
+Parser: Enemy
+ID: FishKingID
+LocKey: $FH/FishKing$
+MonsterType: Boss
+Model: FishKing
+StandeeLimit: 1
+PredominantlyMelee: True
+AbilityCards: [08740057, 08750058, 08760059, 08770060, 08780061, 08790062, 08800063, 08810064]
+# Base Stats
+Level0:
+    Health: 0
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Immunities: [Poison, Immobilize, Disarm, Stun, Muddle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 8          
+Level1:
+    Health: 0
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Immunities: [Poison, Immobilize, Disarm, Stun, Muddle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 10       
+Level2:
+    Health: 0
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    Immunities: [Poison, Immobilize, Disarm, Stun, Muddle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 12           
+Level3:
+    Health: 0
+    Move: 4
+    Attack: 5
+    Range: 1
+    Target: 1
+    Immunities: [Poison, Immobilize, Disarm, Stun, Muddle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 16
+Level4:
+    Health: 0
+    Move: 4
+    Attack: 6
+    Range: 1
+    Target: 1
+    Immunities: [Poison, Immobilize, Disarm, Stun, Muddle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 18
+Level5:
+    Health: 0
+    Move: 4
+    Attack: 6
+    Range: 1
+    Target: 1
+    Immunities: [Poison, Immobilize, Disarm, Stun, Muddle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 24
+Level6:
+    Health: 0
+    Move: 4
+    Attack: 7
+    Range: 1
+    Target: 1
+    Immunities: [Poison, Immobilize, Disarm, Stun, Muddle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 32
+Level7:
+    Health: 0
+    Move: 4
+    Attack: 8
+    Range: 1
+    Target: 1
+    Immunities: [Poison, Immobilize, Disarm, Stun, Muddle]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 40

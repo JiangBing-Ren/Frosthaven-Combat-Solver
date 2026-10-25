@@ -1,0 +1,11 @@
+Parser: EnemyCard
+ID: 9050
+Name: $Monster_Ability_Tutorial3Geminate_Bonebreaker$
+Initiative: 55
+Shuffle: False
+Data:
+    Abilities:
+        AMove:
+            Move: 0
+        AAttack:
+            Attack: 3

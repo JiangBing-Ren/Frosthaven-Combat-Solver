@@ -1,0 +1,9 @@
+Parser: ScenarioAbility
+ID: FH60_MonsterShard_Ice
+ScenarioAbility:
+    FH60_MonsterShard_Ice:
+        NullTargeting: True
+        Filter: Self
+        ActiveBonus:
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_060_MonsterShard_Ice$, Positive_AttackPlus_Enemy_Campaign]
+            Duration: Persistent

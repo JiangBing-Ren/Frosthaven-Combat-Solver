@@ -1,0 +1,7 @@
+Parser: CampaignSection
+ID: 86.1
+Name: Protect the Pass
+SkipCompletedNotification: False
+Effects:
+    - Type: UnlockScenario
+      Param1: 115

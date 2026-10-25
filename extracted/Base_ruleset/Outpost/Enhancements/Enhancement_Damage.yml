@@ -1,0 +1,7 @@
+Parser: FHEnhancement
+ID: Damage
+Name: Glossary_Enhancement_PlusDamage
+Cost: 50
+Mark: Square
+Effect: AddOne
+ForEffect: Damage

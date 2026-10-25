@@ -1,0 +1,91 @@
+Parser: AbilityCard
+Name: $FH/470_character_ability_cards_deepwraith_unseen_horror_1$
+Character: DeepwraithID
+ID: 470
+Level: 8
+Initiative: 19
+Discard: [Discard,Lost]
+Prefab: 470_Deepwraith_UnseenHorror
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 4
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Filter: Enemy
+                ConditionalOverrides:
+                    TAttackCO:
+                        Filter:
+                            TargetType: Enemy
+                            Vars:
+                                CurrentAbility: CustomAbility.GetCurrentContextAbility()
+                                ValidateLOS: (MiscVars != null && CustomAbility.GetMiscVarBool(CurrentAbility, "ForceLOSBuff")) || !AllAliveMonsters.Any(obj != target && obj.Type == target.Type && CAIMoveNew.CheckLoS(obj.ArrayIndex, target.ArrayIndex))
+                        AbilityOverrides:
+                            TAttackInvisBuff:
+                                Strength: 1
+                                Conditions: [Brittle]
+                        XP: 1
+        Consumes:
+            TCDark:
+                Element: Dark
+                AbilityOverrides:
+                    CNoLOS:
+                        ParentName: TAttack
+                        MiscVars:
+                            ForceLOSBuff: True
+    Bottom:
+        Abilities: 
+            BActive: 
+                AddActiveBonus:
+                    Attack: 0
+                    AttackEffect:
+                        Type: StandardBuff
+                        Strength: 1
+                    MiscVars:
+                        PrintedProperties: list("AttackBuff")
+                    Conditions: [Wound]
+                    Filter: Self
+                    Tokens: -1
+                    Flags: [ModifiesTrophyTokens]
+                    ActiveBonus:
+                        Duration: Round
+                        Behaviour: BuffAttack
+                        ListLayoutOverride: ["+0<sprite name=Attack>", Positive_AttackPlus]
+                Filter: Self
+                ActiveBonus:
+                    Behaviour: [DuringTurnAbility, BetweenActionAbilities]
+                    Duration: Persistent
+                    IsToggleBonus: True
+                    Restriction: OncePerTurn
+                    MiscVars:
+                        OverrideIcon: "'Ability_Deepwraith_UnseenHorror'"
+                    Requirements:
+                        Type: ThisAbility
+                        TrophyTokens: ">= 1"
+                        Vars:
+                            ValidateHasInvisibility: Actor.Tokens.HasKey(CCondition.EPositiveCondition.Invisible)
+        XP: 2
+        Infuse: Dark
+Layout:
+    Top:
+        - Row: "<sprite name=Attack> *TAttack* @TAttack@"
+        - Row: "$FH/470_character_ability_cards_deepwraith_unseen_horror_2$"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCDark
+                    Text: "$FH/470_character_ability_cards_deepwraith_unseen_horror_3$"
+    Bottom:
+        - Active:
+              Ability: BActive
+              Icon: Positive_AttackPlus_DWRTrophy_Invisible
+              ListLayout: "$FH/470_character_ability_cards_deepwraith_unseen_horror_4$<br><sprite name=DWRTrophy>:$FH/470_character_ability_cards_deepwraith_unseen_horror_5$"
+              Layout: "$FH/470_character_ability_cards_deepwraith_unseen_horror_4$<br><sprite name=DWRTrophy>:$FH/470_character_ability_cards_deepwraith_unseen_horror_5$"
+        #- Row: "$FH/470_character_ability_cards_deepwraith_unseen_horror_4$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark

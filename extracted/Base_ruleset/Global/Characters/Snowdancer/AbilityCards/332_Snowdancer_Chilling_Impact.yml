@@ -1,0 +1,79 @@
+Parser: AbilityCard
+Name: $FH/332_character_ability_cards_snowdancer_chilling_impact_1$
+Character: SnowdancerID
+ID: 332
+Level: 1
+Initiative: 31
+Discard: [Lost,Discard]
+Prefab: 332_Snowdancer_ChillingImpact
+Data:
+    Top:
+        Abilities:
+            TActiveConsume:
+                AddActiveBonus:
+                    IgnoreStun: False
+                    CanSkip: True
+                    Consume:
+                        Elements: Ice
+                        Abilities:
+                            CADamageOnForceMove:
+                                AddActiveBonus:
+                                    Damage: 1
+                                    AutoTrigger: True
+                                    Targeting: Custom
+                                    Vars:
+                                        TActor: TriggerActor
+                                        ValidateMoved: CustomAbility.ValidateForcedMove(VarsContext.parentContext.TriggerAbility, ActiveBonus.Caster)
+                                    TargetingVars:
+                                        AddValidActorInRange: TActor
+                                        AddActorToTarget: TActor
+                                Filter: Self
+                                AutoTrigger: True
+                                AlsoTargetSelf: True
+                                ActiveBonus:
+                                    Behaviour: DuringActionAbilityOnFinishedMovement
+                                    Duration: Turn
+                                    TriggerAbilitiesImmediately: True
+                                    TriggerOnCaster: True
+                                    IsAura: True
+                                    AuraTargeting: All
+                                    AuraFilter:
+                                        TargetType: Enemy
+                                        UseTargetOriginalType: True
+                                    ListLayoutOverride: [$FH/332_character_ability_cards_snowdancer_chilling_impact_2$ $FH/332_character_ability_cards_snowdancer_chilling_impact_2a$, Positive_ForceMove_Damage]
+                    Filter: Self
+                Filter: Self
+                ActiveBonus:
+                    Behaviour: StartTurnAbility
+                    Restriction: OncePerRound
+                    Duration: Persistent
+                    Vars:
+                        # trigger this before other start turn bonuses, since some of them can also cause push/pull
+                        SortOrder: -1
+        XP: 2
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BPush:
+                Push: 2
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Push","Range")
+                Target: -1
+                Filter: [Enemy]
+                AnimOverload: Push
+Layout:
+    Top:
+        - Active:
+            Ability: TActiveConsume
+            Icon: Positive_Snowdancer_IceConsume
+            ListLayout: "$FH/332_character_ability_cards_snowdancer_chilling_impact_2$ \n <sprite name=ConsumeIce>: $FH/332_character_ability_cards_snowdancer_chilling_impact_2a$"
+            Layout: "$FH/332_character_ability_cards_snowdancer_chilling_impact_2$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Row: "$FH/332_character_ability_cards_snowdancer_chilling_impact_3$"

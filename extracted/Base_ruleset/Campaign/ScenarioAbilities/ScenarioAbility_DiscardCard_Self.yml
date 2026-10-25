@@ -1,0 +1,7 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_DiscardCard_Self
+ScenarioAbility:
+    TDiscardCard:
+        DiscardCards: 1
+        Filter: Self
+        AutoTrigger: True

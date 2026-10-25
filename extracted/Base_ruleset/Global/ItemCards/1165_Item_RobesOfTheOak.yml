@@ -1,0 +1,23 @@
+Parser: ItemCard
+ID: 1165
+StringID: RobesOfTheOakID
+Name: $FH/1165_item_cards_robes_of_the_oak_1$
+Art: Robes of the Oak
+TotalInGame: 2
+Cost: 30
+Slot: Body
+Rarity: Rare
+Usage: Spent
+Trigger: DuringOwnTurn
+Data: 
+    ItemRequirements:
+        Vars:
+            ItemAbility: Item.YMLData.Data.Abilities[0]
+            ValidateHasTargets: CustomAbility.GetActorsInRangeForAbility(Actor, ItemAbility).Count > 0
+    Abilities:
+        AHeal:
+            Heal: 3
+            Filter: Ally
+            Range: 1
+Layout: 
+    - Row: "$FH/1165_item_cards_robes_of_the_oak_2$"

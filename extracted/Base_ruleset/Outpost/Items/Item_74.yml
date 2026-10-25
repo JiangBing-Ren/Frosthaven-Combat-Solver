@@ -1,0 +1,7 @@
+Parser: FHItem
+ID: 74
+ScenarioItemID: 1013
+Name: Shock Grenades
+Quantity: 2
+Type: OneHandWeapon
+RequiredCraftingItemIDs: [ 19, 97 ]

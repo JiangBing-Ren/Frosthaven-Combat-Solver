@@ -1,0 +1,15 @@
+Parser: EnemyCard
+ID: 609
+Name: $Monster_Ability_609_RoboticBoltshooter_RepairDrones$
+Initiative: 16
+Shuffle: True
+Data:
+    Abilities:
+        AShield:
+            Shield: 1
+            ActiveBonus:
+                ListLayoutOverride: ["<sprite name=Shield> *Shield1*", Positive_Shield]
+        AHeal:
+            Heal: 3
+            Filter: Self
+            SkipAnim: True

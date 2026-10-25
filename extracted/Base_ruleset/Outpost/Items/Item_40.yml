@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 40
+ScenarioItemID: 960
+Name: Heartstrike Bow
+Quantity: 2
+Type: TwoHandWeapon
+CraftingCost:
+    Lumber: 1
+RequiredCraftingItemIDs: [ 20, 85 ]

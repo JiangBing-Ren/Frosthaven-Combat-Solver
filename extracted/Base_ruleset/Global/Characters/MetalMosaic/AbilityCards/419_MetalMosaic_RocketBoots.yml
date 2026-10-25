@@ -1,0 +1,93 @@
+Parser: AbilityCard
+Name: $FH/419_character_ability_cards_metal_mosaic_rocket_boots$
+Character: MetalMosaicID
+ID: 419
+Level: 1
+Initiative: 22
+Discard: [Discard,Discard]
+Prefab: 419_MetalMosaic_RocketBoots
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                SubAbilities:
+                    SubPush:
+                        Push: 2
+                        MiscVars:
+                            PrintedProperties: list("Push")
+                        IsInlineSubAbility: True
+        Infuse: Fire
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                    Jump: True
+                MiscVars:
+                    PrintedProperties: list("Move")
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: Vars
+                        AddTo: True
+                        Vars:
+                            OverPressure: TargetingActor.Pressure.ToString() == 'Over'
+                            HighPressure: TargetingActor.Pressure.ToString() == 'High'
+                            Value: OverPressure && 3 || HighPressure && 1 || 0
+                    XP:
+                        BasedOn: Vars
+                        Vars:
+                            OverPressure: TargetingActor.Pressure.ToString() == 'Over'
+                            Value: OverPressure && 1 || 0
+                SubAbilities:
+                    SelfDamage:
+                        TreatAsNonSubAbility: True
+                        Damage: 1
+                        MiscVars:
+                            PrintedProperties: list("Damage")
+                        AutoTrigger: True
+                        Filter: Self
+                        SkipAnim: True 
+                        MiscVars:
+                            MetalMosaicSelfDamage: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Over
+                    BPressureChangeOver:
+                        TreatAsNonSubAbility: True
+                        Null: True
+                        SkipAnim: True
+                        IgnoreStun: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Over
+                        PerformVars:
+                            NullBegin:
+                                ChangePressure: CustomAbility.PressureChange(TargetingActor, -1)
+Layout:
+    Top:
+        - Row: 
+            - ColumnWidths: "50,50"
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column: "<b><size=130%><sprite name=Push> 2"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Fire
+    Bottom:
+
+        - Row: 
+            - ColumnWidths: "50,50"
+            - Column: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+            - Column: "<b><size=130%><sprite name=Jump>"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureOver><size=100%> +3<sprite name=Move>, <sprite name=XP1>, <sprite name=MMSelfDamage>, <sprite name=MMLosePressure>"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureHigh><size=100%> +1<sprite name=Move>"

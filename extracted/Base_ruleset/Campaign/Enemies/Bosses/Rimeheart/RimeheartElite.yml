@@ -1,0 +1,142 @@
+Parser: Enemy
+ID: RimeheartEliteID
+LocKey: $FH/Rimeheart$
+MonsterType: Boss
+StandeeLimit: 1
+Model: Rimeheart Elite
+NonEliteVariant: RimeheartID
+PredominantlyMelee: True
+MiniBoss: True
+AbilityCards: [642, 643, 644, 645, 646, 647, 648, 649]
+# Base Stats
+Level0:
+    Health: 3
+    Move: 4
+    Attack: 3
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            Multiplier: 3.5
+            AddTo: True
+    Flying: True
+    Immunities: [Disarm, Stun]
+Level1:
+    Health: 3
+    Move: 4
+    Attack: 3
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            Multiplier: 4
+            AddTo: True
+    Flying: True
+    Retaliate: 2
+    RetaliateRange: 2
+    Immunities: [Disarm, Stun]
+Level2:
+    Health: 3
+    Move: 5
+    Attack: 3
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            Multiplier: 5
+            AddTo: True
+    Flying: True
+    Retaliate: 2
+    RetaliateRange: 2
+    Immunities: [Disarm, Stun]
+Level3:
+    Health: 3
+    Move: 5
+    Attack: 4
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            Multiplier: 5
+            AddTo: True
+    Flying: True
+    Retaliate: 2
+    RetaliateRange: 2
+    Conditions: [Wound]
+    Immunities: [Disarm, Stun]
+Level4:
+    Health: 3
+    Move: 5
+    Attack: 4
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            Multiplier: 6
+            AddTo: True
+    Flying: True
+    Retaliate: 3
+    RetaliateRange: 3
+    Conditions: [Wound]
+    Immunities: [Disarm, Stun]
+Level5:
+    Health: 3
+    Move: 5
+    Attack: 5
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            Multiplier: 8
+            AddTo: True
+    Flying: True
+    Retaliate: 3
+    RetaliateRange: 3
+    Conditions: [Wound]
+    Immunities: [Disarm, Stun]
+Level6:
+    Health: 3
+    Move: 5
+    Attack: 5
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            Multiplier: 10.5
+            AddTo: True
+    Flying: True
+    Retaliate: 4
+    RetaliateRange: 3
+    Conditions: [Wound]
+    Immunities: [Disarm, Stun, Curse]
+Level7:
+    Health: 3
+    Move: 5
+    Attack: 6
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            Multiplier: 13.5
+            AddTo: True
+    Flying: True
+    Retaliate: 4
+    RetaliateRange: 3
+    Conditions: [Wound]
+    Immunities: [Disarm, Stun, Curse]

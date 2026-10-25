@@ -1,0 +1,91 @@
+Parser: AbilityCard
+Name: $FH/262_character_ability_cards_shattersong_elemental_pulse_1$
+Character: ShattersongID
+ID: 262
+Level: 4
+Initiative: 25
+Discard: [Discard,Discard]
+Prefab: 262_Shattersong_ElementalPulse
+Data:
+    Top:
+        XP: 1
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 4
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")     
+                Range: 1
+                Filter: [Enemy]
+            TConsume:
+                Consume:
+                    Elements: Light
+                    Abilities:
+                        TToken:
+                            AutoTrigger: True
+                            NullTargeting:
+                            Tokens: 1
+                            AnimOverload: Cast_Concentrate
+                            Flags: [ModifiesResonanceTokens]
+                            Filter: [Self]
+        Consumes:
+            TCAir:
+                Elements: Air
+                AbilityOverrides:
+                    CBuffRange:
+                        ParentName: TAttack
+                        Range: 3
+                        MiscVars:
+                            PrintedProperties: list("Range")     
+                        AnimOverload: RangedAttackMedium
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 4
+                MiscVars:
+                    PrintedProperties: list("Move")     
+            BConsume:
+                Consume:
+                    Elements: Earth
+                    Abilities:
+                        BToken:
+                            AutoTrigger: True
+                            NullTargeting:
+                            Tokens: 1
+                            Flags: [ModifiesResonanceTokens]
+                            Filter: [Self]
+                            AnimOverload: Cast_Concentrate
+        Consumes:
+            BCAir:
+                Elements: Air
+                AbilityOverrides:
+                    CBuffMove:
+                        ParentName: BMove
+                        Strength: 1
+                        Jump: True
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCAir
+                    Text: "+3 <sprite name=Range>"
+        - Divider:
+        - Conditional:
+            Layout:
+                - Row: "$FH/262_character_ability_cards_shattersong_elemental_pulse_2$"
+    Bottom:
+        - Row: "<sprite name=Move> *BMove*"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: BCAir
+                    Text: "+1 <sprite name=Move>, <sprite name=Jump>"
+        - Divider:
+        - Conditional:
+            Layout:
+                - Row: "$FH/262_character_ability_cards_shattersong_elemental_pulse_3$"

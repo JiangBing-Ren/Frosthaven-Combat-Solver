@@ -1,0 +1,14 @@
+Parser: ScenarioAbility
+ID: FH061_Door2Monster
+ScenarioAbility:
+    AAttackBuffRanged:
+        Attack: 1
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: BuffAttack
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_061_SCENARIO_MODIFIER_4$, Positive_AttackPlus_Campaign]
+            Filter:
+                ActorType: [Player, Summon]
+        AnimOverload: None
+        Filter: Self
+        AutoTrigger: True

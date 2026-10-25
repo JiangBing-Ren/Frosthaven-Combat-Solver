@@ -1,0 +1,13 @@
+Parser: BattleGoal
+ID: BattleGoal_Pincushion
+LocalisedName: FH/1326_battle_goals_pincushion_1
+LocalisedDescription: FH/1326_battle_goals_pincushion_2
+#Be targeted by attacks from three or more monsters in the same round.
+PerkChecks: 1
+HideCounter: True
+BattleGoalCondition:
+    - Targets:
+        Filter: TargetedForAttacksByUniqueMonsters
+        AbilityTypes: [Attack]
+        Value: 3
+        SubFilter: RoundCharactersOnly

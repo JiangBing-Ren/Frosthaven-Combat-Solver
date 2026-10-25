@@ -1,0 +1,7 @@
+Parser: FHEnhancement
+ID: ElementEarth
+Name: Glossary_Enhancement_Earth
+Cost: 100
+Mark: Circle
+Effect: ElementEarth
+ForEffect: Other

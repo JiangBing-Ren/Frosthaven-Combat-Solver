@@ -1,0 +1,31 @@
+Parser: EnemyCard
+ID: 615
+Name: $Monster_Ability_615_FlamingBladespinner_FlameJets$
+Initiative: 43
+Shuffle: False
+Data:
+    Abilities:
+        Move1:
+            Move: +2
+        Damage1:
+            Damage: 1
+            Filter: Enemy
+            Range: 2
+            Target: -1
+            TargetIsBase: True
+            RangeIsBase: True
+            AnimOverload: AOEAttack
+        Null1:
+            Null: True
+    Consumes:
+        CFire1:
+            Elements: Fire
+            Abilities:
+                FireDamage1:
+                    ParentName: Null1
+                    AddCondition: True
+                    Condition: Wound
+                    Filter: Enemy
+                    Range: 2                    
+                    Target: -1
+                    SkipAnim: True

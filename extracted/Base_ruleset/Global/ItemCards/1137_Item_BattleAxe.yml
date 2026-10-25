@@ -1,0 +1,33 @@
+Parser: ItemCard
+ID: 1137
+StringID: BattleAxeID
+Name: $FH/1137_item_cards_battle_axe_1$
+Art: Battle Axe
+TotalInGame: 2
+Cost: 20
+Slot: TwoHand 
+Rarity: Rare
+Usage: Consumed
+Trigger: SingleAbility
+Data:     
+    ItemRequirements:
+        Vars:
+            # TreatAsMelee with range should still not be allowed to give itself a melee area effect (eg infuser obsidian spear)
+            ValidateIsReallyMelee: Ability.Range == 1
+    Overrides:
+        OAoE:
+            AreaEffect: "0,0,G|2,0,R|1,1,R"
+            MultiPassAttack: false
+            # alternatively if we decide we want to allow it, we need to make it a melee attack
+            # Range: 1
+            # RangeIsBase: True
+    CompareAbility:
+        AbilityType: Attack
+        Target: 1
+        IsMelee: True
+        Filter: Enemy
+        HasAreaEffect: False
+Layout: 
+    - Row: "<size=100%>$FH/1137_item_cards_battle_axe_2$"
+    - Row: "<size=100%> "
+    - Row: "£Area£"

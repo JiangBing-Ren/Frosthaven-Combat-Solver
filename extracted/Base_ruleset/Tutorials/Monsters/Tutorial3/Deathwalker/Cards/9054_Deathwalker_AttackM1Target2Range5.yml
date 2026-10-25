@@ -1,0 +1,12 @@
+Parser: EnemyCard
+ID: 9054
+Name: $Monster_Ability_Tutorial3Deathwalker_LurkingShot$
+Initiative: 14
+Shuffle: True
+Data:
+    Abilities:
+        AAttack:
+            Attack: -1
+            Target: 2
+            Range: 5
+            TargetIsBase: True

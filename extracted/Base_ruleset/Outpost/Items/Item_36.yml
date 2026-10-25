@@ -1,0 +1,10 @@
+Parser: FHItem
+ID: 36
+ScenarioItemID: 952
+Name: Plumed Helmet
+Quantity: 2
+Type: Head
+CraftingCost:
+    Hide: 1
+    Snowthistle: 1
+RequiredCraftingItemIDs: [ 16 ]

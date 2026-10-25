@@ -1,0 +1,7 @@
+Parser: FHEnhancement
+ID: Pierce
+Name: Glossary_Enhancement_PlusPierce
+Cost: 30
+Mark: Square
+Effect: AddOne
+ForEffect: Pierce

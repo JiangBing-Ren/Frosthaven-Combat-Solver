@@ -1,0 +1,32 @@
+Parser: EnemyCard
+ID: 779
+Name: $Monster_Ability_779_AbaelHerder_DesperateHerd$
+Initiative: 72
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: -1
+        ControlPig1:
+            ControlActor:
+                UseControllingActorType: True
+                Abilities:
+                    AllyMove:
+                        Move: -1
+                        TextOnly: True
+                        Text: "$FH/0779_monster_ability_cards_abael_herder_desperate_herd_2$"
+                    AllyAttack:
+                        Attack: -2
+                        TextOnly: True
+                    SelfDamage:
+                        Damage: 1
+                        Filter: Self
+                        TextOnly: True
+                        Text: "$FH/0779_monster_ability_cards_abael_herder_desperate_herd_3$"
+            Range: 3
+            RangeIsBase: True
+            Target: 99
+            TargetIsBase: True
+            Filter:
+                EnemyClasses: [PiranhaPigID,PiranhaPigEliteID]
+            AnimOverload: Control

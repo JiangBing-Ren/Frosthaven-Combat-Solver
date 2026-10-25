@@ -1,0 +1,12 @@
+Parser: FHScenario
+ID: 102
+Name: Into the Black
+LevelID: FS_102_Into_the_Black
+Chain: JobPosting
+Location: ImperialMountains
+IncludesChests: [Gain10Gold_85, UnlockScenario103_57]
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: AllCharactersGainExperience
+          Param1: 20

@@ -1,0 +1,49 @@
+Parser: AbilityCard
+Name: $FH/069_character_ability_cards_banner_spear_pincer_movement$
+#CustomImage: KRO_BANNER_SPEAR_AbilityCards_PincerMovement
+Character: BannerSpearID
+ID: 69
+Level: 1
+Initiative: 69
+Discard: [Discard,Discard]
+Prefab: 69_Bannerspear_PincerMovement
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 5
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AreaEffect: "0,0,G|2,0,R|4,0,B"
+                AreaEffectLayoutOverride: "0,0,G|1,1,R|2,2,B"
+                MultiPassAttack: False
+                Conditions: [Muddle]
+        XP: 1        
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 1
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BLoot:
+                Loot: 1
+                MiscVars:
+                    PrintedProperties: list("Loot")
+                Target: -1
+                AnimOverload: Loot
+Layout:
+    Top:
+        - ColumnWidths: "40,20,40"
+        - Column: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Column:
+            - AddedEffect: "<sprite name=Muddle>"
+        - Column:
+            - Row: "£Area£"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove.Amoount* <size=100%><voffset=1>@BMove@"
+        - Divider: 
+        - Row: "<b><size=130%><sprite name=Loot> *BLoot.Loot*"

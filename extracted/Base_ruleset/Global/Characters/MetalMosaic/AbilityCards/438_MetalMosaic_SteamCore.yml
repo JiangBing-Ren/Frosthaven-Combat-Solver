@@ -1,0 +1,127 @@
+Parser: AbilityCard
+Name: $FH/438_character_ability_cards_metal_mosaic_steam_core_1$
+Character: MetalMosaicID
+ID: 438
+Level: 6
+Initiative: 71
+Discard: [Discard,Discard]
+Prefab: 438_MetalMosaic_SteamCore
+Data:
+    Top:
+        Abilities:
+            THeal:
+                Heal: 
+                    Amount: 5
+                    DiamondPlusEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self
+            TWound:
+                Wound: True
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Target: 99
+                CanSkip: False
+                AnimOverload: SteamBlast 
+                Filter: Enemy
+                MiscVars:
+                    AutoSelectValidTiles: True
+                PerformVars:
+                    ApplyToActors:
+                        ChangePressureOver: TargetingActor.Pressure.ToString() == 'Over' && CustomAbility.PressureChange(TargetingActor, -1)
+                StatIsBasedOnX:
+                    XP:
+                        BasedOn: Vars
+                        Vars:
+                            OverPressure: TargetingActor.Pressure.ToString() == 'Over'
+                            Value: OverPressure && 1 || 0
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredPressure: Over
+            TRegenerate:
+                Regenerate: True
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Target: 99
+                Filter: Ally
+                CanSkip: False
+                AnimOverload: SteamHeal
+                MiscVars:
+                    AutoSelectValidTiles: True
+                PerformVars:
+                    ApplyToActors:
+                        ChangePressureLow: TargetingActor.Pressure.ToString() == 'Low' && CustomAbility.PressureChange(TargetingActor, 1)
+                StatIsBasedOnX:
+                    XP:
+                        BasedOn: Vars
+                        Vars:
+                            LowPressure: TargetingActor.Pressure.ToString() == 'Low'
+                            Value: LowPressure && 1 || 0
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredPressure: Low
+            AInfuse:
+                ShowElementPicker: True
+                Infuse: [Fire, Ice]
+                Filter: Self
+                CanSkip: False
+                SkipAnim: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    Vars: 
+                        ValidateActionHasHappened: CustomAbility.HasPerformedAction(Ability) 
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            TActive:
+                Move: 2
+                MiscVars:
+                    PrintedProperties: list("Move")
+                Filter: Self
+                AnimOverload: CastNeutral
+                ActiveBonus:
+                    Duration: Persistent
+                    XPTracker: [0]
+                    ValidAbilityType: Move
+                    Behaviour: BuffMove
+                    IsToggleBonus: True
+                    Restriction: OncePerRound
+                    ListLayoutOverride: [$FH/438_character_ability_cards_metal_mosaic_steam_core_5$, Positive_MovePlus_PressureUp]
+                    CostAbility:
+                        NullTargeting: True
+                        Target: -1
+                        Range: 0
+                        CanUndo: False
+                        CanSkip: False
+                        PerformVars:
+                            ApplyToActors:
+                                ChangePressure: CustomAbility.PressureChange(TargetingActor, 1)
+                        StatIsBasedOnX:
+                            XP:
+                                BasedOn: Vars
+                                Vars:
+                                    Value: 1
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Heal> *THeal* <size=100%><voffset=1>@THeal@"
+        - Divider:
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureOver><size=100%>$FH/438_character_ability_cards_metal_mosaic_steam_core_3$"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureLow><size=100%>$FH/438_character_ability_cards_metal_mosaic_steam_core_4$"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<sprite name=CreateMixed-FI>"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "$FH/438_character_ability_cards_metal_mosaic_steam_core_5$"

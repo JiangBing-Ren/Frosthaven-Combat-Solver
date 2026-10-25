@@ -1,0 +1,14 @@
+Parser: CampaignSection
+ID: 113.1
+Name: Tavern Upgraded (2)
+SkipNarration: True
+DontFadeIn: True
+SkipCompletedNotification: False
+Effects:
+    # - Type: AddAncientCoin
+    # - Type: RemoveEvent
+    #   Param1: WO-79
+    # - Type: RemoveEvent
+    #   Param1: SR-50   
+    - Type: ActivateEvent
+      Param1: "CustomEvent_113.1"

@@ -1,0 +1,97 @@
+Parser: AbilityCard
+Name: $FH/148_character_ability_cards_boneshaper_wailing_from_beyond_1$
+Character: BoneshaperID
+ID: 148
+Level: 8
+Initiative: 73
+Discard: [Discard,Discard]
+Prefab: 148_Boneshaper_WailingFromBeyond
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 2
+                    SquareEnhancements: 1
+                AnimOverload: RangedAttack
+                Target:
+                    Amount: 3
+                    SquareEnhancements: 1
+                Range: 4
+                MiscVars:
+                    PrintedProperties: list("Attack","Target","Range")
+                Filter: [Enemy]
+                ConditionalOverrides:
+                    AttackCO:
+                        Filter:
+                            TargetType: Enemy
+                            Vars:
+                                Boneshaper: TargetingActor
+                                ValidateEnemiesAdjacentToSummons: AllHeroSummons.Any(obj.Summoner == Boneshaper && obj.IsAdjacentTo(target))
+                        AbilityOverrides:
+                            TAttack:
+                                Conditions: Curse 
+        Consumes:
+            TCDark:
+                Elements: Dark
+                AbilityOverrides:
+                    TCDarkBuff:
+                        ParentName: TAttack
+                        Conditions: Muddle
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BHeal:
+                Heal: 
+                    Amount: 3
+                    DiamondPlusEnhancements: 1
+                Range: 3
+                Target: 1
+                MiscVars:
+                    PrintedProperties: list("Heal","Target","Range")
+                Filter: [Ally]
+        Consumes:
+            BCEarth:
+                Elements: Earth
+                AbilityOverrides:
+                    TCDarkBuff:
+                        ParentName: BHeal
+                        Conditions: Ward
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "20,20,20,20,20"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column:
+                - Row: "<mark=#6EBE4922><size=100%><sprite name=Target>*TAttack.Target* <voffset=1>@TAttack.Target@</mark>"
+            - Column:
+                - Row: "<mark=#6EBE4922><sprite name=Range> *TAttack.Range*<size=100%></mark>"
+            - Column:
+        - Row: "<size=50%> "
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCDark
+                    Text: "<size=200%><sprite name=Muddle>"
+        - Row: "<size=50%> "
+        - Row: "$FH/148_character_ability_cards_boneshaper_wailing_from_beyond_2$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "<size=50%>"
+        - Row: "$FH/148_character_ability_cards_boneshaper_wailing_from_beyond_3$"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: BCEarth
+                    Text: "<size=200%><sprite name=Ward>"
+

@@ -1,0 +1,8 @@
+Parser: CampaignSection
+ID: 34.2
+Name: Snowspeakers in Trouble
+ShowAsUnknownInCalendar: True
+SkipCompletedNotification: False
+Effects:
+    - Type: UnlockScenario
+      Param1: 40

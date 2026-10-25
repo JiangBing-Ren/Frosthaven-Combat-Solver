@@ -1,0 +1,82 @@
+Parser: AbilityCard
+Name: $FH/116_character_ability_cards_deathwalker_lashing_tendrils_1$
+Character: DeathwalkerID
+ID: 116
+Level: 8
+Initiative: 80
+Discard: [Lost,Discard]
+Prefab: 116_Deathwalker_LashingTendrils
+Data:
+    Top:
+        Abilities:
+            TRetaliateBuff:
+                AnimOverload: PowerUp
+                Filter: [Self]
+                Retaliate: 2
+                MiscVars:
+                    PrintedProperties: list("Retaliate","RetaliateRange")
+                RetaliateRange: 2
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: Retaliate
+                    IsAura: True
+                    AuraFilter: 
+                        TargetType: [Self,Ally]
+                        Vars: 
+                            ValidateIsOnShadow: CustomAbility.SteppedOnShadow(target.Tile)
+                    AuraTargeting: All
+        XP: 2
+    Bottom:
+        Abilities:
+            BMoveShadows:
+                MoveShadow:
+                Target: 2
+                Range: 
+                    Amount: 3
+                    SquareEnhancements: 1
+                AnimOverload: Shadow Manipulation  
+                SubAbilities:
+                    BDamage:
+                        TreatAsNonSubAbility: True
+                        Damage: 3
+                        MiscVars:
+                            PrintedProperties: list("Damage")
+                        Target: 1
+                        Filter: Enemy
+                        Flags: [SubAbilityPreview]
+                        AnimOverload: Debuff
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ShadowTiles: ParentAbility.FinalShadowPositions
+                                ValidateHasTiles: ShadowTiles.Count == 2
+                        Targeting: Custom
+                        TargetingVars: 
+                            ShadowTiles: ParentAbility.FinalShadowPositions
+                            FirstShadow: ShadowTiles[0]
+                            SecondShadow: ShadowTiles[1]
+                            AddValidActorsInRange: AllEnemyMonsters.Where(obj.GetDistanceTo(FirstShadow) <= 1 && obj.GetDistanceTo(SecondShadow) <= 1)
+                            AddTilesInRange: AddValidActorsInRange.Select(obj.Tile)
+        Consumes:
+            TCDark:
+                Elements: Dark
+                AbilityOverrides:
+                    TCDarkDamageBuff:
+                        ParentName: BDamage
+                        Strength: 2
+Layout:
+    Top:
+        - Active:
+            Ability: TRetaliateBuff
+            Icon: Positive_Retaliate_Range_Shadow
+            ListLayout: "$FH/116_character_ability_cards_deathwalker_lashing_tendrils_2$"
+            Layout: "$FH/116_character_ability_cards_deathwalker_lashing_tendrils_2$"
+    Bottom:
+        - Row: "$FH/116_character_ability_cards_deathwalker_lashing_tendrils_3$ @BMoveShadows.Range@"
+        - Divider: 
+        - Row: "$FH/116_character_ability_cards_deathwalker_lashing_tendrils_4$"
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCDark
+                    Text: "+2 <sprite name=Damage>"

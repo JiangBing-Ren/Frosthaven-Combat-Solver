@@ -1,0 +1,133 @@
+Parser: Perk
+ID: MetalMosaic10
+Name: FH/PERK_MetalMosaic_10_Name
+Description: FH/PERK_MetalMosaic_10_Desc
+CharacterID: MetalMosaicID
+Available: 1
+Cost: 3
+Flags: [Passive, ApplyActiveBonusesAtScenarioStart]
+Abilities:
+    TActive:
+        AutoTrigger: True
+        SkipAnim: True
+        PreventDamage: 1
+        PreventOnlyIfLethal: True
+        Filter: [Self]
+        NameKeyOverride: "FH/PERK_MetalMosaic_10_Name"
+        PreviewEffectText: "<sprite name=LostIcon>, <sprite name=RecoverIcon>, <sprite name=Stun>, <sprite name=Invisible>"
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: PreventFirstDamage
+            XPTracker: [0]
+            Hidden: True
+            ToggleIsOptional: True
+            ListLayoutOverride: [$FH/PERK_MetalMosaic_10_Desc$, FH_UI_PERKS_MetalMosaic_HardReset]
+            MiscVars:
+                MetalMosaicPerk10: True
+            Vars:
+                TriggerActiveBonusAbilities: CustomAbility.PerformActiveBonusAbility(TriggerBehaviour.ActiveBonus, thisContext)             
+            AbilityData:
+                Filter: Self
+                AutoTrigger: True
+                NullTargeting: True
+                Conditions: [Invisible,Stun]
+                PerformVars:
+                    ApplyToActors:
+                        LoseAllCards: CustomAbility.LoseAllCards(TargetingActor, obj)
+                        PerformSubAbilities: CustomAbility.StackNonInlineSubabilities(obj)
+                        EndBonuses:  CustomAbility.RemoveBonusesWithVar(TargetingActor, "MetalMosaicPerk10")
+                SubAbilities:
+                    RecoverCards:
+                        CanSkip: False
+                        AutoTrigger: True
+                        IgnoreStun: True
+                        HelpBoxTooltipLocKey: $GUI_TOOLTIP_SELECT_RECOVER_LOST_CARDS$
+                        SelectAndMoveCard:
+                            PileToMoveFrom: Lost
+                            PileToMoveTo: Discarded
+                            Amount: 4
+                        MiscVars:
+                            HelpBoxArg: 4
+                            DontPreviewDescription: true
+    TOnCardExhaust:
+        SkipAnim: True
+        AutoTrigger: True
+        Filter: [Self]
+        NameKeyOverride: "FH/PERK_MetalMosaic_10_Name"
+        PreviewEffectText: "<sprite name=LostIcon>, <sprite name=RecoverIcon>, <sprite name=Stun>, <sprite name=Invisible>"
+        AddActiveBonus:
+            Filter: Self
+            AutoTrigger: True
+            NullTargeting: True
+            Conditions: [Invisible,Stun]
+            PerformVars:
+                ApplyToActors:
+                    LoseAllCards: CustomAbility.LoseAllCards(TargetingActor, obj)
+                    EndBonuses:  CustomAbility.RemoveBonusesWithVar(TargetingActor, "MetalMosaicPerk10")
+            SubAbilities:
+                RecoverCards:
+                    CanSkip: False
+                    AutoTrigger: True
+                    IgnoreStun: True
+                    HelpBoxTooltipLocKey: $GUI_TOOLTIP_SELECT_RECOVER_LOST_CARDS$
+                    SelectAndMoveCard:
+                        PileToMoveFrom: Lost
+                        PileToMoveTo: Discarded
+                        Amount: 4
+                    MiscVars:
+                        HelpBoxArg: 4
+                        DontPreviewDescription: true
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: StartRoundIfExhausted
+            XPTracker: [0]
+            Hidden: True
+            IsToggleBonus: True
+            ListLayoutOverride: [$FH/PERK_MetalMosaic_10_Desc$, FH_UI_PERKS_MetalMosaic_HardReset]
+            MiscVars:
+                MetalMosaicPerk10: True
+                OverrideToggleHelpTextKey: "'PERK_MetalMosaic_10_RoundStartHelpText'"
+            Vars:
+                ValidateSelf: TriggerTarget == ActiveBonus.Actor
+    TOnTargetedByKillAbility:
+        SkipAnim: True
+        AutoTrigger: True
+        Filter: [Self]
+        NameKeyOverride: "FH/PERK_MetalMosaic_10_Name"
+        PreviewEffectText: "<sprite name=LostIcon>, <sprite name=RecoverIcon>, <sprite name=Stun>, <sprite name=Invisible>"
+        AddActiveBonus:
+            Filter: Self
+            AutoTrigger: True
+            NullTargeting: True
+            Conditions: [Invisible,Stun]
+            PerformVars:
+                ApplyToActors:
+                    LoseAllCards: CustomAbility.LoseAllCards(TargetingActor, obj)
+                    PerformSubAbilities: CustomAbility.StackNonInlineSubabilities(obj)
+                    EndBonuses:  CustomAbility.RemoveBonusesWithVar(TargetingActor, "MetalMosaicPerk10")
+            SubAbilities:
+                RecoverCards:
+                    CanSkip: False
+                    AutoTrigger: True
+                    IgnoreStun: True
+                    HelpBoxTooltipLocKey: $GUI_TOOLTIP_SELECT_RECOVER_LOST_CARDS$
+                    SelectAndMoveCard:
+                        PileToMoveFrom: Lost
+                        PileToMoveTo: Discarded
+                        Amount: 4
+                    MiscVars:
+                        HelpBoxArg: 4
+                        DontPreviewDescription: true
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: GenericPreventKillAbility
+            XPTracker: [0]
+            Hidden: True
+            IsToggleBonus: True
+            ListLayoutOverride: [$FH/PERK_MetalMosaic_10_Desc$, FH_UI_PERKS_MetalMosaic_HardReset]
+            MiscVars:
+                MetalMosaicPerk10: True
+                OverrideToggleHelpTextKey: "'PERK_MetalMosaic_10_RoundStartHelpText'"
+            Vars:
+                ValidateSelf: TriggerTarget == ActiveBonus.Actor
+

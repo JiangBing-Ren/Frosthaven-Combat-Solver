@@ -1,0 +1,12 @@
+Parser: FHItem
+ID: 60
+ScenarioItemID: 1295
+Name: Cloak of Many Pockets
+Quantity: 2
+Type: Body
+CraftingCost:
+    Hide: 3
+RequiredCraftingItemIDs: [ 132 ]
+Effects:
+    - Type: IncreaseMaxSmallItem 
+      Param1: 2

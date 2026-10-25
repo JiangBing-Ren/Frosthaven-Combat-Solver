@@ -1,0 +1,15 @@
+Parser: FHScenario
+ID: 47
+Name: Carrion Ridge
+LevelID: FS_047_Carrion_Ridge
+Chain: Algox1
+Location: RadiantForest
+Difficulty: 1
+Conclusions:
+    - Effects:
+        - Type: AllCharactersGainGold
+          Param1: 10
+        - Type: GainLumber
+          Param1: 2
+        - Type: UnlockLinkedScenario
+          Param1: 56

@@ -1,0 +1,138 @@
+Parser: AbilityCard
+Name: $FH/421_character_ability_cards_metal_mosaic_steel_piston_1$
+Character: MetalMosaicID
+ID: 421
+Level: 1
+Initiative: 40
+Discard: [Discard,Discard]
+Prefab: 421_MetalMosaic_SteelPiston
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Filter: Enemy
+            TActive:
+                Attack: 2
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Filter: Self
+                AnimOverload: CastNeutral
+                ActiveBonus:
+                    Duration: Persistent
+                    XPTracker: [0]
+                    ValidAbilityType: Attack
+                    Behaviour: BuffSingleAttack
+                    IsSingleTargetBonus: True
+                    IsToggleBonus: True
+                    Restriction: OncePerRound
+                    ListLayoutOverride: [$FH/421_character_ability_cards_metal_mosaic_steel_piston_2$, Positive_AttackPlus_PressureDown]
+                    MiscVars:
+                        TriggerAbilityAfterAttack: True
+                   # this is triggered after an attack has finished while this was toggled on
+                    AbilityData:
+                        AutoTrigger: True
+                        SkipAnim: True
+                        NullTargeting: True
+                        Target: -1
+                        Range: 0
+                        PerformVars:
+                            ApplyToActors:
+                                ChangePressure: CustomAbility.PressureChange(TargetingActor, -1)
+                        StatIsBasedOnX:
+                            XP:
+                                BasedOn: Vars
+                                Vars:
+                                    Value: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BAttackOver:
+                Attack: 3
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Filter: Enemy
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredPressure: Over
+                CanSkip: False
+                StatIsBasedOnX:
+                    XP:
+                        BasedOn: Vars
+                        Vars:
+                            OverPressure: TargetingActor.Pressure.ToString() == 'Over'
+                            Value: OverPressure && 1 || 0
+                SubAbilities:
+                    BPressureChangeOver:
+                        Null: True
+                        SkipAnim: True
+                        IgnoreStun: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Over
+                        PerformVars:
+                            NullBegin:
+                                ChangePressure: CustomAbility.PressureChange(TargetingActor, -2)
+                    SelfDamage:
+                        Damage: 1
+                        MiscVars:
+                            PrintedProperties: list("Damage")
+                        AutoTrigger: True
+                        Filter: Self
+                        SkipAnim: True
+                        MiscVars:
+                            MetalMosaicSelfDamage: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Over
+            BAttackHigh:
+                Attack: 2
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Filter: Enemy
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredPressure: High
+                CanSkip: False
+                StatIsBasedOnX:
+                    XP:
+                        BasedOn: Vars
+                        Vars:
+                            HighPressure: TargetingActor.Pressure.ToString() == 'High'
+                            Value: HighPressure && 1 || 0
+                SubAbilities:
+                    BPressureChangeHigh:
+                        Null: True
+                        SkipAnim: True
+                        IgnoreStun: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: High
+                        PerformVars:
+                            NullBegin:
+                                ChangePressure: CustomAbility.PressureChange(TargetingActor, -1)
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Divider:
+        - Row: "$FH/421_character_ability_cards_metal_mosaic_steel_piston_2$"
+    Bottom:
+
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureOver><size=100%> <sprite name=Attack> 3, <sprite name=XP1>, <sprite name=MMSelfDamage>, <sprite name=MMLosePressure><sprite name=MMLosePressure>"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureHigh><size=100%> <sprite name=Attack> 2, <sprite name=XP1>, <sprite name=MMLosePressure>"

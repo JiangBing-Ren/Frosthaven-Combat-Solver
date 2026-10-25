@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 240
+ScenarioItemID: 1250
+Name: Demon's Gem
+Quantity: 1
+GoldCost: 15
+Type: Small
+IsNewCharacterItem: False

@@ -1,0 +1,29 @@
+Parser: HeroSummon
+ID: TrappingUnitID
+LocKey: $FH/407_character_ability_cards_hive_net_dispersal_2$
+Model: TrappingUnit
+Health:
+    Amount: 7
+    SquareEnhancements: 1
+Move:
+    Amount: 3
+Attack:
+    Amount: 2
+    SquareEnhancements: 1
+OnAttackConditions: Immobilize
+OnSummonAbilities:
+    AShield:
+        Filter: Self
+        AutoTrigger: True
+        Shield: 0
+        StatIsBasedOnX:
+            Strength:
+                BasedOn: Vars
+                Vars:
+                    Value: TargetingActor?.Tokens?.CountNegativeConditions()
+        Filter: Self
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: BuffShield
+            ValidAbilityType: Attack
+            ListLayoutOverride: [$FH/407_character_ability_cards_hive_net_dispersal_3$, Positive_DamagePrevent]

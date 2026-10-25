@@ -1,0 +1,68 @@
+Parser: AbilityCard
+Name: $FH/367_character_ability_cards_frozen_fist_ice_blast_1$
+Character: FrozenFistID
+ID: 367
+Level: 1
+ProgressionOrder: 7
+Initiative: 32
+Discard: [Lost,Discard]
+Prefab: 367_FrozenFist_IceBlast
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 5
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                MultiPassAttack: False
+                Target: 99
+                Range: 1
+                Conditions: [Immobilize]
+                AnimOverload: Spikes
+                MiscVars:
+                    AutoSelectValidTiles: True
+        Infuse: [Ice, Earth]
+        XP: 2
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 4
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BConsume:
+                Consume:
+                    Elements: [Ice]
+                    Abilities:
+                        TWound:
+                            Wound: True
+                            Range: 1
+                            MiscVars:
+                                PrintedProperties: list("Range")
+                            Target: 1
+                            Filter: [Enemy]
+                            AnimOverload: Attack2
+                PreviewEffectText: "<sprite name=Wound> <sprite name=Range>1"
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "10,40,40,10"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack*<size=100%><voffset=1>@TAttack@"
+            - Column:
+                - AddedEffect: "$FH/367_character_ability_cards_frozen_fist_ice_blast_2$"
+            - Column:
+        - Row: "<size=20%> "
+        - Row:
+            - MandatoryTrigger:
+                Layout:
+                    - Infuse: [Ice, Earth]
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove*<size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Conditional:
+            Layout:
+                - Row: "<b><size=130%><sprite name=ConsumeIce>: <size=100%><sprite name=Wound> <sprite name=Range>1"

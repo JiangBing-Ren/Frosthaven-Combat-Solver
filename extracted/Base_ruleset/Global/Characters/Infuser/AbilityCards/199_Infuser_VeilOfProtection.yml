@@ -1,0 +1,139 @@
+Parser: AbilityCard
+Name: $FH/199_character_ability_cards_infuser_veil_of_protection_1$
+Character: InfuserID
+ID: 199
+Level: 2
+Initiative: 47
+Discard: [Discard,Lost]
+Prefab: 199_Infuser_VeilOfProtection
+Data:
+    Top:
+        Abilities:
+            THeal:
+                Heal: 5
+                Range: 
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Heal","Range")
+                Target: 1
+                Filter: [Self, Ally]
+                AnimOverload: RangedCast 
+        Consumes:
+            TCHeal:
+                PreviewEffectId: M2Heal
+                AbilityOverrides:
+                    TCHealBuff:
+                        ParentName: THeal
+                        Strength: -2
+                        SubAbilities:
+                            CSubInfuse:
+                                Infuse: Earth
+                                SkipAnim: True
+                                XP: 1
+    Bottom:
+        Abilities:
+            ConsumeAbility:
+                SkipAnim: True
+                Consume: 
+                    Elements: [Earth,Dark]
+                    Abilities:
+                        CNull:
+                            Null: True
+                            AutoTrigger: True
+                            SkipAnim: True
+            BPassive1:
+                AllowOverheal: 3
+                AutoTrigger: True
+                Filter: Self
+                AnimOverload: GatherElements
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Consume]
+                Vars:
+                    ResetInfusionTurnRestriction: CustomAbility.ResetInfusionTurnRestriction()
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: AddAccumulativeOverhealAndHeal
+                    ListLayoutOverride: [$FH/199_character_ability_cards_infuser_veil_of_protection_2$, Positive_HealthPlus]
+                    IsAura: True
+                    AuraFilter: [Self, OwnSummon]
+                    AuraTargeting: All
+                    MiscVars:
+                        InfusionBonus: True
+            BPassive2:
+                ImmunityTo: [Curse]
+                AutoTrigger: True
+                Filter: Self
+                SkipAnim: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Consume]
+                ActiveBonus:
+                    Duration: Persistent
+                    IsAura: True
+                    AuraFilter: [Self, OwnSummon]
+                    AuraTargeting: All
+                    ListLayoutOverride: [$FH/199_character_ability_cards_infuser_veil_of_protection_2$, Positive_CurseImmune]
+            BActive:
+                AddActiveBonus:
+                    Filter:
+                        TargetType: [Self,OwnSummon]
+                        PlayerClasses: [InfuserID]
+                        HeroSummonClasses: [SpiritboundFalchionID]
+                    Target: 1
+                    Targeting: All
+                    IgnoreLOS: True
+                    SkipAnim: True
+                    MiscVars:
+                        TreatThisAsParent: True
+                    PerformVars:
+                        ActorIsSelectingTargetingFocus:
+                            AutoSelSelf: CustomAbility.AutoControlSelfIfOnlyValidTarget(obj)
+                    ControlActor:
+                        ControlDurationType: ControlForOneAction
+                        Abilities:
+                            InfusedWard:
+                                TreatAsNonSubAbility: True
+                                Ward: True
+                                Filter: Self
+                                CanUndo: False
+                                Target: 1
+                Filter: Self
+                AutoTrigger: True
+                SkipAnim: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Consume]
+                MiscVars:
+                    Infusion: True
+                ActiveBonus:
+                    Duration: Persistent
+                    ListLayoutOverride: ["$185_character_ability_cards_infuser_boon_of_the_tempest_4$ <sprite name=Ward> $target_self$", Positive_WardSelf_Infusion]
+                    Behaviour: DuringTurnAbility
+                    Restriction: OncePerTurn
+                    TriggerOnCaster: True
+                    IsToggleBonus: True
+                    MiscVars:
+                        OverrideIcon: "'VeilOfProtectionBottomInfusion'"
+                    Requirements:
+                        Vars:
+                            ValidateHasPlayedInfusion: CustomAbility.HasPlayedInfusion(Actor)
+        XP: 2
+
+Layout:
+    Top:
+        - Row: "<b><size=100%><sprite name=Heal> *THeal* <size=100%><voffset=1>@THeal@"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCHeal
+                    Text: "-2<sprite name=Heal>: <sprite name=CreateEarth>, <sprite name=XP>"
+    Bottom:
+        - Row: "$FH/199_character_ability_cards_infuser_veil_of_protection_4$"
+        - Row: "$FH/199_character_ability_cards_infuser_veil_of_protection_2$"
+        - Row: "$FH/199_character_ability_cards_infuser_veil_of_protection_3$"

@@ -1,0 +1,7 @@
+Parser: Perk
+ID: Trapper07
+Name: FH/PERK_Trapper_07_Name
+Description: FH/PERK_Trapper_07_Desc
+CharacterID: TrapperID
+Available: 1
+Flags: [Passive, IgnoreNegativeScenarioEffects]

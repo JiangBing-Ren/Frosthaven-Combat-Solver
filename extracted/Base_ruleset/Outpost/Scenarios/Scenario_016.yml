@@ -1,0 +1,17 @@
+Parser: FHScenario
+ID: 16
+Name: Derelict Elevator
+LevelID: FS_016_Derelict_Elevator
+Chain: Unfettered
+Location: CrystalFields
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: AllCharactersGainExperience
+          Param1: 5
+        - Type: GainInspiration
+          Param1: 1
+        - Type: UnlockLinkedScenario
+          Param1: 25
+        - Type: UnlockLinkedScenario
+          Param1: 26

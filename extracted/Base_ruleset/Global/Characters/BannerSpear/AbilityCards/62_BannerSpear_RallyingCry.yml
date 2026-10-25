@@ -1,0 +1,44 @@
+Parser: AbilityCard
+Name: $FH/062_character_ability_cards_banner_spear_rallying_cry_1$
+#CustomImage: KRO_BANNER_SPEAR_AbilityCards_RallyingCry
+Character: BannerSpearID
+ID: 62
+Level: 1
+Initiative: 71
+Discard: [Discard,Lost]
+Prefab: 62_Bannerspear_RallyingCry
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Conditions: Disarm
+                AreaEffect: "0,0,G|2,0,R|3,1,B|4,0,E"                
+                AreaEffectLayoutOverride: "0,0,G|1,1,R|0,2,B|2,2,E"
+                MultiPassAttack: False
+        XP: 1
+    Bottom:
+        Abilities:
+            BSummon:
+                Summon: BannerOfStrengthID
+                AnimOverload: Summon
+        XP: 2
+Layout:
+    Top:
+        - ColumnWidths: "60,40"
+        - Column:
+            - Row: "<b><size=130%><sprite name=Attack> *TAttack* <sprite name=Disarm>"
+        - Column:
+            - Row: "£Area£"
+    Bottom:
+        - Active:
+            Ability: "BSummon"
+            Icon: "Summon"
+            Layout:
+                - Summon:
+                    Ability: BSummon
+                    SummonName: $FH/062_character_ability_cards_banner_spear_rallying_cry_2$
+                    SpecialText: "$FH/062_character_ability_cards_banner_spear_rallying_cry_3$"

@@ -1,0 +1,12 @@
+Parser: CampaignSection
+ID: 193.1
+Name: Enhancer Built
+SkipCompletedNotification: False
+Effects:
+    - Type: EnableEvent
+      Param1: SO-63
+    - Type: EnableEvent
+      Param1: WR-44
+    - Type: AddCalendarCampaignSection
+      Param1: 118.3
+      Param2: 3

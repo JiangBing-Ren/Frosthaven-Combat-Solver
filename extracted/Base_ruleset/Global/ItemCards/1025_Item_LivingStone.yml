@@ -1,0 +1,48 @@
+Parser: ItemCard
+ID: 1025
+StringID: LivingStoneID
+Name: $FH/1025_item_cards_living_stone_1$
+Art: Living Stone
+TotalInGame: 2
+Cost: 30
+Slot: SmallItem
+Rarity: Rare
+Usage: Consumed
+Trigger: PassiveEffect
+Data: 
+    Abilities:
+        APreventDamage:
+            AutoTrigger: True
+            Filter: Self
+            PreventDamage: 4
+            NameKeyOverride: "FH/1025_item_cards_living_stone_1"
+            ActiveBonus:
+                Duration: Persistent
+                XPTracker: [0]
+                Behaviour: PreventPartialDamage
+                ToggleIsOptional: True
+                Requirements:
+                    Vars:
+                        DamageData: GameState.CurrentDamageData
+                        ValidateHasDamage: DamageData != null
+                        DamageAmount: DamageData.DamageSourceStrength
+                        ValidateDamageAmount: DamageAmount <= 4
+                Vars:
+                    DamageAmount: GameState.CurrentDamageData.DamageSourceStrength
+                    PerformActiveBonusAbility: CustomAbility.PerformActiveBonusAbility(TriggerBehaviour.ActiveBonus)
+                AbilityData:
+                    AutoTrigger: True
+                    Heal: 0
+                    Filter: Self
+                    TreatAsNonSubAbility: True
+                    StatIsBasedOnX:
+                        Strength:
+                            BasedOn: Vars
+                            Vars:
+                                Value: DamageAmount
+Layout: 
+    - Active:
+        Ability: APreventDamage
+        ListLayout: $FH/1025_item_cards_living_stone_2$
+        Layout: $FH/1025_item_cards_living_stone_2$
+        Icon: Positive_Shield

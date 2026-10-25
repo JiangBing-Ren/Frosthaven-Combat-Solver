@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 82
+ScenarioItemID: 1029
+Name: Mechanical Cube
+Quantity: 2
+Type: Small
+CraftingCost:
+    Metal: 2
+RequiredCraftingItemIDs: [ 112 ]

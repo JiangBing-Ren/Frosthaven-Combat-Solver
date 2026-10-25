@@ -1,0 +1,20 @@
+Parser: EnemyCard
+ID: 727
+Name: $Monster_Ability_727_DeepTerror_DisruptiveFrenzy$
+Initiative: 75
+Shuffle: False
+Data:
+    Abilities:
+        Attack1:
+            Attack: -2
+            Conditions: Disarm
+            Filter: Enemy
+        Attack2:
+            Attack: -1
+            Range: 3
+            RangeIsBase: True
+            Target: 2
+            TargetIsBase: True
+            Filter: Enemy
+            AnimOverload: RangedAttack
+            Conditions: Impair

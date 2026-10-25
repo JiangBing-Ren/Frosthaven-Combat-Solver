@@ -1,0 +1,16 @@
+Parser: EnemyCard
+ID: 753
+Name: $Monster_Ability_753_Guard_PsychUp$
+Initiative: 55
+Shuffle: True
+Data:
+    Abilities: 
+        Move1:
+            Move: -1
+        Attack1:
+            Attack: 0
+            Filter: Enemy
+        Strengthen1:
+            Strengthen: True
+            Filter: Self
+            AnimOverload: PowerUp

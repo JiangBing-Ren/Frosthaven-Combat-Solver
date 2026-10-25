@@ -1,0 +1,22 @@
+Parser: ItemCard
+ID: 1244
+StringID: OozeVialID
+Name: $FH/1244_item_cards_ooze_vial_1$
+Art: Ooze Vial
+TotalInGame: 1
+Cost: 30
+Slot: SmallItem
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data:    
+    Abilities:
+        TTrap:
+            Trap:
+                TrapName: Trap
+                Damage: 0           
+                Conditions: [Poison,Immobilize]
+            Range: 2
+            Target: 1
+Layout: 
+    - Row: "$FH/1244_item_cards_ooze_vial_2$"

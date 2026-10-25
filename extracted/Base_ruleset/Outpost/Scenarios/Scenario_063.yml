@@ -1,0 +1,13 @@
+Parser: FHScenario
+ID: 63
+Name: The Savvas Seal
+LevelID: FS_063_The_Savvas_Seal
+Chain: PuzzleBook
+Location: CopperneckMountaions
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: AddProsperity
+          Param1: 2
+        - Type: UnlockMandatoryScenario
+          Param1: 64

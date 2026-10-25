@@ -1,0 +1,44 @@
+Parser: ItemCard
+ID: 926
+StringID: SturdyGreavesID
+Name: $FH/0926_item_cards_sturdy_greaves_1$
+Art: Sturdy Greaves
+TotalInGame: 2
+Cost: 0
+Slot: Legs 
+Rarity: Rare
+Usage: Spent
+Trigger: AtStartOfTurn
+Data: 
+    ItemRequirements:
+        Vars:
+            ValidateIsOwner: AppliedActor == ItemOwner
+    Abilities:
+        TActive:
+            AutoTrigger: True
+            Move: -2
+            Filter: Self
+            ActiveBonus:
+                Behaviour: BuffMove
+                Duration: Round
+                MiscVars:
+                    IgnoreImpair: True
+            SubAbilities:
+                TShield:
+                    AutoTrigger: True
+                    Filter: Self
+                    Shield: 1
+                    ActiveBonus:
+                        Duration: Round
+                        ListLayoutOverride: ["<sprite name=Shield> *TShield*", Positive_Shield_Item]
+                        MiscVars:
+                            IgnoreImpair: True
+    AddModifiers:
+        - [AMC_Basic_M1, 2]
+Layout: 
+    - Active:
+        Ability: TActive
+        ListLayout: "$FH/0926_item_cards_sturdy_greaves_2$"
+        Layout: "$FH/0926_item_cards_sturdy_greaves_2$"
+        Icon: "Negative_MoveMinus_Item"
+    - Row: "<size=50%> "

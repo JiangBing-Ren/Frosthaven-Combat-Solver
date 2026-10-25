@@ -1,0 +1,7 @@
+Parser: AttackModifier
+Name: AMC_FireAir_P1
+MathModifier: "+1"
+Abilities:
+    InfuseAbility:
+        Infuse: [Fire, Air]
+        ShowElementPicker: True

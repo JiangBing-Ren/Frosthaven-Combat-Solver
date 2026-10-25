@@ -1,0 +1,66 @@
+Parser: AbilityCard
+Name: $FH/327_character_ability_cards_pain_conduit_wracked_with_pain_1$
+Character: PainConduitID
+ID: 327
+Level: 8
+Initiative: 22
+Discard: [Discard,Discard]
+Prefab: 327_PainConduit_WrackedWithPain
+Data:
+    Top:
+        Abilities:
+            TWoundStunBrittle: 
+                Wound: True
+                Conditions: Stun
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Filter: Enemy
+                AnimOverload: RangedAttack
+                ConditionalOverrides:
+                    TAttackCO:
+                        Self: True
+                        XP: 1
+                        Requirements:
+                            Vars:
+                                HalfHealthRounded: Actor.MaxHealthHalfRoundedUp
+                                ValidateBelowHalfHealth: Actor.Health < HalfHealthRounded
+                        AbilityOverrides:
+                            TLessThanHalfHealth:
+                                Conditions: Brittle
+    Bottom:
+        Abilities:
+            BHeal:
+                Heal: 
+                    Amount: 5
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self
+                AnimOverload: Heal
+        Consumes:
+            BCFire:
+                Elements: Fire
+                XP: 1
+                AbilityOverrides:
+                    BCFireHealBuff:
+                        ParentName: BHeal
+                        Strength: 2
+Layout:
+    Top:
+        - Row: "<size=130%><sprite name=Wound>, <sprite name=Stun> <mark=#80919922><size=100%><sprite name=Range>*TWoundStunBrittle.Range*</mark>"
+        - Row: "$FH/327_character_ability_cards_pain_conduit_wracked_with_pain_2$"
+    Bottom:
+        - Row:
+            - ColumnWidths: "20,30,30"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Heal> *BHeal* <size=100%><voffset=1>@BHeal@"
+            - Column:
+                - Row: "<mark=#80919922>$Self$</mark>"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: BCFire
+                    Text: "+2 <sprite name=Heal>, <sprite name=XP1>"

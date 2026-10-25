@@ -1,0 +1,35 @@
+Parser: ItemCard
+ID: 1017
+StringID: HornOfCommandID
+Name: $FH/1017_item_cards_horn_of_command_1$
+Art: Horn of Command
+TotalInGame: 2
+Cost: 0
+Slot: OneHand
+Rarity: Rare
+Usage: Spent
+Trigger: BeforeStartOfTurn
+Data:    
+    # when summon starts turn
+    ItemRequirements:
+        Vars:
+            ValidateOwnerMoved: AppliedActor.Summoner == ItemOwner
+            ValidateSummonIsntControllable: AppliedActor.PlayerControlled == false
+            ValidateCanUseItems: AppliedActor.Summoner.Tokens.HasKey(CCondition.ENegativeCondition.Impair) == false && AppliedActor.Summoner.Tokens.HasKey(CCondition.ENegativeCondition.Stun) == false
+            ValidateCanBeControlled: AppliedActor.IsPassive == false
+    Abilities:
+        TControlSummon:
+            ControlSummonTurn: true
+            Targeting: Custom
+            TargetingVars:
+                AddValidActorInRange: AppliedActor
+            ActiveBonus:
+                Duration: Turn
+                Hidden: True
+
+Layout: 
+    - Active:
+        Ability: TControlSummon
+        ListLayout: "$FH/1017_item_cards_horn_of_command_2$"
+        Layout: "$FH/1017_item_cards_horn_of_command_2$"
+        Icon: "AA_Mind_Control"

@@ -1,0 +1,51 @@
+Parser: AbilityCard
+Name: $FH/504_character_ability_cards_crashing_tide_low_tide_1$
+Character: CrashingTideID
+ID: 504
+Level: 9
+ProgressionOrder: 504
+Initiative: 10
+Discard: [Permanently Lost,Discard]
+Prefab: 504_CrashingTide_LowTide
+Data:
+    Top:
+        Abilities:
+            TPlayLostTides:
+                SelectAndPlayCard: 
+                    CardPile: Lost
+                    Amount: 2
+                AnimOverload: Tide
+                MiscVars:
+                    IsActionValid: Action.Abilities.Any(CustomAbility.ActiveBonusDataHasFlag(obj.ActiveBonusData, AbilityData.EActiveBonusFlag.Tide))
+                    DontCancelTidesOnRest: True
+                    MoveCardsToLostPile: True
+        XP: 2
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 4
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BShield:
+                Shield: 2
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                Filter: [Self]
+                ActiveBonus:
+                    Duration: Round
+                    ListLayoutOverride: [<sprite name=Shield> *BShield*, Positive_Shield]
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    Vars:
+                        ValidateAnyTides: CustomAbility.GetTideActiveBonuses(TargetingActor).Count <= 2
+Layout:
+    Top:
+        - Row: "$FH/504_character_ability_cards_crashing_tide_low_tide_2$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "$FH/504_character_ability_cards_crashing_tide_low_tide_3$"
+        - Row: "<size=50%> "
+        - Row: "<b><size=130%><sprite name=Shield> 2"

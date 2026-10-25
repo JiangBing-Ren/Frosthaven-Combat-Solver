@@ -1,0 +1,7 @@
+Parser: Perk
+ID: Snowdancer03
+Name: FH/PERK_Snowdancer_03_Name
+Description: FH/PERK_Snowdancer_03_Desc
+CharacterID: SnowdancerID
+Available: 2
+CardsToAdd: [AMC_Ice_Air_P1, AMC_Ice_Air_P1]

@@ -1,0 +1,27 @@
+Parser: FHScenario
+ID: 55
+Name: Change of Heart
+LevelID: FS_055_Change_Of_Heart
+Chain: Algox2
+Location: CopperneckMountaions
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: GainMorale
+          Param1: 2
+        - Type: AddProsperity
+          Param1: 2
+        - Type: EnableEvent
+          Param1: WO-66
+        - Type: EnableEvent
+          Param1: WO-67
+        - Type: AddTownGuardMod
+          Param1: +50
+        - Type: UnlockClassChoise
+          Param1: FrozenFistID
+          Param2: SnowdancerID
+        - Type: GainCampaignSticker
+          Param1: FriendOfTheFrostspeakers
+        - Type: RemoveAlgoxEvents
+        - Type: FS55ConclusionEffect
+          Param1: 5

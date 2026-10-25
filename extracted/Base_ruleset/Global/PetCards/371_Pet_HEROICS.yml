@@ -1,0 +1,56 @@
+Parser: PetCard
+ID: 371
+StringID: HEROICSPETID
+Name: $FH/371_pet_cards_HEROICS_1$
+Description: $FH/371_pet_cards_HEROICS_2$
+Art: HE-RO-IC-S
+Usage: Consumed
+Trigger: DuringOwnTurn
+Cost: 0
+Data: 
+    Abilities:
+        # fake ability first, in order to give us something to undo before triggering the in-order abilities
+        AChooseToControl:
+            NullTargeting:
+            Filter: Self
+            Range: -1
+            Target: 1
+            AnimOverload: UseItem
+            PerformVars:
+                ActorIsApplying: 
+                    VFX: TargetingActor.PlayVFX("PetHEROICSEffect")
+            PreviewEffectText: ""
+            SubAbilities:
+                AGrantAttack:
+                    PreviewEffectText: ""
+                    TreatAsNonSubAbility: True
+                    ControlActor:
+                        Abilities:
+                            AChooseAttackMoveOrHealSelf:       
+                                Filter: Self
+                                CanUndo: False
+                                HelpBoxTooltipLocKey: "$FH/371_pet_cards_HEROICS_3$"
+                                Choose:
+                                    Abilities:
+                                        AAttack:
+                                            PreviewEffectText: "<sprite name=Attack>1"
+                                            Attack: 1
+                                        AMove:
+                                            PreviewEffectText: "<sprite name=Move>1"
+                                            Move: 1
+                                        AHealSelf:
+                                            PreviewEffectText: "$FH/371_pet_cards_HEROICS_4$"
+                                            Heal: 1
+                                            Filter: Self
+                                            AutoTrigger: True
+                    Target: -1
+                    Targeting: Custom
+                    TargetingVars:
+                        AddValidActorsInRange: AllPlayers.Where(!obj.IsDead).OrderBy(obj.Initiative())
+                    Filter: [Ally,Self]
+                    SkipAnim: True
+                    AutoTrigger: True
+                    MiscVars:
+                        DontPreviewDescription: True
+Layout: 
+    - Row: "$FH/371_pet_cards_HEROICS_2$"

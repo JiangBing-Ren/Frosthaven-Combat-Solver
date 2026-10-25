@@ -1,0 +1,28 @@
+Parser: EnemyCard
+ID: 613
+Name: $Monster_Ability_613_FlamingBladespinner_DefensiveBlades$
+Initiative: 12
+Shuffle: False
+Data:
+    Abilities:
+      Shield1:
+        Shield: 2
+        Filter: Self
+        ActiveBonus:
+            Duration: Round
+            ListLayoutOverride: ["<sprite name=Shield> *Shield1*", Positive_Shield]
+        AnimOverload: PowerUp
+      Null1:
+        Null: True
+    Consumes:
+      CFire1:
+        Elements: Fire
+        Abilities:
+          FireDamage1:
+            ParentName: Null1
+            Damage: 2
+            Filter: Enemy
+            Range: 2
+            Target: -1
+            TargetIsBase: True
+            AnimOverload: AOEAttack

@@ -1,0 +1,86 @@
+Parser: AbilityCard
+Name: $FH/285_character_ability_cards_trapper_unavoidable_outcome_1$
+Character: TrapperID
+ID: 285
+Level: 2
+Initiative: 45
+Discard: [Discard,Discard]
+Prefab: 285_Trapper_UnavoidableOutcome
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                RangeIsBase: True
+                AnimOverload: RangedAttack
+            TSelectTrap:
+                NullHex: True
+                HelpBoxTooltipLocKey: $FH/285_character_ability_cards_trapper_unavoidable_outcome_3$
+                Vars:
+                    AttackAbility: CustomAbility.FindAbilityInPhaseByName("TAttack")
+                    Enemy: AttackAbility?.ActorsTargeted?.First
+                    ValidateEnemy: "!!Enemy"
+                    ValidateEnemyIsAlive: Enemy.IsDead == False
+                    EnemyTiles: Enemy.AttachedProp?.PathingBlockers != null && CustomAbility.GetAdjacentTiles(Enemy.AttachedProp?.PathingBlockers?.Select(obj.ToPoint()).Select(ScenarioManager.GetTile(obj))).Where(Trap)
+                    TrapTilesAroundEnemy: EnemyTiles || CustomAbility.GetAdjacentTiles(Enemy.Tile).Where(Trap)
+                    ValidateTrapsAroundEnemy: TrapTilesAroundEnemy.Count > 0
+                MiscVars:
+                    PreviewSpringTrap: CustomAbility.TryGetFirstTile(TilesSelected)?.Trap
+                    PreviewSpringTrapOn: Enemy
+                Targeting: Custom
+                TargetingVars:
+                    AddTilesInRange: TrapTilesAroundEnemy
+                AnimOverload: FishingRod
+                PerformVars:
+                    AnimateCharacter:
+                        SelectedTrap: CustomAbility.TryGetFirstTile(TilesSelected)?.Trap
+                        SpringTrap: SelectedTrap != null && SelectedTrap.ForceActivate(Enemy)
+    Bottom:
+        Abilities:
+            BSpringTrapOnEnemyMove:
+                AddActiveBonus:
+                    NullHex: True
+                    HelpBoxTooltipLocKey: $FH/285_character_ability_cards_trapper_unavoidable_outcome_3$
+                    Targeting: Custom
+                    TargetingVars:
+                        AddTilesInRange: TrapTilesAroundEnemy
+                    AnimOverload: FishingRod
+                    PerformVars:
+                        AnimateCharacter:
+                            SelectedTrap: TilesSelected[0].Trap
+                            SpringTrap: SelectedTrap.ForceActivate(Enemy)
+                AnimOverload: PowerUpStrong
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: DuringActionAbilityOnFinishedMovement
+                    TriggerOnCaster: True
+                    Vars:
+                        Enemy: TriggerActor
+                        ValidateTriggerActor: AppliesTo(Enemy) #TriggerActor.IsEnemyMonsterType
+                        TrapTilesAroundEnemy: CustomAbility.GetAdjacentTiles(Enemy.Tile).Where(Trap)
+                        ValidateTrapsAroundEnemy: TrapTilesAroundEnemy.Count > 0
+                    XPTracker: [0]
+                    IsAura: True
+                    HiddenWhenAura: True
+                    AuraFilter: Enemy
+                    AuraTargeting: All
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "10,40,40,10"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column: " <sprite name=Range>*TAttack.Range* @TAttack.Range@"
+            - Column:
+        - Row: "$FH/285_character_ability_cards_trapper_unavoidable_outcome_2$"
+    Bottom:
+        - Active:
+              Ability: BSpringTrapOnEnemyMove
+              ListLayout: "$FH/285_character_ability_cards_trapper_unavoidable_outcome_4$"
+              Layout: "$FH/285_character_ability_cards_trapper_unavoidable_outcome_4$"
+              Icon: "Positive_Trap_Enemy_Move"

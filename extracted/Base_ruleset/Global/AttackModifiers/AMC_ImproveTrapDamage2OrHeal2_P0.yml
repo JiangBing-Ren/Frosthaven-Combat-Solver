@@ -1,0 +1,51 @@
+Parser: AttackModifier
+Name: AMC_ImproveTrapDamage2OrHeal2_P0
+MathModifier: "+0"
+Abilities:
+    ImproveAbility:
+        NullHex: true
+        HelpBoxTooltipLocKey: $FH/Perk_Trapper_04_ChooseHelpBox$
+        Range: 2
+        RangeIsBase: true
+        TileFilter: Trap
+        SkipAnim: True
+        PerformVars:
+            AnimateCharacter:
+                SelectedTrap: TargetingActor.SetTempVar("LastSelectedTrap", TilesSelected[0].Trap)
+        SubAbilities:
+            ChooseHealOrDamageAbility:
+                IsInlineSubAbility: True
+                Filter: Self
+                HelpBoxTooltipLocKey: "$FH/Perk_Trapper_04_ChooseHelpBox$"
+                PreviewEffectText: "<size=100%><sprite name=Damage>2 / <sprite name=Heal>2</size>"
+                CanUndo: False
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    Vars:
+                        ValidateSelectedTrap: "!!TargetingActor.LastSelectedTrap"
+                Choose:
+                    Abilities:
+                        ImproveDamage:
+                            CanUndo: False
+                            PreviewEffectText: "<sprite name=Damage>2"
+                            Null:
+                            AnimOverload: EnhanceTrap_Strong
+                            MiscVars: 
+                                HideChooseTooltip: True
+                            Vars:
+                                SelectedTrap: TargetingActor.LastSelectedTrap
+                            PerformVars:
+                                NullBegin:
+                                    ProcessTraps: CustomAbility.AddTrapDamage(SelectedTrap, 2)
+                        ImproveHeal:
+                            CanUndo: False
+                            PreviewEffectText: "<sprite name=Heal>2"
+                            Null:
+                            AnimOverload: EnhanceTrap_Strong
+                            MiscVars: 
+                                HideChooseTooltip: True
+                            Vars:
+                                SelectedTrap: TargetingActor.LastSelectedTrap
+                            PerformVars:
+                                NullBegin:
+                                    ProcessTraps: CustomAbility.AddTrapHeal(SelectedTrap, 2)

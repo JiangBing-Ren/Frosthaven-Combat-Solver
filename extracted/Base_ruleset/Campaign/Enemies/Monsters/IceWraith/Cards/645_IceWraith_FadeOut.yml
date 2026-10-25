@@ -1,0 +1,21 @@
+Parser: EnemyCard
+ID: 645
+Name: $Monster_Ability_645_IceWraith_FadeOut$
+Initiative: 59
+Shuffle: False
+Data:
+    Abilities: 
+        Invisibility1:
+            Invisible: True
+            Filter: Self
+    Consumes:
+        CIce:
+            Elements: Ice
+            Abilities:
+                CIceBuff:
+                    AddCondition: True
+                    Bless: True
+                    Condition: Strengthen
+                    Filter: Self
+                    SkipAnim: True
+    Infuse: Ice

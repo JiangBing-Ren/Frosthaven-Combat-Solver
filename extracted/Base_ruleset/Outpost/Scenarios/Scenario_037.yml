@@ -1,0 +1,19 @@
+Parser: FHScenario
+ID: 37
+Name: The Dead Mile
+LevelID: FS_037_The_Dead_Mile
+Chain: Unfettered
+Location: CrystalFields
+Difficulty: 1
+Conclusions:
+    - Effects:
+        - Type: GainLumber
+          Param1: 3
+        - Type: GainHide
+          Param1: 3
+        - Type: LockScenario
+          Param1: 36
+        - Type: UnlockMandatoryScenario
+          Param1: 44
+        - Type: GainItemBlueprint
+          Param1: 67

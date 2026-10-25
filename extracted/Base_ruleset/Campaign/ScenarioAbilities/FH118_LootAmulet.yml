@@ -1,0 +1,40 @@
+Parser: ScenarioAbility
+ID: FH118_LootAmulet
+ScenarioAbility:
+    AActive:
+        PreviewEffectText: ""
+        Range: 1
+        Target: 1
+        Filter: Self
+        AutoTrigger: True
+        SkipAnim: True
+        AddActiveBonus:
+            NullTargeting: True
+            Target: 1
+            TargetIsBase: True
+            MiscVars:
+                IsLootAmuletAbility: True
+            StatIsBasedOnX:
+                Range:
+                    BasedOn: Vars
+                    Vars:
+                        Value: TriggerAbility.Range
+            Filter:
+                TargetType: Enemy
+                Vars:
+                    ValidateHasAmulet: ScenarioScript_FH118.GetAmuletActiveBonus(target) != null
+            PerformVars:
+                OnAbilityEnded:
+                    CancelOriginalLootAbility: TriggerAbility.SetCancelAbilityFlag(true)
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringTurnAbility
+            IsToggleBonus: True
+            Hidden: True
+            ValidAbilityType: Loot
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_118_SCENARIO_LOOT_CHOICE_1$, Positive_Unique_Campaign]            
+            Requirements:
+                Vars:
+                    CurrentAbility: PhaseManager.CurrentPhaseAction?.CurrentPhaseAbility?.m_Ability
+                    ValidateAbility: CurrentAbility != null
+                    ValidateHasValidTargets: ScenarioScript_FH118.HasLootableEnemiesInRange(CurrentAbility)

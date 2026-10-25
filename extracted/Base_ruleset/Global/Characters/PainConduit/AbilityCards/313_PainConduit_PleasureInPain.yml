@@ -1,0 +1,85 @@
+Parser: AbilityCard
+Name: $FH/313_character_ability_cards_pain_conduit_pleasure_in_pain_1$
+Character: PainConduitID
+ID: 313
+Level: X
+Initiative: 47
+Discard: [Discard,Discard]
+Prefab: 313_PainConduit_PleasureInPain
+Data:
+    Top:
+        Abilities:
+            THealSelf:
+                Heal:
+                    Amount: 3
+                    DiamondPlusEnhancements: 1
+                # target is up to 2 if we select self and 1 allies
+                # target is up to 1 if we're not selecting self
+                Target: 2
+                MiscVars:
+                    PrintedProperties: list("Heal","Target")
+                Filter: [Self,Ally]
+                AnimOverload: Cast
+                MiscVars:
+                    ShouldPerformOnTileSelected: True
+                PerformVars:
+                    ActorIsSelectingTargetingFocus: 
+                        RefreshTargets: CustomAbility.RecalcValidActorsForSelfAndXOthers(obj)
+        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BPoisonSelf:
+                Poison: 
+                    DiamondEnhancements: 1
+                Range: 4
+                # target is up to 2 if we select self and 1 allies
+                # target is up to 1 if we're not selecting self
+                Target: 2
+                MiscVars:
+                    PrintedProperties: list("Target","Range")
+                Filter: [Self,Ally]
+                AnimOverload: UnstableEffigy
+                MiscVars:
+                    ShouldPerformOnTileSelected: True
+                    MinTargets: CustomAbility.GetValidAndToTargetActorsClampedToMax(obj)
+                PerformVars:
+                    ActorIsSelectingTargetingFocus: 
+                        RefreshTargets: CustomAbility.RecalcValidActorsForSelfAndXOthers(obj)
+                CanSkip: False
+            BDamage:
+                Damage: 1
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Filter: Enemy
+                Range: 3
+                Target: -1
+                AnimOverload: CastGivingPain
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "20,20,30"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Heal> *THealSelf* @THealSelf@"
+            - Column:
+                - Row: "<mark=#80919922><size=100%>$FH/313_character_ability_cards_pain_conduit_pleasure_in_pain_2$</mark>"
+    Bottom:
+        - Row: "<size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - MandatoryTrigger:
+            Layout:
+                - Row:
+                    - ColumnWidths: "20,20,30"
+                    - Column:
+                    - Column:
+                        - Row: "<b><size=130%><sprite name=Poison> @BPoisonSelf@"
+                    - Column:
+                        - Row: "<mark=#80919922><size=100%>$FH/313_character_ability_cards_pain_conduit_pleasure_in_pain_3$</mark>"
+        - Divider:
+        - Row: "$FH/313_character_ability_cards_pain_conduit_pleasure_in_pain_4$"

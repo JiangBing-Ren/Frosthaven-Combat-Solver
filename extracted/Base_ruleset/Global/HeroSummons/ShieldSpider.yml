@@ -1,0 +1,19 @@
+Parser: HeroSummon
+ID: ShieldSpiderID
+LocKey: $FH/413_character_ability_cards_hive_swarming_bulwark_2$
+Model: ShieldSpider
+Health:
+    Amount: 7
+    SquareEnhancements: 1
+Move:
+    Amount: 3
+    SquareEnhancements: 1
+Attack:
+    Amount: 2
+    SquareEnhancements: 1
+Range: 1
+SpecialAbilities:
+    AWard:
+        Ward: True
+        Range: 4
+        Filter: [Self,Ally]

@@ -1,0 +1,24 @@
+Parser: Mastery
+ID: Pyroclast_MASTERY_1
+LocalisedName: Pyroclast_MASTERY_1_Name
+LocalisedDescription: Pyroclast_MASTERY_1_Desc
+PerkPoints: 1
+CheckAtEndOfScenario: True
+BattleGoalCondition:
+    - Targets:
+        Filter: CreateOrDestroyProp
+        SubFilter: EveryRoundCharactersOnly
+        PropTypes: [TerrainHotCoals, TerrainThorns, OneHexObstacle, TwoHexObstacle, ThreeHexObstacle]
+        # only for the Pyroclast
+        CharacterIDs: 
+            ActorID: PyroclastID
+        Value: 1
+BattleGoalFailCondition:
+    - Targets:
+        Filter: CreateOrDestroyProp
+        SubFilter: EveryRoundCharactersOnly
+        PropTypes: [TerrainHotCoals, TerrainThorns, OneHexObstacle, TwoHexObstacle, ThreeHexObstacle]
+        # only for the Pyroclast
+        CharacterIDs: 
+            ActorID: PyroclastID
+        Value: 0

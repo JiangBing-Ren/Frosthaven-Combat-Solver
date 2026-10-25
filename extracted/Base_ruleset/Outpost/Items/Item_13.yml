@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 13
+ScenarioItemID: 906
+Name: Dancing Slippers
+Quantity: 2
+Type: Feet
+CraftingCost:
+    Hide: 1
+    Snowthistle: 1

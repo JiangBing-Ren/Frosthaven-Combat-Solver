@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 22
+ScenarioItemID: 924
+Name: Heavy Chain Armor
+Quantity: 2
+Type: Body
+CraftingCost:
+    Metal: 1
+RequiredCraftingItemIDs: [ 12 ]

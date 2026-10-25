@@ -1,0 +1,29 @@
+Parser: HeroSummon
+ID: AnimatedClaymoreID
+LocKey: $FH/196_character_ability_cards_infuser_imbue_with_life_2$
+Model: AnimatedClaymore
+Health:
+    Amount: 2
+    SquareEnhancements: 1
+Move:
+    Amount: 3
+    SquareEnhancements: 1
+Attack: 3
+Shield: 1
+OnSummonAbilities:
+    AOnDeath:
+        AutoTrigger: True
+        Filter: Self
+        SkipAnim: True
+        AddActiveBonus:
+            SkipAnim: True
+            IgnoreStun: True
+            Null: True
+            PerformVars:
+                OnAbilityEnded:
+                    StackSubAbilities: CustomAbility.RefreshInfuserDisarm(TargetingActor)
+        ActiveBonus:           
+            Duration: Persistent
+            Behaviour: DuringActionAbilityOnDeath
+            TriggerAbilitiesImmediately: True
+            Hidden: True

@@ -1,0 +1,15 @@
+Parser: FHScenario
+ID: 77
+Name: The Fish King's Ascension
+LevelID: FS_077_The_Fish_King's_Ascension
+RequiresBoat: true
+Chain: PersonalQuest
+Location: TheBitingSea
+RequiresPersonalQuest: PQ_12
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: GainItem
+          Param1: 201
+        - Type: EnableEvent
+          Param1: B-19

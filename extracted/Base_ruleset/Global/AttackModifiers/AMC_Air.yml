@@ -1,0 +1,6 @@
+Parser: AttackModifier
+Name: AMC_Air
+MathModifier: "+0"
+Abilities:
+    InfuseAbility:
+        Infuse: [Air]

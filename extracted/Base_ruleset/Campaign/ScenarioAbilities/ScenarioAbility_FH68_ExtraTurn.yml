@@ -1,0 +1,9 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH68_ExtraTurn
+ScenarioAbility:
+    AExtraTurnAndDamage:
+        Filter: Self
+        ExtraTurn:
+            Type: MonsterAction
+            ActionMonsterClassID: "ChaosDemonID"
+        AutoTrigger: True

@@ -1,0 +1,10 @@
+Parser: AttackModifier
+Name: AMC_Heal1_R_PainConduit
+MathModifier: "+0"
+Rolling: True
+Abilities:
+    AHeal:
+        Heal: 1
+        Filter: Self
+        AutoTrigger: True
+        AnimOverload: Heal

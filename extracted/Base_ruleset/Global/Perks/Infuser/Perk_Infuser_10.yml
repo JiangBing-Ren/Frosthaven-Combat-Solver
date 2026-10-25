@@ -1,0 +1,37 @@
+Parser: Perk
+ID: Infuser10
+Name: FH/PERK_Infuser_10_Name
+Description: FH/PERK_Infuser_10_Desc
+CharacterID: InfuserID
+Available: 1
+Flags: [Passive, ApplyActiveBonusesAtScenarioStart]
+Abilities:
+    OnShortRest:
+        Filter: Self
+        AutoTrigger: True
+        SkipAnim: True
+        AddActiveBonus:
+            Filter: Self
+            ShowElementPicker: True
+            Consume:
+                Elements: Any
+                Abilities:
+                    ARefreshItem:
+                        CanUndo: False
+                        RefreshItems: 1
+                        Filter: Self
+                        Vars:
+                            SpecificItems: ValidSpentItems
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringActionAbilityOnShortRest
+            Hidden: True
+            Vars:
+                # Copy-paste from below
+                # Used as context above for SpecificItems.
+                ValidSpentItems: TriggerTarget.Inventory.AllItems.Where(obj.SlotState == "Spent" && (obj.YMLData.Slot == "OneHand" || obj.YMLData.Slot == "TwoHand"))
+            Requirements:
+                Vars:
+                    ValidSpentItems: Actor.Inventory.AllItems.Where(obj.SlotState == "Spent" && (obj.YMLData.Slot == "OneHand" || obj.YMLData.Slot == "TwoHand"))
+                    ValidateHasSpentItem: ValidSpentItems.Count > 0
+                    ValidateHasElements: ElementInfusionBoardManager.GetAvailableElements().Count > 0

@@ -1,0 +1,65 @@
+Parser: Enemy
+ID: RuinedMachineID
+LocKey: $FH/RuinedMachine$
+MonsterType: Monster
+StandeeLimit: 10
+Model: RuinedMachine
+PredominantlyMelee: True
+AbilityCards: [594, 595, 596, 597, 598, 599, 600, 601]
+# Base Stats
+Level0:
+    Health: 3
+    Move: 1
+    Attack: 1
+    Range: 1
+    Target: 1
+    Immunities: [Poison]
+Level1:
+    Health: 5
+    Move: 1
+    Attack: 1
+    Range: 1
+    Target: 1
+    Immunities: [Poison]
+Level2:
+    Health: 6
+    Move: 2
+    Attack: 1
+    Range: 1
+    Target: 1
+    Immunities: [Poison]
+Level3:
+    Health: 6
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Immunities: [Poison]
+Level4:
+    Health: 8
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Immunities: [Poison]
+Level5:
+    Health: 10
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Immunities: [Poison]
+Level6:
+    Health: 12
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+    Immunities: [Poison]
+Level7:
+    Health: 15
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Immunities: [Poison, Immobilize]

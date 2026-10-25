@@ -1,0 +1,59 @@
+Parser: ItemCard
+ID: 1229
+StringID: TomeOfConflictID
+Name: $FH/1229_item_cards_tome_of_conflict_1$
+Art: Tome of Conflict
+TotalInGame: 1
+Cost: 50
+Slot: OneHand
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        AStrengthen:
+            Strengthen: True
+            Target: -1
+            Targeting: All
+            SubAbilities:
+                # ALL actors treat first modifier as rolling
+                ATreatFirstAsRolling:
+                    TreatAsNonSubAbility: True
+                    AutoTrigger: True
+                    Filter: Self
+                    MiscVars: 
+                        TreatFirstAttackModifierAsRolling: True
+                    NullTargeting: True
+                    ActiveBonus:
+                        Duration: Persistent
+                        IsAura: True
+                        AuraFilter: All
+                        AuraTargeting: All
+                        MiscVars:
+                            IgnoreImpair: True
+                # when a monster dies, finish bonuses on this item
+                ARemoveOnMonsterDeath:
+                    TreatAsNonSubAbility: True
+                    AutoTrigger: True
+                    Filter: Self
+                    SkipAnim: True
+                    AddActiveBonus:
+                        Null: True
+                    ActiveBonus:
+                        Duration: Persistent
+                        Behaviour: DuringActionAbilityOnDeath
+                        XPTracker: [0]
+                        IsAura: True
+                        AuraFilter: [Enemy]
+                        AuraTargeting: All
+                        Hidden: True
+                        HiddenWhenAura: True
+                        MiscVars:             
+                            OnFinishEndBonuses: CustomAbility.RemoveCardBonuses(ActiveBonus.BaseCard)
+                            IgnoreImpair: True
+Layout: 
+    - Active:
+        Ability: ATreatFirstAsRolling
+        Icon: "Positive_Rolling_Enemy_Death_Item"
+        ListLayout: "$FH/1229_item_cards_tome_of_conflict_2$"
+        Layout: "$FH/1229_item_cards_tome_of_conflict_2$"

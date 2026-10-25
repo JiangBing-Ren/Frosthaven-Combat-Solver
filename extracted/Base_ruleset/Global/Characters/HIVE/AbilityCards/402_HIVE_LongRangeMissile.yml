@@ -1,0 +1,51 @@
+Parser: AbilityCard
+Name: $FH/402_character_ability_cards_hive_longrange_missile_1$
+Character: HIVEID
+ID: 402
+Level: 2
+Initiative: 19
+Discard: [Discard,Discard]
+Prefab: 402_HIVE_Long-RangeMissile
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 3              
+                Range: 5
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                AnimOverload: RangedAttack
+    Bottom:
+        Abilities:
+            BPreventDamage:
+                PreventDamage: 1
+                Filter: [Self]
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: PreventAndApplyToActiveBonusCaster
+                    XPTracker: [0]
+                    IsAura: True
+                    AuraFilter: OwnSummon
+                    AuraTargeting: All
+                    ToggleIsOptional: True
+                    Vars:
+                        PerformAXPAbility: CustomAbility.StackXPAbility(1, TriggerBehaviour.ActiveBonus.Caster)
+                        PerformActiveBonusAbility: CustomAbility.PerformActiveBonusAbility(TriggerBehaviour.ActiveBonus)
+                        Finish: ActiveBonus.Finish()
+                    AbilityData:
+                        CanUndo: False
+                        CanSkip: False
+                        AutoTrigger: True
+                        Mode: Transfer
+                        Targeting: Custom
+                        TargetingVars:
+                            AddValidActorInRange: TriggerTarget
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <sprite name=Range> *TAttack.Range*"
+    Bottom:
+        - Active:
+            Ability: BPreventDamage
+            Icon: "Positive_Transfer_Summon_Damage"
+            ListLayout: "$FH/402_character_ability_cards_hive_longrange_missile_2$"
+            Layout: "$FH/402_character_ability_cards_hive_longrange_missile_2$"

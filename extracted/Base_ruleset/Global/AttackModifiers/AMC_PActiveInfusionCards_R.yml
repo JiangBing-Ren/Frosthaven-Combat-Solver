@@ -1,0 +1,10 @@
+Parser: AttackModifier
+Name: AMC_PActiveInfusionCards_R
+MathModifier: "+0"
+Rolling: True
+CustomCombatLogDescriptionLocKey: "FH/AMC_PActiveInfusionCards_R_Desc"
+AbilityOverrides:
+    NegCon:
+        ParentName: AMC_PActiveInfusionCards_R
+        Vars: 
+            Strength: CustomAbility.GetNumberOfActiveInfusionPairs(TargetingActor)

@@ -1,0 +1,93 @@
+Parser: AbilityCard
+Name: $FH/490_character_ability_cards_crashing_tide_blood_in_the_water_1$
+Character: CrashingTideID
+ID: 490
+Level: 2
+ProgressionOrder: 490
+Initiative: 53
+Discard: [Lost,Discard]
+Prefab: 490_CrashingTide_BloodInTheWater
+Data:
+    Top:
+        Abilities:
+            TMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            TPull:
+                Pull: 2
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Pull","Range")
+                Target: 1
+                Targeting: Range
+                Filter: [Enemy]
+                AnimOverload: BloodInTheWater
+            TAttack:
+                Attack:
+                    Amount: 4
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                ConditionalOverrides:
+                    TAttackCO:
+                        TargetRequirements:
+                            Vars:
+                                ValidateTargetOccupiesWaterTerrain: Actor.Tile.IsWater
+                        AbilityOverrides:
+                            TAttack:
+                                Strength: 2
+                                Conditions: [Wound]
+        XP: 2
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BCreateWaterNullHex:
+                NullHex: True
+                Range: 2
+                TileFilter: FeaturelessHex
+                AreaEffect: "0,0,R|2,0,R"
+                MiscVars:
+                    RequiresAnyTileAdjacentToCaster: True
+                    includeCasterTile: True
+                SkipAnim: True
+                SubAbilities:
+                    TCreateWater:
+                        CreateTerrain: Water
+                        TileFilter: FeaturelessHex
+                        Vars:
+                            OverridePropName: "'CrashingTideWater'"
+                        TreatAsNonSubAbility: True
+                        AutoTrigger: True
+                        Target: -1
+                        Targeting: Custom
+                        TargetingVars:
+                            AddSelectedTiles: ParentAbility.TilesSelected
+                        MiscVars:
+                            LinkProps: True
+                        AnimOverload: CreateWaterTile
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Move> *TMove* <size=100%><voffset=1>@TMove@"
+        - Divider:
+        - Row:
+            - ColumnWidths: "25,25,25,25"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Pull> *TPull*"
+            - Column:
+                - AddedEffect: "<sprite name=Range>3"
+            - Column:
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Row: "$FH/490_character_ability_cards_crashing_tide_blood_in_the_water_2$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "$FH/490_character_ability_cards_crashing_tide_blood_in_the_water_3$"

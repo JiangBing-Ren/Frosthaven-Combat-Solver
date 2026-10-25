@@ -1,0 +1,9 @@
+Parser: AttackModifier
+Name: AMC_Brittle_T2
+MathModifier: "*2"
+Abilities:
+    BrittleAbility:
+        Brittle: True
+        Filter: Self
+        AutoTrigger: True 
+        AnimOverload: Hit #the card is currently for geminate only, if you need different overload split the perk into different ones

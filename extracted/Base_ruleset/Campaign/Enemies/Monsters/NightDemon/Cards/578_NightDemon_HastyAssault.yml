@@ -1,0 +1,13 @@
+Parser: EnemyCard
+ID: 578
+Name: $Monster_Ability_HastyAssault$
+Initiative: 4
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: 1
+        Attack1:
+            Attack: -1
+            Filter: Enemy
+    Infuse: Dark

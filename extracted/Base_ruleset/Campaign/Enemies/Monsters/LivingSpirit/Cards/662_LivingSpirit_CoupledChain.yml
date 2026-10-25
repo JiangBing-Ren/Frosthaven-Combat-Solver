@@ -1,0 +1,15 @@
+Parser: EnemyCard
+ID: 662
+Name: $Monster_Ability_662_LivingSpirit_CoupledChain$
+Initiative: 61
+Shuffle: False
+Data:
+    Abilities: 
+        Attack1:
+            Attack: +0
+            Range: 3
+            RangeIsBase: True
+            Target: 2
+            TargetIsBase: True
+            Filter: Enemy
+            AnimOverload: RangedAttack

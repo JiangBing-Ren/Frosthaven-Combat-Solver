@@ -1,0 +1,191 @@
+Parser: AbilityCard
+Name: $FH/443_character_ability_cards_metal_mosaic_polarity_shift_1$
+Character: MetalMosaicID
+ID: 443
+Level: 9
+Initiative: 79
+Discard: [Discard,Discard]
+Prefab: 443_MetalMosaic_PolarityShift
+Data:
+    Top:
+        Abilities:
+            TPull:
+                Pull: 3
+                Range: 4
+                MiscVars:
+                    PrintedProperties: list("Pull","Range")
+                Target: -1
+                AnimOverload: CastNeutral_Blank
+            TConsumeFire:
+                Consume:
+                    Elements: Fire
+                    Abilities:
+                        TCFDamage:
+                            Damage: 1
+                            MiscVars:
+                                PrintedProperties: list("Damage")
+                            Range: 1
+                            Target: -1
+                            Filter: Enemy
+                            CanUndo: False
+                            AnimOverload: SteamBlast 
+                        TCFInfuse:
+                            Infuse: Ice
+                            AutoTrigger: True
+                            CanSkip: False
+                            CanUndo: False
+                            SkipAnim: True
+            TConsumeIce:
+                Consume:
+                    Elements: Ice
+                    Abilities:
+                        TCIDamage:
+                            Damage: 1
+                            MiscVars:
+                                PrintedProperties: list("Damage")
+                            Range: 1
+                            Target: -1
+                            Filter: Enemy
+                            CanUndo: False
+                            AnimOverload: SteamBlast 
+                        TCIInfuse:
+                            Infuse: Fire
+                            AutoTrigger: True
+                            CanSkip: False
+                            CanUndo: False
+                            SkipAnim: True
+            TPush:
+                Push:
+                    Amount: 3
+                    SquareEnhancements: 1
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Push","Range")
+                Target: -1
+    Bottom:
+        Abilities:
+            BAttack:
+                Attack: 5
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Filter: Enemy
+                AnimOverload: Attack_Strong
+                CanSkip: False
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredPressure: Over
+                SubAbilities:
+                    BPressureChangeOver:
+                        Null: True
+                        SkipAnim: True
+                        IgnoreStun: True
+                        AutoTrigger: True
+                        TreatAsNonSubAbility: True
+                        PerformVars:
+                            NullBegin:
+                                ChangePressure: CustomAbility.PressureChange(TargetingActor, -3)
+            BMove:
+                Move: 5
+                MiscVars:
+                    PrintedProperties: list("Move")
+                CanSkip: False
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredPressure: High
+                SubAbilities:
+                    BPressureChangeHigh:
+                        Null: True
+                        SkipAnim: True
+                        IgnoreStun: True
+                        AutoTrigger: True
+                        TreatAsNonSubAbility: True
+                        PerformVars:
+                            NullBegin:
+                                ChangePressure: CustomAbility.PressureChange(TargetingActor, -2)
+            BShield:
+                Shield: 2
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                Filter: [Self]
+                CanSkip: False
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredPressure: Regular
+                SubAbilities:
+                    BPressureChangeRegular:
+                        Null: True
+                        SkipAnim: True
+                        IgnoreStun: True
+                        AutoTrigger: True
+                        TreatAsNonSubAbility: True
+                        PerformVars:
+                            NullBegin:
+                                ChangePressure: CustomAbility.PressureChange(TargetingActor, 2)
+            BHeal:
+                Heal: 6
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self
+                CanSkip: False
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredPressure: Low
+                SubAbilities:
+                    BPressureChangeLow:
+                        Null: True
+                        SkipAnim: True
+                        IgnoreStun: True
+                        AutoTrigger: True
+                        TreatAsNonSubAbility: True
+                        PerformVars:
+                            NullBegin:
+                                ChangePressure: CustomAbility.PressureChange(TargetingActor, 3)
+                
+Layout:
+    Top:
+        - Row: "$FH/443_character_ability_cards_metal_mosaic_polarity_shift_2$"
+        - Divider:
+        - Conditional:
+            Layout:
+                - Row: 
+                    - ColumnWidths: "50,50"
+                    - Column: "$FH/443_character_ability_cards_metal_mosaic_polarity_shift_3$"
+                    - Column: 
+                        - MandatoryTrigger:
+                            Layout:
+                                - Infuse: Ice
+        - Divider:
+        - Conditional:
+            Layout:
+                - Row: 
+                    - ColumnWidths: "50,50"
+                    - Column: "$FH/443_character_ability_cards_metal_mosaic_polarity_shift_4$"
+                    - Column: 
+                        - MandatoryTrigger:
+                            Layout:
+                                - Infuse: Fire
+        - Divider:
+        - Row: 
+            - ColumnWidths: "20,30,30,20"
+            - Column: 
+            - Column: "<sprite name=Push> *TPush* <size=100%><voffset=1>@TPush@"
+            - Column: "<sprite name=Target> $FH/GUI_CARD_ALL$, <sprite name=Range> *TPush.Range*"
+            - Column: 
+    Bottom:
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureOver><size=100%> <sprite name=Attack> 5, <sprite name=MMLosePressure><sprite name=MMLosePressure><sprite name=MMLosePressure>"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureHigh><size=100%> <sprite name=Move> 5, <sprite name=MMLosePressure><sprite name=MMLosePressure>"
+        - Active:
+            Ability: BShield
+            Icon: Positive_Shield
+            ListLayout: "<sprite name=Shield> *BShield*"
+            Layout: "<sprite name=Shield> *BShield*"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureRegular><size=100%> <sprite name=Shield> 2, <sprite name=MMGainPressure><sprite name=MMGainPressure>"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureLow><size=100%> <sprite name=Heal> 6, $Self$, <sprite name=MMGainPressure><sprite name=MMGainPressure><sprite name=MMGainPressure>"

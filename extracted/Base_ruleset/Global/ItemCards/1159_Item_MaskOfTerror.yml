@@ -1,0 +1,34 @@
+Parser: ItemCard
+ID: 1159
+StringID: MaskOfTerrorID
+Name: $FH/1159_item_cards_mask_of_terror_1$
+Art: Mask of Terror
+TotalInGame: 2
+Cost: 60
+Slot: Head 
+Rarity: Rare
+Usage: Unrestricted
+Trigger: PassiveEffect
+Data:
+    Abilities:
+        ABuffPush:
+            Filter: Self
+            PreviewEffectText: "<sprite name=Push> 1"
+            Attack: 0
+            AttackEffect:
+                Type: StandardBuff
+                AttackType: Melee
+                SubAbilities:
+                    BuffPushAbility:
+                        CanUndo: False
+                        Push: 1
+                        IsInlineSubAbility: True
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: BuffAttack
+Layout: 
+    - Active:
+        Ability: "ABuffPush"
+        Icon: "Positive_Push_Attack_Item"
+        ListLayout: "$FH/1159_item_cards_mask_of_terror_2$"
+        Layout: "$FH/1159_item_cards_mask_of_terror_2$"

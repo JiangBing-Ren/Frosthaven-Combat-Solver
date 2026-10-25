@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 230
+ScenarioItemID: 1240
+Name: Examination Glass
+Quantity: 1
+GoldCost: 20
+Type: OneHandWeapon
+IsNewCharacterItem: False

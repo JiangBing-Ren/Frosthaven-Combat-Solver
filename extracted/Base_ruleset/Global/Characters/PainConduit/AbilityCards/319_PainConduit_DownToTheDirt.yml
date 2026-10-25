@@ -1,0 +1,63 @@
+Parser: AbilityCard
+Name: $FH/319_character_ability_cards_pain_conduit_down_to_the_dirt_1$
+Character: PainConduitID
+ID: 319
+Level: 4
+Initiative: 39
+Discard: [Discard,Discard]
+Prefab: 319_PainConduit_DownToTheDirt
+Data:
+    Top:
+        Abilities:
+            TAttack: 
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                AnimOverload: CastGivingPain
+                ConditionalOverrides:
+                    TAttackCO:
+                        XP: 1
+                        Requirements:
+                            Vars:
+                                HalfHealthRounded: Actor.MaxHealthHalfRoundedUp
+                                ValidateBelowHalfHealth: Actor.Health < HalfHealthRounded
+                        AbilityOverrides:
+                            TLessThanHalfHealth:
+                                Strength: 3
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 4
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BHeal:
+                Heal: 0
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self
+                AnimOverload: Heal
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: Vars
+                        Vars:
+                            Value: TargetingActor.Tokens.CountNegativeConditions()
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "20,30,30"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column:
+                - Row: "<mark=#80919922><size=100%><sprite name=Range>*TAttack.Range*</mark>"
+        - Row: "$FH/319_character_ability_cards_pain_conduit_down_to_the_dirt_2$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Heal> X <mark=#80919922><size=100%>$Self$</mark>"
+        - Row: "$FH/319_character_ability_cards_pain_conduit_down_to_the_dirt_3$"

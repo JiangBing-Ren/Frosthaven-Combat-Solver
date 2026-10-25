@@ -1,0 +1,7 @@
+Parser: CampaignSection
+ID: 14.1
+Name: Puzzle Solution
+SkipCompletedNotification: True
+Effects:
+    - Type: UnlockPuzzle
+      Param1: SynthesisDevice

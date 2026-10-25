@@ -1,0 +1,22 @@
+Parser: ItemCard
+ID: 918
+StringID: RingingHammerID
+Name: $FH/0918_item_cards_ringing_hammer_1$
+Art: Ringing Hammer
+TotalInGame: 2
+Cost: 0
+Slot: OneHand
+Rarity: Rare
+Usage: Spent
+Trigger: SingleAbility
+Data:     
+    Overrides:
+        OMuddle:
+            Conditions: Muddle
+    CompareAbility:
+        AbilityType: Attack
+        Filter: Enemy
+    AddModifiers:
+        - [AMC_Basic_M1, 1]
+Layout: 
+    - Row: $FH/0918_item_cards_ringing_hammer_2$

@@ -1,0 +1,50 @@
+Parser: AbilityCard
+Name: $FH/079_character_ability_cards_banner_spear_air_support_1$
+#CustomImage: KRO_BANNER_SPEAR_AbilityCards_AirSupport
+Character: BannerSpearID
+ID: 79
+Level: 4
+Initiative: 20
+Discard: [Discard,Discard]
+Prefab: 79_Bannerspear_AirSupport
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 4
+                    DiamondEnhancements: 1
+                    Pierce: 2
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Attack", "Range", "Pierce")
+                Filter: [Enemy]
+                AnimOverload: RangedAttack
+        Infuse: Air
+    Bottom:
+        Abilities:
+            BSummon:
+                Summon: TrainedFalconID
+                AnimOverload: Summon
+        XP: 1
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "20,30,30,20"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column:
+                - Row: "<size=100%><sprite name=Range> *TAttack.Range*, <size=100%><sprite name=Pierce> *TAttack.Pierce*"
+            - Column:
+        - Row: "<size=50%> "
+        - Infuse: Air
+    Bottom:
+        - Active:
+            Ability: "BSummon"
+            Icon: "Summon"
+            Layout:
+                - Summon:
+                    Ability: BSummon
+                    SummonName: $FH/079_character_ability_cards_banner_spear_air_support_2$
+                    SpecialText: "<size=150%><sprite name=Flying>"

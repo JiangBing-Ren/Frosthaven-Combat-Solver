@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 213
+ScenarioItemID: 1223
+Name: Key of Seasons
+Quantity: 1
+GoldCost: 70
+Type: OneHandWeapon
+IsNewCharacterItem: False

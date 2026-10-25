@@ -1,0 +1,44 @@
+Parser: ItemCard
+ID: 974
+StringID: RobesOfDoomID
+Name: $FH/0974_item_cards_robes_of_doom_1$
+Art: Robes of Doom
+TotalInGame: 2
+Cost: 0
+Slot: Body
+Rarity: Rare
+Usage: Spent
+Trigger: PassiveEffect
+Data: 
+    Abilities:
+        ADamageSelfBrittleEnemy:
+            Filter: Self
+            AddActiveBonus:
+                Damage: 3
+                Filter: Self
+                AutoTrigger: True
+                SubAbilities:
+                    BrittleAttacker:
+                        IsInlineSubAbility: True
+                        UseParentTargets: False
+                        Filter: Enemy
+                        Brittle: True
+                        AutoTrigger: True
+                        Targeting: Custom
+                        TargetingVars:
+                            AddValidActorInRange: ParentAbility.VarsContext.parentContext.EnemyAttacker
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: DuringActionAbilityOnAttacked
+                XPTracker: [0,0]
+                Vars:
+                    EnemyAttacker: TriggerActor
+                    ValidateIsAttack: TriggerAbility.AbilityType == "Attack"
+                    ValidateTookDamage: DamageTaken > 0
+Layout:
+    - Active:
+        Ability: ADamageSelfBrittleEnemy
+        ListLayout: $FH/0974_item_cards_robes_of_doom_2$
+        Layout: $FH/0974_item_cards_robes_of_doom_2$
+        Icon: Negative_Brittle_Attack_DamageSelf_Item
+    - XPTracker: ADamageSelfBrittleEnemy

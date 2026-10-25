@@ -1,0 +1,21 @@
+Parser: FHScenario
+ID: 29
+Name: War of the Spire A
+LevelID: FS_029_War_Of_The_Spire_A
+Chain: Algox1
+Location: CrystalFields
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: GainMorale
+          Param1: 3
+        - Type: EnableEvent
+          Param1: WO-68
+        - Type: GainCampaignSticker
+          Param1: DestroyerOfTheIcespeakers
+        - Type: AddCalendarCampaignSection
+          Param1: 46.3
+          Param2: 5
+        - Type: LockScenario
+          Param1: 28
+        - Type: RemoveAlgoxEvents

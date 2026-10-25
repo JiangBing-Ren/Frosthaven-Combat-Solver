@@ -1,0 +1,7 @@
+Parser: FHEnhancement
+ID: SummonMove
+Name: Glossary_Enhancement_SummonMove
+Cost: 60
+Mark: Square
+Effect: AddOne
+ForEffect: SummonMove

@@ -1,0 +1,7 @@
+Parser: FHItem
+ID: 38
+ScenarioItemID: 956
+Name: Duelist's Shoes
+Quantity: 2
+Type: Feet
+RequiredCraftingItemIDs: [ 13, 113 ]

@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 103.2
+Name: Lumber Shipment
+SkipCompletedNotification: True
+Effects:
+    - Type: GainLumber
+      Param1: 5
+    - Type: GainMetal
+      Param1: 2

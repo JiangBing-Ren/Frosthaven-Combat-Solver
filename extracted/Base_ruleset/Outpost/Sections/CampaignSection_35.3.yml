@@ -1,0 +1,12 @@
+Parser: CampaignSection
+ID: 35.3
+Name: Tavern Upgraded (1)
+SkipCompletedNotification: True
+Effects:
+    - Type: GainMorale
+      Param1: 1
+    - Type: UnlockScenario
+      Param1: 136
+      # moved to 160.2, you get both loot cards upon building tavern
+    # - Type: AddAdditionalLootCard
+    #   Param1: 1419

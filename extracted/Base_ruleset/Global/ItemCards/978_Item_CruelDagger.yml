@@ -1,0 +1,22 @@
+Parser: ItemCard
+ID: 978
+StringID: CruelDaggerID
+Name: $FH/0978_item_cards_cruel_dagger_1$
+Art: Cruel Dagger
+TotalInGame: 2
+Cost: 0
+Slot: OneHand
+Rarity: Rare
+Usage: Spent
+Trigger: SingleTarget
+Data:
+    Overrides:
+        OAttack:
+            Attack: +1
+            Conditions: Wound
+    CompareAbility:
+        AbilityType: Attack
+        IsMelee: True
+        Filter: Enemy
+Layout: 
+    - Row: $FH/0978_item_cards_cruel_dagger_2$

@@ -1,0 +1,19 @@
+Parser: EnemyCard
+ID: 843
+Name: $Monster_Ability_843_Hound_HarrowingHowl$
+Initiative: 07
+Shuffle: False
+Data:
+    Abilities:
+        Move1:
+            Move: 0
+        Muddle1:
+            Muddle: True
+            Target: -1
+            TargetIsBase: True
+            Range: 1
+            RangeIsBase: True
+            ShowRange: False
+            Filter: Enemy
+            AnimOverload: RadialHowl
+            Text: "$Target_AllAdjacentEnemies$"

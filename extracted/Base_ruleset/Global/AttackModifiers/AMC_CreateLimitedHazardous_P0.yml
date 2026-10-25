@@ -1,0 +1,15 @@
+Parser: AttackModifier
+Name: AMC_CreateLimitedHazardous_P0
+CustomCombatLogDescriptionLocKey: "FH/AMC_CreateLimitedHazardous_P0"
+MathModifier: "+0"
+Abilities:
+    ACreateHazardousTerrain:
+        Target: 1
+        CreateLimitedHazardousTerrain: True
+        TileFilter: FeaturelessHex
+        Targeting: Custom
+        AnimOverload: TerrainFormation
+        Vars:
+            OverridePropName: "'PyroclastHazardTerrain'"
+        TargetingVars:       
+            AddTilesInRange: CustomAbility.GetAdjacentTiles(TargetActor.Tile).Where(obj.IsWalkable)

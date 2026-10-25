@@ -1,0 +1,110 @@
+Parser: AbilityCard
+Name: $FH/318_character_ability_cards_pain_conduit_mirrored_misery_1$
+Character: PainConduitID
+ID: 318
+Level: 4
+Initiative: 72
+Discard: [Lost,Discard]
+Prefab: 318_PainConduit_MirroredMisery
+Data:
+    Top:
+        XP: 2
+        Abilities:
+            TTargetAlly_318:
+                NullTargeting: True
+                SkipAnim: True
+                Filter: 
+                    TargetType: Ally
+                    Vars:
+                        HasDamage: target.MaxHealth - target.Health > 0
+                        HasConditions: target.Tokens.CountNegativeConditions() > 0
+                        ValidateHasDamageOrConditions: HasDamage || HasConditions
+            TTargetAdjacentEnemy:
+                SkipAnim: True
+                NullTargeting: True
+                Filter: Enemy
+                Vars:
+                    TargetAllyAbility: CustomAbility.FindAbilityInPhaseByName("TTargetAlly_318")
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    Vars:
+                        ValidateHasTargetAllyAbility: TargetAllyAbility != null
+                        ValidateHasTargetedAlly: TargetAllyAbility.ActorsToTarget.Count > 0
+                Targeting: Custom
+                TargetingVars:
+                    TargetAlly: TargetAllyAbility.ActorsToTarget[0]
+                    AddValidActorsInRange: GameState.GetAdjacentEnemies(TargetingActor, TargetAlly.ArrayIndex)
+                SubAbilities:
+                    TDamage:
+                        Flags: [SubAbilityPreview]
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                TargetAlly: ParentAbility.TargetAllyAbility.ActorsToTarget[0]
+                                ValidateHasTarget: ParentAbility.ActorsToTarget.Count > 0
+                                ValidateHasLostHealth: TargetAlly.MaxHealth - TargetAlly.Health > 0
+                        AutoTrigger: True
+                        TreatAsNonSubAbility: True
+                        Filter: Enemy
+                        Damage: 0
+                        AnimOverload: CastGivingPain
+                        StatIsBasedOnX:
+                            Strength:
+                                BasedOn: Vars
+                                Vars:
+                                    TargetAlly: ParentAbility.TargetAllyAbility.ActorsToTarget[0]
+                                    Value: TargetAlly.MaxHealth - TargetAlly.Health
+                        Targeting: Custom
+                        TargetingVars:
+                            AddValidActorInRange: ParentAbility.ActorsToTarget[0]
+                    TGainConditions:
+                        Flags: [SubAbilityPreview]
+                        Vars:
+                            ValidateHasTarget: ParentAbility.ActorsToTarget.Count > 0
+                            TargetAlly: ParentAbility.TargetAllyAbility.ActorsToTarget[0]
+                            NegativeConditions: TargetAlly.Tokens.GetAllTransferableConditions()
+                            AddNegativeConditions: NegativeConditions
+                            ValidateHasNegativeConditions: NegativeConditions != null && NegativeConditions.Count > 0
+                        MiscVars: 
+                            PreviewAddNegativeConditionsVar: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateHasTarget: ParentAbility.ActorsToTarget.Count > 0
+                        AutoTrigger: True
+                        TreatAsNonSubAbility: True
+                        Filter: Enemy
+                        NullTargeting: True
+                        SkipAnim: True
+                        Targeting: Custom
+                        TargetingVars:
+                            AddValidActorInRange: ParentAbility.ActorsToTarget[0]
+    Bottom:
+        Infuse: Air
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BEnemyGainsConditions:
+                NullTargeting: True
+                Filter: Enemy
+                AnimOverload: CastGivingPain
+                Vars:
+                    NegativeConditions: TargetingActor.Tokens.GetAllTransferableConditions().Where(obj != "Brittle" && obj != "Bane" && obj != "Stun")
+                    AddNegativeConditions: NegativeConditions
+                MiscVars: 
+                    PreviewAddNegativeConditionsVar: True
+Layout:
+    Top:
+        - Row: "$FH/318_character_ability_cards_pain_conduit_mirrored_misery_2$"
+        - Row: "$FH/318_character_ability_cards_pain_conduit_mirrored_misery_3$"
+    Bottom:     
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@" 
+        - Divider:
+        - Row: "$FH/318_character_ability_cards_pain_conduit_mirrored_misery_4$"   
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Air

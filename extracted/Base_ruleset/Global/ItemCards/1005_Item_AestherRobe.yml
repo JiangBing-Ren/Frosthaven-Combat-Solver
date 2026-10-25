@@ -1,0 +1,24 @@
+Parser: ItemCard
+ID: 1005
+StringID: AestherRobeID
+Name: $FH/1005_item_cards_aesther_robe_1$
+Art: Aesther Robe
+TotalInGame: 2
+Cost: 0
+Slot: Body 
+Rarity: Rare
+Usage: Unrestricted
+Trigger: PassiveEffect
+Data: 
+    Abilities:
+        APrevent:
+            PreventDamage: 1
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: PreventBySettingRetaliateToValue
+Layout:
+    - Active:
+        Ability: APrevent
+        ListLayout: $FH/1005_item_cards_aesther_robe_2$
+        Layout: $FH/1005_item_cards_aesther_robe_2$
+        Icon: Positive_DamagePrevent_Retaliate_Item

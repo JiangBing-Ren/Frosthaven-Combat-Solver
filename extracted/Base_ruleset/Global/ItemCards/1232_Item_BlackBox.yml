@@ -1,0 +1,26 @@
+Parser: ItemCard
+ID: 1232
+StringID: BlackBoxID
+Name: $FH/1232_item_cards_black_box_1$
+Art: Black Box
+TotalInGame: 1
+Cost: 30
+Slot: OneHand 
+Rarity: Rare
+Usage: Spent
+Trigger: DuringOwnTurn
+ProsperityRequirement: 1
+Data:     
+    Abilities:
+        TDiscardCard:
+            DiscardCards: 2
+            Filter: Self
+            AutoTrigger: True
+            SubAbilities:
+                AHealSelf:
+                    Heal: 6
+                    Filter: Self
+                    Flags: [SubAbilityPreview]
+Layout: 
+    - Row: $FH/1232_item_cards_black_box_2$
+

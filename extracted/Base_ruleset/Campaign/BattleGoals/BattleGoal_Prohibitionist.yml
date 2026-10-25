@@ -1,0 +1,23 @@
+Parser: BattleGoal
+ID: BattleGoal_Prohibitionist
+LocalisedName: FH/BATTLEGOAL_Prohibitionist
+LocalisedDescription: FH/BATTLEGOAL_Prohibitionist_Desc
+#Never use a potion.
+PerkChecks: 1
+CheckAtEndOfScenario: True
+BattleGoalCondition:
+    - Targets:
+        Filter: UseItem
+        Items: [Potion, DeadlyMixture, UnhealthyMixture]
+        Conditional:
+            Amount: "== 0"
+        Value: 1
+        SubFilter: Scenario
+BattleGoalFailCondition:
+    - Targets:
+        Filter: UseItem
+        Items: [Potion, DeadlyMixture, UnhealthyMixture]
+        Conditional:
+            Amount: "> 0"
+        Value: 1
+        SubFilter: Scenario

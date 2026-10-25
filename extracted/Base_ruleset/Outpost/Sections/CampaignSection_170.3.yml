@@ -1,0 +1,13 @@
+Parser: CampaignSection
+ID: 170.3
+Name: Vermling Siege (170.3)
+SkipCompletedNotification: True
+DontFadeIn: True
+ConditionalEffects: 
+    - Type: IfHerbsOverCActivateSection
+      # read this section
+      Param1: 170.3_A
+Effects:
+    - Type: ActivateCampaignSection
+      # read this section
+      Param1: 170.3_B

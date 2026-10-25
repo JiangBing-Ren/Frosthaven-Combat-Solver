@@ -1,0 +1,78 @@
+Parser: AbilityCard
+Name: $FH/384_character_ability_cards_frozen_fist_draw_strength_1$
+Character: FrozenFistID
+ID: 384
+Level: 8
+ProgressionOrder: 24
+Initiative: 28
+Discard: [Discard,Discard]
+Prefab: 384_FrozenFist_DrawStrength
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 5
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AreaEffect: "0,0,G|2,0,R|1,1,R"
+                MultiPassAttack: False
+                AnimOverload: Swipe
+                SubAbilities:
+                    TWard:
+                        Ward: True
+                        Filter: Self
+                        TreatAsNonSubAbility: True
+                        ClearParentProperties: True
+                        Flags: [SubAbilityPreview]
+                        AnimOverload: Heal
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ToTargetCount: ParentAbility.ActorsToTarget.Count # only for the ward preview
+                                AttackedCount: ParentAbility.ActorsTargeted.Count
+                                ValidateAttackedAtLeastTwoActors: ToTargetCount >= 2 or AttackedCount >= 2
+    Bottom:
+        Abilities:
+            BDamage:
+                Damage: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Damage","Range")
+                Target: -1
+                Filter: Enemy
+                MultiPassAttack: False
+                AnimOverload: RangedAttack
+            BStrengthen:
+                Strengthen: True
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Filter: [Self, Ally]
+                AnimOverload: PowerUp
+                StatIsBasedOnX:
+                    Target:
+                        BasedOn: TargetsDamagedByPreviousDamageAbilityThisAction
+                        Multiplier: 1
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [ Damage ]
+
+        Infuse: Earth
+
+Layout:
+    Top:
+        - Row: 
+            - Column: "<size=130%><sprite name=Attack>*TAttack* @TAttack@"
+            - Column: "£TAttack.Area£"
+        - Divider:
+        - Row: "$FH/384_character_ability_cards_frozen_fist_draw_strength_2$"
+    Bottom:
+        - Row: "$FH/384_character_ability_cards_frozen_fist_draw_strength_3$"
+        - Divider:
+        - Row: "$FH/384_character_ability_cards_frozen_fist_draw_strength_4$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Earth]

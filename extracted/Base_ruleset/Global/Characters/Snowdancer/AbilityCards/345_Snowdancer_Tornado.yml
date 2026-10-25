@@ -1,0 +1,76 @@
+Parser: AbilityCard
+Name: $FH/345_character_ability_cards_snowdancer_tornado_1$
+Character: SnowdancerID
+ID: 345
+Level: 2
+Initiative: 59
+Discard: [Lost,Discard]
+Prefab: 345_Snowdancer_Tornado
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                    DiamondEnhancements: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                AreaEffect: "0,0,R|2,0,R|1,1,R|-1,1,R|-2,0,R|-1,-1,R|1,-1,R"
+                MultiPassAttack: False
+                Target: -1
+                AnimOverload: Tornado
+                SubAbilities:
+                    TControlEnemy:
+                        ControlActor:
+                            Abilities:
+                                ControlMove:
+                                    Move: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Move")
+                                    StrengthIsBase: True
+                            ControlActorType: Player
+                        UseParentTargets: True
+                        AnimOverload: Control
+                        IsInlineSubAbility: False
+        XP: 2
+        Infuse: Air
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+                Jump: True
+            BPush:
+                Push: 1
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Push","Target","Range")
+                Filter: [Ally, Enemy]
+                AnimOverload: Push
+        Infuse: Air
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "40,20,40"
+            - Column:
+                - Row: "<b><size=130%><sprite name=Attack> *TAttack*<size=100%><voffset=1>@TAttack@"
+            - Column:
+                - Row: "<sprite name=Range>*TAttack.Range*"
+            - Column:
+                - Row: "£Area£"
+        - Divider:
+        - Row: "$FH/345_character_ability_cards_snowdancer_tornado_2$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Air]
+    Bottom:
+        - Row: "<b><size=130%>$Move$ <sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@ <sprite name=Jump>"
+        - Divider:
+        - Row: "$FH/345_character_ability_cards_snowdancer_tornado_3$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Air]

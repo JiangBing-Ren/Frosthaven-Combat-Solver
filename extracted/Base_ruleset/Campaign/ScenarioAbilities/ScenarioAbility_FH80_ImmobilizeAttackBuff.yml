@@ -1,0 +1,24 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH80_ImmobilizeAttackBuff
+ScenarioAbility:
+    AddActiveBonus:
+        Attack: 0
+        AttackEffect:
+            Type: StandardBuff
+            SubAbilities:
+                TSubPush:
+                    Immobilize: True
+                    IsInlineSubAbility: True
+                    Target: -1
+                    UseParentTargets: True
+                    SkipAnim: True
+                    Filter:
+                        TargetType: Enemy
+                        Vars:
+                            FocusActors:  TargetingActor.AIMoveFocusActors
+                            ValidateTrue: (FocusActors != null && FocusActors[0] == target) || (FocusActors == null && TargetedActors != null && TargetedActors[0] == target)
+        Filter: Self
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: BuffAttack
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_080_SCENARIO_MODIFIER_2$, Positive_Immobilize_Attack_Campaign]

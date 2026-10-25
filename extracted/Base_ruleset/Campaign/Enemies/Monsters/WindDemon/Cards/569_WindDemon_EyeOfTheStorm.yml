@@ -1,0 +1,26 @@
+Parser: EnemyCard
+ID: 569
+Name: $Monster_Ability_569_WindDemon_EyeOfTheStorm$
+Initiative: 2
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: -1
+        Attack1:
+            Attack: -1
+            Range: 3
+            RangeIsBase: True
+            Filter: Enemy
+            AnimOverload: RangedAttack
+        Shield1:
+            Shield: 1
+            Filter: Self
+            AnimOverload: PowerUp
+            ActiveBonus:
+                Duration: Round
+                ListLayoutOverride: ["<sprite name=Shield> *Shield1*", Positive_Shield]
+    Consumes:
+        CAny:
+            Elements: Any
+            Infuse: Air

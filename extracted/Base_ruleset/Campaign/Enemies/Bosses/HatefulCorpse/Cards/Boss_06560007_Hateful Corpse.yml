@@ -1,0 +1,12 @@
+Parser: EnemyCard
+ID: 06560007
+Name: $Monster_Ability_656_LivingDoom_PullOfTheGrave$
+Initiative: 98
+Shuffle: True
+Data:
+    Abilities:
+        Move1:
+            Move: +1
+        Attack1:
+            Attack: -3
+            Conditions: Bane

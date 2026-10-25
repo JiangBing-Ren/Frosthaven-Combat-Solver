@@ -1,0 +1,11 @@
+Parser: CampaignSection
+ID: 169.3
+Name: Crain's Recovery
+SkipCompletedNotification: False
+Effects:
+    - Type: UnlockScenario
+      Param1: 36
+    - Type: UnlockScenario
+      Param1: 37
+    - Type: ActivateCampaignSection
+      Param1: 190.4

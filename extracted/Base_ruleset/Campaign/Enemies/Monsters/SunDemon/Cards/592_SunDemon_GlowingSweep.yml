@@ -1,0 +1,25 @@
+Parser: EnemyCard
+ID: 592
+Name: $Monster_Ability_592_SunDemon_GlowingSweep$
+Initiative: 88
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: -1
+        Attack1:
+            Attack: -1
+            Target: -1
+            TargetIsBase: True
+            Filter: Enemy
+            MultiPassAttack: False
+            Text: "$Target_AllAdjacentEnemies$"
+            AnimOverload: CoronalEjection            
+    Consumes:
+        CDark:
+            Elements: Dark
+            Abilities:
+                CDarkMuddle:
+                    Muddle: True
+                    Filter: Self
+                    AnimOverload: SelfHurt 

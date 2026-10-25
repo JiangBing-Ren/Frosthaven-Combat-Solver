@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 199
+ScenarioItemID: 1208
+Name: Opulent Shoes
+Quantity: 2
+GoldCost: 30
+Type: Feet
+IsNewCharacterItem: False

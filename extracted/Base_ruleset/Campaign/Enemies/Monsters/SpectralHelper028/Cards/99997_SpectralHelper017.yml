@@ -1,0 +1,16 @@
+Parser: EnemyCard
+ID: 99997
+Name: $Monster_Ability_GuidedAdvance$
+Initiative: 50
+Shuffle: True
+Data:
+    Abilities:
+        AMove:
+            ControlActor:
+                    #UseControllingActorPlayerControl: True
+                    Abilities:
+                        BAllyMove:
+                            Move:
+                                Amount: 4
+                            StrengthIsBase: True
+            Filter: Self

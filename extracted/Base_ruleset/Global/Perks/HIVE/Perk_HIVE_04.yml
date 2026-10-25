@@ -1,0 +1,7 @@
+Parser: Perk
+ID: HIVE04
+Name: FH/PERK_HIVE_04_Name
+Description: FH/PERK_HIVE_04_Desc
+CharacterID: HIVEID
+Available: 3
+CardsToAdd: [AMC_Heal1_Self_P1]

@@ -1,0 +1,11 @@
+Parser: CampaignSection
+ID: 47.1
+Name: Lurker Rumors
+Repeatable: True
+ShowAsUnknownInCalendar: True
+SkipCompletedNotification: False
+Effects:
+    - Type: IfScenarioCompletedAddMoraleElseAddEvent
+      Param1: 60
+      Param2: 2
+      Param3: WO-70

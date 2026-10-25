@@ -1,0 +1,23 @@
+Parser: ItemCard
+ID: 1209
+StringID: EventideScepter2ID
+Name: $FH/1210_eventide_scepter_back$
+Art: Eventide Scepter
+TotalInGame: 1
+Cost: 50
+Slot: OneHand
+Rarity: Rare
+Usage: Flip
+FlipItemID: 1210
+FlipItemSide: Back
+Trigger: SingleAbility
+Consumes: Dark
+ProsperityRequirement: 1
+Data:     
+    Overrides:
+        OAttack:
+            Conditions: Curse
+    CompareAbility:
+        AbilityType: Attack
+Layout: 
+    - Row: "$FH/1210_eventide_scepter_3$"

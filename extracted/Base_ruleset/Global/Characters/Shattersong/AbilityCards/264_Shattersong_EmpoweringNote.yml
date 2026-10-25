@@ -1,0 +1,565 @@
+Parser: AbilityCard
+Name: $FH/264_character_ability_cards_shattersong_empowering_note_1$
+Character: ShattersongID
+ID: 264
+Level: 5
+Initiative: 45
+Discard: [Lost,Discard]
+Prefab: 264_Shattersong_EmpoweringNote
+Data:
+    Top:
+        XP: 2
+        Abilities:
+            TBuff:
+                # dummy bonus, all the actual stuff is in the subabilities
+                NullTargeting: True
+                Filter: Self
+                ActiveBonus:
+                    Duration: Persistent
+                SubAbilities:
+                    TBuffMeleeAttack:
+                        NullTargeting: True
+                        Filter: Self
+                        AutoTrigger: True
+                        SkipAnim: True
+                        ActiveBonus:
+                            Duration: Persistent
+                            Behaviour: OverrideAbility
+                            # will only show up as a toggle for these types of abilities
+                            ValidAbilityType: [Attack,Move,Damage,Heal,Muddle,Push,Wound,Shield,ControlActor,DestroyObstacle,Brittle,Retaliate,NullTargeting,NullHex]
+                            IsToggleBonus: True
+                            Restriction: OncePerAction
+                            Hidden: True
+                            ListLayoutOverride: [$264_character_ability_cards_shattersong_empowering_note_2$, Shattersong]
+                            MiscVars:
+                                PropertyToModify: "'Attack'"
+                                OverrideIcon: "'FH_UI_1MeleeAttack'"
+                                ResonanceCost: 1
+                                RestrictAllBonusesOnCard: True
+                            Vars:
+                                DistinctID: "'EmpoweringNote'"
+                            PerformVars:
+                                # consume resonance the moment an ability starts performing and counts as having happened (eg attacking someone, basically anything that results from the ready button)
+                                OnAbilityPerformStarted:
+                                    ConsumeResonanceAndRestrict: CustomAbility.ConsumeResonanceActiveBonus(ActiveBonus, Ability)
+                                # resonance consumption restricts this bonus early, have to manually finish it to untoggle it for next use
+                                OnAbilityEnded:
+                                    UntoggleBonus: CustomAbility.FinishBonusLock(ActiveBonus, BespokeBehaviour, Ability)
+                            Requirement:
+                                Vars: 
+                                    # have to have at least 1 resonance token to spend
+                                    ValidateHasResonance: Ability.TargetingActor.GetCurrentAndReservedResonanceTokens() > 0 || CheckingBonus.ToggledBonus
+                                    # only let us modify abilities that aren't persistent
+                                    ValidateIsntPersistent: CustomAbility.IsPersistentAbility(Ability) == False
+                                    # only ability card abilities
+                                    ValidateIsShattersongAbilityCard: CustomAbility.IsFromShattersongCard(Ability)
+
+                                    PropertyToModify: CheckingBonus.Ability.ActiveBonusData.GetMiscVar("PropertyToModify")
+                                    AbilityToModify: CustomAbility.FindAbilityWithPrintedProperty(PropertyToModify, Ability)
+                                    ValidateHasProperty: AbilityToModify != null
+                                    ValidTypes: list("Attack")
+                                    ValidateAbilityType: ValidTypes.Contains(AbilityToModify.AbilityType.ToString())
+                                    ValidateCanBePerformed: CustomAbility.CanBePerformedAfterConditions(AbilityToModify)
+                                    ValidateIsMelee: AbilityToModify.IsMeleeAttack
+                            ActiveBonusAbilityOverrides:
+                                TCOverride:
+                                    Strength: 1     
+                    TBuffRangedAttack:
+                        NullTargeting: True
+                        Filter: Self
+                        AutoTrigger: True
+                        SkipAnim: True
+                        ActiveBonus:
+                            Duration: Persistent
+                            Behaviour: OverrideAbility
+                            # will only show up as a toggle for these types of abilities
+                            ValidAbilityType: [Attack,Move,Damage,Heal,Muddle,Push,Wound,Shield,ControlActor,DestroyObstacle,Brittle,Retaliate,NullTargeting,NullHex]
+                            IsToggleBonus: True
+                            Restriction: OncePerAction
+                            Hidden: True
+                            ListLayoutOverride: [$264_character_ability_cards_shattersong_empowering_note_2$, Shattersong]
+                            MiscVars:
+                                PropertyToModify: "'Attack'"
+                                OverrideIcon: "'FH_UI_1RangedAttack'"
+                                ResonanceCost: 1
+                                RestrictAllBonusesOnCard: True
+                            Vars:
+                                DistinctID: "'EmpoweringNote'"
+                            PerformVars:
+                                # consume resonance the moment an ability starts performing and counts as having happened (eg attacking someone, basically anything that results from the ready button)
+                                OnAbilityPerformStarted:
+                                    ConsumeResonanceAndRestrict: CustomAbility.ConsumeResonanceActiveBonus(ActiveBonus, Ability)
+                                # resonance consumption restricts this bonus early, have to manually finish it to untoggle it for next use
+                                OnAbilityEnded:
+                                    UntoggleBonus: CustomAbility.FinishBonusLock(ActiveBonus, BespokeBehaviour, Ability)
+                            Requirement:
+                                Vars: 
+                                    # have to have at least 1 resonance token to spend
+                                    ValidateHasResonance: Ability.TargetingActor.GetCurrentAndReservedResonanceTokens() > 0 || CheckingBonus.ToggledBonus
+                                    # only let us modify abilities that aren't persistent
+                                    ValidateIsntPersistent: CustomAbility.IsPersistentAbility(Ability) == False
+                                    # only ability card abilities
+                                    ValidateIsShattersongAbilityCard: CustomAbility.IsFromShattersongCard(Ability)
+
+                                    PropertyToModify: CheckingBonus.Ability.ActiveBonusData.GetMiscVar("PropertyToModify")
+                                    AbilityToModify: CustomAbility.FindAbilityWithPrintedProperty(PropertyToModify, Ability)
+                                    ValidateHasProperty: AbilityToModify != null
+                                    ValidTypes: list("Attack")
+                                    ValidateAbilityType: ValidTypes.Contains(AbilityToModify.AbilityType.ToString())
+                                    ValidateCanBePerformed: CustomAbility.CanBePerformedAfterConditions(AbilityToModify)
+                                    ValidateIsMelee: AbilityToModify.IsMeleeAttack == False
+                            ActiveBonusAbilityOverrides:
+                                TCOverride:
+                                    Strength: 1     
+                    TBuffDamage:
+                        NullTargeting: True
+                        Filter: Self
+                        AutoTrigger: True
+                        SkipAnim: True
+                        ActiveBonus:
+                            Duration: Persistent
+                            Behaviour: OverrideAbility
+                            # will only show up as a toggle for these types of abilities
+                            ValidAbilityType: [Attack,Move,Damage,Heal,Muddle,Push,Wound,Shield,ControlActor,DestroyObstacle,Brittle,Retaliate,NullTargeting,NullHex]
+                            IsToggleBonus: True
+                            Restriction: OncePerAction
+                            Hidden: True
+                            ListLayoutOverride: [$264_character_ability_cards_shattersong_empowering_note_2$, Shattersong]
+                            MiscVars:
+                                PropertyToModify: "'Damage'"
+                                OverrideIcon: "'FH_UI_1Damage'"
+                                ResonanceCost: 1
+                                RestrictAllBonusesOnCard: True
+                            Vars:
+                                DistinctID: "'EmpoweringNote'"
+                            PerformVars:
+                                # consume resonance the moment an ability starts performing and counts as having happened (eg attacking someone, basically anything that results from the ready button)
+                                OnAbilityPerformStarted:
+                                    ConsumeResonanceAndRestrict: CustomAbility.ConsumeResonanceActiveBonus(ActiveBonus, Ability)
+                                # resonance consumption restricts this bonus early, have to manually finish it to untoggle it for next use
+                                OnAbilityEnded:
+                                    UntoggleBonus: CustomAbility.FinishBonusLock(ActiveBonus, BespokeBehaviour, Ability)
+                            Requirement:
+                                Vars: 
+                                    # have to have at least 1 resonance token to spend
+                                    ValidateHasResonance: Ability.TargetingActor.GetCurrentAndReservedResonanceTokens() > 0 || CheckingBonus.ToggledBonus
+                                    # only let us modify abilities that aren't persistent
+                                    ValidateIsntPersistent: CustomAbility.IsPersistentAbility(Ability) == False
+                                    # only ability card abilities
+                                    ValidateIsShattersongAbilityCard: CustomAbility.IsFromShattersongCard(Ability)
+
+                                    PropertyToModify: CheckingBonus.Ability.ActiveBonusData.GetMiscVar("PropertyToModify")
+                                    AbilityToModify: CustomAbility.FindAbilityWithPrintedProperty(PropertyToModify, Ability)
+                                    ValidateHasProperty: AbilityToModify != null
+                                    ValidTypes: list("Damage")
+                                    ValidateAbilityType: ValidTypes.Contains(AbilityToModify.AbilityType.ToString())
+                                    ValidateCanBePerformed: CustomAbility.CanBePerformedAfterConditions(AbilityToModify)
+                            ActiveBonusAbilityOverrides:
+                                TCOverride:
+                                    Strength: 1     
+                    TBuffRetaliate:
+                        NullTargeting: True
+                        Filter: Self
+                        AutoTrigger: True
+                        SkipAnim: True
+                        ActiveBonus:
+                            Duration: Persistent
+                            Behaviour: OverrideAbility
+                            # will only show up as a toggle for these types of abilities
+                            ValidAbilityType: [Attack,Move,Damage,Heal,Muddle,Push,Wound,Shield,ControlActor,DestroyObstacle,Brittle,Retaliate,NullTargeting,NullHex]
+                            IsToggleBonus: True
+                            Restriction: OncePerAction
+                            Hidden: True
+                            ListLayoutOverride: [$264_character_ability_cards_shattersong_empowering_note_2$, Shattersong]
+                            MiscVars:
+                                PropertyToModify: "'Retaliate'"
+                                OverrideIcon: "'FH_UI_1Retaliate'"
+                                ResonanceCost: 1
+                                RestrictAllBonusesOnCard: True
+                            Vars:
+                                DistinctID: "'EmpoweringNote'"
+                            PerformVars:
+                                # consume resonance the moment an ability starts performing and counts as having happened (eg attacking someone, basically anything that results from the ready button)
+                                OnAbilityPerformStarted:
+                                    ConsumeResonanceAndRestrict: CustomAbility.ConsumeResonanceActiveBonus(ActiveBonus, Ability)
+                                # resonance consumption restricts this bonus early, have to manually finish it to untoggle it for next use
+                                OnAbilityEnded:
+                                    UntoggleBonus: CustomAbility.FinishBonusLock(ActiveBonus, BespokeBehaviour, Ability)
+                            Requirement:
+                                Vars: 
+                                    # have to have at least 1 resonance token to spend
+                                    ValidateHasResonance: Ability.TargetingActor.GetCurrentAndReservedResonanceTokens() > 0 || CheckingBonus.ToggledBonus
+                                    # only let us modify abilities that aren't persistent
+                                    ValidateIsntPersistent: CustomAbility.IsPersistentAbility(Ability) == False
+                                    # only ability card abilities
+                                    ValidateIsShattersongAbilityCard: CustomAbility.IsFromShattersongCard(Ability)
+
+                                    PropertyToModify: CheckingBonus.Ability.ActiveBonusData.GetMiscVar("PropertyToModify")
+                                    AbilityToModify: CustomAbility.FindAbilityWithPrintedProperty(PropertyToModify, Ability)
+                                    ValidateHasProperty: AbilityToModify != null
+                                    ValidTypes: list("Retaliate")
+                                    ValidateAbilityType: ValidTypes.Contains(AbilityToModify.AbilityType.ToString())
+                                    ValidateCanBePerformed: CustomAbility.CanBePerformedAfterConditions(AbilityToModify)
+                            ActiveBonusAbilityOverrides:
+                                TCOverride:
+                                    Strength: 1
+                    TBuffMove:
+                        NullTargeting: True
+                        Filter: Self
+                        AutoTrigger: True
+                        SkipAnim: True
+                        ActiveBonus:
+                            Duration: Persistent
+                            Behaviour: OverrideAbility
+                            # will only show up as a toggle for these types of abilities
+                            ValidAbilityType: [Attack,Move,Damage,Heal,Muddle,Push,Wound,Shield,ControlActor,DestroyObstacle,Brittle,Retaliate,NullTargeting,NullHex]
+                            IsToggleBonus: True
+                            Restriction: OncePerAction
+                            Hidden: True
+                            ListLayoutOverride: [$264_character_ability_cards_shattersong_empowering_note_2$, Shattersong]
+                            MiscVars:
+                                PropertyToModify: "'Move'"
+                                OverrideIcon: "'FH_UI_1Move'"
+                                ResonanceCost: 1
+                                RestrictAllBonusesOnCard: True
+                            Vars:
+                                DistinctID: "'EmpoweringNote'"
+                            PerformVars:
+                                # consume resonance the moment an ability starts performing and counts as having happened (eg attacking someone, basically anything that results from the ready button)
+                                OnAbilityPerformStarted:
+                                    ConsumeResonanceAndRestrict: CustomAbility.ConsumeResonanceActiveBonus(ActiveBonus, Ability)
+                                # resonance consumption restricts this bonus early, have to manually finish it to untoggle it for next use
+                                OnAbilityEnded:
+                                    UntoggleBonus: CustomAbility.FinishBonusLock(ActiveBonus, BespokeBehaviour, Ability)
+                            Requirement:
+                                Vars: 
+                                    # have to have at least 1 resonance token to spend
+                                    ValidateHasResonance: Ability.TargetingActor.GetCurrentAndReservedResonanceTokens() > 0 || CheckingBonus.ToggledBonus
+                                    # only let us modify abilities that aren't persistent
+                                    ValidateIsntPersistent: CustomAbility.IsPersistentAbility(Ability) == False
+                                    # only ability card abilities
+                                    ValidateIsShattersongAbilityCard: CustomAbility.IsFromShattersongCard(Ability)
+
+                                    PropertyToModify: CheckingBonus.Ability.ActiveBonusData.GetMiscVar("PropertyToModify")
+                                    AbilityToModify: CustomAbility.FindAbilityWithPrintedProperty(PropertyToModify, Ability)
+                                    ValidateHasProperty: AbilityToModify != null
+                                    ValidTypes: list("Move")
+                                    ValidateAbilityType: ValidTypes.Contains(AbilityToModify.AbilityType.ToString())
+                                    ValidateCanBePerformed: CustomAbility.CanBePerformedAfterConditions(AbilityToModify)
+                            ActiveBonusAbilityOverrides:
+                                TCOverride:
+                                    Strength: 1
+                    TBuffHeal:
+                        NullTargeting: True
+                        Filter: Self
+                        AutoTrigger: True
+                        SkipAnim: True
+                        ActiveBonus:
+                            Duration: Persistent
+                            Behaviour: OverrideAbility
+                            # will only show up as a toggle for these types of abilities
+                            ValidAbilityType: [Attack,Move,Damage,Heal,Muddle,Push,Wound,Shield,ControlActor,DestroyObstacle,Brittle,Retaliate,NullTargeting,NullHex]
+                            IsToggleBonus: True
+                            Restriction: OncePerAction
+                            Hidden: True
+                            ListLayoutOverride: [$264_character_ability_cards_shattersong_empowering_note_2$, Shattersong]
+                            MiscVars:
+                                PropertyToModify: "'Heal'"
+                                OverrideIcon: "'FH_UI_1Heal'"
+                                ResonanceCost: 1
+                                RestrictAllBonusesOnCard: True
+                            Vars:
+                                DistinctID: "'EmpoweringNote'"
+                            PerformVars:
+                                # consume resonance the moment an ability starts performing and counts as having happened (eg attacking someone, basically anything that results from the ready button)
+                                OnAbilityPerformStarted:
+                                    ConsumeResonanceAndRestrict: CustomAbility.ConsumeResonanceActiveBonus(ActiveBonus, Ability)
+                                # resonance consumption restricts this bonus early, have to manually finish it to untoggle it for next use
+                                OnAbilityEnded:
+                                    UntoggleBonus: CustomAbility.FinishBonusLock(ActiveBonus, BespokeBehaviour, Ability)
+                            Requirement:
+                                Vars: 
+                                    # have to have at least 1 resonance token to spend
+                                    ValidateHasResonance: Ability.TargetingActor.GetCurrentAndReservedResonanceTokens() > 0 || CheckingBonus.ToggledBonus
+                                    # only let us modify abilities that aren't persistent
+                                    ValidateIsntPersistent: CustomAbility.IsPersistentAbility(Ability) == False
+                                    # only ability card abilities
+                                    ValidateIsShattersongAbilityCard: CustomAbility.IsFromShattersongCard(Ability)
+
+                                    PropertyToModify: CheckingBonus.Ability.ActiveBonusData.GetMiscVar("PropertyToModify")
+                                    AbilityToModify: CustomAbility.FindAbilityWithPrintedProperty(PropertyToModify, Ability)
+                                    ValidateHasProperty: AbilityToModify != null
+                                    ValidTypes: list("Heal")
+                                    ValidateAbilityType: ValidTypes.Contains(AbilityToModify.AbilityType.ToString())
+                                    ValidateCanBePerformed: CustomAbility.CanBePerformedAfterConditions(AbilityToModify)
+                            ActiveBonusAbilityOverrides:
+                                TCOverride:
+                                    Strength: 1
+                    TBuffPush:
+                        NullTargeting: True
+                        Filter: Self
+                        AutoTrigger: True
+                        SkipAnim: True
+                        ActiveBonus:
+                            Duration: Persistent
+                            Behaviour: OverrideAbility
+                            # will only show up as a toggle for these types of abilities
+                            ValidAbilityType: [Attack,Move,Damage,Heal,Muddle,Push,Wound,Shield,ControlActor,DestroyObstacle,Brittle,Retaliate,NullTargeting,NullHex]
+                            IsToggleBonus: True
+                            Restriction: OncePerAction
+                            Hidden: True
+                            ListLayoutOverride: [$264_character_ability_cards_shattersong_empowering_note_2$, Shattersong]
+                            MiscVars:
+                                PropertyToModify: "'Push'"
+                                OverrideIcon: "'FH_UI_1Push'"
+                                ResonanceCost: 1
+                                RestrictAllBonusesOnCard: True
+                            Vars:
+                                DistinctID: "'EmpoweringNote'"
+                            PerformVars:
+                                # consume resonance the moment an ability starts performing and counts as having happened (eg attacking someone, basically anything that results from the ready button)
+                                OnAbilityPerformStarted:
+                                    ConsumeResonanceAndRestrict: CustomAbility.ConsumeResonanceActiveBonus(ActiveBonus, Ability)
+                                # resonance consumption restricts this bonus early, have to manually finish it to untoggle it for next use
+                                OnAbilityEnded:
+                                    UntoggleBonus: CustomAbility.FinishBonusLock(ActiveBonus, BespokeBehaviour, Ability)
+                            Requirement:
+                                Vars: 
+                                    # have to have at least 1 resonance token to spend
+                                    ValidateHasResonance: Ability.TargetingActor.GetCurrentAndReservedResonanceTokens() > 0 || CheckingBonus.ToggledBonus
+                                    # only let us modify abilities that aren't persistent
+                                    ValidateIsntPersistent: CustomAbility.IsPersistentAbility(Ability) == False
+                                    # only ability card abilities
+                                    ValidateIsShattersongAbilityCard: CustomAbility.IsFromShattersongCard(Ability)
+
+                                    PropertyToModify: CheckingBonus.Ability.ActiveBonusData.GetMiscVar("PropertyToModify")
+                                    AbilityToModify: CustomAbility.FindAbilityWithPrintedProperty(PropertyToModify, Ability)
+                                    ValidateHasProperty: AbilityToModify != null
+                                    ValidTypes: list("Push")
+                                    ValidateAbilityType: ValidTypes.Contains(AbilityToModify.AbilityType.ToString())
+                                    ValidateCanBePerformed: CustomAbility.CanBePerformedAfterConditions(AbilityToModify)
+                            ActiveBonusAbilityOverrides:
+                                TCOverride:
+                                    Strength: 1
+                    TBuffShield:
+                        NullTargeting: True
+                        Filter: Self
+                        AutoTrigger: True
+                        SkipAnim: True
+                        ActiveBonus:
+                            Duration: Persistent
+                            Behaviour: OverrideAbility
+                            # will only show up as a toggle for these types of abilities
+                            ValidAbilityType: [Attack,Move,Damage,Heal,Muddle,Push,Wound,Shield,ControlActor,DestroyObstacle,Brittle,Retaliate,NullTargeting,NullHex]
+                            IsToggleBonus: True
+                            Restriction: OncePerAction
+                            Hidden: True
+                            ListLayoutOverride: [$264_character_ability_cards_shattersong_empowering_note_2$, Shattersong]
+                            MiscVars:
+                                PropertyToModify: "'Shield'"
+                                OverrideIcon: "'FH_UI_1Shield'"
+                                ResonanceCost: 1
+                                RestrictAllBonusesOnCard: True
+                            Vars:
+                                DistinctID: "'EmpoweringNote'"
+                            PerformVars:
+                                # consume resonance the moment an ability starts performing and counts as having happened (eg attacking someone, basically anything that results from the ready button)
+                                OnAbilityPerformStarted:
+                                    ConsumeResonanceAndRestrict: CustomAbility.ConsumeResonanceActiveBonus(ActiveBonus, Ability)
+                                # resonance consumption restricts this bonus early, have to manually finish it to untoggle it for next use
+                                OnAbilityEnded:
+                                    UntoggleBonus: CustomAbility.FinishBonusLock(ActiveBonus, BespokeBehaviour, Ability)
+                            Requirement:
+                                Vars: 
+                                    # have to have at least 1 resonance token to spend
+                                    ValidateHasResonance: Ability.TargetingActor.GetCurrentAndReservedResonanceTokens() > 0 || CheckingBonus.ToggledBonus
+                                    # only let us modify abilities that aren't persistent
+                                    ValidateIsntPersistent: CustomAbility.IsPersistentAbility(Ability) == False
+                                    # only ability card abilities
+                                    ValidateIsShattersongAbilityCard: CustomAbility.IsFromShattersongCard(Ability)
+
+                                    PropertyToModify: CheckingBonus.Ability.ActiveBonusData.GetMiscVar("PropertyToModify")
+                                    AbilityToModify: CustomAbility.FindAbilityWithPrintedProperty(PropertyToModify, Ability)
+                                    ValidateHasProperty: AbilityToModify != null
+                                    ValidTypes: list("Shield")
+                                    ValidateAbilityType: ValidTypes.Contains(AbilityToModify.AbilityType.ToString())
+                                    ValidateCanBePerformed: CustomAbility.CanBePerformedAfterConditions(AbilityToModify)
+                            ActiveBonusAbilityOverrides:
+                                TCOverride:
+                                    Strength: 1
+                    TBuffPierce:
+                        NullTargeting: True
+                        Filter: Self
+                        AutoTrigger: True
+                        SkipAnim: True
+                        ActiveBonus:
+                            Duration: Persistent
+                            Behaviour: OverrideAbility
+                            # will only show up as a toggle for these types of abilities
+                            ValidAbilityType: [Attack,Move,Damage,Heal,Muddle,Push,Wound,Shield,ControlActor,DestroyObstacle,Brittle,Retaliate,NullTargeting,NullHex]
+                            IsToggleBonus: True
+                            Restriction: OncePerAction
+                            Hidden: True
+                            ListLayoutOverride: [$264_character_ability_cards_shattersong_empowering_note_2$, Shattersong]
+                            MiscVars:
+                                PropertyToModify: "'Pierce'"
+                                OverrideIcon: "'FH_UI_1Pierce'"
+                                ResonanceCost: 1
+                                RestrictAllBonusesOnCard: True
+                            Vars:
+                                DistinctID: "'EmpoweringNote'"
+                            PerformVars:
+                                # consume resonance the moment an ability starts performing and counts as having happened (eg attacking someone, basically anything that results from the ready button)
+                                OnAbilityPerformStarted:
+                                    ConsumeResonanceAndRestrict: CustomAbility.ConsumeResonanceActiveBonus(ActiveBonus, Ability)
+                                # resonance consumption restricts this bonus early, have to manually finish it to untoggle it for next use
+                                OnAbilityEnded:
+                                    UntoggleBonus: CustomAbility.FinishBonusLock(ActiveBonus, BespokeBehaviour, Ability)
+                            Requirement:
+                                Vars: 
+                                    # have to have at least 1 resonance token to spend
+                                    ValidateHasResonance: Ability.TargetingActor.GetCurrentAndReservedResonanceTokens() > 0 || CheckingBonus.ToggledBonus
+                                    # only let us modify abilities that aren't persistent
+                                    ValidateIsntPersistent: CustomAbility.IsPersistentAbility(Ability) == False
+                                    # only ability card abilities
+                                    ValidateIsShattersongAbilityCard: CustomAbility.IsFromShattersongCard(Ability)
+
+                                    PropertyToModify: CheckingBonus.Ability.ActiveBonusData.GetMiscVar("PropertyToModify")
+                                    AbilityToModify: CustomAbility.FindAbilityWithPrintedProperty(PropertyToModify, Ability)
+                                    ValidateHasProperty: AbilityToModify != null
+                                    ValidTypes: list("Attack")
+                                    ValidateAbilityType: ValidTypes.Contains(AbilityToModify.AbilityType.ToString())
+                                    ValidateCanBePerformed: CustomAbility.CanBePerformedAfterConditions(AbilityToModify)
+                                    ValidateOriginallyHadPierce: AbilityToModify.Pierce > 0
+                            ActiveBonusAbilityOverrides:
+                                TCOverride:
+                                    Pierce: 1
+                    TBuffRange:
+                        NullTargeting: True
+                        Filter: Self
+                        AutoTrigger: True
+                        SkipAnim: True
+                        ActiveBonus:
+                            Duration: Persistent
+                            Behaviour: OverrideAbility
+                            # will only show up as a toggle for these types of abilities
+                            ValidAbilityType: [Attack,Move,Damage,Heal,Muddle,Push,Wound,Shield,ControlActor,DestroyObstacle,Brittle,Retaliate,NullTargeting,NullHex]
+                            IsToggleBonus: True
+                            Restriction: OncePerAction
+                            Hidden: True
+                            ListLayoutOverride: [$264_character_ability_cards_shattersong_empowering_note_2$, Shattersong]
+                            MiscVars:
+                                PropertyToModify: "'Range'"
+                                OverrideIcon: "'FH_UI_1Range'"
+                                ResonanceCost: 1
+                                RestrictAllBonusesOnCard: True
+                            Vars:
+                                DistinctID: "'EmpoweringNote'"
+                            PerformVars:
+                                OnAbilityPerformStarted:
+                                    ConsumeResonanceAndRestrict: CustomAbility.ConsumeResonanceActiveBonus(ActiveBonus, Ability)
+                                OnAbilityEnded:
+                                    UntoggleBonus: CustomAbility.FinishBonusLock(ActiveBonus, BespokeBehaviour, Ability)
+                            Requirement:
+                                Vars: 
+                                    # have to have at least 1 resonance token to spend
+                                    ValidateHasResonance: Ability.TargetingActor.GetCurrentAndReservedResonanceTokens() > 0 || CheckingBonus.ToggledBonus
+                                    # only let us modify abilities that aren't persistent
+                                    ValidateIsntPersistent: CustomAbility.IsPersistentAbility(Ability) == False
+                                    # only ability card abilities
+                                    ValidateIsShattersongAbilityCard: CustomAbility.IsFromShattersongCard(Ability)
+
+                                    PropertyToModify: CheckingBonus.Ability.ActiveBonusData.GetMiscVar("PropertyToModify")
+                                    AbilityToModify: CustomAbility.FindAbilityWithPrintedProperty(PropertyToModify, Ability)
+                                    ValidateHasProperty: AbilityToModify != null
+                                    AbilityType: AbilityToModify.AbilityType.ToString()
+                                    ValidTypes: list("NullTargeting","Attack","Heal","Muddle","Damage","Wound","Push","ControlActor","DestroyObstacle","Brittle","RecoverDiscardedCards", "Trap", "Create", "Poison", "Immobilize", "Disarm", "Curse", "Stun", "Strengthen", "Bless", "Kill", "DisarmTrap", "DestroyObstacle", "Pull", "StopFlying", "RemoveConditions", "NullTargeting", "MoveTrap", "NullHex", "Regenerate", "Bane", "Ward", "Brittle", "Impair", "CreateTerrain", "Teleport2", "CreateShadow", "MoveShadow", "DestroyTerrain", "MoveTerrain", "ModeTransfer", "CreateLimitedHazardousTerrain")
+                                    ValidateTargeting: AbilityToModify.Targeting == "Range"
+                                    ValidateAbilityType: ValidTypes.Contains(AbilityType)
+                                    ValidateAreaEffect: AbilityToModify.AreaEffect == null || AbilityToModify.Range > 1
+                                    ValidateIsntTargetSelf: CustomAbility.ExclusiveSelf(AbilityToModify) == False
+                                    ValidateIsntExplicitlyOnMyTile: AbilityToModify.Range != 0
+                                    ValidateCanCurrentlyAddTargets: CustomAbility.IsSelectingTargets(AbilityToModify)
+                                    # attack ability has a valid target in range check in CanBePerformed, ignore it otherwise we can't buff this
+                                    ValidateCanBePerformed: CustomAbility.CanBePerformedAfterConditions(AbilityToModify, false) 
+                            ActiveBonusAbilityOverrides:
+                                TCOverride:
+                                    Range: 1
+                    TBuffTarget:
+                        NullTargeting: True
+                        Filter: Self
+                        AutoTrigger: True
+                        SkipAnim: True
+                        ActiveBonus:
+                            Duration: Persistent
+                            Behaviour: OverrideAbility
+                            # will only show up as a toggle for these types of abilities
+                            ValidAbilityType: [Attack,Move,Damage,Heal,Muddle,Push,Wound,Shield,ControlActor,DestroyObstacle,Brittle,Retaliate,NullTargeting,NullHex]
+                            IsToggleBonus: True
+                            Restriction: OncePerAction
+                            Hidden: True
+                            ListLayoutOverride: [$264_character_ability_cards_shattersong_empowering_note_2$, Shattersong]
+                            MiscVars:
+                                PropertyToModify: "'Target'"
+                                OverrideIcon: "'FH_UI_1Target'"
+                                ResonanceCost: 1
+                                RestrictAllBonusesOnCard: True
+                            Vars:
+                                DistinctID: "'EmpoweringNote'"
+                            PerformVars:
+                                OnAbilityPerformStarted:
+                                    ConsumeResonanceAndRestrict: CustomAbility.ConsumeResonanceActiveBonus(ActiveBonus, Ability)
+                                OnAbilityEnded:
+                                    UntoggleBonus: CustomAbility.FinishBonusLock(ActiveBonus, BespokeBehaviour, Ability)
+                            Requirement:
+                                Vars: 
+                                    # have to have at least 1 resonance token to spend
+                                    ValidateHasResonance: Ability.TargetingActor.GetCurrentAndReservedResonanceTokens() > 0 || CheckingBonus.ToggledBonus
+                                    # only let us modify abilities that aren't persistent
+                                    ValidateIsntPersistent: CustomAbility.IsPersistentAbility(Ability) == False
+                                    # only ability card abilities
+                                    ValidateIsShattersongAbilityCard: CustomAbility.IsFromShattersongCard(Ability)
+
+                                    PropertyToModify: CheckingBonus.Ability.ActiveBonusData.GetMiscVar("PropertyToModify")
+                                    AbilityToModify: CustomAbility.FindAbilityWithPrintedProperty(PropertyToModify, Ability)
+                                    ValidateHasProperty: AbilityToModify != null
+                                    AbilityType: AbilityToModify.AbilityType.ToString()               
+                                    ValidTypes: list("NullTargeting","Attack","Heal","Muddle","Damage","Wound","ControlActor","DestroyObstacle","Brittle","Push")
+                                    ValidateAbilityType: ValidTypes.Contains(AbilityType)
+                                    ValidateAreaEffect: AbilityToModify.AreaEffect == null
+                                    ValidateIsntTargetSelf: CustomAbility.ExclusiveSelf(AbilityToModify) == False
+                                    ValidateCanCurrentlyAddTargets: CustomAbility.IsSelectingTargets(AbilityToModify)
+                                    ValidateCanBePerformed: CustomAbility.CanBePerformedAfterConditions(AbilityToModify)
+                            ActiveBonusAbilityOverrides:
+                                TCOverride:
+                                    Target: 1
+    Bottom:
+        Infuse: Earth
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")     
+            BDestroyObstacle:
+                DestroyObstacle: True
+                Range: 1
+                Target: 1
+                Tokens: 1
+                Flags: [ModifiesResonanceTokens]              
+                AnimOverload: PowerUp  
+Layout:
+    Top:
+        - Active:
+            Ability: TBuff
+            Icon: Positive_Shattersong
+            ListLayout: "$FH/264_character_ability_cards_shattersong_empowering_note_2$"
+            Layout: "$FH/264_character_ability_cards_shattersong_empowering_note_2$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "$FH/264_character_ability_cards_shattersong_empowering_note_3$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Earth

@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 77
+ScenarioItemID: 1019
+Name: Chaos Cannon
+Quantity: 2
+Type: OneHandWeapon
+CraftingCost:
+    Metal: 2
+RequiredCraftingItemIDs: [ 86 ]

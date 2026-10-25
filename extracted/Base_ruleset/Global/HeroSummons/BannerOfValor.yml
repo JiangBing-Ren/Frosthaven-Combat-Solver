@@ -1,0 +1,33 @@
+Parser: HeroSummon
+ID: BannerOfValorID
+LocKey: $FH/082_character_ability_cards_banner_spear_barricade_3$
+Model: BannerOfValor
+Health:
+    Amount: 5
+    SquareEnhancements: 1
+Move: 0
+Attack: 0
+Range: 0
+OnSummonAbilities:
+    ANegateDamageAura:
+        PreventDamage: 99
+        Range: 1
+        Target: -1
+        Filter: Self
+        ActiveBonus:
+            Behaviour: PreventFirstDamage
+            Restriction: OncePerRound
+            RestrictPerActor: False
+            Duration: Persistent
+            IsToggleBonus: True
+            IsAura: True
+            AuraFilter: [Ally]
+            AuraTargeting: Range
+            Vars:
+                BonusActor: TriggerActor
+            Requirements:
+                Vars:
+                    ValidateNotSelf: BonusActor != Actor
+            ListLayoutOverride: [$FH/082_character_ability_cards_banner_spear_barricade_4$, Positive_DamagePrevent_Ally_Aura]
+        Text: $FH/082_character_ability_cards_banner_spear_barricade_4$
+        AnimOverload: None

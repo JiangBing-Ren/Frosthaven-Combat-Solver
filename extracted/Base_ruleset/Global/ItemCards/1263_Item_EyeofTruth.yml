@@ -1,0 +1,23 @@
+Parser: ItemCard
+ID: 1263
+StringID: EyeOfTruthID
+Name: $FH/1263_item_cards_eye_of_truth_1$
+Art: Eye of Truth
+TotalInGame: 1
+Cost: 25
+Slot: Head 
+Rarity: Relic
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        AShowMonsterCards:
+            NullTargeting: True
+            Filter: Self
+            MiscVars:
+                DontCopy: True
+            PerformVars:
+                ApplyToActors:
+                    ShowMonsterCards: CustomAbility.ShowTopMonsterCards()
+Layout: 
+    - Row: "$FH/1263_item_cards_eye_of_truth_2$"

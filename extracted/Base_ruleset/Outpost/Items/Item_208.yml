@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 208
+ScenarioItemID: 1218
+Name: Titan Nail
+Quantity: 1
+GoldCost: 35
+Type: TwoHandWeapon
+IsNewCharacterItem: False

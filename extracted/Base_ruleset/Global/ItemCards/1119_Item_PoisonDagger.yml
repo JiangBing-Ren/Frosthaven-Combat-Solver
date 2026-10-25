@@ -1,0 +1,22 @@
+Parser: ItemCard
+ID: 1119
+StringID: PoisonDaggerID
+Name: $FH/1119_item_cards_poison_dagger_1$
+Art: Poison Dagger
+TotalInGame: 2
+Cost: 15
+Slot: OneHand 
+Rarity: Rare
+Usage: Spent
+Trigger: SingleTarget
+ProsperityRequirement: 1
+Data:     
+    Overrides:
+        OPoison:
+            Conditions: Poison
+    CompareAbility:
+        AbilityType: Attack
+        IsMelee: True
+        Filter: Enemy
+Layout: 
+    - Row: $FH/1119_item_cards_poison_dagger_2$

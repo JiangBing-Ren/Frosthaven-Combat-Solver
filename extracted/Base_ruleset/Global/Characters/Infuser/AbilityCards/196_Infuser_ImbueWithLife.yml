@@ -1,0 +1,112 @@
+Parser: AbilityCard
+Name: $FH/196_character_ability_cards_infuser_imbue_with_life_1$
+Character: InfuserID
+ID: 196
+Level: X
+Initiative: 42
+Discard: [Discard,Lost]
+Prefab: 196_Infuser_ImbueWithLife
+Data:
+    Top:
+        Abilities:
+            ConsumeAbility:
+                SkipAnim: True
+                Consume: 
+                    Elements: [Earth]
+                    Abilities:
+                        CNull:
+                            Null: True
+                            AutoTrigger: True
+                            SkipAnim: True
+            TSummon:
+                Summon: AnimatedClaymoreID
+                AnimOverload: Summon
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Consume]
+            TDisarm:
+                Disarm:
+                    DecrementTrigger: WhenAnimatedClaymoreEnds
+                Filter: Self
+                AutoTrigger: True
+                SkipAnim: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Consume]
+    Bottom:
+        Abilities:
+            BHeal:
+                Heal:
+                    Amount: 7
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self
+        Consumes:
+            BCHealAirBuff:
+                PreviewEffectId: M2Heal
+                AbilityOverrides:
+                    BCOAirHeal:
+                        ParentName: BHeal
+                        Strength: -2
+                        SubAbilities:
+                            SubInfuse:
+                                Infuse: [Air]
+                                SkipAnim: True
+                                XP: 1
+            BCHealEarthBuff:
+                PreviewEffectId: M2Heal
+                AbilityOverrides:
+                    BCOEarthHeal:
+                        ParentName: BHeal
+                        Strength: -2
+                        SubAbilities:
+                            SubInfuse:
+                                Infuse: [Earth]
+                                SkipAnim: True
+                                XP: 1
+            BCHealDarkBuff:
+                PreviewEffectId: M2Heal
+                AbilityOverrides:
+                    BCODarkHeal:
+                        ParentName: BHeal
+                        Strength: -2
+                        SubAbilities:
+                            SubInfuse:
+                                Infuse: [Dark]
+                                SkipAnim: True
+Layout:
+    Top:
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<sprite name=ConsumeEarth>:"
+        - Active:
+            Ability: "TSummon"
+            Icon: "Summon"
+            Layout:
+                - Summon:
+                    Ability: TSummon
+                    SummonName: $FH/196_character_ability_cards_infuser_imbue_with_life_2$
+                    SpecialText:
+                        - Row: "<size=150%><sprite name=Shield> 1"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "$FH/196_character_ability_cards_infuser_imbue_with_life_3$"
+        - Row: "$FH/196_character_ability_cards_infuser_imbue_with_life_4$"
+    Bottom:
+        - Row: "<b><size=100%><sprite name=Heal> *BHeal* <size=100%><voffset=1>@BHeal@"
+        - Row: "$FH/196_character_ability_cards_infuser_imbue_with_life_5$"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: BCHealAirBuff
+                    Text: "-2<sprite name=Heal>: <sprite name=CreateAir>, <sprite name=XP1>"
+                - Consume:
+                    Name: BCHealEarthBuff
+                    Text: "-2<sprite name=Heal>: <sprite name=CreateEarth>, <sprite name=XP1>"
+                - Consume:
+                    Name: BCHealDarkBuff
+                    Text: "-2<sprite name=Heal>: <sprite name=CreateDark>"

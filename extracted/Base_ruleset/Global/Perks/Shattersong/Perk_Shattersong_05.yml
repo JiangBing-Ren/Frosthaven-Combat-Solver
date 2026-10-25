@@ -1,0 +1,8 @@
+Parser: Perk
+ID: Shattersong05
+Name: FH/PERK_Shattersong_05_Name
+Description: FH/PERK_Shattersong_05_Desc
+CharacterID: ShattersongID
+Available: 2
+CardsToRemove: [AMC_Basic_P1, AMC_Basic_P1]
+CardsToAdd: [AMC_Air_Light_P2, AMC_Air_Light_P2]

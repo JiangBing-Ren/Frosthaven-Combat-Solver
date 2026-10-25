@@ -1,0 +1,97 @@
+Parser: AbilityCard
+Name: $FH/205_character_ability_cards_infuser_gemstone_resonance_1$
+Character: InfuserID
+ID: 205
+Level: 5
+Initiative: 30
+Discard: [Discard,Discard]
+Prefab: 205_Infuser_GemstoneResonance
+Data:
+    Top:
+        Abilities:
+            ConsumeAbility:
+                Consume: 
+                    Elements: [Earth]
+                    Abilities:
+                        CNull:
+                            Null: True
+                            AutoTrigger: True
+            TPassive:
+                AddActiveBonus:
+                    Null: True
+                AutoTrigger: True
+                Filter: Self
+                AnimOverload: GatherElements  
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Consume]
+                Vars:
+                    ResetInfusionTurnRestriction: CustomAbility.ResetInfusionTurnRestriction()
+                ActiveBonus:
+                    Duration: Round
+                    ListLayoutOverride: [$FH/205_character_ability_cards_infuser_gemstone_resonance_2$, Positive_Regenerate_Heal]
+                    IsAura: True
+                    AuraFilter: [Self, OwnSummon]
+                    AuraTargeting: All
+                    Behaviour: OverrideAbility
+                    ValidAbilityTypes: [Heal]
+                    MiscVars:
+                        InfusionBonus: True
+                    ActiveBonusAbilityOverrides:
+                        TCOverride:
+                            Conditions: [Regenerate]
+            THealAlly:
+                Heal:
+                    Amount: 2
+                    SquareEnhancements: 1
+                Target: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Heal","Target","Range")
+                Filter: Ally
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Consume]
+                MiscVars:
+                    Infusion: True
+        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BActive:
+                Filter: Self
+                NullTargeting: True
+                ActiveBonus:
+                    Duration: Round
+                    ListLayoutOverride: [$FH/205_character_ability_cards_infuser_gemstone_resonance_4$, Positive_Infuser]
+                AnimOverload: RangedCast 
+                MiscVars:
+                    TreatAsInfusedPair: True
+                SubAbilities:
+                    BActive2:
+                        Filter: Self
+                        NullTargeting: True
+                        AutoTrigger: True
+                        SkipAnim: True
+                        ActiveBonus:
+                            Duration: Round
+                            Hidden: True
+                        MiscVars:
+                            TreatAsInfusedPair: True
+Layout:
+    Top:
+        - Row: "$FH/205_character_ability_cards_infuser_gemstone_resonance_5$"
+        - Row: "$FH/205_character_ability_cards_infuser_gemstone_resonance_2$"
+        - Row: "$FH/205_character_ability_cards_infuser_gemstone_resonance_3$"
+    Bottom:
+        - Row: "<b><size=100%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "$FH/205_character_ability_cards_infuser_gemstone_resonance_4$"
+        

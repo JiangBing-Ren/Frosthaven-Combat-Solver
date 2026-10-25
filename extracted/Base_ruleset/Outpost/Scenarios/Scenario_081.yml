@@ -1,0 +1,13 @@
+Parser: FHScenario
+ID: 81
+Name: Ruinous Research Lab
+LevelID: FS_026_Quatryl_Library
+Chain: Other
+Location: CrystalFields
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: AddProsperity
+          Param1: 1
+        - Type: GainItemBlueprint
+          Param1: 70

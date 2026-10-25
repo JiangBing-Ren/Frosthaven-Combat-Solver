@@ -1,0 +1,18 @@
+Parser: ItemCard
+ID: 1031
+StringID: HealingPotionID
+Name: $FH/1031_item_cards_healing_potion_1$
+Art: Healing Potion
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        AHeal:
+            Heal: 3
+            Filter: Self
+Layout: 
+    - Row: "$FH/1031_item_cards_healing_potion_2$"

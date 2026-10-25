@@ -1,0 +1,16 @@
+Parser: HeroSummon
+ID: JackalMechID
+LocKey: $FH/389_character_ability_cards_hive_hunterkiller_2$
+Model: JackalMech
+Health:
+    Amount: 4
+    SquareEnhancements: 1
+Move:
+    Amount: 3
+    SquareEnhancements: 1
+Attack:
+    Amount: 2
+    SquareEnhancements: 1
+Range: 1
+OnAttackConditions: Wound
+Retaliate: 1 

@@ -1,0 +1,137 @@
+Parser: Perk
+ID: HIVE08
+Name: FH/PERK_HIVE_08_Name
+Description: FH/PERK_HIVE_08_Desc
+CharacterID: HIVEID
+Available: 1
+Cost: 2
+Flags: [Passive, ApplyActiveBonusesAtScenarioStart]
+Abilities:
+    OnChooseToLongRest:
+        Filter: Self
+        AutoTrigger: True
+        AddActiveBonus:
+            Filter: Self
+            AutoTrigger: True
+            Choose:
+                Abilities:
+                    Adjust99:
+                        PreviewEffectText: "99"
+                        AutoTrigger: True
+                        AdjustInitiative: 99
+                        Filter: Self
+                        SkipAnim: True
+                        ActiveBonus:
+                            Hidden: True
+                            Duration: Round
+                            Behaviour: SetInitiative
+                    Adjust89:
+                        PreviewEffectText: "89"
+                        AutoTrigger: True
+                        AdjustInitiative: 89
+                        Filter: Self
+                        SkipAnim: True
+                        ActiveBonus:
+                            Hidden: True
+                            Duration: Round
+                            Behaviour: SetInitiative
+                    Adjust79:
+                        PreviewEffectText: "79"
+                        AutoTrigger: True
+                        AdjustInitiative: 79
+                        Filter: Self
+                        SkipAnim: True
+                        ActiveBonus:
+                            Hidden: True
+                            Duration: Round
+                            Behaviour: SetInitiative
+                    Adjust69:
+                        PreviewEffectText: "69"
+                        AutoTrigger: True
+                        AdjustInitiative: 69
+                        Filter: Self
+                        SkipAnim: True
+                        ActiveBonus:
+                            Hidden: True
+                            Duration: Round
+                            Behaviour: SetInitiative
+                    Adjust59:
+                        PreviewEffectText: "59"
+                        AutoTrigger: True
+                        AdjustInitiative: 59
+                        Filter: Self
+                        SkipAnim: True
+                        ActiveBonus:
+                            Hidden: True
+                            Duration: Round
+                            Behaviour: SetInitiative
+                    Adjust49:
+                        PreviewEffectText: "49"
+                        AutoTrigger: True
+                        AdjustInitiative: 49
+                        Filter: Self
+                        SkipAnim: True
+                        ActiveBonus:
+                            Hidden: True
+                            Duration: Round
+                            Behaviour: SetInitiative
+                    Adjust39:
+                        PreviewEffectText: "39"
+                        AutoTrigger: True
+                        AdjustInitiative: 39
+                        Filter: Self
+                        SkipAnim: True
+                        ActiveBonus:
+                            Hidden: True
+                            Duration: Round
+                            Behaviour: SetInitiative
+                    Adjust29:
+                        PreviewEffectText: "29"
+                        AutoTrigger: True
+                        AdjustInitiative: 29
+                        Filter: Self
+                        SkipAnim: True
+                        ActiveBonus:
+                            Hidden: True
+                            Duration: Round
+                            Behaviour: SetInitiative
+                    Adjust19:
+                        PreviewEffectText: "19"
+                        AutoTrigger: True
+                        AdjustInitiative: 19
+                        Filter: Self
+                        SkipAnim: True
+                        ActiveBonus:
+                            Hidden: True
+                            Duration: Round
+                            Behaviour: SetInitiative
+                    Adjust1:
+                        PreviewEffectText: "1"
+                        AutoTrigger: True
+                        AdjustInitiative: 1
+                        Filter: Self
+                        SkipAnim: True
+                        ActiveBonus:
+                            Hidden: True
+                            Duration: Round
+                            Behaviour: SetInitiative
+            HelpBoxTooltipLocKey: "$FH/Perk_HIVE_08_ChooseHelpBox$"
+            SubAbilities:           
+                AControlAllSummons:
+                    ControlSummonTurn: true
+                    AnimOverload: Grant
+                    Filter: Self
+                    AutoTrigger: True
+                    ActiveBonus:
+                        Duration: Round
+                        IsAura: True
+                        AuraFilter: OwnSummon
+                        AuraTargeting: All
+                        ListLayoutOverride: [$FH/PERK_HIVE_08_Desc$, FH_UI_PERKS_HIVE_Regroup]
+                        Hidden: True
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: PreCalcInitiativeAbility
+            Hidden: True
+            Requirements:
+                IsLongRest: True

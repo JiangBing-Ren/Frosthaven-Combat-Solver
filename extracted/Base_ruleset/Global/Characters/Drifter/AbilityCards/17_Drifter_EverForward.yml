@@ -1,0 +1,61 @@
+Parser: AbilityCard
+Name: $FH/017_character_ability_cards_drifter_ever_forward_1$
+Character: DrifterID
+ID: 17
+Level: 2
+ProgressionOrder: 16
+Initiative: 67
+Discard: [Discard,Discard]
+Prefab: 17_Drifter_EverForward
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 2
+                Range: 3
+                AnimOverload: RangedAttack
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+            TRegenerate:
+                Regenerate:
+                    DiamondPlusEnhancements: 1
+                Filter: Self
+                AnimOverload: PowerUp_No_VFX
+    Bottom:
+        Abilities:
+            BHeal:
+                Heal:
+                    Amount: 1
+                    CircleEnhancements: 1
+                Target: 3
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Heal","Target","Range")
+                Filter: [Self, Ally]
+                AnimOverload: Heal
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "25,25,25,25"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack*"
+            - Column:
+                - AddedEffect: "<sprite name=Range>3"
+            - Column:
+        - Divider:
+        - Row:
+            - ColumnWidths: "25,25,25,25"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Regenerate> <size=100%><voffset=1>@TRegenerate@"
+            - Column:
+                - AddedEffect: "$FH/target_self$"
+            - Column:
+    Bottom:
+        - Row:
+            - ColumnWidths: "20,30,30,20"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Heal> *BHeal*<size=100%><voffset=1>@BHeal@"
+            - Column:
+                - AddedEffect: "<sprite name=Target>3, <sprite name=Range>3"
+            - Column:
+            

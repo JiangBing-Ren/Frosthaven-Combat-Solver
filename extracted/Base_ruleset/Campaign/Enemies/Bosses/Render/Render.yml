@@ -1,0 +1,137 @@
+Parser: Enemy
+ID: RenderID
+LocKey: $FH/boss_stat_cards_render_1$
+MonsterType: Boss
+Model: TheRender
+StandeeLimit: 1
+PredominantlyMelee: True
+AbilityCards: [08740041, 08750042, 08760043, 08770044, 08780045, 08790046, 08800047, 08810048]
+# Base Stats
+Level0:
+    Health: 0
+    Move: 3
+    Attack: 0
+    Range: 1
+    Target: 1
+    Conditions: [Wound]
+    Immunities: [Brittle, Immobilize, Disarm, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 14
+        Attack:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 1
+            AddTo: True
+Level1:
+    Health: 0
+    Move: 4
+    Attack: 0
+    Range: 1
+    Target: 1
+    Conditions: [Wound]
+    Immunities: [Brittle, Immobilize, Disarm, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 16
+        Attack:
+            BasedOn: XAddedToInitialPlayerCharacterCount
+            Multiplier: 2    
+            AddTo: True
+Level2:
+    Health: 0
+    Move: 4
+    Attack: 0
+    Range: 1
+    Target: 1
+    Conditions: [Wound]
+    Immunities: [Brittle, Immobilize, Disarm, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 20
+        Attack:
+            BasedOn: XAddedToInitialPlayerCharacterCount
+            Multiplier: 2    
+            AddTo: True
+Level3:
+    Health: 0
+    Move: 4
+    Attack: 0
+    Range: 1
+    Target: 1
+    Conditions: [Wound]
+    Immunities: [Brittle, Immobilize, Disarm, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 25
+        Attack:
+            BasedOn: XAddedToInitialPlayerCharacterCount
+            Multiplier: 3    
+            AddTo: True
+Level4:
+    Health: 0
+    Move: 4
+    Attack: 0
+    Range: 1
+    Target: 1
+    Conditions: [Wound]
+    Immunities: [Brittle, Immobilize, Disarm, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 32
+        Attack:
+            BasedOn: XAddedToInitialPlayerCharacterCount
+            Multiplier: 3    
+            AddTo: True
+Level5:
+    Health: 0
+    Move: 4
+    Attack: 0
+    Range: 1
+    Target: 1
+    Conditions: [Wound]
+    Immunities: [Brittle, Immobilize, Disarm, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 39
+        Attack:
+            BasedOn: XAddedToInitialPlayerCharacterCount
+            Multiplier: 4    
+            AddTo: True
+Level6:
+    Health: 0
+    Move: 4
+    Attack: 0
+    Range: 1
+    Target: 1
+    Conditions: [Wound]
+    Immunities: [Brittle, Immobilize, Disarm, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 54
+        Attack:
+            BasedOn: XAddedToInitialPlayerCharacterCount
+            Multiplier: 5    
+            AddTo: True
+Level7:
+    Health: 0
+    Move: 4
+    Attack: 0
+    Range: 1
+    Target: 1
+    Conditions: [Wound]
+    Immunities: [Brittle, Immobilize, Disarm, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 70
+        Attack:
+            BasedOn: XAddedToInitialPlayerCharacterCount
+            Multiplier: 6    
+            AddTo: True

@@ -1,0 +1,67 @@
+Parser: AbilityCard
+Name: $FH/061_character_ability_cards_banner_spear_at_all_costs_1$
+#CustomImage: KRO_BANNER_SPEAR_AbilityCards_AtAllCosts
+#MiniCardImage: KRO_BANNER_SPEAR_AbilityCards_IncendiaryThrow_Mini
+Character: BannerSpearID
+ID: 61
+Level: 1
+Initiative: 60
+Discard: [Discard,Discard]
+Prefab: 61_Bannerspear_AtAllCosts
+Data:
+    Top:
+        Abilities:
+            THeal:
+                Heal: 3
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Target: 99
+                Targeting: All
+                MiscVars:
+                    CheckLOS: True
+                Filter: [Ally]
+                MiscVars:
+                    AutoSelectValidTiles: True
+                SubAbilities:
+                    THealSubDamage:
+                        Damage: 0
+                        MiscVars:
+                            PrintedProperties: list("Damage")
+                        Filter: [Self]
+                        Flags: [SubAbilityPreview]
+                        Targeting: All
+                        StatIsBasedOnX:
+                            Strength:
+                                # BasedOn: ActorsHealedThisAction
+                                BasedOn: Vars
+                                Vars:
+                                    Value: CustomAbility.ActorsHealedThisActionCount()
+        XP: 1
+    Bottom:
+        Abilities:
+            BSummon:
+                Summon: ReinforcementID
+                AnimOverload: Summon
+        XP: 1
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "20,15,45,20"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Heal> *THeal*"
+            - Column: 
+                - AddedEffect: "<b><size=130%>$FH/061_character_ability_cards_banner_spear_at_all_costs_2$"
+            - Column: 
+        - Divider:
+        - MandatoryTrigger: "$FH/061_character_ability_cards_banner_spear_at_all_costs_3$"
+    Bottom:
+        - Active:
+            Ability: "BSummon"
+            Icon: "Summon"
+            Layout:
+                - Summon:
+                    Ability: BSummon
+                    SummonName: $FH/061_character_ability_cards_banner_spear_at_all_costs_4$
+        - Row: "<size=20%> "
+        - Row: "$FH/061_character_ability_cards_banner_spear_at_all_costs_5$"
+        

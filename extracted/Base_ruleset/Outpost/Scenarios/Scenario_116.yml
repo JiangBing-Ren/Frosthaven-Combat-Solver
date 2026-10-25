@@ -1,0 +1,9 @@
+Parser: FHScenario
+ID: 116
+Name: Caravan Guards
+LevelID: FS_116_Caravan_Guards
+Chain: Other
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: FS116ConclusionEffect

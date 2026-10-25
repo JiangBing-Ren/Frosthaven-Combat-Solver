@@ -1,0 +1,23 @@
+Parser: ScenarioAbility
+ID: FH049_OxygenScript
+ScenarioAbility:
+    OxygenAbility:
+        AddActiveBonus:
+            Damage: 0
+            Filter: Self
+            StatIsBasedOnX:
+                Strength:
+                    BasedOn: ScenarioTrapDamage
+        ActiveBonus:
+            Behaviour: DuringActionAbilityOnActionEndedAndLongRest
+            ArbitraryParams: [ScenarioScript_FH049]
+            XPTracker: [0,0,0,0,0,0,0]
+            Duration: Persistent
+            Restriction: OncePerAction
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_049_OxygenAbility$, Positive_Unique_Campaign]
+            OnlyWorkAfterFinishedTracker: True
+            Requirement:
+                ActionHasHappened: True
+            MiscVars:
+                OnTrackerIndexChanged: ScenarioScript_FH049.LogRemainingOxygen(Actor)
+                OverrideLayoutName: "'$Scenario_049_Oxygen_Title$'"

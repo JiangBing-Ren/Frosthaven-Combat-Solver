@@ -1,0 +1,11 @@
+Parser: CampaignSection
+ID: 164.2
+Name: Library Built (1-Educated)
+SkipCompletedNotification: True
+Effects:
+    - Type: EnableEvent
+      Param1: SO-58
+    - Type: EnableEvent
+      Param1: WR-45
+    - Type: EnableEvent
+      Param1: SR-47

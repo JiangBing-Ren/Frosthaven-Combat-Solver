@@ -1,0 +1,37 @@
+Parser: ItemCard
+ID: 1205
+StringID: ChokerOfSacrificeID
+Name: $FH/1205_item_cards_choker_of_sacrifice_1$
+Art: Choker of Sacrifice
+TotalInGame: 1
+Cost: 30
+Slot: Head
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    ItemRequirements:
+        Vars:
+            LootedCards: CustomAbility.GetDrawnLootCards()
+            ValidateHasLooted: LootedCards.Count > 0
+            ValidateHasRemainingLootCards: LootedCards.Where(obj.Type != "RandomItem").Count > 0
+    Abilities:
+        ADiscardLootCard:
+            NullTargeting:
+            Filter: Self
+            PerformVars:
+                ApplyToActors: 
+                    ValidCards: CustomAbility.GetDrawnLootCards().Where(obj.Type != "RandomItem")
+                    DiscardedCard: CustomAbility.DiscardLootCard(TargetingActor, ValidCards)
+                    SetVar: TargetingActor.SetTempVar("DiscardedLootCard", DiscardedCard)        
+        AHeal:
+            Heal: 5
+            Range: 2
+            Conditions: Ward
+            Filter: [Self,Ally,OwnSummon]
+            StartAbilityRequirements:
+                Type: ThisAbility
+                Vars:
+                    ValidateHasDiscardedLootCard: Actor.DiscardedLootCard
+Layout: 
+    - Row: "$FH/1205_item_cards_choker_of_sacrifice_2$"

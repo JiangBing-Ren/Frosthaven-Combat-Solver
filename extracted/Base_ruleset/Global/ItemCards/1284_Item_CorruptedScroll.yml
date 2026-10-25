@@ -1,0 +1,20 @@
+Parser: ItemCard
+ID: 1284
+StringID: CorruptedScrollID
+Name: $FH/1284_item_cards_corrupted_scroll_1$
+Art: Corrupted Scroll
+TotalInGame: 1
+Cost: 25
+Slot: SmallItem 
+Rarity: Relic
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        AHealSelf:
+            Heal: 5
+            Filter: [Self,Ally,OwnSummon]
+            Range: 5
+            Conditions: Poison
+Layout: 
+    - Row: "$FH/1284_item_cards_corrupted_scroll_2$"

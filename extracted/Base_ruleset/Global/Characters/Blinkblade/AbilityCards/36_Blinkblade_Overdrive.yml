@@ -1,0 +1,113 @@
+Parser: AbilityCard
+Name: $FH/36_character_ability_cards_blinkblade_overdrive_1$
+Character: BlinkbladeID
+ID: 36
+Level: 1
+Initiative: 60
+Discard: [Lost,Discard]
+Prefab: 36_Blinkblade_Overdrive
+Data:
+    Top:
+        Abilities:
+            TShield:
+                Shield:
+                    Amount: 1
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                Filter: Self
+                ActiveBonus:
+                    Duration: Persistent
+                    Flags: [WhenSlow, NotAffectedByIgnoreSlowEffects]
+                AnimOverload: PowerUp
+                ConditionalOverrides:
+                    TShield_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            TShield_SlowAnim:
+                                AnimOverload: PowerUpSlow 
+                SubAbilities:
+                    TMove:
+                        Move:
+                            Amount: 0
+                            Jump: True
+                        Filter: Self                        
+                        ActiveBonus:
+                            Duration: Persistent
+                            Behaviour: BuffMove
+                            Flags: [WhenFast, NotAffectedByIgnoreFastEffects]
+                        AutoTrigger: True
+                        SkipAnim: True
+
+        XP: 2
+    Bottom:
+        Abilities:
+            BMuddle:
+                Muddle: True
+                Range: 2
+                Target: 99
+                Filter: Enemy
+                AnimOverload: PowerUp2HexAOE
+                MiscVars:
+                    PrintedProperties: list("Range")
+                MiscVars:
+                    AutoSelectValidTiles: True
+                ConditionalOverrides:
+                    BMuddleCO_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            BMuddle:
+                                Range: 1
+                                AnimOverload: PowerUpSlow3HexAOE
+            BAttackBuff:
+                Attack: 0
+                Filter: Self
+                AutoTrigger: True
+                ActiveBonus:
+                    Behaviour: BuffAttack
+                    Duration: Round
+                    Flags: [MuddledTargetsDontRetaliate]
+                CanSkip: False
+                AnimOverload: PowerUp
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Fast
+Layout:
+    Top:
+        - Active:
+            Ability: TShield
+            Icon: Positive_Shield_Slow
+            ListLayout: "$FH/036_character_ability_cards_blinkblade_overdrive_2$"
+            Layout: "$FH/036_character_ability_cards_blinkblade_overdrive_2$"
+        - Row: "<size=50%> "
+        - Active:
+            Ability: TMove
+            Icon: Positive_Jump_Fast
+            ListLayout: "$FH/036_character_ability_cards_blinkblade_overdrive_3$"
+            Layout: "$FH/036_character_ability_cards_blinkblade_overdrive_3$"
+    Bottom:
+        - Row:
+            - ColumnWidths: "20,40,40"
+            - Column:
+            - Column:
+                - Row: "<size=130%> <sprite name=Muddle></size> $FH/036_character_ability_cards_blinkblade_overdrive_4$"
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Text: "+1 <sprite name=Range> "
+        - Row: "<size=50%> "
+        - Row:
+            - ColumnWidths: "70,30"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Layout:
+                        - Active:
+                            Ability: BAttackBuff
+                            Icon: Positive_RetalitePrevent_Muddle
+                            ListLayout: "$FH/036_character_ability_cards_blinkblade_overdrive_5$"
+                            Layout: "$FH/036_character_ability_cards_blinkblade_overdrive_5$"
+            - Column:

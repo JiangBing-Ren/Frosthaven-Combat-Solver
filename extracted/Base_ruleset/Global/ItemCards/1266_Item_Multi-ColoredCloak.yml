@@ -1,0 +1,35 @@
+Parser: ItemCard
+ID: 1266
+StringID: MultiColoredCloakID
+Name: $FH/1266_item_cards_multi-colored_cloak_1$
+Art: Multi-Colored Cloak
+TotalInGame: 1
+Cost: 20
+Slot: Body
+Rarity: Rare
+Usage: Spent
+Trigger: AfterAttackedIgnoringDamageTaken
+Data:    
+    ItemRequirements:
+        Vars:
+            ActorBeingAttacked: Ability.VarsContext.parentContext.ActorBeingAttacked
+            ItemOwner: Ability.VarsContext.parentContext.ItemOwner
+            ValidateIsOwner: ActorBeingAttacked == ItemOwner
+            ValidateCanUseItems: ItemOwner.Tokens.HasKey(CCondition.ENegativeCondition.Impair) == false && ItemOwner.Tokens.HasKey(CCondition.ENegativeCondition.Stun) == false  
+    CompareAbility:
+        AbilityType: Attack
+        Filter: Enemy
+    Abilities:
+        AControl:
+            # hack - control actor self 1) hides skip button 2) hides action selection (which shows up because why the fuck not)
+            ControlActor:
+                Abilities:
+                    AInfuse:
+                        ShowElementPicker: True
+                        Infuse: Any
+                        Filter: Self
+            Filter: Self
+            SkipAnim: True
+            AutoTrigger: True
+Layout: 
+    - Row: $FH/1266_item_cards_multi-colored_cloak_2$

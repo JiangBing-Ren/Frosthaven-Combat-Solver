@@ -1,0 +1,114 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    FHSolver — 霜港迷城 战斗求解器（BepInEx 5 插件）
+    目标框架 net472：Unity 2022.3 的 Mono 是 .NET 4.x 兼容运行时；
+    BepInEx 5.4.23.5 的 core 编译于 net35，运行时由 Unity Mono 统一解析。
+  -->
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>FHSolver</AssemblyName>
+    <RootNamespace>FHSolver</RootNamespace>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>bin\</OutputPath>
+    <DebugType>none</DebugType>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);NU1701;CS1591</NoWarn>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <!-- 路径集中配置，换机器只改这里 -->
+  <PropertyGroup>
+    <FrosthavenDir>D:\Steam\steamapps\common\Frosthaven</FrosthavenDir>
+    <ManagedDir>$(FrosthavenDir)\Frosthaven_Data\Managed</ManagedDir>
+    <BepInExCoreDir>$(FrosthavenDir)\BepInEx\core</BepInExCoreDir>
+    <BepInExPluginsDir>$(FrosthavenDir)\BepInEx\plugins</BepInExPluginsDir>
+  </PropertyGroup>
+
+  <!--
+    刻意不引用任何 NuGet 包。
+    原本引用 Microsoft.NETFramework.ReferenceAssemblies 只是为了在"没装 .NET Framework
+    4.7.2 targeting pack"的机器上也能编译；本机已自带
+    C://Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2
+    （264 个 ref dll），所以那个包是多余的。
+
+    去掉它的真正价值：**项目不再依赖 NuGet restore**。
+    当前宿主环境（WorkBuddy 启动的 shell）缺 LOCALAPPDATA 等环境变量，
+    NuGet 的 NuGetEnvironment.CalculateFolderPath 会 Path.Combine(null, ...) 抛
+    "Value cannot be null (Parameter 'path1')"，导致任何 dotnet build 的隐式 restore 都崩。
+    没有包要解析时这条路径不会被触发 —— 见 tools/build.sh（用 dotnet build 的 no-restore 选项）。
+  -->
+
+  <!-- BepInEx / Harmony：不复制到输出，运行时由 BepInEx 提供 -->
+  <ItemGroup>
+    <Reference Include="BepInEx">
+      <HintPath>$(BepInExCoreDir)\BepInEx.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>$(BepInExCoreDir)\0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <!-- Unity：门面 + 核心模块 -->
+  <ItemGroup>
+    <Reference Include="UnityEngine">
+      <HintPath>$(ManagedDir)\UnityEngine.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(ManagedDir)\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <!-- 「按住 Tab 才显示坐标」要跟着游戏绑定的控制走，不是跟着按键走 -->
+    <Reference Include="Unity.InputSystem">
+      <HintPath>$(ManagedDir)\Unity.InputSystem.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <!--
+      M4 求解器窗口要用 Unity IMGUI。
+      GUIStyle 在 UnityEngine.IMGUIModule、Font 在 UnityEngine.TextRenderingModule ——
+      这两个是 v0.8.0 做自建 HUD 时加过、v1.1.0 删 HUD 时移除的，现在做窗口再补回来。
+      只加需要的两个，不要顺手拖回整包 UI 依赖。
+    -->
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>$(ManagedDir)\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>$(ManagedDir)\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <!--
+    游戏业务程序集。
+    只引用 ScenarioRuleLibrary + SharedLibrary：战斗相关的全部类型都在这两个里面，
+    不需要碰依赖图极深的 Assembly-CSharp。
+    （M1 阶段实测：CActor / CPlayerActor / CEnemyActor / CCharacterClass /
+      ScenarioManager / ScenarioState / CScenario / MonsterClassManager /
+      AttackModifierYMLData / AStar.Point 全在此二程序集内，且全为 public。）
+  -->
+  <ItemGroup>
+    <Reference Include="ScenarioRuleLibrary">
+      <HintPath>$(ManagedDir)\ScenarioRuleLibrary.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="SharedLibrary">
+      <HintPath>$(ManagedDir)\SharedLibrary.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <!-- 构建后自动部署到游戏插件目录（目录不存在则先建） -->
+  <Target Name="DeployToGamePlugins" AfterTargets="Build">
+    <MakeDir Directories="$(BepInExPluginsDir)" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(BepInExPluginsDir)" />
+  </Target>
+
+</Project>

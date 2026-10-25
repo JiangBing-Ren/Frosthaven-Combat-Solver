@@ -1,0 +1,14 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_PreventRetaliateDamage
+ScenarioAbility:
+    AActive:
+        PreventDamage: -1
+        Target: -1
+        Filter: Self
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: BlockRetaliate
+            IsToggleBonus: False
+            Hidden: True
+        AnimOverload: None
+        AutoTrigger: True

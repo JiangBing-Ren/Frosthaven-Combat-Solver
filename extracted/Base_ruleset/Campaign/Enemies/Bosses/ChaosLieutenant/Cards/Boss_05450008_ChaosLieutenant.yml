@@ -1,0 +1,20 @@
+Parser: EnemyCard
+ID: 05450008
+Name: $Monster_Ability_545_ChaosDemon_HungryMaw$
+Initiative: 98
+Shuffle: True
+Data:
+    Abilities: 
+        AMove:
+            Move: -1
+        AAttack:
+            Attack: -1
+            Filter: Enemy
+            AnimOverload: BlackTendrils
+    Consumes:
+        CAny:
+            Elements: Any
+            AbilityOverrides:
+                CAnyBuffs:
+                    ParentName: AAttack
+                    Conditions: [Bane]

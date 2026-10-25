@@ -1,0 +1,15 @@
+Parser: Mastery
+ID: HIVE_MASTERY_2
+LocalisedName: HIVE_MASTERY_2_Name
+LocalisedDescription: HIVE_MASTERY_2_Desc
+PerkPoints: 1
+BattleGoalCondition:
+    - Targets:
+        Filter: UseModeTransfer
+        # in a single round
+        SubFilter: RoundCharactersOnly
+        HasHappened: True
+        StopCheckingAfterDeath: True
+        Value: 4
+        CharacterIDs: 
+            ActorID: HIVEID

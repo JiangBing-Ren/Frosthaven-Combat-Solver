@@ -1,0 +1,15 @@
+Parser: EnemyCard
+ID: 687
+Name: $Monster_Ability_687_LurkerMindsnipper_BeguilingThoughts$
+Initiative: 18
+Shuffle: False
+Data:
+    Abilities:
+        Move1:
+            Move: 0
+        Attack1:
+            Attack: -2
+            Range: 2
+            RangeIsBase: True
+            Condition: Disarm
+            AnimOverload: RangedAttack

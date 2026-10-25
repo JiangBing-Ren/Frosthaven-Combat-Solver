@@ -1,0 +1,91 @@
+Parser: AbilityCard
+Name: $FH/58_character_ability_cards_blinkblade_fastest_alive_1$
+Character: BlinkbladeID
+ID: 58
+Level: 8
+Initiative: 1
+Discard: [Discard,Discard]
+Prefab: 58_Blinkblade_FastestAlive
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 2
+                Target: 3
+                MiscVars:
+                    PrintedProperties: list("Attack", "Target")
+                Condition: Muddle
+                Filter: Enemy
+                AnimOverload: Attack2
+                ConditionalOverrides:
+                    AttackCO:
+                        Requirement:
+                            RequiredAgility: Fast
+                        Filter:
+                            TargetType: Enemy
+                            Vars:
+                                ValidateMonster: target
+                                ValidateMonsterClass: ValidateMonster.MonsterClass
+                                ValidateMonsterCard: ValidateMonsterClass.RoundAbilityCard
+                                MonsterCardYml: ScenarioRuleClient.SRLYML.MonsterCards.Find(ID == ValidateMonsterCard.ID)
+                                HasMoveAbility: MonsterCardYml.CardAction.Abilities.Any(AbilityType == CAbility.EAbilityType.Move)
+                                IsImmobilized: ValidateMonster.Tokens.HasKey(CCondition.ENegativeCondition.Immobilize)
+                                IsStunned: ValidateMonster.Tokens.HasKey(CCondition.ENegativeCondition.Stun)
+                                ValidateWontMove: IsImmobilized || IsStunned || !HasMoveAbility
+                        AbilityOverrides:
+                            TAttack:
+                                Strength: 2
+                    AttackSlowCO:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            TAttack:
+                                AnimOverload: Attack2Slow
+        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 6
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+                ConditionalOverrides:
+                    BMoveCO_Fast:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Fast
+                        AbilityOverrides:
+                            BMove:
+                                Strength: 2
+                    BMoveCO_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            BMove:
+                                Strength: -2
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@ <size=130%><sprite name=Target> *TAttack.Target* <size=130%><sprite name=Muddle>"
+        - Row:
+            - ColumnWidths: "50,50"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "$FH/058_character_ability_cards_blinkblade_fastest_alive_2$"
+            - Column:
+    Bottom:
+        - Row:
+            - ColumnWidths: "33,34,33"
+            - Column:
+                - BlinkbladeState:
+                        State: "fast"
+                        Text: "+2 <sprite name=Move>"
+            - Column:
+                - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+            - Column:
+                - BlinkbladeState:
+                        State: "slow"
+                        Text: "-2 <sprite name=Move>"

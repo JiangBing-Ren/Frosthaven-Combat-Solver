@@ -1,0 +1,16 @@
+Parser: EnemyCard
+ID: 804
+Name: $Monster_Ability_804_HarrowerInfester_RestoreTheSwarm$
+Initiative: 16
+Shuffle: False
+Data:
+    Abilities:
+        Move1:
+            Move: -1
+        Attack1:
+            Attack: -1
+            Filter: Enemy
+        Heal1:
+            Heal: 5
+            Filter: Self
+            AnimOverload: PowerUp Potent

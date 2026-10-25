@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 56.5
+Name: Trapper Retires
+SkipNarration: True
+SkipCompletedNotification: False
+Effects:
+    - Type: AddCalendarCampaignSection
+      Param1: 169.1
+      Param2: 6

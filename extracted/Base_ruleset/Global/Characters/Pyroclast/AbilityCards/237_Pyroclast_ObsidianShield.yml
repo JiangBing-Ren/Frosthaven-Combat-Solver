@@ -1,0 +1,127 @@
+Parser: AbilityCard
+Name: $FH/237_character_ability_cards_pyroclast_obsidian_shield_1$
+Character: PyroclastID
+ID: 237
+Level: 6
+Initiative: 19
+Discard: [Discard,Discard]
+Prefab: 237_Pyroclast_ObsidianShield
+Data:
+    Top:
+        Abilities:
+            TShield:            
+                Shield: 1
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                Filter: Self
+                AnimOverload: Cast 
+                ActiveBonus:
+                    Duration: Persistent
+                    TriggerOnCaster: True
+                    IsToggleBonus: True
+                    ToggleIsOptional: False
+                    Behaviour: ShieldIncomingAttacks
+                    XPTracker: [0,0,0,1]
+                    ValidAbilityType: Attack
+                    Vars:
+                        TriggerOnPopAbilities: ActiveBonus.TrackerIndex == 3 && CustomAbility.PerformActiveBonusAbility(ActiveBonus, thisContext)
+                    AbilityData:
+                        Damage: 5
+                        MiscVars:
+                            PrintedProperties: list("Damage")
+                        SkipAnim: True
+                        Targeting: Custom
+                        TargetingVars:
+                            AddValidActorInRange: TriggerActor
+                        AutoTrigger: True
+                        MiscVars:
+                            InterruptCurrentAbility: True
+                        PerformVars:
+                            OnAbilityEnded:
+                                TriggerDamageVFX: TriggerActor.PlayVFX("PyroclastObsidianPuffVFX")
+                                TriggerSubAbility: CustomAbility.StackNonInlineSubabilities(obj)
+                        SubAbilities:
+                            ACreateObstacle:
+                                TreatAsNonSubAbility: True
+                                Create: OneHexObstacle
+                                Vars:
+                                    OverridePropName: "'PyroclastObstacle'"
+                                TileFilter: EmptyHex
+                                AnimOverload: TerrainFormation
+                                Range: 1
+                                Targeting: Range
+
+    Bottom:
+        Infuse: [Earth]
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1    
+                MiscVars:
+                    PrintedProperties: list("Move")                
+            BDamageOrDestroyObstacle:
+                Filter: Self
+                CanSkip: False     
+                HelpBoxTooltipLocKey: "$FH/237_character_ability_cards_pyroclast_obsidian_shield_4$"
+                Choose:
+                    Abilities:
+                        BDamageSelf:
+                            Damage: 2
+                            MiscVars:
+                                PrintedProperties: list("Damage")
+                            Filter: Self
+                            AutoTrigger: True
+                            PreviewEffectText: "<sprite name=Damage>2"
+                        BDestroyObstacle:
+                            CanSkip: False
+                            StartAbilityRequirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateHasNearbyObstacle: GameState.GetTilesInRange(Actor, 1).Where(obj.FindObstacleProp(true, true) != null).Count > 0
+                            PreviewEffectText: "$OBSTACLE_TOOLTIP$"
+                            NullHex: True
+                            Range: 1
+                            TileFilter: Custom
+                            MiscVars:
+                                IsValidTile: obj.FindObstacleProp(true, true) != null
+                                DontCancelIfNoTiles: True
+                                DontPreviewDescription: True
+                                SelectMultiHexProps: True
+                            AnimOverload: ObstacleDestruction
+                            PerformVars:
+                                Perform:
+                                    SelectedTile: TilesSelected[0]
+                                    Prop: SelectedTile.FindObstacleProp(true, true)
+                                    DestroyProp: Prop.DestroyPropFromAbility(obj)
+            BPreventDamage:
+                PreventDamage: 1
+                Filter: Self
+                AnimOverload: Cast
+                ActiveBonus:
+                    Behaviour: PreventFirstDamage
+                    Duration: Round
+                    XPTracker: [0]
+
+Layout:
+    Top:
+        - Active:
+            Ability: TShield
+            ListLayout: "$FH/237_character_ability_cards_pyroclast_obsidian_shield_2$. $FH/237_character_ability_cards_pyroclast_obsidian_shield_3$"
+            Layout: "$FH/237_character_ability_cards_pyroclast_obsidian_shield_2$"
+            Icon: "Positive_Shield_Damage_Obstacle"
+        - XPTracker: TShield
+        - Row: "$FH/237_character_ability_cards_pyroclast_obsidian_shield_3$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - MandatoryTrigger:
+            Layout:
+                - Row: "$FH/237_character_ability_cards_pyroclast_obsidian_shield_4$"
+        - Divider:
+        - Active:
+            Ability: BPreventDamage
+            ListLayout: "$FH/237_character_ability_cards_pyroclast_obsidian_shield_5$"
+            Layout: "$FH/237_character_ability_cards_pyroclast_obsidian_shield_5$"
+            Icon: "Positive_DamagePrevent"
+        - Infuse: [Earth]

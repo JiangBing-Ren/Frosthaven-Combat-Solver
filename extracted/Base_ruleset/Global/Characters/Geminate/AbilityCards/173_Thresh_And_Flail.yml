@@ -1,0 +1,82 @@
+Parser: AbilityCard
+Name: $FH/173_character_ability_cards_geminate_thresh_and_flail_1$
+Character: GeminateID
+ID: 173
+Level: 4
+ProgressionOrder: 22
+Initiative: 43
+Discard: [Lost,Discard]
+RequiredForm: Melee
+Prefab: 173_Geminate_ThreshAndFlail
+Data:
+    Top:
+        Abilities:
+            TAttack1:
+                Attack: 4
+                AnimOverload: Attack_Melee
+                MiscVars:
+                    PrintedProperties: list("Attack")
+            TAttack2:
+                Attack: 
+                    Amount: 3
+                    SquareEnhancements: 1
+                AnimOverload: Attack_Melee
+                MiscVars:
+                    PrintedProperties: list("Attack")
+            TAttack3:
+                Attack: 
+                    Amount: 2
+                    CircleEnhancements: 1
+                AnimOverload: Attack_Melee
+                MiscVars:
+                    PrintedProperties: list("Attack")
+        Infuse: Light
+        XP: 1
+    Bottom:
+        Abilities:
+            BPull:
+                Pull:
+                    Amount: 3
+                    SquareEnhancements: 1
+                Target: 1
+                Range:
+                    Amount: 4
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Pull","Range")
+                AnimOverload: PowerUp
+        Consumes:
+            BCLight:
+                Elements: Light
+                AbilityOverrides:
+                    BPullBuff:
+                        ParentName: BPull
+                        Target: 1        
+                        MiscVars:
+                            PrintedProperties: list("Target")    
+                        SubAbilities:
+                            CLInfuse:
+                                Infuse: [Fire,Ice]
+                                ShowElementPicker: True
+                XP: 1
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack1*"
+        - Divider: 
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack2* <size=100%><voffset=1>@TAttack2@"
+        - Divider: 
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack3* <size=100%><voffset=1>@TAttack3@"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Light
+    Bottom: 
+        - Row:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Pull> *BPull* <size=100%><voffset=1>@BPull@"
+            - Column:
+                - Row: "<sprite name=Range> *BPull.Range.Amount* <voffset=1>@BPull.Range@"
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: BCLight
+                    Text: "<size=100%>+1 <sprite name=Target>, <sprite name=CreateMixed-FI>, <sprite name=XP1>"

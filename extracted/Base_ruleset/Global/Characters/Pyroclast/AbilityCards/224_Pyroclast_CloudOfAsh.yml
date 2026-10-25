@@ -1,0 +1,121 @@
+Parser: AbilityCard
+Name: $FH/224_character_ability_cards_pyroclast_cloud_of_ash_1$
+Character: PyroclastID
+ID: 224
+Level: 1
+Initiative: 23
+Discard: [Discard,Discard]
+Prefab: 224_Pyroclast_CloudOfAsh
+Data:
+    Top:
+        XP: 1
+        Infuse: [Earth]
+        Abilities:    
+            TDestroyOneHexObstacle:
+                NullHex: True
+                Range: 4
+                MiscVars:
+                    PrintedProperties: list("Range")
+                TileFilter: Custom
+                MiscVars:
+                    IsValidTile: obj.FindObstacleProp(true, true) != null
+                    DontCancelIfNoTiles: True
+                    DontPreviewDescription: True
+                    ExplicitlyDoesNothing: True
+                    SelectMultiHexProps: True
+                SkipAnim: True
+                Range: 4
+                SubAbilities: 
+                    TAttack:
+                        AnimOverload: CloudOfAshTop
+                        TreatAsNonSubAbility: True
+                        Attack: 1
+                        MiscVars:
+                            PrintedProperties: list("Attack")
+                        TreatAsMelee: True
+                        Target: 99
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateDesroyedOneHexObstacle: ParentAbility != null && ParentAbility.AbilityHasHappened
+                        Vars:
+                            TargetPosition: ParentAbility.m_TilesSelected[0]
+                            TargetingOverrideArrayIndex: ParentAbility.TargetPosition
+                        MiscVars:
+                            AllowUndoAfterFirst: True
+                            AutoSelectValidTiles: True
+                        Targeting: Custom
+                        TargetingVars:
+                            ParentTile: ParentAbility.m_TilesSelected[0]
+                            AddValidActorsInRange: GameState.GetAdjacentEnemies(TargetingActor, ParentTile.m_ArrayIndex)
+                            AddTilesInRange: AddValidActorsInRange.Select(obj.Tile)
+                        PerformVars:
+                            ActorBeenAttacked: 
+                                SelectedTile: ParentAbility.TilesSelected[0]
+                                Prop: SelectedTile.FindObstacleProp(true, true)
+                                PlayVFX: Prop != null && CustomAbility.PlayVFX("PyroclastObstacleExplosionVFX", ParentAbility.TilesSelected)
+                                DestroyProp: Prop != null && Prop.DestroyPropFromAbility(obj) 
+                        Conditions: Muddle
+                        SubAbilities:
+                            TPull:
+                                Push: 1
+                                MiscVars:
+                                    PrintedProperties: list("Push")
+                                IsInlineSubAbility: True                    
+                                Vars:
+                                    TargetingOverrideArrayIndex: ParentAbility.TargetPosition
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+                Filter: Self
+            BDestroyHazardous:
+                NullHex: True
+                Range: 1
+                Target: 2
+                TileFilter: Custom
+                MiscVars:
+                    IsValidTile: obj.FindHazardousProp(true) != null && obj.LivingActor == null
+                    DontCancelIfNoTiles: True
+                    DontPreviewDescription: True
+                    CheckIfWillBeBlocking: True
+                AnimOverload: CloudOfAshBottom
+                PerformVars:
+                    Perform:
+                        DestroyPropCoal: CustomAbility.DestroyPropsOfType(EPropType.TerrainHotCoals, TilesSelected, obj)
+                        DestroyPropThorn: CustomAbility.DestroyPropsOfType(EPropType.TerrainThorns, TilesSelected, obj)
+                SubAbilities:          
+                    BCreateOneHexObstacle:
+                        Target: 2
+                        TreatAsNonSubAbility: True
+                        Create: OneHexObstacle
+                        Vars:
+                            OverridePropName: "'PyroclastObstacle'"
+                        AutoTrigger: True
+                        SkipAnim: True
+                        Targeting: Custom
+                        TargetingVars:
+                            AddTilesInRange: ParentAbility.m_TilesSelected
+                            AddSelectedTiles: ParentAbility.m_TilesSelected
+                    BInfuseEarth:
+                        TreatAsNonSubAbility: True
+                        Infuse: Earth
+                        AutoTrigger: True
+                        SkipAnim: True
+                        XP: 1           
+Layout:
+    Top:
+        - Row: "$FH/224_character_ability_cards_pyroclast_cloud_of_ash_2$"
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <mark=#80919922><size=100%>$FH/224_character_ability_cards_pyroclast_cloud_of_ash_3$</mark>"
+        - Row: "$FH/224_character_ability_cards_pyroclast_cloud_of_ash_4$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Earth]
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "$FH/224_character_ability_cards_pyroclast_cloud_of_ash_5$"

@@ -1,0 +1,7 @@
+Parser: FHItem
+ID: 17
+ScenarioItemID: 914
+Name: Cured Leather Armor
+Quantity: 2
+Type: Body
+RequiredCraftingItemIDs: [ 4, 98 ]

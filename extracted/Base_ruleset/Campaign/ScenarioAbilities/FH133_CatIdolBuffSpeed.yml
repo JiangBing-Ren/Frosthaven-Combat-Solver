@@ -1,0 +1,15 @@
+Parser: ScenarioAbility
+ID: FH133_CatIdolBuffSpeed
+ScenarioAbility:
+    ABuffSpeedCatIdol:
+        Move: 1
+        Filter: Self
+        AutoTrigger: True
+        SkipAnim: True
+        ActiveBonus:
+            Behaviour: BuffMove
+            Duration: Persistent
+            ListLayoutOverride: [$FH/FH_Scenariro_Campaign_133_CatIdolSpeedBonus$, Positive_MovePlus_Campaign]
+            MiscVars:
+                HiddenInCombatLog: True
+                CatIdolTransferable: True

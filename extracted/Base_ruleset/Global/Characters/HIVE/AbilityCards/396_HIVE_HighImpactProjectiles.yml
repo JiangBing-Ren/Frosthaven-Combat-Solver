@@ -1,0 +1,52 @@
+Parser: AbilityCard
+Name: $FH/396_character_ability_cards_hive_high_impact_projectiles_1$
+Character: HIVEID
+ID: 396
+Level: 1
+Initiative: 16
+Discard: [Discard,Discard]
+Prefab: 396_HIVE_HighImpactProjectiles
+Data:
+    Top:
+        XP: 1
+        Abilities:
+            TAttack:
+                Attack: 
+                    Amount: 2
+                Target:
+                    Amount: 2
+                    SquareEnhancements: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Target","Range")
+                AnimOverload: RangedAttack
+    Bottom:
+        Abilities:
+            BGrantMoveJump:
+                ControlActor:
+                    Abilities:
+                        TAllyMove:
+                            Move: 
+                                Amount: 3
+                                SquareEnhancements: 1
+                                Jump: True
+                            MiscVars:
+                                PrintedProperties: list("Move")
+                            StrengthIsBase: True
+                Target: 2
+                Range: 99
+                Filter:
+                    TargetType: OwnSummon
+                AnimOverload: Grant
+Layout:
+    Top:
+        - Column: "<b><size=130%><sprite name=Attack> *TAttack*"
+        - Column: "<sprite name=Target>*TAttack.Target* @TAttack.Target@,"
+        - Column: "<sprite name=Range>*TAttack.Range*"
+    Bottom:
+        - Row: "$FH/396_character_ability_cards_hive_high_impact_projectiles_2$"
+        - Row: 
+            - ColumnWidths: "20,30,20"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Move> *TAllyMove* @TAllyMove@"
+            - Column: "<sprite name=Jump>"

@@ -1,0 +1,18 @@
+Parser: ItemCard
+ID: 1047
+StringID: HolyWaterID
+Name: $FH/1047_item_cards_holy_water_1$
+Art: Holy Water
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        ABless:
+            Bless: True
+            Filter: Self
+Layout: 
+    - Row: "$FH/1047_item_cards_holy_water_2$"

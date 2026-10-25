@@ -1,0 +1,18 @@
+Parser: Perk
+ID: Snowdancer09
+Name: FH/PERK_Snowdancer_09_Name
+Description: FH/PERK_Snowdancer_09_Desc
+CharacterID: SnowdancerID
+Available: 1
+Cost: 2
+# technically the first room is also revealed at the scenario start, but actors don't exist at that moment
+Flags: [Passive, ExecuteAbilitiesAfterRoomRevealed, ApplyActiveBonusesAtScenarioStart]
+Abilities:
+    AMuddle:
+        Muddle: True
+        AutoTrigger: True
+        SkipAnim: True
+        Target: -1
+        Targeting: Custom
+        TargetingVars:
+            AddValidActorsInRange: TriggerMap?.Monsters?.Select(obj?.Actor)?.Where(obj != null) || AllEnemyMonsters

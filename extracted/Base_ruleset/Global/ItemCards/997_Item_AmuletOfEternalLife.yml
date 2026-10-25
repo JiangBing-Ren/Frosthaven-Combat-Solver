@@ -1,0 +1,33 @@
+Parser: ItemCard
+ID: 997
+StringID: AmuleOfEternalLifeID
+Name: $FH/0997_item_cards_amulet_of_eternal_life_1$
+Art: Amulet of Eternal Life
+TotalInGame: 2
+Cost: 0
+Slot: Head 
+Rarity: Rare
+Usage: Unrestricted
+Trigger: PassiveEffect
+Data: 
+    Abilities:
+        OnShortRestHeal:
+            Filter: Self
+            AutoTrigger: True
+            SkipAnim: True
+            AddActiveBonus:
+                Heal: 1
+                Filter: Self
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: [DuringActionAbilityOnShortRest, DuringActionAbilityOnLongRest]
+                Flags: [PreRestBonus]
+                Requirements:
+                    Vars:
+                        ValidateNotImpaired: Actor.Tokens.HasKey(CCondition.ENegativeCondition.Impair) == false
+Layout:
+    - Active:
+        Ability: OnShortRestHeal
+        ListLayout: $FH/0997_item_cards_amulet_of_eternal_life_2$
+        Layout: $FH/0997_item_cards_amulet_of_eternal_life_2$
+        Icon: Positive_HealSelf_Rest_Item

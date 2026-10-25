@@ -1,0 +1,91 @@
+Parser: AbilityCard
+Name: $FH/123_character_ability_cards_boneshaper_transfer_of_essence_1$
+Character: BoneshaperID
+ID: 123
+Level: 1
+Initiative: 62
+Discard: [Discard,Discard]
+Prefab: 123_Boneshaper_TransferOfEssence
+Data:
+    Top:
+        Abilities:
+            TStrengthen:
+                Strengthen: True
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Target","Range")
+                Filter: Ally
+            TPoison:
+                Poison: True
+                Filter: Enemy
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Range")
+                AnimOverload: CastNegative
+        Consumes:
+            TCDark:
+                Elements: Dark
+                AbilityOverrides:
+                    TCDarkAllyBuff:
+                        ParentName: TStrengthen
+                        Target: 1
+            TCEarth:
+                Elements: Earth
+                AbilityOverrides:
+                    TCEarthAttackBuff:
+                        ParentName: TPoison
+                        Target: 1
+                        MiscVars:
+                            PrintedProperties: list("Target")
+                XP: 1
+    Bottom:
+        Abilities:
+            BHeal:
+                Heal: 5
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Heal","Target","Range")
+                Filter: Ally
+                AnimOverload: PowerUpPotent
+            Damage1:
+                Damage: 2
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Filter: Self
+                TextOnly: True
+                AutoTrigger: True
+                #Suffer animation triggers from the self damage, no animation overload needed
+        Infuse: Dark
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "25,5,50,25"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Strengthen>"
+            - Column:
+                - AddedEffect: "$FH/123_character_ability_cards_boneshaper_transfer_of_essence_3$"
+            - Column:
+        - Row: "<size=20%> "
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCDark
+                    Text: "+1 <sprite name=Target>"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Poison><size=100%> <mark=#6EBE4922><sprite name=Range>3</mark>"
+        - Row: "<size=20%> "
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCEarth
+                    Text: "+1 <sprite name=Target>, <sprite name=XP1>"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Heal>*BHeal* <mark=#6EBE4922><size=100%><voffset=1> $FH/123_character_ability_cards_boneshaper_transfer_of_essence_3$</mark>"
+        - Divider:
+        - MandatoryTrigger: "$FH/120_character_ability_cards_boneshaper_life_in_death_3$"
+        - Row: "<size=120%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark

@@ -1,0 +1,27 @@
+Parser: EnemyCard
+ID: 541
+Name: $Monster_Ability_541_ChaosDemon_Whirlwind$
+Initiative: 20
+Shuffle: False
+Data:
+    Abilities: 
+        AMove:
+            Move: 0
+        AAttack:
+            Attack: -1
+            Range: 1
+            AreaEffect: "0,0,R|2,0,R|1,1,R"
+            Filter: Enemy
+            MultiPassAttack: False
+            AnimOverload: Whirlwind
+    Consumes:
+        CAir:
+            Elements: Air
+            Abilities:
+                AShield:
+                    Shield: 2
+                    Filter: Self
+                    ActiveBonus:
+                        Duration: Round
+                        ListLayoutOverride: ["<sprite name=Shield> *AShield*", Positive_Shield]
+                    AnimOverload: PowerUp

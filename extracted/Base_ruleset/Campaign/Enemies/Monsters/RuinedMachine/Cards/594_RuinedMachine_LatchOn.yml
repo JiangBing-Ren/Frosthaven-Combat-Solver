@@ -1,0 +1,19 @@
+Parser: EnemyCard
+ID: 594
+Name: $Monster_Ability_594_RuinedMachine_LatchOn$
+Initiative: 31
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: 1
+        PoisonImmobilize:
+            Poison: True
+            Condition: Immobilize
+            Range: 1
+            RangeIsBase: True
+            Target: 1
+            TargetIsBase: True
+            Filter: Enemy
+            ShowRange: False
+            AnimOverload: PowerUp

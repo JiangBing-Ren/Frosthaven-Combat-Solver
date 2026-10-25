@@ -1,0 +1,19 @@
+Parser: EnemyCard
+ID: 730
+Name: $Monster_Ability_730_AlgoxIcespeaker_WardingSwipe$
+Initiative: 17
+Shuffle: True
+Data:
+    Abilities: 
+        Move1:
+            Move: 1
+        Attack1:
+            Attack: -1
+            AreaEffect: "0,0,G|1,1,R|2,0,R|1,-1,R|-1,1,R"
+            MultiPassAttack: False
+            AnimOverload: PowerAttack
+        Shield1:
+            Shield: 1
+            ActiveBonus:
+                ListLayoutOverride: ["<sprite name=Shield> *Shield1*", Positive_Shield]
+    Infuse: Earth

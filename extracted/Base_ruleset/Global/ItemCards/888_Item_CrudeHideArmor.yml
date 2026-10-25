@@ -1,0 +1,32 @@
+Parser: ItemCard
+ID: 888
+StringID: CrudeHideArmorID
+Name: $FH/888_item_cards_crude_hide_armor_1$
+Art: Crude Hide Armor
+TotalInGame: 2
+Cost: 30
+Slot: Body
+Rarity: Rare
+Usage: Spent
+Trigger: PassiveEffect
+ProsperityRequirement: 1
+Data: 
+    Abilities:
+        Disadvantage:
+            AttackersGainDisadvantage: 2
+            Filter: Self
+            ActiveBonus:
+                Duration: Persistent
+                XPTracker: [0,0]
+    CompareAbility:
+        AbilityType: Attack
+    AddModifiers:
+        - [AMC_Basic_M1, 1]
+Layout: 
+    - Active:
+        Ability: Disadvantage
+        ListLayout: $FH/888_item_cards_crude_hide_armor_2$
+        Layout: $FH/888_item_cards_crude_hide_armor_2$
+        Icon: "Positive_Disadvantage_Enemy_Item"
+    - Row: "<size=50%> "
+    - XPTracker: Disadvantage

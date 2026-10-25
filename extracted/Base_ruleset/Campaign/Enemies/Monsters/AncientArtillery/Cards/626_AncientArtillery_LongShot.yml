@@ -1,0 +1,15 @@
+Parser: EnemyCard
+ID: 626
+Name: $Monster_Ability_626_AncientArtillery_LongShot$
+Initiative: 46
+Shuffle: False
+Data:
+    Abilities:
+        Attack1:
+            Attack: -1
+            Range: 7
+            RangeIsBase: True
+            Filter: Enemy
+            AttackFurthestTarget: True
+            Text: $FH/0626_monster_ability_cards_ancient_artillery_long_shot_2$
+            AnimOverload: AOEAttack_Targeted

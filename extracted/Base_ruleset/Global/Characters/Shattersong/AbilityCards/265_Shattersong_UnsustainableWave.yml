@@ -1,0 +1,89 @@
+Parser: AbilityCard
+Name: $FH/265_character_ability_cards_shattersong_unsustainable_wave_1$
+Character: ShattersongID
+ID: 265
+Level: 6
+Initiative: 36
+Discard: [Discard,Discard]
+Prefab: 265_Shattersong_UnsustainableWave
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 3
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")     
+                Filter: [Enemy]
+                AnimOverload: RangedAttack
+                SubAbilities:
+                    TDamage:
+                        TreatAsNonSubAbility: True
+                        UseParentTargets: False
+                        Damage: 0
+                        Target: 2
+                        Range: 2
+                        MiscVars:
+                            PrintedProperties: list("Range")     
+                        Filter: Enemy
+                        AnimOverload: Shrieking Chakram
+                        StatIsBasedOnX:
+                            Strength:
+                                BasedOn: Vars
+                                Vars:
+                                    Value: max(0, ParentAbility.DamageInflictedByAbility - 2)
+                        Targeting: Custom
+                        TargetingVars:
+                            ParentTiles: ParentAbility.TilesSelected
+                            AddTilesInRange: CustomAbility.GetTilesInRange(ParentTiles, Range, true)
+                            AddValidActorsInRange: AddTilesInRange.Select(obj.LivingActor).Where(obj != null && !ParentAbility.ActorsTargeted.Contains(obj))
+        Consumes:
+            TCEarth:
+                XP: 1
+                Elements: Earth
+                AbilityOverrides:
+                    CBuffAttack:
+                        ParentName: TAttack
+                        Strength: 1
+                        AnimOverload: RangedAttackMedium
+    Bottom:
+        Abilities:
+            BChooseTakeDamage:
+                Filter: Self          
+                HelpBoxTooltipLocKey: "$FH/GUI_CHOOSE_DAMAGE_AMOUNT_TO_SUFFER$"
+                PreviewEffectText: "<sprite name=Damage>X, <sprite name=SSResonance>"           
+                MiscVars:
+                    # doing the chosen ability as a sub ability so we can preview the effect
+                    DontPerformChosenAbility: True  
+                Choose:
+                    Choices: [1,2,3,4,5]
+                SubAbilities:
+                    BDamage:
+                        Flags: [SubAbilityPreview, ModifiesResonanceTokens]
+                        Filter: Self
+                        Damage: 0
+                        AutoTrigger: True
+                        AnimOverload: Cast_Concentrate
+                        StatIsBasedOnX:
+                            Strength:
+                                BasedOn: Vars
+                                Vars:
+                                    Resonance: max(1, ParentAbility.ChosenAbility?.Strength || 0)
+                                    Value: Resonance
+                            Tokens:
+                                BasedOn: Vars
+                                Vars:
+                                    Resonance: max(1, ParentAbility.ChosenAbility?.Strength || 0)
+                                    Value: Resonance
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><mark=#FCD06E22><sprite name=Range> *TAttack.Range*</mark>"
+        - Row: "$FH/265_character_ability_cards_shattersong_unsustainable_wave_2$"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCEarth
+                    Text: "+1 <sprite name=Attack>, <sprite name=XP1>"
+    Bottom:
+        - Row: "$FH/265_character_ability_cards_shattersong_unsustainable_wave_3$"

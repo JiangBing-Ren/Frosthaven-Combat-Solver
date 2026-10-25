@@ -1,0 +1,8 @@
+Parser: CampaignSection
+ID: 181.1
+Name: Tome of Time
+SkipCompletedNotification: True
+SkipNarration: True
+Effects:
+    - Type: ActivateEvent
+      Param1: "CustomEvent_181.1"

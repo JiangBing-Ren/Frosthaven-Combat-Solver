@@ -1,0 +1,13 @@
+Parser: EnemyCard
+ID: 1000000
+Name: $Monster_Ability_Advance$
+Initiative: 199
+Shuffle: False
+Data:
+    Abilities:
+        Move2:
+            Move: 2
+            StrengthIsBase: True
+            AIFocusOverride:
+                OverrideType: OverrideFocus
+                OverrideTargetType: Actor

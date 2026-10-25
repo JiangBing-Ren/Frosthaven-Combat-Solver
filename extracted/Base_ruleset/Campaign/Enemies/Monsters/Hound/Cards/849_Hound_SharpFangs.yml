@@ -1,0 +1,17 @@
+Parser: EnemyCard
+ID: 849
+Name: $Monster_Ability_849_Hound_SharpFangs$
+Initiative: 72
+Shuffle: False
+Data:
+    Abilities:
+        Attack1:
+            Attack: -1
+            Pierce: 2
+            Filter: Enemy
+        Move1:
+            Move: -2
+        Attack2:
+            Attack: -1
+            Pierce: 2
+            Filter: Enemy

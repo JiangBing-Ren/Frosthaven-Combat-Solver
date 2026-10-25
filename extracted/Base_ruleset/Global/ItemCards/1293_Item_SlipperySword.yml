@@ -1,0 +1,29 @@
+Parser: ItemCard
+ID: 1293
+StringID: SlipperySwordID
+Name: $FH/1293_item_cards_slippery_sword_1$
+Art: Slippery Sword
+TotalInGame: 2
+Cost: 0
+Slot: OneHand
+Rarity: Rare
+Usage: Spent
+Trigger: SingleTarget
+Data:    
+    Overrides:
+        AAttackThenDisarm:
+            Attack: +2
+            SubAbilities:
+                DisarmAbility:
+                    Disarm: True
+                    Filter: Self
+                    AutoTrigger: True
+                    TreatAsNonSubAbility: True
+                    Flags: [SubAbilityPreview]
+                    MiscVars:
+                        StackNextToCurrent: True
+    CompareAbility:
+        AbilityType: Attack
+        IsMelee: True
+Layout: 
+    - Row: $FH/1293_item_cards_slippery_sword_2$

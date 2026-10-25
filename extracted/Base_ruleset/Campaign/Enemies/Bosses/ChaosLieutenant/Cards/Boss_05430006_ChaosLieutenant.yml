@@ -1,0 +1,20 @@
+Parser: EnemyCard
+ID: 05430006
+Name: $Monster_Ability_543_ChaosDemon_BlackTendrils$
+Initiative: 51
+Shuffle: False
+Data:
+    Abilities: 
+        AMove:
+            Move: -1
+        AAttack:
+            Attack: 1
+            Filter: Enemy
+            AnimOverload: BlackTendrils
+    Consumes:
+        CDark:
+            Elements: Dark
+            Abilities:
+                AInvisible:
+                    Invisible: True
+                    Filter: Self

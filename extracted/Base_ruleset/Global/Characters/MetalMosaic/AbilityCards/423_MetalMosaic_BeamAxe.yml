@@ -1,0 +1,146 @@
+Parser: AbilityCard
+Name: $FH/423_character_ability_cards_metal_mosaic_beam_axe_1$
+Character: MetalMosaicID
+ID: 423
+Level: 1
+Initiative: 29
+Discard: [Discard,Discard]
+Prefab: 423_MetalMosaic_BeamAxe
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 4
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                PerformVars:
+                    PreActorIsAttacking:
+                        ChangePressureHigh: TargetingActor.Pressure.ToString() == 'High' && CustomAbility.PressureChange(TargetingActor, -1)
+                        ChangePressureOver: TargetingActor.Pressure.ToString() == 'Over' && CustomAbility.PressureChange(TargetingActor, -2)
+                StatIsBasedOnX:
+                    XP:
+                        BasedOn: Vars
+                        Vars:
+                            OverOrHighPressure: TargetingActor.Pressure.ToString() == 'Over' || TargetingActor.Pressure.ToString() == 'High'
+                            Value: OverOrHighPressure && 1 || 0
+                ConditionalOverrides:
+                    TAttackCOver:
+                        Self: True
+                        Requirements:
+                            RequiredPressure: Over
+                        AbilityOverrides:
+                            TAttack:
+                                AreaEffect: "0,0,G|1,-1,R|2,0,R|1,1,R"
+                                MultiPassAttack: False
+                                AnimOverload: BeamAxeSwipe_3H
+                    TAttackCHigh:
+                        Self: True
+                        Requirements:
+                            RequiredPressure: High
+                        AbilityOverrides:
+                            TAttack:
+                                AreaEffect: "0,0,G|1,-1,R|2,0,R"
+                                MultiPassAttack: False
+                                AnimOverload: BeamAxeSwipe_2H
+                SubAbilities:
+                    SelfDamage:
+                        Damage: 1
+                        MiscVars:
+                            PrintedProperties: list("Damage")
+                        AutoTrigger: True
+                        Filter: Self
+                        SkipAnim: True
+                        MiscVars:
+                            MetalMosaicSelfDamage: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidatePressure: TargetingActor.Pressure.ToString() == 'Over' || TargetingActor.Pressure.ToString() == 'High'
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 4
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BDamage:
+                Damage: 1
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Range: 1
+                Target: -1
+                Filter: Enemy
+                AnimOverload: SteamBlast 
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredPressure: Over
+                CanSkip: False
+                SubAbilities:
+                    SubXP:
+                        GainXP: 1
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Over
+                    BPressureChangeRegular:
+                        Null: True
+                        SkipAnim: True
+                        IgnoreStun: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Over
+                        PerformVars:
+                            NullBegin:
+                                ChangePressure: CustomAbility.PressureChange(TargetingActor, -1)
+            BHeal:
+                Heal: 1
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Heal","Range")
+                Target: 99
+                Filter: Ally
+                AnimOverload: SteamBlast 
+                MiscVars:
+                    AutoSelectValidTiles: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredPressure: Low
+                CanSkip: False
+                SubAbilities:
+                    SubXP:
+                        GainXP: 1
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Low
+                    BPressureChangeRegular:
+                        Null: True
+                        SkipAnim: True
+                        IgnoreStun: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Low
+                        PerformVars:
+                            NullBegin:
+                                ChangePressure: CustomAbility.PressureChange(TargetingActor, 1)
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureOver><size=100%> <sprite name=XP1>, <sprite name=MMSelfDamage>, <sprite name=MMLosePressure><sprite name=MMLosePressure>"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureHigh><size=100%> <sprite name=XP1>, <sprite name=MMSelfDamage>, <sprite name=MMLosePressure>"
+    Bottom:
+
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureOver><size=100%> $FH/423_character_ability_cards_metal_mosaic_beam_axe_2$"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureLow><size=100%> $FH/423_character_ability_cards_metal_mosaic_beam_axe_3$"

@@ -1,0 +1,94 @@
+﻿Parser: AbilityCard
+Name: $FH/159_character_ability_cards_geminate_feeding_frenzy_0$
+Character: GeminateID
+ID: 159
+Level: X
+ProgressionOrder: 15
+Initiative: 62
+Discard: [Lost,Discard]
+RequiredForm: Melee
+Prefab: 159_Geminate_FeedingFrenzy
+Data:
+    Top:
+        Abilities:
+            TSwitchBonus:
+                AddActiveBonus:
+                    CanUndo: False
+                    Choose:
+                        Abilities:
+                            TSwitchForm:
+                                Null: True
+                                Filter: Self
+                                PreviewEffectText: "Switch"
+                                #HelpBoxTooltipLocKey: SwitchFormHelp
+                                SubAbilities:
+                                    TSwitchFormMeleeToRange:
+                                        Null: True
+                                        Flags: [SwitchFormMeleeToRange]
+                                        AutoTrigger: True
+                                        Filter: Self
+                                        StartAbilityRequirements:
+                                            Type: SubAbility
+                                            RequiredForm: Melee
+                                    TSwitchFormRangeToMelee:
+                                        Null: True
+                                        Flags: [SwitchFormRangeToMelee]
+                                        AutoTrigger: True
+                                        Filter: Self
+                                        StartAbilityRequirements:
+                                            Type: SubAbility
+                                            RequiredForm: Range
+                            TIgnoreSwitchIcons:
+                                Null: True
+                                Flags: [IgnoreSwitchForm]
+                                AutoTrigger: True
+                                PreviewEffectText: "Ignore Switch"
+                                #HelpBoxTooltipLocKey: IgnoreSwitchHelp
+                    PreviewEffectText: "<size=100%><sprite name=GMMeleeToRanged> / <sprite name=Geminate></size>"
+                    HelpBoxTooltipLocKey: "$FH/159_character_ability_cards_geminate_feeding_frenzy_2$"
+                    CanUndo: False
+                    Filter: Self
+                # HelpBoxTooltipLocKey: ActiveBonusHelp
+                # PreviewEffectText: ActiveBonusPreview
+                Filter: Self
+                ActiveBonus:
+                    Behaviour: EndTurnAbility
+                    Duration: Persistent
+                    Restriction: OncePerTurn
+                    IsToggleBonus: True
+                    Requirements:
+                        ActorsKilledThisTurn: "> 0"
+                        RequirementActorFilter: Enemy
+        Infuse: Light
+        XP: 1
+    Bottom:
+        Abilities:
+            BDamage:
+                Damage: 1
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Range: 1
+                RangeIsBase: True
+                Target: -1
+                Filter: [Ally, Enemy]
+                AnimOverload: Attack_Melee_Strong
+            BLoot:
+                Loot: 1
+                MiscVars:
+                    PrintedProperties: list("Loot")
+                Target: -1
+                TargetIsBase: True
+Layout:
+    Top:
+        - Active:
+            Ability: TSwitchBonus
+            Icon: Positive_Geminate_Enemy_Death
+            ListLayout: "$FH/159_character_ability_cards_geminate_feeding_frenzy_2$"
+            Layout: "$FH/159_character_ability_cards_geminate_feeding_frenzy_2$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Light
+    Bottom:
+        - Row: "$FH/159_character_ability_cards_geminate_feeding_frenzy_3$"
+        - Row: "<size=50%> "
+        - Row: "<size=150%><sprite name=Loot> <size=120%>*BLoot*"

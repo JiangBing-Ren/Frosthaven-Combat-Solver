@@ -1,0 +1,28 @@
+Parser: HeroSummon
+ID: BannerOfHopeID
+LocKey: $FH/073_character_ability_cards_banner_spear_driving_inspiration_3$
+Model: BannerOfHope
+Health:
+    Amount: 4
+    SquareEnhancements: 1
+Move: 0
+Attack: 0
+Range: 0
+OnSummonAbilities:
+    AActive:
+        Target: -1
+        Range: 3
+        Filter: Self
+        AddActiveBonus:
+            Heal: 1
+            Range: 1
+            Filter: Self
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: StartTurnAbility
+            IsAura: True
+            AuraTargeting: Range
+            AuraFilter: Ally
+            ListLayoutOverride: [$FH/073_character_ability_cards_banner_spear_driving_inspiration_4$<br> <sprite name=Heal>1 $Self$, Positive_HealSelf_Ally_Aura]
+        Text: "$FH/073_character_ability_cards_banner_spear_driving_inspiration_4$<br> <sprite name=Heal>1 $Self$"
+        AnimOverload: None

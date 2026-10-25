@@ -1,0 +1,28 @@
+Parser: FHScenario
+ID: 59
+Name: Automation Uprising
+LevelID: FS_059_Automaton_Uprising
+Chain: Unfettered
+Location: CrystalFields
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: GainMorale
+          Param1: 2
+        - Type: AddProsperity
+          Param1: 2
+        - Type: GainCampaignSticker
+          Param1: KeyCard
+        - Type: UnlockClass
+          Param1: HIVEID
+        - Type: AddTownGuardMod
+          Param1: +50
+        - Type: EnableEvent
+          Param1: SO-49
+        - Type: EnableEvent
+          Param1: WO-63
+        - Type: GainCampaignSticker
+          Param1: UnfetteredAllies
+        - Type: RemoveUnfetteredEvents
+        - Type: LockScenario
+          Param1: 58

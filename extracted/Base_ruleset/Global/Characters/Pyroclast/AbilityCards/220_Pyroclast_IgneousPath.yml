@@ -1,0 +1,118 @@
+Parser: AbilityCard
+Name: $FH/220_character_ability_cards_pyroclast_igneous_path_1$
+Character: PyroclastID
+ID: 220
+Level: 1
+Initiative: 18
+Discard: [Lost,Discard]
+Prefab: 220_Pyroclast_IgneousPath
+Data:
+    Top:
+        Infuse: [Fire]
+        Abilities:    
+            TSelectHex:                 
+                MiscVars:
+                    # SelectedTiles passed as var when calculating PreviewPath
+                    PreviewPath: CustomAbility.GetPushTilesForPreview(Ability, MouseoverTile)
+                    SpawnTypePreview: "'TerrainHotCoals'"
+                    SpawnPropPreview: "'PyroclastHazardTerrain'"
+                    # can click featureless tiles, but can't confirm path if last one is not featureless
+                    SelectionValid: TilesSelected.Count == 0 || CAbilityFilter.IsTileFeatureless(CustomAbility.TryGetLastTile(TilesSelected))
+                    # you can select any tile, but shouldn't preview on ones that won't have terrain spawned on them
+                    SpawnPreviewFilter: "'FeaturelessHex'"
+                NullHex: True
+                # apparently you should be able to select hexes where it's invalid to place hazardous
+                # TileFilter: FeaturelessHex
+                # 4 targets as in 4 tiles that form a path
+                Target: 4
+                MiscVars:
+                    PrintedProperties: list("RangeAsTarget")
+                Targeting: Custom
+                AnimOverload: TerrainFormationLateEarthPuff                       
+                TargetingVars:
+                    CalcTilesInRange: CustomAbility.RecalcValidTilesToFormPath(parentContext.obj, true)
+                PerformVars:                
+                    SelectHexPositions:
+                        CalcTilesInRange: CustomAbility.RecalcValidTilesToFormPath(obj, true)
+                    OnTileDeselected:
+                        RemoveFurtherTiles: CustomAbility.RemoveRemovedTilesToFormPath(obj)
+                SubAbilities:
+                    TCreateHazardousTerrainOnPath220:
+                        SkipAnim: True
+                        AutoTrigger: True
+                        Target: -1
+                        TreatAsNonSubAbility: True
+                        CreateLimitedHazardousTerrain: True
+                        Vars:
+                            OverridePropName: "'PyroclastHazardTerrain'"
+                        TileFilter: FeaturelessHex
+                        Targeting: Custom
+                        TargetingVars:
+                            AddTilesInRange: ParentAbility.TilesSelected
+                    TDamage:
+                        AutoTrigger: True
+                        TreatAsNonSubAbility: True
+                        Damage: 3
+                        MiscVars:
+                            PrintedProperties: list("Damage")
+                        XPPerTarget: 1
+                        StartAbilityRequirements:
+                            Vars:
+                                PrevAbility: CustomAbility.FindAbilityInPhaseByName("TCreateHazardousTerrainOnPath220")
+                                ValidateDesroyedOneHexObstacle: PrevAbility != null && PrevAbility.AbilityHasHappened
+                                ValidateHasSelectedTiles: PrevAbility.CachedSpawnTiles != null && PrevAbility.CachedSpawnTiles.Count > 0
+                        Targeting: Custom
+                        TargetingVars:
+                            PrevAbility: CustomAbility.FindAbilityInPhaseByName("TCreateHazardousTerrainOnPath220")
+                            AddValidActorsInRange: PrevAbility.CachedSpawnTiles.Select(obj.LivingActor).Where(obj != null)
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+                Vars:
+                    StartTile: TargetingActor.Tile
+                SubAbilities:
+                    BCreateHazardous:
+                        SkipAnim: True
+                        AutoTrigger: True
+                        Target: -1
+                        TreatAsNonSubAbility: True
+                        CreateLimitedHazardousTerrain: True
+                        Vars:
+                            OverridePropName: "'PyroclastHazardTerrain'"
+                        TileFilter: FeaturelessHex
+                        Targeting: Custom
+                        TargetingVars:
+                            AddTilesInRange: CustomAbility.TilesMovedIncludingBacktracking(ParentAbility, TargetingActor, VarsContext)
+                        StartAbilityRequirements:
+                            Type: ParentAbility
+                            AbilityHasHappened: True
+                        PerformVars:
+                            CreateProp: 
+                                VFX: CustomAbility.PlayVFX("PyroclastTerrainFormationVFX", TilesSelected)
+        Consumes:
+            BCFire:
+                Elements: Fire
+                XP: 1
+                AbilityOverrides:
+                    BCFireMoveBuff:
+                        ParentName: BMove
+                        Strength: 1
+
+Layout:
+    Top:
+        - Row: "$FH/220_character_ability_cards_pyroclast_igneous_path_2$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Fire]
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove*"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: BCFire
+                    Text: "<size=100%>+1 <sprite name=Move>, <sprite name=XP1>"
+        - Row: "$FH/220_character_ability_cards_pyroclast_igneous_path_3$"        

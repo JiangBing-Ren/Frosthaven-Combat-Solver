@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 26
+ScenarioItemID: 932
+Name: Truesight Lenses
+Quantity: 2
+Type: Head
+CraftingCost:
+    Metal: 1
+    Hide: 1

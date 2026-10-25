@@ -1,0 +1,56 @@
+Parser: Enemy
+ID: MirroredCharacterID
+LocKey: $FH/MirroredCharacterID$
+MonsterType: Monster
+StandeeLimit: 6
+Model: [Barduu, Gurndel]
+PredominantlyMelee: True
+# Base Stats
+Level0:
+    Health: 1
+    Move: 1
+    Attack: 1
+    Range: 1
+    Target: 1
+Level1:
+    Health: 1
+    Move: 1
+    Attack: 1
+    Range: 1
+    Target: 1
+Level2:
+    Health: 1
+    Move: 1
+    Attack: 1
+    Range: 1
+    Target: 1
+Level3:
+    Health: 1
+    Move: 1
+    Attack: 1
+    Range: 1
+    Target: 1
+Level4:
+    Health: 1
+    Move: 1
+    Attack: 1
+    Range: 1
+    Target: 1
+Level5:
+    Health: 1
+    Move: 1
+    Attack: 1
+    Range: 1
+    Target: 1
+Level6:
+    Health: 1
+    Move: 1
+    Attack: 1
+    Range: 1
+    Target: 1
+Level7:
+    Health: 1
+    Move: 1
+    Attack: 1
+    Range: 1
+    Target: 1

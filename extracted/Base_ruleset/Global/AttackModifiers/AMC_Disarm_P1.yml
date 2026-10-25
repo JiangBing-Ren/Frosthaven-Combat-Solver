@@ -1,0 +1,7 @@
+Parser: AttackModifier
+Name: AMC_Disarm_P1
+MathModifier: "+1"
+AbilityOverrides:
+    NegCon:
+        ParentName: AMC_Disarm_P1
+        Conditions: [Disarm]

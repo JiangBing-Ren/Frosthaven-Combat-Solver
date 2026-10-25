@@ -1,0 +1,27 @@
+Parser: ItemCard
+ID: 1041
+StringID: FireshieldPotionID
+Name: $FH/1041_item_cards_fireshield_potion_1$
+Art: Fireshield Potion
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        ARetaliate:
+            Filter: Self
+            Retaliate: 1
+            RetaliateRange: 3
+            ActiveBonus:
+                Duration: Round    
+                MiscVars:
+                    IgnoreImpair: True
+Layout: 
+    - Active:
+        Ability: ARetaliate
+        Icon: "Positive_Retaliate_Range_Item"
+        ListLayout: "$FH/1041_item_cards_fireshield_potion_2$"
+        Layout: "$FH/1041_item_cards_fireshield_potion_2$"

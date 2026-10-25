@@ -1,0 +1,22 @@
+Parser: ScenarioAbility
+ID: FH135_TeleportToConvergance
+ScenarioAbility:
+    AActive:
+        AddActiveBonus:
+            NullTargeting: True
+            Target: 1
+            Filter: Self
+            CanUndo: True
+            Flags: [FromScenarioModifier]
+        Filter: Self
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringTurnAbility
+            ValidAbilityType: Move
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_135_ConvergancePoint_MirroredHealth$, Positive_Unique_Campaign]
+            IsToggleBonus: True
+            Requirements:
+                Vars:
+                    ValidateIsOnConvergance: ScenarioScript_FH135.IsStandingOnConvergance(Actor)
+        AnimOverload: None
+        AutoTrigger: True

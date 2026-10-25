@@ -1,0 +1,67 @@
+Parser: EnemyCard
+ID: 0878000105
+Name: $Monster_Ability_Boss_PrinceOfFrost_Special1$
+Initiative: 79
+Shuffle: False
+Data:
+    Abilities:
+        APlayerRecoverCard:
+            ControlActor:
+                Abilities:
+                    ARecoverLostCards:
+                        RecoverLostCards: 1
+                        Target: 1
+                        Targeting: All
+                        IgnoreLOS: True
+                        IgnoreStun: True
+                        HelpBoxTooltipLocKey: $Monster_Ability_Boss_PrinceOfFrost_Special1_HelpText$
+                        Filter:
+                            TargetType: [Self,Ally]
+                            ActorType: Player
+                            Vars:
+                                ValidateHasCards: target.CharacterClass != null && target.CharacterClass.LostAbilityCards.Count > 0
+                        CanSkip: False
+            Target: 1
+            Targeting: Custom
+            TargetingVars:
+                AddValidActorInRange: GameState.HostCharacter
+            AnimOverload: CastCardMagic
+            IgnoreLOS: True
+            Filter:
+                TargetType: Enemy
+                ActorType: Player
+            StartAbilityRequirements:
+                Type: ThisAbility
+                Vars:
+                    ValidateHasPlayersWithCards: AllPlayers.Any(obj.CharacterClass.LostAbilityCards.Count > 0)
+        # Dummy attack for layout only
+        ADummyAttack:
+            Attack: -2
+            StartAbilityRequirements:
+                Type: ThisAbility
+                ActorHasPerformedValidAbilityTypesThisAction: "> 100"
+                AbilityTypes: [Attack]          
+            Text: "$FH/boss_stat_cards_prince_of_frost_2$"
+            TextOnly: True
+        AHeal:
+            Heal: SpecialBaseStat
+            Range: 5
+            RangeIsBase: True
+            Filter: [Self,Ally]
+            StatIsBasedOnX:
+                Target:
+                    BasedOn: InitialPlayerCharacterCount
+                    AddTo: False
+            Text: "$FH/boss_stat_cards_prince_of_frost_1$"
+            AnimOverload: PowerUp
+        ASummon:
+            Summons: 
+                - SnowImpID
+                - SnowImpID
+                - SnowImpEliteID
+                - SnowImpEliteID
+            Target: 1
+            TargetIsBase: True
+            Text: "$FH/boss_stat_cards_prince_of_frost_3$"
+            TextOnly: True
+            AnimOverload: Summon

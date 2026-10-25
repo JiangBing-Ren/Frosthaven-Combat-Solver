@@ -1,0 +1,157 @@
+Parser: AbilityCard
+Name: $FH/442_character_ability_cards_metal_mosaic_curious_machinery_1$
+Character: MetalMosaicID
+ID: 442
+Level: 8
+Initiative: 11
+Discard: [Discard,Discard]
+Prefab: 442_MetalMosaic_CuriousMachinery
+Data:
+    Top:
+        Abilities:
+            TCuriousMachineryControlEnemy:
+                ControlActor:
+                    Abilities:
+                        ControlAttack:
+                            Attack: 3
+                            MiscVars:
+                                PrintedProperties: list("Attack")
+                            Conditions: [Stun]
+                            StrengthIsBase: True
+                            Range: 1
+                            RangeIsBase: True
+                    ControlActorType: Player
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Range")
+                AnimOverload: Control
+                Target: 1
+                Filter: Enemy
+                SubAbilities:
+                    TStunControlled:
+                        AutoTrigger: True
+                        TreatAsNonSubAbility: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Over
+                        CanSkip: False
+                        Stun: True
+                        Targeting: Custom
+                        AnimOverload: ElectricalDischarge_Control
+                        TargetingVars:
+                            ControlAbility: ParentAbility
+                            AddValidActorsInRange: ControlAbility.ActorsTargeted
+                            AddTilesInRange: ControlAbility.TilesSelected
+                            AddActorsToTarget: ControlAbility.ActorsTargeted
+                            AddSelectedTiles: ControlAbility.TilesSelected
+                        XP: 1
+                        PerformVars:
+                            OnAbilityEnded:
+                                StackSubAbilities: obj.AbilityHasHappened && CustomAbility.StackNonInlineSubabilities(obj)
+                        SubAbilities:
+                            TPressureChangeOver:
+                                TreatAsNonSubAbility: True
+                                Null: True
+                                SkipAnim: True
+                                IgnoreStun: True
+                                AutoTrigger: True
+                                Targeting: Range
+                                PerformVars:
+                                    NullBegin:
+                                        ChangePressure: CustomAbility.PressureChange(TargetingActor, -2)
+                            TSelfDamage:
+                                TreatAsNonSubAbility: True
+                                Damage: 2
+                                MiscVars:
+                                    PrintedProperties: list("Damage")
+                                AutoTrigger: True
+                                Filter: Self
+                                Targeting: Range
+                                SkipAnim: True
+                                MiscVars:
+                                    MetalMosaicSelfDamage: True
+
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 4
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+                MiscVars:
+                    TreatFirstDamageTrapAsHeal: True
+            TConsumeIce:
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredPressure: High
+                Consume:
+                    Elements: Ice
+                    Abilities:
+                        TCIXP:
+                            GainXP: 1
+                            StartAbilityRequirements:
+                                Type: ThisAbility
+                                RequiredPressure: High
+                        TCIPressureChangeOver:
+                            Null: True
+                            SkipAnim: True
+                            IgnoreStun: True
+                            StartAbilityRequirements:
+                                Type: ThisAbility
+                                RequiredPressure: High
+                            PerformVars:
+                                NullBegin:
+                                    ChangePressure: CustomAbility.PressureChange(TargetingActor, -2)
+            TConsumeFire:
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredPressure: Regular
+                Consume:
+                    Elements: Fire
+                    Abilities:
+                        TCFXP:
+                            GainXP: 1
+                            StartAbilityRequirements:
+                                Type: ThisAbility
+                                RequiredPressure: Regular
+                        TCFPressureChangeOver:
+                            Null: True
+                            SkipAnim: True
+                            IgnoreStun: True
+                            StartAbilityRequirements:
+                                Type: ThisAbility
+                                RequiredPressure: Regular
+                            PerformVars:
+                                NullBegin:
+                                    ChangePressure: CustomAbility.PressureChange(TargetingActor, 2)
+                
+Layout:
+    Top:
+        - Row: "$FH/442_character_ability_cards_metal_mosaic_curious_machinery_2$"
+        - Divider:
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureOver><size=100%> $FH/442_character_ability_cards_metal_mosaic_curious_machinery_3$"
+        
+    Bottom:
+        - Row: "<sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Row: "$FH/442_character_ability_cards_metal_mosaic_curious_machinery_4$"
+        - MandatoryTrigger:
+            Layout:
+                - ColumnWidths: "30,30,40"
+                - Column: "<size=130%><sprite name=MMPressureHigh><size=100%>"
+                - Column:
+                - Column:
+                    - Conditional:
+                        Layout:
+                            - Row: "<sprite name=ConsumeIce>: <sprite name=XP1> <sprite name=MMLosePressure> <sprite name=MMLosePressure>"
+        - MandatoryTrigger:
+            Layout:
+                - ColumnWidths: "30,30,40"
+                - Column: "<size=130%><sprite name=MMPressureRegular><size=100%>"
+                - Column:
+                - Column:
+                    - Conditional:
+                        Layout:
+                            - Row: "<sprite name=ConsumeFire>: <sprite name=XP1> <sprite name=MMGainPressure> <sprite name=MMGainPressure>"

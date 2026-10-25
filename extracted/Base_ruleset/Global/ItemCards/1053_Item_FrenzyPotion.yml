@@ -1,0 +1,20 @@
+Parser: ItemCard
+ID: 1053
+StringID: FrenzyPotionID
+Name: $FH/1053_item_cards_frenzy_potion_1$
+Art: Frenzy Potion
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    ItemRequirements:
+        Vars:
+            ValidateHasTargets: GameState.GetAdjacentEnemies(Actor, Actor.ArrayIndex).Count > 0
+    Abilities:
+        AAttack:
+            Attack: 2
+Layout: 
+    - Row: "$FH/1053_item_cards_frenzy_potion_2$"

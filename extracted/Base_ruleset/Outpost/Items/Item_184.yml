@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 184
+ScenarioItemID: 1277
+Name: Flashing Axe
+Quantity: 1
+GoldCost: 20
+Type: OneHandWeapon
+IsNewCharacterItem: False

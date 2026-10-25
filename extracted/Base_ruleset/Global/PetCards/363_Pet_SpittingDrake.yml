@@ -1,0 +1,33 @@
+Parser: PetCard
+ID: 363
+StringID: SpittingDrakePetID
+Name: $FH/363_pet_cards_spitting_drake_1$
+Description: $FH/363_pet_cards_spitting_drake_2$
+Art: Spitting Drake
+Usage: Consumed
+Trigger: DuringOwnTurn
+PetUnlockedBy: SpittingDrakeID
+Cost: 0
+Data: 
+    Abilities:
+        AGrantAttack:
+            Attack: 0
+            AttackEffect:
+                Type: BuffIfAttackIsRanged
+                Conditions: Poison
+            AnimOverload: UseItem
+            PerformVars:
+                AttackBuff: 
+                    VFX: TargetingActor.PlayVFX("PetSpittingDrakeEffect")
+            ActiveBonus:
+                Duration: Round
+                Behaviour: BuffAttack
+                IsAura: True
+                AuraTargeting: All
+                AuraFilter:
+                    ActorType: Player
+                    TargetType: [Self, Ally]
+                ListLayoutOverride: [$FH/363_pet_cards_spitting_drake_2$, Attack]
+            Filter: [Self]
+Layout: 
+    - Row: "$FH/363_pet_cards_spitting_drake_2$"

@@ -1,0 +1,9 @@
+Parser: EnemyCard
+ID: 11534
+Name: $11534_monster_ability_cards_valrath_merchant_do_nothing$
+Initiative: 99
+Shuffle: True
+Data:
+    Abilities:
+        ANull:
+            Null: True

@@ -1,0 +1,7 @@
+Parser: FHEnhancement
+ID: AoEHex
+Name: Glossary_Enhancement_Area
+Cost: 200
+Mark: Hex
+Effect: AoEHex
+ForEffect: Other

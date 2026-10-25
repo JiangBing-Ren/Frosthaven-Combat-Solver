@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 46
+ScenarioItemID: 972
+Name: Double-Lens Goggles
+Quantity: 2
+Type: Head
+CraftingCost:
+    Hide: 1
+RequiredCraftingItemIDs: [ 26, 129 ]

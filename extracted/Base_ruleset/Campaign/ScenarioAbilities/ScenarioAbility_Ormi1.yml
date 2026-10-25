@@ -1,0 +1,32 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_Ormi1
+ScenarioAbility:
+    AActiveOrmi1:
+        Filter: Self
+        AutoTrigger: True
+        SkipAnim: True
+        AddActiveBonus:
+            Summon: Ormi1ID
+            IgnoreStun: True
+            CanSkip: False
+            CanUndo: False
+            TileFilter: Empty
+            Targeting: Custom
+            TargetingVars:
+                AddTilesInRange: CustomAbility.GetValidOrmiTiles()
+            MiscVars:
+                DontTreatAsSummon: True
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: PreCalcInitiativeAbility
+            # shows up once per round, but only finishes if you actually do the infuse
+            Restriction: OncePerRound
+            Hidden: True
+            XPTracker: [0]
+            ListLayoutOverride: [$ScenarioAbility_Ormi1$, Empty]
+            Requirements:
+                Vars:
+                    ValidateOrmiNotSummonedYet: CustomAbility.HasOrmiBeenSummoned() == False
+                    ValidateHasEmptyTile: CustomAbility.GetValidOrmiTiles().Count > 0
+                    # every player can do this, but if one does/skips this, nobody else needs to
+                    ValidateFirstPlayerDoingThis: CustomAbility.AllBonusCopiesUnrestricted(CheckingBonus)

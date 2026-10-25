@@ -1,0 +1,28 @@
+Parser: ItemCard
+ID: 1153
+StringID: StaffOfEminenceID
+Name: $FH/1153_item_cards_staff_of_eminence_1$
+Art: Staff of Eminence
+TotalInGame: 2
+Cost: 50
+Slot: TwoHand 
+Rarity: Rare
+Usage: Spent
+Consumes: Any
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        ABuffAttack:
+            Filter: Self
+            Attack: 1
+            ActiveBonus:
+                Behaviour: BuffAttack
+                Duration: Turn
+    Vars:
+        SkipSaveInfusionsState: True
+Layout: 
+    - Active:
+        Ability: ABuffAttack
+        Layout: "$FH/1153_item_cards_staff_of_eminence_2$"
+        ListLayout: "$FH/1153_item_cards_staff_of_eminence_2$"
+        Icon: "Positive_AttackPlus_Item"        

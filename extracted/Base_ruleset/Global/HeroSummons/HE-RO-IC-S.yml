@@ -1,0 +1,73 @@
+Parser: Enemy
+ID: HEROICS92ID
+LocKey: $FH/HEROICS_Name$
+MonsterType: Monster
+StandeeLimit: 1
+Model: HEROICS
+PredominantlyMelee: True
+# AbilityCards: [11532]
+# Base Stats
+Level0:
+    Health: 1
+    Move: 1
+    Attack: 0
+    Range: 1
+    Target: 1
+    Invulnerable: True
+    Untargetable: True
+Level1:
+    Health: 1
+    Move: 1
+    Attack: 0
+    Range: 1
+    Target: 1
+    Invulnerable: True
+    Untargetable: True
+Level2:
+    Health: 1
+    Move: 1
+    Attack: 0
+    Range: 1
+    Target: 1
+    Invulnerable: True
+    Untargetable: True
+Level3:
+    Health: 1
+    Move: 1
+    Attack: 0
+    Range: 1
+    Target: 1
+    Invulnerable: True
+    Untargetable: True
+Level4:
+    Health: 1
+    Move: 1
+    Attack: 0
+    Range: 1
+    Target: 1
+    Invulnerable: True
+    Untargetable: True
+Level5:
+    Health: 1
+    Move: 1
+    Attack: 0
+    Range: 1
+    Target: 1
+    Invulnerable: True
+    Untargetable: True
+Level6:
+    Health: 1
+    Move: 1
+    Attack: 0
+    Range: 1
+    Target: 1
+    Invulnerable: True
+    Untargetable: True
+Level7:
+    Health: 1
+    Move: 1
+    Attack: 0
+    Range: 1
+    Target: 1
+    Invulnerable: True
+    Untargetable: True

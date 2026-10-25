@@ -1,0 +1,20 @@
+Parser: ItemCard
+ID: 1123
+StringID: EagleEyeGogglesID
+Name: $FH/1123_item_cards_eagleeye_goggles_1$
+Art: Eagle Eye Goggles
+TotalInGame: 2
+Cost: 30
+Slot: Head
+Rarity: Rare
+Usage: Spent
+Trigger: SingleAbility
+Data: 
+    Overrides:
+        OConditions:
+            AttackHasAdvantage: True
+    CompareAbility:
+        AbilityType: Attack
+        Filter: Enemy
+Layout: 
+    - Row: $FH/1123_item_cards_eagleeye_goggles_2$

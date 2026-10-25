@@ -1,0 +1,18 @@
+Parser: BattleGoal
+ID: BattleGoal_Rambler
+LocalisedName: FH/1330_battle_goals_rambler_1
+LocalisedDescription: FH/1330_battle_goals_rambler_2
+PerkChecks: 1
+CheckAtEndOfScenario: True
+# condition is meaningless, necessary otherwise errors
+BattleGoalCondition:
+    - Targets:
+        Filter: EndTurnInSameHex
+        Value: 0
+        SubFilter: Scenario
+# fail if you end a turn in the same hex more than 3 times
+BattleGoalFailCondition:
+    - Targets:
+        Filter: EndTurnInSameHex
+        Value: 4
+        SubFilter: Scenario

@@ -1,0 +1,20 @@
+Parser: Perk
+ID: CrashingTide09
+Name: FH/PERK_CrashingTide_09_Name
+Description: FH/PERK_CrashingTide_09_Desc
+CharacterID: CrashingTideID
+Available: 1
+Flags: [Passive, ApplyActiveBonusesAtScenarioStart]
+Abilities:
+    TActive:
+        Filter: Self
+        Shield: 1
+        AutoTrigger: True
+        ActiveBonus:
+            Behaviour: BuffShield
+            Duration: Persistent
+            Hidden: True
+            IsAura: True
+            AuraFilter: Self
+            Requirements:
+                IsLongRest: True

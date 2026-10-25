@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 93
+ScenarioItemID: 1051
+Name: Glancing Potion
+Quantity: 2
+Type: Small
+Brewing:
+    Herb1: Rockroot
+    Herb2: Axenut

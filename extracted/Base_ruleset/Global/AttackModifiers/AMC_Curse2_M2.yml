@@ -1,0 +1,7 @@
+Parser: AttackModifier
+Name: AMC_Curse2_M2
+MathModifier: "-2"
+AbilityOverrides:
+    NegCon:
+        ParentName: AMC_Curse2_M2
+        Conditions: [Curse, Curse]

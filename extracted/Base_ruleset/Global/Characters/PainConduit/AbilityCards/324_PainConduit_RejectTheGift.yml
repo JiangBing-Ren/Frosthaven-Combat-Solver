@@ -1,0 +1,73 @@
+Parser: AbilityCard
+Name: $FH/324_character_ability_cards_pain_conduit_reject_the_gift_1$
+Character: PainConduitID
+ID: 324
+Level: 7
+Initiative: 20
+Discard: [Discard,Discard]
+Prefab: 324_PainConduit_RejectTheGift
+Data:
+    Top:
+        Abilities:
+            TPreventDamage:
+                PreventDamage: 1
+                Filter: Self
+                AnimOverload: Cast
+                ActiveBonus:
+                    Duration: Round
+                    Behaviour: PreventFirstDamage
+                    XPTracker: [0]
+                    Requirements:
+                        Vars:
+                            ValidateHasAdjacentEnemies: GameState.GetAllEnemiesInRange(Actor, Actor.ArrayIndex, 1).Count > 0
+                    Vars:
+                        PerformActiveBonusAbility: CustomAbility.PerformActiveBonusAbility(TriggerBehaviour.ActiveBonus, thisContext)                    
+                    AbilityData:
+                        Filter: Enemy
+                        CanUndo: False
+                        CanSkip: False
+                        Damage: 0
+                        Target: 1
+                        Range: 1
+                        XP: 1
+                        AnimOverload: CastGivingPain
+                        StatIsBasedOnX:
+                            Strength:
+                                BasedOn: Vars
+                                Vars:
+                                    Value: PreventedDamage
+
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BActive:
+                Filter: Self
+                NullTargeting: True
+                AnimOverload: Cast
+                ActiveBonus:
+                    Duration: Round
+                    Behaviour: GenericOnNegativeCondition
+                    Vars:
+                        ValidateAppliedOnSelf: TriggerTarget == ActiveBonus.Caster
+                        PreventCondition: True
+Layout:
+    Top:
+        - Active:
+            Ability: TPreventDamage
+            Icon: Positive_Redirect_Enemy_Damage
+            ListLayout: "$FH/324_character_ability_cards_pain_conduit_reject_the_gift_2$"
+            Layout: "$FH/324_character_ability_cards_pain_conduit_reject_the_gift_2$"
+
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Active:
+            Ability: BActive
+            Icon: Positive_PainConduit_ConditionsImmune
+            ListLayout: "$FH/324_character_ability_cards_pain_conduit_reject_the_gift_3$"
+            Layout: "$FH/324_character_ability_cards_pain_conduit_reject_the_gift_3$"

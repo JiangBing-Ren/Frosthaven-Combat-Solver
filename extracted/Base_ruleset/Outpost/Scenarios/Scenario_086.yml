@@ -1,0 +1,11 @@
+Parser: FHScenario
+ID: 86
+Name: The Lady in White
+LevelID: FS_086_The_Lady_in_White
+Chain: JobPosting
+Location: Frosthaven
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: GainMorale
+          Param1: 2

@@ -1,0 +1,63 @@
+Parser: AbilityCard
+Name: $FH/169_character_ability_cards_geminate_venomous_barbs_1$
+Character: GeminateID
+ID: 169
+Level: 2
+ProgressionOrder: 18
+Initiative: 17
+Discard: [Lost,Discard]
+RequiredForm: Melee
+Prefab: 169_Geminate_VenomousBarbs
+Data:
+    Top:
+        Abilities:
+            TCRetaliate:
+                Retaliate: 2
+                MiscVars:
+                    PrintedProperties: list("Retaliate","RetaliateRange")
+                RetaliateRange: 2
+                ActiveBonus:
+                    ProcXP: 1
+                    ListLayoutOverride: [$FH/169_character_ability_cards_geminate_venomous_barbs_3$, Positive_Retaliate_Range]
+        Consumes:
+            TCDisarm:             
+                AbilityOverrides:
+                    TCRetaliateBuff:
+                        ParentName: TCRetaliate
+                        RetaliateRange: 1
+                        Retaliate: 1
+                        Conditions: Disarm
+    Bottom:
+        Abilities:
+            BAttackPoison:
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Conditions: [Poison]
+                Filter: [Enemy]
+                AnimOverload: Attack_Melee_VenomousBarbs
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Retaliate> *TCRetaliate* <size=100%><voffset=1>@TCRetaliate@ <sprite name=Range>2"
+        - Row: "<size=50%> "
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCDisarm
+                    Text: "$FH/169_character_ability_cards_geminate_venomous_barbs_2$"
+        - Active:
+           Ability: TCRetaliate
+           ListLayout: "<sprite name=Retaliate> *TCRetaliate*"
+           Layout: "<sprite name=Retaliate> *TCRetaliate*"
+           Icon: "Positive_Retaliate"
+        - Row: "$FH/169_character_ability_cards_geminate_venomous_barbs_3$"
+    Bottom:
+        - ColumnWidths: "25,20,40"
+        # empty column to get this to look centered and not insanely far apart
+        - Column: 
+        - Column:
+            - Row: "<b><size=170%><voffset=-3><sprite name=Attack><voffset=1><size=130%> *BAttackPoison* @BAttackPoison@"
+        - Column:
+            - Row: "<b><size=170%><sprite name=Poison>"

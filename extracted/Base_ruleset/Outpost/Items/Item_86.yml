@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 86
+ScenarioItemID: 1037
+Name: Element Potion
+Quantity: 2
+Type: Small
+Brewing:
+    Herb1: Arrowvine
+    Herb2: Flamefruit

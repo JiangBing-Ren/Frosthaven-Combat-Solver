@@ -1,0 +1,149 @@
+Parser: AbilityCard
+Name: $FH/56_character_ability_cards_blinkblade_rushed_to_the_end_1$
+Character: BlinkbladeID
+ID: 56
+Level: 7
+Initiative: 32
+Discard: [Discard,Discard]
+Prefab: 56_Blinkblade_RushedToTheEnd
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 4
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AnimOverload: AttackSlow
+                ConditionalOverrides:
+                    TAttackCO_Fast:
+                        Self: True
+                        XP: 1
+                        Requirement:
+                            RequiredAgility: Fast
+                        AbilityOverrides:
+                            TAttack:
+                                Strength: +1
+                                AnimOverload: Attack
+        Consumes:
+            TCAttack:
+                Requirements:
+                    Type: ThisAbility
+                    TimeTokens: ">= 1"
+                AbilityOverrides:
+                    TCImmobilizeBuff:
+                        ParentName: TAttack
+                        Strength: 3
+                        Flags: [ModifiesTimeTokens]
+                        Tokens: -1
+                XP: 1
+    Bottom:
+        Abilities:            
+            BAlly:
+                ControlActor:
+                    #UseControllingActorPlayerControl: True
+                    Abilities:
+                        BAllyMove1:
+                            Move:
+                                Amount: 4
+                                CircleEnhancements: 1
+                            MiscVars:
+                                PrintedProperties: list("Move")
+                            ConditionalOverrides:
+                                BMoveCO_Slow:
+                                    Self: True
+                                    Requirement:
+                                        RequiredAgility: Slow
+                                    AbilityOverrides:
+                                        BMove:
+                                            Strength: 2
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Filter: Ally
+                AnimOverload: PowerUp
+            # BAlly_Slow:
+            #     ControlActor:
+            #         #UseControllingActorPlayerControl: True
+            #         Abilities:
+            #             BAllyMove1:
+            #                 Move:
+            #                     Amount: 6
+            #                     CircleEnhancements: 1
+            #                 StrengthIsBase: True
+            #     Range: 2
+            #     Filter: Ally
+            #     AnimOverload: PowerUpSlow  
+            #     StartAbilityRequirements:
+            #         Type: ThisAbility
+            #         RequiredAgility: Slow
+            # BAlly_Fast:
+            #     ControlActor:
+            #         #UseControllingActorPlayerControl: True
+            #         Abilities:
+            #             BAllyMove2:
+            #                 Move:
+            #                     Amount: 4
+            #                     CircleEnhancements: 1
+            #                 StrengthIsBase: True
+            #     Range: 2
+            #     Filter: Ally
+            #     AnimOverload: PowerUp  
+            #     StartAbilityRequirements:
+            #         Type: ThisAbility
+            #         RequiredAgility: Fast
+            BMove:
+                Move:
+                    Amount: 4
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+                ConditionalOverrides:
+                    BMoveCO_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            BMove:
+                                Strength: -2
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "33,34,33"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "<size=100%>+1 <sprite name=Attack>, <sprite name=XP1>"
+            - Column:
+                - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column:
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCAttack
+                    Text: "$FH/56_character_ability_cards_blinkblade_rushed_to_the_end_2$"
+    Bottom:
+        - Row: "$FH/56_character_ability_cards_blinkblade_rushed_to_the_end_3$"
+        - Row:
+            - ColumnWidths: "33,34,33"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Move> *BAllyMove1* <size=100%><voffset=1>@BAllyMove1@"
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Text: "<size=100%>+2 <sprite name=Move>"
+        - Active:
+            Ability: BAllyMove1
+            Icon: Blinkblade
+        - Divider:
+        - Row:
+            - ColumnWidths: "33,34,33"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Text: "<size=100%>-2 <sprite name=Move>"

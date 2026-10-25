@@ -1,0 +1,10 @@
+Parser: AttackModifier
+Name: AMC_InfuseOneWaning_P0_R
+MathModifier: "+0"
+Rolling: True
+Abilities:
+    InfuseAbility:
+        Infuse: [Air, Earth, Fire, Light, Dark, Ice]
+        ShowElementPicker: True
+        MiscVars:
+            InfuseOnlyWaning: True

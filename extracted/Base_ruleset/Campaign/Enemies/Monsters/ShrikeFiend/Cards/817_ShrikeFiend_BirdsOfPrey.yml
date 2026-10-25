@@ -1,0 +1,30 @@
+Parser: EnemyCard
+ID: 817
+Name: $Monster_Ability_817_ShrikeFiend_BirdsOfPrey$
+Initiative: 23
+Shuffle: False
+Data:
+    Abilities:
+        AAttack:
+            Attack: -2
+            Target: 3
+            TargetIsBase: True
+            Range: 6
+            RangeIsBase: True
+            Filter: Enemy
+            AnimOverload: RangedAttack
+            SubAbilities:
+                ASubPull:
+                    Pull: 2
+                    IsInlineSubAbility: True
+    Consumes:
+        CDark:
+            Elements: Dark
+            Abilities:
+                AShield:
+                    Shield: 2
+                    Filter: Self
+                    ActiveBonus:
+                        Duration: Round
+                        ListLayoutOverride: ["<sprite name=Shield> *AShield*", Positive_Shield]
+                    AnimOverload: PowerUp

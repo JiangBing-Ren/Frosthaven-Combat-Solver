@@ -1,0 +1,52 @@
+Parser: AbilityCard
+Name: $FH/312_character_ability_cards_pain_conduit_unstable_effigy_1$
+Character: PainConduitID
+ID: 312
+Level: X
+Initiative: 18
+Discard: [Lost,Discard]
+Prefab: 312_PainConduit_UnstableEffigy
+Data:
+    Top:
+        Abilities:
+            TSummon:
+                Summon: FleshBombID
+                AnimOverload: Summon
+        XP: 2
+    Bottom:
+        Infuse: Air
+        Abilities:
+            BMove:
+                Move: 4
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BImmobilizeSelfAndEnemies:
+                Immobilize: True
+                Filter: [Self,Enemy]
+                Range: 1
+                Target: -1
+                AnimOverload: UnstableEffigy
+                AutoTrigger: True
+Layout:
+    Top:
+        - Active:
+              Ability: "TSummon"
+              Icon: "Summon"
+              Layout:
+                  - Summon:
+                        Ability: TSummon
+                        SummonName: "$FH/312_character_ability_cards_pain_conduit_unstable_effigy_2$"
+                        SpecialText: 
+                            - Row: "$FH/312_character_ability_cards_pain_conduit_unstable_effigy_3$"
+                            - MandatoryTrigger:
+                                Layout:
+                                    - Infuse: Fire
+    Bottom:
+        - Row: "<size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - MandatoryTrigger:
+            Layout:
+                - Row:  "$FH/312_character_ability_cards_pain_conduit_unstable_effigy_4$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Air

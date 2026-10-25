@@ -1,0 +1,64 @@
+Parser: Enemy
+ID: SwarmID
+LocKey: $FH/FH_Scenario_Campaign_101_SCENARIO_OBJECT_1$
+MonsterType: Monster
+StandeeLimit: 10
+Model: ZuSpawnS101
+PredominantlyMelee: False
+AbilityCards: [1000000]
+Level0:
+    Health: 1
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    IgnoreActorCollision: True
+Level1:
+    Health: 1
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    IgnoreActorCollision: True
+Level2:
+    Health: 1
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    IgnoreActorCollision: True
+ Level3:
+    Health: 1
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    IgnoreActorCollision: True
+ Level4:
+    Health: 1
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    IgnoreActorCollision: True
+ Level5:
+    Health: 1
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    IgnoreActorCollision: True
+ Level6:
+    Health: 1
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    IgnoreActorCollision: True
+ Level7:
+    Health: 1
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    IgnoreActorCollision: True

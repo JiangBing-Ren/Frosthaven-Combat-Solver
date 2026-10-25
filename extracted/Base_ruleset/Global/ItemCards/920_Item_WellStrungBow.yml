@@ -1,0 +1,29 @@
+Parser: ItemCard
+ID: 920
+StringID: WellStrungBowID
+Name: $FH/0920_item_cards_wellstrung_bow_1$
+Art: Well Strung Bow
+TotalInGame: 2
+Cost: 0
+Slot: TwoHand 
+Rarity: Rare
+Usage: Spent
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        ABuffAttackRange:
+            PreviewEffectText: "+1 <sprite name=Range>"
+            Attack: 0
+            AttackEffect:
+                Type: BuffIfAttackIsRanged
+                Range: 1
+            Filter: Self
+            ActiveBonus:
+                Behaviour: BuffAttack
+                Duration: Turn
+Layout: 
+    - Active:
+        Ability: ABuffAttackRange
+        ListLayout: $FH/0920_item_cards_wellstrung_bow_2$
+        Layout: $FH/0920_item_cards_wellstrung_bow_2$
+        Icon: Positive_RangePlus_AttackRanged_Item

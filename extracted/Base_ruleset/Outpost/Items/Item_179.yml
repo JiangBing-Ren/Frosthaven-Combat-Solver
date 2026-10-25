@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 179
+ScenarioItemID: 1272
+Name: Burst Boots
+Quantity: 1
+GoldCost: 25
+Type: Feet
+IsNewCharacterItem: False

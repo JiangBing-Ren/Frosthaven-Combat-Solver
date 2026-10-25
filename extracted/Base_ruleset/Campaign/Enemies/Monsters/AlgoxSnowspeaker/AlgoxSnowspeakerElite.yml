@@ -1,0 +1,83 @@
+Parser: Enemy
+ID: AlgoxSnowspeakerEliteID
+LocKey: $FH/AlgoxSnowspeakerElite$
+MonsterType: Monster
+StandeeLimit: 6
+Model: AlgoxSnowspeaker Elite
+NonEliteVariant: AlgoxSnowspeakerID
+PredominantlyMelee: True
+AbilityCards: [738, 739, 740, 741, 742, 743, 744, 745]
+# Base Stats
+Level0:
+    Health: 8
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+    Retaliate: 1
+    RetaliateRange: 5
+Level1:
+    Health: 10
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    Retaliate: 1
+    RetaliateRange: 5
+    Push: 1
+Level2:
+    Health: 12
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    Retaliate: 2
+    RetaliateRange: 5
+    Push: 1
+Level3:
+    Health: 15
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Retaliate: 2
+    RetaliateRange: 5
+    Push: 1
+Level4:
+    Health: 17
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    Retaliate: 2
+    RetaliateRange: 5
+    Push: 2
+Level5:
+    Health: 21
+    Move: 4
+    Attack: 5
+    Range: 1
+    Target: 1
+    Retaliate: 2
+    RetaliateRange: 5
+    Push: 2
+Level6:
+    Health: 27
+    Move: 4
+    Attack: 6
+    Range: 1
+    Target: 1
+    Retaliate: 3
+    RetaliateRange: 5
+    Push: 2
+    Immunities: [Brittle]
+Level7:
+    Health: 35
+    Move: 4
+    Attack: 7
+    Range: 1
+    Target: 1
+    Retaliate: 3
+    RetaliateRange: 5
+    Push: 2
+    Immunities: [Brittle]

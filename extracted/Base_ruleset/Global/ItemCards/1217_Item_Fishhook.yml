@@ -1,0 +1,32 @@
+Parser: ItemCard
+ID: 1217
+StringID: FishhookID
+Name: $FH/1217_item_cards_fishhook_1$
+Art: Fishhook
+TotalInGame: 1
+Cost: 25
+Slot: TwoHand
+Rarity: Rare
+Usage: Spent
+Trigger: AfterAttackOneByOne
+Data: 
+    ItemRequirements:
+        Vars:
+            ItemOwner: Ability.VarsContext.parentContext.ItemOwner
+            ActorBeingAttacked: Ability.VarsContext.parentContext.ActorBeingAttacked
+            ActorAttacking: Ability.VarsContext.parentContext.ActorAttacking
+            ValidateIsAttacker: ActorAttacking == ItemOwner
+            ValidateHP: ActorBeingAttacked.Health <= 3
+    Abilities:
+        OBane:
+            Bane: True
+            Target: 1
+            Filter: Enemy
+            Targeting: Custom
+            TargetingVars:
+                AddValidActorInRange: AppliedActor
+                AddTileInRange: AppliedActor.Tile
+    CompareAbility:
+        AbilityType: Attack
+Layout: 
+    - Row: "$FH/1217_item_cards_fishhook_2$"

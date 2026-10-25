@@ -1,0 +1,79 @@
+Parser: AbilityCard
+Name: $FH/499_character_ability_cards_crashing_tide_dug_in_1$
+Character: CrashingTideID
+ID: 499
+Level: 7
+ProgressionOrder: 499
+Initiative: 76
+Discard: [Discard,Discard]
+Prefab: 499_CrashingTide_DugIn
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 3
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Range: 1
+                Target: 99
+                Targeting: Range
+                MultiPassAttack: False
+                Filter: [Enemy]
+                AnimOverload: MeleeSwing
+                MiscVars:
+                    AutoSelectValidTiles: True
+            TConsume:
+                Consume:
+                    Elements: [Dark]
+                    Abilities:
+                        TImmunity:
+                            ImmunityTo: [Push, Pull, ControlActor, Teleport2]
+                            Filter: [Self]
+                            ActiveBonus:
+                                Duration: Round
+                                ListLayoutOverride: [$FH/499_character_ability_cards_crashing_tide_dug_in_3$, Positive_ForceMovePrevent]
+                    XP: 1
+                PreviewEffectText: "<sprite name=AA_Immune>"
+    Bottom:
+        Abilities:
+            BActiveHeal:
+                AddActiveBonus:
+                    Heal: 3
+                    MiscVars:
+                        PrintedProperties: list("Heal")
+                    Filter: [Self]
+                    StartAbilityRequirements:
+                        Type: ThisAbility
+                        HexesMovedThisTurn: "== 0"
+                Filter: [Self]
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: EndTurnAbility
+                    Flags: [Tide] 
+                AnimOverload: Tide              
+        Infuse: Dark 
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "30,70"
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack*"
+            - Column:
+                - AddedEffect: "$FH/499_character_ability_cards_crashing_tide_dug_in_2$"
+        - Divider:
+        - Row:
+            - AddedEffect: "<b><size=130%><sprite name=ConsumeDark>:</size></b> $FH/499_character_ability_cards_crashing_tide_dug_in_3$"
+    Bottom:
+        - Row:
+            - ColumnWidths: "34,33,33"
+            - Column: "$FH/CrashingTide_Tide$"
+            - Column:
+            - Column:
+        - Active:
+            Ability: BActiveHeal
+            Icon: Positive_HealSelf_MovePrevent
+            Layout: "$FH/499_character_ability_cards_crashing_tide_dug_in_4$<br><b><size=130%><sprite name=Heal> 3</b></size> self"
+            ListLayout: "$FH/499_character_ability_cards_crashing_tide_dug_in_4$<br><b><size=130%><sprite name=Heal> 3</b></size> self"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark

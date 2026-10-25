@@ -1,0 +1,17 @@
+Parser: BattleGoal
+ID: BattleGoal_Masochist
+LocalisedName: FH/BATTLEGOAL_Masochist
+LocalisedDescription: FH/BATTLEGOAL_Masochist_Desc
+#Your current hit point value must be 3 or less at the end of the scenario
+PerkChecks: 1
+CheckAtEndOfScenario: True
+BattleGoalCondition:
+    - Targets:
+        Filter: Health
+        CharacterTypes:
+            Target: [Player]
+        Conditional:
+            Type: EndScenario
+            Amount: "<= 3"
+        Value: 1
+        SubFilter: Scenario

@@ -1,0 +1,47 @@
+Parser: ScenarioAbility
+ID: FH129_CreateLog
+ScenarioAbility:
+    CreateLog:
+        Filter: Self
+        SkipAnim: True
+        AddActiveBonus:
+            PreviewEffectText: "2 AP"
+            HelpBoxTooltipLocKey: "FH_Scenario_Campaign_129_SCENARIO_MODIFIER_3"
+            MiscVars:
+                APCost: 2
+                LinkProps: True
+                DontClearAreaEffect: True
+                HideInvalidTiles: True
+                DontMoveCamera: True
+            CreateTerrain: Rubble
+            Target: 2
+            Range: 99
+            IgnoreLOS: True
+            TileFilter: EmptyHex
+            AreaEffect: "0,0,R|2,0,R"
+            AreaEffectLayoutOverride: "0,0,R|2,0,R"
+            Targeting: Custom
+            TargetingVars:
+                AddTilesInRange: CustomAbility.GetTilesAdjacentToThreeHexObstacles()
+            PerformVars:
+                SelectTerrainPositions: 
+                    HighlightTiles: CustomAbility.HighlightThreeHexObstacles(true)
+                OnAbilityEnded:
+                    UnhighlightTiles: CustomAbility.HighlightThreeHexObstacles(false)
+        ActiveBonus:
+            ListLayoutOverride: ["$FH/FH_Scenario_Campaign_129_SCENARIO_MODIFIER_3$", Empty]
+            Hidden: True
+            Behaviour: DuringTurnAbility
+            Duration: Persistent
+            ValidAbilityType: NullTargeting
+            IsToggleBonus: True
+            MiscVars:
+                OverrideIcon: "'Create_2_Hex_Difficult'"
+                OverrideLayoutName: "''"
+                ShowCounter: (4 - ScenarioScript_FH129.CountTwoHexDifficultTerrains())
+            Requirements:
+                Vars:
+                    CurrentAbility: PhaseManager.CurrentPhaseAction?.CurrentPhaseAbility?.m_Ability
+                    ValidateAbility: CurrentAbility != null && CurrentAbility.Name == "ChooseAPAbility"
+                    ValidateAP: ScenarioScript_FH129.HasEnoughAP(2)
+                    ValidateMaxCount: ScenarioScript_FH129.CountTwoHexDifficultTerrains() < 4

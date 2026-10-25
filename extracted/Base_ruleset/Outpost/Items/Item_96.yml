@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 96
+ScenarioItemID: 1057
+Name: Flame Vial
+Quantity: 2
+Type: Small
+Brewing:
+    Herb1: Snowthistle
+    Herb2: Flamefruit

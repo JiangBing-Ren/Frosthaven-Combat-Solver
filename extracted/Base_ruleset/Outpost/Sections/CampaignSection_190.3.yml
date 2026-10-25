@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 190.3
+Name: Library Built (1)
+SkipCompletedNotification: False
+Effects:
+    - Type: IfTraitActivateCampaignSections
+      Param1: Educated
+      Param2: 164.2
+      Param3: 143.2

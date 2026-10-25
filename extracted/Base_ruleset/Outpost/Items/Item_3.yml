@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 3
+ScenarioItemID: 886
+Name: Traveling Cloak
+Quantity: 2
+Type: Body
+CraftingCost:
+    Hide: 1

@@ -1,0 +1,12 @@
+Parser: AttackModifier
+Name: AMC_Shield1_R
+MathModifier: "+0"
+Rolling: True
+Abilities:
+    AShield:
+        Shield: 1
+        Filter: Self
+        ActiveBonus:
+            Duration: Round
+        CanUndo: False
+        #AutoTrigger: True

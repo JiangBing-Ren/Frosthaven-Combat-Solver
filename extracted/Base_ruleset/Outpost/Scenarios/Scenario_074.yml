@@ -1,0 +1,20 @@
+Parser: FHScenario
+ID: 74
+Name: Gaps in the Road
+# A is the one with the fish king sticker
+LevelID: FS_074_Gaps_in_the_Road_A 
+AlternativeLevelID: FS_074_Gaps_in_the_Road_B
+LevelCondition: FS74
+Chain: PersonalQuest
+RequiresPersonalQuest: PQ_12
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: GainRandomItemBlueprint
+        - Type: UnlockScenario
+          Param1: 76
+    - Effects:
+        - Type: GainRandomItemBlueprint
+        - Type: UnlockScenario
+          Param1: 75
+        

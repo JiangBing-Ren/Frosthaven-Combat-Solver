@@ -1,0 +1,13 @@
+Parser: FHScenario
+ID: 108
+Name: Lustrous Pit
+LevelID: FS_108_Lustrous_Pit
+Chain: RandomScenario
+Location: CopperneckMountaions
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: GainMorale
+          Param1: 2
+        - Type: GainInspiration
+          Param1: 2

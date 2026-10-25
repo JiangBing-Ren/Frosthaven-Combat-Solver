@@ -1,0 +1,11 @@
+Parser: CampaignSection
+ID: 3.1
+Name: Stables Built
+SkipCompletedNotification: True
+Effects:
+    - Type: EnableEvent
+      Param1: WR-42
+    - Type: EnableEvent
+      Param1: SR-42
+    - Type: GainItem
+      Param1: 247

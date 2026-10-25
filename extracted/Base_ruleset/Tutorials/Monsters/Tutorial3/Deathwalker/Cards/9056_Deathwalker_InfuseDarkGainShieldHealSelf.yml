@@ -1,0 +1,15 @@
+Parser: EnemyCard
+ID: 9056
+Name: $Monster_Ability_Tutorial3Deathwalker_ShroudedGuard$
+Initiative: 36
+Shuffle: False
+Data:
+    Abilities:
+        AInfuse:
+            Infuse: Dark
+        AShield:
+            Shield: 2
+            Filter: Self
+        AHeal:
+            Heal: 2
+            Filter: Self

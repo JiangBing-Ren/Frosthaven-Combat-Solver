@@ -1,0 +1,28 @@
+Parser: EnemyCard
+ID: 797
+Name: $Monster_Ability_797_SavvasIcestorm_HardenedFrost$
+Initiative: 19
+Shuffle: False
+Data:
+    Abilities:
+        Move1:
+            Move: 0
+        Attack1:
+            Attack: -1
+            Range: 3
+            Filter: Enemy
+            AnimOverload: RangedAttack
+        Shield1:
+            Shield: 1
+            Filter: [Self, Ally]
+            Target: -1
+            TargetIsBase: True
+            Range: 2
+            RangeIsBase: True
+            ActiveBonus:
+                Duration: Round
+                ListLayoutOverride: ["<sprite name=Shield> *Shield1*", Positive_Shield]
+            AnimOverload: PowerUp
+            TextOnly: True
+            Text: "$FH/0797_monster_ability_cards_savvas_icestorm_hardened_frost_2$"
+    Infuse: Ice

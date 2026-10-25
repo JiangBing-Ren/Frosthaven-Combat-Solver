@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 127
+ScenarioItemID: 1119
+Name: Poison Dagger
+Quantity: 2
+GoldCost: 15
+Type: OneHandWeapon
+IsNewCharacterItem: True

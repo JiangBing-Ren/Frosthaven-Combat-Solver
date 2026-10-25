@@ -1,0 +1,77 @@
+using System.Collections.Generic;
+using Newtonsoft.Json;
+using ScenarioRuleLibrary.YML;
+
+namespace ScenarioRuleLibrary;
+
+public class CChallengeFightFair : CChallenge
+{
+	private List<string> actorsAppliedTo = new List<string>();
+
+	public override uint ID => 1513u;
+
+	public override string Name => "fight_fair";
+
+	public override void Reset()
+	{
+		base.Reset();
+		actorsAppliedTo.Clear();
+	}
+
+	protected override void DeserializeInternal(string storage)
+	{
+		base.DeserializeInternal(storage);
+		if (!string.IsNullOrEmpty(storage))
+		{
+			actorsAppliedTo = JsonConvert.DeserializeObject<List<string>>(storage);
+		}
+	}
+
+	protected override string SerializeInternal()
+	{
+		return JsonConvert.SerializeObject(actorsAppliedTo);
+	}
+
+	public override IEnumerable<Trigger> GetTriggers()
+	{
+		yield return Trigger.OnSpawn;
+	}
+
+	protected override void Perform(TriggerParams triggerParams = null)
+	{
+		if (triggerParams.actor is CEnemyActor cEnemyActor && (cEnemyActor.Type == CActor.EType.Enemy || cEnemyActor.Type == CActor.EType.Enemy2) && !actorsAppliedTo.Contains(cEnemyActor.ActorGuid))
+		{
+			actorsAppliedTo.Add(cEnemyActor.ActorGuid);
+			CAbilityAddActiveBonus obj = CAbility.CreateAbility(CAbility.EAbilityType.AddActiveBonus, 1, useSpecialBaseStat: false, 1, 1, 0, CAbility.EAbilityFlag.None, null, null, null, null, null, attackSourcesOnly: false, jump: false, fly: false, ignoreDifficultTerrain: false, ignoreHazardousTerrain: false, ignoreBlockedTileMoveCost: false, carryOtherActorsOnHex: false, null, CAbilityMove.EMoveRestrictionType.None, miscAbilityData: new AbilityData.MiscAbilityData(), activeBonusData: new AbilityData.ActiveBonusData
+			{
+				Behaviour = CActiveBonus.EActiveBonusBehaviourType.DuringActionAbilityOnDeath,
+				Hidden = true,
+				Duration = CActiveBonus.EActiveBonusDurationType.Persistent,
+				Vars = new List<(string, TValue)> { ("ValidateSelfDeath", new TValue(CExpression.Parse("TriggerActor == ActiveBonus.Caster"))) },
+				TriggerAbilitiesImmediately = true
+			}, activeBonusYML: null, areaEffectYMLString: null, areaEffectLayoutOverrideYMLString: null, areaEffectFlipAxis: null, name: null, abilityEnhancements: null, positiveConditions: null, negativeConditions: null, multiPassAttack: false, chainAttack: false, chainAttackRange: 0, chainAttackDamageReduction: 0, damageSelfBeforeAttack: 0, addAttackBaseStat: false, strengthIsBase: false, rangeIsBase: false, targetIsBase: false, text: null, textOnly: false, noLayoutSpace: false, showRange: false, showTarget: false, showArea: false, onDeath: false, isConsumeAbility: false, allTargetsOnMovePath: false, allTargetsOnMovePathSameStartAndEnd: false, allTargetsOnAttackPath: false, allTargetsInRangeAlongPath: false, summons: null, xpPerTargetData: null, targeting: CAbility.EAbilityTargeting.All, targetingVars: null, vars: null, performVars: null, elementsToInfuse: null, elementalConditions: null, isMonster: false, propName: null, trapData: null, isSubAbility: false, isInlineSubAbility: false, pierce: 0, retaliateRange: 0, isTargetedAbility: false, spawnDelay: 0f, pullType: CAbilityPull.EPullType.None, additionalPushEffect: CAbilityPush.EAdditionalPushEffect.None, additionalPushEffectDamage: 0, additionalPushEffectXP: 0, lootData: null, conditionalOverrides: null, startAbilityConditions: null, abilityXP: 0, parentName: null, skipAnim: false, conditionDuration: 0, conditionDecTrigger: EConditionDecTrigger.None, augment: null, song: null, doom: null, controlActorData: null, changeAllegianceData: null, attackEffects: null, targetActorWithTrapEffects: false, targetActorWithTrapEffectRange: 0, isMergedAbility: false, mergedAbilities: null, statIsBasedOnXEntries: null, moveObstacleRange: 0, moveObstacleAnimOverload: null, slotsToRefresh: null, slotStatesToRefresh: null, addActiveBonusAbility: null, overrideAugmentAttackType: CAbility.EAttackType.None, chooseAbilities: null, recoverCardsAbilityTypeFilter: null, cardAction: CAbility.ECardAction.None, forgoTopActionAbility: null, forgoBottomActionAbility: null, extraTurnType: CAbilityExtraTurn.EExtraTurnType.None, actionMonsterClassID: null, swapAbilityFirstTargetFilter: null, swapAbilitySecondTargetFilter: null, supplyCardsToGive: null, consumes: null, teleportData: null, immunityToAbilityTypes: null, immuneToAttackTypes: null, immuneToSelfDamage: false, addOrRemoveModifiers: null, healData: null, resourcesToAddOnAbilityEnd: null, resourcesToTakeFromTargets: null, resourcesToGiveToTargets: null, destroyObstacleData: null, changeCharacterModel: ECharacter.None, tileFilter: CAbilityFilter.EFilterTile.None, disableCardActionData: null, isDefault: false, isItemAbility: false, showElementPicker: false, isModifierAbility: false, parentBaseCard: null, previewEffectId: null, previewEffectText: null, canUndoOverride: null, exploitVulnerability: false, helpBoxTooltipLocKey: null, extraTurnAbilityTypeFilter: null, maxExtraTurnAbilityLevel: int.MaxValue) as CAbilityAddActiveBonus;
+			CAbility cAbility = CAbilityNullTargeting.CreateDefaultNullTargeting(1, 1, isMonster: true, "", new CAbilityFilterContainer(CAbilityFilter.EFilterTargetType.Enemy, CAbilityFilter.EFilterEnemy.None, CAbilityFilter.EFilterActorType.Player));
+			cAbility.Vars = new List<(string, TValue)> { ("AddNegativeConditions", new TValue(CExpression.Parse("TargetingActor.Tokens.GetAllNegativeConditions().Where(obj != \"StopFlying\" && obj != \"Disadvantage\")"))) };
+			cAbility.Targeting = CAbility.EAbilityTargeting.Custom;
+			cAbility.TargetingVars = new List<(string, TValue)> { ("AddValidActorInRange", new TValue(CExpression.Parse("TargetingActor.CauseOfDeathAbility.TargetingActor"))) };
+			cAbility.StartAbilityRequirements = new CAbilityRequirements
+			{
+				StartAbilityRequirementType = CAbilityRequirements.EStartAbilityRequirementType.ThisAbility,
+				Vars = new List<(string, TValue)>
+				{
+					("Killer", new TValue(CExpression.Parse("TargetingActor.CauseOfDeathAbility?.TargetingActor"))),
+					("ValidateHasKiller", new TValue(CExpression.Parse("Killer != null"))),
+					("ValidateKillerIsPlayer", new TValue(CExpression.Parse("Killer.OriginalType == \"Player\"")))
+				}
+			};
+			cAbility.MiscAbilityData = new AbilityData.MiscAbilityData
+			{
+				IgnoreStun = true
+			};
+			cAbility.SkipAnim = true;
+			obj.AddAbility = cAbility;
+			obj.Start(cEnemyActor, cEnemyActor);
+			obj.ApplyToActor(cEnemyActor);
+		}
+	}
+}

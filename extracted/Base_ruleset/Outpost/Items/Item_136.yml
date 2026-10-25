@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 136
+ScenarioItemID: 1137
+Name: Battle Axe
+Quantity: 2
+GoldCost: 20
+Type: TwoHandWeapon
+IsNewCharacterItem: False

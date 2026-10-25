@@ -1,0 +1,14 @@
+Parser: FHScenario
+ID: 132
+Name: Temple of Feline Power
+LevelID: FS_132_Temple_of_Feline_Power
+RequiresClimbingGear: true
+Chain: JobPosting
+Location: ImperialMountains
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: GainInspiration
+          Param1: 1
+        - Type: UnlockMandatoryScenario
+          Param1: 133

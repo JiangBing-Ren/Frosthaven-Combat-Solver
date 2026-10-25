@@ -1,0 +1,20 @@
+Parser: AttackModifier
+Name: AMC_M1Gain1TT
+MathModifier: "-1"
+TryToPerformAsSummoner: True
+Abilities:
+    TimeTokenAbility:
+        NullTargeting:
+        Filter: Self
+        AutoTrigger: True
+        Tokens: 1
+        Flags: [ModifiesTimeTokens]
+        AnimOverload: ChargeUp 
+        ConditionalOverrides:
+            COAnim_Slow:
+                Self: True
+                Requirement:
+                    RequiredAgility: Slow
+                AbilityOverrides:
+                    COAnim:
+                        AnimOverload: ChargeUpSlow

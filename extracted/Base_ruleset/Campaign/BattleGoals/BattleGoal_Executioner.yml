@@ -1,0 +1,16 @@
+Parser: BattleGoal
+ID: BattleGoal_Executioner
+LocalisedName: FH/BATTLEGOAL_Executioner
+LocalisedDescription: FH/BATTLEGOAL_Executioner_Desc
+#Kill an undamaged monster with a single attack ACTION
+# during the scenario
+PerkChecks: 1
+BattleGoalCondition:
+    - Targets:
+        Filter: KillUndamagedWithSingleAction
+        CauseOfDeath: Damage
+        MonsterType: [Normal, Elite, Boss]
+        CharacterTypes:
+            Target: [Enemy,Enemy2]
+        Value: 1
+        SubFilter: Scenario

@@ -1,0 +1,4 @@
+Parser: CampaignSection
+ID: CampaignWon
+Name: CampaignWon
+SkipCompletedNotification: False

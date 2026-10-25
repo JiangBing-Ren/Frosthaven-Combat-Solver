@@ -1,0 +1,22 @@
+Parser: EnemyCard
+ID: 665
+Name: $Monster_Ability_665_LivingSpirit_IcyGlare$
+Initiative: 67
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: -1
+        Attack1:
+            Attack: +0
+            Range: 4
+            RangeIsBase: True
+            Filter: Enemy
+            AnimOverload: RangedAttack
+    Consumes:
+        CIce:
+            Elements: Ice
+            AbilityOverrides:
+                CIceStun:
+                    ParentName: Attack1
+                    Conditions: Stun

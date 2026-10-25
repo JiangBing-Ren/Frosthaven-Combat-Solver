@@ -1,0 +1,13 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_ShowMonsterCardsAtScenarioStart
+ScenarioAbility:
+    AShowMonsterCards:
+        NullTargeting: True
+        Filter: Self
+        AutoTrigger: True
+        SkipAnim: True
+        MiscVars:
+            DontCopy: True
+        PerformVars:
+            ApplyToActors:
+                ShowMonsterCards: CustomAbility.ShowTopMonsterCards()

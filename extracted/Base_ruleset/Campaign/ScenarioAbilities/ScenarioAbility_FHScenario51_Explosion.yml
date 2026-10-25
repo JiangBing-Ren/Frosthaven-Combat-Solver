@@ -1,0 +1,69 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH51_Explosion
+ScenarioAbility:
+    AActive:
+        AddActiveBonus:
+            NullHex: True
+            Targeting: Custom
+            TargetingVars:
+                PlayerActor: TargetingActor
+                AddTilesInRange: GameState.GetTilesInRange(PlayerActor.ArrayIndex, 2)
+                AddSelectedTiles: CustomAbility.GetTilesAffectedByExplosive_Scenario51(AddTilesInRange)
+            PreviewEffectText: <sprite name="AA_Kill">
+            AnimOverload: UseItem
+            MiscVars:
+                DontShowActiveBonusInActorStatPanel: True
+                CantReceiveTileSelection: True
+                CantClearTargets: True
+                IsNegative: True
+            CanSkip: False
+            SubAbilities:
+                TExplodeAnimation:
+                    Null: True
+                    Flags: [Special1]
+                    TreatAsNonSubAbility: True
+                    AutoTrigger: True
+                    StartAbilityRequirements:
+                        Type: ThisAbility
+                        ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                        AbilityTypes: [NullHex]
+                TKill:
+                    Kill: True
+                    Range: 2
+                    Target: -1
+                    Targeting: Range
+                    Filter: [Enemy]
+                    AutoTrigger: True
+                    TreatAsNonSubAbility: True
+                    SkipAnim: True
+                    StartAbilityRequirements:
+                        Type: ThisAbility
+                        ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                        AbilityTypes: [NullHex]
+                TDestroyObstacles:
+                    DestroyObstacle: True
+                    Range: 2
+                    Target: -1
+                    Targeting: Range
+                    SpawnDelay: 2.16
+                    AutoTrigger: True
+                    TreatAsNonSubAbility: True
+                    SkipAnim: True
+                    StartAbilityRequirements:
+                        Type: ThisAbility
+                        ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                        AbilityTypes: [NullHex]
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringTurnAbility
+            XPTracker: [0]
+            IsToggleBonus: True
+            Requirements:
+                ForgoTopAction: True
+                Vars:
+                    ValidateNotOutOfPhase: GameState.IsPerformingCardOutOfPhase == False
+            ListLayoutOverride: [$FH/Scenario_051_JammingExplosive_Desc$, Positive_Unique_Campaign]
+            Vars:
+                DistinctID: "'ScenarioAbility_FH51_Explosion'"
+            MiscVars:
+                OverrideLayoutName: "'$Scenario_051_JammingExplosive_Title$'"

@@ -1,0 +1,20 @@
+Parser: EnemyCard
+ID: 616
+Name: $Monster_Ability_616_FlamingBladespinner_Firestorm$
+Initiative: 17
+Shuffle: False
+Data:
+    Abilities:
+        Shield1:
+            Shield: 1
+            Filter: Self
+            ActiveBonus:
+                Duration: Round
+                ListLayoutOverride: ["<sprite name=Shield> *Shield1*", Positive_Shield]
+            AnimOverload: PowerUp
+        Retaliate1:
+            Retaliate: 2
+            RetaliateRange: 3
+            SkipAnim: True
+            ActiveBonus:
+                ListLayoutOverride: ["<sprite name=Retaliate> *Retaliate1*", Positive_Retaliate]

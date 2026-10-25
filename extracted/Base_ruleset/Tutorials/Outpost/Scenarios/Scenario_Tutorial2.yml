@@ -1,0 +1,14 @@
+Parser: FHScenario
+ID: 202
+Name: Tutorial 2
+LevelID: RFS_02_The_Sergeant_at_Arms
+Chain: Introduction
+Location: Frosthaven
+NoIntroOutro: True
+Difficulty: 2
+Conclusions:
+    - Effects:
+         - Type: LockScenario
+           Param1: 202
+         - Type: UnlockMandatoryScenario
+           Param1: 203

@@ -1,0 +1,18 @@
+Parser: EnemyCard
+ID: 11601
+Name: $Monster_Ability_Advance$
+Initiative: 50
+Shuffle: True
+Data:
+    Abilities: 
+        Null1:
+            Null: True
+            Text: "<b><size=130%>$Move$ <sprite name=Move> 3"
+            TextOnly: True
+            Flags: [Special1]
+        Null2:
+            Null: True
+            Flags: [Special1]
+        Null3:
+            Null: True
+            Flags: [Special1]

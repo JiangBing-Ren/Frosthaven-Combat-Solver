@@ -1,0 +1,97 @@
+Parser: Enemy
+ID: BanditCommanderID
+LocKey: $BanditCommander$
+MonsterType: Boss
+Model: Bandit Commander
+StandeeLimit: 1
+PredominantlyMelee: True
+AbilityCards: [57210001, 57310002, 57410003, 57510004, 57610005, 57710006, 57810007, 57910008]
+# Base Stats
+Level0:
+    Health: 0
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Immunities: [Immobilize, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 8
+Level1:
+    Health: 0
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Immunities: [Immobilize, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 10
+Level2:
+    Health: 0
+    Move: 4
+    Attack: 3
+    Range: 1
+    Target: 1
+    Immunities: [Immobilize, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 12
+Level3:
+    Health: 0
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+    Immunities: [Immobilize, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 13
+Level4:
+    Health: 0
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+    Immunities: [Immobilize, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 15
+Level5:
+    Health: 0
+    Move: 5
+    Attack: 5
+    Range: 1
+    Target: 1
+    Immunities: [Immobilize, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 16
+Level6:
+    Health: 0
+    Move: 5
+    Attack: 5
+    Range: 1
+    Target: 1
+    Immunities: [Immobilize, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 19
+Level7:
+    Health: 0
+    Move: 5
+    Attack: 5
+    Range: 1
+    Target: 1
+    Immunities: [Immobilize, Stun, Curse]    
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 23

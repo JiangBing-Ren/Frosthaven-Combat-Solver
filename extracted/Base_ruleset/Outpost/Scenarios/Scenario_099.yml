@@ -1,0 +1,13 @@
+Parser: FHScenario
+ID: 99
+Name: Prison Break
+LevelID: FS_099_Prison_Break
+Chain: JobPosting
+Location: CopperneckMountaions
+Difficulty: 1
+Conclusions:
+    - Effects:
+        - Type: AllCharactersGainGold
+          Param1: 10
+        - Type: UnlockScenario
+          Param1: 100

@@ -1,0 +1,16 @@
+Parser: FHScenario
+ID: 39
+Name: Corrupted Camp
+LevelID: FS_039_Corrupted_Camp
+Chain: Algox1
+Location: RadiantForest
+Difficulty: 3
+Conclusions:
+    - Effects:
+        # gain 2 loot cards each is handled in scenario script 39 now
+        # - Type: FS39ConclusionEffect
+        #   Param1: 2
+        - Type: LoseInspiration
+          Param1: 1
+        - Type: UnlockScenario
+          Param1: 47

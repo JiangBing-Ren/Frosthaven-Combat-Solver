@@ -1,0 +1,30 @@
+Parser: ItemCard
+ID: 1141
+StringID: HeavyBasinetID
+Name: $FH/1141_item_cards_heavy_basinet_1$
+Art: Heavy Basinet
+TotalInGame: 2
+Cost: 30
+Slot: Head
+Rarity: Rare
+Usage: Unrestricted
+Trigger: PassiveEffect
+Data:
+    Abilities:
+        AImmunity:
+            ImmunityTo: [Stun, Disarm, Muddle]
+            AutoTrigger: True
+            Filter: Self
+            MiscVars:
+                NotImmuneToSelf: True
+                OnlyImmuneToEnemies: True
+            ActiveBonus:
+                Duration: Persistent
+    AddModifiers:
+        - [AMC_Basic_M1, 2]
+Layout:
+    - Active:
+        Ability: AImmunity
+        ListLayout: $FH/1141_item_cards_heavy_basinet_2$
+        Layout: $FH/1141_item_cards_heavy_basinet_2$
+        Icon: "Positive_ConditionsImmune_Stun_Disarm_Item"

@@ -1,0 +1,24 @@
+Parser: EnemyCard
+ID: 99990009
+Initiative: 50
+Shuffle: True
+Name: $Monster_Ability_99990009_Marko_StubbornStandstil$
+Data:
+    Abilities:
+        ADamage:
+            Damage: 0
+            StatIsBasedOnX:
+                Strength:
+                    BasedOn: BaseStat
+                    BaseStatType: Attack
+                    AddTo: True
+            Filter: Enemy
+            Range: 1
+            RangeIsBase: True
+            Target: 1
+            TargetIsBase: True
+            AnimOverload: Attack
+            SubAbilities:
+                APush:
+                    Push: 2
+                    IsInlineSubAbility: True

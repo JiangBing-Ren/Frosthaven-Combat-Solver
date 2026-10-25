@@ -1,0 +1,97 @@
+Parser: Enemy
+ID: Ormi1ID
+LocKey: $Ormi$
+MonsterType: Monster
+Model: HelperVillager
+StandeeLimit: 1
+PredominantlyMelee: True
+AbilityCards: [751]
+# Base Stats
+Level0:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            xVariable: 4
+            yVariable: 2
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+Level1:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            xVariable: 4
+            yVariable: 2
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+Level2:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            xVariable: 4
+            yVariable: 2
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+Level3:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            xVariable: 4
+            yVariable: 2
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+Level4:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            xVariable: 4
+            yVariable: 2
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+Level5:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            xVariable: 4
+            yVariable: 2
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+Level6:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            xVariable: 4
+            yVariable: 2
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+Level7:
+    Health: 0
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToYTimesLevel
+            xVariable: 4
+            yVariable: 2
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1

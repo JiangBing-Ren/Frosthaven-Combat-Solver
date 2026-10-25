@@ -1,0 +1,10 @@
+Parser: EnemyCard
+ID: 11533
+Name: $Monster_Ability_S126_Helper_WaitingDelivery$
+Initiative: 50
+Shuffle: True
+Data:
+    Abilities:
+        ANull:
+            Null: True
+            Text: "$DoNothing$"

@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 107.3
+Name: Snowdancer Retires
+SkipNarration: True
+SkipCompletedNotification: False
+Effects:
+    - Type: AddCalendarCampaignSectionNextSummer
+      Param1: 177.4
+      Param2: 9

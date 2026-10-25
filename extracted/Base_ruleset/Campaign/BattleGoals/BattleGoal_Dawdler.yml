@@ -1,0 +1,18 @@
+Parser: BattleGoal
+ID: BattleGoal_Dawdler
+LocalisedName: FH/1348_battle_goals_dawdler_1
+LocalisedDescription: FH/1348_battle_goals_dawdler_2
+# fail if you set your lowest initiative card as your initiative card
+# long rests don't count
+PerkChecks: 2
+CheckAtEndOfScenario: True
+BattleGoalCondition:
+    - Targets:
+        Filter: UseLowestInitiativeCard
+        Value: 0
+        SubFilter: Scenario
+BattleGoalFailCondition:
+    - Targets:
+        Filter: UseLowestInitiativeCard
+        Value: 1
+        SubFilter: Scenario

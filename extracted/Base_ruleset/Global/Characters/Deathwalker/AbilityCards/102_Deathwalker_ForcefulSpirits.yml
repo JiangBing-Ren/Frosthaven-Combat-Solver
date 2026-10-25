@@ -1,0 +1,46 @@
+Parser: AbilityCard
+Name: $FH/102_character_ability_cards_deathwalker_forceful_spirits_1$
+Character: DeathwalkerID
+ID: 102
+Level: X
+Initiative: 34
+Discard: [Discard,Discard]
+Prefab: 102_Deathwalker_ForcefulSpirits
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 
+                    Amount: 2
+                Range: 2
+                Target: 2
+                MiscVars:
+                    PrintedProperties: list("Attack","Target","Range")
+                AnimOverload: RangedAttack
+        Consumes:
+            TCDark:
+                Elements: Dark
+                AbilityOverrides:
+                    TCDarkBuff:
+                        ParentName: TAttack
+                        Strength: 1    
+                XP: 1        
+    Bottom:
+        Abilities:
+            BTeleport:
+                Teleport2: 99
+                Range: 1
+                Target: -1
+                Filter: Self
+                Vars:
+                    TargetShadows: True
+                    TargetAdjacentToShadows: True
+Layout:
+    Top:
+        - Row: "<b><size=130%> <sprite name=Attack> *TAttack* <b><size=100%><sprite name=Target> *TAttack.Target*  <b><size=100%><sprite name=Range> *TAttack.Range*"
+        - Row: "<size=20%> "
+        - Consume:
+            Name: TCDark
+            Text: "<nobr>+1 <sprite name=Attack></nobr>,<sprite name=XP1>"
+    Bottom:
+        - Row: "<size=130%>$FH/102_character_ability_cards_deathwalker_forceful_spirits_2$"

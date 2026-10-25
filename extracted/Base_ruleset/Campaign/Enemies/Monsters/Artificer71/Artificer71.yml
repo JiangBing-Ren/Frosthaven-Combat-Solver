@@ -1,0 +1,90 @@
+Parser: Enemy
+ID: Aritficer71ID
+LocKey: $FH/Artificer$
+MonsterType: Monster
+StandeeLimit: 1
+Model: Artificer
+PredominantlyMelee: True
+AbilityCards: [13006, 11534]
+# Base Stats
+Level0:
+    Health: 0
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToCharactersTimesLevel
+            xVariable: 2
+            MinLValue: 1            
+Level1:
+    Health: 0
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToCharactersTimesLevel
+            xVariable: 2
+Level2:
+    Health: 0
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToCharactersTimesLevel
+            xVariable: 2
+Level3:
+    Health: 0
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToCharactersTimesLevel
+            xVariable: 2
+Level4:
+    Health: 0
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToCharactersTimesLevel
+            xVariable: 2
+Level5:
+    Health: 0
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToCharactersTimesLevel
+            xVariable: 2
+Level6:
+    Health: 0
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToCharactersTimesLevel
+            xVariable: 2
+Level7:
+    Health: 0
+    Move: 2
+    Attack: 0
+    Range: 1
+    Target: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: XAddedToCharactersTimesLevel
+            xVariable: 2

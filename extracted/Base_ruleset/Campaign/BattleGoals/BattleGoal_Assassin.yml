@@ -1,0 +1,14 @@
+Parser: BattleGoal
+ID: BattleGoal_Assassin
+LocalisedName: FH/1346_battle_goals_assassin_1
+LocalisedDescription: FH/1346_battle_goals_assassin_2
+# kill 1 enemy, before it takes its first turn (no StartTurn stat with the guid of the killed monster)
+PerkChecks: 2
+BattleGoalCondition:
+    - Targets:
+        Filter: KillTargetBeforeHisFirstTurn
+        MonsterType: [Normal, Elite, Boss]
+        CharacterTypes:
+            Target: [Enemy,Enemy2]
+        Value: 1
+        SubFilter: Scenario

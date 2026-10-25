@@ -1,0 +1,21 @@
+Parser: EnemyCard
+ID: 563
+Name: $Monster_Ability_563_564_WindDemon_Tailwind$
+Initiative: 21
+Shuffle: True
+Data:
+    Abilities: 
+        Move1:
+            Move: 0
+        Attack1:
+            Attack: 0
+            Range: 3
+            RangeIsBase: True
+            Filter: Enemy
+            AnimOverload: RangedAttack
+            SubAbilities:
+                TAttackSubPull:
+                    Pull:
+                        Amount: 1
+                    IsInlineSubAbility: True
+    Infuse: Air

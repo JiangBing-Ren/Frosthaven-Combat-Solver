@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 80
+ScenarioItemID: 1025
+Name: Living Stone
+Quantity: 2
+Type: Small
+CraftingCost:
+    Rockroot: 1
+RequiredCraftingItemIDs: [ 99, 156 ]

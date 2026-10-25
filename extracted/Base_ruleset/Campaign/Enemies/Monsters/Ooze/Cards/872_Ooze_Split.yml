@@ -1,0 +1,25 @@
+Parser: EnemyCard
+ID: 872
+Name: $Monster_Ability_871_872_Ooze_Split$
+Initiative: 94
+Shuffle: True
+Data:
+    Abilities: 
+        Damage1:
+            Damage: 2
+            Filter: Self
+            Text: "$10697_A$"
+            TextOnly: True
+        Summon1:
+            Summon: OozeID
+            Target: 1
+            TargetIsBase: True
+            StatIsBasedOnX:
+                Strength:
+                    BasedOn: PercentageOfCurrentHP
+                    Multiplier: 1.0 # 100%
+            AnimOverload: Summon
+            Text: "$10697_B$"
+            TextOnly: True
+            Vars:
+                ValidateConsume: ScenarioScript_FH084.ValidateCanSpawnOoze()

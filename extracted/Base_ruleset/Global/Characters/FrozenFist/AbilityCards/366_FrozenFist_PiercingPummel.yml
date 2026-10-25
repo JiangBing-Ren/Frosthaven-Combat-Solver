@@ -1,0 +1,124 @@
+Parser: AbilityCard
+Name: $FH/366_character_ability_cards_frozen_fist_piercing_pummel_1$
+Character: FrozenFistID
+ID: 366
+Level: 1
+ProgressionOrder: 6
+Initiative: 30
+Discard: [Discard,Lost]
+Prefab: 366_FrozenFist_PiercingPummel
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                    Pierce: 2
+                MiscVars:
+                    PrintedProperties: list("Attack","Pierce")
+                AnimOverload: PiercingPummel
+            TRetaliate:
+                Retaliate: 1
+                MiscVars:
+                    PrintedProperties: list("Realiate")
+                RetaliateRange: 1
+                ActiveBonus:
+                    Duration: Round
+                AnimOverload: Roar
+        Consumes:
+            TCIce:
+                Elements: [Ice]
+                AbilityOverrides:
+                    TCIceAttackBuff:
+                        ParentName: TAttack
+                        AreaEffect: "0,0,G|2,0,R|4,0,R"
+                        MultiPassAttack: False
+                        AnimOverload: PiercingPummel2
+                XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+                Jump: True
+            BAttack:
+                Attack:
+                    Amount: 5
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Filter: [Enemy]
+                Range: 1
+                Target: 1
+                AttackHasAdvantage: True
+                AnimOverload: AttackPower
+            BHeal:
+                Heal:
+                    Amount: 0
+                    DiamondPlusEnhancements: 1
+                Filter: Self
+                StatIsBasedOnX:
+                    Strength:
+                        AddTo: True
+                        BasedOn: Vars
+                        Vars:                                    
+                            Value: CPhaseAction.DamageInflictedByAbilityTypeThisAction[CAbility.EAbilityType.Attack]
+                AnimOverload: Heal
+        Infuse: [Earth]
+        XP: 2
+Layout:
+    Top:
+        - Active:
+            Ability: TRetaliate
+            Icon: Positive_Retaliate
+            ListLayout: "<sprite name=Retaliate> *TRetaliate*"
+            Layout: "<sprite name=Retaliate> *TRetaliate*"
+        - Row:
+            - ColumnWidths: "30,20,20,30"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack*"
+            - Column:
+                - AddedEffect: "<sprite name=Pierce>2"
+            - Column:
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCIce
+                    Text: "<size=80%><sprite name=BSYouHex><sprite name=BSRedHex><sprite name=BSRedHex>,<sprite name=XP1>"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Retaliate> *TRetaliate*"
+    Bottom:
+        - Row:
+            - ColumnWidths: "20,30,30,20"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Move> *BMove*<size=100%><voffset=1>@BMove@"
+            - Column:
+                - AddedEffect: "<sprite name=Jump>"
+            - Column:
+        - Divider:
+        - Row:
+            - ColumnWidths: "20,30,30,20"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Attack> *BAttack*<size=100%><voffset=1>@BAttack@"
+            - Column:
+                - AddedEffect: "$FH/advantage$"
+            - Column:
+        - Divider:
+        - Row:
+            - ColumnWidths: "20,30,30,20"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Heal> X<size=100%><voffset=1>@BHeal@"
+            - Column:
+                - AddedEffect: "$FH/target_self$"
+            - Column:
+        - Row: "$FH/366_character_ability_cards_frozen_fist_piercing_pummel_3$"
+        - Row: "<size=20%> "
+        - Row:
+            - MandatoryTrigger:
+                Layout:
+                    - Infuse: [Earth]
+            

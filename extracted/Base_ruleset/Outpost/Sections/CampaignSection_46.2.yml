@@ -1,0 +1,7 @@
+Parser: CampaignSection
+ID: 46.2
+Name: Puzzle Solution
+SkipCompletedNotification: True
+Effects:
+    - Type: UnlockPuzzle
+      Param1: AlchemyChart

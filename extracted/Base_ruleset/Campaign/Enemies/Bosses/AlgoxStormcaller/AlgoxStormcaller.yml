@@ -1,0 +1,105 @@
+Parser: Enemy
+ID: AlgoxStormcallerID
+LocKey: $FH/boss_stat_cards_algox_stormcaller_1$
+MonsterType: Boss
+Model: AlgoxStormcaller
+StandeeLimit: 1
+PredominantlyMelee: True
+AbilityCards: [08740001, 08750002, 08760003, 08770004, 08780005, 08790006, 08800007, 08810008]
+# Base Stats
+Level0:
+    Health: 0
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+    Immunities: [Immobilize, Disarm, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 20
+Level1:
+    Health: 0
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 1
+    Immunities: [Immobilize, Disarm, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 20
+Level2:
+    Health: 0
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 1
+    Immunities: [Immobilize, Disarm, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 22
+ Level3:
+    Health: 0
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 1
+    Immunities: [Immobilize, Disarm, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 26
+ Level4:
+    Health: 0
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    Shield: 1
+    Immunities: [Immobilize, Disarm, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 29
+ Level5:
+    Health: 0
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    Shield: 2
+    Immunities: [Immobilize, Disarm, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 29
+ Level6:
+    Health: 0
+    Move: 3
+    Attack: 6
+    Range: 1
+    Target: 1
+    Shield: 2
+    Immunities: [Immobilize, Disarm, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 39
+ Level7:
+    Health: 0
+    Move: 3
+    Attack: 7
+    Range: 1
+    Target: 1
+    Shield: 3
+    Immunities: [Immobilize, Disarm, Stun, Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 44
+    

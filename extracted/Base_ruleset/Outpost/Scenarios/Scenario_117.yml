@@ -1,0 +1,13 @@
+Parser: FHScenario
+ID: 117
+Name: A Waiting Game
+LevelID: FS_117_A_Waiting_Game
+Chain: Other
+Location: WhitefireWood
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: GainHide
+          Param1: 4
+        - Type: AllCharactersGainGold
+          Param1: 10

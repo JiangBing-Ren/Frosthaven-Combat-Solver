@@ -1,0 +1,25 @@
+Parser: EnemyCard
+ID: 644
+Name: $Monster_Ability_644_IceWraith_UnholyStrength$
+Initiative: 59
+Shuffle: False
+Data:
+    Abilities: 
+        Null1:
+            Null: True
+            Filter: Self
+        Attack1:
+            Attack: 0
+            Range: 3
+            RangeIsBase: True
+            AnimOverload: RangedAttack
+    Consumes:
+        CIce:
+            Elements: Ice
+            LayoutPriorTo: Attack1
+            Abilities:
+                CIceBuff:
+                    ParentName: Null1
+                    Bless: True
+                    Condition: Strengthen
+                    Filter: Self

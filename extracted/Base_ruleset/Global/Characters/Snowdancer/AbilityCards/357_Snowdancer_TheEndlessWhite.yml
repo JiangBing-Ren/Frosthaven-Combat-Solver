@@ -1,0 +1,92 @@
+Parser: AbilityCard
+Name: $FH/357_character_ability_cards_snowdancer_the_endless_white_1$
+Character: SnowdancerID
+ID: 357
+Level: 8
+Initiative: 5
+Discard: [Discard,Discard]
+Prefab: 357_Snowdancer_TheEndlessWhite
+Data:
+    Top:
+        Abilities:
+            TRangeBonus:
+                AddActiveBonus:
+                    Null: True
+                Range: 1
+                Target: 1
+                Filter: Self
+                AnimOverload: Cast Negative
+                ActiveBonus:
+                    Duration: Round
+                    Behaviour: OverrideAbility
+                    IsAura: True
+                    AuraTargeting: All
+                    ValidAbilityTypes: [CreateShadow, RemoveShadow, MoveShadow]
+                    InvertValidity: True
+                    ListLayoutOverride: [$FH/357_character_ability_cards_snowdancer_the_endless_white_2$, Negative_RangeMinus_Aura]
+                    ActiveBonusAbilityOverrides:
+                        TCOverride:
+                            RetaliateRange: -1
+                            StatIsBasedOnX:
+                                Range: 
+                                    BasedOn: Vars
+                                    AddTo: True
+                                    Vars:
+                                        Value: DontReduceRange || CustomAbility.GetDebuffRange(Ability, 1)
+
+        Consumes:
+            TCIceAir:
+                Elements: [Ice, Air]
+                AbilityOverrides:
+                    TCAirAttackBuff:
+                        ActiveBonus:
+                            Duration: Round
+                            Behaviour: OverrideAbility
+                            IsAura: True
+                            AuraTargeting: All
+                            ValidAbilityTypes: [CreateShadow, RemoveShadow, MoveShadow]
+                            InvertValidity: True
+                            ListLayoutOverride: [$FH/357_character_ability_cards_snowdancer_the_endless_white_4$, Range]
+                            ActiveBonusAbilityOverrides:
+                                TCOverride2:
+                                    RetaliateRange: -2
+                                    StatIsBasedOnX:
+                                        Range: 
+                                            BasedOn: Vars
+                                            AddTo: True
+                                            Vars:
+                                                Value: DontReduceRange || CustomAbility.GetDebuffRange(Ability, 2)
+
+                        ParentName: TRangeBonus
+                XP: 1
+        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 6
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+        Infuse: Air
+Layout:
+    Top:
+        - Active:
+            Ability: TRangeBonus
+            Icon: Negative_RangeMinus_Aura
+            ListLayout: "$FH/357_character_ability_cards_snowdancer_the_endless_white_2$"
+            Layout: "$FH/357_character_ability_cards_snowdancer_the_endless_white_2$"
+        - Row: "<size=50%> "
+        - Conditional:
+                Top: True
+                Layout:
+                    - Consume:
+                        Name: TCIceAir
+                        Text: "$FH/357_character_ability_cards_snowdancer_the_endless_white_3$"
+    Bottom:
+        - Row: "<sprite name=Move> *BMove* <voffset=1>@BMove@"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Air]
+

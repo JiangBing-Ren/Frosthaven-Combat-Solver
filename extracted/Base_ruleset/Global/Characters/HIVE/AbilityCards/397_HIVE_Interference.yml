@@ -1,0 +1,66 @@
+Parser: AbilityCard
+Name: $FH/397_character_ability_cards_hive_interference_1$
+Character: HIVEID
+ID: 397
+Level: 1
+Initiative: 21
+Discard: [Discard,Discard]
+Prefab: 397_HIVE_Interference
+Data:
+    Top:
+        Abilities:
+            TModeTransfer:
+                Mode: Transfer
+            THeal:
+                Heal:
+                    Amount: 2   
+                    DiamondPlusEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self
+            TDamage:
+                Damage: 1
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Range: 1
+                Target: -1
+                Filter:
+                    TargetType: [Ally,Enemy,OwnSummon]          
+                AnimOverload: CastAOE
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BRedirectBuff:             
+                Redirect:
+                    Filter: OwnSummon
+                    Range: 1
+                    IgnoreLOS: True
+                MiscVars:
+                    ProjectileName: "'HiveTransference'"
+                Filter: Self
+                ActiveBonusDuration: Round
+                AnimOverload: PowerUp
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=HIVETransfer>"
+        - Divider: 
+        - Row: 
+            - ColumnWidths: "20,30,20"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Heal> *THeal* @THeal@"
+            - Column: "$Self$"
+        - Divider:
+        - Row: "$FH/397_character_ability_cards_hive_interference_3$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* @BMove@"
+        - Divider: 
+        - Active:
+            Ability: BRedirectBuff
+            ListLayout: "$FH/397_character_ability_cards_hive_interference_4$"
+            Layout: "$FH/397_character_ability_cards_hive_interference_4$"
+            Icon: "Positive_Redirect_Summon_Attack"

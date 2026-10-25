@@ -1,0 +1,24 @@
+Parser: EnemyCard
+ID: 696
+Name: $Monster_Ability_696_LurkerClawcrusher_ClawGuard$
+Initiative: 11
+Shuffle: False
+Data:
+    Abilities: 
+        Shield1:
+            Shield: 2
+            Filter: Self
+            AnimOverload: PowerUp  
+            ActiveBonus:
+                Duration: Round
+                ListLayoutOverride: ["<sprite name=Shield> *Shield1*", Positive_Shield]
+        Null1:
+            Null: True
+        Retaliate1:
+            Retaliate: 2
+            Filter: Self
+            SkipAnim: True            
+            ActiveBonus:
+                Duration: Round
+                ListLayoutOverride: ["<sprite name=Retaliate> *Retaliate1*", Positive_Retaliate]
+    Infuse: Earth

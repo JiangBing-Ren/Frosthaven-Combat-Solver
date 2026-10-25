@@ -1,0 +1,45 @@
+Parser: AbilityCard
+Name: $FH/027_character_ability_cards_drifter_unending_fight_1$
+Character: DrifterID
+ID: 27
+Level: 7
+ProgressionOrder: 26
+Initiative: 25
+Discard: [Discard,Lost]
+Prefab: 27_Drifter_UnendingFight
+Data:
+    Top:
+        Abilities:
+            TAttack1:
+                Attack:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+            TMove:
+                Move: 3
+                MiscVars:
+                    PrintedProperties: list("Move")
+            TAttack2:
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+    Bottom:
+        Abilities:
+            BMoveTracker:
+                MoveActiveBonusTracker: -3
+                Vars:
+                    NumberOfCardsToSelect: 3
+                Filter: [Self]
+                AnimOverload: PowerUp
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack1* <size=100%><voffset=1>@TAttack1@"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Move> *TMove*"
+        - Divider:            
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack2* <size=100%><voffset=1>@TAttack2@"
+    Bottom:
+        - Row: "$FH/027_character_ability_cards_drifter_unending_fight_2$"

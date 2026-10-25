@@ -1,0 +1,18 @@
+Parser: ItemCard
+ID: 1063
+StringID: MajorHealingPotionID
+Name: $FH/1063_item_cards_major_healing_potion_1$
+Art: Major Healing Potion
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        AHeal:
+            Heal: 6
+            Filter: Self
+Layout: 
+    - Row: "$FH/1063_item_cards_major_healing_potion_2$"

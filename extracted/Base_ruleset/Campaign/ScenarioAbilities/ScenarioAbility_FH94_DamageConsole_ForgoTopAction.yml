@@ -1,0 +1,54 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH94_DamageConsole_ForgoTopAction
+ScenarioAbility:
+    AActive:
+        AddActiveBonus:
+            Filter: Self
+            CanSkip: False
+            NullTargeting: True
+            # SelectAndMoveCard:
+            #     PileToMoveFrom: Round
+            #     PileToMoveTo: Discarded
+            #     Amount: 1
+            # MiscVars:
+            #     DontPreviewDescription: true
+            # PerformVars:
+            #     Swap:
+            #         SelectedCards: CustomAbility.GetCardPileList(TargetingActor, CBaseCard.ECardPile.SelectedAbilityCardsOutOfPhase)
+            #         RememberCards: TargetingActor.SetTempVar("CardsDiscardedForFH94_DamageConsole", SelectedCards)
+            SubAbilities:
+                TDamageConsole:
+                    AnimOverload: UseItem
+                    Filter:
+                        ActorType: Neutral
+                        EnemyType: Object
+                    Target: 1
+                    Targeting: Custom
+                    TargetingVars:
+                        CentralConsole: CustomAbility.GetPropOnHex(6, 8).RuntimeAttachedActor
+                        AddTileInRange: CentralConsole.Tile
+                        AddValidActorInRange: CentralConsole
+                        AddActorToTarget: CentralConsole
+                        AddSelectedTile: CentralConsole.Tile
+                    Damage: 1
+                    StatIsBasedOnX:
+                        Strength:
+                            BasedOn: Vars
+                            AddTo: False
+                            Vars:
+                                ValidateHappened: ParentAbility.AbilityHasHappened
+                                Value: CustomAbility.GetCardInitiativeAdjusted(ParentAbility.TargetingActor, ParentAbility.TargetingActor.LastForegoneCard) / 10
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringTurnAbility
+            IsToggleBonus: True
+            Hidden: True
+            Requirements:
+                ForgoTopAction: True
+                Vars:
+                    Actor: obj.Actor
+                    CentralConsole: CustomAbility.GetPropOnHex(6, 8)
+                    ValidateIsConsoleAlive: CentralConsole.RuntimeAttachedActor.IsDead == False
+                    ValidateIsNextToConsole: CustomAbility.IsActorNextToProp(Actor, CentralConsole)
+                    ValidateCanForgoAction: CustomAbility.AnyForgoneAction() == False
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_094_DamageConsole_ForgoTopAction$, Positive_Unique_Campaign]

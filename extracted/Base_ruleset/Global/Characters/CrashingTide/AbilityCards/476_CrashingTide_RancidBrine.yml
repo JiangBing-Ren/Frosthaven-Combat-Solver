@@ -1,0 +1,70 @@
+Parser: AbilityCard
+Name: $FH/476_character_ability_cards_crashing_tide_rancid_brine_1$
+Character: CrashingTideID
+ID: 476
+Level: 1
+ProgressionOrder: 476
+Initiative: 62
+Discard: [Discard,Discard]
+Prefab: 476_CrashingTide_RancidBrine
+Data:
+    Top:
+        Abilities:
+            TBuffAttack:
+                Attack: 0
+                AttackEffect:
+                    Type: StandardBuff
+                    Conditions: [Poison]
+                Filter: Self
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: BuffAttack
+                    Flags: [Tide]
+                AnimOverload: Tide
+        Infuse: Light
+    Bottom:
+        Abilities:
+            BCreateIce:
+                CreateTerrain: Water
+                TileFilter: FeaturelessHex
+                Vars:
+                    OverridePropName: "'CrashingTideWater'"
+                Target: 1
+                Range: 1
+                AnimOverload: CreateWaterTile
+                MiscVars:
+                    includeCasterTile: True
+            BPoison:
+                Poison: True
+                Target: 2
+                MiscVars:
+                    PrintedProperties: list("Target","Range")
+                Targeting: Custom
+                TargetingVars:
+                    AddTilesInRange: GameState.GetTilesInRange(TargetingActor, 1)
+                    AddValidActorsInRange: GameState.GetActorsOnTiles(AddTilesInRange).Where(obj.Tile.IsWater && !CActor.AreActorsAllied(obj.Type, CActor.EType.Player, obj, null))
+                AnimOverload: MeleeSwing
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "34,33,33"
+            - Column: "$FH/CrashingTide_Tide$"
+            - Column:
+            - Column:
+        - Active:
+            Ability: TBuffAttack
+            Icon: Positive_Poison_Attack
+            Layout: "$FH/476_character_ability_cards_crashing_tide_rancid_brine_2$"
+            ListLayout: "$FH/476_character_ability_cards_crashing_tide_rancid_brine_2$"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Light
+    Bottom:
+        - Row: "$FH/476_character_ability_cards_crashing_tide_rancid_brine_3$"
+        - Divider: 
+        - Row:
+            - ColumnWidths: "30,70"
+            - Column: "<b><size=130%><sprite name=Poison>"
+            - Column:
+                - AddedEffect: "$FH/476_character_ability_cards_crashing_tide_rancid_brine_4$"

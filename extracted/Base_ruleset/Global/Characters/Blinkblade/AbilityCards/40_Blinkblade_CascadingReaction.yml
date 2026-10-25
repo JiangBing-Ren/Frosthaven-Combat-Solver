@@ -1,0 +1,149 @@
+Parser: AbilityCard
+Name: $FH/040_character_ability_cards_blinkblade_cascading_reaction_1$
+Character: BlinkbladeID
+ID: 40
+Level: 1
+Initiative: 19
+Discard: [Lost,Discard]
+Prefab: 40_Blinkblade_CascadingReaction
+Data:
+    Top:
+        Abilities:
+            TAttack1:
+                Attack:
+                    Amount: 3
+                    CircleEnhancements: 1
+                AnimOverload: AttackSlow
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                ConditionalOverrides:
+                    TAttack1CO_Fast:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Fast
+                        XP: 1
+                        AbilityOverrides:
+                            TAttack1:
+                                Condition: Wound
+                                AnimOverload: Attack
+            TMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+                ConditionalOverrides:
+                    TMoveCO_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            TMove:
+                                Strength: -1
+            TAttack2:
+                Attack:
+                    Amount: 3
+                    CircleEnhancements: 1
+                AnimOverload: AttackSlow
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                ConditionalOverrides:
+                    TAttack2CO_Fast:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Fast
+                        XP: 1
+                        AbilityOverrides:
+                            TAttack2:
+                                Condition: Wound
+                                AnimOverload: Attack
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 4
+                MiscVars:
+                    PrintedProperties: list("Move")
+                ConditionalOverrides:
+                    BMoveCO_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            BMove:
+                                Strength: -1
+            BActive:
+                Move: 0
+                MiscVars:
+                    PrintedProperties: list("Move")
+                ActiveBonus:                    
+                    Duration: Round
+                    Behaviour: BuffMove
+                    ValidAbilityType: Move
+                    IsAura: True
+                    AuraTargeting: All
+                    AuraFilter:
+                        TargetType: Ally
+                    MiscVars:
+                        FreeHexesAwayFromCaster: True
+                Target: -1
+                Filter: Self
+                CanSkip: False
+                AutoTrigger: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Fast
+                AnimOverload: PowerUp1HexAOE
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "33,34,33"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "<sprite name=Wound>, <sprite name=XP1>"
+            - Column:
+                - Row: "<b><size=130%><sprite name=Attack> *TAttack1* <size=100%><voffset=1>@TAttack1@"
+            - Column:
+        - Divider:
+        - Row:
+            - ColumnWidths: "33,34,33"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Move> *TMove* <size=100%><voffset=1>@TMove@"
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Text: "-1 <sprite name=Move>"
+        - Divider:
+        - Row:
+            - ColumnWidths: "33,34,33"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "<sprite name=Wound>, <sprite name=XP1>"
+            - Column:
+                - Row: "<b><size=130%><sprite name=Attack> *TAttack2* <size=100%><voffset=1>@TAttack2@"
+            - Column:
+    Bottom:
+        - Row:
+            - ColumnWidths: "33,34,33"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Text: "-1 <sprite name=Move>"       
+        - Divider:
+        - Row:
+            - ColumnWidths: "80,20"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Layout: 
+                        - Active:
+                            Ability: BActive
+                            Icon: Positive_MovePlus_Ally_Aura
+                            ListLayout: "$FH/040_character_ability_cards_blinkblade_cascading_reaction_2$"
+                            Layout: "<size=90%>$FH/040_character_ability_cards_blinkblade_cascading_reaction_2$"
+            - Column:

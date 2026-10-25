@@ -1,0 +1,15 @@
+Parser: AttackModifier
+Name: AMC_P0_ControlSummonMove2
+MathModifier: "+0"
+TryToPerformAsSummoner: True
+Abilities:
+    ControlAbility:
+        ControlActor:
+            #UseControllingActorPlayerControl: True
+            Abilities:
+                BSummonMove:
+                    Move: 2
+                    StrengthIsBase: True
+        Range: 99
+        Filter: OwnSummon
+        AnimOverload: Grant

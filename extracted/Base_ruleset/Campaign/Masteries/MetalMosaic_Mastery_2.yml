@@ -1,0 +1,13 @@
+Parser: Mastery
+ID: MetalMosaic_MASTERY_2
+LocalisedName: MetalMosaic_MASTERY_2_Name
+LocalisedDescription: MetalMosaic_MASTERY_2_Desc
+PerkPoints: 1
+BattleGoalCondition:
+    - Targets: 
+        Filter: ChangePressureFullyXRoundsInARow
+        SubFilter: Scenario
+        # only for the infuser
+        CharacterIDs: 
+            ActorID: MetalMosaicID
+        Value: 4

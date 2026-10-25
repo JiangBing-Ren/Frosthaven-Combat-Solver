@@ -1,0 +1,71 @@
+Parser: AbilityCard
+Name: $FH/269_character_ability_cards_shattersong_soft_spots$
+Character: ShattersongID
+ID: 269
+Level: 8
+Initiative: 47
+Discard: [Discard,Discard]
+Prefab: 269_Shattersong_SoftSpots
+Data:
+    Top:
+        Abilities:            
+            TBrittle:
+                Brittle: True
+                Target: 2
+                Range:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Target","Range")     
+                Filter: Enemy
+                AnimOverload: Cast_Negative AOE 2hex
+        Consumes:
+            TCResonanceAir:
+                Resonance: 1
+                Element: Air
+                XP: 1
+                AbilityOverrides:
+                    CBuffBrittleTarget:
+                        ParentName: TBrittle
+                        Target: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 5
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")     
+            BPush:
+                Push: 2
+                Target: 2
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Push","Target","Range")     
+                AnimOverload: Control
+        Consumes:
+            BCResonance:
+                Resonance: 1
+                AbilityOverrides:
+                    CBuffJump:
+                        ParentName: BMove
+                        Jump: True
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Brittle> <mark=#FCD06E22><size=100%><sprite name=Target>*TBrittle.Target*, <sprite name=Range>*TBrittle.Range* <voffset=1>@TBrittle.Range@</mark>"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCResonanceAir
+                    Text: "<size=100%>+1<sprite name=Target>, <sprite name=XP1>"
+    Bottom:
+        - Row: "<sprite name=Move> *BMove* @BMove@"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: BCResonance
+                    Text: "<size=100%><sprite name=Jump>"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Push>*BPush* <mark=#FCD06E22><size=100%><sprite name=Target>*BPush.Target*, <sprite name=Range>*BPush.Range*</mark>"

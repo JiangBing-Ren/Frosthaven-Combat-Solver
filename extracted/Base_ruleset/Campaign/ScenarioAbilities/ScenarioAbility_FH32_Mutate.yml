@@ -1,0 +1,23 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH32_Mutate
+ScenarioAbility:
+    AActive:
+        AddActiveBonus:
+            Filter: Self
+            AutoTrigger: True
+            SkipAnim: True
+            NullTargeting: True
+            ActiveBonus:
+                Duration: Persistent
+                ListLayoutOverride: [$Scenario_032_Illusion_Desc$, Positive_QuestionMark_Campaign]
+                MiscVars:
+                    ShowUnderHealthbar: True
+                    HiddenInCombatLog: True
+                    OverrideLayoutName: "'$Scenario_032_Illusion_Title$'"
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: StartRoundAbility
+            Hidden: True
+            Requirement:
+                Vars:
+                    ValidateNotApplied: ScenarioScript_FH032.FindMutateBonus(Actor) == null

@@ -1,0 +1,89 @@
+Parser: Enemy
+ID: SpectralHelper017ID
+LocKey: $FH/FH_Scenario_Campaign_017_Spectral_Helper$
+MonsterType: Monster
+StandeeLimit: 6
+Model: SpectralHelper
+PredominantlyMelee: True
+AbilityCards: [99997]
+# Base Stats
+Level0:
+    Health: 1 
+    Move: 4
+    Attack: 0
+    Range: 1
+    Target: 1
+    Invulnerable: True
+    Untargetable: True
+    DoesNotBlock: True
+    CanActivatePressurePlates: True
+Level1:
+    Health: 1
+    Move: 4
+    Attack: 0
+    Range: 1
+    Target: 1
+    Invulnerable: True
+    Untargetable: True
+    DoesNotBlock: True
+    CanActivatePressurePlates: True
+Level2:
+    Health: 1
+    Move: 4
+    Attack: 0
+    Range: 1
+    Target: 1
+    Invulnerable: True
+    Untargetable: True
+    DoesNotBlock: True
+    CanActivatePressurePlates: True
+Level3:
+    Health: 1
+    Move: 4
+    Attack: 0
+    Range: 1
+    Target: 1
+    Invulnerable: True
+    Untargetable: True
+    DoesNotBlock: True
+    CanActivatePressurePlates: True
+Level4:
+    Health: 1
+    Move: 4
+    Attack: 0
+    Range: 1
+    Target: 1
+    Invulnerable: True
+    Untargetable: True
+    DoesNotBlock: True
+    CanActivatePressurePlates: True
+Level5:
+    Health: 1
+    Move: 4
+    Attack: 0
+    Range: 1
+    Target: 1
+    Invulnerable: True
+    Untargetable: True
+    DoesNotBlock: True
+    CanActivatePressurePlates: True
+Level6:
+    Health: 1
+    Move: 4
+    Attack: 0
+    Range: 1
+    Target: 1
+    Invulnerable: True
+    Untargetable: True
+    DoesNotBlock: True
+    CanActivatePressurePlates: True
+Level7:
+    Health: 1
+    Move: 4
+    Attack: 0
+    Range: 1
+    Target: 1
+    Invulnerable: True
+    Untargetable: True
+    DoesNotBlock: True
+    CanActivatePressurePlates: True

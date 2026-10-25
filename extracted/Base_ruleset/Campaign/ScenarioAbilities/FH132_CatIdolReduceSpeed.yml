@@ -1,0 +1,27 @@
+Parser: ScenarioAbility
+ID: FH132_CatIdolReduceSpeed
+ScenarioAbility:
+    AReduceSpeedCatIdol:
+        Move: 0
+        StatIsBasedOnX:
+            Strength:
+                BasedOn: Vars
+                Vars:
+                    Value: -ScenarioScript_FH132.GetCatIdolTokens(TargetingActor)
+                xVariable: 0.5
+                RoundingType: ToFloor
+        Filter: Self
+        AutoTrigger: True
+        SkipAnim: True
+        MiscVars:
+            InterruptCurrentAbility: True
+            StackNextToCurrent: True
+            ListLayoutParamVar0: ScenarioScript_FH132.GetCatIdolTokens(ActiveBonus.Actor)
+        ActiveBonus:
+            Behaviour: BuffMove
+            Duration: Persistent
+            ListLayoutOverride: [$FH/FH_Scenariro_Campaign_132_CatIdolSpeedBonus$, Negative_MoveMinus_Campaign]
+            MiscVars:
+                # params aren't passed when logging activation, so i'd rather just hide the bonus from the combat log
+                HiddenInCombatLog: True
+                Hidden: ScenarioScript_FH132.GetCatIdolTokens(ActiveBonus.Actor) == 0

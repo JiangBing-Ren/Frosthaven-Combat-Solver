@@ -1,0 +1,59 @@
+Parser: AbilityCard
+Name: $FH/488_character_ability_cards_crashing_tide_crush_armor_1$
+Character: CrashingTideID
+ID: 488
+Level: X
+ProgressionOrder: 488
+Initiative: 42
+Discard: [Discard,Discard]
+Prefab: 488_CrashingTide_CrushArmor
+Data:
+    Top:
+        Abilities:
+            TDamage:
+                Damage: 0
+                Range: 1
+                Target: 1
+                Targeting: Range
+                Filter:
+                    TargetType: Enemy
+                    EnemyType: Normal
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: TargetShieldValue
+                        Multiplier: 1.0
+                AnimOverload: CrushingTrail
+        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BShieldDebuff:
+                Shield: -1
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                Range: 1
+                Target: -1
+                Filter: Self
+                ActiveBonus:
+                    Behaviour: BuffShield
+                    Duration: Round
+                    IsAura: True
+                    AuraFilter: [Enemy]
+                    ListLayoutOverride: [$FH/488_character_ability_cards_crashing_tide_crush_armor_3$, Positive_ShieldMinus_Enemy_Aura]
+
+Layout:
+    Top:
+        - Row: "$FH/488_character_ability_cards_crashing_tide_crush_armor_2$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Active:
+            Ability: BShieldDebuff
+            Icon: Positive_ShieldMinus_Enemy_Aura
+            Layout: "$FH/488_character_ability_cards_crashing_tide_crush_armor_3$"
+            ListLayout: "$FH/488_character_ability_cards_crashing_tide_crush_armor_3$"

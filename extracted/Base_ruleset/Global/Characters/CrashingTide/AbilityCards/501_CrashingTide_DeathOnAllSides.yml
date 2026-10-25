@@ -1,0 +1,63 @@
+Parser: AbilityCard
+Name: $FH/501_character_ability_cards_crashing_tide_death_on_all_sides_1$
+Character: CrashingTideID
+ID: 501
+Level: 8
+ProgressionOrder: 501
+Initiative: 73
+Discard: [Discard,Discard]
+Prefab: 501_CrashingTide_DeathOnAllSides
+Data:
+    Top:
+        Abilities:
+            TBuffAttack:
+                Attack: 0
+                AttackEffect:
+                    Type: BasedOnVarsCondition
+                    Strength: 2
+                MiscVars:
+                    PrintedProperties: list("AttackBuff")
+                Filter: [Self]
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: BuffAttack
+                    ValidAbilityType: Attack
+                    Flags: [Tide]
+                    Vars:
+                        CrashingTide: TriggerActor
+                        EnemyTarget: TriggerTarget
+                        AdjacentAlliesToEnemyTarget: GameState.GetActorsInRange(EnemyTarget.ArrayIndex, 1).Where(obj != CrashingTide && obj.IsAdjacentTo(EnemyTarget) && CActor.AreActorsAllied(obj.Type, CActor.EType.Player, obj, null))
+                        ValidateActorTargetHasShield: AdjacentAlliesToEnemyTarget.Count > 0
+                AnimOverload: Tide  
+        Infuse: Light
+    Bottom:
+        Abilities:
+            BAttack:
+                Attack:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Range: 1
+                Target: 1
+                Targeting: Range
+                Filter: [Enemy]
+        XP: 1
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "34,33,33"
+            - Column: "$FH/CrashingTide_Tide$"
+            - Column:
+            - Column:
+        - Active:
+            Ability: TBuffAttack
+            Icon: Positive_AttackPlus_Ally
+            Layout: "$FH/501_character_ability_cards_crashing_tide_death_on_all_sides_2$"
+            ListLayout: "$FH/501_character_ability_cards_crashing_tide_death_on_all_sides_2$"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Light
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Attack> *BAttack* <size=100%><voffset=1>@BAttack@"

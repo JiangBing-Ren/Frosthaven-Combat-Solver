@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 67
+ScenarioItemID: 999
+Name: Converging Lenses
+Quantity: 2
+Type: Head
+CraftingCost:
+    Metal: 1
+RequiredCraftingItemIDs: [ 1, 93 ]

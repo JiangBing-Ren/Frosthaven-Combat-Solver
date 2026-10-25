@@ -1,0 +1,7 @@
+Parser: Perk
+ID: Frozenfist09
+Name: FH/PERK_Frozenfist_09_Name
+Description: FH/PERK_Frozenfist_09_Desc
+CharacterID: FrozenFistID
+Available: 1
+Flags: [Passive, IgnoreMinusOneItemEffects, IgnoreIceSlideEffect]

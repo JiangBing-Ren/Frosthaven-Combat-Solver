@@ -1,0 +1,95 @@
+Parser: HeroSummon
+ID: BoneHordeID
+LocKey: $FH/147_character_ability_cards_boneshaper_endless_numbers_2$
+Model: BoneHorde
+Health:
+    Amount: 7
+    SquareEnhancements: 1
+Move:
+    Amount: 3
+    SquareEnhancements: 1
+Attack:
+    Amount: 3
+    SquareEnhancements: 1
+Range:
+    Amount: 1
+#+1 for each token on this card.
+#Shambling Skeletons may end their move abilities on this summon. If they do, kill them and add a token to this card, up to a maximum of five. Whenever this summon would suffer damage , you may remove a token to negate the damage.
+OnSummonAbilities:
+    BoneHordeSpecial:
+        PreventDamage: 1
+        Filter: Self
+        SkipAnim: True
+        AutoTrigger: true
+        MiscVars: 
+            ListLayoutParamVar0: CustomAbility.GetBoneHordeSpecialAbilityCount(ActiveBonus.Actor)
+        ActiveBonus:
+            Duration: Persistent
+            ListLayoutOverride: ["$FH/147_character_ability_cards_boneshaper_endless_numbers_5$", Positive_BoneShield]
+            IsToggleBonus: True
+            ToggleIsOptional: True
+            XPTracker: [0,0,0,0,0]
+            MiscVars:
+                StartAtTrackerIndex: 5
+                DontFinishAtZeroCharges: True
+                OverrideLayoutName: "'$Boneshaper_147_EndlessNumbers_BoneShield_Title$'"
+    TAttackBuff:
+        Attack: 0
+        Filter: Self
+        SkipAnim: True
+        AutoTrigger: True
+        StatIsBasedOnX:
+            Strength:
+                BasedOn: Vars
+                Vars:
+                    Value: CustomAbility.GetBoneHordeSpecialAbilityCount(TargetingActor)
+        ActiveBonus:
+            Behaviour: BuffAttack
+            Duration: Persistent
+            Hidden: True
+    TAddChargeOnSkeletonMove:
+        AddActiveBonus:
+            Kill: True
+            AutoTrigger: True
+            Target: -1
+            Vars:
+                BoneHorde: AllHeroSummons.Find(obj.Class.ID == "BoneHordeID")
+                ValidateSummon: AllHeroSummons.Find(obj.Tile == BoneHorde.Tile && obj.Class.ID == "ShamblingSkeletonID")
+                PlayVFX: BoneHorde.PlayVFX("BoneHordeAssimilateSkeletonVFX")
+                InstantlyDeletePrefab: True
+            Targeting: Custom
+            TargetingVars:
+                AddValidActorInRange: ValidateSummon
+            Filter: OwnSummon
+            SkipAnim: True
+            PerformVars:
+                OnAbilityEnded:
+                    StackSubAbilities: CustomAbility.StackNonInlineSubabilities(obj)
+            SubAbilities:
+                ABuffPreventDamage:
+                    Null: True
+                    AutoTrigger: True
+                    Vars:
+                        AddPreventDamage: CustomAbility.IncrementBoneHordeSpecialAbility(ParentAbility.BoneHorde)
+                    TreatAsNonSubAbility: True
+                    IsInlineSubAbility: False
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringActionAbilityOnFinishedMovement
+            Flags: NotInRangeToInRangeMove
+            IsAura: True
+            TriggerOnCaster: True
+            ListLayoutOverride: ["$FH/147_character_ability_cards_boneshaper_endless_numbers_4$", Positive_BoneShield]
+            MiscVars:
+                # card doesn't explicitly say that the bone horde is the one doing the killing
+                # for the purposes of mastery credit, i'm making the boneshaper be the one that kills the skeletons
+                TriggerOnSummoner: True
+            AuraTargeting: Range
+            AuraFilter:
+                TargetType: Ally
+                HeroSummonClasses: ShamblingSkeletonID
+        Range: 0
+        Target: -1
+        Filter: Self
+        TextOnly: True
+        Text: "$FH/147_character_ability_cards_boneshaper_endless_numbers_4$"      

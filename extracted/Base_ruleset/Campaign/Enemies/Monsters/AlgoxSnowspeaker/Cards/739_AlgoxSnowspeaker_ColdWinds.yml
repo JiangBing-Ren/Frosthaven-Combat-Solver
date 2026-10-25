@@ -1,0 +1,22 @@
+Parser: EnemyCard
+ID: 739
+Name: $Monster_Ability_739_AlgoxSnowspeaker_ColdWinds$
+Initiative: 18
+Shuffle: False
+Data:
+    Abilities: 
+        Attack1:
+            Attack: 0
+            Range: 5
+            RangeIsBase: True
+            Target: 2
+            TargetIsBase: True
+            AnimOverload: RangeAttack
+            MultiPassAttack: False
+    Consumes:
+        CIce:
+            Elements: Ice
+            AbilityOverrides:
+                OIce:
+                    ParentName: Attack1
+                    Conditions: [Immobilize]

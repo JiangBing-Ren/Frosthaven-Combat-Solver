@@ -1,0 +1,4 @@
+Parser: AttackModifier
+Name: AMC_AddTarget
+MathModifier: "+0"
+AddTarget: True

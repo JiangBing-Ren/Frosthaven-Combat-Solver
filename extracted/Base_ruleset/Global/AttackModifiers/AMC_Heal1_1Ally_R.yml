@@ -1,0 +1,11 @@
+Parser: AttackModifier
+Name: AMC_Heal1_1Ally_R
+MathModifier: "+0"
+Rolling: True
+ControlTargetingActor: True
+Abilities:
+    AHeal:
+        Heal: 1
+        Filter: Ally
+        Targeting: Range
+        Range: 99

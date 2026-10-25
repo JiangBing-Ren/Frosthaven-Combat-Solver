@@ -1,0 +1,10 @@
+Parser: FHItem
+ID: 109
+ScenarioItemID: 1083
+Name: Major Renewing Potion
+Quantity: 2
+Type: Small
+Brewing:
+    Herb1: Rockroot
+    Herb2: Snowthistle
+    Herb3: Flamefruit

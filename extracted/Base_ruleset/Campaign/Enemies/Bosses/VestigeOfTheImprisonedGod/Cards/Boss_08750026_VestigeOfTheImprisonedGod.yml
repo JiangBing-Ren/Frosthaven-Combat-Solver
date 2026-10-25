@@ -1,0 +1,58 @@
+Parser: EnemyCard
+ID: 08750026
+Name: $Monster_Ability_Boss_VestigeOfTheImprisonedGod_Special2$
+Initiative: 14
+Shuffle: False
+Data:
+    Abilities:  
+        AModifyTerrain:
+            Null: True
+            PerformVars:
+                NullPerform:
+                    ModifyTerrain: ScenarioScript_FH064.ModifyTerrainUnderPlayers()
+            Vars:
+                TargetedTilesForVFX: ScenarioScript_FH064.PlayerTiles()
+            Text: "$FH/boss_stat_cards_vestige_of_the_imprisoned_god_2$"
+            TextOnly: True
+            AnimOverload: TerrainManipulation
+        AWaitIdle:
+            Null: True
+        AShield:
+            Shield: 3
+            Filter: Self
+            SkipAnim: True
+            #ActiveBonusDuration: Round
+            ActiveBonus:
+                ListLayoutOverride: ["<sprite name=Shield> *AShield*", Positive_Shield]
+            Text: "$FH/boss_stat_cards_vestige_of_the_imprisoned_god_3$"
+            TextOnly: True
+        APush:
+            Push: 2
+            Target: -1
+            TargetIsBase: True
+            Range: 4
+            RangeIsBase: True
+            Text: "$FH/boss_stat_cards_vestige_of_the_imprisoned_god_4$"
+            TextOnly: True
+            SkipAnim: True
+        ADamagePlayersWhoDidNotAttackBossThisTurn:
+            AddActiveBonus:
+                Damage: 0
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: ScenarioTrapDamage
+                Target: -1
+                TargetIsBase: True
+                AnimOverload: RangedAttack
+                Targeting: Custom
+                TargetingVars:
+                    AddValidActorsInRange: ScenarioScript_FH064.GetPlayersWhoDidNotAttackBossThisTurn(TargetingActor)
+            ActiveBonus:
+                Duration: Round
+                Behaviour: EndRoundAbility
+                ListLayoutOverride: [$FH/boss_stat_cards_vestige_of_the_imprisoned_god_5$, Positive_Damage_AttackPrevent_Aura]
+            AutoTrigger: True
+            Filter: Self
+            Text: "$FH/boss_stat_cards_vestige_of_the_imprisoned_god_5$"
+            TextOnly: True
+            SkipAnim: True

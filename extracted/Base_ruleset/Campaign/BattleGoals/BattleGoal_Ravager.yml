@@ -1,0 +1,18 @@
+Parser: BattleGoal
+ID: BattleGoal_Ravager
+LocalisedName: FH/BATTLEGOAL_Ravager
+LocalisedDescription: FH/BATTLEGOAL_Ravager_Desc
+HideCounter: True
+#Perform two actions with Lost icons in the same turn.
+PerkChecks: 1
+BattleGoalCondition:
+    - Targets:
+        Filter: UseAbility
+        IncludeBuffAbilities: True
+        DiscardType: Lost
+        # we don't have a UseAction stat, so i'm just checking abilities, but making sure they're from different cards
+        DistinctAbilities: True
+        # skipped abilities don't count, they end up going to the discard pile
+        HasHappened: True
+        Value: 2
+        SubFilter: Round

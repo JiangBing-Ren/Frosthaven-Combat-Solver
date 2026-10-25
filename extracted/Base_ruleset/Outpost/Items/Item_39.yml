@@ -1,0 +1,7 @@
+Parser: FHItem
+ID: 39
+ScenarioItemID: 958
+Name: Abyss Axe
+Quantity: 2
+Type: TwoHandWeapon
+RequiredCraftingItemIDs: [ 29, 101, 112 ]

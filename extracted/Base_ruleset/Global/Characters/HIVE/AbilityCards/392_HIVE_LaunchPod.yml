@@ -1,0 +1,61 @@
+Parser: AbilityCard
+Name: $FH/392_character_ability_cards_hive_launch_pod_1$
+Character: HIVEID
+ID: 392
+Level: 1
+Initiative: 77
+Discard: [Discard,Discard]
+Prefab: 392_HIVE_LaunchPod
+Data:
+    Top:
+        Abilities:
+            TLaunchPodAtack:
+                Attack:
+                    Amount: 3
+                    DiamondEnhancements: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                AnimOverload: LaunchPod
+                SubAbilities:
+                    TExtraTurnFromTargetPosition:
+                        SelectAndPlayCard: 
+                        Filter: Self
+                        AutoTrigger: True
+                        TreatAsNonSubAbility: True
+                        SkipAnim: True
+                        StartAbilityRequirements:
+                            Type: ParentAbility
+                            AbilityHasHappened: True
+                        Vars:
+                            ValidSummonPositions: CustomAbility.GetAdjacentTiles(ParentAbility.TotalTargetSummaries.Select(obj.ActorToAttack.Tile))
+                        MiscVars:
+                            IsActionValid: Action.Abilities.Any(obj.AbilityType == CAbility.EAbilityType.Summon)
+    Bottom:
+        Abilities:
+            BModeTransfer:
+                Mode: Transfer
+            BHeal:
+                Heal: 
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self
+Layout:
+    Top:
+        - Row:       
+            - ColumnWidths: "20,30,30"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Attack> *TLaunchPodAtack* @TLaunchPodAtack@"
+            - Column: "<sprite name=Range> *TLaunchPodAtack.Range*"
+        - Divider: 
+        - Row: "$FH/392_character_ability_cards_hive_launch_pod_2$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=HIVETransfer>"
+        - Divider: 
+        - Row:
+            - ColumnWidths: "20,30,30"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Heal> *BHeal* @BHeal@"
+            - Column: "$Self$"

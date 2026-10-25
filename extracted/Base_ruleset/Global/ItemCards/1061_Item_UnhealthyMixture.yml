@@ -1,0 +1,19 @@
+Parser: ItemCard
+ID: 1061
+StringID: UnhealthyMixtureID
+Name: $FH/1061_item_cards_unhealthy_mixture_1$
+Art: Unhealthy Mixture
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        AWoundPoisonSelf:
+            Filter: Self
+            Wound: True
+            Conditions: Poison
+Layout: 
+    - Row: "$FH/1061_item_cards_unhealthy_mixture_2$"

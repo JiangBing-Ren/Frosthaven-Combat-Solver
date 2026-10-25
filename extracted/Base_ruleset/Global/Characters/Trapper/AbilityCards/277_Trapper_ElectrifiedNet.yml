@@ -1,0 +1,39 @@
+Parser: AbilityCard
+Name: $FH/277_character_ability_cards_trapper_electrified_net_1$
+Character: TrapperID
+ID: 277
+Level: 1
+Initiative: 53
+Discard: [Lost,Discard]
+Prefab: 277_Trapper_ElectrifiedNet
+Data:
+    Top:
+        Abilities:
+            TTrap:
+                Trap:
+                    TrapName: TrapperTrap
+                    Damage: 2
+                    Conditions: Stun
+                Range: 2
+                RangeIsBase: True
+                Target: 3
+                MiscVars:
+                    PrintedProperties: list("Damage","Range")
+                TargetIsBase: True
+                AnimOverload: TrapThrow
+        XP: 2
+    Bottom:
+        Abilities:
+            BTrap:
+                Trap:
+                    TrapName: TrapperTrap
+                    Damage: 0
+                    Conditions: Strengthen
+                Range: 1
+                RangeIsBase: True
+                AnimOverload: CreateTrap
+Layout:
+    Top:
+        - Row: $FH/277_character_ability_cards_trapper_electrified_net_2$
+    Bottom:
+        - Row: $FH/277_character_ability_cards_trapper_electrified_net_3$

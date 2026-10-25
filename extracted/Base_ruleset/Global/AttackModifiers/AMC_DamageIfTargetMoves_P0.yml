@@ -1,0 +1,7 @@
+Parser: AttackModifier
+Name: AMC_DamageIfTargetMoves_P0
+MathModifier: "+0"
+Rolling: True
+# this modifier has pretty specific requirements for when it starts/finishes, so we're doing it entirely in code
+# that way it can also be supported to stack if you draw the modifier multiple times at once
+DamageIfTargetMoves: 1

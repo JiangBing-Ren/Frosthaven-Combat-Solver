@@ -1,0 +1,51 @@
+Parser: AbilityCard
+Name: $FH/412_character_ability_cards_hive_recall_1$
+Character: HIVEID
+ID: 412
+Level: 7
+Initiative: 91
+Discard: [Permanently Lost,Discard]
+Prefab: 412_HIVE_Recall
+Data:
+    Top:
+        Abilities:
+            TPlaylost:
+                SelectAndPlayCard:
+                    CardPile: Lost
+                    BlockXP: True
+                    Amount: 2
+                MiscVars:
+                    IsActionValid: Action.Abilities.Any(obj.AbilityType == CAbility.EAbilityType.Summon)
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 3
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BGrantTeleport:
+                Range: 99
+                Filter: OwnSummon
+                AnimOverload: Grant
+                Target: 1
+                Vars:
+                    ParentCaster: TargetingActor
+                ControlActor:
+                    #UseControllingActorPlayerControl: True
+                    Abilities:
+                        BSummonTeleport:
+                            Teleport2: 8
+                            MiscVars:
+                                PrintedProperties: list("Teleport")
+                            Filter: Self
+                            StrengthIsBase: True
+                            MiscVars:
+                                IsValidTeleportTile: ParentCaster.GetDistanceTo(tile) == 1
+                                
+Layout:
+    Top:
+        - Row: "$FH/412_character_ability_cards_hive_recall_2$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove*"
+        - Divider:
+        - Row: "$FH/412_character_ability_cards_hive_recall_3$"
+        - Row: "$FH/412_character_ability_cards_hive_recall_4$"

@@ -1,0 +1,16 @@
+Parser: EnemyCard
+ID: 754
+Name: $Monster_Ability_754_Archer_ShootFoot$
+Initiative: 29
+Shuffle: True
+Data:
+    Abilities: 
+        Move1:
+            Move: 0
+        Attack1:
+            Attack: -1
+            Range: 5
+            RangeIsBase: True
+            Filter: Enemy
+            Conditions: Immobilize
+            AnimOverload: RangedAttack

@@ -1,0 +1,81 @@
+Parser: Enemy
+ID: Tutorial3_Deathwalker
+LocKey: $FH/FS_Character_Deathwalker$
+MonsterType: Monster
+StandeeLimit: 6
+Model: Deathwalker
+PredominantlyMelee: False
+AbilityCards: [9052,9053,9054,9055,9056,9057,9058,9059]
+# Base Stats
+Level0:
+    Health: 8
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+Level1:
+    Health: 8
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+Level2:
+    Health: 8
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+Level3:
+    Health: 8
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+Level4:
+    Health: 8
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+Level5:
+    Health: 8
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+Level6:
+    Health: 8
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+Level7:
+    Health: 8
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0

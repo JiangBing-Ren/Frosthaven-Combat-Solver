@@ -1,0 +1,27 @@
+Parser: ScenarioAbility
+ID: FH117_PreventAndPush
+ScenarioAbility:
+    AActive:
+        PreventDamage: 99
+        AutoTrigger: True
+        Target: -1
+        Filter: Self
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: PreventFirstDamage
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_117_SCENARIO_MODIFIER_4$, Prevent]
+            IsToggleBonus: True
+            ToggleIsOptional: True
+            Hidden: True
+            Requirements:
+                Vars:
+                    ValidateAbility: CurrentAbility != null
+                    ValidateIsPlayer: CurrentAbility.TargetingActor.Type == CActor.EType.Player
+                    ValidateAbilityIsNotScenarioPush: CustomAbility.AbilityHasFlag(CurrentAbility, CAbility.EAbilityFlag.Special2) == false
+                    ValidateIsNotTrapped: ScenarioScript_FH117.ValidateIsPolarBearNotTrapped(Actor)
+            Vars:
+                ExecutePushAbility: ScenarioScript.current.ExecutePushAbility(CurrentAbility, CurrentAbility.TargetingActor, Actor, PreventedDamage)
+        AnimOverload: None
+        AutoTrigger: True
+        MiscVars:
+            AllowOnEnemyActors: True

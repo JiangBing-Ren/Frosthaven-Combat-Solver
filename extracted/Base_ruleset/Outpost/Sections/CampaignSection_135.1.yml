@@ -1,0 +1,8 @@
+Parser: CampaignSection
+ID: 135.1
+Name: Bathysphere Ready
+ShowAsUnknownInCalendar: True
+SkipCompletedNotification: False
+Effects:
+    - Type: UnlockScenario
+      Param1: 42

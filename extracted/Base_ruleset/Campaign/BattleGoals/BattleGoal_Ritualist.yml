@@ -1,0 +1,15 @@
+Parser: BattleGoal
+ID: BattleGoal_Ritualist
+LocalisedName: FH/1333_battle_goals_ritualist_1
+LocalisedDescription: FH/1333_battle_goals_ritualist_2
+PerkChecks: 1
+# kill an enemy while 3 or more elements are strong or waning (to put it simply - infused)
+BattleGoalCondition:
+    - Targets:
+        Filter: KillWhileStrongOrWaningElements
+        MonsterType: [Normal, Elite, Boss]
+        CharacterTypes:
+            Target: [Enemy,Enemy2]
+        CompareVal1: 3
+        Value: 1
+        SubFilter: Round

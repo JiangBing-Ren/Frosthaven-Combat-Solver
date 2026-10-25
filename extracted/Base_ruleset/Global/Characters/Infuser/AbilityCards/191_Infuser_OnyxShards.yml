@@ -1,0 +1,92 @@
+Parser: AbilityCard
+Name: $FH/191_character_ability_cards_infuser_onyx_shards_1$
+Character: InfuserID
+ID: 191
+Level: 1
+Initiative: 20
+Discard: [Discard,Lost]
+Prefab: 191_Infuser_OnyxShards
+Data:
+    Top:
+        Abilities:
+            TDisarm:
+                Disarm:
+                    DiamondEnhancements: 1
+                Range:
+                    Amount: 4
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Filter: Enemy
+                AnimOverload: NegativeCast 
+        Consumes:
+            TCDisarm:
+                PreviewEffectId: M2Range
+                AbilityOverrides:
+                    TCDisarmBuff:
+                        ParentName: TDisarm
+                        Range: -2
+                        SubAbilities:
+                            TInfuse:
+                                TreatAsNonSubAbility: True
+                                AutoTrigger: True
+                                Infuse: [Dark]
+                                SkipAnim: True
+    Bottom:
+        Abilities:
+            BOnyxShardsCreateObstacle:
+                Create: RockSingle
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Target: 4
+                AnimOverload: CreateObstacle 
+                Vars:
+                    OverridePropName: "'Infuser1HObstacle'"
+            BObstacleDamage:
+                Damage: 2
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Target: -1
+                SkipAnim: True
+                Filter: Enemy
+                Targeting: Custom
+                Vars:
+                    Parent: CustomAbility.FindAbilityInPhaseByName("BOnyxShardsCreateObstacle")
+                TargetingVars:
+                    AddTilesInRange: CustomAbility.GetAdjacentTiles(Parent.TilesSelected)
+                    AddValidActorsInRange: CustomAbility.GetActorsWithAdjacentObstacles(Ability, 2, Parent.TilesSelected)
+                    AddActorsToTarget: CustomAbility.GetActorsWithAdjacentObstacles(Ability, 2, Parent.TilesSelected)
+                    AddSelectedTiles: CustomAbility.GetActorsWithAdjacentObstacles(Ability, 2, Parent.TilesSelected).Select(obj.Tile)
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [ Create ]
+                    DoesntHaveNegativeCondition: [Stun]   
+            BInfuse:
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    Vars: 
+                        ValidateActionHasHappened: CustomAbility.HasPerformedAction(Ability) 
+                Infuse: [Earth, Dark]
+                ShowElementPicker: True
+                CanSkip: False
+        XP: 1
+
+Layout:
+    Top:
+        - Row: "<b><size=150%><sprite name=Disarm> <size=100%><voffset=1>@TDisarm@"
+        - Row: "<b><size=100%><sprite name=Range> *TDisarm.Range* <size=100%><voffset=1>@TDisarm.Range@"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCDisarm
+                    Text: "-2<sprite name=Range>: <sprite name=CreateDark>"
+    Bottom:
+        - Row: "$FH/191_character_ability_cards_infuser_onyx_shards_2$"
+        - Divider:
+        - Row: "$FH/191_character_ability_cards_infuser_onyx_shards_3$"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<sprite name=CreateMixed-ED>"

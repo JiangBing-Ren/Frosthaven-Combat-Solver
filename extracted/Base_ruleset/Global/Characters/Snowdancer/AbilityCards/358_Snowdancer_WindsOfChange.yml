@@ -1,0 +1,115 @@
+Parser: AbilityCard
+Name: $FH/358_character_ability_cards_snowdancer_winds_of_change_1$
+Character: SnowdancerID
+ID: 358
+Level: 9
+Initiative: 15
+Discard: [Lost,Discard]
+Prefab: 358_Snowdancer_WindsOfChange
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 
+                    Amount: 4
+                    DiamondEnhancements: 1
+                Range: 4
+                Target: 
+                    Amount: 4
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack","Range","Target")
+                MultiPassAttack: False    
+                AnimOverload: PolarVortex
+                SubAbilities:
+                    TControlEnemy:
+                        ControlActor:
+                            Abilities:
+                                ControlMove:
+                                    Move: 2
+                                    StrengthIsBase: True
+                            ControlActorType: Player
+                        TreatAsNonSubAbility: True
+                        Target: -1
+                        Targeting: Custom
+                        AnimOverload: Control
+                        TargetingVars:
+                            AddTilesInRange: Ability.ParentAbility.TilesSelected
+                            AddValidActorsInRange: Ability.ParentAbility.ActorsToTarget
+                        AnimOverload: Control
+        Infuse: Air
+        XP: 2
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BHeal:
+                Heal: 4
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Heal","Range")
+                Filter: [Self, Ally]
+                Target: 1
+                AnimOverload: Heal
+                SubAbilities:
+                    BLoseCard:
+                        AutoTrigger: True
+                        TreatAsNonSubAbility: True
+                        Filter:
+                            TargetType: [Self, Ally]
+                            EnemyType: [Normal]
+                        Target: -1
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateHasTargets: Ability.ParentAbility.ActorsToTarget.Count > 0
+                                Target: Ability.ParentAbility.ActorsToTarget[0]
+                                ValidateIsAlly: Target.Type == TargetingActor.Type
+                        Targeting: Custom
+                        TargetingVars:
+                            AddTilesInRange: Ability.ParentAbility.TilesSelected
+                            AddValidActorsInRange: Ability.ParentAbility.ActorsToTarget
+                            AddActorsToTarget: ??Ability.ParentAbility.ActorsToTarget
+                            AddSelectedTiles: Ability.ParentAbility.TilesSelected
+                        AnimOverload: Control
+                        ControlActor:
+                            Abilities:
+                                BAllyMove:
+                                    CanSkip: True
+                                    LoseCards: 1
+                                    NegativeAbilityIsOptional: True
+                                    AutoTrigger: True
+                                    Filter: [Self]
+                                    SubAbilities:
+                                        ARecoverLostCards:
+                                            RecoverLostCards: 1
+                                            IsInlineSubAbility: True
+                                            CanSkip: False
+                                            Vars:
+                                                LostAbilityCards: TargetingActor.CharacterClass.LostAbilityCards
+                                                CardLevel: LostAbilityCards[LostAbilityCards.Length - 1].Level
+Layout:
+    Top:
+        - Row: 
+            - ColumnWidths: "30,30,30,10"
+            - Column: "<sprite name=Attack> *TAttack* @TAttack@"
+            - Column: "<sprite name=Target> *TAttack.Target* <voffset=1> @TAttack.Target@"
+            - Column: ", <sprite name=Range> *TAttack.Range*"
+            - Column:
+        - Divider: 
+        - Row: "$FH/358_character_ability_cards_snowdancer_winds_of_change_2$"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Air]
+    Bottom:
+        - Row: "<sprite name=Move> *BMove* @BMove@"
+        - Divider: 
+        - Row: "<sprite name=Heal> *BHeal* <sprite name=Range> *BHeal.Range*"
+        - Divider: 
+        - Row: "$FH/358_character_ability_cards_snowdancer_winds_of_change_3$"
+

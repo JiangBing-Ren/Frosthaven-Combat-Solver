@@ -1,0 +1,32 @@
+Parser: ItemCard
+ID: 906
+StringID: DancingSlippersID
+Name: $FH/0906_item_cards_dancing_slippers_1$
+Art: Dancing Slippers
+TotalInGame: 2
+Cost: 0
+Rarity: Rare
+Slot: Legs 
+Usage: Spent
+Trigger: AfterAttackedIgnoringDamageTaken
+Data:
+    ItemRequirements:
+        Vars:
+            ActorBeingAttacked: Ability.VarsContext.parentContext.ActorBeingAttacked
+            ItemOwner: Ability.VarsContext.parentContext.ItemOwner
+            ValidateIsOwner: ActorBeingAttacked == ItemOwner
+            ValidateTookDamage: Ability.VarsContext.parentContext.DamageTaken > 0
+    Abilities:
+        AMove:
+            ControlActor:
+                Abilities:
+                    BSelfMove:
+                        Move: 2
+                        StrengthIsBase: True
+            AutoTrigger: True
+            SkipAnim: True
+            Filter: Self
+    CompareAbility:
+        AbilityType: Attack
+Layout:
+    - Row: $FH/0906_item_cards_dancing_slippers_2$

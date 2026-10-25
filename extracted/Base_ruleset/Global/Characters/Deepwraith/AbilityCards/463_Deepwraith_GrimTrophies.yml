@@ -1,0 +1,283 @@
+Parser: AbilityCard
+Name: $FH/463_character_ability_cards_deepwraith_grim_trophies_1$
+Character: DeepwraithID
+ID: 463
+Level: 4
+Initiative: 18
+Discard: [Discard,Discard]
+Prefab: 463_Deepwraith_GrimTrophies
+Data:
+    Top:
+        Abilities:
+            BLoot:
+                Loot: 1
+                MiscVars:
+                    PrintedProperties: list("Loot")
+                Target: -1
+                SubAbilities:
+                    BTrophy:
+                        NullTargeting:
+                        Tokens: 0
+                        Flags: [ModifiesTrophyTokens]
+                        Filter: [Self]
+                        TreatAsNonSubAbility: True
+                        AutoTrigger: True
+                        SkipAnim: True
+                        Vars:
+                            LootAbility: CurrentAbility.ParentAbility
+                            LootCount: LootAbility.LootTokenCount
+                        StatIsBasedOnX:
+                            Tokens:
+                                BasedOn: Vars
+                                Vars:
+                                    Value: LootCount
+    Bottom:
+        Abilities:
+            BChoose:
+                Filter: Self
+                HelpBoxTooltipLocKey: "$GUI_CHOOSE_ABILITY$"
+                #PreviewEffectText: "<size=100%><sprite name=Push> / <sprite name=Pull></size>"
+                MiscVars:
+                    CancelReason: "'GUI_TOOLTIP_NO_TROPHY_TOKENS'"
+                Choose:
+                    Abilities:
+                        BCAbility1:
+                            NullTargeting:
+                            Tokens: -1
+                            Flags: [ModifiesTrophyTokens]
+                            Filter: [Self]
+                            AutoTrigger: True
+                            PreviewEffectText: "-1 <sprite name=DWRTrophy>: <sprite name=Move> 1 <sprite name=Attack> 1"
+                            StartAbilityRequirements:
+                                Type: ThisAbility
+                                TrophyTokens: ">= 1"
+                            SubAbilities:
+                                BCAbility1Attack1:
+                                    Attack: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Attack")
+                                    Filter: Enemy
+                                    UseParentTargets: False
+                                    UseParentTiles: False
+                                    TreatAsNonSubAbility: True
+                                BCAbility1Move1:
+                                    Move: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Move")
+                        CAbility2:
+                            NullTargeting:
+                            Tokens: -2
+                            Flags: [ModifiesTrophyTokens]
+                            Filter: [Self]
+                            AutoTrigger: True
+                            PreviewEffectText: "-2 <sprite name=DWRTrophy>: 2x <sprite name=Move> 1 <sprite name=Attack> 1"
+                            StartAbilityRequirements:
+                                Type: ThisAbility
+                                TrophyTokens: ">= 2"
+                            SubAbilities:
+                                BCAbility2Attack2:
+                                    Attack: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Attack")
+                                    Filter: Enemy
+                                    UseParentTargets: False
+                                    UseParentTiles: False
+                                    TreatAsNonSubAbility: True
+                                BCAbility2Move2:
+                                    Move: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Move")
+                                BCAbility2Attack1:
+                                    Attack: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Attack")
+                                    Filter: Enemy
+                                    UseParentTargets: False
+                                    UseParentTiles: False
+                                    TreatAsNonSubAbility: True
+                                BCAbility2Move1:
+                                    Move: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Move")
+                        CAbility3:
+                            NullTargeting:
+                            Tokens: -3
+                            Flags: [ModifiesTrophyTokens]
+                            Filter: [Self]
+                            AutoTrigger: True
+                            PreviewEffectText: "-3 <sprite name=DWRTrophy>: 3x <sprite name=Move> 1 <sprite name=Attack> 1"
+                            StartAbilityRequirements:
+                                Type: ThisAbility
+                                TrophyTokens: ">= 3"
+                            SubAbilities:
+                                BCAbility3Attack3:
+                                    Attack: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Attack")
+                                    Filter: Enemy
+                                    UseParentTargets: False
+                                    UseParentTiles: False
+                                    TreatAsNonSubAbility: True
+                                BCAbility3Move3:
+                                    Move: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Move")
+                                BCAbility3Attack2:
+                                    Attack: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Attack")
+                                    Filter: Enemy
+                                    UseParentTargets: False
+                                    UseParentTiles: False
+                                    TreatAsNonSubAbility: True
+                                BCAbility3Move2:
+                                    Move: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Move")
+                                BCAbility3Attack1:
+                                    Attack: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Attack")
+                                    Filter: Enemy
+                                    UseParentTargets: False
+                                    UseParentTiles: False
+                                    TreatAsNonSubAbility: True
+                                BCAbility3Move1:
+                                    Move: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Move")
+                        CAbility4:
+                            NullTargeting:
+                            Tokens: -4
+                            Flags: [ModifiesTrophyTokens]
+                            Filter: [Self]
+                            AutoTrigger: True
+                            PreviewEffectText: "-4 <sprite name=DWRTrophy>: 4x <sprite name=Move> 1 <sprite name=Attack> 1"
+                            StartAbilityRequirements:
+                                Type: ThisAbility
+                                TrophyTokens: ">= 4"
+                            SubAbilities:
+                                BCAbility4Attack4:
+                                    Attack: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Attack")
+                                    Filter: Enemy
+                                    UseParentTargets: False
+                                    UseParentTiles: False
+                                    TreatAsNonSubAbility: True
+                                BCAbility4Move4:
+                                    Move: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Move")
+                                BCAbility4Attack3:
+                                    Attack: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Attack")
+                                    Filter: Enemy
+                                    UseParentTargets: False
+                                    UseParentTiles: False
+                                    TreatAsNonSubAbility: True
+                                BCAbility4Move3:
+                                    Move: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Move")
+                                BCAbility4Attack2:
+                                    Attack: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Attack")
+                                    Filter: Enemy
+                                    UseParentTargets: False
+                                    UseParentTiles: False
+                                    TreatAsNonSubAbility: True
+                                BCAbility4Move2:
+                                    Move: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Move")
+                                BCAbility4Attack1:
+                                    Attack: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Attack")
+                                    Filter: Enemy
+                                    UseParentTargets: False
+                                    UseParentTiles: False
+                                    TreatAsNonSubAbility: True
+                                BCAbility4Move1:
+                                    Move: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Move")
+                        CAbility5:
+                            NullTargeting:
+                            Tokens: -5
+                            Flags: [ModifiesTrophyTokens]
+                            Filter: [Self]
+                            AutoTrigger: True
+                            PreviewEffectText: "-5 <sprite name=DWRTrophy>: 5x <sprite name=Move> 1 <sprite name=Attack> 1"
+                            StartAbilityRequirements:
+                                Type: ThisAbility
+                                TrophyTokens: ">= 5"
+                            SubAbilities:
+                                BCAbility5Attack5:
+                                    Attack: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Attack")
+                                    Filter: Enemy
+                                    UseParentTargets: False
+                                    UseParentTiles: False
+                                    TreatAsNonSubAbility: True
+                                BCAbility5Move5:
+                                    Move: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Move")
+                                BCAbility5Attack4:
+                                    Attack: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Attack")
+                                    Filter: Enemy
+                                    UseParentTargets: False
+                                    UseParentTiles: False
+                                    TreatAsNonSubAbility: True
+                                BCAbility5Move4:
+                                    Move: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Move")
+                                BCAbility5Attack3:
+                                    Attack: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Attack")
+                                    Filter: Enemy
+                                    UseParentTargets: False
+                                    UseParentTiles: False
+                                    TreatAsNonSubAbility: True
+                                BCAbility5Move3:
+                                    Move: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Move")
+                                BCAbility5Attack2:
+                                    Attack: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Attack")
+                                    Filter: Enemy
+                                    UseParentTargets: False
+                                    UseParentTiles: False
+                                    TreatAsNonSubAbility: True
+                                BCAbility5Move2:
+                                    Move: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Move")
+                                BCAbility5Attack1:
+                                    Attack: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Attack")
+                                    Filter: Enemy
+                                    UseParentTargets: False
+                                    UseParentTiles: False
+                                    TreatAsNonSubAbility: True
+                                BCAbility5Move1:
+                                    Move: 1
+                                    MiscVars:
+                                        PrintedProperties: list("Move")
+Layout:
+    Top:
+        - Row: "$FH/463_character_ability_cards_deepwraith_grim_trophies_2$"
+    Bottom:
+        - Row: "$FH/463_character_ability_cards_deepwraith_grim_trophies_3$"

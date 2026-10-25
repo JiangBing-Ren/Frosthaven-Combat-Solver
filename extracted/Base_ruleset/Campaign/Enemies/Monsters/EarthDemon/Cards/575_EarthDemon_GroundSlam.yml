@@ -1,0 +1,30 @@
+Parser: EnemyCard
+ID: 575
+Name: $Monster_Ability_575_EarthDemon_GroundSlam$
+Initiative: 93
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: -1
+        Attack1:
+            Attack: -1
+            Target: -1
+            TargetIsBase: True
+            Filter: Enemy
+            Text: "$Target_AllAdjacentEnemies$"
+            AnimOverload: GroundSlam
+            MultiPassAttack: False
+    Consumes:
+        CEarth:
+            Elements: Earth
+            AbilityOverrides:
+                CEarthPush:
+                    ParentName: Attack1
+                    SubAbilities:
+                        TCAttackSubPush:
+                            Push:
+                                Amount: 1
+                            AnimOverload: None
+                            UseParentTargets: True
+                            IsInlineSubAbility: True

@@ -1,0 +1,37 @@
+Parser: ScenarioAbility
+ID: FH082_SkipMove5ToSearch
+ScenarioAbility:
+    SkipMove5ToSearch:
+        PreviewEffectText: "5"
+        Filter: Self
+        SkipAnim: True
+        NullTargeting: True
+        ActiveBonus:
+            ListLayoutOverride: ["$FH/FH_Scenario_Campaign_082_SCENARIO_MODIFIER_2$", Loot]
+            Duration: Persistent
+            ValidAbilityType: Move
+            IsToggleBonus: True
+            Requirements:
+                DoesntHaveNegativeCondition: [Stun, Immobilize]
+                Vars:
+                    CurrentAbility: PhaseManager.CurrentPhaseAction.CurrentPhaseAbility?.m_Ability
+                    ValidateHasEnoughMovePoints: CurrentAbility != null && CurrentAbility.RemainingMoves >= 5
+                    ValidateHasValidTargets: ScenarioScript_FH082.GetSearchTiles(GameState.CurrentActor, 5).Count > 0
+                    RemainingMoves: CurrentAbility.RemainingMoves
+            MiscVars:
+                Hidden: True
+            CostAbility:
+                NullHex: True
+                Target: 1
+                Targeting: Custom
+                TargetingVars:
+                    SearchTiles: ScenarioScript_FH082.GetSearchTiles(GameState.CurrentActor)
+                    AddTilesInRange: SearchTiles
+                MiscVars:
+                    TreatAsNewStart: True
+                Vars:
+                    CacheActiveBonus: PhaseManager.CurrentPhaseAction.CurrentTriggeredActiveBonus
+                PerformVars:
+                    Perform:
+                        UntoggleBonus: CacheActiveBonus.ToggleActiveBonusFromVars(TargetingActor, true)
+                        SearchTile: ScenarioScript_FH082.SearchTile(TargetingActor, TilesSelected.First, CacheActiveBonus, 5)

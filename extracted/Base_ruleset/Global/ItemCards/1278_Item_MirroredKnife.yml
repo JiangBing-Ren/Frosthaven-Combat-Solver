@@ -1,0 +1,27 @@
+Parser: ItemCard
+ID: 1278
+StringID: MirroredKnifeID
+Name: $FH/1278_item_cards_mirrored_knife_1$
+Art: Mirrored Knife
+TotalInGame: 1
+Cost: 20
+Slot: OneHand 
+Rarity: Rare
+Usage: Spent
+Trigger: SingleTarget
+Data: 
+    ItemRequirements:
+        Vars:
+            ItemOwner: Ability.TargetingActor
+            ValidConditions: TargetingActor.Tokens.GetAllNegativeConditions().Select(obj.ToString()).Where(obj != "Brittle" && obj != "Bane" && obj != "Stun")
+            ValidateHasConditions: ValidConditions.Count > 0
+    Overrides:
+        OConditions:
+            Vars:
+                AddConditions: TargetingActor.Tokens.GetAllNegativeConditions().Select(obj.ToString()).Where(obj != "Brittle" && obj != "Bane" && obj != "Stun")
+    CompareAbility:
+        AbilityType: Attack
+        IsMelee: True
+        Filter: Enemy
+Layout: 
+    - Row: $FH/1278_item_cards_mirrored_knife_2$

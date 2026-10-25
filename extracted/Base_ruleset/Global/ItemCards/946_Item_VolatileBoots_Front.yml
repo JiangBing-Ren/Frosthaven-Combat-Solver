@@ -1,0 +1,22 @@
+Parser: ItemCard
+ID: 946
+StringID: VolatileBootsID
+Name: $FH/0946_item_cards_volatile_boots_1$
+Art: Volatile Boots
+TotalInGame: 2
+Cost: 0
+Slot: Legs
+Rarity: Rare
+Usage: Flip
+FlipEndOfTurn: True
+FlipItemID: 945
+FlipItemSide: Front
+Trigger: SingleAbility
+Data:     
+    Overrides:
+        OMove:
+            Strength: 1
+    CompareAbility:
+        AbilityType: Move
+Layout: 
+    - Row: "$FH/0946_item_cards_volatile_boots_2$"

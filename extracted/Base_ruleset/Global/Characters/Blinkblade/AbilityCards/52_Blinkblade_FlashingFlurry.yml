@@ -1,0 +1,141 @@
+Parser: AbilityCard
+Name: $FH/52_character_ability_cards_blinkblade_flashing_flurry_1$
+Character: BlinkbladeID
+ID: 52
+Level: 5
+Initiative: 40
+Discard: [Discard,Lost]
+Prefab: 52_Blinkblade_FlashingFlurry
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 3
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Target: 1
+                ConditionalOverrides: 
+                    TAttackCO_Fast:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Fast
+                            Vars:
+                                ValidateDoesntHaveTreatSlowAgilityAsFast: not TargetingActor.HasActiveBonusFlag(AbilityData.EActiveBonusFlag.TreatSlowAgilityAsFast)
+                        XP: 1
+                        AbilityOverrides:
+                            TAttack:
+                                Target: 1
+                                Range: 2
+                                MiscVars:
+                                    PrintedProperties: list("Target", "Range")
+                                AnimOverload: RangedAttack
+                    TAttackCO_Fast:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Fast
+                            Vars:
+                                ValidateHaveTreatSlowAgilityAsFast: TargetingActor.HasActiveBonusFlag(AbilityData.EActiveBonusFlag.TreatSlowAgilityAsFast)
+                        XP: 1
+                        AbilityOverrides:
+                            TAttack:
+                                Target: 1
+                                Range: 2
+                                AnimOverload: RangedAttackSlow
+                    TAttackCO_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow     
+                            Vars:
+                                ValidateDoesntHaveIgnoreSlowEffects: not TargetingActor.HasActiveBonusFlag(AbilityData.EActiveBonusFlag.IgnoreSlowEffects)
+                        AbilityOverrides:
+                            TAttack:
+                                Attack: -1
+                                AreaEffect: "0,0,G|1,1,R|2,0,R"
+                                AreaEffectLayoutOverride: "0,0,G|1,1,R|2,0,R"
+                                MultiPassAttack: False
+                                AnimOverload: Attack2Slow
+                    TAttackCO_Slow:
+                        Self: True
+                        Requirement:
+                            Vars:
+                                ValidateHasIgnoreSlowEffects: TargetingActor.HasActiveBonusFlag(AbilityData.EActiveBonusFlag.IgnoreSlowEffects)
+                        AbilityOverrides:
+                            TAttack:
+                                AnimOverload: AttackSlow
+        Consumes:
+            TCAny:
+                Elements: Any
+                AbilityOverrides:
+                    TCAnyAttack:
+                        ParentName: TAttack
+                        Attack: 1
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            DoesntHaveNegativeCondition: [Stun,Disarm]
+    Bottom:
+        Abilities:
+            BStun:
+                Stun:
+                    Amount: 1
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Range: 1
+                Target: 99
+                Filter: Enemy
+                MiscVars:
+                    AutoSelectValidTiles: True
+                SubAbilities:
+                    BTimeTokens:
+                        Null: True
+                        AutoTrigger: True
+                        Tokens: 0
+                        Filter: [Self]
+                        Flags: [ModifiesTimeTokens]
+                        StatIsBasedOnX:
+                            Tokens:
+                                BasedOn: ActorsTargetedByParentAbility
+                AnimOverload: PowerUp1HexAOE
+                ConditionalOverrides:
+                    COAnim_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            COAnim:
+                                AnimOverload: PowerUpSlow1HexAOE
+        XP: 1
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack*"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCAny
+                    Text: "<size=100%>+1 <sprite name=Attack>"
+        - Row: "<size=50%> "
+        - Row:
+            - ColumnWidths: "40,60"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "+1 <sprite name=Target>, +2 <sprite name=Range>, <sprite name=XP1>"
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Layout:
+                        - ColumnWidths: "35,65"
+                        - Column:
+                            - Row: "-1 <sprite name=Attack>,"
+                        - Column:
+                            - Row: "£Area£"
+    Bottom:
+        - Row:
+            - ColumnWidths: "20,30,40"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Stun> <size=100%><voffset=1>@BStun@"
+            - Column:
+                - Row: "$FH/052_character_ability_cards_blinkblade_flashing_flurry_2$"
+        - Row: "$FH/052_character_ability_cards_blinkblade_flashing_flurry_3$"

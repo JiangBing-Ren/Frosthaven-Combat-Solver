@@ -1,0 +1,17 @@
+Parser: EnemyCard
+ID: 607
+Name: $Monster_Ability_607_RoboticBoltshooter_BalistaBolt$
+Initiative: 91
+Shuffle: False
+Data:
+    Abilities:
+        AAttack:
+            Attack: +2
+            Range: 4
+            RangeIsBase: True
+            AnimOverload: RangedAttack
+            StatIsBasedOnX:
+                NumberOfTargets:
+                    BasedOn: BaseStatPlusX
+                    BaseStatType: Target
+                    Multiplier: -1

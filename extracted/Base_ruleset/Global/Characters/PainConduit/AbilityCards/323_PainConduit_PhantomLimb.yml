@@ -1,0 +1,93 @@
+Parser: AbilityCard
+Name: $FH/323_character_ability_cards_pain_conduit_phantom_limb_1$
+Character: PainConduitID
+ID: 323
+Level: 6
+Initiative: 75
+Discard: [Discard,Lost]
+Prefab: 323_PainConduit_PhantomLimb
+Data:
+    Top:
+        Infuse: Air
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                    DiamondEnhancements: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                MiscVars:
+                    IgnoreDisarm: True
+                AnimOverload: PhantomLimb 
+                ConditionalOverrides:
+                    TAttackCO:
+                        XP: 1
+                        Requirements:
+                            Vars:
+                                ValidateIsDisarmed: Actor.Tokens.GetAllTransferableConditions().Any(obj == "Disarm")
+                        AbilityOverrides:
+                            TDisarmedStrength:
+                                Strength: 2
+    Bottom:
+        XP: 2
+        Abilities:
+            BHeal:
+                Heal: 
+                    Amount: 3
+                    CircleEnhancements: 1
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Heal","Range")
+                Target: 99
+                Filter: [Self,Ally]      
+                AnimOverload: Cast  
+                MiscVars:
+                    AutoSelectValidTiles: True    
+                PerformVars:
+                    ApplyToActors:
+                        CacheHealth: TargetingActor.SetTempVar("TempActorsAndHealth", CustomAbility.GetActorsAndHealth(ActorsToTarget))
+                SubAbilities:
+                    BGrantAttack:
+                        Vars:
+                            Targets: CustomAbility.GetActorsWhoWereHealed(TargetingActor.TempActorsAndHealth)
+                            ValidateHasTargets: Targets.Count > 0
+                        TreatAsNonSubAbility: True
+                        Target: -1
+                        Targeting: Custom
+                        TargetingVars:
+                            AddValidActorsInRange: Targets
+                        Filter: [Self,Ally]
+                        SkipAnim: True
+                        ControlActor:
+                            Abilities:
+                                TAllyAttack:
+                                    Attack: 3
+                                    MiscVars:
+                                        PrintedProperties: list("Attack")
+                                    StrengthIsBase: True
+                                    Range: 1
+                                    RangeIsBase: True
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "20,30,30"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column:
+                - Row: "<mark=#80919922><size=100%><sprite name=Range>*TAttack.Range*</mark>"
+        - Row: "$FH/323_character_ability_cards_pain_conduit_phantom_limb_2$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Air
+    Bottom:
+        - Row:
+            - ColumnWidths: "20,30,30"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Heal> *BHeal* <size=100%><voffset=1>@BHeal@"
+            - Column:
+                - Row: "<mark=#80919922><size=100%> $FH/323_character_ability_cards_pain_conduit_phantom_limb_3$ </mark>"
+        - Divider:
+        - Row: "$FH/323_character_ability_cards_pain_conduit_phantom_limb_4$"

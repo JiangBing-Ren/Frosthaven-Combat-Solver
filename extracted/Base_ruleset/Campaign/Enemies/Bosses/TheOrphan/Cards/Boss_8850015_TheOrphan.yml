@@ -1,0 +1,22 @@
+Parser: EnemyCard
+ID: 8850015
+Name: $Monster_Ability_BasicAttack$
+Initiative: 36
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: 0
+            Text: "$FH_Scenario_Campaign_058_The_Orphan_MOVE_Abilities$"
+            StartAbilityRequirements:
+                Type: ThisAbility
+                ValidActorsInRangeOfRequirementRange: "< 1"
+                RequirementRange: 99
+                RequirementActorFilter:
+                    ObjectClasses: [HulkingPillarID]
+        Attack1:
+            Attack: 0
+            Filter: Enemy
+            Range: 1
+            RangeIsBase: True
+            ShowRange: False

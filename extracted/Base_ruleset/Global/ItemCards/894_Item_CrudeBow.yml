@@ -1,0 +1,35 @@
+Parser: ItemCard
+ID: 894
+StringID: CrudeBowID
+Name: $FH/0894_item_cards_crude_bow_1$
+Art: Crude Bow
+TotalInGame: 2
+Cost: 0
+Slot: TwoHand
+Rarity: Rare
+Usage: Spent
+Trigger: DuringOwnTurn
+Data:     
+    Abilities:
+        AAttack:
+            Filter: Self
+            Attack: 0
+            AttackEffect:
+                Type: FirstTargetOnly
+                Range: 1
+                AttackType: Ranged
+            ActiveBonus:
+                Duration: Turn
+                Behaviour: BuffAttack
+                XPTracker: [0]
+                Hidden: True
+                Vars:
+                    ValidateHasAbility: TriggerAbility != null
+                    ValidateIsRanged: TriggerAbility.IsMeleeAttack == false
+                    ValidateNoAreaEffect: TriggerAbility.AreaEffect == null
+Layout: 
+    - Active:
+        Ability: AAttack
+        Icon: "CrudeBow"
+        ListLayout: "$FH/0894_item_cards_crude_bow_2$"
+        Layout: "$FH/0894_item_cards_crude_bow_2$"

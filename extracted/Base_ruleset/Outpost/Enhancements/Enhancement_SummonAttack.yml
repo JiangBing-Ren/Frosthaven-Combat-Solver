@@ -1,0 +1,7 @@
+Parser: FHEnhancement
+ID: SummonAttack
+Name: Glossary_Enhancement_SummonAttack
+Cost: 100
+Mark: Square
+Effect: AddOne
+ForEffect: SummonAttack

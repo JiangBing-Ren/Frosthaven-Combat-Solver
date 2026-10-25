@@ -1,0 +1,19 @@
+Parser: ItemCard
+ID: 1057
+StringID: FlameVialID
+Name: $FH/1057_item_cards_flame_vial_1$
+Art: Flame Vial
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        ADamage:
+            Filter: Enemy
+            Wound: True
+            Range: 1
+Layout: 
+    - Row: "$FH/1057_item_cards_flame_vial_2$"

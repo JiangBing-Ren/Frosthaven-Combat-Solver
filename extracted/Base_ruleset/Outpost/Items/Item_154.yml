@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 154
+ScenarioItemID: 1173
+Name: Volatile Bomb
+Quantity: 2
+GoldCost: 50
+Type: TwoHandWeapon
+IsNewCharacterItem: False

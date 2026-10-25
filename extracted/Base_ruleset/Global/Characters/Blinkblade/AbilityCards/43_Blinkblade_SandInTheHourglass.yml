@@ -1,0 +1,160 @@
+Parser: AbilityCard
+Name: $FH/043_character_ability_cards_blinkblade_sand_in_the_hourglass_1$
+Character: BlinkbladeID
+ID: 43
+Level: X
+Initiative: 52
+Discard: [Discard,Discard]
+Prefab: 43_Blinkblade_SandInTheHourglass
+Data:
+    Top:
+        Abilities:
+            TWound:
+                Wound: True
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Target: 1
+                Targeting: Range
+                Filter: Enemy
+                CanSkip: False
+                AnimOverload: CastNegative
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Fast
+                ConditionalOverrides:
+                    TWoundCO_SlowBuffed:
+                        Self: True
+                        Requirement:
+                            Vars: 
+                                ValidateHasTreatSlowAgilityAsFast: TargetingActor.HasActiveBonusFlag(AbilityData.EActiveBonusFlag.TreatSlowAgilityAsFast)
+                        AbilityOverrides:
+                            TOverloadAnim:
+                                AnimOverload: CastNegativeSlow
+            TDamage:
+                Damage: 2
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Target: -1
+                Targeting: All
+                AnimOverload: CastNegative
+                Filter:
+                    TargetType: Enemy
+                    TargetHasNegativeCondition: Wound
+                ConditionalOverrides:
+                    TDamageCO_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            TAnim:
+                                AnimOverload: CastNegativeSlow
+                    TDamageCO_SlowBuffed:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Fast
+                            Vars: 
+                                ValidateHasTreatSlowAgilityAsFast: TargetingActor.HasActiveBonusFlag(AbilityData.EActiveBonusFlag.TreatSlowAgilityAsFast)
+                        AbilityOverrides:
+                            TAnim:
+                                AnimOverload: CastNegativeSlow
+            TNullTargeting:
+                NullTargeting: True
+                Filter: [Self]
+        Consumes:
+            TCLight:
+                Elements: Light
+                Abilities:
+                    TCInfuseDark:
+                        ParentName: TNullTargeting
+                        Infuse: Dark
+                        SkipAnim: True
+            TCDark:
+                Elements: Dark
+                Abilities:
+                    TCInfuseLight:
+                        ParentName: TNullTargeting
+                        Infuse: Light
+                        SkipAnim: True
+    Bottom:
+        Abilities:        
+            BHeal:
+                Heal:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Heal", "Range")
+                Range: 1
+                Target: 99
+                Targeting: Range
+                Filter: [Self, Ally]
+                AnimOverload: PowerUp1HexAOE
+                MiscVars:
+                    AutoSelectValidTiles: True
+                ConditionalOverrides:
+                    BHeal_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            BAnim:
+                                AnimOverload: PowerUpSlow1HexAOE
+            BExtraTurn:
+                AddActiveBonus:
+                    SelectAndPlayCard: 
+                    Filter: Self
+                    AutoTrigger: True
+                    CanUndo: False
+                Filter: Self
+                Tokens: -1
+                Flags: [ModifiesTimeTokens]
+                HelpBoxTooltipLocKey: "$FH/043_character_ability_cards_blinkblade_sand_in_the_hourglass_4$"
+                ActiveBonus:
+                    Duration: Turn
+                    Behaviour: EndTurnAbility
+                    XPTracker: [0]
+                    ListLayoutOverride: [$FH/043_character_ability_cards_blinkblade_sand_in_the_hourglass_4$, Positive_Cards]
+                AnimOverload: ChargeUp
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Fast
+                    TimeTokens: ">= 1"
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "50,50"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "<b><size=130%><sprite name=Wound></size></b> <sprite name=Range> *TWound.Range*"
+            - Column:
+        - Divider:
+        - Row: "$FH/043_character_ability_cards_blinkblade_sand_in_the_hourglass_2$"
+        - Row: "<size=100%> "
+        - Consume:
+            Name: TCLight
+            Text:
+                - Row: "<nobr><size=170%><sprite name=Dark></size></nobr>"
+        - Row: "<size=20%> "
+        - Consume:
+            Name: TCDark
+            Text:
+                - Row: "<nobr><size=170%><sprite name=Light></size></nobr>"
+    Bottom:                      
+        - Row:
+            - ColumnWidths: "20,30,30,20"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Heal> *BHeal* </size></b><voffset=1>@BHeal@"
+            - Column:
+                - Row: "$FH/043_character_ability_cards_blinkblade_sand_in_the_hourglass_3$"
+            - Column:
+        - Divider:
+        - Row:
+            - ColumnWidths: "80,20"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Layout: "$FH/043_character_ability_cards_blinkblade_sand_in_the_hourglass_4$"
+            - Column:
+        

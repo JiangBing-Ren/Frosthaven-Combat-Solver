@@ -1,0 +1,27 @@
+Parser: EnemyCard
+ID: 741
+Name: $Monster_Ability_741_AlgoxSnowspeaker_BlisteringAssault$
+Initiative: 30
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: 1
+        Attack1:
+            Attack: -1
+            Range: 4
+            RangeIsBase: True
+            AnimOverload: RangedAttack
+            SubAbilities:
+                Attack1SubPush:
+                    Push:
+                        Amount: 1
+                    IsInlineSubAbility: True
+    Consumes:
+        CAir:
+            Elements: Air
+            AbilityOverrides:
+                OAttack1SubPush:
+                    ParentName: Attack1SubPush
+                    Push:
+                        Amount: 2

@@ -1,0 +1,114 @@
+Parser: Enemy
+ID: TheBrothersID
+LocKey: $FH/TheBrothers$
+MonsterType: Monster
+Model: [TheRedBrother, TheBlueBrother]
+StandeeLimit: 2
+PredominantlyMelee: True
+AbilityCards: [28770001, 28770002, 28770003, 28770004, 28770005, 28770006, 28800007, 28810008]
+# Base Stats
+Level0:
+    Health: 0
+    Move: 0
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 0
+    Immunities: [Push, Pull, Teleport,  Move, Teleport2]  
+    ImmuneToForcedMovement: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersTimesLevelPlusX
+            xVariable: 2
+            MinLValue: 1         
+Level1:
+    Health: 0
+    Move: 0
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 0
+    Immunities: [Push, Pull, Teleport,  Move, Teleport2]  
+    ImmuneToForcedMovement: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersTimesLevelPlusX
+            xVariable: 2    
+Level2:
+    Health: 0
+    Move: 0
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 0
+    Immunities: [Push, Pull, Teleport,  Move, Teleport2]  
+    ImmuneToForcedMovement: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersTimesLevelPlusX
+            xVariable: 2
+Level3:
+    Health: 0
+    Move: 0
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 0
+    Immunities: [Push, Pull, Teleport,  Move, Teleport2]  
+    ImmuneToForcedMovement: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersTimesLevelPlusX
+            xVariable: 2    
+Level4:
+    Health: 0
+    Move: 0
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 0
+    Immunities: [Push, Pull, Teleport,  Move, Teleport2]  
+    ImmuneToForcedMovement: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersTimesLevelPlusX
+            xVariable: 2    
+Level5:
+    Health: 0
+    Move: 0
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 0
+    Immunities: [Push, Pull, Teleport,  Move, Teleport2]  
+    ImmuneToForcedMovement: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersTimesLevelPlusX
+            xVariable: 2    
+Level6:
+    Health: 0
+    Move: 0
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 0
+    Immunities: [Push, Pull, Teleport,  Move, Teleport2]  
+    ImmuneToForcedMovement: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersTimesLevelPlusX
+            xVariable: 2    
+Level7:
+    Health: 0
+    Move: 0
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 0
+    Immunities: [Push, Pull, Teleport,  Move, Teleport2]  
+    ImmuneToForcedMovement: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: CharactersTimesLevelPlusX
+            xVariable: 2    

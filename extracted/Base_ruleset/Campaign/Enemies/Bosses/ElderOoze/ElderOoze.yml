@@ -1,0 +1,98 @@
+Parser: Enemy
+ID: ElderOozeID
+LocKey: $FH/ElderOoze$
+MonsterType: Boss
+Model: ElderOoze
+StandeeLimit: 1
+PredominantlyMelee: True
+AbilityCards: [206201, 206202, 206203, 206204, 206205, 206206, 206207, 206208]
+CanMoveOnActorClassID: [OozeID]
+# Base Stats
+Level0:
+    Health: 0
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Immobilize, Stun]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 16
+Level1:
+    Health: 0
+    Move: 4
+    Attack: 3
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Immobilize, Stun]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 20
+Level2:
+    Health: 0
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Immobilize, Stun]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 24
+Level3:
+    Health: 0
+    Move: 5
+    Attack: 4
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Immobilize, Stun]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 30
+Level4:
+    Health: 0
+    Move: 5
+    Attack: 5
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Immobilize, Stun]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 36
+Level5:
+    Health: 0
+    Move: 5
+    Attack: 5
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Immobilize, Stun]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 42
+Level6:
+    Health: 0
+    Move: 5
+    Attack: 6
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Immobilize, Stun]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 59
+Level7:
+    Health: 0
+    Move: 5
+    Attack: 7
+    Range: 1
+    Target: 1
+    Immunities: [Wound, Poison, Immobilize, Stun]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 76

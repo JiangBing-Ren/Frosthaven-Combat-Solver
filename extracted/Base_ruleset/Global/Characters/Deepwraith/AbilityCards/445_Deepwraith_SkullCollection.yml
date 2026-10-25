@@ -1,0 +1,102 @@
+Parser: AbilityCard
+Name: $FH/445_character_ability_cards_deepwraith_skull_collection_1$
+Character: DeepwraithID
+ID: 445
+Level: 1
+Initiative: 22
+Discard: [Lost,Discard]
+Prefab: 445_Deepwraith_SkullCollection
+Data:
+    Top:
+        Abilities:
+            TActivePoison: 
+                AddActiveBonus:
+                    Poison: True
+                    Filter: Enemy
+                    MiscVars:
+                        PrintedProperties: list("Range")
+                    Tokens: -1
+                    Flags: [ModifiesTrophyTokens]
+                    AnimOverload: AttackPoison 
+                Filter: Self
+                AnimOverload: PowerUp
+                ActiveBonus:
+                    Behaviour: [DuringTurnAbility, BetweenActionAbilities]
+                    Duration: Persistent
+                    IsToggleBonus: True
+                    ListLayoutOverride: [$FH/445_character_ability_cards_deepwraith_skull_collection_3$, Positive_Deepwraith_DWRTrophy]
+                    MiscVars:
+                        OverrideIcon: "'Ability_Deepwraith_SkullCollection1'"
+                    Requirements:
+                        Type: ThisAbility
+                        TrophyTokens: ">= 1"
+                        Vars:
+                            ValidateEnemiesInRange: AllEnemyMonsters.Where(obj.GetDistanceTo(CheckingBonus.Caster) <= 1).Count > 0
+                SubAbilities:
+                    TActiveMuddle:     
+                        AddActiveBonus:
+                            Muddle: True
+                            Filter: Enemy
+                            MiscVars:
+                                PrintedProperties: list("Range")
+                            Tokens: -1
+                            Flags: [ModifiesTrophyTokens]
+                            AnimOverload: Intimidate 
+                        Filter: Self
+                        SkipAnim: True
+                        AutoTrigger: True
+                        TreatAsNonSubAbility: True
+                        ActiveBonus:
+                            Behaviour: [DuringTurnAbility, BetweenActionAbilities]
+                            Duration: Persistent
+                            IsToggleBonus: True
+                            ListLayoutOverride: [$FH/445_character_ability_cards_deepwraith_skull_collection_4$, Positive_Deepwraith_DWRTrophy]
+                            MiscVars:
+                                OverrideIcon: "'Ability_Deepwraith_SkullCollection2'"
+                            Requirements:
+                                Type: ThisAbility
+                                TrophyTokens: ">= 1"
+                                Vars:
+                                    ValidateEnemiesInRange: AllEnemyMonsters.Where(obj.GetDistanceTo(CheckingBonus.Caster) <= 1).Count > 0
+                    TActiveInfuse:     
+                        AddActiveBonus:
+                            Filter: Self
+                            Infuse: Dark
+                            Tokens: -1
+                            Flags: [ModifiesTrophyTokens]
+                            SkipAnim: True
+                            ShowElementPicker: True
+                        Filter: Self
+                        SkipAnim: True
+                        AutoTrigger: True
+                        TreatAsNonSubAbility: True
+                        ActiveBonus:
+                            Behaviour: [DuringTurnAbility, BetweenActionAbilities]
+                            Duration: Persistent
+                            IsToggleBonus: True
+                            ListLayoutOverride: [$FH/445_character_ability_cards_deepwraith_skull_collection_5$, Positive_Deepwraith_DWRTrophy]
+                            MiscVars:
+                                OverrideIcon: "'Ability_Deepwraith_SkullCollection3'"
+                            Requirements:
+                                Type: ThisAbility
+                                TrophyTokens: ">= 1"
+                                Vars:
+                                    ValidateDarkIsntInfused: CustomAbility.IsElementInCreation(ElementInfusionBoardManager.EElement.Dark) == False
+        XP: 2
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 4
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+Layout:
+    Top:
+        - Active:
+            Ability: TActivePoison
+            Icon: DWRTrophy
+            ListLayout: "$FH/445_character_ability_cards_deepwraith_skull_collection_2$"
+            Layout: "$FH/445_character_ability_cards_deepwraith_skull_collection_2$"
+    Bottom:
+        - Row: "<sprite name=Move> *BMove* @BMove@"

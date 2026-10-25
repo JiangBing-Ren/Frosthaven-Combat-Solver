@@ -1,0 +1,9 @@
+Parser: AttackModifier
+Name: AMC_Heal1_R
+MathModifier: "+0"
+Rolling: True
+Abilities:
+    AHeal:
+        Heal: 1
+        Filter: Self
+        AutoTrigger: True

@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 192.5
+Name: Temple Built
+SkipCompletedNotification: False
+Effects:
+    - Type: EnableEvent
+      Param1: WO-73
+    - Type: EnableEvent
+      Param1: SR-43

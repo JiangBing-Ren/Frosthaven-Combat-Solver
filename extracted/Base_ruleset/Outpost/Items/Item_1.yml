@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 1
+ScenarioItemID: 882
+Name: Spyglass
+Quantity: 2
+Type: Head
+CraftingCost:
+    Metal: 1

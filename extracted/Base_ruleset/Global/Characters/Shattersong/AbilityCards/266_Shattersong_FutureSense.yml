@@ -1,0 +1,82 @@
+Parser: AbilityCard
+Name: $FH/266_character_ability_cards_shattersong_future_sense_1$
+Character: ShattersongID
+ID: 266
+Level: 6
+Initiative: 28
+Discard: [Discard,Lost]
+Prefab: 266_Shattersong_FutureSense
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 2
+                    SquareEnhancements: 1
+                Range: 
+                    Amount: 4
+                    SquareEnhancements: 1
+                Target: 2
+                MiscVars:
+                    PrintedProperties: list("Attack","Range","Target")     
+                Filter: [Enemy]
+                AnimOverload: RangedAttackMedium
+                SubAbilities:
+                    TRevealCard:
+                        TreatAsNonSubAbility: True
+                        NullTargeting: True
+                        AutoTrigger: True
+                        Filter: Enemy
+                        AnimOverload: Cast_Concentrate
+                        MiscVars:
+                            DontCopy: True
+                        PerformVars:
+                            ApplyToActors:
+                                Targets: ParentAbility.ActorsTargeted
+                                # show next monster cards
+                                ShowMonsterCards: CustomAbility.ShowTopMonsterCards(Targets)
+        Consumes:
+            TCResonance:
+                Resonance: 1
+                AbilityOverrides:
+                    CBuffAttack:
+                        ParentName: TAttack
+                        Target: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 7
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")     
+                Jump: True
+            BToken:
+                NullTargeting:
+                Tokens: 3
+                Flags: [ModifiesResonanceTokens]
+                Filter: [Self]
+                AnimOverload: Cast_Concentrate
+        Infuse: Earth
+        XP: 1
+Layout:
+    Top:
+        - Row:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column: "<mark=#FCD06E22><size=100%><sprite name=Target>*TAttack.Target*, <sprite name=Range> *TAttack.Range* @TAttack.Range@</mark>"
+        - Row: "$FH/266_character_ability_cards_shattersong_future_sense_2$"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCResonance
+                    Text: "<size=100%>+1 <sprite name=Target>"
+    Bottom:
+        - Row:
+            - Column: "<sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+            - Column: "<mark=#FCD06E22><size=100%><sprite name=Jump></mark>"
+        - Divider:
+        - Row: "$FH/266_character_ability_cards_shattersong_future_sense_3$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Earth

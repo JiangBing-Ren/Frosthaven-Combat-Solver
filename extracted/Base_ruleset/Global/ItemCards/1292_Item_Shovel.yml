@@ -1,0 +1,37 @@
+Parser: ItemCard
+ID: 1292
+StringID: ShovelID
+Name: $FH/1292_item_cards_shovel_1$
+Art: Shovel
+TotalInGame: 2
+Cost: 0
+Slot: OneHand
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data:      
+    ItemRequirements:
+        Vars:
+            TilesInRange: GameState.GetTilesInRange(Actor, 1).Where(obj.FindTerrainProp(true) != null || obj.FindObstacleProp(true, true) != null || obj.FindPropOfTypes(EPropType.Trap, true) != null)
+            ValidateHasTiles: TilesInRange.Count > 0
+    Abilities:
+        TDestroyObstacles:
+            NullHex: true
+            HelpBoxTooltipLocKey: $GUI_CHOOSE_ABILITY_TARGET_1292_item_cards_shovel_1$
+            Range: 1
+            RangeIsBase: true
+            TileFilter: Custom
+            MiscVars:
+                IsValidTile: obj.FindTerrainProp(true) != null || obj.FindObstacleProp(true, true) != null || obj.FindPropOfTypes(EPropType.Trap, true) != null
+                DontCancelIfNoTiles: True
+                DontPreviewDescription: True
+                DontCopy: True
+                SelectMultiHexProps: True
+            PerformVars:
+                Perform:
+                    SelectedTile: TilesSelected[0]
+                    Prop: SelectedTile.FindTerrainProp(true) || SelectedTile.FindObstacleProp(true, true) || SelectedTile.FindPropOfTypes(EPropType.Trap, true)
+                    DestroyProp: Prop.DestroyPropFromAbility(obj) 
+                    VFX: CustomAbility.PlayVFX("ItemShovelEffect", SelectedTile.m_ArrayIndex)
+Layout: 
+    - Row: $FH/1292_item_cards_shovel_2$

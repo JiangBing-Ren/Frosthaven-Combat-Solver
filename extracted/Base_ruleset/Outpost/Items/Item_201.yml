@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 201
+ScenarioItemID: 1211
+Name: Wave Blade
+Quantity: 1
+GoldCost: 50
+Type: TwoHandWeapon
+IsNewCharacterItem: False

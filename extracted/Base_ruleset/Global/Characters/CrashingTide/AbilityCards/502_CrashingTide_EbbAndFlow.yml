@@ -1,0 +1,97 @@
+Parser: AbilityCard
+Name: $FH/502_character_ability_cards_crashing_tide_ebb_and_flow_1$
+Character: CrashingTideID
+ID: 502
+Level: 8
+ProgressionOrder: 502
+Initiative: 24
+Discard: [Lost,Discard]
+Prefab: 502_CrashingTide_EbbAndFlow
+Data:
+    Top:
+        Abilities:
+            TPull:
+                Pull: 2
+                Range: 4
+                MiscVars:
+                    PrintedProperties: list("Pull","Range")
+                Target: 99
+                Targeting: Range
+                Filter: [Enemy]
+                AnimOverload: BloodInTheWater
+            TAttack:
+                Attack:
+                    Amount: 3
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Conditions: [Immobilize]
+                Range: 1
+                Target: 99
+                Targeting: Range
+                Filter: [Enemy]
+                AnimOverload: MeleeSwing
+                MiscVars:
+                    AutoSelectValidTiles: True
+                SubAbilities:
+                    TAttackSubPush:
+                        Push: 2
+                        IsInlineSubAbility: True
+        XP: 2
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BHeal:
+                Heal: 3
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Heal","Range")
+                Target: 1
+                Targeting: Range
+                Filter: [Self, Ally]
+                AnimOverload: PowerUp
+                SubAbilities:
+                    TCreateWater:
+                        CreateTerrain: Water
+                        TileFilter: FeaturelessHex
+                        Vars:
+                            OverridePropName: "'CrashingTideWater'"
+                        Target: 1
+                        Targeting: Custom
+                        TargetingVars:
+                            ActorsTargeted: ParentAbility.ActorsTargeted
+                            AddTilesInRange: ActorsTargeted.Select(Tile).Where(CAbilityFilter.IsTileFeatureless(obj))
+                        TreatAsNonSubAbility: True
+                        AnimOverload: CreateWaterTile
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "15,35,35,15"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Pull> *TPull*"
+            - Column:
+                - AddedEffect: "$FH/502_character_ability_cards_crashing_tide_ebb_and_flow_2$"
+            - Column:
+        - Divider:
+        - Row:
+            - ColumnWidths: "30,70"
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column:
+                - AddedEffect: "$FH/502_character_ability_cards_crashing_tide_ebb_and_flow_3$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row:
+            - ColumnWidths: "25,25,25,25"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Heal> *BHeal*"
+            - Column:
+                - AddedEffect: "<sprite name=Range>3"
+            - Column:
+        - Row: "<size=50%> "
+        - Row: "$FH/502_character_ability_cards_crashing_tide_ebb_and_flow_4$"

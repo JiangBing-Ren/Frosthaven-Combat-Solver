@@ -1,0 +1,20 @@
+Parser: EnemyCard
+ID: 608
+Name: $Monster_Ability_608_RoboticBoltshooter_FocusFire$
+Initiative: 78
+Shuffle: False
+Data:
+    Abilities:
+        AMove:
+            Move: -0
+        AAttack:
+            Attack: -1
+            Range: 5
+            RangeIsBase: True
+            TargetOneEnemyWithAllAttacks: True
+            AnimOverload: RangedAttack
+        ADummy:
+            Null: True
+            AutoTrigger: True
+            Text: "$Target_OneEnemyWithAllAttacks$"
+            TextOnly: True

@@ -1,0 +1,18 @@
+Parser: ItemCard
+ID: 962
+StringID: IntricateCharmID
+Name: $FH/0962_item_cards_intricate_charm_1$
+Art: Intricate Charm
+TotalInGame: 2
+Cost: 0
+Rarity: Rare
+Slot: Head 
+Usage: Unrestricted
+Trigger: PassiveEffect
+Data:
+    Abilities:
+        AAttackMod:
+            Filter: Self
+            RemoveAttackModifier: [AMC_Basic_P0, AMC_Basic_M1]
+Layout:
+    - Row: $FH/0962_item_cards_intricate_charm_2$

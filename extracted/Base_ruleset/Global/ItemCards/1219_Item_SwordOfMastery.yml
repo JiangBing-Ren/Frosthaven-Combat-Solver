@@ -1,0 +1,89 @@
+Parser: ItemCard
+ID: 1219
+StringID: SwordOfMasteryID
+Name: $FH/1219_item_cards_sword_of_mastery_1$
+Art: Sword Of Mastery
+TotalInGame: 1
+Cost: 60
+Slot: TwoHand
+Rarity: Rare
+Usage: Spent
+Trigger: PassiveEffect
+Data:
+    Abilities:
+        BuffAttack1:
+            Attack: 0
+            AttackHasAdvantage: True
+            PreviewEffectText: " "
+            Filter: Self
+            HelpBoxTooltipLocKey: "$FH/1219_item_cards_sword_of_mastery_2$"
+            ActiveBonus:
+                Duration: Persistent
+                ValidAbilityType: Attack
+                Behaviour: BuffSingleAttack
+                IsSingleTargetBonus: True
+                IsToggleBonus: True
+                FullCopy: True
+                Hidden: True
+                Restriction: OncePerRound
+                XPTracker: [0]
+                Requirements:
+                    Type: ThisAbility
+                    Vars:
+                        ValidateIsMelee: (Ability.Range <= 1 || (Ability.MiscAbilityData != null && Ability.MiscAbilityData.TreatAsMelee != null && Ability.MiscAbilityData.TreatAsMelee.Value == true))
+                        ValidateCostAbility: Ability.TargetingActor.SetTempVar("ParentCostAbility", Ability)
+                CostAbility:
+                    Filter: Self
+                    HelpBoxTooltipLocKey: "$FH/1219_item_cards_sword_of_mastery_2$"
+                    CanUndo: True
+                    Vars:
+                        CacheActiveBonus: PhaseManager.CurrentPhaseAction.CurrentTriggeredActiveBonus
+                        CostAbility: TargetingActor.ParentCostAbility
+                    StartAbilityRequirements:
+                        Type: ThisAbility
+                        Vars:
+                            ValidateMastery1: Actor.CompletedMasteries >= 1
+                    Choose:
+                        Choices:
+                            Strength:
+                                PreviewEffectText: "+1 <sprite name=Attack>"
+                            Wound:
+                                PreviewEffectText: "<sprite name=Wound>"
+                            Poison:
+                                PreviewEffectText: "<sprite name=Poison>"
+                    PerformVars:
+                        ActorIsApplying:
+                            ModifyValue: ChosenAbility.Name == "Strength" && CustomAbility.BuffAttackBonus(CacheActiveBonus, 1, ChosenAbility.Name)
+                            AddCondition: ChosenAbility.Name != "Strength" && CustomAbility.BuffAttackBonus(CacheActiveBonus, 0, ChosenAbility.Name)
+                    SubAbilities:
+                        SecondMasteryBuff:
+                            Filter: Self
+                            HelpBoxTooltipLocKey: "$FH/1219_item_cards_sword_of_mastery_2$"
+                            TreatAsNonSubAbility: True
+                            AutoTrigger: True
+                            StartAbilityRequirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateMastery1: Actor.CompletedMasteries >= 2
+                            Choose:
+                                Choices:
+                                    Strength:
+                                        PreviewEffectText: "+1 <sprite name=Attack>"
+                                    Wound:
+                                        PreviewEffectText: "<sprite name=Wound>"
+                                    Poison:
+                                        PreviewEffectText: "<sprite name=Poison>"
+                            PerformVars:
+                                ActorIsApplying:
+                                    StrengthValue: ParentAbility.ChosenAbility.Name == "Strength" && 2 || ParentAbility.ChosenAbility.Name != "Strength" && 0
+                                    ModifyValue: ChosenAbility.Name == "Strength" && CustomAbility.BuffAttackBonus(ParentAbility.CacheActiveBonus, StrengthValue, ChosenAbility.Name)
+                                    AddCondition: ChosenAbility.Name != "Strength" && CustomAbility.BuffAttackBonus(ParentAbility.CacheActiveBonus, 0,  ChosenAbility.Name)
+    CompareAbility:
+        AbilityType: Attack
+        Filter: Enemy
+Layout: 
+    - Active:
+        Ability: BuffAttack1
+        ListLayout: $FH/1219_item_cards_sword_of_mastery_2$
+        Layout: $FH/1219_item_cards_sword_of_mastery_2$
+        Icon: "Attack"

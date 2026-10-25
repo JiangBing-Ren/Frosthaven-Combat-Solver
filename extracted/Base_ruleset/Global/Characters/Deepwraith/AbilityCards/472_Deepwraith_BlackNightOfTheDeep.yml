@@ -1,0 +1,71 @@
+Parser: AbilityCard
+Name: $FH/472_character_ability_cards_deepwraith_black_night_of_the_deep_1$
+Character: DeepwraithID
+ID: 472
+Level: 9
+Initiative: 26
+Discard: [Discard,Discard]
+Prefab: 472_Deepwraith_BlackNightOfTheDeep
+Data:
+    Top:
+        Abilities:
+            TConsume:
+                PreviewEffectText: "<sprite name=Invisible>"
+                Consume:
+                    Trophies: 1
+                    Element: Dark
+                    Abilities:
+                        BToken:
+                            AutoTrigger: True
+                            Invisible: True
+                            Filter: [Self]
+                            SkipAnim: True
+                    PreviewEffectId: M1TrophyDarkInvisible
+                SkipAnim: True
+                XP: 1
+            TAttack:
+                Attack:
+                    Amount: 3
+                    CircleEnhancements: 1
+                Target: 3
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Attack","Target","Range")
+                MultiPassAttack: False
+                Conditions: [Curse]
+                AnimOverload: RangedAttack
+    Bottom:
+        Abilities: 
+            BTeleport:
+                Teleport2: 
+                    Amount: 4
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Teleport")
+                Filter: Self
+                AnimOverload: Teleport Into
+                AnimOverload2: Teleport Outof
+            BImmobilize:
+                Immobilize: True
+                Range: 1
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Target: 99
+                Filter: Enemy
+                AnimOverload: Intimidate_AOE
+                MiscVars:
+                    AutoSelectValidTiles: True
+        Infuse: Dark
+Layout:
+    Top:
+        - Row: "$FH/472_character_ability_cards_deepwraith_black_night_of_the_deep_2$"
+        - Divider:
+        - Row: "<sprite name=Attack> *TAttack* @TAttack@"
+        - Row: "<sprite name=Target> *TAttack.Target*, <sprite name=Range>  *TAttack.Range*, <sprite name=Curse>"
+    Bottom:
+        - Row: "<sprite name=Teleport> *BTeleport* @BTeleport@"
+        - Divider:
+        - Row: "$FH/472_character_ability_cards_deepwraith_black_night_of_the_deep_3$"
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark

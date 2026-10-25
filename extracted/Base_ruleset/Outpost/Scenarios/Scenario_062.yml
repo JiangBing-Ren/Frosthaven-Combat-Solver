@@ -1,0 +1,13 @@
+Parser: FHScenario
+ID: 62
+Name: The Unfettered Seal
+LevelID: FS_062_The_Unfettered_Seal
+Chain: PuzzleBook
+Location: CrystalFields
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: AddProsperity
+          Param1: 1
+        - Type: UnlockScenario
+          Param1: 63

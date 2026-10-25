@@ -1,0 +1,19 @@
+Parser: FHScenario
+ID: 137
+Name: Pirate Queen's Haul
+LevelID: FS_137_Pirate_Queens_Haul
+RequiresBoat: true
+Chain: Other
+Location: TheBitingSea
+Difficulty: 1
+Conclusions:
+    - Effects:
+        - Type: AllCharactersGainGold
+          Param1: 30
+        - Type: GainMorale
+          Param1: 3
+        - Type: AddProsperity
+          Param1: 2
+        - Type: AddLootCardBonus
+          Param1: Money
+          Param2: 1

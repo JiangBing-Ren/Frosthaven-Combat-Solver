@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 10
+ScenarioItemID: 900
+Name: Crude Shield
+Quantity: 2
+Type: OneHandWeapon
+CraftingCost:
+    Metal: 1

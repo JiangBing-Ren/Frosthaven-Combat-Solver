@@ -1,0 +1,13 @@
+Parser: AttackModifier
+Name: AMC_Damage1Range1_P0
+MathModifier: "+0"
+Abilities:
+    DamageAbility:
+        Damage: 1
+        Filter: Enemy
+        Target: -1
+        Targeting: Custom
+        TargetingVars:
+            AddValidActorsInRange: GameState.GetAllEnemiesInRange(TargetingActor, TargetActor.ArrayIndex, 1)
+        MiscVars:
+            TreatAsNonInlineForTargeting: True

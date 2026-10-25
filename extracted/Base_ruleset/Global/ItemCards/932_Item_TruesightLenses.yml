@@ -1,0 +1,32 @@
+Parser: ItemCard
+ID: 932
+StringID: truesightLensesID
+Name: $FH/0932_item_cards_truesight_lenses_1$
+Art: Truesight Lenses
+TotalInGame: 2
+Cost: 20
+Slot: Head
+Rarity: Rare
+Usage: Spent
+Trigger: PassiveEffect
+Data: 
+    Abilities:
+        AModifyAttack:
+            ChangeAttackModifier:
+            ReplaceModifiers: ["*0"]
+            ReplaceNegativeModifiers: True
+            ReplaceWithModifiers: ["+0"]
+            MiscVars:            
+                EndAfterAttackAbilityFinishIfToggled: True
+            ActiveBonus:
+                IsToggleBonus: True
+                Duration: Persistent
+                Behaviour: AdjustWhenAttacking
+                Hidden: True
+Layout: 
+    - Active:
+        Ability: AModifyAttack
+        ListLayout: $FH/0932_item_cards_truesight_lenses_2$
+        Layout: $FH/0932_item_cards_truesight_lenses_2$
+        Icon: "Damage"
+    - Row: "<size=50%> "

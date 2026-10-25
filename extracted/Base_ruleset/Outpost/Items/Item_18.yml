@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 18
+ScenarioItemID: 916
+Name: Rough Boots
+Quantity: 2
+Type: Feet
+CraftingCost:
+    Hide: 1
+RequiredCraftingItemIDs: [ 5 ]

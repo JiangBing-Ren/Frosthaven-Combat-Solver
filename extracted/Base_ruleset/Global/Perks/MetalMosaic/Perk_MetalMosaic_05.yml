@@ -1,0 +1,7 @@
+Parser: Perk
+ID: MetalMosaic05
+Name: FH/PERK_MetalMosaic_05_Name
+Description: FH/PERK_MetalMosaic_05_Desc
+CharacterID: MetalMosaicID
+Available: 2
+CardsToAdd: [AMC_Heal2_Self_P1]

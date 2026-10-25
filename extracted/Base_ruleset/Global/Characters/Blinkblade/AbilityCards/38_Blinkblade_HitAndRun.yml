@@ -1,0 +1,100 @@
+Parser: AbilityCard
+Name: $FH/38_character_ability_cards_blinkblade_hit_and_run_1$
+Character: BlinkbladeID
+ID: 38
+Level: 1
+Initiative: 41
+Discard: [Discard,Lost]
+Prefab: 38_Blinkblade_HitAndRun
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                    CircleEnhancements: 1
+                Range: 1
+                Target: 1
+                Targeting: Range
+                Condition: Immobilize
+                Filter: Enemy
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                ConditionalOverrides:
+                    TAttackCO_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            TAttack:
+                                Strength: -1
+                                AnimOverload: AttackSlow
+            TMove:
+                Move: 2
+                MiscVars:
+                    PrintedProperties: list("Move")
+                #CanSkip: False
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Fast
+                    XP: 1                
+    Bottom:
+        Abilities:
+            BActive:
+                AddActiveBonus:
+                    Move: 3
+                    Filter: Self
+                    AutoTrigger: True
+                    MiscVars:
+                        FromHitAndRun: True
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: DuringActionAbilityOnActionEnded
+                    XPTracker: [0,0,1,0,1]
+                    Flags: [WhenFast]
+                    Vars:
+                        LastPhaseAbility: CustomAbility.LastPhaseAbility()
+                        ValidateHappened: LastPhaseAbility != null && (LastPhaseAbility.MiscVars == null || !CustomAbility.GetMiscVarBool(LastPhaseAbility, "FromHitAndRun"))
+                        ValidateHasAttackedThisAction: CustomAbility.HasPerformedAttackAction(TriggerActor)
+                Range: 1
+                Target: -1
+                Filter: Self
+                AnimOverload: PowerUp
+                ConditionalOverrides:
+                    BActiveCO_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            BActiveAnim:
+                                AnimOverload: PowerUpSlow
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "15,25,25,35"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column:
+                - Row: "<size=130%><sprite name=Immobilize>"
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Text: "-1 <sprite name=Attack>"
+        - Divider:
+        - Row:
+            - ColumnWidths: "50,50"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "<b><size=130%><sprite name=Move> *TMove*,</size></b><size=100%> <sprite name=XP1>"
+            - Column:
+    Bottom:
+        - Active:
+            Ability: BActive
+            Icon: Positive_Move_Attack_Fast
+            ListLayout: "$FH/038_character_ability_cards_blinkblade_hit_and_run_2$"
+            Layout: "$FH/038_character_ability_cards_blinkblade_hit_and_run_2$"
+        - Row: "<size=50%> "
+        - XPTracker: BActive
+

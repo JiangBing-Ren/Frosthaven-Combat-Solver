@@ -1,0 +1,10 @@
+Parser: FHItem
+ID: 112
+ScenarioItemID: 1089
+Name: Hammer Potion
+Quantity: 2
+Type: Small
+Brewing:
+    Herb1: Rockroot
+    Herb2: Snowthistle
+    Herb3: Axenut

@@ -1,0 +1,51 @@
+Parser: AbilityCard
+Name: $FH/094_character_ability_cards_deathwalker_dark_fog_1$
+Character: DeathwalkerID
+ID: 94
+Level: 1
+Initiative: 46
+Discard: [Lost,Discard]
+Prefab: 94_Deathwalker_DarkFog
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                    DiamondEnhancements: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                AnimOverload: DarkFog
+                Conditions: Curse
+                MultiPassAttack: True
+                AreaEffect: "0,0,R|2,0,R|1,1,R"
+        Infuse: Dark
+        XP: 1
+    Bottom:
+        Abilities:
+            BMoveShadows:
+                MoveShadow:
+                Target: 1
+                Range:
+                    Amount: 5
+                    SquareEnhancements: 1
+                AnimOverload: Shadow Manipulation
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "20,30,30,20"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%> <sprite name=Attack> *TAttack* @TAttack@"
+            - Column:
+                - Row: "<sprite name=Range> *TAttack.Range* <sprite name=Curse>"
+            - Column:
+        - Row: "<size=50%> "
+        - Row: "£Area£"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Dark
+    Bottom:
+        - Row: "$FH/094_character_ability_cards_deathwalker_dark_fog_2$ @BMoveShadows.Range@"

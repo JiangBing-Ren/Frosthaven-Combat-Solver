@@ -1,0 +1,81 @@
+Parser: ItemCard
+ID: 1224
+StringID: CupOfVentillionID
+Name: $FH/1224_item_cards_cup_of_ventillion_1$
+Art: Cup of Ventillion
+TotalInGame: 1
+Cost: 0
+Slot: OneHand 
+Rarity: Rare
+Usage: Spent
+Trigger: PassiveEffect
+Data: 
+    Abilities:
+        AConditionAfterHeal:
+            Filter: Self
+            SkipAnim: True
+            AddActiveBonus:
+                NullTargeting: True
+                Target: 1
+                SkipAnim: True
+                Targeting: Custom
+                TargetingVars:
+                    ParentContext: VarsContext?.parentContext
+                    AddValidActorsInRange: ParentContext.Targets
+                MiscVars:
+                    AutoTrigger: ValidActorsInRange.Count == 1
+                PerformVars:
+                    ActorIsApplying:
+                        StackSubAbilities: CustomAbility.StackNonInlineSubabilities(obj)
+                SubAbilities:
+                    AChooseCondition:
+                        CanUndo: False
+                        Filter: Self
+                        HasCondition: True
+                        Choose:
+                            Conditions: [Invisible, Strengthen, Regenerate, Ward]
+                        MiscVars:
+                            DontPreviewDescription: True
+                            DontPerformChosenAbility: True
+                        SkipAnim: True
+                        PerformVars:
+                            ActorIsApplying:
+                                StackSubAbilities: CustomAbility.StackNonInlineSubabilities(obj)
+                        SubAbilities:
+                            AAddCondition:
+                                Flags: [SubAbilityPreview]
+                                Filter: All
+                                AutoTrigger: True
+                                TreatAsNonSubAbility: True
+                                IsInlineSubAbility: False
+                                NullTargeting: True
+                                # parent name is necessary for vars, since this ability isn't in the queue yet and can't be previewed unless it knows what the choose ability is currently doing
+                                ParentName: AChooseCondition
+                                Vars: 
+                                    ParentAbility: CustomAbility.GetParentAbility(obj)
+                                    ValidateRemovedCondition: ParentAbility?.ChosenAbility != null
+                                    AddPositiveConditions: ParentAbility.ChosenAbility.GetAllPositiveConditions()
+                                MiscVars: 
+                                    PreviewAddPositiveConditionsVar: True
+                                Target: -1
+                                Targeting: Custom
+                                TargetingVars: 
+                                    ParentAbility: CustomAbility.GetParentAbility(parentContext.obj)
+                                    AddValidActorsInRange: ParentAbility.ParentAbility.ActorsTargeted
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: GenericHealAbilityFinished
+                XPTracker: [0]
+                IsToggleBonus: True
+                Hidden: True
+                Vars:
+                    ValidateCasterIsHealing: Caster == TriggerActor
+                    Targets: TriggerAbility.ActorsTargeted.Where(obj != Caster)
+                    ValidateHasTargets: Targets.Count > 0
+                    ValidateCasterHasConditions: CustomAbility.GetPositiveConditionsThatCanBeTransferred(Caster).Count > 0
+Layout:
+    - Active:
+        Ability: AConditionAfterHeal
+        ListLayout: $FH/1224_item_cards_cup_of_ventillion_2$
+        Layout: $FH/1224_item_cards_cup_of_ventillion_2$
+        Icon: Heal

@@ -1,0 +1,18 @@
+Parser: EnemyCard
+ID: 9052
+Name: $Monster_Ability_Tutorial3Deathwalker_VeiledStrike$
+Initiative: 7
+Shuffle: False
+Data:
+    Abilities:
+        AMove:
+            Move: 3
+        AAttack:
+            Attack: 1
+        AConsume:
+            Consume:
+                Elements: Dark
+                Abilities:
+                    CInvisible:
+                        Invisible: True
+                        Filter: Self

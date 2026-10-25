@@ -1,0 +1,27 @@
+Parser: EnemyCard
+ID: 538
+Name: $Monster_Ability_538_ChaosDemon_ChillingBreath$
+Initiative: 14
+Shuffle: False
+Data:
+    Abilities: 
+        AMove:
+            Move: -1
+        AAttack:
+            Attack: 0
+            AreaEffect: "0,0,G|2,0,R|1,1,R"
+            Filter: Enemy
+            MultiPassAttack: False
+            AnimOverload: ChillingBreath
+    Consumes:
+        CIce:
+            Elements: Ice
+            Abilities:
+                ARetaliate:
+                    Retaliate: 2
+                    RetaliateRange: 2
+                    Filter: Self
+                    ActiveBonus:
+                        Duration: Round
+                        ListLayoutOverride: ["<sprite name=Retaliate> *ARetaliate*", Positive_Retaliate]
+                    AnimOverload: PowerUp

@@ -1,0 +1,65 @@
+Parser: AbilityCard
+Name: $FH/226_character_ability_cards_pyroclast_force_of_the_earth_1$
+Character: PyroclastID
+ID: 226
+Level: X
+Initiative: 15
+Discard: [Discard,Discard]
+Prefab: 226_Pyroclast_ForceOfTheEarth
+Data:
+    Top:
+        Abilities:    
+            TAttack:
+                Attack: 
+                    Amount: 1
+                    DiamondEnhancements: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                Conditions: Muddle
+                AnimOverload: RangedAttack_Earth
+                SubAbilities:
+                    TPull:
+                        Pull: 2
+                        MiscVars:
+                            PrintedProperties: list("Push")
+                        IsInlineSubAbility: True
+    Bottom:
+        Abilities:
+            BDestroyObstacle:
+                NullHex: True
+                Range: 1
+                TileFilter: Custom
+                MiscVars:
+                    IsValidTile: obj.FindObstacleProp(true, true) != null
+                    DontCancelIfNoTiles: True
+                    DontPreviewDescription: True
+                    SelectMultiHexProps: True
+                PerformVars:
+                    Perform:
+                        SelectedTile: TilesSelected[0]
+                        Prop: SelectedTile.FindObstacleProp(true, true)
+                        DestroyProp: Prop.DestroyPropFromAbility(obj)
+                AnimOverload: ObstacleDestruction
+                SubAbilities:
+                    BBuffHeal:
+                        AutoTrigger: True
+                        TreatAsNonSubAbility: True
+                        AnimOverload: Cast
+                        AddHeal: 3
+                        Filter: [Self]
+                        ActiveBonus:
+                            Duration: Persistent
+                            Behaviour: BuffIncomingHeal
+                            XPTracker: [0,1]
+Layout:
+    Top:
+        - Column: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Column: "<mark=#80919922><size=100%><sprite name=Range> *TAttack.Range*, <sprite name=Pull> *TPull*, <sprite name=Muddle></mark>"
+    Bottom:
+        - Active:
+            Ability: BBuffHeal
+            ListLayout: "$FH/226_character_ability_cards_pyroclast_force_of_the_earth_3$"
+            Layout: "$FH/226_character_ability_cards_pyroclast_force_of_the_earth_2$"
+            Icon: "Positive_HealPlus"       
+        - XPTracker: BBuffHeal

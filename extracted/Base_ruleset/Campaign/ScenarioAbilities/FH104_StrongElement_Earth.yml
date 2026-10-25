@@ -1,0 +1,8 @@
+Parser: ScenarioAbility
+ID: FH104_StrongElement_Earth
+ScenarioAbility:
+    FH104_StrongElement_Earth:
+        Null:
+        ActiveBonus:
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_104_EarthBuff$, Positive_Earth_Campaign]
+            Duration: Persistent

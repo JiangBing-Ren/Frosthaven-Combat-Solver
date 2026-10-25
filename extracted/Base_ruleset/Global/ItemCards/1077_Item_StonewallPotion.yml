@@ -1,0 +1,34 @@
+Parser: ItemCard
+ID: 1077
+StringID: StonewallPotionID
+Name: $FH/1077_item_cards_stonewall_potion_1$
+Art: Stonewall Potion
+TotalInGame: 2
+Cost: 0
+Slot: SmallItem 
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        AWardSelfAndAllies:
+            Ward: True
+            Filter: [Self,Ally]
+            # target is up to 3 if we select self and 2 allies
+            # target is up to 2 if we're not selecting self
+            Target: 3
+            MiscVars:
+                ShouldPerformOnTileSelected: True
+            PerformVars:
+                ActorIsSelectingTargetingFocus: 
+                    RefreshTargets: CustomAbility.RecalcValidActorsForSelfAndXOthers(obj)
+        # AWardSelf:
+        #     Ward: True
+        #     Filter: Self
+        # AWardTwoAllies:
+        #     Ward: True
+        #     Filter: Ally
+        #     Target: 2
+        #     CanUndo: False
+Layout: 
+    - Row: "$FH/1077_item_cards_stonewall_potion_2$"

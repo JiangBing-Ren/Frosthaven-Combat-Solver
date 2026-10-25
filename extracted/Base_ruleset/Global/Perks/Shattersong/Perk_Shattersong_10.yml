@@ -1,0 +1,16 @@
+Parser: Perk
+ID: Shattersong10
+Name: FH/PERK_Shattersong_10_Name
+Description: FH/PERK_Shattersong_10_Desc
+CharacterID: ShattersongID
+Available: 1
+Flags: [Passive, ApplyActiveBonusesAtScenarioStart]
+Abilities:
+    OnShortRestAir:
+        Filter: Self
+        Brittle: True
+        Tokens: 2
+        Flags: [ModifiesResonanceTokens]
+        NegativeAbilityIsOptional: True
+        CanSkip: True
+        AnimOverload: Cast_Concentrate

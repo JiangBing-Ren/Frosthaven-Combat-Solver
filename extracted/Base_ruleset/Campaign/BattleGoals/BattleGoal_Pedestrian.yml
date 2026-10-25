@@ -1,0 +1,17 @@
+Parser: BattleGoal
+ID: BattleGoal_Pedestrian
+LocalisedName: FH/1323_battle_goals_pedestrian_1
+LocalisedDescription: FH/1323_battle_goals_pedestrian_2
+PerkChecks: 1
+CheckAtEndOfScenario: True
+BattleGoalCondition:
+    - Targets:
+        Filter: MoveInOccupiedHex
+        Value: 0
+        SubFilter: Scenario
+# fail if you kill an enemy
+BattleGoalFailCondition:
+    - Targets:
+        Filter: MoveInOccupiedHex
+        Value: 1
+        SubFilter: Scenario

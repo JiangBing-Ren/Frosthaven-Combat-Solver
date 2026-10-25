@@ -1,0 +1,26 @@
+Parser: EnemyCard
+ID: 643
+Name: $Monster_Ability_643_IceWraith_RenewedAggression$
+Initiative: 44
+Shuffle: True
+Data:
+    Abilities: 
+        Heal1:
+            Heal: 1
+            Filter: Self
+        Move1:
+            Move: 0
+        Attack1:
+            Attack: 0
+            Text: $FH/0643_monster_ability_cards_ice_wraith_renewed_aggression_3$
+            ConditionalOverrides:
+                Attack1CO:
+                    Self: True
+                    Requirement:
+                        IsElite: False
+                    AbilityOverrides:
+                        Attack1:
+                            Range: 4
+                            RangeIsBase: True
+                            AnimOverload: RangedAttack
+    Infuse: Ice

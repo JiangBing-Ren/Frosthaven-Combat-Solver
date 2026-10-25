@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 78.4
+Name: Garden Built
+SkipCompletedNotification: False
+Effects:
+    - Type: EnableEvent
+      Param1: SO-57
+    - Type: EnableEvent
+      Param1: SR-46

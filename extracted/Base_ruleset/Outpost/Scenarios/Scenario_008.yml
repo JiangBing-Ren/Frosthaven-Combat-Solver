@@ -1,0 +1,17 @@
+Parser: FHScenario
+ID: 8
+Name: Crystal Trench
+LevelID: FS_008_Crystal_Trench
+Chain: Unfettered
+Location: CrystalFields
+Difficulty: 1
+Conclusions:
+    - Effects:
+        - Type: GainLumber
+          Param1: 1
+        - Type: GainHide
+          Param1: 2
+        - Type: UnlockScenario
+          Param1: 15
+        - Type: UnlockScenario
+          Param1: 16

@@ -1,0 +1,76 @@
+Parser: AbilityCard
+Name: $FH/184_character_ability_cards_geminate_voice_of_salvation_1$
+Character: GeminateID
+ID: 184
+Level: 9
+ProgressionOrder: 33
+Initiative: 39
+Discard: [Discard,Lost]
+RequiredForm: Range
+Prefab: 184_Geminate_VoiceOfSalvation
+Data:
+    Top:
+        Abilities:
+            TAttackBuff:
+                Attack: 2
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                Filter: Self
+                ActiveBonus:
+                    Duration: Round
+                    Behaviour: BuffAttack
+                    IsAura: True
+                    AuraFilter: Ally
+                    AuraTargeting: Range
+                    ValidAbilityType: Attack
+            TAttackDebuff:
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Attack]
+                AutoTrigger: True
+                SkipAnim: True
+                Attack: -1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                Filter: Self
+                ActiveBonus:
+                    Duration: Round
+                    Behaviour: BuffAttack
+                    IsAura: True
+                    AuraFilter: Enemy
+                    AuraTargeting: Range
+                    ValidAbilityType: Attack
+    Bottom:
+        Abilities:
+            BPreventLoseCard:
+                PreventLoseCard:
+                Filter: Self
+                ActiveBonus:
+                    IsAura: True
+                    AuraFilter: Ally
+                    AuraTargeting: All
+                    Duration: Persistent
+                    Behaviour: PreventLoseCardToPreventDamage
+                    XPTracker: [0,1,0,1]
+Layout:
+    Top:
+        - Row: "$FH/184_character_ability_cards_geminate_voice_of_salvation_2$"
+        - Active:
+            Ability: TAttackBuff
+            ListLayout: "+*TAttackBuff*<sprite name=Attack>"
+            Icon: "Positive_AttackPlus_Ally_Aura"
+        - Active:
+            Ability: TAttackDebuff
+            ListLayout: "*TAttackDebuff*<sprite name=Attack>"
+            Icon: "Negative_AttackMinus"
+    Bottom:
+        - Active:
+            Ability: BPreventLoseCard
+            Layout: "$FH/184_character_ability_cards_geminate_voice_of_salvation_3$"
+            ListLayout: "$FH/184_character_ability_cards_geminate_voice_of_salvation_3$"
+            Icon: "Positive_DamagePrevent_Ally_Cards"
+        - Row: "<size=50%> "
+        - XPTracker: BPreventLoseCard

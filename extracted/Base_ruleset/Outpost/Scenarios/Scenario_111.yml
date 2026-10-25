@@ -1,0 +1,11 @@
+Parser: FHScenario
+ID: 111
+Name: Ice Cave
+LevelID: FS_111_Ice_Cave
+RequiresSled: true
+Chain: RandomScenario
+Difficulty: 3
+Conclusions:
+    - Effects:
+        - Type: GainItem
+          Param1: 236

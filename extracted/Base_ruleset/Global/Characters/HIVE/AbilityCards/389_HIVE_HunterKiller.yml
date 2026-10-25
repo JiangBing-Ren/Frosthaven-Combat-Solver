@@ -1,0 +1,80 @@
+Parser: AbilityCard
+Name: $FH/389_character_ability_cards_hive_hunterkiller_1$
+Character: HIVEID
+ID: 389
+Level: 1
+Initiative: 84
+Discard: [Lost,Discard]
+Prefab: 389_HIVE_Hunter-Killer
+Data:
+    Top:
+        XP: 2
+        Abilities:
+            TSummon:
+                Summon: JackalMechID
+                AnimOverload: Summon
+        Mode:
+            DebuffTakeDamage:
+                AutoTrigger: True
+                AddActiveBonus:
+                    Damage: 2
+                    Filter: Self
+                    IgnoreStun: False
+                    AutoTrigger: True
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: StartTurnAbility
+            BuffAttack:
+                AutoTrigger: True
+                Attack: 0
+                AttackEffect:
+                    Type: BuffIfAttackIsMelee
+                    Strength: 1
+                Filter: Self
+                ActiveBonus:
+                    Behaviour: BuffAttack
+                    Duration: Persistent
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BAttack:
+                Attack: 
+                    Amount: 1
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+Layout:
+    Top:
+        - Active:
+              Ability: "TSummon"
+              Icon: "Summon"
+              Layout:
+                  - Summon:
+                        Ability: TSummon
+                        SummonName: $FH/389_character_ability_cards_hive_hunterkiller_2$
+                        SpecialText:
+                            - Row: "<sprite name=Wound>"
+                            - Row: "<sprite name=Retaliate>1"
+        - Row:
+            - Column: "<sprite name=HIVEMode>"
+            - Column:
+                - Active:
+                    Ability: "DebuffTakeDamage"
+                    Icon: "Negative_DamageSelf_HIVEMode"
+                    ListLayout: "$FH/388_character_ability_cards_hive_reconstructive_aid_4$ <sprite name=Damage> 2 $target_self$"
+                    Layout: "$FH/388_character_ability_cards_hive_reconstructive_aid_4$ <sprite name=Damage> 2 $target_self$"
+            - Column:
+                - Active:
+                    Ability: "BuffAttack"
+                    Icon: "Positive_AttackPlus_HIVEMode"
+                    ListLayout: "$FH/389_character_ability_cards_hive_hunterkiller_4$"
+                    Layout: "$FH/389_character_ability_cards_hive_hunterkiller_4$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* @BMove@"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Attack> *BAttack* @BAttack@"

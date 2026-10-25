@@ -1,0 +1,10 @@
+Parser: CampaignSection
+ID: 163.1
+Name: Tome of Elements (Cold)
+SkipCompletedNotification: True
+Effects:
+    - Type: PartyElementWaningToInertDisabled
+      Param1: Ice
+    - Type: GainItem
+      Param1: 216
+    - Type: SkipNextOutpostEvent

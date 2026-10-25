@@ -1,0 +1,99 @@
+Parser: AbilityCard
+Name: $FH/200_character_ability_cards_infuser_remote_impact_1$
+Character: InfuserID
+ID: 200
+Level: 2
+Initiative: 72
+Discard: [Discard,Discard]
+Prefab: 200_Infuser_RemoteImpact
+Data:
+    Top:
+        Abilities:
+            TRemoteImpactAttack:
+                Attack:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AreaEffect: "0,0,G|2,0,S|3,-1,R|4,0,R|3,1,R|2,2,E|2,-2,E"
+                AreaEffectLayoutOverride: "0,0,G|-1,-1,S|-2,2,R|0,2,R|-3,1,R|-4,0,E|2,2,E"
+                MultiPassAttack: False
+                AnimOverload: RemoteImpact 
+        Consumes:
+            TCAttackBuff:
+                PreviewEffectId: M1Attack
+                AbilityOverrides:
+                    TCOAttack:
+                        ParentName: TRemoteImpactAttack
+                        Attack: -1
+                        SubAbilities:
+                            SubPush:
+                                Push: 1
+                                MiscVars:
+                                    PrintedProperties: list("Push")
+                                IsInlineSubAbility: True
+                            SubInfuse:
+                                Infuse: [Air]
+                                SkipAnim: True
+                                XP: 1
+    Bottom:
+        Abilities:
+            ConsumeAbility:
+                SkipAnim: True
+                Consume: 
+                    Elements: [Earth, Air]
+                    Abilities:
+                        CNull:
+                            Null: True
+                            AutoTrigger: True
+                            SkipAnim: True
+            BRemoteImpactCreateObstacle:
+                Create: RockSingle
+                Range: 5
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Target: 1
+                AnimOverload: CreateObstacle
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Consume]
+                Vars:
+                    OverridePropName: "'Infuser1HObstacle'"
+            BObstacleImmobilize:
+                Immobilize: True
+                Target: 99
+                SkipAnim: True
+                Filter: Enemy
+                Targeting: Custom
+                MiscVars:
+                    AutoSelectValidTiles: True
+                Vars:
+                    Parent: CustomAbility.FindAbilityInPhaseByName("BRemoteImpactCreateObstacle")
+                TargetingVars:
+                    AddTilesInRange: CustomAbility.GetAdjacentTiles(Parent.TilesSelected)
+                    AddValidActorsInRange: CustomAbility.GetActorsWithAdjacentObstacles(Ability, 1, Parent.TilesSelected)
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [ Create ]
+                    DoesntHaveNegativeCondition: [Stun]
+        XP: 1
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TRemoteImpactAttack* <size=100%><voffset=1>@TRemoteImpactAttack@"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCAttackBuff
+                    Text: "-1<sprite name=Attack>: <sprite name=Push> 1, <sprite name=CreateAir>, <sprite name=XP1>"
+        - Row: "£Area£"
+    Bottom:
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<sprite name=ConsumeEarth>, <sprite name=ConsumeAir>:"
+        - Row: "$FH/200_character_ability_cards_infuser_remote_impact_2$"
+        - Divider:
+        - Row: "$FH/200_character_ability_cards_infuser_remote_impact_3$"
+    

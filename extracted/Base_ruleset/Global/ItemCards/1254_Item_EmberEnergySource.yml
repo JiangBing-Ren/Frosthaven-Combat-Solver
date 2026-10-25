@@ -1,0 +1,285 @@
+Parser: ItemCard
+ID: 1254
+StringID: CursedRockID
+Name: $FH/1254_item_cards_ember_energy_source_1$
+Art: Ember Energy Source
+TotalInGame: 1
+Cost: 10
+Slot: SmallItem
+Rarity: Rare
+Usage: Consumed
+Trigger: PassiveEffect
+# mostly copied from shattersong empowering note, with less abilities and more restrictions
+Data: 
+    Vars:
+        LogUseConsumed: True
+    Abilities:
+        TBuff:
+            # dummy bonus, all the actual stuff is in the other abilities
+            NullTargeting: True
+            Filter: Self
+            ActiveBonus:
+                Hidden: True
+                Duration: Persistent
+                XPTracker: [0]
+                ListLayoutOverride: [$1254_item_cards_ember_energy_source_2$, Empty]
+        TBuffMeleeAttack:
+            NullTargeting: True
+            Filter: Self
+            AutoTrigger: True
+            SkipAnim: True
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: OverrideAbility
+                # will only show up as a toggle for these types of abilities
+                ValidAbilityType: [Attack,Move,Damage,Heal,Muddle,Push,Wound,Shield,ControlActor,DestroyObstacle,Brittle,RecoverDiscardedCards, Loot, Retaliate, Trap, Create, RecoverLostCards, Poison, Immobilize, Disarm, Curse, Stun, Strengthen, Bless, Kill, DisarmTrap, DestroyObstacle, Pull, StopFlying, RemoveConditions, NullTargeting, MoveTrap, NullHex, Regenerate, Bane, Ward, Brittle, Impair, CreateTerrain, Teleport2, CreateShadow, MoveShadow, DestroyTerrain, MoveTerrain, ModeTransfer, CreateLimitedHazardousTerrain]
+                IsToggleBonus: True
+                Restriction: OncePerAction
+                Hidden: True
+                ListLayoutOverride: [$1254_item_cards_ember_energy_source_2$, Attack]
+                XPTracker: [0]
+                MiscVars:
+                    PropertyToModify: "'Attack'"
+                    OverrideIcon: "'FH_UI_1MeleeAttack'"
+                    RestrictAllBonusesOnCard: True
+                Vars:
+                    DistinctID: "'EmberEnergySource'"
+                PerformVars:
+                    OnAbilityPerformStarted:
+                        UntoggleBonus: CustomAbility.FinishBonusLock(ActiveBonus, BespokeBehaviour, Ability)
+                Requirement:
+                    Vars: 
+                        # only let us modify abilities that aren't persistent
+                        ValidateIsntPersistent: CustomAbility.IsPersistentAbility(Ability) == False
+                        # only ability card abilities
+                        ValidateIsAbilityCard: CustomAbility.IsFromAbilityCard(Ability)
+
+                        PropertyToModify: CheckingBonus.Ability.ActiveBonusData.GetMiscVar("PropertyToModify")
+                        AbilityToModify: CustomAbility.FindAbilityWithPrintedProperty(PropertyToModify, Ability)
+                        ValidateHasProperty: AbilityToModify != null
+                        ValidTypes: list("Attack")
+                        ValidateAbilityType: ValidTypes.Contains(AbilityToModify.AbilityType.ToString())
+                        ValidateCanBePerformed: CustomAbility.CanBePerformedAfterConditions(AbilityToModify)
+                        ValidateIsMelee: AbilityToModify.IsMeleeAttack
+                ActiveBonusAbilityOverrides:
+                    TCOverride:
+                        Strength: 1     
+        TBuffRangedAttack:
+            NullTargeting: True
+            Filter: Self
+            AutoTrigger: True
+            SkipAnim: True
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: OverrideAbility
+                # will only show up as a toggle for these types of abilities
+                ValidAbilityType: [Attack,Move,Damage,Heal,Muddle,Push,Wound,Shield,ControlActor,DestroyObstacle,Brittle,RecoverDiscardedCards, Loot, Retaliate, Trap, Create, RecoverLostCards, Poison, Immobilize, Disarm, Curse, Stun, Strengthen, Bless, Kill, DisarmTrap, DestroyObstacle, Pull, StopFlying, RemoveConditions, NullTargeting, MoveTrap, NullHex, Regenerate, Bane, Ward, Brittle, Impair, CreateTerrain, Teleport2, CreateShadow, MoveShadow, DestroyTerrain, MoveTerrain, ModeTransfer, CreateLimitedHazardousTerrain]
+                IsToggleBonus: True
+                Restriction: OncePerAction
+                Hidden: True
+                ListLayoutOverride: [$1254_item_cards_ember_energy_source_2$, Empty]
+                XPTracker: [0]
+                MiscVars:
+                    PropertyToModify: "'Attack'"
+                    OverrideIcon: "'FH_UI_1RangedAttack'"
+                    RestrictAllBonusesOnCard: True
+                Vars:
+                    DistinctID: "'EmberEnergySource'"
+                PerformVars:
+                    OnAbilityPerformStarted:
+                        UntoggleBonus: CustomAbility.FinishBonusLock(ActiveBonus, BespokeBehaviour, Ability)
+                Requirement:
+                    Vars: 
+                        # only let us modify abilities that aren't persistent
+                        ValidateIsntPersistent: CustomAbility.IsPersistentAbility(Ability) == False
+                        # only ability card abilities
+                        ValidateIsAbilityCard: CustomAbility.IsFromAbilityCard(Ability)
+
+                        PropertyToModify: CheckingBonus.Ability.ActiveBonusData.GetMiscVar("PropertyToModify")
+                        AbilityToModify: CustomAbility.FindAbilityWithPrintedProperty(PropertyToModify, Ability)
+                        ValidateHasProperty: AbilityToModify != null
+                        ValidTypes: list("Attack")
+                        ValidateAbilityType: ValidTypes.Contains(AbilityToModify.AbilityType.ToString())
+                        ValidateCanBePerformed: CustomAbility.CanBePerformedAfterConditions(AbilityToModify)
+                        ValidateIsMelee: AbilityToModify.IsMeleeAttack == False
+                ActiveBonusAbilityOverrides:
+                    TCOverride:
+                        Strength: 1     
+        TBuffMove:
+            NullTargeting: True
+            Filter: Self
+            AutoTrigger: True
+            SkipAnim: True
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: OverrideAbility
+                # will only show up as a toggle for these types of abilities
+                ValidAbilityType: [Attack,Move,Damage,Heal,Muddle,Push,Wound,Shield,ControlActor,DestroyObstacle,Brittle,RecoverDiscardedCards, Loot, Retaliate, Trap, Create, RecoverLostCards, Poison, Immobilize, Disarm, Curse, Stun, Strengthen, Bless, Kill, DisarmTrap, DestroyObstacle, Pull, StopFlying, RemoveConditions, NullTargeting, MoveTrap, NullHex, Regenerate, Bane, Ward, Brittle, Impair, CreateTerrain, Teleport2, CreateShadow, MoveShadow, DestroyTerrain, MoveTerrain, ModeTransfer, CreateLimitedHazardousTerrain]
+                IsToggleBonus: True
+                Restriction: OncePerAction
+                Hidden: True
+                ListLayoutOverride: [$1254_item_cards_ember_energy_source_2$, Empty]
+                XPTracker: [0]
+                MiscVars:
+                    PropertyToModify: "'Move'"
+                    OverrideIcon: "'FH_UI_1Move'"
+                    RestrictAllBonusesOnCard: True
+                Vars:
+                    DistinctID: "'EmberEnergySource'"
+                PerformVars:
+                    OnAbilityPerformStarted:
+                        UntoggleBonus: CustomAbility.FinishBonusLock(ActiveBonus, BespokeBehaviour, Ability)
+                Requirement:
+                    Vars: 
+                        # only let us modify abilities that aren't persistent
+                        ValidateIsntPersistent: CustomAbility.IsPersistentAbility(Ability) == False
+                        # only ability card abilities
+                        ValidateIsAbilityCard: CustomAbility.IsFromAbilityCard(Ability)
+
+                        PropertyToModify: CheckingBonus.Ability.ActiveBonusData.GetMiscVar("PropertyToModify")
+                        AbilityToModify: CustomAbility.FindAbilityWithPrintedProperty(PropertyToModify, Ability)
+                        ValidateHasProperty: AbilityToModify != null
+                        ValidTypes: list("Move")
+                        ValidateAbilityType: ValidTypes.Contains(AbilityToModify.AbilityType.ToString())
+                        ValidateCanBePerformed: CustomAbility.CanBePerformedAfterConditions(AbilityToModify)
+                ActiveBonusAbilityOverrides:
+                    TCOverride:
+                        Strength: 1
+        TBuffRange:
+            NullTargeting: True
+            Filter: Self
+            AutoTrigger: True
+            SkipAnim: True
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: OverrideAbility
+                # will only show up as a toggle for these types of abilities
+                ValidAbilityType: [Attack,Move,Damage,Heal,Muddle,Push,Wound,Shield,ControlActor,DestroyObstacle,Brittle,RecoverDiscardedCards, Loot, Retaliate, Trap, Create, RecoverLostCards, Poison, Immobilize, Disarm, Curse, Stun, Strengthen, Bless, Kill, DisarmTrap, DestroyObstacle, Pull, StopFlying, RemoveConditions, NullTargeting, MoveTrap, NullHex, Regenerate, Bane, Ward, Brittle, Impair, CreateTerrain, Teleport2, CreateShadow, MoveShadow, DestroyTerrain, MoveTerrain, ModeTransfer, CreateLimitedHazardousTerrain]
+                IsToggleBonus: True
+                Restriction: OncePerAction
+                Hidden: True
+                ListLayoutOverride: [$1254_item_cards_ember_energy_source_2$, Empty]
+                XPTracker: [0]
+                MiscVars:
+                    PropertyToModify: "'Range'"
+                    OverrideIcon: "'FH_UI_1Range'"
+                    RestrictAllBonusesOnCard: True
+                Vars:
+                    DistinctID: "'EmberEnergySource'"
+                PerformVars:
+                    OnAbilityPerformStarted:
+                        UntoggleBonus: CustomAbility.FinishBonusLock(ActiveBonus, BespokeBehaviour, Ability)
+                Requirement:
+                    Vars: 
+                        # only let us modify abilities that aren't persistent
+                        ValidateIsntPersistent: CustomAbility.IsPersistentAbility(Ability) == False
+                        # only ability card abilities
+                        ValidateIsAbilityCard: CustomAbility.IsFromAbilityCard(Ability)
+
+                        PropertyToModify: CheckingBonus.Ability.ActiveBonusData.GetMiscVar("PropertyToModify")
+                        AbilityToModify: CustomAbility.FindAbilityWithPrintedProperty(PropertyToModify, Ability)
+                        ValidateHasProperty: AbilityToModify != null
+                        AbilityType: AbilityToModify.AbilityType.ToString()
+                        ValidTypes: list("NullTargeting","Attack","Heal","Muddle","Damage","Wound","Push","ControlActor","DestroyObstacle","Brittle","RecoverDiscardedCards", "Trap", "Create", "Poison", "Immobilize", "Disarm", "Curse", "Stun", "Strengthen", "Bless", "Kill", "DisarmTrap", "DestroyObstacle", "Pull", "StopFlying", "RemoveConditions", "NullTargeting", "MoveTrap", "NullHex", "Regenerate", "Bane", "Ward", "Brittle", "Impair", "CreateTerrain", "Teleport2", "CreateShadow", "MoveShadow", "DestroyTerrain", "MoveTerrain", "ModeTransfer", "CreateLimitedHazardousTerrain")
+                        ValidateTargeting: AbilityToModify.Targeting == "Range"
+                        ValidateAbilityType: ValidTypes.Contains(AbilityType)
+                        ValidateAreaEffect: AbilityToModify.AreaEffect == null || AbilityToModify.Range > 1
+                        ValidateIsntTargetSelf: CustomAbility.ExclusiveSelf(AbilityToModify) == False
+                        ValidateIsntExplicitlyOnMyTile: AbilityToModify.Range != 0
+                        ValidateCanCurrentlyAddTargets: CustomAbility.IsSelectingTargets(AbilityToModify)
+                        # attack ability has a valid target in range check in CanBePerformed, ignore it otherwise we can't buff this
+                        ValidateCanBePerformed: CustomAbility.CanBePerformedAfterConditions(AbilityToModify, false) 
+                ActiveBonusAbilityOverrides:
+                    TCOverride:
+                        Range: 1
+        TBuffTarget:
+            NullTargeting: True
+            Filter: Self
+            AutoTrigger: True
+            SkipAnim: True
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: OverrideAbility
+                # will only show up as a toggle for these types of abilities
+                ValidAbilityType: [Attack,Move,Damage,Heal,Muddle,Push,Wound,Shield,ControlActor,DestroyObstacle,Brittle,RecoverDiscardedCards, Loot, Retaliate, Trap, Create, RecoverLostCards, Poison, Immobilize, Disarm, Curse, Stun, Strengthen, Bless, Kill, DisarmTrap, DestroyObstacle, Pull, StopFlying, RemoveConditions, NullTargeting, MoveTrap, NullHex, Regenerate, Bane, Ward, Brittle, Impair, CreateTerrain, Teleport2, CreateShadow, MoveShadow, DestroyTerrain, MoveTerrain, ModeTransfer, CreateLimitedHazardousTerrain]
+                IsToggleBonus: True
+                Restriction: OncePerAction
+                Hidden: True
+                ListLayoutOverride: [$1254_item_cards_ember_energy_source_2$, Empty]
+                XPTracker: [0]
+                MiscVars:
+                    PropertyToModify: "'Target'"
+                    OverrideIcon: "'FH_UI_1Target'"
+                    RestrictAllBonusesOnCard: True
+                Vars:
+                    DistinctID: "'EmberEnergySource'"
+                PerformVars:
+                    OnAbilityPerformStarted:
+                        UntoggleBonus: CustomAbility.FinishBonusLock(ActiveBonus, BespokeBehaviour, Ability)
+                Requirement:
+                    Vars: 
+                        # only let us modify abilities that aren't persistent
+                        ValidateIsntPersistent: CustomAbility.IsPersistentAbility(Ability) == False
+                        # only ability card abilities
+                        ValidateIsAbilityCard: CustomAbility.IsFromAbilityCard(Ability)
+
+                        PropertyToModify: CheckingBonus.Ability.ActiveBonusData.GetMiscVar("PropertyToModify")
+                        AbilityToModify: CustomAbility.FindAbilityWithPrintedProperty(PropertyToModify, Ability)
+                        ValidateHasProperty: AbilityToModify != null
+                        AbilityType: AbilityToModify.AbilityType.ToString()               
+                        ValidTypes: list("Attack","Heal","Muddle","Damage","Wound","ControlActor","DestroyObstacle","Brittle","Push", "Loot", "Poison", "Immobilize", "Disarm", "Curse", "Stun", "Strengthen", "Bless", "Kill", "Pull", "StopFlying", "RemoveConditions", "NullTargeting", "Regenerate", "Bane", "Ward", "Brittle", "Impair")
+                        ValidateAbilityType: ValidTypes.Contains(AbilityType)
+                        ValidateAreaEffect: AbilityToModify.AreaEffect == null
+                        ValidateIsntTargetSelf: CustomAbility.ExclusiveSelf(AbilityToModify) == False
+                        ValidateCanCurrentlyAddTargets: CustomAbility.IsSelectingTargets(AbilityToModify)
+                        ValidateCanBePerformed: CustomAbility.CanBePerformedAfterConditions(AbilityToModify)
+                ActiveBonusAbilityOverrides:
+                    TCOverride:
+                        Target: 1        
+        # corner case - pyroclast igneous path selects targets, but on the cards its shown as range
+        TBuffTargetAsRange:
+            NullTargeting: True
+            Filter: Self
+            AutoTrigger: True
+            SkipAnim: True
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: OverrideAbility
+                # will only show up as a toggle for these types of abilities
+                ValidAbilityType: [Attack,Move,Damage,Heal,Muddle,Push,Wound,Shield,ControlActor,DestroyObstacle,Brittle,RecoverDiscardedCards, Loot, Retaliate, Trap, Create, RecoverLostCards, Poison, Immobilize, Disarm, Curse, Stun, Strengthen, Bless, Kill, DisarmTrap, DestroyObstacle, Pull, StopFlying, RemoveConditions, NullTargeting, MoveTrap, NullHex, Regenerate, Bane, Ward, Brittle, Impair, CreateTerrain, Teleport2, CreateShadow, MoveShadow, DestroyTerrain, MoveTerrain, ModeTransfer, CreateLimitedHazardousTerrain]
+                IsToggleBonus: True
+                Restriction: OncePerAction
+                Hidden: True
+                ListLayoutOverride: [$1254_item_cards_ember_energy_source_2$, Empty]
+                XPTracker: [0]
+                MiscVars:
+                    PropertyToModify: "'RangeAsTarget'"
+                    OverrideIcon: "'FH_UI_1Range'"
+                    RestrictAllBonusesOnCard: True
+                Vars:
+                    DistinctID: "'EmberEnergySource'"
+                PerformVars:
+                    OnAbilityPerformStarted:
+                        UntoggleBonus: CustomAbility.FinishBonusLock(ActiveBonus, BespokeBehaviour, Ability)
+                Requirement:
+                    Vars: 
+                        # only let us modify abilities that aren't persistent
+                        ValidateIsntPersistent: CustomAbility.IsPersistentAbility(Ability) == False
+                        # only ability card abilities
+                        ValidateIsAbilityCard: CustomAbility.IsFromAbilityCard(Ability)
+
+                        PropertyToModify: CheckingBonus.Ability.ActiveBonusData.GetMiscVar("PropertyToModify")
+                        AbilityToModify: CustomAbility.FindAbilityWithPrintedProperty(PropertyToModify, Ability)
+                        ValidateHasProperty: AbilityToModify != null
+                        AbilityType: AbilityToModify.AbilityType.ToString()               
+                        ValidTypes: list("NullHex")
+                        ValidateAbilityType: ValidTypes.Contains(AbilityType)
+                        ValidateAreaEffect: AbilityToModify.AreaEffect == null
+                        ValidateIsntTargetSelf: CustomAbility.ExclusiveSelf(AbilityToModify) == False
+                        ValidateCanCurrentlyAddTargets: CustomAbility.IsSelectingTargets(AbilityToModify)
+                        ValidateCanBePerformed: CustomAbility.CanBePerformedAfterConditions(AbilityToModify)
+                ActiveBonusAbilityOverrides:
+                    TCOverride:
+                        Target: 1
+Layout: 
+    - Row: "$FH/1254_item_cards_ember_energy_source_2$"

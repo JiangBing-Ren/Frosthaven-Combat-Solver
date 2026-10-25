@@ -1,0 +1,74 @@
+Parser: AbilityCard
+Name: $FH/382_character_ability_cards_frozen_fist_seeing_stars_1$
+Character: FrozenFistID
+ID: 382
+Level: 7
+ProgressionOrder: 22
+Initiative: 29
+Discard: [Discard,Discard]
+Prefab: 382_FrozenFist_SeeingStars
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                PreviewEffectText: ""
+                Attack:
+                    Amount: 5
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Conditions: Muddle
+                SubAbilities:
+                    TPush:
+                        IsInlineSubAbility: True
+                        Push: 1
+                        MiscVars:
+                            PrintedProperties: list("Push")
+                AnimOverload: AttackPower
+            TInfuse: 
+                CanUndo: False
+                CanSkip: False 
+                Infuse: [Any]
+                ShowElementPicker: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [ Attack ]
+                    DoesntHaveNegativeCondition: [Stun]
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                    Jump: True
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BAttack:
+                Attack:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Conditions: Muddle
+                AnimOverload: Attack2
+Layout:
+    Top:
+        - Row:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column: "<sprite name=Push> 1, <sprite name=Muddle>"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=150%><sprite name=CreateWild>" 
+    Bottom:
+        - Row:
+            - ColumnWidths: "20,30,20"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@ "
+            - Column: "<sprite name=Jump>"
+        - Divider:
+        - Row:
+            - ColumnWidths: "20,30,20"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Attack> *BAttack* <size=100%><voffset=1>@BAttack@ "
+            - Column: "<sprite name=Muddle>"

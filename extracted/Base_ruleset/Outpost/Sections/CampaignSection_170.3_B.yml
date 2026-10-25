@@ -1,0 +1,12 @@
+Parser: CampaignSection
+ID: 170.3_B
+Name: Vermling Siege (170.3_B)
+SkipCompletedNotification: True
+DontFadeIn: True
+Effects:
+    - Type: GainMorale
+      Param1: 1
+    - Type: SkipNextOutpostEvent
+    - Type: AddCalendarCampaignSection
+      Param1: 5.1
+      Param2: 1

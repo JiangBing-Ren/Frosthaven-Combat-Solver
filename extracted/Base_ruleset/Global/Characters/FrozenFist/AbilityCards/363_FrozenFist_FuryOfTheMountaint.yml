@@ -1,0 +1,90 @@
+Parser: AbilityCard
+Name: $FH/363_character_ability_cards_frozen_fist_fury_of_the_mountain_1$
+Character: FrozenFistID
+ID: 363
+Level: 1
+ProgressionOrder: 3
+Initiative: 23
+Discard: [Discard,Discard]
+Prefab: 363_FrozenFist_FuryOfTheMountain
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 2
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Target: 1
+                Range: 1
+                Filter: [Enemy]
+                AnimOverload: Attack2
+            TPrevent:
+                PreventDamage: 1
+                ActiveBonus:
+                    Duration: Round
+                    Behaviour: PreventPartialDamage
+                AnimOverload: FistsSparks
+        Consumes:
+            TCIce:
+                Elements: [Ice]
+                AbilityOverrides:
+                    TCIceAttackBuff:
+                        ParentName: TAttack
+                        Strength: 2
+                XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BRetaliate:
+                Retaliate: 1
+                MiscVars:
+                    PrintedProperties: list("Retaliate")
+                RetaliateRange: 1
+                ActiveBonus:
+                    Duration: Round
+                AnimOverload: Roar
+        Consumes:
+            BCEarth:
+                Elements: [Earth]
+                AbilityOverrides:
+                    BCEarthRetaliateBuff:
+                        ParentName: BRetaliate
+                        Strength: 1
+                XP: 1
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack*"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCIce
+                    Text: "<size=90%>+2<sprite name=Attack>, <sprite name=XP1>"
+        - Divider:
+        - Row:
+            - Active:
+                Ability: TPrevent
+                Icon: Positive_DamagePrevent
+                ListLayout: "$FH/363_character_ability_cards_frozen_fist_fury_of_the_mountain_2$"
+                Layout: "$FH/363_character_ability_cards_frozen_fist_fury_of_the_mountain_2$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove*<size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Retaliate> *BRetaliate*"
+        - Active:
+            Ability: BRetaliate
+            Icon: Positive_Retaliate
+            ListLayout: "<sprite name=Retaliate> *BRetaliate*"
+            Layout: "<sprite name=Retaliate> *BRetaliate*"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: BCEarth
+                    Text: "<size=90%>+1<sprite name=Retaliate>, <sprite name=XP1>"
+        

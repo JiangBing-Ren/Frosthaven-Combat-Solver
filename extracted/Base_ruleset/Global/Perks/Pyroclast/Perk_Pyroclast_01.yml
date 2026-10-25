@@ -1,0 +1,7 @@
+Parser: Perk
+ID: Pyroclast01
+Name: FH/PERK_Pyroclast_01_Name
+Description: FH/PERK_Pyroclast_01_Desc
+CharacterID: PyroclastID
+Available: 1
+CardsToRemove: [AMC_Basic_M1, AMC_Basic_M1]

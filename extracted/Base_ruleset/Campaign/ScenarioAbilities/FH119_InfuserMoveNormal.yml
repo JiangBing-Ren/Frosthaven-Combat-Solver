@@ -1,0 +1,28 @@
+Parser: ScenarioAbility
+ID: FH119_InfuserMove
+ScenarioAbility:
+    AInfuserMove:
+        Filter: Self
+        SkipAnim: True
+        AddActiveBonus:                                
+            Move: 2
+            StrengthIsBase: True
+            PreviewEffectText: "FH_Scenario_Campaign_119_Activate_Dust_Ability_2_Move"
+            MiscVars: 
+                PreviewEffectTextWhenSelected: "'<sprite name=Move>2'"
+                DustCost: 1
+                IgnoreDifficultTerrain: ScenarioScript_FH119.Room2Revealed()
+        ActiveBonus:
+            ListLayoutOverride: ["$FH/FH_Scenario_Campaign_119_Activate_Dust_Ability_2_Move$", Empty]
+            Hidden: True
+            Behaviour: DuringTurnAbility
+            Duration: Persistent
+            ValidAbilityType: NullTargeting
+            IsToggleBonus: True
+            MiscVars:
+                OverrideIcon: "'FH_UI_dust_1'"
+            Requirements:
+                Vars:
+                    CurrentAbility: PhaseManager.CurrentPhaseAction?.CurrentPhaseAbility?.m_Ability
+                    ValidateAbility: CurrentAbility != null && CurrentAbility.Name == "AChooseInfuserDust"
+                    ValidateDusts: ScenarioScript_FH119.current.GetNumDusts() >= 1

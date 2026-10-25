@@ -1,0 +1,33 @@
+Parser: EnemyCard
+ID: 087300089
+Name: $Monster_Ability_Boss_SeekerOfTheAbyss_Special2$
+Initiative: 17
+Shuffle: True
+Data:
+    Abilities: 
+        Trap1:
+            Trap:
+                TrapName: BearTrap
+                Damage: 0
+                Conditions: Immobilize
+            Range: 1
+            RangeIsBase: True
+            AnimOverload: LayTrap
+            Text: "$FH/boss_seeker_of_the_abyss_1_1$"
+            TextOnly: True
+        TWaitForIdle:
+            Null: True
+        TAttackBuff:
+            Attack: 1
+            Range: 99
+            Filter: Self
+            Text: ""
+            TextOnly: True
+            ActiveBonus:
+                Duration: Round
+                Behaviour: BuffAttack
+                IsAura: True
+                AuraFilter: Ally
+                AuraTargeting: Range
+                ValidAbilityType: Attack
+                ListLayoutOverride: [$FH/boss_seeker_of_the_abyss_1_2$, Positive_AttackPlus_Ally_Aura]

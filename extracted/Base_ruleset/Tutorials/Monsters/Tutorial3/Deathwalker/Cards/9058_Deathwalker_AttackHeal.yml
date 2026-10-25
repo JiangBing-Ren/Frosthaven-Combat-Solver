@@ -1,0 +1,17 @@
+Parser: EnemyCard
+ID: 9058
+Name: $Monster_Ability_Tutorial3Deathwalker_SiphoningBolt$
+Initiative: 42
+Shuffle: False
+Data:
+    Abilities:
+        AAttack:
+            Attack: 0
+            Range: 4
+        AHealAlly:
+            Heal: 0
+            Filter: Ally          
+            Range: 4
+            StatIsBasedOnX:
+                Strength:
+                    BasedOn: DamageInflictedThisAction

@@ -1,0 +1,8 @@
+Parser: CampaignSection
+ID: 196.2
+Name: Trading Post Upgraded (3)
+SkipCompletedNotification: False
+Effects:
+    - Type: AddItemsToShop
+      Param1: 147
+      Param2: 155

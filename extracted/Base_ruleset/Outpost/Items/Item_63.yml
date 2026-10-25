@@ -1,0 +1,7 @@
+Parser: FHItem
+ID: 63
+ScenarioItemID: 1298
+Name: Shadow Stompers
+Quantity: 2
+Type: Feet
+RequiredCraftingItemIDs: [ 13, 158 ]

@@ -1,0 +1,107 @@
+Parser: AbilityCard
+Name: $FH/178_character_ability_cards_geminate_hirudotherapy_1$
+Character: GeminateID
+ID: 178
+Level: 6
+ProgressionOrder: 27
+Initiative: 92
+Discard: [Discard,Discard]
+RequiredForm: Range
+Prefab: 178_Geminate_Hirudotherapy
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Damage: 2
+                Range: 3
+                MinRange: 2
+                MiscVars:
+                    PrintedProperties: list("Damage","Range")
+                Target: 2
+                Filter: Enemy
+                AnimOverload: Cast Negative
+            THeal:
+                Heal: 0
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: DamageInflictedThisAction
+            TSwitchFormRangeToMelee:
+                Null: True
+                Flags: [SwitchFormRangeToMelee]
+                AutoTrigger: True
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Damage,Heal]
+
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 3
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BAttack:
+                Attack:
+                    Amount: 2
+                    SquareEnhancements: 1
+                Range: 4
+                MinRange: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                Target: 1
+                AnimOverload: RangedAttack
+        Consumes:
+            BCImmobilize:
+                CostAbility:
+                    ParentName: BAttack
+                    Immobilize: True
+                    Target: -1
+                    Filter: Self
+                    StartAbilityRequirements:
+                        Type: ThisAbility
+                        DoesntHaveNegativeCondition: [Disarm,Stun]
+                AbilityOverrides:
+                    BCImmobilizeBuff:
+                        ParentName: BAttack
+                        Conditions: [Immobilize]
+            BCCurse:
+                CostAbility:
+                    ParentName: BAttack
+                    Curse: True
+                    Target: -1
+                    Filter: Self
+                AbilityOverrides:
+                    BCTargetBuff:
+                        ParentName: BAttack
+                        Target: 1
+                        MiscVars:
+                            PrintedProperties: list("Target")
+Layout:
+    Top:
+        - Row: "$FH/178_character_ability_cards_geminate_hirudotherapy_2$"
+        - Divider:
+        - Row: "$FH/178_character_ability_cards_geminate_hirudotherapy_3$"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=GMRangedToMelee>"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move>*BMove*"
+        - Divider:
+        - Row:
+            - ColumnWidths: "10,40,40"
+            - Column:
+            - Column:
+                - Row: "<sprite name=Attack>*BAttack* <voffset=1>@BAttack@"
+            - Column:
+                - Row: "$FH/178_character_ability_cards_geminate_hirudotherapy_4$"    
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: BCImmobilize
+                    Text: "$FH/178_character_ability_cards_geminate_hirudotherapy_5$"
+                - Consume:
+                    Name: BCCurse
+                    Text: "$FH/178_character_ability_cards_geminate_hirudotherapy_6$"

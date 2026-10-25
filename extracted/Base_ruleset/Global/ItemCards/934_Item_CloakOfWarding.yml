@@ -1,0 +1,31 @@
+Parser: ItemCard
+ID: 934
+StringID: CloakOfWardingID
+Name: $FH/0934_item_cards_cloak_of_warding_1$
+Art: Cloak of Warding
+TotalInGame: 2
+Cost: 0
+Slot: Body
+Rarity: Rare
+Usage: Consumed
+Trigger: OnActorMoved
+Data:
+    ItemRequirements:
+        Vars:
+            ValidateOwnerMoved: Actor != Ability.TargetingActor
+            ValidateFinishedMove: Ability.FinishedMove()
+            ValidateIsAdjacentEnemy: GameState.GetAdjacentEnemies(Actor, Actor.ArrayIndex).Contains(Ability.TargetingActor)
+            SetAdjacent: Actor.SetTempVar("CloakOfWardingAdjacentActor", Ability.TargetingActor)
+    Abilities:
+        TAttack:
+            Push: 1
+            Vars:
+                TargetThisActorAutomatically: TargetingActor.CloakOfWardingAdjacentActor
+            Targeting: Custom
+            TargetingVars:
+                AutoTarget: TargetingActor.CloakOfWardingAdjacentActor
+                AddValidActorInRange: AutoTarget
+                AddTileInRange: AutoTarget.Tile
+                AddSelectedTile: AutoTarget.Tile
+Layout: 
+       - Row: "$FH/0934_item_cards_cloak_of_warding_2$"

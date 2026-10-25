@@ -1,0 +1,83 @@
+Parser: AbilityCard
+Name: $FH/113_character_ability_cards_deathwalker_vengeful_storm_1$
+Character: DeathwalkerID
+ID: 113
+Level: 6
+Initiative: 18
+Discard: [Discard,Lost]
+Prefab: 113_Deathwalker_VengefulStorm
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 3
+                Range: 
+                    Amount: 4
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                Filter: Enemy
+                AnimOverload: RangedAttack
+        Consumes:
+            TCBuffAttack:
+                CostAbility:
+                    ParentName: TAttack
+                    RemoveShadow:
+                    Target: 99
+                    Range: 3
+                    MiscVars:
+                        PrintedProperties: list("Range")
+                    AnimOverload: Shadow Manipulation
+                    Vars:
+                        TargetsUpTo: True
+                        SendBuffProjectiles: True
+                    StartAbilityRequirements:
+                        Type: ThisAbility
+                        Vars:
+                            ValidateHasValidTargets: ScenarioManager.CurrentScenarioState.ShadowProps.Count > 0
+                AbilityOverrides:
+                    TCAttackBuff:
+                        ParentName: TAttack
+                        StatIsBasedOnX:
+                            Target:
+                                AddTo: True
+                                BasedOn: ObstaclesDestroyedThisAction
+                                Multiplier: 1
+                            XP:
+                                BasedOn: ObstaclesDestroyedThisAction
+                                Multiplier: 1
+    Bottom:
+        Abilities:
+            BPerformAttackFromShadow:
+                PerformFromShadow:
+                    Abilities:
+                        PFSWound:
+                            Wound: True
+                            Conditions: [Stun]
+                            Filter: Enemy
+                            Range: 1
+                            Target: 99
+                            MiscVars:
+                                PrintedProperties: list("Range")
+                            MiscVars:
+                                AutoSelectValidTiles: True
+                Range: 99
+                Target: 1
+                AnimOverload: Debuff 
+                # xp should be awarded only if the wound went through
+                MiscVars:
+                    ExplicitlyDoesNothing: True
+        XP: 1
+Layout:
+    Top:
+        - Row: "<b><size=130%> <sprite name=Attack> *TAttack* <b><size=100%> <sprite name=Range>*TAttack.Range* @TAttack.Range@"
+        - Row: "<size=20%> "
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCBuffAttack
+                    Text: "$FH/113_character_ability_cards_deathwalker_vengeful_storm_2$"
+    Bottom:
+        - Row: "$FH/113_character_ability_cards_deathwalker_vengeful_storm_3$"
+        - Row: "<size=100%> "
+        - Row: "$FH/113_character_ability_cards_deathwalker_vengeful_storm_4$"

@@ -1,0 +1,39 @@
+Parser: EnemyCard
+ID: 08740502
+Name: $Monster_Ability_Boss_TheHungryMaw_Special2$
+Initiative: 14
+Shuffle: False
+Data:
+    Abilities:  
+        # special 2
+        AShield:
+            Shield: 1
+        AMove:
+            Move: 0
+        AAttack:
+            Attack: 0
+        AConsumeIce:
+            Consume:
+                Elements: Ice
+                Abilities:                    
+                    APush:
+                        Push: 2
+                        Target: -1
+                        Range: 1
+                        TargetIsBase: True
+                        RangeIsBase: True
+                        Conditions: Brittle
+                        Filter: Enemy
+                        AnimOverload: Push
+    Consumes:
+        CFire:
+            Elements: Fire
+            AbilityOverrides:
+                CMoveBuff:
+                    ParentName: AMove
+                    Strength: 2
+                    SubAbilities:
+                        ADamageSelf:
+                            Damage: 1
+                            Filter: Self
+                        

@@ -1,0 +1,133 @@
+Parser: AbilityCard
+Name: $FH/244_character_ability_cards_shattersong_unrelenting_wail_1$
+Character: ShattersongID
+ID: 244
+Level: 1
+Initiative: 26
+Discard: [Lost,Discard]
+Prefab: 244_Shattersong_UnrelentingWail
+Data:
+    Top:
+        Abilities:
+            TWaveAttack:
+                Filter: Self          
+                HelpBoxTooltipLocKey: "$FH/GUI_CHOOSE_RESONANCE_TOKEN_COUNT$"
+                PreviewEffectText: "<sprite name=Attack> X"           
+                MiscVars:
+                    # doing the chosen ability as a sub ability so we can preview the effect
+                    DontPerformChosenAbility: True             
+                    OverrideIcon: "'Ability_Shattersong_Icon'"
+                Choose:
+                    Choices:
+                        D1:
+                            PreviewEffectText: "1"
+                            Strength: 1
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 1
+                        D2:
+                            PreviewEffectText: "2"
+                            Strength: 2
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 2
+                        D3:
+                            PreviewEffectText: "3"
+                            Strength: 3
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 3
+                        D4:
+                            PreviewEffectText: "4"
+                            Strength: 4
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 4
+                        D5:
+                            PreviewEffectText: "5"
+                            Strength: 5
+                            Requirements:
+                                Type: ThisAbility
+                                Vars:
+                                    ValidateResonance: Actor.GetResonanceTokens() >= 5
+                PerformVars:
+                    ApplyToActors:
+                        Resonance: ChosenAbility?.Strength || 0
+                        Tokens: Resonance * -1
+                Flags: [ModifiesResonanceTokens]
+                SubAbilities:
+                    TAttack:
+                        Flags: [SubAbilityPreview]
+                        TreatAsNonSubAbility: True
+                        UseParentTargets: False
+                        Filter: Enemy
+                        Attack: 
+                            Amount: 0
+                            CircleEnhancements: 1   
+                        AreaEffect: "0,0,G|2,0,R|4,0,R|1,1,R|2,2,R|3,1,R"
+                        MultiPassAttack: False
+                        MiscVars:
+                            PrintedProperties: list("Attack")     
+                        Vars:
+                            ParentStrength: ParentAbility.ChosenAbility?.Strength || 0
+                            AnimOverload: ((ParentStrength == 1 || ParentStrength == 2) && "UnrelentingWailWeak") ||
+                                          ((ParentStrength == 3 || ParentStrength == 4) && "UnrelentingWailMedium") ||
+                                          ((ParentStrength == 5) && "UnrelentingWailStrong")  
+                        StatIsBasedOnX:
+                            Strength:
+                                BasedOn: Vars
+                                Vars:
+                                    Strength: ParentAbility.ChosenAbility?.Strength || 0
+                                    Value: max(1, Strength)
+                        PerformVars:
+                            OnAbilityEnded:
+                                StackSubAbilities: obj.AbilityHasHappened && CustomAbility.StackNonInlineSubabilities(obj)
+                        SubAbilities:
+                            TFinishWave:
+                                NullTargeting: True
+                                Filter: Self
+                                SkipAnim: True
+                                AutoTrigger: True
+                                TreatAsNonSubAbility: True
+                                Flags: [Wave]
+        XP: 2
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 4
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")     
+            BConsume:
+                PreviewEffectText: "<sprite name=SSResonance>"
+                Consume:
+                    Resonance: 1
+                    Abilities:
+                        BPush:
+                            Push: 
+                                Amount: 2
+                            Range: 1
+                            MiscVars:
+                                PrintedProperties: list("Push","Range")     
+                            AnimOverload: Push
+                            Filter:
+                                TargetType: Enemy
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "60,40"
+            - Column:
+                - Row: "$244_character_ability_cards_shattersong_unrelenting_wail_2$: <b><size=130%><sprite name=Attack> X<size=100%><voffset=1>@TAttack@"
+            - Column:
+                - Row: "£Area£"
+    Bottom:
+        - Row: "<sprite name=Move> *BMove* @BMove@"
+        - Divider:
+        - Conditional:
+            Layout:
+                - Row: "-1<sprite name=SSResonance>: <sprite name=Push> 2 <sprite name=Range> 1"

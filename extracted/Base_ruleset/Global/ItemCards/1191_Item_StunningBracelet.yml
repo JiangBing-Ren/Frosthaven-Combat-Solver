@@ -1,0 +1,30 @@
+Parser: ItemCard
+ID: 1191
+StringID: StunningBraceletID
+Name: $FH/1191_item_cards_stunning_bracelet_1$
+Art: Stunning Bracelet
+TotalInGame: 2
+Cost: 35
+Slot: SmallItem
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    ItemRequirements:
+        Vars:
+            ValidateHasTargets: GameState.GetAdjacentEnemies(Actor, Actor.ArrayIndex).Count > 0
+    Abilities:
+        AStun:
+            Stun: True
+            Range: 1
+            Target: 0
+            Filter: Enemy
+            StatIsBasedOnX:
+                Target:
+                    BasedOn: Vars
+                    Vars:
+                        Value: GameState.GetAdjacentEnemies(TargetingActor, TargetingActor.ArrayIndex).Count
+                    RoundingType: ToCeil
+                    Multiplier: 0.5
+Layout: 
+    - Row: "$FH/1191_item_cards_stunning_bracelet_2$"

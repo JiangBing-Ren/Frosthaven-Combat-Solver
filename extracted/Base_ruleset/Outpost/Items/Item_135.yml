@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 135
+ScenarioItemID: 1135
+Name: Armorbane Bow
+Quantity: 2
+GoldCost: 30
+Type: TwoHandWeapon
+IsNewCharacterItem: False

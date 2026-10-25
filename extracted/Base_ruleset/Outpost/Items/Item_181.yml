@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 181
+ScenarioItemID: 1274
+Name: Translocation Rod
+Quantity: 1
+GoldCost: 30
+Type: TwoHandWeapon
+IsNewCharacterItem: False

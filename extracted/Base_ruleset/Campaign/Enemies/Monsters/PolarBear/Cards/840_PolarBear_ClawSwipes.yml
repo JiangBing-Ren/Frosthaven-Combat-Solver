@@ -1,0 +1,18 @@
+Parser: EnemyCard
+ID: 840
+Name: $Monster_Ability_840_PolarBear_ClawSwipes$
+Initiative: 61
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: 0
+            Vars:
+                ValidateIsNotTrapped: ScenarioScript_FH117.ValidateIsPolarBearNotTrapped(TargetingActor)
+        Attack1:
+            Attack: -1
+            Filter: Enemy
+            Target: 2
+            TargetIsBase: True
+            Vars:
+                ValidateIsNotTrapped: ScenarioScript_FH117.ValidateIsPolarBearNotTrapped(TargetingActor)

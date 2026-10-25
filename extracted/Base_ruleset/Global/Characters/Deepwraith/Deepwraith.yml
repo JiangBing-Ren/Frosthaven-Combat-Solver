@@ -1,0 +1,28 @@
+Parser: Character
+ID: DeepwraithID
+LocKey: $Deepwraith$
+Model: Deepwraith
+DefaultSkin: 1
+Race: Lurker
+Traits: [ Armored, Intimidating, Nimble ]
+# PlayerLevel:  [  1,   2,   3,   4,   5,   6,   7,   8,   9 ]
+HealthTable:    [  8, 9, 11, 12, 14, 15, 17, 18, 20 ]
+NumberAbilityCardsInBattle: 10
+Role: $Deepwraith_ROLE$
+Description: $Deepwraith_DESCRIPTION$
+Difficulty: $DIFFICULTY_HIGH$
+Strengths: $Deepwraith_STRENGTHS$
+Weaknesses: $Deepwraith_WEAKNESSES$
+Adventure_Description: $Deepwraith_ADVENTURE_DESCRIPTION$
+Complexity: 3
+ElementalAffinities: [Dark]
+MasteryIDs: [Deepwraith_MASTERY_1, Deepwraith_MASTERY_2]
+RetireCampaignSection: 99.3
+TrophyTokens: 0
+HeroStats:
+    Melee: 5
+    0anged: 9
+    Mobility: 4
+    Support: 1
+    Defense: 1
+    Control: 4

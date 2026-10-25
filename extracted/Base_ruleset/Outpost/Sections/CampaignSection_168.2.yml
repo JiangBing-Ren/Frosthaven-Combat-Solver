@@ -1,0 +1,7 @@
+Parser: CampaignSection
+ID: 168.2
+Name: Blast the Lurkers
+SkipCompletedNotification: True
+Effects:
+    - Type: UnlockScenario
+      Param1: 50

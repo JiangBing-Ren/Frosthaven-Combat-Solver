@@ -1,0 +1,57 @@
+Parser: AbilityCard
+Name: $FH/408_character_ability_cards_hive_code_geminate_1$
+Character: HIVEID
+ID: 408
+Level: 5
+Initiative: 28
+Discard: [Discard,Discard]
+Prefab: 408_HIVE_CodeGeminate
+Data:
+    Top:
+        XP: 1
+        Abilities:
+            TDeactivateMode:
+                Mode: DeactivateMode
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    Vars: 
+                        ValidateHasMultipleModes: CustomAbility.GetActivatedModeCards(TargetingActor).Count > 1
+                AnimOverload: PowerUp
+            TModeTransfer:
+                Mode: ActivateMode 
+                AnimOverload: PowerUp             
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    Vars: 
+                        ValidateHasMultipleModes: CustomAbility.GetActivatedModeCards(TargetingActor).Count < 2
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 4
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BControl:
+                ControlActor:
+                    #UseControllingActorPlayerControl: True
+                    Abilities:
+                        BSummonMove:
+                            Move:
+                                Amount: 4
+                                SquareEnhancements: 1
+                            MiscVars:
+                                PrintedProperties: list("Move")
+                            StrengthIsBase: True
+                Range: 99
+                Filter: OwnSummon
+                AnimOverload: Grant  
+Layout:
+    Top:
+        - Row: "$FH/408_character_ability_cards_hive_code_geminate_2$"
+        - Divider: 
+        - Row: "$FH/408_character_ability_cards_hive_code_geminate_3$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* @BMove@"
+        - Divider: 
+        - Row: "$FH/408_character_ability_cards_hive_code_geminate_4$ *BSummonMove* @BSummonMove@"

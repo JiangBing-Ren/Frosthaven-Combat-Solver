@@ -1,0 +1,14 @@
+Parser: BattleGoal
+ID: BattleGoal_Wastrel
+LocalisedName: FH/1342_battle_goals_wastrel_1
+LocalisedDescription: FH/1342_battle_goals_wastrel_2
+#Lose a card to negate suffering 2 or less damage.
+PerkChecks: 1
+BattleGoalCondition:
+    - Targets:
+        Filter: LoseCardToDamage
+        AbilityTypes: [Attack]
+        Conditional:
+            Strength: "<= 2"
+        Value: 1
+        SubFilter: Scenario

@@ -1,0 +1,16 @@
+Parser: HeroSummon
+ID: WhiteOwlID
+LocKey: $FH/344_character_ability_cards_snowdancer_birds_in_a_tempest_2$
+Model: WhiteOwl
+Health:
+    Amount: 3
+    SquareEnhancements: 1
+Move:
+    Amount: 3
+    SquareEnhancements: 1
+Attack:
+    Amount: 2
+    SquareEnhancements: 1
+Range: 1
+Flying: True
+

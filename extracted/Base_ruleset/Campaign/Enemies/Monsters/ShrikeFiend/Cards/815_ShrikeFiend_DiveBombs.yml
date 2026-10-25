@@ -1,0 +1,16 @@
+Parser: EnemyCard
+ID: 815
+Name: $Monster_Ability_815_ShrikeFiend_DiveBombs$
+Initiative: 49
+Shuffle: False
+Data:
+    Abilities:
+        AAttack:
+            Attack: 0
+            Target: 2
+            TargetIsBase: True
+            Range: 3
+            RangeIsBase: True
+            Conditions: [Immobilize]
+            Filter: Enemy
+            AnimOverload: RangedAttack

@@ -1,0 +1,18 @@
+Parser: HeroSummon
+ID: BombardierID
+LocKey: $FH/411_character_ability_cards_hive_mortar_shells_2$
+Model: Bombardier
+Health:
+    Amount: 5
+    SquareEnhancements: 1
+Move:
+    Amount: 1
+Attack:
+    Amount: 2
+Range: 
+    Amount: 4
+    SquareEnhancements: 1
+AttackOverride:
+    ParentName: DefaultAttack
+    AreaEffect: "0,0,R|-1,1,R|1,1,R"
+    MultiPassAttack: False

@@ -1,0 +1,7 @@
+Parser: FHEnhancement
+ID: Jump
+Name: Glossary_Enhancement_Jump
+Cost: 60
+Mark: Square
+Effect: Jump
+ForEffect: Move

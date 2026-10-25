@@ -1,0 +1,60 @@
+Parser: AbilityCard
+Name: $FH/410_character_ability_cards_hive_triage_program_1$
+Character: HIVEID
+ID: 410
+Level: 6
+Initiative: 13
+Discard: [Discard,Discard]
+Prefab: 410_HIVE_TriageProgram
+Data:
+    Top:
+        XP: 1
+        Abilities:
+            TModeTransfer1:
+                Mode: Transfer
+            THeal:
+                Heal:
+                    Amount: 5
+                    DiamondPlusEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self
+            TModeTransfer2:
+                Mode: Transfer  
+    Bottom:
+        Abilities:
+            BModeTransfer:
+                Mode: Transfer
+            BLoot:
+                Loot: 1
+                MiscVars:
+                    PrintedProperties: list("Loot")
+                Target: -1
+            BHeal:
+                Heal:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=HIVETransfer>"
+        - Divider: 
+        - Row:
+            - ColumnWidths: "20,30,20"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Heal> *THeal* @THeal@"
+            - Column: "$Self$"
+        - Divider: 
+        - Row: "<b><size=130%><sprite name=HIVETransfer>"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=HIVETransfer>"
+        - Divider: 
+        - Row: "<b><size=130%><sprite name=Loot> *BLoot*"
+        - Divider: 
+        - Row:
+            - ColumnWidths: "20,30,20"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Heal> *BHeal* @BHeal@"
+            - Column: "$Self$"

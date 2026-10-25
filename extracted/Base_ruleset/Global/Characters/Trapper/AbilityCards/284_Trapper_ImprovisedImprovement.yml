@@ -1,0 +1,65 @@
+Parser: AbilityCard
+Name: $FH/284_character_ability_cards_trapper_improvised_improvement_1$
+Character: TrapperID
+ID: 284
+Level: X
+Initiative: 58
+Discard: [Discard,Discard]
+Prefab: 284_Trapper_ImprovisedImprovement
+Data:
+    Top:
+        Abilities:
+            TDestroyTrap:
+                DisarmTrap: true
+                Range: 1
+                RangeIsBase: true
+                PerformVars:
+                    DisarmTrap:
+                        DisarmedTrapTile: TilesSelected[0]
+                SkipAnim: True
+            TTrap:
+                Trap:
+                    TrapName: TrapperTrap
+                    Damage: 5
+                    SquareEnhancements: 1
+                    Conditions: Wound
+                    # wherever there was a trap before this, there should still be able to be a trap now
+                    PlacementTileFilter: None
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Vars:
+                    DisarmedTrapTile: TargetingActor.LastAbilityPerformed?.DisarmedTrapTile
+                    ValidateDisarmedTrap: "!!DisarmedTrapTile"
+                Targeting: Custom
+                TargetingVars:
+                    AddTileInRange: DisarmedTrapTile
+                    AddSelectedTile: DisarmedTrapTile
+                AutoTrigger: True
+                AnimOverload: CreateTrap
+
+        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BTrap:
+                Trap:
+                    TrapName: TrapperTrap
+                    Damage: 0
+                    Conditions: Bless
+                Range: 1
+                RangeIsBase: True
+                AnimOverload: CreateTrap
+Layout:
+    Top:
+        - Row: $FH/284_character_ability_cards_trapper_improvised_improvement_2$
+        - Row: "<sprite name=Damage>*TTrap* @TTrap@"
+        - Row: $FH/284_character_ability_cards_trapper_improvised_improvement_3$
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Row: "<size=20%> "
+        - Row: $FH/284_character_ability_cards_trapper_improvised_improvement_4$

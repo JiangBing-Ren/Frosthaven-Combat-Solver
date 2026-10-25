@@ -1,0 +1,7 @@
+Parser: Perk
+ID: Blinkblade06
+Name: FH/PERK_Blinkblade_06_Name
+Description: FH/PERK_Blinkblade_06_Desc
+CharacterID: BlinkbladeID
+Available: 2
+CardsToAdd: [AMC_Regenerate2_R]

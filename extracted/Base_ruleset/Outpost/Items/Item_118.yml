@@ -1,0 +1,10 @@
+Parser: FHItem
+ID: 118
+ScenarioItemID: 1101
+Name: Fulminant Flask
+Quantity: 2
+Type: Small
+Brewing:
+    Herb1: Arrowvine
+    Herb2: Snowthistle
+    Herb3: Flamefruit

@@ -1,0 +1,29 @@
+Parser: ScenarioAbility
+ID: FH130_SunAgateReduceSpeed
+ScenarioAbility:
+    AReduceSpeedSunAgate:
+        Move: 0
+        StatIsBasedOnX:
+            Strength:
+                BasedOn: Vars
+                Vars:
+                    Value: min(0, 1 - ScenarioScript_FH130.GetSunAgates(TargetingActor))
+                xVariable: 1
+                RoundingType: ToFloor
+        Filter: Self
+        AutoTrigger: True
+        SkipAnim: True
+        MiscVars:
+            InterruptCurrentAbility: True
+            StackNextToCurrent: True
+            ListLayoutParamVar0: ScenarioScript_FH130.GetSunAgates(ActiveBonus.Actor)
+        ActiveBonus:
+            Behaviour: BuffMove
+            Duration: Persistent
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_130_SCENARIO_MOVE_SPEED_DEBUFF$, Negative_MoveMinus_Campaign]
+            MiscVars:
+                # params aren't passed when logging activation, so i'd rather just hide the bonus from the combat log
+                HiddenInCombatLog: True
+                Hidden: ScenarioScript_FH130.GetSunAgates(ActiveBonus.Actor) < 1
+                ActiveBonusName: "FH_Scenario_Campaign_130_SCENARIO_OBJECT_1"
+                OverrideLayoutName: "'$FH_Scenario_Campaign_130_SCENARIO_OBJECT_1$'"

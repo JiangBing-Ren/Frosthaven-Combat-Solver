@@ -1,0 +1,25 @@
+Parser: Mastery
+ID: BannerSpear_MASTERY_2
+LocalisedName: BannerSpear_MASTERY_2_Name
+LocalisedDescription: BannerSpear_MASTERY_2_Desc
+# we need to have a banner summoned during the first round, within range 3
+PerkPoints: 1
+BattleGoalCondition:
+    - Targets:
+        Filter: FirstSummonInFirstRoundWithinRange
+        Value: 1
+        SubFilter: FirstRound
+        Range: 3
+        CharacterIDs: 
+            ActorID: BannerSpearID
+            TargetIDs: [BannerOfCourageID, BannerOfDoomID, BannerOfHopeID, BannerOfStrengthID, BannerOfValorID]
+# he needs to be present in every round, with the valid conditions of being within range 3 of his summoner
+BattleGoalFailCondition:
+    - Targets:
+        Filter: FirstSummonInFirstRoundWithinRange
+        Value: 0
+        SubFilter: Round
+        Range: 3
+        CharacterIDs: 
+            ActorID: BannerSpearID
+            TargetIDs: [BannerOfCourageID, BannerOfDoomID, BannerOfHopeID, BannerOfStrengthID, BannerOfValorID]

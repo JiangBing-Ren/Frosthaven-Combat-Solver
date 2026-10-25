@@ -1,0 +1,8 @@
+Parser: Perk
+ID: Shattersong03
+Name: FH/PERK_Shattersong_03_Name
+Description: FH/PERK_Shattersong_03_Desc
+CharacterID: ShattersongID
+Available: 1
+CardsToRemove: [AMC_Basic_M2]
+CardsToAdd: [AMC_Stun_M1]

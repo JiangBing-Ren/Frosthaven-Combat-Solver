@@ -1,0 +1,10 @@
+Parser: EnemyCard
+ID: 11532
+Name: $Monster_Ability_S01_Guard_DefensivePosition$
+Initiative: 50
+Shuffle: True
+Data:
+    Abilities:
+        ANull:
+            Null: True
+            Text: "$DoNothing$"

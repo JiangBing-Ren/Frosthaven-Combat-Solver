@@ -1,0 +1,102 @@
+Parser: AbilityCard
+Name: $FH/486_character_ability_cards_crashing_tide_rising_flood_1$
+Character: CrashingTideID
+ID: 486
+Level: X
+ProgressionOrder: 486
+Initiative: 49
+Discard: [Discard,Discard]
+Prefab: 486_CrashingTide_RisingFood
+Data:
+    Top:
+        Abilities:
+            TCreateWaterNullHex:
+                NullHex: True
+                Range: 2
+                TileFilter: FeaturelessHex
+                AreaEffect: "0,0,R|2,0,R"
+                SkipAnim: True
+                MiscVars:
+                    RequiresAnyTileAdjacentToCaster: True
+                    includeCasterTile: True
+                SubAbilities:
+                    TCreateWater:
+                        CreateTerrain: Water
+                        TileFilter: FeaturelessHex
+                        Vars:
+                            OverridePropName: "'CrashingTideWater'"
+                        TreatAsNonSubAbility: True
+                        AutoTrigger: True
+                        Target: -1
+                        Targeting: Custom
+                        TargetingVars:
+                            AddSelectedTiles: ParentAbility.TilesSelected
+                        AnimOverload: CreateWaterTile
+                        MiscVars:
+                            LinkProps: True
+                    TWaitForIdle:
+                        Null: True
+                        TreatAsNonSubAbility: True
+                        AutoTrigger: True
+                    TDamage:
+                        Damage: 1
+                        MiscVars:
+                            PrintedProperties: list("Damage")
+                        Conditions: [Immobilize]
+                        TreatAsNonSubAbility: True
+                        AutoTrigger: True
+                        Target: -1
+                        Targeting: Custom
+                        TargetingVars:
+                            AddTilesInRange: ParentAbility.TilesSelected
+                            AddValidActorsInRange: ParentAbility.TilesSelected.Select(LivingActor).Where(obj != null && !CActor.AreActorsAllied(obj.Type, CActor.EType.Player, obj, null))
+                            AddActorsToTarget: AddValidActorsInRange
+                        AnimOverload: MeleeSwing
+    Bottom:
+        Abilities:
+            BChooseWaterTile:
+                NullHex: True
+                Range: 1
+                Target: 1
+                Targeting: Range
+                TileFilter: Custom
+                SkipAnim: True
+                MiscVars:
+                    IsValidTile: obj.FindWaterProp() != null
+                    includeCasterTile: True
+            BMove:
+                Move: 3
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BMoveWaterTile:
+                MoveTerrain:
+                TerrainTypes: [TerrainWater]
+                Target: 1
+                CanUndo: False
+                Targeting: PerformVars
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    Vars:
+                        ChooseWaterTileAbility: CustomAbility.FindAbilityInPhaseByName("BChooseWaterTile")
+                        ValidateAnyWaterTileSelected: ChooseWaterTileAbility != null && ChooseWaterTileAbility.TilesSelected.Where(obj.FindTerrainProp(true) != null).Count > 0
+                PerformVars:
+                    SelectTerrainToMove:
+                        ChooseWaterTileAbility: CustomAbility.FindAbilityInPhaseByName("BChooseWaterTile")
+                        AddTilesInRange: ChooseWaterTileAbility.TilesSelected
+                        TilesSelected: ChooseWaterTileAbility.TilesSelected
+                    SelectMoveToTile:
+                        AddTilesInRange: GameState.GetTilesInRange(TargetingActor, 1)?.Where(IsFeatureless && IsWalkable)
+                AnimOverload: CreateWaterTile
+                MiscVars:
+                    includeCasterTile: True
+Layout:
+    Top:
+        - Row: "$FH/486_character_ability_cards_crashing_tide_rising_flood_2$"
+        - Divider:
+        - Row: "$FH/486_character_ability_cards_crashing_tide_rising_flood_3$"
+    Bottom:
+        - Row: "$FH/486_character_ability_cards_crashing_tide_rising_flood_4$"
+        - Row: "<size=50%> "
+        - Row: "<b><size=130%><sprite name=Move> *BMove*"
+        - Divider:
+        - Row: "$FH/486_character_ability_cards_crashing_tide_rising_flood_5$"

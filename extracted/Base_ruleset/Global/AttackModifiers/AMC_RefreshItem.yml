@@ -1,0 +1,7 @@
+Parser: AttackModifier
+Name: AMC_RefreshItem
+MathModifier: "+0"
+Abilities:
+    RefreshItemsAbility:
+        RefreshItems: 1
+        SlotStateToRefresh: [Spent, Consumed]

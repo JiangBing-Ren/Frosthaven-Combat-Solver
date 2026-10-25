@@ -1,0 +1,27 @@
+Parser: ItemCard
+ID: 1265
+StringID: CapOfPremonitionID
+Name: $FH/1265_item_cards_cap_of_premonition_1$
+Art: Cap Of Premonition
+TotalInGame: 2
+Cost: 25
+Slot: Head
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        AShowNextFourAttackModifiers:
+            Filter: Self
+            ShowNextAttackModifier: 4
+            MiscVars:
+                ConsumeItemInstantly: True
+            SubAbilities:
+                AChooseNextModifiers:
+                    TreatAsNonSubAbility: True
+                    SetNextAttackModifiers: 4
+                    AutoTrigger: True
+                    MiscVars:
+                        ConsumeItemInstantly: True
+Layout: 
+    - Row: $FH/1265_item_cards_cap_of_premonition_2$

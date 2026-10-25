@@ -1,0 +1,35 @@
+Parser: PetCard
+ID: 372
+StringID: BrummixPetID
+Name: $372_pet_cards_brummix_1$
+Description: $372_pet_cards_brummix_2$
+Art: Brummix
+Usage: Consumed
+Trigger: DuringOwnTurn
+Cost: 0
+Data: 
+    Abilities:
+        AActiveBonusNextRound:
+            AddActiveBonus:
+                AutoTrigger: True
+                NullTargeting: True
+                Filter: Self
+                MiscVars:
+                    DontCopy: True
+                PerformVars:
+                    ActorIsApplying: 
+                        VFX: TargetingActor.PlayVFX("PetBrummixEffect")
+                    ApplyToActors:
+                        ShowMonsterCards: CustomAbility.ShowTopMonsterCards()
+            Filter: Self
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: StartRoundAbility
+                XPTracker: [0]
+                ListLayoutOverride: [$372_pet_cards_brummix_2$, Empty]
+            AnimOverload: UseItem
+            PerformVars:
+                ActorIsApplying: 
+                    VFX: TargetingActor.PlayVFX("PetBrummixEffect")
+Layout: 
+    - Row: "$372_pet_cards_brummix_2$"

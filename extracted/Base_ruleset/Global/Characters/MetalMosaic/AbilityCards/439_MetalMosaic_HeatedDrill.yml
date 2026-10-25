@@ -1,0 +1,129 @@
+Parser: AbilityCard
+Name: $FH/439_character_ability_cards_metal_mosaic_heated_drill_1$
+Character: MetalMosaicID
+ID: 439
+Level: 7
+Initiative: 80
+Discard: [Discard,Discard]
+Prefab: 439_MetalMosaic_HeatedDrill
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 
+                    Amount: 4
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Filter: Enemy
+                AnimOverload: HeatedDrill
+                PerformVars:
+                    PreActorIsAttacking:
+                        ChangePressureOver: TargetingActor.Pressure.ToString() == 'Over' && CustomAbility.PressureChange(TargetingActor, -1)
+                StatIsBasedOnX:
+                    Pierce:
+                        BasedOn: Vars
+                        AddTo: True
+                        Vars:
+                            OverPressure: TargetingActor.Pressure.ToString() == 'Over'
+                            HighPressure: TargetingActor.Pressure.ToString() == 'High'
+                            Value: OverPressure && 4 || HighPressure && 2 || 0
+                    XP:
+                        BasedOn: Vars
+                        Vars:
+                            OverOrHighPressure: TargetingActor.Pressure.ToString() == 'Over' || TargetingActor.Pressure.ToString() == 'High'
+                            Value: OverOrHighPressure && 1 || 0
+                ConditionalOverrides:
+                    TAttackCO:
+                        Requirements:
+                            Type: ThisAbility
+                            RequiredPressure: Over
+                        AbilityOverrides:
+                            TAddWound:
+                                Conditions: Wound
+                                MiscVars:
+                                    PrintedProperties: list("Pierce")
+                    TAttackCOHigh:
+                        Requirements:
+                            Type: ThisAbility
+                            RequiredPressure: High
+                        AbilityOverrides:
+                            TAddPierce:
+                                MiscVars:
+                                    PrintedProperties: list("Pierce")
+                SubAbilities:
+                    SubSelfDamage:
+                        Damage: 1
+                        MiscVars:
+                            PrintedProperties: list("Damage")
+                        AutoTrigger: True
+                        Filter: Self
+                        SkipAnim: True
+                        MiscVars:
+                            MetalMosaicSelfDamage: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Over
+        Consumes:
+            TCFire:
+                Elements: Fire
+                AbilityOverrides:
+                    TCAttackBuff:
+                        ParentName: TAttack
+                        Strength: 2
+                        SubAbilities:
+                            CSubXP:
+                                GainXP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 3
+                MiscVars:
+                    PrintedProperties: list("Move")
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredPressure: Over
+                CanSkip: False
+            BAttack:
+                Attack: 
+                    Amount: 3
+                    DiamondEnhancements: 1
+                    Pierce: 1
+                MiscVars:
+                    PrintedProperties: list("Attack","Pierce")
+                Filter: Enemy
+                AnimOverload: HeatedDrill
+                StatIsBasedOnX:
+                    Pierce:
+                        BasedOn: Vars
+                        AddTo: True
+                        Vars:
+                            Value: ??TargetingActor.CharacterClass.DiscardedAbilityCards.Count / 2
+                
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: TCFire
+                    Text: "<size=100%>+2 <sprite name=Attack>, <sprite name=XP1>"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureOver><size=100%> <sprite name=Pierce> 4, <sprite name=Wound>, <sprite name=XP1>, <sprite name=MMSelfDamage>, <sprite name=MMLosePressure>"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureHigh><size=100%> <sprite name=Pierce> 2, <sprite name=XP1>"
+    Bottom:
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureOver><size=100%><sprite name=Move> *BMove*"
+        - Divider:
+        - Row:
+            - ColumnWidths: "50,50"
+            - Column:
+                - Row: "<b><size=130%><sprite name=Attack> *BAttack* <size=100%><voffset=1>@BAttack@"
+            - Column:
+                - Row: "<sprite name=Pierce> 1"
+        - Row: "$FH/439_character_ability_cards_metal_mosaic_heated_drill_2$"

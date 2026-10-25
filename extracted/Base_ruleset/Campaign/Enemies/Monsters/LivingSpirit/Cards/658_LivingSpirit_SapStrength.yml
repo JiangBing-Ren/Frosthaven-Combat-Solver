@@ -1,0 +1,16 @@
+Parser: EnemyCard
+ID: 658
+Name: $Monster_Ability_658_LivingSpirit_SapStrength$
+Initiative: 22
+Shuffle: True
+Data:
+    Abilities: 
+        Move1:
+            Move: -1
+        Attack1:
+            Attack: -1
+            Range: 3
+            RangeIsBase: True
+            Filter: Enemy
+            Conditions: Muddle
+            AnimOverload: RangedAttack

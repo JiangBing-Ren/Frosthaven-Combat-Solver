@@ -1,0 +1,42 @@
+Parser: AbilityCard
+Name: $FH/275_character_ability_cards_trapper_boar_catcher_1$
+Character: TrapperID
+ID: 275
+Level: 1
+Initiative: 20
+Discard: [Discard,Discard]
+Prefab: 275_Trapper_BoarCatcher
+Data:
+    Top:
+        Abilities:
+            TTrap:
+                Trap:
+                    TrapName: TrapperTrap
+                    Damage: 4
+                    SquareEnhancements: 1
+                Range: 2
+                MiscVars:
+                    PrintedProperties: list("Damage","Range")
+                RangeIsBase: True
+                AnimOverload: TrapThrow
+        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 4
+                    CircleEnhancements: 1
+                    Jump: True
+                MiscVars:
+                    PrintedProperties: list("Move")
+Layout:
+    Top:
+        - Row: "$FH/275_character_ability_cards_trapper_boar_catcher_2$ <sprite name=Damage>*TTrap* @TTrap@"
+        - Row: $FH/275_character_ability_cards_trapper_boar_catcher_3$
+    Bottom:
+        - Row:
+            - ColumnWidths: "20,30,30,20"
+            - Column:
+            - Column: "<b><size=130%> <sprite name=Move> *BMove* <b><size=100%> @BMove@"
+            - Column: "<b><size=130%> <sprite name=Jump>"
+            - Column:

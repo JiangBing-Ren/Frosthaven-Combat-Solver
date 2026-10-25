@@ -1,0 +1,34 @@
+Parser: ItemCard
+ID: 1113
+StringID: WingedShoesID
+Name: $FH/1113_item_cards_winged_shoes_1$
+Art: Winged Shoes
+TotalInGame: 2
+Cost: 15
+Slot: Legs 
+Rarity: Rare
+Usage: Spent
+Trigger: DuringOwnTurn
+ProsperityRequirement: 1
+Data:     
+    Abilities:
+        ABuffMove:
+            PreviewEffectText: "<sprite name=Jump>"
+            Move:
+                Amount: 0
+                Jump: True
+            Filter: Self
+            ActiveBonus:
+                Duration: Turn
+                Behaviour: BuffMove
+                ValidAbilityType: Move
+                MiscVars:
+                    IgnoreImpair: True
+
+Layout: 
+    #- Row: $FH/1113_item_cards_winged_shoes_2$
+    - Active:
+        Ability: ABuffMove
+        ListLayout: $FH/1113_item_cards_winged_shoes_2$
+        Layout: $FH/1113_item_cards_winged_shoes_2$
+        Icon: "Positive_Jump_Item"

@@ -1,0 +1,10 @@
+Parser: CampaignSection
+ID: CustomEvent_A_Tall_Drunken_Tale
+Name: A Tall Drunken Tale
+ShowAsUnknownInCalendar: True
+SkipNarration: True
+SkipCompletedNotification: True
+Effects:
+    - Type: ActivateEvent
+      Param1: CustomEvent_A_Tall_Drunken_Tale
+    - Type: SkipNextOutpostEvent

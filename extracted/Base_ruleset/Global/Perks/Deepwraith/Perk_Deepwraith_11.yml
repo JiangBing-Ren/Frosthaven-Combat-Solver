@@ -1,0 +1,15 @@
+Parser: Perk
+ID: Deepwraith11
+Name: FH/PERK_Deepwraith_11_Name
+Description: FH/PERK_Deepwraith_11_Desc
+CharacterID: DeepwraithID
+Available: 1
+Flags: [Passive, ApplyActiveBonusesAtScenarioStart]
+Abilities:
+    ALoot:
+        Null: True
+        AutoTrigger: True
+        SkipAnim: True
+        PerformVars:
+            NullBegin:
+                GainTrophy: CustomAbility.GainTrophyTokens(2, TargetingActor)

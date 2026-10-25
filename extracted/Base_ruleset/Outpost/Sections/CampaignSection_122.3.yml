@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 122.3
+Name: Decisive Action
+SkipCompletedNotification: False
+Effects:
+    - Type: UnlockScenario
+      Param1: 28
+    - Type: UnlockScenario
+      Param1: 29

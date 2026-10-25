@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 226
+ScenarioItemID: 1236
+Name: Unfettered  Arm
+Quantity: 1
+GoldCost: 20
+Type: OneHandWeapon
+IsNewCharacterItem: False

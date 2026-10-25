@@ -1,0 +1,27 @@
+Parser: Character
+ID: SnowdancerID
+LocKey: $FH/FS_Character_Snowdancer$
+Model: Snowdancer
+DefaultSkin: 1
+Race: Algox
+Traits: [ Chaotic, Nimble, Persuasive ]
+# PlayerLevel:  [  1,   2,   3,   4,   5,   6,   7,   8,   9 ]
+HealthTable:    [  8, 9, 11, 12, 14, 15, 17, 18, 20 ]
+NumberAbilityCardsInBattle: 11
+Role: $Snowdancer_ROLE$
+Description: $Snowdancer_DESCRIPTION$
+Difficulty: $DIFFICULTY_HIGH$
+Strengths: $Snowdancer_STRENGTHS$
+Weaknesses: $Snowdancer_WEAKNESSES$
+Adventure_Description: $Snowdancer_ADVENTURE_DESCRIPTION$
+RetireCampaignSection: 107.3
+Complexity: 1
+ElementalAffinities: [Ice, Air]
+MasteryIDs: [ Snowdancer_MASTERY_1, Snowdancer_MASTERY_2 ]
+HeroStats:
+    Melee: 1
+    Ranged: 4
+    Mobility: 3
+    Support: 5
+    Defense: 2
+    Control: 4

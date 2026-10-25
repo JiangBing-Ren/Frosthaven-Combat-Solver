@@ -1,0 +1,15 @@
+Parser: EnemyCard
+ID: 776
+Name: $Monster_Ability_776_Scout_RapidBolts$
+Initiative: 79
+Shuffle: False
+Data:
+    Abilities: 
+        AAttack:
+            Attack: -1
+            Target: 2
+            TargetIsBase: True
+            Range: 4
+            RangeIsBase: True
+            AnimOverload: RangedAttack
+            

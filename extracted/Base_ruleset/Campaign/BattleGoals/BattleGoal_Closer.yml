@@ -1,0 +1,17 @@
+Parser: BattleGoal
+ID: BattleGoal_Closer
+LocalisedName: FH/BATTLEGOAL_Closer
+LocalisedDescription: FH/BATTLEGOAL_Closer_Desc
+#Kill the last monster to die in the scenario.
+# 0=no kills, 1=override kill, 2=other kill
+PerkChecks: 1
+CheckAtEndOfScenario: True
+BattleGoalCondition:
+    - Targets:
+        Filter: LastKill
+        MonsterType: [Normal, Elite, Boss]
+        Targets: 1
+        Conditional:
+            Amount: "== 1"
+        Value: 1
+        SubFilter: Scenario

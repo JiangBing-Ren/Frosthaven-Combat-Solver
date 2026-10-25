@@ -1,0 +1,9 @@
+Parser: CampaignSection
+ID: 173.1
+Name: Hide Depot Built
+SkipCompletedNotification: False
+Effects:
+    - Type: EnableEvent
+      Param1: SO-56
+    - Type: EnableEvent
+      Param1: SR-41

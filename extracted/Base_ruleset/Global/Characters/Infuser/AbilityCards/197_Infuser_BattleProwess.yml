@@ -1,0 +1,90 @@
+Parser: AbilityCard
+Name: $FH/197_character_ability_cards_infuser_battle_prowess_1$
+Character: InfuserID
+ID: 197
+Level: X
+Initiative: 78
+Discard: [Discard,Lost]
+Prefab: 197_Infuser_BattleProwess
+Data:
+    Top:
+        Abilities:
+            TControlEnemy:
+                ControlActor:
+                    Abilities:
+                        TAttack:
+                            Attack:
+                                Amount: 3
+                                SquareEnhancements: 1
+                            MiscVars:
+                                PrintedProperties: list("Attack")
+                            StrengthIsBase: True
+                            Range: 1
+                            RangeIsBase: True
+                            Target: 1
+                            TargetIsBase: True
+                            Filter: Enemy
+                    ControlActorType: Player
+                Filter: [Self, OwnSummon]
+                Targeting: All
+                Target: 1
+                AnimOverload: RangedCast 
+        Consumes:
+            TCDark:
+                Elements: [Dark]
+                AbilityOverrides:
+                    TCOAttack:
+                        ParentName: TAttack
+                        SubAbilities:
+                            SubInfuse:
+                                TreatAsNonSubAbility: True
+                                AutoTrigger: True
+                                Infuse: [Dark]
+                                SkipAnim: True
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 2
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BLoot:
+                Loot: 2
+                MiscVars:
+                    PrintedProperties: list("Loot")
+                Target: -1
+        Consumes:
+            BCMove:
+                PreviewEffectId: M1Move
+                AbilityOverrides:
+                    BCMoveBuff:
+                        ParentName: BMove
+                        Move: -1
+                        SubAbilities:
+                            BInfuse:
+                                TreatAsNonSubAbility: True
+                                CanUndo: False
+                                Infuse: [Any]
+                                SkipAnim: True
+                                ShowElementPicker: True
+                                XP: 1
+Layout:
+    Top:
+        - Row: "$FH/197_character_ability_cards_infuser_battle_prowess_2$"
+        - Row: "<b><size=100%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCDark
+                    Text: "<sprite name=CreateDark>"
+    Bottom:
+        - Row: "<b><size=100%><sprite name=Move> *BMove*"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: BCMove
+                    Text: "-1<sprite name=Move>: <sprite name=CreateWild>, <sprite name=XP1>"
+        - Divider:
+        - Row: "<b><size=100%><sprite name=Loot> *BLoot*"
+        

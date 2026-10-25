@@ -1,0 +1,77 @@
+Parser: AbilityCard
+Name: $FH/496_character_ability_cards_crashing_tide_sodden_soil_1$
+Character: CrashingTideID
+ID: 496
+Level: 5
+ProgressionOrder: 496
+Initiative: 17
+Discard: [Discard,Lost]
+Prefab: 496_CrashingTide_SoddenSoil
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Conditions: [Wound, Immobilize]
+                Range: 1
+                Target: 1
+                Targeting: Range
+                Filter: [Enemy]
+        XP: 1
+    Bottom:
+        Abilities:
+            BTeleport:
+                Teleport2: 5
+                Filter: [Self]
+                MiscVars:
+                    IsValidTeleportTile: Tile.IsWater
+            BAttack:
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Range: 1
+                Target: 99
+                Targeting: Range
+                MultiPassAttack: False
+                Filter: [Enemy]
+                AnimOverload: MeleeSwing
+                MiscVars:
+                    AutoSelectValidTiles: True
+        Consumes:
+            BCDark:
+                Elements: Dark
+                AbilityOverrides:
+                    BTeleportBuff:
+                        ParentName: BTeleport
+                        Strength: 99
+                XP: 1
+        XP: 1
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "25,25,25,25"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+            - Column:
+                - AddedEffect: "<sprite name=Wound>,<sprite name=Immobilize>"
+            - Column:
+    Bottom:
+        - Row: "$FH/496_character_ability_cards_crashing_tide_sodden_soil_2$"
+        - Conditional:
+            Top: true
+            Layout:
+                - Consume:
+                    Name: BCDark
+                    Text: "<size=80%>$FH/496_character_ability_cards_crashing_tide_sodden_soil_3$</size>"
+        - Divider:
+        - Row:
+            - ColumnWidths: "30,70"
+            - Column: "<b><size=130%><sprite name=Attack> *BAttack* <size=100%><voffset=1>@BAttack@"
+            - Column:
+                - AddedEffect: "$FH/496_character_ability_cards_crashing_tide_sodden_soil_4$"

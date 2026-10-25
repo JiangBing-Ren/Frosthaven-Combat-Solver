@@ -1,0 +1,11 @@
+Parser: BattleGoal
+ID: BattleGoal_Sluggard
+LocalisedName: FH/1338_battle_goals_sluggard_1
+LocalisedDescription: FH/1338_battle_goals_sluggard_2
+PerkChecks: 1
+# long rest at least once, while at max health, and need to have previously received damage during the scenario
+BattleGoalCondition:
+    - Targets:
+        Filter: LongRestFullHealthAfterTakingDamage
+        Value: 1
+        SubFilter: Scenario

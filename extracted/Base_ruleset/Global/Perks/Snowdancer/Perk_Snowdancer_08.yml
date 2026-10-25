@@ -1,0 +1,43 @@
+Parser: Perk
+ID: Snowdancer08
+Name: FH/PERK_Snowdancer_08_Name
+Description: FH/PERK_Snowdancer_08_Desc
+CharacterID: SnowdancerID
+Available: 1
+Cost: 2
+Flags: [Passive, ApplyActiveBonusesAtScenarioStart]
+Abilities:
+    OnShortRestConsumeIce:
+        Filter: Self
+        AutoTrigger: True
+        SkipAnim: True
+        AddActiveBonus:
+            PreviewEffectText: "<sprite name=Regenerate>, <sprite name=Range> 3"
+            Consume:
+                Elements: Ice
+                Abilities:
+                    CRegenerate:
+                        Filter: [Self,Ally]
+                        Regenerate: True
+                        Range: 3
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringActionAbilityOnShortRest
+            Hidden: True
+    OnShortRestConsumeAir:
+        Filter: Self
+        AutoTrigger: True
+        SkipAnim: True
+        AddActiveBonus:
+            PreviewEffectText: "<sprite name=Ward>, <sprite name=Range> 3"
+            Consume:
+                Elements: Air
+                Abilities:
+                    CRegenerate:
+                        Filter: [Self,Ally]
+                        Ward: True
+                        Range: 3
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringActionAbilityOnShortRest
+            Hidden: True

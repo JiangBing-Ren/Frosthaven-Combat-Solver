@@ -1,0 +1,24 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH127_LootCrate_ForgoBottomAction
+ScenarioAbility:
+    AActive:
+        AddActiveBonus:
+            Loot: 1
+            Target: 1
+            Filter: Self
+            AnimOverload: Loot
+            LootData:
+                LootableObjectImportTypes: Resource
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringTurnAbility
+            IsToggleBonus: True
+            Hidden: True
+            Requirements:
+                ForgoBottomAction: True
+                Vars:
+                    Actor: obj.Actor
+                    ValidateNextToCrate: GameState.GetTilesInRange(Actor.ArrayIndex, 1).Where(obj.FindProp(ScenarioManager.ObjectImportType.Resource) != null).Count > 0
+                    ValidateCanForgoAction: CustomAbility.AnyForgoneAction() == False
+                    ValidateInRightPhase: (GameState.IsPerformingCardOutOfPhase || Actor.IsTakingExtraTurn) == False
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_127_LootCrate_ForgoBottomAction$, Loot]

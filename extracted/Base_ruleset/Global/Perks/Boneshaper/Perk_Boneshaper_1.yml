@@ -1,0 +1,8 @@
+Parser: Perk
+ID: Boneshaper01
+Name: FH/PERK_Boneshaper_01_Name
+Description: FH/PERK_Boneshaper_01_Desc
+CharacterID: BoneshaperID
+Available: 2
+CardsToRemove: [AMC_Basic_M1]
+CardsToAdd: [AMC_Curse_P0]

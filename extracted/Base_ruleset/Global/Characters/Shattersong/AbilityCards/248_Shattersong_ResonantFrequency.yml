@@ -1,0 +1,96 @@
+Parser: AbilityCard
+Name: $FH/248_character_ability_cards_shattersong_resonant_frequency_1$
+Character: ShattersongID
+ID: 248
+Level: 1
+Initiative: 88
+Discard: [Discard,Discard]
+Prefab: 248_Shattersong_ResonantFrequency
+Data:
+    Top:
+        Abilities:            
+            TDestroyObstacles:                
+                NullHex: True
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Range")     
+                Target: 1
+                TileFilter: Custom
+                MiscVars:
+                    IsValidTile: obj.FindObstacleProp(true, true) != null
+                    DontCancelIfNoTiles: True
+                    DontPreviewDescription: True
+                    ExplicitlyDoesNothing: True
+                    SelectMultiHexProps: True
+                SkipAnim: True
+                SubAbilities: 
+                    TAttack:
+                        AnimOverload: ResonantFrequency
+                        TreatAsNonSubAbility: True
+                        Filter: Enemy
+                        Attack: 2
+                        MiscVars:
+                            PrintedProperties: list("Attack")     
+                        TreatAsMelee: True
+                        Target: 99
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateDesroyedOneHexObstacle: ParentAbility != null && ParentAbility.AbilityHasHappened
+                        Vars:
+                            TargetPosition: ParentAbility.m_TilesSelected[0]
+                            TargetingOverrideArrayIndex: ParentAbility.TargetPosition
+                        MiscVars:
+                            AllowUndoAfterFirst: True
+                            AutoSelectValidTiles: True
+                        Targeting: Custom
+                        TargetingVars:
+                            ParentTile: ParentAbility.m_TilesSelected[0]
+                            AddValidActorsInRange: GameState.GetAdjacentEnemies(TargetingActor, ParentTile.m_ArrayIndex)
+                            AddTilesInRange: AddValidActorsInRange.Select(obj.Tile)
+                        PerformVars:
+                            ActorBeenAttacked: 
+                                SelectedTile: ParentAbility.TilesSelected[0]
+                                Prop: SelectedTile.FindObstacleProp(true, true)
+                                DestroyProp: Prop != null && Prop.DestroyPropFromAbility(obj) 
+        Consumes:
+            TCEarth:
+                Element: Earth
+                AbilityOverrides:
+                    CBuffAttack:
+                        ParentName: TAttack
+                        Strength: 1
+                        XP: 1
+    Bottom:
+        Abilities:
+            BToken:
+                NullTargeting:
+                Tokens: 2
+                Flags: [ModifiesResonanceTokens]
+                Filter: [Self]
+                AnimOverload: Cast_Concentrate
+            BDamageSelf:
+                Damage: 2
+                MiscVars:
+                    PrintedProperties: list("Damage")     
+                Filter: Self
+                TextOnly: True
+                AutoTrigger: True
+            BBrittleSelf:
+                Brittle: True
+                Filter: Self
+                TextOnly: True
+                AutoTrigger: True
+                SkipAnim: True
+Layout:
+    Top:
+        - Row: "$FH/248_character_ability_cards_shattersong_resonant_frequency_2$"
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCEarth
+                    Text: "<size=100%>+1 <sprite name=Attack>, <sprite name=XP>"
+    Bottom:
+        - Row: "$FH/248_character_ability_cards_shattersong_resonant_frequency_3$"
+        - MandatoryTrigger:  "$FH/248_character_ability_cards_shattersong_resonant_frequency_4$"
+        - MandatoryTrigger:  "$FH/248_character_ability_cards_shattersong_resonant_frequency_5$"

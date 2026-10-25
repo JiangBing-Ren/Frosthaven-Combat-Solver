@@ -1,0 +1,64 @@
+Parser: Enemy
+ID: FrozenCorpseID
+LocKey: $FH/FrozenCorpse$
+MonsterType: Monster
+StandeeLimit: 6
+Model: FrozenCorpse
+PredominantlyMelee: True
+AbilityCards: [634, 635, 636, 637, 638, 639, 640, 641]
+# Base Stats
+Level0:
+    Health: 7
+    Move: 1
+    Attack: 2
+    Range: 1
+    Target: 1
+Level1:
+    Health: 7
+    Move: 1
+    Attack: 2
+    Range: 1
+    Target: 1
+    Shield: 1
+Level2:
+    Health: 9
+    Move: 1
+    Attack: 2
+    Range: 1
+    Target: 1
+    Shield: 1
+Level3:
+    Health: 10
+    Move: 2
+    Attack: 2
+    Range: 1
+    Target: 1
+    Shield: 1
+Level4:
+    Health: 12
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 1
+Level5:
+    Health: 15
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 1
+Level6:
+    Health: 17
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 2
+Level7:
+    Health: 23
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 1
+    Shield: 2

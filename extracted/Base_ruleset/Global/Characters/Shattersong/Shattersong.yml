@@ -1,0 +1,28 @@
+Parser: Character
+ID: ShattersongID
+LocKey: $FH/FS_Character_Shattersong$
+Model: Shattersong
+DefaultSkin: 1
+Race: Savvas
+Traits: [ Educated, Outcast, Persuasive ]
+# PlayerLevel:  [  1,   2,   3,   4,   5,   6,   7,   8,   9 ]
+HealthTable:    [  8, 9, 11, 12, 14, 15, 17, 18, 20 ]
+NumberAbilityCardsInBattle: 10
+Role: $Shattersong_ROLE$
+Description: $Shattersong_DESCRIPTION$
+Difficulty: $DIFFICULTY_HIGH$
+Strengths: $Shattersong_STRENGTHS$
+Weaknesses: $Shattersong_WEAKNESSES$
+Adventure_Description: $Shattersong_ADVENTURE_DESCRIPTION$
+Complexity: 3
+ElementalAffinities: [Air, Earth, Light]
+RetireCampaignSection: 132.1
+MasteryIDs: [ Shattersong_MASTERY_1, Shattersong_MASTERY_2 ]
+ResonanceTokens: 1
+HeroStats:
+    Melee: 3
+    Ranged: 3
+    Mobility: 4
+    Support: 5
+    Defense: 2
+    Control: 3

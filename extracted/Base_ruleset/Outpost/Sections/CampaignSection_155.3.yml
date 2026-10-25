@@ -1,0 +1,14 @@
+Parser: CampaignSection
+ID: 155.3
+Name: Low Morale
+SkipNarration: True
+SkipCompletedNotification: False
+Effects:
+    - Type: ReplaceMoraleSection
+      Param1: 155.3
+      Param2: 175.2  
+    - Type: GainMorale
+      Param1: 5
+    - Type: GainInspirationPerPartyMembers
+    - Type: LoseProsperity
+      Param1: 2

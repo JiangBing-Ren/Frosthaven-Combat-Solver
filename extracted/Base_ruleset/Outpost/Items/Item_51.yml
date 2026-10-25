@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 51
+ScenarioItemID: 1286
+Name: Spiked Collar
+Quantity: 2
+Type: Head
+CraftingCost:
+    Flamefruit: 1
+RequiredCraftingItemIDs: [ 11 ]

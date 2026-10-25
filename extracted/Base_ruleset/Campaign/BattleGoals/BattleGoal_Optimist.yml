@@ -1,0 +1,13 @@
+Parser: BattleGoal
+ID: BattleGoal_Optimist
+LocalisedName: FH/1320_battle_goals_optimist_1
+LocalisedDescription: FH/1320_battle_goals_optimist_2
+#remove 2 or more negative conditions from yourself or an ally
+PerkChecks: 1
+BattleGoalCondition:
+    - Targets:
+        Filter: RemoveCondition
+        Value: 2
+        CharacterTypes:
+            Target: [Self,Ally]
+        SubFilter: Scenario

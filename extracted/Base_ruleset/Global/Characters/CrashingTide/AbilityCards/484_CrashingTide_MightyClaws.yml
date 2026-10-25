@@ -1,0 +1,98 @@
+Parser: AbilityCard
+Name: $FH/484_character_ability_cards_crashing_tide_mighty_claws_1$
+Character: CrashingTideID
+ID: 484
+Level: 1
+ProgressionOrder: 484
+Initiative: 23
+Discard: [Discard,Lost]
+Prefab: 484_CrashingTide_MightyClaws
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 2
+                Target: 2
+                MiscVars:
+                    PrintedProperties: list("Attack","Target")
+                Range: 1
+                Targeting: Range
+                Filter: [Enemy]
+        Consumes:
+            TCDark:
+                Elements: [Dark]
+                AbilityOverrides:
+                    TCAttackBuff:
+                        ParentName: TAttack
+                        Pierce: 2
+                        MiscVars:
+                            PrintedProperties: list("Pierce")
+                XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 4
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BShield:
+                Shield:
+                    Amount: 1
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                Filter: [Self]
+                ActiveBonus:
+                    Duration: Round
+                    ListLayoutOverride: [<sprite name=Shield> *BShield*, Positive_Shield]
+            BRetaliate:
+                Retaliate:
+                    Amount: 1
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Retaliate")
+                Filter: [Self]
+                ActiveBonus:
+                    Duration: Round
+                    ListLayoutOverride: [<sprite name=Retaliate> *BRetaliate*, Positive_Retaliate]
+                AnimOverload: MightyClaws
+            BConsume:
+                Consume:
+                    Elements: [Dark]
+                    Abilities:
+                        TDisadvantage:
+                            AttackersGainDisadvantage: True
+                            Range: 1
+                            Target: -1
+                            Filter: [Self]
+                            ActiveBonus:
+                                Duration: Round
+                                ListLayoutOverride: [$FH/065_character_ability_cards_banner_spear_deflecting_maneuver_3$, Positive_Disadvantage_Enemy]
+                    XP: 1
+        XP: 1
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "25,25,25,25"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Attack> *TAttack*"
+            - Column:
+                - AddedEffect: "<sprite name=Target>2"
+            - Column:
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCDark
+                    Text: "<sprite name=Pierce>2, <sprite name=XP1>"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Shield> *BShield* <size=100%><voffset=1>@BShield@"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Retaliate> *BRetaliate* <size=100%><voffset=1>@BRetaliate@"
+        - Divider:
+        - Conditional:
+            Layout:
+                - Row: "$FH/484_character_ability_cards_crashing_tide_mighty_claws_2$"

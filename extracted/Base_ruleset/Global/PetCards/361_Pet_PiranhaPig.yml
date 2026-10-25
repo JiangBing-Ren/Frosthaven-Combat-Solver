@@ -1,0 +1,44 @@
+Parser: PetCard
+ID: 361
+StringID: PiranhaPigPetID
+Name: $FH/361_pet_cards_piranha_pig_1$
+Description: $FH/361_pet_cards_piranha_pig_2$
+Art: Piranha Pig
+Usage: Consumed
+Trigger: DuringOwnTurn
+PetUnlockedBy: PiranhaPigID
+Cost: 0
+Data: 
+    Abilities:
+        # fake ability first, in order to give us something to undo before triggering the in-order abilities
+        AChooseToGrantLoot:
+            NullTargeting:
+            Filter: Self
+            Range: -1
+            Target: 1
+            AnimOverload: UseItem
+            PerformVars:
+                ActorIsApplying: 
+                    VFX: TargetingActor.PlayVFX("PetPiranhaPigEffect")
+            PreviewEffectText: ""
+            SubAbilities:
+                AGrantLoot:
+                    PreviewEffectText: ""
+                    TreatAsNonSubAbility: True
+                    ControlActor:
+                        Abilities:
+                            ALoot:
+                                Loot: 1
+                                Target: -1
+                                AnimOverload: Loot
+                    Target: -1
+                    Targeting: Custom
+                    TargetingVars:
+                        AddValidActorsInRange: AllPlayers.Where(!obj.IsDead)
+                    Filter: [Ally,Self]
+                    SkipAnim: True
+                    AutoTrigger: True
+                    MiscVars:
+                        DontPreviewDescription: True
+Layout: 
+    - Row: "$FH/361_pet_cards_piranha_pig_2$"

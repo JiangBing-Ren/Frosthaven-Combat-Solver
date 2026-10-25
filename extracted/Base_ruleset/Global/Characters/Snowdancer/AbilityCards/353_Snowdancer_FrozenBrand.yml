@@ -1,0 +1,86 @@
+Parser: AbilityCard
+Name: $FH/353_character_ability_cards_snowdancer_frozen_brand_1$
+Character: SnowdancerID
+ID: 353
+Level: 6
+Initiative: 33
+Discard: [Lost,Discard]
+Prefab: 353_Snowdancer_FrozenBrand
+Data:
+    Top:
+        Abilities:
+            TAlly:
+                ControlActor:
+                    UseControllingActorType: True
+                    Abilities:
+                        TAllyNull:
+                            Null: True
+                            AutoTrigger: True
+                            Filter: Self
+                            Target: -1
+                            SkipAnim: True
+                        TAllyAttack:
+                            Attack: 4
+                            MiscVars:
+                                PrintedProperties: list("Attack")
+                            AreaEffect: "0,0,G|2,0,R|1,1,R|-1,1,R|-2,0,R|-1,-1,R|1,-1,R|0,2,R|0,-2,R|3,1,R|-3,1,R|-3,-1,R|3,-1,R"
+                            MultiPassAttack: False
+                            StrengthIsBase: True
+                            SubAbilities:
+                                TSubPush:
+                                    Push:
+                                        Amount: 2
+                                    MiscVars:
+                                        PrintedProperties: list("Push")
+                                    IsInlineSubAbility: True
+                                    Target: -1
+                                    UseParentTargets: True
+                Target: 1
+                Range: 3
+                MiscVars:
+                    PrintedProperties: list("Range")
+                AnimOverload: Control 
+                Filter:
+                    TargetType: Ally
+                    EnemyType: [Normal, Elite, Boss]
+        Consumes:
+            TCIce:
+                Elements: Ice
+                AbilityOverrides:
+                    TCIceAttackBuff:
+                        ParentName: TAllyAttack
+                        Conditions: [Immobilize]
+        XP: 2
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 4
+                    SquareEnhancements: 1
+                    Jump: True
+                MiscVars:
+                    PrintedProperties: list("Move")
+        Infuse: [Ice]
+Layout:
+    Top:
+        - ColumnWidths: "60,40"
+        - Column:
+            - Row: "$FH/353_character_ability_cards_snowdancer_frozen_brand_2$"
+            - Row: "<size=130%><sprite name=Attack> *TAllyAttack* <sprite name=Push> *TSubPush*"
+            - Row: "<size=50%> "
+            - Conditional:
+                Top: true
+                Layout:
+                    - Consume:
+                        Name: TCIce
+                        Text: "<size=130%><sprite name=Immobilize>"
+        - Column:
+            - Row: "£Area£"
+            - Row: "<size=50%> "
+        
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@ <sprite name=Jump>"
+        - Row: "<size=50%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: [Ice]

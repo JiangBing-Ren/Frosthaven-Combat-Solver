@@ -1,0 +1,107 @@
+Parser: AbilityCard
+Name: $FH/49_character_ability_cards_blinkblade_precision_timing_1$
+Character: BlinkbladeID
+ID: 49
+Level: 4
+Initiative: 15
+Discard: [Lost,Discard]
+Prefab: 49_Blinkblade_PrecisionTiming
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Filter: Self                        
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: BuffAttack
+                    Flags: [WhenSlow, NotAffectedByIgnoreSlowEffects]
+                AnimOverload: PowerUp
+                ConditionalOverrides:
+                    COAnim_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            COAnim:
+                                AnimOverload: PowerUpSlow
+            TMove:
+                Move: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+                Filter: Self                        
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: BuffMove
+                    Flags: [WhenFast, NotAffectedByIgnoreFastEffects]
+                AutoTrigger: True
+                SkipAnim: True
+                StartAbilityRequirements:
+                    Type: PreviousAbility
+                    AbilityHasHappened: True
+        XP: 2
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BAttack:
+                Attack: 2
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                # CanSkip: False
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Fast
+                    XP: 1  
+            BMoveAgain: 
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+                ConditionalOverrides:
+                    BMoveAgainCO:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            BMoveAgain:
+                                Strength: -1
+Layout:
+    Top:
+        - Active:
+            Ability: TAttack
+            ListLayout: "$FH/049_character_ability_cards_blinkblade_precision_timing_2$"
+            Layout: "$FH/049_character_ability_cards_blinkblade_precision_timing_2$"
+            Icon: "Positive_AttackPlus_Slow"
+        - Active:
+            Ability: TMove
+            ListLayout: "$FH/049_character_ability_cards_blinkblade_precision_timing_3$"
+            Layout: "$FH/049_character_ability_cards_blinkblade_precision_timing_3$"
+            Icon: "Positive_MovePlus_Fast"
+    Bottom:
+        - Row: "<b><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row:
+            - ColumnWidths: "50,30"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "<b><size=130%><sprite name=Attack> *BAttack*, <sprite name=XP1>"
+            - Column:  
+        - Divider:
+        - Row:
+            - ColumnWidths: "35,30,35"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Move> *BMoveAgain* <size=100%><voffset=1>@BMoveAgain@"
+            - Column: 
+                - BlinkbladeState:
+                    State: "slow"
+                    Text:  "<b> -1<sprite name=Move>"

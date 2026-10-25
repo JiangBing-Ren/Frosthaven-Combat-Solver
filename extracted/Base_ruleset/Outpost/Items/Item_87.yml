@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 87
+ScenarioItemID: 1039
+Name: Cure Potion
+Quantity: 2
+Type: Small
+Brewing:
+    Herb1: Arrowvine
+    Herb2: Corpsecap

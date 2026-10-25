@@ -1,0 +1,69 @@
+Parser: AbilityCard
+Name: $FH/020_character_ability_cards_drifter_chunk_of_flesh_1$
+Character: DrifterID
+ID: 20
+Level: 4
+ProgressionOrder: 19
+Initiative: 62
+Discard: [Discard,Lost]
+Prefab: 20_Drifter_ChunkOfFlesh
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+            THeal:
+                Heal:
+                    Amount: 2
+                    DiamondPlusEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Heal","Range")
+                Filter: [Self, Ally]
+                AnimOverload: Heal
+            TMoveTracker:
+                Filter: Self
+                MoveActiveBonusTracker: -1
+                Vars:
+                    NumberOfCardsToSelect: 1
+                AnimOverload: PowerUp
+    Bottom:
+        Abilities:
+            BShieldIncomingAttacks_ChunkOfFlesh:
+                Shield: 2
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                PreviewEffectText: "<sprite name=Shield> 2"
+                Filter: Self
+                ActiveBonus:
+                    Duration: Persistent
+                    TriggerOnCaster: True
+                    IsToggleBonus: True
+                    ToggleIsOptional: False
+                    Behaviour: ShieldIncomingAttacks
+                    ValidAbilityType: Attack
+                    XPTracker: [1,0,1,0,1,0]
+                AnimOverload: Persistent Buff
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack*<size=100%><voffset=1>@TAttack@"
+        - Divider:
+        - Row:
+            - ColumnWidths: "20,30,30,20"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Heal> *THeal*<size=100%><voffset=1>@THeal@"
+            - Column:
+                - AddedEffect: "<sprite name=Range>1"
+            - Column:
+        - Divider:
+        - Row: "$FH/020_character_ability_cards_drifter_chunk_of_flesh_2$"
+    Bottom:
+        - Active:
+            Ability: BShieldIncomingAttacks_ChunkOfFlesh
+            Icon: Positive_Shield
+            ListLayout: "$FH/020_character_ability_cards_drifter_chunk_of_flesh_3$"
+            Layout: "$FH/020_character_ability_cards_drifter_chunk_of_flesh_3$"
+        - XPTracker: BShieldIncomingAttacks_ChunkOfFlesh

@@ -1,0 +1,13 @@
+Parser: FHScenario
+ID: 32
+Name: Raven's Roost
+LevelID: FS_032_Ravens_Roost
+Chain: Lurker
+Location: RadiantForest
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: GainItemBlueprint
+          Param1: 69
+        - Type: GainCampaignSticker
+          Param1: IntoTheForest

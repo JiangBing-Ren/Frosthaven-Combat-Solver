@@ -1,0 +1,34 @@
+Parser: ItemCard
+ID: 898
+StringID: ProtectiveScepterID
+Name: $FH/0898_item_cards_protective_scepter_1$
+Art: Protective Scepter
+TotalInGame: 2
+Cost: 0
+Slot: OneHand
+Rarity: Rare
+Usage: Spent
+Trigger: DuringOwnTurn
+ProsperityRequirement: 1
+Data:    
+    Vars:
+        HideItemActiveForCaster: True
+    Abilities:
+        AShield:
+            Shield: 1
+            Target: 1
+            Range: 2
+            Filter: Ally
+            ActiveBonus:
+                Duration: Round
+                MiscVars:
+                    IgnoreImpair: True
+Layout: 
+    - Active:
+        Ability: AShield 
+        ListLayout: "$FH/0898_item_cards_protective_scepter_2$ <b><size=130%> <sprite name=Shield> *AShield*"
+        Layout: 
+            - Row: "$FH/0898_item_cards_protective_scepter_2$"
+            - Row: "<b><size=130%> <sprite name=Shield>*AShield*"
+        Icon: "Positive_Shield_Item"
+    - Row: "<size=50%> " 

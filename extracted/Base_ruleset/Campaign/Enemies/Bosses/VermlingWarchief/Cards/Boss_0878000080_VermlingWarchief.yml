@@ -1,0 +1,23 @@
+Parser: EnemyCard
+ID: 0878000080
+Name: $Monster_Ability_Boss_VermlingWarchief_Special1$
+Initiative: 79
+Shuffle: False
+Data:
+    Abilities: 
+        Heal1:
+            Heal: 0
+            Filter: Self
+            StatIsBasedOnX:
+                Strength:
+                    AddTo: True
+                    BasedOn: InitialPlayerCharacterCount
+        Summon1:
+            Summons: 
+                - VermlingPriestID
+                - VermlingPriestID
+                - VermlingPriestID
+                - VermlingPriestEliteID
+            Target: 1
+            TargetIsBase: True
+            AnimOverload: Summon

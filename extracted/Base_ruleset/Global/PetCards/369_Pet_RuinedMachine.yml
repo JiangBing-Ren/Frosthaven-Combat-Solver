@@ -1,0 +1,47 @@
+Parser: PetCard
+ID: 369
+StringID: RuinedMachinePetID
+Name: $FH/369_pet_cards_ruined_machine_1$
+Description: $FH/369_pet_cards_ruined_machine_2$
+Art: Ruined Machine
+Usage: Consumed
+Trigger: DuringOwnTurn
+PetUnlockedBy: RuinedMachineID
+Cost: 0
+Data: 
+    Abilities:
+         # fake ability first, in order to give us something to undo before triggering the in-order abilities
+        AChooseToGrantLoot:
+            NullTargeting:
+            Filter: Self
+            Range: -1
+            Target: 1
+            AnimOverload: UseItem
+            PerformVars:
+                ActorIsApplying: 
+                    VFX: TargetingActor.PlayVFX("PetRuinedMachineEffect")
+            PreviewEffectText: ""
+            SubAbilities:
+                AGrantLoot:
+                    PreviewEffectText: ""
+                    TreatAsNonSubAbility: True
+                    ControlActor:
+                        Abilities:
+                            AShield:
+                                AutoTrigger: True
+                                SkipAnim: True
+                                Shield: 1
+                                Target: 1
+                                ActiveBonus:
+                                    Duration: Round
+                    Target: -1
+                    Targeting: Custom
+                    TargetingVars:
+                        AddValidActorsInRange: AllPlayers.Where(!obj.IsDead)
+                    Filter: [Ally,Self]
+                    SkipAnim: True
+                    AutoTrigger: True
+                    MiscVars:
+                        DontPreviewDescription: True
+Layout: 
+    - Row: "$FH/369_pet_cards_ruined_machine_2$"

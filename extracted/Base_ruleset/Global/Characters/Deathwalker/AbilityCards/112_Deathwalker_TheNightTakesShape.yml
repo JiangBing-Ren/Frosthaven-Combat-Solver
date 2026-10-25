@@ -1,0 +1,110 @@
+Parser: AbilityCard
+Name: $FH/112_character_ability_cards_deathwalker_the_night_takes_shape_1$
+Character: DeathwalkerID
+ID: 112
+Level: 6
+Initiative: 94
+Discard: [Discard,Discard]
+Prefab: 112_Deathwalker_TheNightTakesShape
+Data:
+    Top:
+        Abilities:
+            TRemoveShadow:
+                RemoveShadow:
+                Target: 2
+                Range: 1
+                AnimOverload: Shadow Manipulation
+                CanSkip: False
+                SubAbilities:
+                    TSummon:
+                        CanSkip: False
+                        CanUndo: True
+                        TreatAsNonSubAbility: True
+                        Summon: ShadowHorrorID
+                        AnimOverload: Summon
+                    ADisadvantageAura:
+                        AttackersGainDisadvantage: True
+                        Range: 0
+                        Target: -1
+                        Filter: Self
+                        AutoTrigger: True
+                        ActiveBonus:
+                            Duration: Persistent
+                            ListLayoutOverride: [$FH/112_character_ability_cards_deathwalker_the_night_takes_shape_4$, Positive_Disadvantage_Enemy_Summon]
+                            IsAura: True
+                            AuraTargeting: All
+                            AuraFilter: 
+                                TargetType: OwnSummon
+                        Text: "$FH/112_character_ability_cards_deathwalker_the_night_takes_shape_4$"
+                        SkipAnim: True
+        XP: 2           
+    Bottom:
+        Abilities:
+            BMoveShadow:
+                MoveShadow:
+                Target: 1
+                Range:
+                    Amount: 3
+                    SquareEnhancements: 1
+                Vars:
+                    TargetUnoccupiedTiles: True
+                AnimOverload: Shadow Manipulation
+            BSubTeleport:
+                Teleport2: 99
+                Range: 1
+                Target: -1
+                Filter: Self
+                Vars:
+                    TargetShadows: True
+                    TargetTile: CustomAbility.GetLastMovedShadowTile()
+                    ActorOnShadow: TargetTile == null || CustomAbility.GetActorOnShadow(Ability, TargetTile, false)
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    Vars:
+                        ValidateWeHaveAShadowSelected: TargetTile != null
+                        ValidateShadowIsFree: ActorOnShadow == null
+            SubRemoveShadow:
+                RemoveShadow:
+                Target: 1
+                SkipAnim: True
+                Targeting: Custom
+                AutoTrigger: True
+                TargetingVars:
+                    AddTileInRange: Ability.TargetingActor.Tile
+                    AddSelectedTile: Ability.TargetingActor.Tile
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [Teleport2]
+            BGainXP:
+                GainXP: 1
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    ActorHasPerformedValidAbilityTypesThisAction: "> 0"
+                    AbilityTypes: [RemoveShadow]
+            BAttack:
+                Attack: 3
+                MiscVars:
+                    PrintedProperties: list("Attack")
+Layout:
+    Top:
+        - Active:
+            Ability: "TSummon"
+            Icon: Positive_Disadvantage_Enemy_Summon
+            Layout:
+                - Summon:
+                    Ability: TSummon
+                    SummonName: "$FH/112_character_ability_cards_deathwalker_the_night_takes_shape_2$"
+        - Row: "$FH/112_character_ability_cards_deathwalker_the_night_takes_shape_3$"
+        - Divider:
+        - Row: "$FH/112_character_ability_cards_deathwalker_the_night_takes_shape_4$"
+
+    Bottom:
+        - Row: "$FH/112_character_ability_cards_deathwalker_the_night_takes_shape_5$ @BMoveShadow.Range@"
+        - Row: "<size=20%> "
+        - Divider:
+        - Row: "$FH/112_character_ability_cards_deathwalker_the_night_takes_shape_6$"
+        - Row: "<size=20%> "
+        - Divider:
+        - Row: "<sprite name=Attack> *BAttack*"
+        - Row: "<size=20%> "

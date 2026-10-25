@@ -1,0 +1,162 @@
+Parser: AbilityCard
+Name: $FH/440_character_ability_cards_metal_mosaic_cryogenic_hibernation_1$
+Character: MetalMosaicID
+ID: 440
+Level: 7
+Initiative: 19
+Discard: [Discard,Discard]
+Prefab: 440_MetalMosaic_CryogenicHibernation
+Data:
+    Top:
+        Abilities:
+            TShield:
+                Shield: 2
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                ActiveBonus:
+                    Duration: Persistent
+                    ListLayoutOverride: ["<sprite name=Shield> *TShield*", Positive_Shield]
+                SubAbilities:
+                    TPreventAttack:
+                        NullTargeting: True
+                        Filter: Self
+                        CanSkip: False
+                        SkipAnim: True
+                        AutoTrigger: True
+                        MiscVars:
+                            ForcedCannotAttack: True
+                        ActiveBonus:
+                            Duration: Persistent
+                            ListLayoutOverride: [$FH/440_character_ability_cards_metal_mosaic_cryogenic_hibernation_2$, Negative_AttackPrevent]
+                    TEndTurnBrittle:
+                        CanSkip: False
+                        SkipAnim: True
+                        AutoTrigger: True
+                        SkipAnim: True
+                        AddActiveBonus:
+                            Brittle: True
+                            AutoTrigger: True
+                            Filter: [Self]
+                        Filter: [Self]
+                        ActiveBonus:
+                            Duration: Persistent
+                            Behaviour: EndTurnAbility
+                            ListLayoutOverride: [$FH/440_character_ability_cards_metal_mosaic_cryogenic_hibernation_3$, Negative_BrittleSelf]
+            THeal:
+                Heal: 4
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                CanSkip: False
+                AutoTrigger: True
+                Filter: Self
+                AnimOverload: CastNeutral
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredPressure: Low
+                SubAbilities:
+                    BPressureChangeLow:
+                        Null: True
+                        SkipAnim: True
+                        IgnoreStun: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Low
+                        PerformVars:
+                            NullBegin:
+                                ChangePressure: CustomAbility.PressureChange(TargetingActor, 1)
+                    BCXP:
+                        GainXP: 1
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Low
+    Bottom:
+        Abilities:
+            BMove:
+                Move: 2
+                MiscVars:
+                    PrintedProperties: list("Move")
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: Vars
+                        AddTo: True
+                        Vars:
+                            HighPressure: TargetingActor.Pressure.ToString() == 'High'
+                            RegularPressure: TargetingActor.Pressure.ToString() == 'Regular'
+                            Value: HighPressure && 1 ||RegularPressure && 2 || 0
+                SubAbilities:
+                    BPressureChangeRegular:
+                        Null: True
+                        SkipAnim: True
+                        IgnoreStun: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Regular
+                        PerformVars:
+                            NullBegin:
+                                ChangePressure: CustomAbility.PressureChange(TargetingActor, 1)
+            BConsumeIce:
+                Consume:
+                    Elements: Ice
+                    Abilities:
+                        BCIBrittle:
+                            Brittle: True
+                            Range: 1
+                            MiscVars:
+                                PrintedProperties: list("Range")
+                            Target: 1
+                            Filter: Enemy
+                            AnimOverload: ElectricalDischarge_Control 
+                            CanUndo: False
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredPressure: Low
+                SubAbilities:
+                    BPressureChangeLow:
+                        Null: True
+                        SkipAnim: True
+                        IgnoreStun: True
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Low
+                        PerformVars:
+                            NullBegin:
+                                ChangePressure: CustomAbility.PressureChange(TargetingActor, 1)
+                    BCXP:
+                        GainXP: 1
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            RequiredPressure: Low
+                
+Layout:
+    Top:
+        - Row: "<sprite name=Shield> 2"
+        - Divider:
+        - MandatoryTrigger:
+            Layout:
+                - Row: "$FH/440_character_ability_cards_metal_mosaic_cryogenic_hibernation_2$"
+        - Divider:
+        - MandatoryTrigger:
+            Layout:
+                - Row: "$FH/440_character_ability_cards_metal_mosaic_cryogenic_hibernation_3$"
+        - Divider:
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureLow><size=100%> <sprite name=Heal> 4, $Self$, <sprite name=XP1>, <sprite name=MMGainPressure>"
+    Bottom:
+        - Row: "<sprite name=Move> 2"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureHigh><size=100%> +1 <sprite name=Move>"
+        - MandatoryTrigger:
+            Layout:
+                - Row: "<size=130%><sprite name=MMPressureRegular><size=100%> +2 <sprite name=Move>, <sprite name=MMGainPressure>"
+        - Divider:
+        - MandatoryTrigger:
+            Layout:
+                - ColumnWidths: "10,40,50"
+                - Column: "<size=130%><sprite name=MMPressureLow><size=100%>"
+                - Column:
+                    - Conditional:
+                        Layout:
+                            - Row: "<sprite name=ConsumeIce>: <sprite name=Brittle> <sprite name=Range> 1"
+                - Column: "<sprite name=XP1><sprite name=MMGainPressure>"

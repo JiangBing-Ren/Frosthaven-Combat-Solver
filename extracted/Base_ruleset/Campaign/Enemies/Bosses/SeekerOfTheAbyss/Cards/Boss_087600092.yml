@@ -1,0 +1,34 @@
+Parser: EnemyCard
+ID: 087600092
+Name: $Monster_Ability_Boss_SeekerOfTheAbyss_Special1$
+Initiative: 73
+Shuffle: False
+Data:
+    Abilities:
+        Move1:
+            Move: 0
+        Attack1:
+            Attack: -2
+            Target: 2
+            Text: "$FH/boss_seeker_of_the_abyss_2_1$"
+            AnimOverload: DrainSoul
+            SubAbilities:
+                ControlActor:
+                    ControlActor:
+                        #UseControllingActorPlayerControl: True
+                        Abilities:
+                            ALoseCard:
+                                Filter: Self
+                                CanSkip: False
+                                IgnoreStun: True
+                                AutoTrigger: True      
+                                Target: 1
+                                TargetIsBase: True
+                                HelpBoxTooltipLocKey: $GUI_LOSE_CARDS_BURN$
+                                SelectAndMoveCard:
+                                    PilesToMoveFrom: [Hand,Discarded]
+                                    PileToMoveTo: Lost
+                                    Amount: 1
+                    UseParentTargets: True
+                    SkipAnim: True
+

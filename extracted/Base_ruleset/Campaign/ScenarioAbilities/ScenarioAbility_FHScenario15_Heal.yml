@@ -1,0 +1,25 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_FH15_Heal
+ScenarioAbility:
+    AActive:   
+        MiscVars:
+            ListLayoutParamVar0: CustomAbility.GetAddActiveStrength(ActiveBonus)
+        AddActiveBonus:
+            Heal: 0
+            Target: 1
+            Filter: Self
+            PreviewEffectText: <sprite name="Heal">
+            StatIsBasedOnX: 
+                Strength:
+                    BasedOn: XAddedToLevelTimesActorsOverY
+                    Multiplier: 0
+                    SecondVariable: 2
+                    Filter:
+                        EnemyClasses: [RuinedMachineID]
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: EndRoundAbility
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_015_SCENARIO_MODIFIER_1$, Positive_HealSelf_Campaign]
+        AnimOverload: None
+        AutoTrigger: True
+        Filter: Self

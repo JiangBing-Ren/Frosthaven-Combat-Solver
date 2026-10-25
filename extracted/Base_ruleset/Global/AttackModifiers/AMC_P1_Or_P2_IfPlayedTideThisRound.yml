@@ -1,0 +1,9 @@
+Parser: AttackModifier
+Name: AMC_P1_Or_P2_IfPlayedTideThisRound
+MathModifier: "+1"
+CustomCombatLogDescriptionLocKey: "FH/AMC_P1_Or_P2_IfPlayedTideThisRound_Desc"
+AbilityOverrides:
+    NegCon:
+        ParentName: AMC_P1_Or_P2_IfPlayedTideThisRound
+        Vars: 
+            Strength: (CustomAbility.GetTideActiveBonusesPlayedThisRound(TargetingActor).Count > 0)

@@ -1,0 +1,13 @@
+Parser: FHScenario
+ID: 12
+Name: Temple Entrance
+LevelID: FS_012_Temple_Entrance
+Chain: Algox3
+Location: CopperneckMountaions
+Difficulty: 1
+Conclusions:
+    - Effects:
+        - Type: AllCharactersGainExperience
+          Param1: 15
+        - Type: UnlockScenario
+          Param1: 20

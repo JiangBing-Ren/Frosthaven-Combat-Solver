@@ -1,0 +1,66 @@
+Parser: AbilityCard
+Name: $FH/447_character_ability_cards_deepwraith_skewer_the_flesh_1$
+Character: DeepwraithID
+ID: 447
+Level: 1
+Initiative: 86
+Discard: [Discard,Discard]
+Prefab: 447_Deepwraith_SkewerTheFlesh
+Data:
+    Top:
+        Abilities:
+            TAttack1:
+                Attack:
+                    Amount: 1
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Target: 1
+                Range: 1
+                Filter: Enemy
+                Conditions: [Immobilize]
+            TAttack2:
+                Attack:
+                    Amount: 1
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Target: 1
+                Range: 1
+                Filter: Enemy
+                Conditions: [Immobilize]
+    Bottom:
+        Abilities:
+            BTeleport:
+                Teleport2: 
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Teleport")
+                Filter: Self
+                AnimOverload: Teleport Into
+                AnimOverload2: Teleport Outof
+            BConsume:
+                PreviewEffectText: "<sprite name=Invisible>"
+                Consume:
+                    Trophies: 1
+                    Element: Dark
+                    PreviewEffectId: M1TrophyDarkInvisible
+                    Abilities:
+                        BToken:
+                            AutoTrigger: True
+                            Invisible: True
+                            Filter: [Self]
+                            SkipAnim: True
+                XP: 1
+Layout:
+    Top:
+        - Row: "<sprite name=Attack> *TAttack1* @TAttack1@"
+        - Row: "<sprite name=Immobilize>"
+        - Divider:
+        - Row: "<sprite name=Attack> *TAttack2* @TAttack2@"
+        - Row: "<sprite name=Immobilize>"
+    Bottom:
+        - Row: "<sprite name=Teleport> *BTeleport* @BTeleport@"
+        - Divider:
+        - Row: "$FH/447_character_ability_cards_deepwraith_skewer_the_flesh_2$"

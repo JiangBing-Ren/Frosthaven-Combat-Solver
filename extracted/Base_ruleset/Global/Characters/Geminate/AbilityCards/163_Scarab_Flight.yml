@@ -1,0 +1,68 @@
+Parser: AbilityCard
+Name: $FH/163_character_ability_cards_geminate_scarab_flight_1$
+Character: GeminateID
+ID: 163
+Level: 1
+ProgressionOrder: 10
+Initiative: 30
+Discard: [Discard,Lost]
+RequiredForm: Range
+Prefab: 163_Geminate_ScarabFlight
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack: 
+                    Amount: 2
+                Range: 4
+                MinRange: 3
+                MiscVars:
+                    PrintedProperties: list("Attack","Range")
+                SubAbilities:
+                    TAttackSubPush:
+                        Push: 
+                            Amount: 1
+                            SquareEnhancements: 1
+                        MiscVars:
+                            PrintedProperties: list("Push")
+                        IsInlineSubAbility: True
+                AreaEffect: "-2,0,E|0,0,R|2,0,R|4,0,R"
+                AreaEffectLayoutOverride: "-2,0,E|0,0,R|2,0,R|4,0,R"
+                MultiPassAttack: False
+                AnimOverload: RangedAttack_ScarabFlight
+    Bottom:
+        Abilities:
+            TBuffAttack:
+                Shield: 1
+                MiscVars:
+                    PrintedProperties: list("Shield")
+                PreviewEffectText: "<sprite name=Shield> 1 <sprite name=GMRanged> / <sprite name=Shield> 2 <sprite name=GMMelee>"
+                ConditionalOverrides:
+                    TCOAttackMelee:
+                        AbilityOverrides:
+                            TAttackMelee:
+                                Strength: 1
+                        Requirements:
+                            RequiredForm: Melee
+                Filter: Self
+                ActiveBonus:
+                    Duration: Persistent
+                    TriggerOnCaster: True
+                    IsToggleBonus: True
+                    ToggleIsOptional: False
+                    Behaviour: ShieldIncomingAttacks
+                    XPTracker: [0,1,0,1]
+                    ValidAbilityType: Attack
+Layout:
+    Top:
+        - Row: "<size=120%><sprite name=Attack> *TAttack* $FH/163_character_ability_cards_geminate_scarab_flight_2$ @TAttackSubPush@"
+        - Row: "<size=50%> "
+        - Row: "£Area£"
+    Bottom:
+        - Active:
+            Ability: TBuffAttack
+            Icon: "Positive_Shield_Geminate"
+            ListLayout: "$FH/163_character_ability_cards_geminate_scarab_flight_3$"
+            Layout: "$FH/163_character_ability_cards_geminate_scarab_flight_3$"
+        - Row: "<size=20%> "
+        - XPTracker: TBuffAttack

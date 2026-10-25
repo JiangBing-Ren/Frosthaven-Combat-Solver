@@ -1,0 +1,21 @@
+Parser: ScenarioAbility
+ID: RFH005_AddMuddleToAttacks
+ScenarioAbility:
+    AActive:
+        Target: -1
+        Filter: Self
+        AnimOverload: None
+        AutoTrigger: True
+        Attack: 0
+        AttackEffect:
+            Type: StandardBuff
+            Conditions: [Muddle]
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: BuffAttack
+            ListLayoutOverride: [$FH/RFH_Scenario_Campaign_005_SCENARIO_MODIFIER_3$, Positive_Muddle_Attack_Campaign]
+            IsAura: True
+            AuraFilter: Ally
+            AuraTargeting: All
+            MiscVars:
+                HiddenInCombatLog: True

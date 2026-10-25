@@ -1,0 +1,12 @@
+Parser: EnemyCard
+ID: 99990008
+Initiative: 11
+Shuffle: False
+Data:
+    Abilities:
+        AStun:
+            Stun: True
+            Range: 1
+            RangeIsBase: True
+            Filter: Enemy
+            AnimOverload: Attack

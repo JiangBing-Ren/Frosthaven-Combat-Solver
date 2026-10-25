@@ -1,0 +1,8 @@
+Parser: Perk
+ID: Drifter10
+Name: FH/PERK_Drifter_10_Name
+Description: FH/PERK_Drifter_10_Desc
+CharacterID: DrifterID
+Available: 1
+Flags: [Passive, IgnoreMinusOneItemEffects]
+CardsToAdd: [AMC_Basic_P1]

@@ -1,0 +1,9 @@
+Parser: EnemyCard
+ID: 12004
+Name: $Monster_Ability_Advance$
+Initiative: 99
+Shuffle: True
+Data:
+    Abilities: 
+        Move1:
+            Move: 0 # Move back to Dock

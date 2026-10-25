@@ -1,0 +1,30 @@
+Parser: ItemCard
+ID: 940
+StringID: ParryingGauntletID
+Name: $FH/0940_item_cards_parrying_gauntlet_1$
+Art: Parrying Gauntlet
+TotalInGame: 2
+Cost: 0
+Slot: OneHand
+Rarity: Rare
+Usage: Consumed
+Trigger: OnActorMoved
+Data:
+    ItemRequirements:
+        Vars:
+            ValidateOwnerMoved: Actor != Ability.TargetingActor
+            ValidateFinishedMove: Ability.FinishedMove()
+            ValidateIsAdjacentEnemy: GameState.GetAdjacentEnemies(Actor, Actor.ArrayIndex).Contains(Ability.TargetingActor)
+            ValidateNotDisarmed: Actor.Tokens.HasKey(CCondition.ENegativeCondition.Disarm) == False
+            SetAdjacent: Actor.SetTempVar("ParryingGauntletAdjacentTarget", Ability.TargetingActor)
+    Abilities:
+        TAttack:
+            Attack: 3
+            Targeting: Custom
+            TargetingVars:
+                AutoTarget: TargetingActor.ParryingGauntletAdjacentTarget
+                AddValidActorInRange: AutoTarget
+                AddTileInRange: AutoTarget.Tile
+                AddSelectedTile: AutoTarget.Tile
+Layout: 
+       - Row: "$FH/0940_item_cards_parrying_gauntlet_2$"

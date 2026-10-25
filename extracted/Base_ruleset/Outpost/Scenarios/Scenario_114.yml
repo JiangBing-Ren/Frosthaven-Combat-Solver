@@ -1,0 +1,13 @@
+Parser: FHScenario
+ID: 114
+Name: Work Freeze
+LevelID: FS_114_Work_Freeze
+Chain: Other
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: GainHide
+          Param1: 5
+        - Type: AddCalendarCampaignSection
+          Param1: 86.1
+          Param2: 4

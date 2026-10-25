@@ -1,0 +1,8 @@
+Parser: AttackModifier
+Name: AMC_Ice_Earth_P1
+MathModifier: "+1"
+Abilities:
+    InfuseAbility:
+        Infuse: [Ice,Earth]
+        ShowElementPicker: True
+        CanUndo: False

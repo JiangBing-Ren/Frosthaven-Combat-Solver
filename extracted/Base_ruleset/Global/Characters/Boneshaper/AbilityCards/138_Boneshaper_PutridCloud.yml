@@ -1,0 +1,111 @@
+Parser: AbilityCard
+Name: $FH/138_character_ability_cards_boneshaper_putrid_cloud_1$
+Character: BoneshaperID
+ID: 138
+Level: 3
+Initiative: 28
+Discard: [Discard,Lost]
+Prefab: 138_Boneshaper_PutridCloud
+Data:
+    Top:
+        Abilities:
+            TDesignateSummon:
+                NullTargeting: True
+                Target: 1
+                Range: 99
+                Filter: OwnSummon
+                SkipAnim: True
+                MiscVars:
+                    ExplicitlyDoesNothing: True
+                SubAbilities:
+                    TAttack:
+                        Attack:
+                            Amount: 2
+                        MiscVars:
+                            PrintedProperties: list("Attack")
+                        TreatAsNonSubAbility: True
+                        Conditions: [Poison]
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateHasHappened: Ability.ParentAbility.AbilityHasHappened
+                        Target: 99
+                        MiscVars:
+                            AutoSelectValidTiles: True
+                        Vars:
+                            Tiles: CustomAbility.GetAdjacentTiles(Ability.ParentAbility.TilesSelected)
+                            Actors: Tiles.Select(LivingActor).Where(obj != null)
+                        Targeting: Custom
+                        TargetingVars:
+                            AddTilesInRange: Ability.ParentAbility.TilesSelected
+                            AddTilesInRange: Tiles
+                            AddValidActorsInRange: Actors
+                            AddActorsToTarget: Actors
+                            AddSelectedTiles: Actors.Select(Tile)
+                        Filter: Enemy
+                        AnimOverload: PutridCloudTop
+                        SubAbilities:
+                            TAttackSubKill:
+                                Kill: True
+                                Targeting: Custom
+                                TreatAsNonSubAbility: True
+                                IsInlineSubAbility: True
+                                Target: 1
+                                TargetingVars:
+                                    AddTileInRange: Ability.ParentAbility.ParentAbility.TilesSelected[0]
+                                    AddValidActorInRange: Ability.ParentAbility.ParentAbility.ActorsToTarget[0]
+                                    AddActorToTarget: Ability.ParentAbility.ParentAbility.ActorsToTarget[0]
+                                    AddSelectedTile: Ability.ParentAbility.ParentAbility.TilesSelected[0]
+                                Range: 0
+                                Filter: OwnSummon
+                                AutoTrigger: True
+                                SkipAnim: True
+        XP: 1
+        Infuse: Earth
+    Bottom:
+        Abilities:
+            BPoisonAttacker:
+                AddActiveBonus:
+                    Poison: True
+                    AlreadyHasConditionDamageInstead: 1
+                    Filter: Enemy
+                    Targeting: Attacker
+                    AutoTrigger: True
+                    SkipAnim: True
+                    IgnoreStun: True
+                    StartAbilityRequirements:
+                        Type: ThisAbility
+                        ActorsTargetedByAbility: ">= 1"
+                    MiscVars:
+                        InterruptCurrentAbility: True
+                        StackNextToCurrent: True
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: [DuringActionAbilityOnAttacked,DuringActionAbilityOnDeath]
+                    IsAura: True
+                    AuraFilter: [Self, OwnSummon]
+                    AuraTargeting: All
+                    Vars:
+                        ValidateIsAttack: TriggerAbility != null && TriggerAbility.AbilityType == "Attack"
+                Range: 1
+                Target: -1
+                Filter: Self
+                AnimOverload: CastNegative
+        XP: 1
+Layout:
+   Top:
+        - Row: "$FH/138_character_ability_cards_boneshaper_putrid_cloud_2$"
+        - Divider:
+        - MandatoryTrigger: "$FH/138_character_ability_cards_boneshaper_putrid_cloud_3$"
+        - Row: "<size=20%> "
+        - MandatoryTrigger:
+            Layout:
+                - Infuse: Earth
+    Bottom:
+        - Active:
+              Ability: BPoisonAttacker
+              ListLayout: "$FH/138_character_ability_cards_boneshaper_putrid_cloud_4$. $138_character_ability_cards_boneshaper_putrid_cloud_4a$"
+              Layout: "$FH/138_character_ability_cards_boneshaper_putrid_cloud_4$"
+              Icon: Positive_Poison_Enemy_Attack
+        - Row: "<size=20%> "
+

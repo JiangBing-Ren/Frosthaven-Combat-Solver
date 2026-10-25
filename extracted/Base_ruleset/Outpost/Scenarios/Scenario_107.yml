@@ -1,0 +1,16 @@
+Parser: FHScenario
+ID: 107
+Name: My Private Empire
+LevelID: FS_107_My_Private_Empire
+RequiresClimbingGear: true
+Chain: RandomScenario
+Location: CopperneckMountaions
+CanNotBeReplayedInTactical: True
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: FS107ConclusionEffect
+    - Effects:
+        - Type: FS107ConclusionEffect
+        - Type: GainItem
+          Param1: 214

@@ -1,0 +1,14 @@
+Parser: ScenarioAbility
+ID: FH050_PreventDamage
+ScenarioAbility:
+    AActive:
+        PreventDamage: -1
+        Target: -1
+        Filter: Self
+        ActiveBonus:
+            Hidden: True
+            Duration: Persistent
+            Behaviour: PreventDamageByDiscardingPlayerCards
+            IsToggleBonus: False
+        AnimOverload: None
+        AutoTrigger: True

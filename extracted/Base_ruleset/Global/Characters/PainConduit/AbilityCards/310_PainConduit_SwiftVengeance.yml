@@ -1,0 +1,71 @@
+Parser: AbilityCard
+Name: $FH/310_character_ability_cards_pain_conduit_swift_vengeance_1$
+Character: PainConduitID
+ID: 310
+Level: 1
+Initiative: 21
+Discard: [Discard,Discard]
+Prefab: 310_PainConduit_SwiftVengeance
+Data:
+    Top:
+        XP: 1
+        Abilities:
+            TCurse: 
+                Curse: True
+                Target: 0
+                Range: 
+                    Amount: 3
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Range")
+                Filter: Enemy
+                AnimOverload: CastGivingPain
+                MiscVars:
+                    DontCancelIfNoTiles: True
+                StatIsBasedOnX:
+                    Target:
+                        BasedOn: Vars
+                        Vars:
+                            Value: TargetingActor.Tokens.CountNegativeConditions()
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 1
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BLoot:
+                Loot: 1
+                MiscVars:
+                    PrintedProperties: list("Loot")
+                Target: -1
+                AnimOverload: Loot
+        Consumes:
+            BCAir:
+                Elements: Air
+                XP: 1
+                AbilityOverrides:
+                    TCFireDamageBuff:
+                        ParentName: BMove
+                        Strength: 2
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "20,20,30"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Curse>"
+            - Column:
+                - Row: "<mark=#80919922><size=100%><sprite name=Target> X, <sprite name=Range>*TCurse.Range* @TCurse.Range@</mark>"
+        - Row: "$FH/310_character_ability_cards_pain_conduit_swift_vengeance_2$"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: BCAir
+                    Text: "<size=100%>+2 <sprite name=Move>, <sprite name=XP1>"
+        - Divider: 
+        - Row: "<b><size=130%><sprite name=Loot> *BLoot.Loot*"

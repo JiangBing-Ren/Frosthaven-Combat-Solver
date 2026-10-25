@@ -1,0 +1,125 @@
+Parser: AbilityCard
+Name: $FH/308_character_ability_cards_pain_conduit_explosive_wounds_1$
+Character: PainConduitID
+ID: 308
+Level: 1
+Initiative: 43
+Discard: [Discard,Discard]
+Prefab: 308_PainConduit_ExplosiveWounds
+Data:
+    Top:
+        Abilities:
+            TTargetAlly:
+                NullTargeting: True
+                Filter: Ally
+                Range: 3
+                Strength: 2
+                MiscVars:
+                    PrintedProperties: list("Range","Damage")
+                SkipAnim: True
+                # treating the damage separately because the tiles dont work correctly with ally monsers direcly for a damage ability
+                SubAbilities:
+                    TDamageSelectedAlly:
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateHasTarget: ParentAbility.ActorsToTarget.Count > 0
+                        Flags: [SubAbilityPreview]
+                        AutoTrigger: True
+                        TreatAsNonSubAbility: True
+                        Filter: Ally
+                        Damage: 0
+                        AnimOverload: CleansingFire_Ranged
+                        Target: -1
+                        Targeting: Custom
+                        TargetingVars:
+                            Target: ParentAbility.ActorsToTarget[0]
+                            AddValidActorInRange: Target
+                        StatIsBasedOnX:
+                            Strength:
+                                BasedOn: Vars
+                                Vars: 
+                                    Value: ParentAbility.Strength
+                    TDamageEnemies:
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            Vars:
+                                ValidateHasTarget: ParentAbility.ActorsToTarget.Count > 0
+                        Flags: [SubAbilityPreview]
+                        AutoTrigger: True
+                        TreatAsNonSubAbility: True
+                        SkipAnim: True
+                        Filter: Enemy
+                        Damage: 0
+                        Target: -1
+                        Targeting: Custom
+                        TargetingVars:
+                            Target: ParentAbility.ActorsToTarget[0]
+                            AddValidActorsInRange: GameState.GetActorsInRange(Target, TargetingActor, 1, null, AbilityFilter, null, null, true)
+                        StatIsBasedOnX:
+                            Strength:
+                                BasedOn: Vars
+                                Vars: 
+                                    Value: ParentAbility.Strength
+        Consumes:
+            TCFire:
+                Elements: Fire
+                XP: 1
+                PreviewEffectText: "+1<sprite name=Damage>"
+                AbilityOverrides:
+                    TCFireDamageBuff:
+                        ParentName: TTargetAlly
+                        Strength: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 2
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BTakeConditions:
+                RemoveConditions: "All"
+                AnimOverload: CastTakingPain
+                Conditions: [Wound,Brittle,Bane,Poison,Immobilize,Disarm,Impair,Stun,Muddle,StopFlying] 
+                Filter: 
+                    TargetType: Ally
+                    Vars:
+                        ValidateHasConditions: target.Tokens.CountNegativeConditions(true) > 0
+                Range: 1
+                Vars:
+                    ClearTargetConditionsVar: TargetingActor.SetTempVar("TargetConditions", null)
+                PerformVars:
+                    ApplyToActors:
+                        Target: ActorsToTarget[0]
+                        TargetConditions: Target.Tokens.GetAllTransferableConditions(true)
+                        AddCondition: TargetingActor.SetTempVar("TargetConditions", TargetConditions)
+                SubAbilities:
+                    BPutConditionsOnSelf:
+                        Vars:
+                            ValidateHasTarget: ParentAbility.ActorsToTarget.Count > 0
+                            TargetAlly: ParentAbility.ActorsToTarget[0]
+                            NegativeConditions: TargetingActor.TargetConditions || TargetAlly.Tokens.GetAllTransferableConditions(true)
+                            AddNegativeConditions: NegativeConditions
+                            ValidateHasNegativeConditions: NegativeConditions != null && NegativeConditions.Count > 0
+                        TreatAsNonSubAbility: True
+                        Flags: [SubAbilityPreview]
+                        Filter: Self
+                        NullTargeting: True
+                        AutoTrigger: True
+                        SkipAnim: True
+                        MiscVars: 
+                            PreviewAddNegativeConditionsVar: True
+Layout:
+    Top:
+        - Row: "$FH/308_character_ability_cards_pain_conduit_explosive_wounds_2$"
+        - Conditional:
+            Top: True
+            Layout:
+                - Consume:
+                    Name: TCFire
+                    Text: "<size=100%>+1 <sprite name=Damage>, <sprite name=XP1>"
+    Bottom:
+        - Row: "<size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Divider:
+        - Row: "$FH/308_character_ability_cards_pain_conduit_explosive_wounds_3$"

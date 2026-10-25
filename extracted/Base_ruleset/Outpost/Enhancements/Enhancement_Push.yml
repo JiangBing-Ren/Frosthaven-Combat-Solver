@@ -1,0 +1,7 @@
+Parser: FHEnhancement
+ID: Push
+Name: Glossary_Enhancement_PlusPush
+Cost: 30
+Mark: Square
+Effect: AddOne
+ForEffect: Push

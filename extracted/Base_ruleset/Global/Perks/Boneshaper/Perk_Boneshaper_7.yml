@@ -1,0 +1,30 @@
+Parser: Perk
+ID: Boneshaper07
+Name: FH/Perk_Boneshaper_07_Name
+Description: FH/Perk_Boneshaper_07_Desc
+CharacterID: BoneshaperID
+Available: 1
+Cost: 2
+Flags: [Passive, ApplyActiveBonusesAtScenarioStart]
+Abilities:
+    TActive:
+        Filter: Self
+        AutoTrigger: True
+        SkipAnim: True
+        AddActiveBonus:
+            AutoTrigger: True
+            CanUndo: False
+            CanSkip: True
+            SelectAndPlayCard:       
+                CardPile: Hand  
+                Amount: 1
+            MiscVars:
+                IsCardValid: AbilityCard.Level <= 1
+                IsActionValid: Action.Abilities.Any(obj.AbilityType == CAbility.EAbilityType.Summon)
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: PreCalcInitiativeAbility
+            # shows up once per round, but only finishes if you actually do the infuse
+            Restriction: OncePerRound
+            Hidden: True
+            XPTracker: [0]

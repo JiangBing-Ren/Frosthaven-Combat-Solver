@@ -1,0 +1,88 @@
+Parser: AbilityCard
+Name: $FH/288_character_ability_cards_trapper_pyrotechnics_1$
+Character: TrapperID
+ID: 288
+Level: 3
+Initiative: 80
+Discard: [Discard,Discard]
+Prefab: 288_Trapper_Pyrotechnics
+Data:
+    Top:
+        Abilities:
+            TTrap:
+                Trap:
+                    TrapName: TrapperTrap
+                    Heal: 3
+                    SquareEnhancements: 1
+                    Conditions: [Strengthen, Bless]
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Range: 1
+                RangeIsBase: True
+                AnimOverload: CreateTrap
+        XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BBuffNextTrap:
+                AddActiveBonus:
+                    Filter: Self
+                    HelpBoxTooltipLocKey: $FH/281_character_ability_cards_trapper_flurry_of_nails_5$
+                    PreviewEffectText: "<size=100%><sprite name=Damage>3 / <sprite name=Heal>3</size>"
+                    #IsInlineSubAbility: true
+                    CanUndo: False
+                    #UseParentTargets: False
+                    Vars: 
+                        ForcePreviewTiles: list(Trap.PropTile)
+                    Targeting: Custom
+                    TargetingVars:
+                        AddTileInRange: Trap.PropTile
+                        AddSelectedTile: Trap.PropTile
+                    Choose:
+                        Abilities:
+                            ImproveDamage:
+                                CanUndo: False
+                                PreviewEffectText: "<sprite name=Damage>3"
+                                Null:
+                                AnimOverload: EnhanceTrap_Strong
+                                PerformVars:
+                                    NullBegin:
+                                        ImproveTrap: CustomAbility.AddTrapDamage(Trap, 3)
+                            ImproveHeal:
+                                CanUndo: False
+                                PreviewEffectText: "<sprite name=Heal>3"
+                                Null:
+                                AnimOverload: EnhanceTrap_Strong
+                                PerformVars:
+                                    NullBegin:
+                                        ImproveTrap: CustomAbility.AddTrapHeal(Trap, 3)
+                AnimOverload: PowerUpStrong
+                ActiveBonus:
+                    Duration: Round
+                    Behaviour: GenericActionPerform
+                    XPTracker: [0]
+                    TriggerOnCaster: True
+                    Vars:
+                        ValidateIsTrapper: TriggerActor == Caster
+                        ValidateIsTrapAbility: TriggerAbility.AbilityType == "Trap"
+                        ValidateIsTrapPlaced: state == "TrapPlaced"
+                        Trap: TriggerAbility.TilesSelected.First.Trap
+                        #ImproveTrap: CustomAbility.ImproveTrap(Trap, 3, true)
+Layout:
+    Top:
+        - Row: "$FH/288_character_ability_cards_trapper_pyrotechnics_2$ <sprite name=Heal>*TTrap* @TTrap@"
+        - Row: $FH/288_character_ability_cards_trapper_pyrotechnics_3$
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Row: "<size=20%> "
+        #- Row: "$FH/288_character_ability_cards_trapper_pyrotechnics_4$"
+        - Active:
+              Ability: BBuffNextTrap
+              ListLayout: "$FH/288_character_ability_cards_trapper_pyrotechnics_4$"
+              Layout: "$FH/288_character_ability_cards_trapper_pyrotechnics_4$"
+              Icon: "Positive_Trap_Upgrade"

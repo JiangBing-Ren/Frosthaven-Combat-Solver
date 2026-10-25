@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 30
+ScenarioItemID: 940
+Name: Parrying Gauntlet
+Quantity: 2
+Type: OneHandWeapon
+CraftingCost:
+    Hide: 1
+    Metal: 1

@@ -1,0 +1,15 @@
+Parser: FHScenario
+ID: 122
+Name: The Eternal Crave
+LevelID: FS_122_The_Eternal_Crave
+Chain: Other
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: AllCharactersGainGold
+          Param1: 10
+    - Effects:
+        - Type: AllCharactersGainExperience
+          Param1: 15
+        - Type: AllCharactersAddPerkCheck
+          Param1: 1

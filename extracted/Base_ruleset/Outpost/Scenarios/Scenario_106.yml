@@ -1,0 +1,10 @@
+Parser: FHScenario
+ID: 106
+Name: Tempus Forge
+LevelID: FS_106_The_Tempus_Forge
+Chain: Other
+Difficulty: 2
+Conclusions:
+    - Effects:
+        - Type: GainItem
+          Param1: 213

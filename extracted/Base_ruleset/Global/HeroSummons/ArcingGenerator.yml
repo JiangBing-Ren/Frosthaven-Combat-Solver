@@ -1,0 +1,17 @@
+Parser: HeroSummon
+ID: ArcingGeneratorID
+LocKey: $FH/398_character_ability_cards_hive_shocking_pulse_2$
+Model: ArcingGenerator
+Health:
+    Amount: 5
+    SquareEnhancements: 1
+Move:
+    Amount: 4
+    SquareEnhancements: 1
+Attack:
+    Amount: 2
+Pierce: 2
+AttackOverride:
+    ParentName: DefaultAttack
+    AreaEffect: "0,0,G|2,0,R|1,1,R|-1,1,R|-2,0,R|-1,-1,R|1,-1,R"
+    MultiPassAttack: False

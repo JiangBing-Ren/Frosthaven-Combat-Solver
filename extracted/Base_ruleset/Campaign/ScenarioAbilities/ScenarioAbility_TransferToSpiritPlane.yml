@@ -1,0 +1,26 @@
+Parser: ScenarioAbility
+ID: ScenarioAbility_TransferToSpiritPlane
+ScenarioAbility:
+    AActive:
+        AddActiveBonus:
+            NullTargeting: True
+            Target: 1
+            Filter: Self
+            CanUndo: True
+            Flags: [FromScenarioModifier]
+            PerformVars:
+                ApplyToActors:
+                    TeleportPlayer: ScenarioScript_FH038.TeleportActorToSpiritPlane(TargetingActor)
+        Filter: Self
+        ActiveBonus:
+            Duration: Persistent
+            Behaviour: DuringTurnAbility
+            ValidAbilityType: Move
+            ListLayoutOverride: [$FH/GUI_TRANSFER_TO_SPIRIT_PLANE$, Teleport]
+            IsToggleBonus: True
+            Hidden: True
+            Requirements:
+                Vars:
+                    ValidateCanTeleport: ScenarioScript_FH038.CanPlayerTeleportToSpiritPlane(Actor)
+        AnimOverload: None
+        AutoTrigger: True

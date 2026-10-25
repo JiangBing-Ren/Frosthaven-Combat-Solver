@@ -1,0 +1,60 @@
+Parser: AbilityCard
+Name: $FH/298_character_ability_cards_trapper_magnetic_shards_1$
+Character: TrapperID
+ID: 298
+Level: 8
+Initiative: 37
+Discard: [Discard,Discard]
+Prefab: 298_Trapper_MagneticShards
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 2
+                    SquareEnhancements: 1
+                Target: 3
+                TargetIsBase: True
+                Range: 
+                    Amount: 3         
+                MiscVars:
+                    PrintedProperties: list("Attack","Range","Target")     
+                RangeIsBase: True
+                AnimOverload: RangedAttack
+                SubAbilities:
+                    TAttackSubPush:
+                        Push:
+                            Amount: 2
+                            SquareEnhancements: 1
+                        MiscVars:
+                            PrintedProperties: list("Push")
+                        IsInlineSubAbility: True
+        XP: 1
+    Bottom:
+        Abilities:
+            BTrap:
+                Trap:
+                    TrapName: TrapperTrap
+                    Heal: 1
+                    SquareEnhancements: 1
+                    Conditions: [Regenerate, Ward]
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Target: 2
+                TargetIsBase: True
+                AnimOverload: CreateTrap
+        XP: 1
+Layout:
+    Top:
+        - ColumnWidths: "10,25,30,25,10"
+        - Column:
+        - Column:
+            - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Column:
+            - Row: " <sprite name=Target>*TAttack.Target*, <sprite name=Range>*TAttack.Range*,"
+        - Column:
+            - Row: "<sprite name=Push>*TAttackSubPush* @TAttackSubPush@"
+        - Column:
+    Bottom:
+        - Row: "$FH/298_character_ability_cards_trapper_magnetic_shards_2$ <sprite name=Heal>*BTrap* @BTrap@"
+        - Row: $FH/298_character_ability_cards_trapper_magnetic_shards_3$

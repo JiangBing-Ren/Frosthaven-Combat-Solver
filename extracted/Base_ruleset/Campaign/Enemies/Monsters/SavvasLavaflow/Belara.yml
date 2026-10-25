@@ -1,0 +1,113 @@
+Parser: Enemy
+ID: BelaraID
+LocKey: $Belara$
+MonsterType: Boss
+StandeeLimit: 1
+Model: Belara
+PredominantlyMelee: True
+MiniBoss: True
+AbilityCards: [9999786, 9999787, 788, 789, 790, 791, 792, 793]
+# Base Stats
+Level0:
+    Health: 0
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Immunities: [Stun]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            Multiplier: 6.5
+Level1:
+    Health: 0
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Immunities: [Stun]
+    Conditions: [Wound]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            Multiplier: 7.5
+Level2:
+    Health: 0
+    Move: 3
+    Attack: 3
+    Range: 1
+    Target: 1
+    Immunities: [Stun]
+    Conditions: [Poison, Wound]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            Multiplier: 9
+Level3:
+    Health: 0
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 1
+    Immunities: [Stun]
+    Conditions: [Poison, Wound]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            Multiplier: 10.5
+Level4:
+    Health: 0
+    Move: 4
+    Attack: 4
+    Range: 1
+    Target: 1
+    Immunities: [Stun]
+    Conditions: [Poison, Wound]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            Multiplier: 12.5
+Level5:
+    Health: 0
+    Move: 4
+    Attack: 5
+    Range: 1
+    Target: 1
+    Immunities: [Stun]
+    Conditions: [Poison, Wound]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            Multiplier: 15
+Level6:
+    Health: 0
+    Move: 4
+    Attack: 6
+    Range: 1
+    Target: 1    
+    Immunities: [Stun]
+    Conditions: [Poison, Wound]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            Multiplier: 20
+Level7:
+    Health: 0
+    Move: 4
+    Attack: 7
+    Range: 1
+    Target: 1    
+    Immunities: [Stun]
+    Conditions: [Poison, Wound]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            Multiplier: 25

@@ -1,0 +1,10 @@
+Parser: CampaignSection
+ID: 114.2
+Name: Attacking the Lurkers
+ShowAsUnknownInCalendar: True
+SkipCompletedNotification: True
+Effects:
+    - Type: ChooseNextCampaignSection
+      Param1: "Scenario_042_Reward_Choice" 
+      Param2: 168.2
+      Param3: 94.4

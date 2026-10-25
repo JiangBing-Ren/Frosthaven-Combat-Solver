@@ -1,0 +1,7 @@
+Parser: FHEnhancement
+ID: ElementWild
+Name: Glossary_Enhancement_AnyElement
+Cost: 150
+Mark: Circle
+Effect: ElementWild
+ForEffect: Other

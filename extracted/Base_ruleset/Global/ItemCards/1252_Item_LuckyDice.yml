@@ -1,0 +1,37 @@
+Parser: ItemCard
+ID: 1252
+StringID: LuckyDiceID
+Name: $FH/1252_item_cards_lucky_dice_1$
+Art: Lucky Dice
+TotalInGame: 1
+Cost: 30
+Slot: SmallItem
+Rarity: Rare
+Usage: Consumed
+Trigger: SingleAbility
+Data: 
+    Vars:
+        ApplyAbilitiesToItemOwner: True
+    Abilities:
+        ATreatAsRolling:
+            Filter: Self
+            NullTargeting: True
+            MiscVars:
+                ImmuneMoveActiveBonusTracker: True
+            ActiveBonus:
+                Hidden: True
+                Duration: Ability
+                Behaviour: GenericOnDrawAttackModifier
+                XPTracker: [0,0,0]
+                Vars:
+                    RollingCopy: CustomAbility.CreateRollingAttackModifierCopy(attackModifier)
+                    SetActorTempModifier: TriggerActor.SetTempVar("ModifiedAttackModifier", RollingCopy)
+    CompareAbility:
+        AbilityType: Attack
+        Filter: Enemy
+Layout: 
+    - Active:
+        Ability: ATreatAsRolling
+        Icon: "Rolling"
+        ListLayout: "$FH/1252_item_cards_lucky_dice_2$"
+        Layout: "$FH/1252_item_cards_lucky_dice_2$"

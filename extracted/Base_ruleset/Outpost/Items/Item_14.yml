@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 14
+ScenarioItemID: 908
+Name: Heavy Sword
+Quantity: 2
+Type: OneHandWeapon
+CraftingCost:
+    Hide: 1
+    Metal: 1

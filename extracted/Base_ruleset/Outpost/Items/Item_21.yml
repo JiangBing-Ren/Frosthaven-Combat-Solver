@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 21
+ScenarioItemID: 922
+Name: Chain Hood
+Quantity: 2
+Type: Head
+CraftingCost:
+    Metal: 3
+    Hide: 1

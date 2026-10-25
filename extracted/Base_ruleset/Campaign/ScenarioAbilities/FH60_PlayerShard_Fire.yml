@@ -1,0 +1,9 @@
+Parser: ScenarioAbility
+ID: FH60_PlayerShard_Fire
+ScenarioAbility:
+    FH60_PlayerShard_Fire:
+        NullTargeting: True
+        Filter: Self
+        ActiveBonus:
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_060_PlayerShard_Fire$, Positive_AttackPlus_Enemy_Campaign]
+            Duration: Persistent

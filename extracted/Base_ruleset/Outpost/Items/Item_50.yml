@@ -1,0 +1,9 @@
+Parser: FHItem
+ID: 50
+ScenarioItemID: 980
+Name: Shield of Reciprocity
+Quantity: 2
+Type: OneHandWeapon
+CraftingCost:
+    Metal: 1
+RequiredCraftingItemIDs: [ 35, 105, 161 ]

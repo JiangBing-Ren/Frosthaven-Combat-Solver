@@ -1,0 +1,15 @@
+Parser: HeroSummon
+ID: TrainedFalconID
+LocKey: $FH/079_character_ability_cards_banner_spear_air_support_2$
+Model: TrainedFalcon
+Health:
+    Amount: 1
+    SquareEnhancements: 1
+Move:
+    Amount: 3
+    SquareEnhancements: 1
+Attack:
+    Amount: 2
+    SquareEnhancements: 1
+Range: 1
+Flying: True

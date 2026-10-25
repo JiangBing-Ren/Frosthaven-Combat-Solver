@@ -1,0 +1,18 @@
+Parser: ScenarioAbility
+ID: FH061_Door3Player
+ScenarioAbility:
+    AAttack:
+        Attack: -1
+        ActiveBonus:
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_061_SCENARIO_MODIFIER_5$, Negative_AttackMinus_Campaign]
+            Behaviour: BuffAttack
+            Duration: Persistent
+            ValidAbilityType: Attack
+    AMove:
+        Move: -1
+        ActiveBonus:
+            ListLayoutOverride: [$FH/FH_Scenario_Campaign_061_SCENARIO_MODIFIER_5$, Negative_MoveMinus_Campaign]
+            Hidden: True
+            Behaviour: BuffMove
+            Duration: Persistent
+            ValidAbilityType: Move

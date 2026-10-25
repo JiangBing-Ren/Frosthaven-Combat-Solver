@@ -1,0 +1,79 @@
+Parser: AbilityCard
+Name: $FH/416_character_ability_cards_hive_disassemble_1$
+Character: HIVEID
+ID: 416
+Level: 9
+Initiative: 20
+Discard: [Discard,Discard]
+Prefab: 416_HIVE_Disassemble
+Data:
+    Top:
+        Abilities:
+            TAttack1:
+                Attack:
+                    Amount: 2
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+            TModeTransfer:
+                Mode: Transfer
+            TAttack2:
+                Attack:
+                    Amount: 2    
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+            TModeTransfer:
+                Mode: Transfer
+            TAttack3:
+                Attack:
+                    Amount: 3     
+                MiscVars:
+                    PrintedProperties: list("Attack")               
+    Bottom:
+        Abilities:
+            BKillSummons:
+                Kill: True
+                Filter:
+                    TargetType: [OwnSummon]
+                    HeroSummonClasses: [SniperTurretID, LeaperID, JackalMechID, ArmoredTankID, RepairDroneID, ArcingGeneratorID, DampeningUnitID, MachineBolterID, ToxinDistributorID, TrappingUnitID, BombardierID, ShieldSpiderID, SledgeDriverID] #SwordPropellerID isn't with "lost" card type, so it should be excluded
+                Range: 99
+                Target: -1
+                AnimOverload: NanoDisassemble
+                IgnoreLOS: True
+                SubAbilities:
+                    BBrittleBane:
+                        TreatAsNonSubAbility: True
+                        Filter: 
+                            TargetType: Enemy
+                            EnemyType: [Normal,Elite]
+                        NullTargeting: 
+                        Target: 0
+                        Range: 4
+                        MiscVars:
+                            PrintedProperties: list("Target","Range")
+                        Conditions: [Brittle,Bane]
+                        AnimOverload: CastAOE_1Hex
+                        Vars:
+                            ParentKillAbility: CurrentAbility.ParentAbility
+                            TargetCount: ParentKillAbility.ActorsTargeted.Count
+                            ValidateAtleastOneTarget: TargetCount > 0
+                        StatIsBasedOnX:
+                            Target:
+                                BasedOn: Vars
+                                Vars:
+                                    Value: TargetCount
+
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack1* @TAttack1@"
+        - Divider: 
+        - Row: "<b><size=130%><sprite name=HIVETransfer>"
+        - Divider: 
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack2* @TAttack2@"
+        - Divider: 
+        - Row: "<b><size=130%><sprite name=HIVETransfer>"
+        - Divider: 
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack3*"
+    Bottom:
+        - Row: "$FH/416_character_ability_cards_hive_disassemble_2$"

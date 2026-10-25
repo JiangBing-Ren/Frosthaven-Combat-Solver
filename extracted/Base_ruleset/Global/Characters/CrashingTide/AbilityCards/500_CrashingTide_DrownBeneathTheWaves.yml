@@ -1,0 +1,95 @@
+Parser: AbilityCard
+Name: $FH/500_character_ability_cards_crashing_tide_drown_beneath_the_waves_1$
+Character: CrashingTideID
+ID: 500
+Level: 7
+ProgressionOrder: 500
+Initiative: 9
+Discard: [Lost,Discard]
+Prefab: 500_CrashingTide_DrownBeneathTheWaves
+Data:
+    Top:
+        Abilities:
+            TConsume:
+                Consume:
+                    Elements: [Light]
+                    Abilities:
+                        TNullTargeting:
+                            NullTargeting:
+                            Target: 1
+                            Filter: [Self]
+                            AnimOverload: Tide           
+                            ActiveBonus:
+                                Duration: Round
+                                ListLayoutOverride: [$FH/500_character_ability_cards_crashing_tide_drown_beneath_the_waves_2$, Positive_CrashingTide]
+                                MiscVars:
+                                    OverrideTideRestrictions: True
+                            PerformVars:
+                                ApplyToActors:
+                                    OverrideTideRestrictions: CustomAbility.OverrideRestrictionOfTideActiveBonuses(TargetingActor)
+            TMove0:
+                Move: 3
+                MiscVars:
+                    PrintedProperties: list("Move")
+            TAttack:
+                Attack:
+                    Amount: 4
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                Range: 1
+                Target: 1
+                Targeting: Range
+                Filter: [Enemy]
+            TMove1:
+                Move: 3
+                MiscVars:
+                    PrintedProperties: list("Move")
+        XP: 2
+    Bottom:
+        Abilities:
+            BPull:
+                Pull:
+                    Amount: 2
+                    SquareEnhancements: 1
+                Range: 5
+                Target: 3
+                MiscVars:
+                    PrintedProperties: list("Pull","Target","Range")
+                Targeting: Range
+                Filter: [Enemy]
+                AnimOverload: BloodInTheWater           
+            BDamage:
+                Damage: 2
+                Range: 5
+                MiscVars:
+                    PrintedProperties: list("Damage","Range")
+                Filter: [Enemy]
+                Target: -1
+                Targeting: Custom
+                TargetingVars:
+                    WaterTiles: GameState.GetTilesInRange(TargetingActor, Range).Where(obj.IsWater)
+                    ActorsOnWaterTiles: GameState.GetActorsInRange(TargetingActor.ArrayIndex, Range).Where(obj.Tile.IsWater && CActor.AreActorsEnemies(obj.Type, CActor.EType.Player, obj, null))
+                    AddTilesInRange: WaterTiles
+                    AddValidActorsInRange: ActorsOnWaterTiles
+                AnimOverload: RangedAttack  
+Layout:
+    Top:
+        - Row:
+            - AddedEffect: "<b><size=130%><sprite name=ConsumeLight>:</size></b> <size=70%>$FH/500_character_ability_cards_crashing_tide_drown_beneath_the_waves_2$</size>"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Move> *TMove0*"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Move> *TMove1*"
+    Bottom:
+        - Row:
+            - ColumnWidths: "15,35,35,15"
+            - Column:
+            - Column: "<b><size=130%><sprite name=Pull> *BPull* <size=100%><voffset=1>@BPull@"
+            - Column:
+                - AddedEffect: "<sprite name=Target>3, <sprite name=Range>5"
+            - Column:
+        - Divider:
+        - Row: "$FH/500_character_ability_cards_crashing_tide_drown_beneath_the_waves_3$"

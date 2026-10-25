@@ -1,0 +1,80 @@
+Parser: Enemy
+ID: FlamingBladespinnerElite_FH087ID
+LocKey: $FH/FlamingBladespinnerElite$
+MonsterType: Monster
+StandeeLimit: 6
+Model: FlamingBladespinner Elite
+NonEliteVariant: FlamingBladespinner_FH087ID
+PredominantlyMelee: True
+AbilityCards: [610, 611, 612, 613, 614, 615, 616, 617]
+# Base Stats
+Level0:
+    Health: 8
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 3
+    Immunities: [Wound, Push, Pull]
+Level1:
+    Health: 10
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 3
+    Retaliate: 3
+    RetaliateRange: 1
+    Immunities: [Wound, Push, Pull]
+Level2:
+    Health: 13
+    Move: 2
+    Attack: 3
+    Range: 1
+    Target: 3
+    Retaliate: 3
+    RetaliateRange: 1
+    Immunities: [Wound, Push, Pull]
+Level3:
+    Health: 15
+    Move: 2
+    Attack: 4
+    Range: 1
+    Target: 3
+    Retaliate: 3
+    RetaliateRange: 1
+    Immunities: [Wound, Push, Pull]
+Level4:
+    Health: 15
+    Move: 3
+    Attack: 4
+    Range: 1
+    Target: 3
+    Retaliate: 4
+    RetaliateRange: 1
+    Immunities: [Wound, Push, Pull]
+Level5:
+    Health: 18
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 3
+    Retaliate: 4
+    RetaliateRange: 1
+    Immunities: [Wound, Push, Pull]
+Level6:
+    Health: 24
+    Move: 3
+    Attack: 5
+    Range: 1
+    Target: 3
+    Retaliate: 5
+    RetaliateRange: 1
+    Immunities: [Wound, Push, Pull]
+Level7:
+    Health: 32
+    Move: 4
+    Attack: 5
+    Range: 1
+    Target: 3
+    Retaliate: 5
+    RetaliateRange: 1
+    Immunities: [Wound, Push, Pull]

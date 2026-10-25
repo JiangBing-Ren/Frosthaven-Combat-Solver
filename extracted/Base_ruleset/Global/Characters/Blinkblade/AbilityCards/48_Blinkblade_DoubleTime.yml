@@ -1,0 +1,110 @@
+Parser: AbilityCard
+Name: $FH/48_character_ability_cards_blinkblade_double_time_1$
+Character: BlinkbladeID
+ID: 48
+Level: 3
+Initiative: 22
+Discard: [Discard,Lost]
+Prefab: 48_Blinkblade_DoubleTime
+Data:
+    Top:
+        Abilities:
+            TAttack1:
+                Attack:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AnimOverload: Attack
+                ConditionalOverrides:
+                    TAttackCO_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            TAttack1:
+                                Strength: -1
+                                AnimOverload: AttackSlow
+            TAttack2:
+                Attack:
+                    Amount: 2
+                    DiamondEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AnimOverload: Attack
+                ConditionalOverrides:
+                    TAttack2CO_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            TAttack2:
+                                AnimOverload: AttackSlow
+            TMove_Fast:
+                Move:
+                    Amount: 2
+                MiscVars:
+                    PrintedProperties: list("Move")
+                #CanSkip: False
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequiredAgility: Fast
+                # Just to add XP to the movement
+                ConditionalOverrides:
+                    TMoveCO_Fast:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Fast
+                        XP: 1
+                        AbilityOverrides:
+                            TMove_Fast:
+                                Strength: 0
+    Bottom:
+        Abilities:
+            BRepeat:
+                RepeatAbility:
+                Filter: [Self]
+                AnimOverload: PowerUp
+                ActiveBonus:
+                    Duration: Persistent
+                    Flags: [WhenFast]
+                    XPTracker: [0,0,0,0]
+                    Requirement:
+                        ActiveBonusGreaterOrEqualToTrackerIndex: 1
+                ConditionalOverrides:
+                    COAnim_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            COAnim:
+                                AnimOverload: PowerUpSlow
+Layout:
+    Top:
+        - Row:
+            - ColumnWidths: "35,30,35"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Attack> *TAttack1* <size=100%><voffset=1>@TAttack1@"
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Text: "<b> -1<sprite name=Attack>"
+        - Divider:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack2* <size=100%><voffset=1>@TAttack2@"
+        - Divider:
+        - Row:
+            - ColumnWidths: "45,55"
+            - Column:
+                - BlinkbladeState:
+                    State: "fast"
+                    Text: "<b><size=130%><sprite name=Move>*TMove_Fast*, <sprite name=XP1>"
+            - Column:
+    Bottom:
+        - Active:
+            Ability: BRepeat
+            ListLayout: "$FH/048_character_ability_cards_blinkblade_double_time_2$"
+            Layout: "$FH/048_character_ability_cards_blinkblade_double_time_2$"
+            Icon: "Positive_Blinkblade_Fast"
+        - XPTracker:
+            Ability: BRepeat

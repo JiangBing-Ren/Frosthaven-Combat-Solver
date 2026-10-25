@@ -1,0 +1,15 @@
+Parser: CampaignSection
+ID: 33.1
+Name: HE-RO-IC-S (missing stables)
+Repeatable: True
+SkipCompletedNotification: True
+ConditionalEffects: 
+    - Type: ReadSectionIfHasRequiredBuilding
+      # require party has stables building
+      Param1: Stables
+      # read this section
+      Param2: 135.4
+Effects:
+    - Type: AddCalendarCampaignSection
+      Param1: 33.1
+      Param2: 3

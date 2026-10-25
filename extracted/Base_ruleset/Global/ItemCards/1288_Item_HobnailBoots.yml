@@ -1,0 +1,34 @@
+Parser: ItemCard
+ID: 1288
+StringID: HobnailBootsID
+Name: $FH/1288_item_cards_hobnail_boots_1$
+Art: Hobnail Boots
+TotalInGame: 2
+Cost: 0
+Slot: Legs
+Rarity: Rare
+Usage: Unrestricted
+Trigger: PassiveEffect
+Data:
+    Abilities:
+        ARetaliate:
+            Filter: Self
+            AddActiveBonus:
+                Retaliate: 1
+                MiscVars:
+                    OverrideIcon: Positive_Retaliate_Item
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: DuringActionAbilityOnMoved
+                Restriction: OncePerTurn
+                Target: 4
+                Filter: 
+                    Vars: 
+                        ValidateIsTurnActor: target == GameState.TurnActor
+Layout:
+    - Active:
+        Ability: ARetaliate
+        ListLayout: $FH/1288_item_cards_hobnail_boots_2$
+        Layout: $FH/1288_item_cards_hobnail_boots_2$
+        Icon: "Positive_Retaliate_Move_Item"
+    - Row: "<size=50%> "

@@ -1,0 +1,20 @@
+Parser: EnemyCard
+ID: 663
+Name: $Monster_Ability_663_LivingSpirit_LeechWarmth$
+Initiative: 75
+Shuffle: False
+Data:
+    Abilities: 
+        Move1:
+            Move: -1
+        Attack1:
+            Attack: 1
+            Range: 2
+            RangeIsBase: True
+            Filter: Enemy
+            AnimOverload: RangedAttack
+        Heal1:
+            Heal: 1
+            Filter: Self
+            AnimOverload: PowerUp
+    Infuse: Ice

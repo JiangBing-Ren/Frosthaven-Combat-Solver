@@ -1,0 +1,105 @@
+Parser: Enemy
+ID: GiantPiranhaPigID
+LocKey: $FH/GiantPiranhaPig$
+MonsterType: Boss
+StandeeLimit: 1
+Model: GiantPiranhaPig
+CardsPoolClass: PiranhaPigID
+PredominantlyMelee: True
+AbilityCards: [714,715,716,717,718,719,720,721]
+# Base Stats
+Level0:
+    Health: 0
+    Move: 1
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 7
+Level1:
+    Health: 0
+    Move: 1
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 1
+    Conditions: [Wound]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 7
+Level2:
+    Health: 0
+    Move: 1
+    Attack: 3
+    Range: 1
+    Target: 1
+    Shield: 1
+    Conditions: [Wound]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 9
+Level3:
+    Health: 0
+    Move: 1
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 1
+    Conditions: [Wound]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 11
+Level4:
+    Health: 0
+    Move: 1
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 1
+    Conditions: [Wound]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 15
+Level5:
+    Health: 0
+    Move: 1
+    Attack: 4
+    Range: 1
+    Target: 1
+    Shield: 1
+    Conditions: [Wound]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 19
+Level6:
+    Health: 0
+    Move: 1
+    Attack: 5
+    Range: 1
+    Target: 1
+    Shield: 1    
+    Conditions: [Wound]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 25
+Level7:
+    Health: 0
+    Move: 1
+    Attack: 6
+    Range: 1
+    Target: 1  
+    Shield: 1    
+    Conditions: [Wound]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 33

@@ -1,0 +1,91 @@
+Parser: AbilityCard
+Name: $FH/55_character_ability_cards_blinkblade_phasing_blades_1$
+Character: BlinkbladeID
+ID: 55
+Level: 7
+Initiative: 63
+Discard: [Lost,Discard]
+Prefab: 55_Blinkblade_PhasingBlades
+Data:
+    Top:
+        Abilities:
+            TActiveBonus:
+                Attack: 0
+                AttackEffect:
+                    Type: StandardBuff
+                    Pierce: 3
+                MiscVars:
+                    PrintedProperties: list("Pierce")
+                Filter: [Self]
+                ActiveBonus:
+                    Behaviour: BuffAttack
+                    Duration: Persistent
+                    ValidAbilityTypes: [Attack]
+                AnimOverload: PowerUp
+                ConditionalOverrides:
+                    COAnim_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            COAnim:
+                                AnimOverload: PowerUpSlow
+        XP: 2
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 4
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+                ConditionalOverrides:
+                    BMoveCO_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            BMove:
+                                Strength: -1
+            TGainTimeTokens:
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    RequirementActorFilter: Enemy
+                    ValidActorsInRangeOfRequirementRange: "> 2"
+                    RequirementRange: 1
+                NullTargeting:
+                Tokens: 1
+                AutoTrigger: True
+                Flags: [ModifiesTimeTokens]
+                Filter: [Self]
+                ActiveBonus:
+                    Duration: Ability
+                AnimOverload: PowerUp
+                ConditionalOverrides:
+                    COAnim_Slow:
+                        Self: True
+                        Requirement:
+                            RequiredAgility: Slow
+                        AbilityOverrides:
+                            COAnim:
+                                AnimOverload: PowerUpSlow
+Layout:
+    Top:
+        - Row: "$FH/55_character_ability_cards_blinkblade_phasing_blades_2$"
+        - Active:
+            Ability: TActiveBonus
+            ListLayout: "+3<sprite name=Pierce>"
+            Icon: "Positive_Pierce"
+    Bottom:
+        - Row:
+            - ColumnWidths: "33,34,33"
+            - Column:
+            - Column:
+                - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+            - Column:
+                - BlinkbladeState:
+                    State: "slow"
+                    Text: "-1 <sprite name=Move>"
+        - Divider:
+        - Row: "<size=100%> "
+        - Row: "$FH/55_character_ability_cards_blinkblade_phasing_blades_3$"

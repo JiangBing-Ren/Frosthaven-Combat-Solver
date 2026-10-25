@@ -1,0 +1,18 @@
+Parser: EnemyCard
+ID: 717
+Name: $Monster_Ability_717_PiranhaPig_Feast$
+Initiative: 26
+Shuffle: True
+Data:
+    Abilities:
+        Attack1:
+            Attack: 0
+            Filter: Enemy
+        SelfHeal1:
+            Heal: 0
+            TextOnly: True
+            Text: "$FH/0717_monster_ability_cards_piranha_pig_feast_2$"
+            StatIsBasedOnX:
+                Strength:
+                    BasedOn: DamageInflictedThisAction
+                    AddTo: True

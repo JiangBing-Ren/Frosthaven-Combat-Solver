@@ -1,0 +1,15 @@
+Parser: EnemyCard
+ID: 99993
+Name: $Monster_Ability_S89_Faye_ShatteringStrike$
+Initiative: 11
+Shuffle: False
+Data:
+    Abilities:
+        AMove:
+            Move: 1
+        AAttack:
+            Attack: 3
+            Conditions: [Brittle]
+            Filter: [Enemy]
+            Flags: [Special1]
+            AnimOverload: StrongAttack

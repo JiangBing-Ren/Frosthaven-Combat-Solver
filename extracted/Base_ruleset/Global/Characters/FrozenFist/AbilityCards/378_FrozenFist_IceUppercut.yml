@@ -1,0 +1,86 @@
+Parser: AbilityCard
+Name: $FH/378_character_ability_cards_frozen_fist_ice_uppercut_1$
+Character: FrozenFistID
+ID: 378
+Level: 5
+ProgressionOrder: 18
+Initiative: 15
+Discard: [Discard,Discard]
+Prefab: 378_FrozenFist_IceUppercut
+Data:
+    Top:
+        Abilities:
+            TAttack:
+                Attack:
+                    Amount: 5
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AnimOverload: Attack2
+                ConditionalOverrides:
+                    TAttackCO:
+                        TargetRequirements:
+                            Vars:
+                                IceTerrain: Actor.Tile.GetIceTerrain()
+                                ValidateTargetOccupiesIceTerrain: IceTerrain != null                    
+                        AbilityOverrides:
+                            TIceTerrainBuff:
+                                Strength: 1
+                                SubAbilities:
+                                    TPush:
+                                        IsInlineSubAbility: True
+                                        Push: 2
+                                        MiscVars:
+                                            PrintedProperties: list("Push")
+        Consumes:
+            TCIce:
+                Elements: Ice
+                AbilityOverrides:
+                    TCShield:
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            DoesntHaveNegativeCondition: [Stun,Disarm]
+                        ParentName: TAttack
+                        Conditions: Immobilize
+                XP: 1
+    Bottom:
+        Abilities:
+            BMove:
+                Move:
+                    Amount: 4
+                    SquareEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+        Consumes:
+            BCWild: 
+                Elements: Any
+                AbilityOverrides:
+                    BCInfuse:  
+                        StartAbilityRequirements:
+                            Type: ThisAbility
+                            DoesntHaveNegativeCondition: [Stun,Immobilize]
+                        ParentName: BMove
+                        SubAbilities:
+                            BCInfuseSub: 
+                                CanUndo: False
+                                TreatAsNonSubAbility: True             
+                                Infuse: [Any]
+                                ShowElementPicker: True
+                                SkipAnim: True
+
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Row: "$FH/378_character_ability_cards_frozen_fist_ice_uppercut_2$"
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: TCIce
+                    Text: "<sprite name=Immobilize>, <sprite name=XP1>"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=Move> *BMove* <size=100%><voffset=1>@BMove@"
+        - Conditional:
+            Layout:
+                - Consume:
+                    Name: BCWild
+                    Text: "<sprite name=CreateWild>"

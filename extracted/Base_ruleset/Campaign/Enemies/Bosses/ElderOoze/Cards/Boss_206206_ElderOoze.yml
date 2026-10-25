@@ -1,0 +1,28 @@
+Parser: EnemyCard
+ID: 206206
+Name: $Monster_Ability_Boss_ElderOoze_Special1$
+Initiative: 73
+Shuffle: False
+Data:
+    Abilities:
+        Move1:
+            Move: +1
+        Attack1:
+            Attack: -1
+            Text: "$FH/206204_monster_ability_cards_elder_ooze_boss_special_1_1$"
+            Flags: [Special1]
+            SubAbilities:
+                ALoseItem:
+                    IsInlineSubAbility: True
+                    ConsumeItems: 1
+                    HelpBoxTooltipLocKey: $GUI_CHOOSE_LOSE_ITEM_TIP$
+                    SlotStateToConsume: [Equipped,Useable,Selected,Spent,Active]
+                    StrengthIsBase: True
+                    MiscVars:
+                        AlternativeConsume: ScenarioScript_FH084.LoseItem(item, actor)
+        ANull:
+            Null: True
+            Text: "$FH/206204_monster_ability_cards_elder_ooze_boss_special_1_2$"
+            TextOnly: True
+            Flags: [Special1]
+            AnimOverload: Cast

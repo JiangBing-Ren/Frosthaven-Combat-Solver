@@ -1,0 +1,7 @@
+Parser: FHItem
+ID: 62
+ScenarioItemID: 1297
+Name: Everlasting Boots
+Quantity: 2
+Type: Feet
+RequiredCraftingItemIDs: [ 28, 99 ]

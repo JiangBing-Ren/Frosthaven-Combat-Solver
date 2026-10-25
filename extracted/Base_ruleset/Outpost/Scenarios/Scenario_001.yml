@@ -1,0 +1,16 @@
+Parser: FHScenario
+ID: 1
+Name: A Town in Flames
+LevelID: FS_001_A_Town_in_Flames
+Chain: Introduction
+Location: Frosthaven
+IsPrologue: True
+Difficulty: 1
+Conclusions:
+    - Effects:
+         - Type: FS1ConclusionEffect
+           Param1: 2
+         - Type: UnlockScenario
+           Param1: 2
+         - Type: UnlockScenario
+           Param1: 3

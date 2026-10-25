@@ -1,0 +1,7 @@
+Parser: FHEnhancement
+ID: ElementAir
+Name: Glossary_Enhancement_Air
+Cost: 100
+Mark: Circle
+Effect: ElementAir
+ForEffect: Other

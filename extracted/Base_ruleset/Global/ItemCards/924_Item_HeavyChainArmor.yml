@@ -1,0 +1,19 @@
+Parser: ItemCard
+ID: 924
+StringID: LivingStoneID
+Name: $FH/0924_item_cards_heavy_chain_armor_1$
+Art: Heavy Chain Armor
+TotalInGame: 2
+Cost: 0
+Slot: Body
+Rarity: Rare
+Usage: Spent
+Trigger: OnAttacked
+Data: 
+    ShieldValue: 3
+    CompareAbility:
+        AbilityType: Attack
+    AddModifiers:
+        - [AMC_Basic_M1, 2]
+Layout: 
+    - Row: $FH/0924_item_cards_heavy_chain_armor_2$

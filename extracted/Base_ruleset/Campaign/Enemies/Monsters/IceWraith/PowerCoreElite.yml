@@ -1,0 +1,119 @@
+Parser: Enemy
+ID: PowerCoreEliteID
+LocKey: $FH/PowerCoreElite$
+MonsterType: Monster
+StandeeLimit: 1
+Model: ThePowerCore Elite
+NonEliteVariant: PowerCoreID
+PredominantlyMelee: True
+AbilityCards: [642, 643, 644, 645, 646, 647, 648, 649]
+# Base Stats
+Level0:
+    Health: 7
+    Move: 4
+    Attack: 3
+    Range: 1
+    Target: 1
+    Flying: True
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 3.5    
+Level1:
+    Health: 8
+    Move: 4
+    Attack: 3
+    Range: 1
+    Target: 1
+    Flying: True
+    Retaliate: 2
+    RetaliateRange: 2
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 4
+Level2:
+    Health: 10
+    Move: 5
+    Attack: 3
+    Range: 1
+    Target: 1
+    Flying: True
+    Retaliate: 2
+    RetaliateRange: 2
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 5
+Level3:
+    Health: 10
+    Move: 5
+    Attack: 4
+    Range: 1
+    Target: 1
+    Flying: True
+    Retaliate: 2
+    RetaliateRange: 2
+    Conditions: [Wound]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 5
+Level4:
+    Health: 12
+    Move: 5
+    Attack: 4
+    Range: 1
+    Target: 1
+    Flying: True
+    Retaliate: 3
+    RetaliateRange: 3
+    Conditions: [Wound]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 6
+Level5:
+    Health: 16
+    Move: 5
+    Attack: 5
+    Range: 1
+    Target: 1
+    Flying: True
+    Retaliate: 3
+    RetaliateRange: 3
+    Conditions: [Wound]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 8
+Level6:
+    Health: 21
+    Move: 5
+    Attack: 5
+    Range: 1
+    Target: 1
+    Flying: True
+    Retaliate: 4
+    RetaliateRange: 3
+    Conditions: [Wound]
+    Immunities: [Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 10.5
+Level7:
+    Health: 27
+    Move: 5
+    Attack: 6
+    Range: 1
+    Target: 1
+    Flying: True
+    Retaliate: 4
+    RetaliateRange: 3
+    Conditions: [Wound]
+    Immunities: [Curse]
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            Multiplier: 13.5

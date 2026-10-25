@@ -1,0 +1,31 @@
+Parser: Character
+ID: HIVEID
+LocKey: $FH/HIVE$
+Model: HIVE
+DefaultSkin: 1
+Race: Unfettered
+Traits: [ Armored, Educated, Resourceful ]
+# PlayerLevel:  [  1,   2,   3,   4,   5,   6,   7,   8,   9 ]
+HealthTable:    [  8, 9, 11, 12, 14, 15, 17, 18, 20 ]
+NumberAbilityCardsInBattle: 11
+Role: $HIVE_ROLE$
+Description: $HIVE_DESCRIPTION$
+Difficulty: $DIFFICULTY_HIGH$
+Strengths: $HIVE_STRENGTHS$
+Weaknesses: $HIVE_WEAKNESSES$
+Adventure_Description: $HIVE_ADVENTURE_DESCRIPTION$
+Complexity: 5
+RetireCampaignSection: 148.2
+MasteryIDs: [ HIVE_MASTERY_1, HIVE_MASTERY_2 ]
+
+StartScenarioAbilities:
+    ChooseModeAbility:
+        Mode: ActivateMode
+        CanSkip: False
+HeroStats:
+    Melee: 4
+    Ranged: 4
+    Mobility: 4
+    Support: 2
+    Defense: 4
+    Control: 3        

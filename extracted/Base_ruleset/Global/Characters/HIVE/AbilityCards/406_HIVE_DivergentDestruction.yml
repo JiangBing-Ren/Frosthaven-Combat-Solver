@@ -1,0 +1,56 @@
+Parser: AbilityCard
+Name: $FH/406_character_ability_cards_hive_divergent_destruction_1$
+Character: HIVEID
+ID: 406
+Level: 4
+Initiative: 22
+Discard: [Discard,Discard]
+Prefab: 406_HIVE_DivergentDestruction
+Data:
+    Top:
+        XP: 1
+        Abilities:
+            TAttack1:
+                Attack:
+                    Amount: 2
+                MiscVars:
+                    PrintedProperties: list("Attack")
+            TModeTransfer:
+                Mode: Transfer
+            TAttack2:
+                Attack:
+                    Amount: 3      
+                MiscVars:
+                    PrintedProperties: list("Attack")           
+    Bottom:
+        Abilities:
+            BModeTransfer:
+                Mode: Transfer
+            BMove:
+                Move:
+                    Amount: 3
+                    CircleEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Move")
+            BDamageAll:
+                Damage: 1
+                MiscVars:
+                    PrintedProperties: list("Damage")
+                Range: 1
+                Target: -1
+                Filter:
+                    TargetType: [Ally,Enemy,OwnSummon]
+                AnimOverload: CastAOE           
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack1*"
+        - Divider: 
+        - Row: "<b><size=130%><sprite name=HIVETransfer>"
+        - Divider: 
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack2*"
+    Bottom:
+        - Row: "<b><size=130%><sprite name=HIVETransfer>"
+        - Divider: 
+        - Row: "<b><size=130%><sprite name=Move> *BMove* @BMove@"
+        - Divider: 
+        - Row: "$FH/406_character_ability_cards_hive_divergent_destruction_2$"

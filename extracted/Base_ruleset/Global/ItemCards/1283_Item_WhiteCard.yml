@@ -1,0 +1,28 @@
+Parser: ItemCard
+ID: 1283
+StringID: WhiteCardID
+Name: $FH/1283_item_cards_white_card_1$
+Art: White Card
+TotalInGame: 1
+Cost: 20
+Slot: SmallItem 
+Rarity: Relic
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        ADebuffNonBossEnemy:
+            Attack: -1
+            Range: 3
+            Filter:
+                TargetType: Enemy
+                Vars:
+                    ValidateNonBoss: not target.IsBoss   
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: BuffAttack
+                ListLayoutOverride: [$FH/1283_item_cards_white_card_2$, Negative_AttackMinus_Item]
+                MiscVars:
+                    IgnoreImpair: True
+Layout: 
+    - Row: "$FH/1283_item_cards_white_card_2$"

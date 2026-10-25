@@ -1,0 +1,115 @@
+Parser: Enemy
+ID: HatefulCorpseID
+LocKey: $FH/HatefulCorpse$
+MonsterType: Boss
+StandeeLimit: 1
+Model: HatefulCorpse
+PredominantlyMelee: True
+AbilityCards: [06500001, 06510002, 06520003, 06530004, 06540005, 06550006, 06560007, 06570008]
+# Base Stats
+Level0:
+    Health: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            AddTo: False
+            Multiplier: 5
+    Move: 2
+    Attack: 6
+    Range: 1
+    Target: 1
+    Shield: 1
+    Immunities: [Disarm, Stun]
+Level1:
+    Health: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            AddTo: False
+            Multiplier: 5
+    Move: 3
+    Attack: 6
+    Range: 1
+    Target: 1
+    Shield: 2
+    Immunities: [Disarm, Stun]
+Level2:
+    Health: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            AddTo: False
+            Multiplier: 5.5
+    Move: 3
+    Attack: 7
+    Range: 1
+    Target: 1
+    Shield: 2
+    Immunities: [Disarm, Stun]
+Level3:
+    Health: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            AddTo: False
+            Multiplier: 7
+    Move: 4
+    Attack: 7
+    Range: 1
+    Target: 1
+    Shield: 2
+    Immunities: [Disarm, Stun]
+Level4:
+    Health: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            AddTo: False
+            Multiplier: 9
+    Move: 4
+    Attack: 7
+    Range: 1
+    Target: 1
+    Shield: 2
+    Immunities: [Disarm, Stun]
+Level5:
+    Health: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            AddTo: False
+            Multiplier: 10
+    Move: 4
+    Attack: 8
+    Range: 1
+    Target: 1
+    Shield: 2
+    Immunities: [Disarm, Stun]
+Level6:
+    Health: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            RoundingType: ToFloor
+            AddTo: False
+            Multiplier: 13.5
+    Move: 4
+    Attack: 9
+    Range: 1
+    Target: 1    
+    Shield: 2
+    Immunities: [Bane, Disarm, Stun]
+Level7:
+    Health: 1
+    StatIsBasedOnX:
+        Health:
+            BasedOn: InitialPlayerCharacterCount
+            AddTo: False
+            Multiplier: 15
+    Move: 4
+    Attack: 9
+    Range: 1
+    Target: 1
+    Shield: 3    
+    Immunities: [Bane, Disarm, Stun]

@@ -1,0 +1,48 @@
+Parser: EnemyCard
+ID: 08760051
+Name: $Monster_Ability_Boss_FishKingLeviathan_Special2$
+Initiative: 17
+Shuffle: True
+Data:
+    Abilities:  
+        ANull:
+            Null: True
+            TextOnly: True
+            Text: "$FH/boss_stat_cards_fish_king_4$"
+        AMove:
+            Move: 0
+            AIFocusOverride:
+                OverrideType: OverrideFocus
+                OverrideTargetType: Actor
+                UseFurthestFocus: True
+        AAttack:
+            Attack: 0
+            Range: 6
+            RangeIsBase: True
+            Conditions: [Poison]
+            AIFocusOverride:
+                OverrideType: OverrideFocus
+                OverrideTargetType: Actor
+                UseFurthestFocus: True
+            AnimOverload: RangedAttack
+            SubAbilities:
+                SubPush1:
+                    Pull: 4
+                    UseParentTargets: True
+        Attack1:
+            Kill: True
+            Range: 99
+            Filter: [Ally]
+            TextOnly: True
+            Text: "$FH/boss_stat_cards_fish_king_5$"
+            AnimOverload: Sacrifice
+            SubAbilities:
+                Damage1:
+                    Damage: 2
+                    Range: 1
+                    RangeIsBase: True
+                    Target: -1
+                    TargetIsBase: True
+                    AllTargetsAdjacentToParentTargets: True
+                    Filter: Enemy
+                    SkipAnim: True

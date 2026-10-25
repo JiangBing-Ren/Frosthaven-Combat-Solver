@@ -1,0 +1,89 @@
+Parser: Enemy
+ID: DenpangS57ID
+LocKey: $FH/Denpang$
+MonsterType: Monster
+StandeeLimit: 1
+Model: DenpangHelper
+PredominantlyMelee: True
+AbilityCards: [13005]
+# Base Stats
+Level0:
+    Health: 6
+    Move: 4
+    Attack: 0
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+    Untargetable: True
+Level1:
+    Health: 6
+    Move: 4
+    Attack: 0
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+    Untargetable: True
+Level2:
+    Health: 9
+    Move: 4
+    Attack: 0
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+    Untargetable: True
+Level3:
+    Health: 9
+    Move: 4
+    Attack: 0
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+    Untargetable: True
+Level4:
+    Health: 10
+    Move: 4
+    Attack: 0
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+    Untargetable: True
+Level5:
+    Health: 13
+    Move: 4
+    Attack: 0
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+    Untargetable: True
+Level6:
+    Health: 13
+    Move: 4
+    Attack: 0
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+    Untargetable: True
+Level7:
+    Health: 13
+    Move: 4
+    Attack: 0
+    Range: 1
+    Target: 1
+    Shield: 0
+    Retaliate: 0
+    RetaliateRange: 0
+    Untargetable: True

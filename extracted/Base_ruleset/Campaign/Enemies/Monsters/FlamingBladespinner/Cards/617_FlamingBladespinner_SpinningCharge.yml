@@ -1,0 +1,63 @@
+Parser: EnemyCard
+ID: 617
+Name: $Monster_Ability_617_FlamingBladespinner_SpinningCharge$
+Initiative: 68
+Shuffle: False
+Data:
+    Abilities:
+        ADamageAura:
+            AddActiveBonus:
+                Attack: -1
+                StatIsBasedOnX:
+                    Strength:
+                        BasedOn: BaseStat
+                        BaseStatType: Attack
+                        AddTo: True
+                Range: 1
+                Consumes: [Fire]
+                ElementalCondition: Wound
+                AllTargetsInRangeAlongPath: True
+                Filter: Enemy
+                SkipAnim: True
+            ActiveBonus:
+                Duration: Turn
+                Behaviour: DuringActionAbilityOnFinishedMovement
+            Range: 1
+            Target: -1
+            Filter: Self
+            ShowRange: False
+            SkipAnim: True
+        AMove:
+            Move:
+                Amount: +1
+                Jump: True
+            Text: "$FH/823_1$"
+            AIFocusOverride:
+                OverrideType: OverrideFocus
+                OverrideTargetType: Actor
+                UseFurthestFocus: True
+            MiscVars:
+                CasterEffectsSMBAbilityName: "'SpinningCharge'"
+        # For Layout Only
+        ADummyAttack:
+            Attack: -1
+            Target: -1
+            TargetIsBase: True
+            StartAbilityRequirements:
+                Type: ThisAbility
+                ActorHasPerformedValidAbilityTypesThisAction: "> 100"
+                AbilityTypes: [Attack]
+            Text: "$FH/617$"
+            SkipAnim: True
+        ADummyAttackFire:
+            Attack: -1
+            Target: -1
+            TargetIsBase: True
+            StartAbilityRequirements:
+                Type: ThisAbility
+                ActorHasPerformedValidAbilityTypesThisAction: "> 100"
+                AbilityTypes: [ Attack ]
+            TextOnly: True
+            Text: "$FH/617Fire$"
+            SkipAnim: True
+    

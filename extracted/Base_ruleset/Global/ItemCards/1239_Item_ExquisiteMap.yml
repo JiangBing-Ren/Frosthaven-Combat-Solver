@@ -1,0 +1,26 @@
+Parser: ItemCard
+ID: 1239
+StringID: ExquisiteMapID
+Name: $FH/1239_item_cards_exquisite_map_1$
+Art: Exquisite Map
+TotalInGame: 1
+Cost: 30
+Slot: OneHand
+Rarity: Rare
+Usage: Consumed
+Trigger: DuringOwnTurn
+Data: 
+    Abilities:
+        AGrantMove:
+            ControlActor:
+                Abilities:
+                    AMove:
+                        Move: 3
+                        StrengthIsBase: True
+                ControlActorType: Player
+            Target: 1
+            Filter: [Ally]
+            Range: 3
+Layout: 
+    - Row: "$FH/1239_item_cards_exquisite_map_2$"
+    - Row: "<sprite name=Move>*AMove*"

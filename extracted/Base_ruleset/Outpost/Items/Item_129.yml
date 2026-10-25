@@ -1,0 +1,8 @@
+Parser: FHItem
+ID: 129
+ScenarioItemID: 1123
+Name: Eagle-Eye Goggles
+Quantity: 2
+GoldCost: 30
+Type: Head
+IsNewCharacterItem: False

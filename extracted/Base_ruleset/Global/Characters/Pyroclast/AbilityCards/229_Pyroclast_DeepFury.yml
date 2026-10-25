@@ -1,0 +1,87 @@
+Parser: AbilityCard
+Name: $FH/229_character_ability_cards_pyroclast_deep_fury_1$
+Character: PyroclastID
+ID: 229
+Level: 2
+Initiative: 38
+Discard: [Discard,Lost]
+Prefab: 229_Pyroclast_DeepFury
+Data:
+    Top:
+        Abilities:    
+            TAttack:
+                Attack:
+                    Amount: 3
+                    DiamondEnhancements: 1 
+                MiscVars:
+                    PrintedProperties: list("Attack")
+                AnimOverload: FireSwipe                    
+                ConditionalOverrides:
+                    TAttackCO:
+                        XP: 1
+                        Requirements:
+                            Vars:
+                                HazardousTerrain: Actor.Tile.FindHazardousProp()
+                                ValidateActorOccupiesValidTerrain: HazardousTerrain != null    
+                        AbilityOverrides:
+                            TTerrainBuff:
+                                Strength: 1
+                                SubAbilities:
+                                    TPush:
+                                        IsInlineSubAbility: True
+                                        Push: 2
+                                        MiscVars:
+                                            PrintedProperties: list("Push")
+            THeal:
+                Heal: 2
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self
+                AnimOverload: Cast_CastLava
+                StartAbilityRequirements:
+                    Type: ThisAbility
+                    Vars:
+                        HazardousTerrain: Actor.Tile.FindHazardousProp()
+                        ValidateActorOccupiesValidTerrain: HazardousTerrain != null    
+    Bottom:
+        Abilities:
+            BHeal:
+                Heal:
+                    Amount: 3
+                    DiamondPlusEnhancements: 1
+                MiscVars:
+                    PrintedProperties: list("Heal")
+                Filter: Self
+                AnimOverload: Cast_CastStone
+            BBuffNextAttack:        
+                Attack: 2
+                Filter: Self
+                AnimOverload: Cast
+                ActiveBonus:
+                    Duration: Persistent
+                    Behaviour: BuffAttack
+                    StrengthIsScalar: True
+                    IsSingleTargetBonus: True
+                    XPTracker: [2]
+                    Filter:
+                        Vars:
+                            HazardousTerrain: target.Tile.FindHazardousProp()
+                            ValidateActorOccupiesValidTerrain: HazardousTerrain != null    
+Layout:
+    Top:
+        - Row: "<b><size=130%><sprite name=Attack> *TAttack* <size=100%><voffset=1>@TAttack@"
+        - Row: "$FH/229_character_ability_cards_pyroclast_deep_fury_2$"
+        - Divider:
+        - Row: "$FH/229_character_ability_cards_pyroclast_deep_fury_3$"
+        - Row: "<b><size=130%><sprite name=Heal> *THeal* <mark=#80919922><size=100%>$Self$</mark>"
+    Bottom:
+        - Row:
+            - Column: "<b><size=130%><sprite name=Heal> *BHeal* <size=100%><voffset=1>@BHeal@"
+            - Column: "<mark=#80919922><size=100%>$Self$</mark>"
+        - Divider:    
+        - Active:
+            Ability: BBuffNextAttack
+            ListLayout: "$FH/229_character_ability_cards_pyroclast_deep_fury_4$"
+            Layout: "$FH/229_character_ability_cards_pyroclast_deep_fury_4$"
+            Icon: "Positive_AttackPlus_Enemy_Hazard"       
+        - XPTracker: BBuffNextAttack

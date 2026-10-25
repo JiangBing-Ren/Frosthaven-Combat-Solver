@@ -1,0 +1,10 @@
+Parser: FHItem
+ID: 111
+ScenarioItemID: 1087
+Name: Major Frenzy Potion
+Quantity: 2
+Type: Small
+Brewing:
+    Herb1: Rockroot
+    Herb2: Axenut
+    Herb3: Corpsecap

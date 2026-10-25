@@ -1,0 +1,32 @@
+Parser: ItemCard
+ID: 1163
+StringID: PlatemailID
+Name: $FH/1163_item_cards_platemail_1$
+Art: Platemail
+TotalInGame: 2
+Cost: 50
+Slot: Body 
+Rarity: Rare
+Usage: Spent
+Trigger: PassiveEffect
+Data: 
+    Abilities:
+        AShield:
+            Shield: 1
+            Filter: Self
+            ActiveBonus:
+                Duration: Persistent
+                Behaviour: ShieldIncomingAttacks
+                XPTracker: [0,0,0,0,0]
+                IsToggleBonus: True
+                ValidAbilityType: Attack
+    AddModifiers:
+        - [AMC_Basic_M1, 5]
+Layout: 
+    - Active:
+        Ability: AShield
+        ListLayout: "$FH/1163_item_cards_platemail_2$"
+        Layout: "$FH/1163_item_cards_platemail_2$"
+        Icon: "Positive_Shield_Item"
+    - Row: "<size=50%> "
+    - XPTracker: AShield

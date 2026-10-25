@@ -1,0 +1,34 @@
+Parser: AttackModifier
+Name: AMC_PushOrPull2_R
+MathModifier: "+0"
+Rolling: True
+Abilities:
+    ChooseAbility:
+        CanUndo: False
+        Filter: Self
+        HelpBoxTooltipLocKey: "$FH/Perk_Trapper_06_ChooseHelpBox$"
+        PreviewEffectText: "<size=100%><sprite name=Push>2 / <sprite name=Push>2</size>"
+        Targeting: Custom
+        TargetingVars:
+            AddTileInRange: TargetActor.Tile
+            AddSelectedTile: AddTileInRange
+        Vars: 
+            ForcePreviewTiles: list(TargetActor.Tile)
+            ValidateNotImmunePush: TargetActor.Immunities.Contains(CAbility.EAbilityType.Push) == False
+            ValidateNotImmunePull: TargetActor.Immunities.Contains(CAbility.EAbilityType.Pull) == False
+        Choose:
+            Abilities:
+                PushAbility:
+                    CanUndo: False
+                    AutoTrigger: True
+                    PreviewEffectText: "<sprite name=Push>2"
+                    Push: 2
+                    Vars:
+                        TargetThisActorAutomatically: TargetActor
+                PullAbility:
+                    CanUndo: False
+                    AutoTrigger: True
+                    PreviewEffectText: "<sprite name=Pull>2"
+                    Pull: 2
+                    Vars:
+                        TargetThisActorAutomatically: TargetActor

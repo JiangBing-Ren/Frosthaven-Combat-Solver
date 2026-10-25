@@ -1,0 +1,12 @@
+Parser: EnemyCard
+ID: 99990005
+Initiative: 22
+Shuffle: False
+Data:
+    Abilities:
+        AMuddle:
+            Muddle: True
+            Target: -1
+            TargetIsBase: True
+            Filter: Enemy
+            AnimOverload: PowerUp
