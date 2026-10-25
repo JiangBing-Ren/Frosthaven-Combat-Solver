@@ -20,7 +20,8 @@ namespace FHSolver
     {
         public const string GUID = "hanf2.Frosthaven.FHSolver";
         public const string PluginName = "FHSolver";
-        public const string Version = "1.26.2";
+        public const string Version = "1.27.0";
+
 
 
         internal static ManualLogSource Log { get; private set; }
@@ -61,6 +62,10 @@ namespace FHSolver
         /// <summary>多样性分桶容量（同一打法最多保留几个方案）。</summary>
         internal static int StaticDiversityPerBucket { get; private set; }
 
+        /// <summary>是否在报告里显示「原生驱动探测」段（只读诊断，不改游戏状态）。</summary>
+        internal static bool StaticDriverProbe { get; private set; }
+
+
         /// <summary>报告里是否显示阴影段（死行）。关掉可省几行。</summary>
         internal static bool StaticShadowDiagnostics { get; private set; }
 
@@ -94,6 +99,8 @@ namespace FHSolver
         private ConfigEntry<int> _multiTurnBeam;
         private ConfigEntry<bool> _shadowDiagnostics;
         private ConfigEntry<int> _diversityPerBucket;
+        private ConfigEntry<bool> _driverProbe;
+
         private ConfigEntry<string> _reportPath;
         private ConfigEntry<bool> _showTileIndex;
         private ConfigEntry<bool> _holdToShow;
@@ -133,6 +140,9 @@ namespace FHSolver
                 "报告里显示【阴影】段（死行：当前有几个、在哪，0 个时会提示哪些牌用不了）");
             _diversityPerBucket = Config.Bind("Solver", "DiversityPerBucket", 2,
                 "多样性分桶：同一打法（打谁/站哪）最多保留几个方案。0=关闭。调大更集中，调小更多样");
+            _driverProbe = Config.Bind("Solver", "DriverProbe", true,
+                "报告里显示「原生驱动探测」段（只读诊断，不改游戏状态）");
+
             _reportPath = Config.Bind("Solver", "ReportPath",
                 @"D:\1Mods\FH\p1_recommend.txt",
                 "P1 推荐的落地文件（每次按求解键覆盖写）—— 在游戏外开个小窗就能看");
@@ -162,6 +172,8 @@ namespace FHSolver
             StaticMultiTurnBeam = _multiTurnBeam?.Value ?? 3;
             StaticShadowDiagnostics = _shadowDiagnostics?.Value ?? true;
             StaticDiversityPerBucket = _diversityPerBucket?.Value ?? 2;
+            StaticDriverProbe = _driverProbe?.Value ?? true;
+
             StaticReportPath = _reportPath?.Value ?? @"D:\1Mods\FH\p1_recommend.txt";
             StaticShowTileIndex = _showTileIndex?.Value ?? true;
             StaticHoldToShow = _holdToShow?.Value ?? true;

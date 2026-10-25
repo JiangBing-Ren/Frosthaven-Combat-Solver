@@ -170,6 +170,54 @@ internal static class P1Runner
 			List<EnemyPredictor.Prediction> list4 = EnemyPredictor.Predict(scenario);
 			perf.Mark("敌人预测");
 
+			// ★ 对账（学 StS2 的 deployment_drift=replan）：
+			//   把上回合的"预期"和这一回合的"实际"比一遍 ——
+			//   不一致的地方，就是模型最需要改进的地方。
+			List<string> reconcile = new List<string>();
+			BattleSnapshot reconcileSnap = null;
+			int reconcileMyHp = 0;
+			List<AbilityCardSnapshot> reconcileHand = null;
+			TurnLedger.Fingerprint reconcileFp = default(TurnLedger.Fingerprint);
+			try
+			{
+
+				BattleSnapshot snap = StateReader.Read();
+				reconcileSnap = snap;
+
+				List<UnitSnapshot> snapMonsters = snap?.Monsters ?? new List<UnitSnapshot>();
+				List<UnitSnapshot> snapOthers = new List<UnitSnapshot>();
+				if (snap != null && snap.Players != null) snapOthers.AddRange(snap.Players);
+
+				int myHp = 0;
+				List<AbilityCardSnapshot> myHand = null;
+				ModifierDeckSnapshot myDeck = null;
+
+				if (list.Count > 0)
+				{
+					UnitSnapshot me = null;
+					foreach (UnitSnapshot u in snapOthers) { if (u != null) { me = u; break; } }
+					if (me != null) myHp = me.Health;
+					myHand = HandReader.ReadHand(list[0].CharacterClass);
+					myDeck = DeckReader.ReadPlayerDeck(list[0].CharacterClass, "我");
+					reconcileMyHp = myHp;
+					reconcileHand = myHand;
+				}
+
+
+				TurnLedger.Fingerprint fp = TurnLedger.ComputeFingerprint(
+					snapMonsters, snapOthers, myHand, myDeck, shadowCount);
+				reconcileFp = fp;
+				reconcile = TurnLedger.Reconcile(snapMonsters, myHp, fp);
+
+
+				// 记录本回合的预期 —— 放到第二遍算完之后做（见下方 RecordExpectation 调用）
+			}
+
+			catch (Exception e)
+			{
+				Plugin.Log?.LogWarning($"[FHSolver] 对账失败: {e.Message}");
+			}
+
 			List<PlayerRun> list5 = new List<PlayerRun>();
 			foreach (int item in list2)
 			{
@@ -278,7 +326,12 @@ internal static class P1Runner
 				num3++;
 			}
 			perf.Mark("生成页签");
-			Flush(list.Count, num3, list7, order, list5, list4, goals, shadowCount, list3, dictionary5);
+			// ★ 记录本回合的预期（对账用）—— 必须在第二遍算完之后
+			try { RecordExpectation(reconcileSnap, reconcileMyHp, reconcileHand, reconcileFp); }
+			catch (Exception e) { Plugin.Log?.LogWarning($"[FHSolver] 记录预期失败: {e.Message}"); }
+
+			Flush(list.Count, num3, list7, order, list5, list4, goals, shadowCount, list3, dictionary5, reconcile);
+
 			swAll.Stop();
 			perf.TotalMs = swAll.Elapsed.TotalMilliseconds;
 
@@ -300,7 +353,21 @@ internal static class P1Runner
 		}
 	}
 
-	private static PlayerRun PlanOne(List<CPlayerActor> players, CScenario scenario, int idx, Dictionary<string, int> adjust, Dictionary<string, (int X, int Y)> cover, int myInitiative, GoalSnapshot goals, List<ModifierDeckSnapshot> monsterDecks, int shadowCount, List<EnemyPredictor.Prediction> enemyPreds, out Dictionary<string, int> applied)
+	/// <summary>
+		/// 记录本回合的预期（下一回合用来对账）。
+		/// </summary>
+		private static void RecordExpectation(
+			BattleSnapshot snap, int myHp, List<AbilityCardSnapshot> hand,
+			TurnLedger.Fingerprint fp)
+		{
+			if (snap == null) return;
+			List<UnitSnapshot> monsters = snap.Monsters ?? new List<UnitSnapshot>();
+			TurnLedger.RecordExpectation(monsters, myHp, 0, hand,
+				TurnLedger.LastPlanSummary, fp);
+		}
+
+		private static PlayerRun PlanOne(List<CPlayerActor> players, CScenario scenario, int idx, Dictionary<string, int> adjust, Dictionary<string, (int X, int Y)> cover, int myInitiative, GoalSnapshot goals, List<ModifierDeckSnapshot> monsterDecks, int shadowCount, List<EnemyPredictor.Prediction> enemyPreds, out Dictionary<string, int> applied)
+
 	{
 		//IL_01ac: Unknown result type (might be due to invalid IL or missing references)
 		//IL_01b1: Unknown result type (might be due to invalid IL or missing references)
@@ -765,7 +832,7 @@ internal static class P1Runner
 		return list;
 	}
 
-	private static void Flush(int playerCount, int done, List<List<string>> blocks, List<UnitSnapshot> order, List<PlayerRun> runs, List<EnemyPredictor.Prediction> enemyPreds, GoalSnapshot goals, int shadowCount = 0, List<string> stateConditions = null, Dictionary<string, MultiTurnResult> mtResults = null)
+	private static void Flush(int playerCount, int done, List<List<string>> blocks, List<UnitSnapshot> order, List<PlayerRun> runs, List<EnemyPredictor.Prediction> enemyPreds, GoalSnapshot goals, int shadowCount = 0, List<string> stateConditions = null, Dictionary<string, MultiTurnResult> mtResults = null, List<string> reconcileLines = null)
 	{
 		List<string> list = new List<string>();
 		list.Add($"===== P1 单回合推荐 | 队伍 {playerCount} 人，已出 {done} 份 =====");
@@ -844,9 +911,41 @@ internal static class P1Runner
 			}
 			list.Add("  ⚠ 移动方案会自动绕开；若你有推/拉能力，也可把敌人弄进去");
 		}
-		if (Plugin.StaticShadowDiagnostics)
+		// ---- 对账（上一回合的预期 vs 这一回合的实际）----
+		//   学 StS2 的 deployment_drift=replan：模型不准的地方要能指出来，
+		//   否则玩家只会觉得"这插件不靠谱"，而不知道该改哪一块。
+		if (reconcileLines != null && reconcileLines.Count > 0)
 		{
 			list.Add("");
+			list.Add("【对账】与上一回合的预测比对");
+			foreach (string r in reconcileLines) list.Add("  " + r);
+		}
+
+		// ---- 原生驱动探测（只读，不改游戏状态）----
+		if (Plugin.StaticDriverProbe)
+		{
+			var names = new List<string>();
+			foreach (PlayerRun rr in runs)
+			{
+				if (rr == null || rr.Plans == null || rr.Plans.Count == 0) continue;
+				TurnPlan bp = rr.Plans[0];
+				if (bp?.First != null && bp.First.CardName != null) names.Add(bp.First.CardName);
+				if (bp?.Second != null && bp.Second.CardName != null) names.Add(bp.Second.CardName);
+			}
+			List<string> probe = NativeDriver.Probe(names);
+			if (probe != null && probe.Count > 0)
+			{
+				list.Add("");
+				list.Add("【原生驱动探测】只读诊断，未改动任何游戏状态");
+				foreach (string p in probe) list.Add("  " + p);
+			}
+		}
+
+		if (Plugin.StaticShadowDiagnostics)
+
+		{
+			list.Add("");
+
 			list.Add($"【阴影】场上当前 {shadowCount}/5 个");
 			if (shadowCount == 0)
 			{

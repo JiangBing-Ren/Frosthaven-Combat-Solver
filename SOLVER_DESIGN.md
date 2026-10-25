@@ -1658,6 +1658,63 @@ if ((!AreActorsAllied(...) & isTargetedAbility)
 `IgnoreLosTests()`（普通攻击被墙挡 / IgnoreLOS 能穿墙）+
 `InvisibleTargetTests()`（普通攻击打不到隐形 / CanTargetInvisible 可以）。
 
+### v1.27 【原生驱动 + 对账重规划】（学 StS2 第 8 节）
+
+StS2 的 `PlayerTurnSetupCoordinator`：**原生 UI + 反射驱动 + 持续对账**。
+
+#### ① 对账重规划（本轮完成）
+
+FH 没有"自动重规划"的需求（我本来就每次按 Insert 重算），
+所以对账的价值是**指出模型在哪一点上不准** —— 否则玩家只会觉得"这插件不靠谱"，
+而不知道该改哪一块。
+
+新增 `Bridge/TurnLedger.cs`：
+- **状态指纹**（两个 u64，FNV-1a）：位置/血量/数量 + **修正牌堆顺序** + 手牌
+  - ★ 必须含修正牌堆顺序：FH 的修正牌是**确定序列**，顺序变了后面翻出的牌就不同
+- **战况对账**：上回合预期的敌人血量 / 我方血量 vs 这一回合的实际
+- 报告新增【对账】段：
+
+```
+【对账】与上一回合的预测比对
+  ⚠ 上回合预测与实际有 2 处不符：
+    腐鼠侦察兵#3 预期剩 5 → 实际 1
+  我方血量：预期 10 → 实际 6（比预期多挨了 4 点）
+```
+
+#### ② 原生驱动（**本轮只做只读探测**）
+
+查清了 FH 的驱动链路：
+
+```
+GameState.CurrentAction          → 当前该出的牌（CurrentActorAction：CAction + CBaseCard）
+PhaseManager.CurrentPhaseAction  → 玩家已选半边列表（m_PhaseAbilities，私有）
+    每个 CPhaseAbility.m_Ability  ←←← 目标写在这个 ability 实例上
+        m_ActorsToTarget / m_TargetedActor（protected → 必须反射）
+```
+
+⚠ **FH 没有 StS2 那种 `SetupPlayerTurn` 单一入口**，
+"确认出牌"的程序化入口**还没找到** → 目前驱动的上限是**预选目标**，最后一步仍需玩家点。
+
+因此本轮**只做只读探测**（`Bridge/NativeDriver.Probe`），**不改任何游戏状态**，
+报告里新增【原生驱动探测】段：
+
+```
+【原生驱动探测】只读诊断，未改动任何游戏状态
+  当前牌：XXX（2 个半边）
+  可预选的半边：2 个
+  目标字段可写：m_ActorsToTarget / m_TargetedActor ✓
+  当前可选动作：Attack:...,Move:...
+  ⚠ 尚未找到「确认出牌」的程序化入口
+```
+
+**为什么先探测不直接写**：没验证的写入不该上（v1.26.2 的文件事故 +
+v1.18 的反射打错类，都是"没验证就上"的教训）。
+拿到真机诊断后，再决定开自动写入。
+
+类型修正备忘：`CurrentActorAction` 嵌套在 `GameState`，
+`CPhaseAbility` 嵌套在 `CPhaseAction`，`m_PhaseAbilities` 私有
+（公开只读的是 `RemainingPhaseAbilities`）。
+
 ### v1.26 【迭代 1/】多样性分桶（学 StS2 的 SearchRouteTraits 泳道）
 
 按"对后续的影响程度"逐步迭代，本轮做**第 1 项：多样性分桶**。

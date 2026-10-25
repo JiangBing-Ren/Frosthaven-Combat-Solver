@@ -67,6 +67,11 @@ EXPECTED = [
     # ★ 这一击会**施加**给目标的条件（Dictionary<条件枚举, CAbility>）
     #   敌人先手给我上缴械就靠它
     ('CAbility', 'NegativeConditions', 'property'),
+
+    # ★ 原生驱动：目标写在 CAbility 实例上（protected → 必须反射）
+    ('CAbility', 'm_ActorsToTarget', 'field'),
+    ('CAbility', 'm_TargetedActor', 'field'),
+
     ('CAbility', 'PositiveConditions', 'property'),
 
     # 牌堆预测补丁（M1.5 对拍验证）
