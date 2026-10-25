@@ -129,3 +129,13 @@
   怪物先攻恒 0 是因回合开始时尚未选牌（`CActor.Initiative()` 基类默认返回 0）。
 - **死亡单位需过滤**：`CActor.IsDead => CauseOfDeath != ECauseOfDeath.StillAlive`，
   `Scenario.AllMonsters` 仍包含已死单位（会出现负血条目）。
+
+## GitHub 仓库（2026-10-25 建立）
+- **`JiangBing-Ren/Frosthaven-Combat-Solver`**（**private**）—— 本项目本体
+  - 私有原因：含游戏 DLL 的反编译产物（`decompiled/` 5830 文件、`extracted/` 3398 文件）
+    属游戏厂商内容，仅供内部研究
+  - 推���：`git push -u origin main`（用 git-credential-manager 的缓存凭据）
+  - ⚠ MCP 的 GitHub App **没有建仓权限**（403 Resource not accessible by integration），
+    改用 `curl` + `git credential fill` 拿 PAT 调 API 建仓
+  - 主分支 `main`（本地 `git init` 后 `git branch -m main`）
+- 提交历史即事故记录：fd9bd4e 基线 → d984e33 恢复 → f77dcff 埋点 → 82e43b9 记忆
