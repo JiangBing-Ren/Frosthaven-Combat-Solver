@@ -140,11 +140,11 @@ internal static class P1Runner
 			DistCache.Clear();
 			LosCache.Clear();
 			ShadowCache.Clear();
-			perf.Mark("读战役目标");
 			GoalSnapshot goals = GoalReader.Read();
-			perf.Mark("读修正牌堆");
+			perf.Mark("读战役目标");
 
 			List<ModifierDeckSnapshot> monsterDecks = DeckReader.ReadAllMonsterDecks();
+			perf.Mark("读怪物牌堆");
 			int shadowCount = Geometry.ShadowCount();
 			List<string> list3 = new List<string>();
 			try
@@ -263,7 +263,7 @@ internal static class P1Runner
 					list7.Add(new List<string> { $"[{item6.Index + 1}] {item6.Name}：{item6.SkipReason}" });
 					continue;
 				}
-				perf.Mark("P1枚举前");
+				perf.Mark("P1枚举");
 				List<string> list8 = Report(item6.Ctx, item6.Plans, item6.Ms, item6.Index, order, item6, list4);
 				perf.Mark("生成角色文本");
 				MultiTurnResult multiTurnResult = ComputeMultiTurn(item6);
@@ -721,11 +721,10 @@ internal static class P1Runner
 				list.Add($"  「{item3.DisplayName}」先攻{item3.Initiative} 移动{item3.MovePoints}" + $"  ({item3.FromX},{item3.FromY})→约({item3.ToX},{item3.ToY})" + (string.IsNullOrEmpty(item3.FocusName) ? "" : ("  追「" + item3.FocusName + "」")));
 			}
 		}
-		foreach (UnitSnapshot other2 in ctx.Others)
-		{
-			list.Add($"  「{other2.DisplayName}」[{other2.FactionName}] @({other2.X},{other2.Y}) 血 {other2.Health}/{other2.MaxHealth}" + "  ← 友方，不能打");
-		}
+		// ⚠ 这里原来又遍历了一次 ctx.Others，导致"友方单位"被列两遍
+		//   （上面 707 行那处已经列过了）—— 已删。
 		list.Add("");
+
 		list.Add("【卡面半边诊断】（从当前位置评估；常驻加成与范围攻击已单独标出）");
 		foreach (string item4 in P1Planner.Diagnose(ctx))
 		{

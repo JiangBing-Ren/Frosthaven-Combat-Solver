@@ -198,7 +198,33 @@ namespace FHSolver.Bridge
                             if (card != null && card.Action != null)
                             {
                                 u.Intent = HandReader.ReadAction(card.Action, "意图");
+
+                                // ★ 未激活的卡（还在抽牌堆里）运行时强度可能是 0
+                                //   （RoundAbilityCard 为空 → 回退 NextAbilityCard = 抽牌堆顶那张）
+                                //   → 回退读 **YML 原始卡**（强度是静态写死的数值）
+                                if (u.Intent != null && u.Intent.AttackStrength <= 0)
+                                {
+                                    try
+                                    {
+                                        CAction ymlAction = card.GetMonsterCardYML?.CardAction;
+                                        if (ymlAction != null)
+                                        {
+                                            ActionSnapshot ymlIntent = HandReader.ReadAction(ymlAction, "意图");
+                                            if (ymlIntent != null && ymlIntent.AttackStrength > 0)
+                                            {
+                                                u.Intent = ymlIntent;
+                                                Plugin.Log?.LogInfo(
+                                                    $"[FHSolver] 意图强度回退到 YML 卡：{enemy.ActorLocKey()} "
+
+                                                    + $"攻{ymlIntent.AttackStrength}(射程{ymlIntent.AttackRange},目标{ymlIntent.AttackTargets})"
+                                                    + $" | 原卡：{HandReader.DescribeAbilities(card.Action)}");
+                                            }
+                                        }
+                                    }
+                                    catch { /* 读不到就维持原样 */ }
+                                }
                             }
+
                         }
                     }
                     catch { /* 读不到意图就留空 */ }

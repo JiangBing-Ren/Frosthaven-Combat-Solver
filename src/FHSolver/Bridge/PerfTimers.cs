@@ -28,7 +28,14 @@ namespace FHSolver.Bridge
         /// <summary>总计（毫秒）。</summary>
         public double TotalMs { get; set; }
 
-        /// <summary>记录"到上一个 Mark 为止"这一段的耗时。</summary>
+        /// <summary>
+        /// 记录"到上一个 Mark 为止"这一段的耗时。
+        ///
+        /// ⚠ **标签要描述"刚做完的那件事"**，不是"接下来要做的事" ——
+        ///   否则每个标签都会错位一位（我第一版就踩了：标"读战役目标"，
+        ///   实际记的是"启动到读目标"；标"P1枚举前"实际记的是"第二遍枚举"）。
+        ///   正确用法：做完一件事立刻 Mark 它的名字。
+        /// </summary>
         public void Mark(string label)
         {
             long now = _sw.ElapsedMilliseconds;

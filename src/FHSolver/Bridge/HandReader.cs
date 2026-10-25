@@ -151,7 +151,31 @@ namespace FHSolver.Bridge
         /// 读一个 CAction 的内容（卡半边 / 怪物行动卡共用同一套能力结构）。
         /// 怪物行动卡的意图也是 CAction，所以直接复用，玩家能提前看到它要干什么。
         /// </summary>
+        /// <summary>
+        /// 诊断用：把一个 CAction 里的每个能力列出来（类型/强度/射程）。
+        /// 用来查"意图读到了什么"这类问题。
+        /// </summary>
+        public static string DescribeAbilities(CAction action)
+        {
+            try
+            {
+                if (action == null || action.Abilities == null) return "(空)";
+                var parts = new List<string>();
+                foreach (CAbility ab in action.Abilities)
+                {
+                    if (ab == null) continue;
+                    parts.Add($"{ab.AbilityType}:S{ab.Strength}/R{ab.Range}/N{ab.NumberTargets}");
+                }
+                return parts.Count == 0 ? "(无能力)" : string.Join(", ", parts);
+            }
+            catch (Exception e)
+            {
+                return "(读取失败:" + e.Message + ")";
+            }
+        }
+
         internal static ActionSnapshot ReadAction(CAction action, string side)
+
         {
             var a = new ActionSnapshot { Side = side };
             if (action == null) return a;   // Kind 保持 Empty
