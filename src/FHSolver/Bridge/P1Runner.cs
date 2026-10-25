@@ -1019,14 +1019,6 @@ internal static class P1Runner
 		}
 		List<UiSection> list5 = ToUiSections(blocks, order, goals, enemyPreds, runs, mtResults);
 
-		// ★ 一回合一个页签（用户要求：翻页功能 + 多回合详细方案）
-		List<UiSection> roundSecs = BuildRoundSections(runs, mtResults);
-		foreach (UiSection rs in roundSecs)
-		{
-			if (rs == null) continue;
-			rs.Name = UiSection.UniqueName(list5.Select(x => x.Name), rs.Name);
-			list5.Add(rs);
-		}
 
 		foreach (UiSection item7 in list5)
 		{
@@ -1266,8 +1258,18 @@ internal static class P1Runner
 					uiSection.Name = "角色";
 				}
 			}
+			// ★ 原始角色名（UniqueName 之前）—— 用来查这个角色的多回合推演
+			string roleName = uiSection.Name;
 			uiSection.Name = UiSection.UniqueName(list.Select((UiSection x) => x.Name), uiSection.Name);
 			list.Add(uiSection);
+
+			// ★ 同一角色的后续回合 → **紧接在这个角色页后面**（同一页名，UniqueName 自动加序号）。
+			//   用户要的是"对应分页中的下一页"，不是另起一个"第N回合方案·角色"的独立页签。
+			foreach (UiSection rp in BuildRoundSectionsFor(roleName, runs, mtResults))
+			{
+				rp.Name = UiSection.UniqueName(list.Select((UiSection x) => x.Name), rp.Name);
+				list.Add(rp);
+			}
 		}
 		UiSection uiSection2 = new UiSection("敌人");
 		uiSection2.Add("先攻顺序（小的先动）", UiStyle.Head);
@@ -1620,15 +1622,17 @@ internal static class P1Runner
 	/// 每个角色 × 每个后续回合 = 一页，页签名形如「第2回合方案·旗矛」。
 	/// 页名冲突由 UiSection.UniqueName 处理。
 	/// </summary>
-	private static List<UiSection> BuildRoundSections(
-		List<PlayerRun> runs, Dictionary<string, MultiTurnResult> mtResults)
+	private static List<UiSection> BuildRoundSectionsFor(
+		string roleName, List<PlayerRun> runs, Dictionary<string, MultiTurnResult> mtResults)
 	{
 		List<UiSection> sections = new List<UiSection>();
-		if (mtResults == null || runs == null) return sections;
+		if (mtResults == null || runs == null || string.IsNullOrEmpty(roleName)) return sections;
 
 		foreach (PlayerRun r in runs)
 		{
 			if (r == null || r.Ctx == null) continue;
+			if (!string.Equals(r.Name, roleName, StringComparison.Ordinal)) continue;
+
 			MultiTurnResult res;
 			if (!mtResults.TryGetValue(r.Name, out res)) continue;
 			if (res.Routes == null || res.Routes.Count == 0) continue;
@@ -1639,12 +1643,16 @@ internal static class P1Runner
 			{
 				if (st == null || st.Round < 2) continue;
 
-				UiSection sec = new UiSection($"第{st.Round}回合方案·{r.Name}");
+				// ★ 页名用**角色名**（与该角色的第 1 页同名）→ UniqueName 自动加序号
+				//   于是页签顺序是：旗矛 → 旗矛1（第2回合）→ 旗矛2（第3回合）…
+				//   玩家点"下一页"就能看这个角色的下一回合方案。
+				UiSection sec = new UiSection(roleName);
 				sec.Add($"—— 第 {st.Round} 回合（沿第 1 回合最佳方案继续）——", UiStyle.Head);
 				sec.Add("先攻 " + r.Initiative, UiStyle.Sub);
 				foreach (string line in MultiTurnDetailedLines(st)) sec.Add(line);
 				sections.Add(sec);
 			}
+			break;
 		}
 		return sections;
 	}

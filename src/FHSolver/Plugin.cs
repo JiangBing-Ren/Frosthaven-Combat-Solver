@@ -20,7 +20,8 @@ namespace FHSolver
     {
         public const string GUID = "hanf2.Frosthaven.FHSolver";
         public const string PluginName = "FHSolver";
-        public const string Version = "1.29.0";
+        public const string Version = "1.30.0";
+
 
 
 

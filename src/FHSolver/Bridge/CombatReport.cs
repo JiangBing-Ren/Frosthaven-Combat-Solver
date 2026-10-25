@@ -45,6 +45,7 @@ namespace FHSolver.Bridge
         private static readonly object Gate = new object();
         private static int _round = 1;
         private static int _seq;
+        private static int _written;   // 已落盘的行数（增量写，避免重复/丢失）
 
         /// <summary>当前回合号（由 P1Runner 写入，用于给战报分段）。</summary>
         public static int CurrentRound
@@ -76,13 +77,15 @@ namespace FHSolver.Bridge
             {
                 lock (Gate)
                 {
-                    if (Rows.Count == 0) return;
+                    // ★ 增量写：只写还没落盘的行 ——
+                    //   战斗结束（玩家不再按 Insert）时，实际战报才不会被丢掉。
+                    if (Rows.Count <= _written) return;
 
                     var sb = new StringBuilder();
-                    sb.Append("# 原版战斗战报（实际=游戏结算 / 预测=求解器算出）\n");
-                    sb.Append("# 类型\t回合\t攻击者\t目标\t基础攻击\t修正牌\t伤害\t备注\n");
-                    foreach (Row r in Rows)
+                    sb.Append("# ==== 回合 " + _round + " ====\n");
+                    for (int i = _written; i < Rows.Count; i++)
                     {
+                        Row r = Rows[i];
                         sb.Append(r.Kind).Append('\t')
                           .Append(r.Round).Append('\t')
                           .Append(Clean(r.Attacker)).Append('\t')

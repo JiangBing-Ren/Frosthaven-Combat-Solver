@@ -176,6 +176,8 @@ namespace FHSolver.Bridge
                         }
                     }
                     CombatReport.Add(rep);
+                    // ★ 立刻落盘：战斗结束（玩家不再按 Insert）时实际战报才不丢
+                    CombatReport.Flush();
                 }
                 catch { /* 战报失败不影响游戏 */ }
 

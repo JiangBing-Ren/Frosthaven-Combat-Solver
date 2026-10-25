@@ -1658,6 +1658,58 @@ if ((!AreActorsAllied(...) & isTargetedAbility)
 `IgnoreLosTests()`（普通攻击被墙挡 / IgnoreLOS 能穿墙）+
 `InvisibleTargetTests()`（普通攻击打不到隐形 / CanTargetInvisible 可以）。
 
+### v1.30 修三处：移动点 / 战报落盘 / 回合页归属
+
+用户实机反馈：① 敌人攻击力对了但**移动点变 0**；② 多回合详细方案**只显示几行**且
+**错误变成独立分页**（应该是"对应分页中的下一页"）；③ compare_report 实际侧 0 条。
+
+#### ① 移动点变 0
+
+`CMonsterClass` 的属性全来自 `m_CurrentMonsterStat`：
+`Attack` / `Range` / `Target` / **`Move`** —— 都不在能力上。
+v1.28 只补了 Attack/Range/Target，漏了 Move → 意图显示"移动0"。
+
+已补 `MoveStrength`（`mc.Move`）。另外射程为 0 时**兜底成 1**：
+射程 0 = 敌人打不到任何格子 → 生存维度整个失效（v1.28 的"射程0"就是这么毁掉它的）。
+
+#### ② 战报实际侧 0 条
+
+`CombatReport.Flush()` 只在按 Insert 时调用 → 玩家打完不再按 Insert，
+**实际战报还留在内存里没落盘**。
+
+改法：
+- `Flush()` 改成**增量写**（只写 `_written` 之后的行），不再 `Rows.Clear()`
+- 每次攻击后（`DamageVerifyPatch.Postfix`）**立刻 Flush**
+
+#### ③ 回合页归属错了
+
+原来 `BuildRoundSections` 把**所有角色**的回合页都加在最后，
+页名是"第2回合方案·旗矛" → 变成独立页签，顺序也乱。
+
+改成 `BuildRoundSectionsFor(roleName, ...)`：在**角色页循环内部**生成，
+页名用**同一个角色名** → `UiSection.UniqueName` 自动加序号：
+
+```
+旗矛  →  旗矛1（第2回合） →  旗矛2（第3回合） →  漂泊者  →  漂泊者1 …
+```
+
+玩家点"下一页"就是这个角色的下一回合方案。
+
+#### ★★ 工具链教训（本轮连续踩坑，最终根治）
+
+`tools/patch.py` 经历了三次事故：
+1. **stdin 模式 expand 把字面 `\n` 变成真换行** → C# 源码里字符串断行 → 编译失败
+2. 目标文件 CRLF、调用方 LF → count=0
+3. 修 2 时"写回时还原 CRLF"更糟 → expand 产生的 LF 混进 CRLF → **混合换行**
+
+**最终版 patch.py**：
+- **只提供文件模式**（`--old`/`--new` 文件），内容字面、真实换行
+- **完全不做 expand**（源码里字面的 `\n` 原样保留）
+- 统一 LF 比较与写回（不再还原 CRLF，避免混合换行）
+- 原子写 + **先断言后写**（count≠1 时一个字节都不写）
+
+用法：`python3 tools/patch.py <目标> --old build/_old.txt --new build/_new.txt`
+
 ### v1.29 原版战斗战报（用户提问"不是还有原版游戏的战斗日志可以读吗"）
 
 **说得对** —— 游戏自己就记了权威战报：

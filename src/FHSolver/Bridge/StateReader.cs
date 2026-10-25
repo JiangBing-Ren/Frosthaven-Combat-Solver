@@ -222,6 +222,16 @@ namespace FHSolver.Bridge
                                             u.Intent.AttackTargets = mTarget;
                                         if (u.Intent.AttackStrength <= 0 && mc.Attack > 0)
                                             u.Intent.AttackStrength = mc.Attack;
+                                        // 移动力同理：怪物的移动不在能力上（能力上恒为 0）
+                                        if (u.Intent.MoveStrength <= 0 && mc.Move > 0)
+                                            u.Intent.MoveStrength = mc.Move;
+                                        // ★ 射程为 0 时兜底成 1（相邻）——
+                                        //   射程 0 会让"敌人打不到我"→ 生存维度整个失效。
+                                        if (u.Intent.AttackRange <= 0)
+                                        {
+                                            int mR = mc.Range;
+                                            u.Intent.AttackRange = mR > 0 ? mR : 1;
+                                        }
                                     }
                                 }
                                 catch { /* 读不到就维持原样 */ }
