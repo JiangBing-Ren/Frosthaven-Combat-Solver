@@ -1,0 +1,219 @@
+{
+  "purpose": "A1 verification material",
+  "note": "本扩展集**仅供阶段 4 的 hook 验证引用**，不参与阶段 3 最小闭环。阶段 3 只用 Data/ 主集的 4 个怪物（AlgoxScout×2 + AbaelHerder×2）。",
+  "generated_at": "2026-10-28T03:45:56",
+  "monster": "ChaosDemon",
+  "card_ids": [
+    538,
+    539,
+    540,
+    541,
+    542,
+    543,
+    544,
+    545
+  ],
+  "counts": {
+    "monsters": 2,
+    "cards": 8
+  },
+  "files": [
+    "Data/verify/chaosdemon.json",
+    "Data/verify/chaosdemon_cards.json"
+  ],
+  "L0_vs_L1_distinguishable": [
+    {
+      "monster": "ChaosDemonID",
+      "field": "Health",
+      "L0": 7,
+      "L1": 8,
+      "distinguishable": true
+    },
+    {
+      "monster": "ChaosDemonID",
+      "field": "Move",
+      "L0": 3,
+      "L1": 3,
+      "distinguishable": false
+    },
+    {
+      "monster": "ChaosDemonID",
+      "field": "Attack",
+      "L0": 2,
+      "L1": 3,
+      "distinguishable": true
+    },
+    {
+      "monster": "ChaosDemonID",
+      "field": "Range",
+      "L0": 1,
+      "L1": 1,
+      "distinguishable": false
+    },
+    {
+      "monster": "ChaosDemonID",
+      "field": "Target",
+      "L0": 1,
+      "L1": 1,
+      "distinguishable": false
+    },
+    {
+      "monster": "ChaosDemonEliteID",
+      "field": "Health",
+      "L0": 10,
+      "L1": 12,
+      "distinguishable": true
+    },
+    {
+      "monster": "ChaosDemonEliteID",
+      "field": "Move",
+      "L0": 4,
+      "L1": 4,
+      "distinguishable": false
+    },
+    {
+      "monster": "ChaosDemonEliteID",
+      "field": "Attack",
+      "L0": 3,
+      "L1": 4,
+      "distinguishable": true
+    },
+    {
+      "monster": "ChaosDemonEliteID",
+      "field": "Range",
+      "L0": 1,
+      "L1": 1,
+      "distinguishable": false
+    },
+    {
+      "monster": "ChaosDemonEliteID",
+      "field": "Target",
+      "L0": 1,
+      "L1": 1,
+      "distinguishable": false
+    }
+  ],
+  "sentinel_survey": {
+    "by_field": {
+      "Move": {
+        "-1": [
+          538,
+          543,
+          545
+        ],
+        "-2": [
+          540
+        ]
+      },
+      "Attack": {
+        "-1": [
+          539,
+          541,
+          545
+        ]
+      }
+    },
+    "per_card": [
+      {
+        "cardId": 538,
+        "sentinels": [
+          {
+            "path": "Abilities.AMove.Move",
+            "field": "Move",
+            "raw": -1
+          }
+        ]
+      },
+      {
+        "cardId": 539,
+        "sentinels": [
+          {
+            "path": "Abilities.AAttack.Attack",
+            "field": "Attack",
+            "raw": -1
+          }
+        ]
+      },
+      {
+        "cardId": 540,
+        "sentinels": [
+          {
+            "path": "Abilities.AMove.Move",
+            "field": "Move",
+            "raw": -2
+          }
+        ]
+      },
+      {
+        "cardId": 541,
+        "sentinels": [
+          {
+            "path": "Abilities.AAttack.Attack",
+            "field": "Attack",
+            "raw": -1
+          }
+        ]
+      },
+      {
+        "cardId": 543,
+        "sentinels": [
+          {
+            "path": "Abilities.AMove.Move",
+            "field": "Move",
+            "raw": -1
+          }
+        ]
+      },
+      {
+        "cardId": 545,
+        "sentinels": [
+          {
+            "path": "Abilities.AMove.Move",
+            "field": "Move",
+            "raw": -1
+          },
+          {
+            "path": "Abilities.AAttack.Attack",
+            "field": "Attack",
+            "raw": -1
+          }
+        ]
+      }
+    ],
+    "interpretation": "若同一 field 出现了多个不同的 raw 值（例如 Move 同时有 -1 与 -2），则这些值在本体语义上应当等价（都表示\"取怪物自身属性\"）；这构成一条**不依赖跨等级对比**的验证路径。"
+  },
+  "verification_cases": [
+    {
+      "id": "A1-C1",
+      "title": "跨等级对比（Attack 哨兵）",
+      "card": 539,
+      "field": "AAttack.Attack",
+      "sentinel": -1,
+      "levels": [
+        0,
+        1
+      ],
+      "expected_if_A": "L0 最终攻击 = 2，L1 = 3（随 ChaosDemon 等级表的 Attack 变化）",
+      "falsifies_A_if": "两级攻击恒为某个硬编码值、不随等级表变化"
+    },
+    {
+      "id": "A1-C2",
+      "title": "同等级同义多值对比（Move 哨兵 -1 vs -2）",
+      "cards": [
+        538,
+        540
+      ],
+      "field": "AMove.Move",
+      "sentinels": [
+        -1,
+        -2
+      ],
+      "levels": [
+        0
+      ],
+      "expected_if_A": "两张卡在同一 Level 下实际移动力**相同**，均 = ChaosDemon 的 Move(3)",
+      "falsifies_A_if": "两张卡移动力不同（说明 -1 与 -2 语义不同）",
+      "why_cleaner": "不需要改场景等级，变量更少；直接在同等条件下比较两个哨兵值"
+    }
+  ]
+}

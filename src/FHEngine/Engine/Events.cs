@@ -45,6 +45,14 @@ namespace FHEngine.Engine
         /// <summary>元素被消耗。</summary>
         ELEMENT_CONSUMED,
 
+        /// <summary>
+        /// 元素衰减（ROUND_END 内，Strong → Waning → Inert）。
+        ///
+        /// 为什么必须有事件承载：元素表是战斗状态的一部分，衰减是对状态的修改。
+        /// 按事件溯源原则，任何状态修改都要有事件 —— 否则**回放时元素表无法从事件日志重建**。
+        /// </summary>
+        ELEMENT_DECAYED,
+
         /// <summary>某个单位结束其行动。</summary>
         TURN_ENDED,
 
@@ -86,6 +94,7 @@ namespace FHEngine.Engine
         ///   DAMAGE_APPLIED       : targetId, amount, shieldAbsorbed, pierce, killed
         ///   ELEMENT_INFUSED      : elements(string[]), byActorId
         ///   ELEMENT_CONSUMED     : elements(string[]), byActorId, forAbility
+        ///   ELEMENT_DECAYED      : before(object: 元素→档位), after(object: 元素→档位)
         ///   TURN_ENDED           : actorId
         ///   ROUND_ENDED          : round
         /// </summary>

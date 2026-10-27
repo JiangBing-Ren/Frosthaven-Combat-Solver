@@ -1,0 +1,1071 @@
+[
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Campaign/Enemies/Monsters/ChaosDemon/Cards/538_ChaosDemon_ChillingBreath.yml",
+      "line": 2
+    },
+    "Id": 538,
+    "LocKey": "$Monster_Ability_538_ChaosDemon_ChillingBreath$",
+    "Initiative": 14,
+    "Shuffle": false,
+    "UsedBy": [
+      "ChaosDemonEliteID",
+      "ChaosDemonID"
+    ],
+    "RawValues": [
+      {
+        "path": "Abilities.AMove.Move",
+        "field": "Move",
+        "raw": -1
+      },
+      {
+        "path": "Abilities.AAttack.Attack",
+        "field": "Attack",
+        "raw": 0
+      }
+    ],
+    "ResolvedValues": {
+      "ChaosDemonID": {
+        "0": {
+          "Abilities.AMove.Move": 3,
+          "Abilities.AAttack.Attack": 0
+        },
+        "1": {
+          "Abilities.AMove.Move": 3,
+          "Abilities.AAttack.Attack": 0
+        },
+        "2": {
+          "Abilities.AMove.Move": 3,
+          "Abilities.AAttack.Attack": 0
+        },
+        "3": {
+          "Abilities.AMove.Move": 3,
+          "Abilities.AAttack.Attack": 0
+        },
+        "4": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 0
+        },
+        "5": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 0
+        },
+        "6": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 0
+        },
+        "7": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 0
+        }
+      },
+      "ChaosDemonEliteID": {
+        "0": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 0
+        },
+        "1": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 0
+        },
+        "2": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 0
+        },
+        "3": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 0
+        },
+        "4": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 0
+        },
+        "5": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 0
+        },
+        "6": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 0
+        },
+        "7": {
+          "Abilities.AMove.Move": 6,
+          "Abilities.AAttack.Attack": 0
+        }
+      }
+    },
+    "Abilities": {
+      "AMove": {
+        "AttackAmount": null,
+        "Move": -1,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Move"
+        ]
+      },
+      "AAttack": {
+        "AreaEffect": "0,0,G|2,0,R|1,1,R",
+        "Filter": "Enemy",
+        "MultiPassAttack": "false",
+        "AnimOverload": "ChillingBreath",
+        "AttackAmount": 0,
+        "Move": null,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Attack"
+        ]
+      }
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Campaign/Enemies/Monsters/ChaosDemon/Cards/539_ChaosDemon_HeatBlast.yml",
+      "line": 2
+    },
+    "Id": 539,
+    "LocKey": "$Monster_Ability_539_ChaosDemon_HeatBlast$",
+    "Initiative": 1,
+    "Shuffle": false,
+    "UsedBy": [
+      "ChaosDemonEliteID",
+      "ChaosDemonID"
+    ],
+    "RawValues": [
+      {
+        "path": "Abilities.AMove.Move",
+        "field": "Move",
+        "raw": 1
+      },
+      {
+        "path": "Abilities.AAttack.Attack",
+        "field": "Attack",
+        "raw": -1
+      },
+      {
+        "path": "Abilities.AAttack.Range",
+        "field": "Range",
+        "raw": 1
+      }
+    ],
+    "ResolvedValues": {
+      "ChaosDemonID": {
+        "0": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Attack": 2,
+          "Abilities.AAttack.Range": 1
+        },
+        "1": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Attack": 3,
+          "Abilities.AAttack.Range": 1
+        },
+        "2": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Attack": 3,
+          "Abilities.AAttack.Range": 1
+        },
+        "3": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Attack": 4,
+          "Abilities.AAttack.Range": 1
+        },
+        "4": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Attack": 4,
+          "Abilities.AAttack.Range": 1
+        },
+        "5": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Attack": 5,
+          "Abilities.AAttack.Range": 1
+        },
+        "6": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Attack": 6,
+          "Abilities.AAttack.Range": 1
+        },
+        "7": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Attack": 7,
+          "Abilities.AAttack.Range": 1
+        }
+      },
+      "ChaosDemonEliteID": {
+        "0": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Attack": 3,
+          "Abilities.AAttack.Range": 1
+        },
+        "1": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Attack": 4,
+          "Abilities.AAttack.Range": 1
+        },
+        "2": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Attack": 5,
+          "Abilities.AAttack.Range": 1
+        },
+        "3": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Attack": 5,
+          "Abilities.AAttack.Range": 1
+        },
+        "4": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Attack": 6,
+          "Abilities.AAttack.Range": 1
+        },
+        "5": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Attack": 6,
+          "Abilities.AAttack.Range": 1
+        },
+        "6": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Attack": 8,
+          "Abilities.AAttack.Range": 1
+        },
+        "7": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Attack": 9,
+          "Abilities.AAttack.Range": 1
+        }
+      }
+    },
+    "Abilities": {
+      "AMove": {
+        "AttackAmount": null,
+        "Move": 1,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Move"
+        ]
+      },
+      "AAttack": {
+        "Filter": "Enemy",
+        "Targeting": "Range",
+        "AnimOverload": "RangedAttack",
+        "AttackAmount": -1,
+        "Move": null,
+        "Heal": null,
+        "Damage": null,
+        "Range": 1,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Attack"
+        ]
+      }
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Campaign/Enemies/Monsters/ChaosDemon/Cards/540_ChaosDemon_SeismicPunch.yml",
+      "line": 2
+    },
+    "Id": 540,
+    "LocKey": "$Monster_Ability_540_ChaosDemon_SeismicPunch$",
+    "Initiative": 67,
+    "Shuffle": false,
+    "UsedBy": [
+      "ChaosDemonEliteID",
+      "ChaosDemonID"
+    ],
+    "RawValues": [
+      {
+        "path": "Abilities.AMove.Move",
+        "field": "Move",
+        "raw": -2
+      },
+      {
+        "path": "Abilities.AAttack.Attack",
+        "field": "Attack",
+        "raw": 1
+      }
+    ],
+    "ResolvedValues": {
+      "ChaosDemonID": {
+        "0": {
+          "Abilities.AMove.Move": 3,
+          "Abilities.AAttack.Attack": 1
+        },
+        "1": {
+          "Abilities.AMove.Move": 3,
+          "Abilities.AAttack.Attack": 1
+        },
+        "2": {
+          "Abilities.AMove.Move": 3,
+          "Abilities.AAttack.Attack": 1
+        },
+        "3": {
+          "Abilities.AMove.Move": 3,
+          "Abilities.AAttack.Attack": 1
+        },
+        "4": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 1
+        },
+        "5": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 1
+        },
+        "6": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 1
+        },
+        "7": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 1
+        }
+      },
+      "ChaosDemonEliteID": {
+        "0": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 1
+        },
+        "1": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 1
+        },
+        "2": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 1
+        },
+        "3": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 1
+        },
+        "4": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 1
+        },
+        "5": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 1
+        },
+        "6": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 1
+        },
+        "7": {
+          "Abilities.AMove.Move": 6,
+          "Abilities.AAttack.Attack": 1
+        }
+      }
+    },
+    "Abilities": {
+      "AMove": {
+        "AttackAmount": null,
+        "Move": -2,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Move"
+        ]
+      },
+      "AAttack": {
+        "Filter": "Enemy",
+        "AnimOverload": "SeismicPunch",
+        "AttackAmount": 1,
+        "Move": null,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "SubAbilities": {
+          "ASubPush": {
+            "AttackAmount": null,
+            "Move": null,
+            "Heal": null,
+            "Damage": null,
+            "Range": null,
+            "Target": null,
+            "Shield": null,
+            "Retaliate": null,
+            "Types": [
+              "Push"
+            ]
+          }
+        },
+        "Types": [
+          "Attack"
+        ]
+      }
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Campaign/Enemies/Monsters/ChaosDemon/Cards/541_ChaosDemon_Whirlwind.yml",
+      "line": 2
+    },
+    "Id": 541,
+    "LocKey": "$Monster_Ability_541_ChaosDemon_Whirlwind$",
+    "Initiative": 20,
+    "Shuffle": false,
+    "UsedBy": [
+      "ChaosDemonEliteID",
+      "ChaosDemonID"
+    ],
+    "RawValues": [
+      {
+        "path": "Abilities.AMove.Move",
+        "field": "Move",
+        "raw": 0
+      },
+      {
+        "path": "Abilities.AAttack.Attack",
+        "field": "Attack",
+        "raw": -1
+      },
+      {
+        "path": "Abilities.AAttack.Range",
+        "field": "Range",
+        "raw": 1
+      }
+    ],
+    "ResolvedValues": {
+      "ChaosDemonID": {
+        "0": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 2,
+          "Abilities.AAttack.Range": 1
+        },
+        "1": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 3,
+          "Abilities.AAttack.Range": 1
+        },
+        "2": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 3,
+          "Abilities.AAttack.Range": 1
+        },
+        "3": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 4,
+          "Abilities.AAttack.Range": 1
+        },
+        "4": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 4,
+          "Abilities.AAttack.Range": 1
+        },
+        "5": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 5,
+          "Abilities.AAttack.Range": 1
+        },
+        "6": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 6,
+          "Abilities.AAttack.Range": 1
+        },
+        "7": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 7,
+          "Abilities.AAttack.Range": 1
+        }
+      },
+      "ChaosDemonEliteID": {
+        "0": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 3,
+          "Abilities.AAttack.Range": 1
+        },
+        "1": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 4,
+          "Abilities.AAttack.Range": 1
+        },
+        "2": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 5,
+          "Abilities.AAttack.Range": 1
+        },
+        "3": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 5,
+          "Abilities.AAttack.Range": 1
+        },
+        "4": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 6,
+          "Abilities.AAttack.Range": 1
+        },
+        "5": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 6,
+          "Abilities.AAttack.Range": 1
+        },
+        "6": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 8,
+          "Abilities.AAttack.Range": 1
+        },
+        "7": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 9,
+          "Abilities.AAttack.Range": 1
+        }
+      }
+    },
+    "Abilities": {
+      "AMove": {
+        "AttackAmount": null,
+        "Move": 0,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Move"
+        ]
+      },
+      "AAttack": {
+        "AreaEffect": "0,0,R|2,0,R|1,1,R",
+        "Filter": "Enemy",
+        "MultiPassAttack": "false",
+        "AnimOverload": "Whirlwind",
+        "AttackAmount": -1,
+        "Move": null,
+        "Heal": null,
+        "Damage": null,
+        "Range": 1,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Attack"
+        ]
+      }
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Campaign/Enemies/Monsters/ChaosDemon/Cards/542_ChaosDemon_WhiteClaws.yml",
+      "line": 2
+    },
+    "Id": 542,
+    "LocKey": "$Monster_Ability_542_ChaosDemon_WhiteClaws$",
+    "Initiative": 42,
+    "Shuffle": false,
+    "UsedBy": [
+      "ChaosDemonEliteID",
+      "ChaosDemonID"
+    ],
+    "RawValues": [
+      {
+        "path": "Abilities.AMove.Move",
+        "field": "Move",
+        "raw": 0
+      },
+      {
+        "path": "Abilities.AAttack.Attack",
+        "field": "Attack",
+        "raw": 0
+      }
+    ],
+    "ResolvedValues": {
+      "ChaosDemonID": {
+        "0": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "1": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "2": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "3": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "4": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "5": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "6": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "7": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        }
+      },
+      "ChaosDemonEliteID": {
+        "0": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "1": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "2": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "3": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "4": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "5": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "6": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "7": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        }
+      }
+    },
+    "Abilities": {
+      "AMove": {
+        "AttackAmount": null,
+        "Move": 0,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Move"
+        ]
+      },
+      "AAttack": {
+        "Filter": "Enemy",
+        "AttackAmount": 0,
+        "Move": null,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Attack"
+        ]
+      }
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Campaign/Enemies/Monsters/ChaosDemon/Cards/543_ChaosDemon_BlackTendrils.yml",
+      "line": 2
+    },
+    "Id": 543,
+    "LocKey": "$Monster_Ability_543_ChaosDemon_BlackTendrils$",
+    "Initiative": 51,
+    "Shuffle": false,
+    "UsedBy": [
+      "ChaosDemonEliteID",
+      "ChaosDemonID"
+    ],
+    "RawValues": [
+      {
+        "path": "Abilities.AMove.Move",
+        "field": "Move",
+        "raw": -1
+      },
+      {
+        "path": "Abilities.AAttack.Attack",
+        "field": "Attack",
+        "raw": 1
+      }
+    ],
+    "ResolvedValues": {
+      "ChaosDemonID": {
+        "0": {
+          "Abilities.AMove.Move": 3,
+          "Abilities.AAttack.Attack": 1
+        },
+        "1": {
+          "Abilities.AMove.Move": 3,
+          "Abilities.AAttack.Attack": 1
+        },
+        "2": {
+          "Abilities.AMove.Move": 3,
+          "Abilities.AAttack.Attack": 1
+        },
+        "3": {
+          "Abilities.AMove.Move": 3,
+          "Abilities.AAttack.Attack": 1
+        },
+        "4": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 1
+        },
+        "5": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 1
+        },
+        "6": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 1
+        },
+        "7": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 1
+        }
+      },
+      "ChaosDemonEliteID": {
+        "0": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 1
+        },
+        "1": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 1
+        },
+        "2": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 1
+        },
+        "3": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 1
+        },
+        "4": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 1
+        },
+        "5": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 1
+        },
+        "6": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 1
+        },
+        "7": {
+          "Abilities.AMove.Move": 6,
+          "Abilities.AAttack.Attack": 1
+        }
+      }
+    },
+    "Abilities": {
+      "AMove": {
+        "AttackAmount": null,
+        "Move": -1,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Move"
+        ]
+      },
+      "AAttack": {
+        "Filter": "Enemy",
+        "AnimOverload": "BlackTendrils",
+        "AttackAmount": 1,
+        "Move": null,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Attack"
+        ]
+      }
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Campaign/Enemies/Monsters/ChaosDemon/Cards/544_ChaosDemon_ArcaneExplosion.yml",
+      "line": 2
+    },
+    "Id": 544,
+    "LocKey": "$Monster_Ability_544_ChaosDemon_ArcaneExplosion$",
+    "Initiative": 77,
+    "Shuffle": true,
+    "UsedBy": [
+      "ChaosDemonEliteID",
+      "ChaosDemonID"
+    ],
+    "RawValues": [
+      {
+        "path": "Abilities.AMove.Move",
+        "field": "Move",
+        "raw": 0
+      },
+      {
+        "path": "Abilities.AAttack.Attack",
+        "field": "Attack",
+        "raw": 0
+      }
+    ],
+    "ResolvedValues": {
+      "ChaosDemonID": {
+        "0": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "1": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "2": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "3": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "4": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "5": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "6": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "7": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        }
+      },
+      "ChaosDemonEliteID": {
+        "0": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "1": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "2": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "3": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "4": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "5": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "6": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "7": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        }
+      }
+    },
+    "Abilities": {
+      "AMove": {
+        "AttackAmount": null,
+        "Move": 0,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Move"
+        ]
+      },
+      "AAttack": {
+        "Filter": "Enemy",
+        "AnimOverload": "ArcaneExplosion",
+        "AttackAmount": 0,
+        "Move": null,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Attack"
+        ]
+      }
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Campaign/Enemies/Monsters/ChaosDemon/Cards/545_ChaosDemon_HungryMaw.yml",
+      "line": 2
+    },
+    "Id": 545,
+    "LocKey": "$Monster_Ability_545_ChaosDemon_HungryMaw$",
+    "Initiative": 98,
+    "Shuffle": true,
+    "UsedBy": [
+      "ChaosDemonEliteID",
+      "ChaosDemonID"
+    ],
+    "RawValues": [
+      {
+        "path": "Abilities.AMove.Move",
+        "field": "Move",
+        "raw": -1
+      },
+      {
+        "path": "Abilities.AAttack.Attack",
+        "field": "Attack",
+        "raw": -1
+      }
+    ],
+    "ResolvedValues": {
+      "ChaosDemonID": {
+        "0": {
+          "Abilities.AMove.Move": 3,
+          "Abilities.AAttack.Attack": 2
+        },
+        "1": {
+          "Abilities.AMove.Move": 3,
+          "Abilities.AAttack.Attack": 3
+        },
+        "2": {
+          "Abilities.AMove.Move": 3,
+          "Abilities.AAttack.Attack": 3
+        },
+        "3": {
+          "Abilities.AMove.Move": 3,
+          "Abilities.AAttack.Attack": 4
+        },
+        "4": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 4
+        },
+        "5": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 5
+        },
+        "6": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 6
+        },
+        "7": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 7
+        }
+      },
+      "ChaosDemonEliteID": {
+        "0": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 3
+        },
+        "1": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 4
+        },
+        "2": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 5
+        },
+        "3": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 5
+        },
+        "4": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 6
+        },
+        "5": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 6
+        },
+        "6": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 8
+        },
+        "7": {
+          "Abilities.AMove.Move": 6,
+          "Abilities.AAttack.Attack": 9
+        }
+      }
+    },
+    "Abilities": {
+      "AMove": {
+        "AttackAmount": null,
+        "Move": -1,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Move"
+        ]
+      },
+      "AAttack": {
+        "Filter": "Enemy",
+        "AnimOverload": "BlackTendrils",
+        "AttackAmount": -1,
+        "Move": null,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Attack"
+        ]
+      }
+    }
+  }
+]

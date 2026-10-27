@@ -1,0 +1,206 @@
+[
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Campaign/Enemies/Monsters/ChaosDemon/ChaosDemon.yml",
+      "line": 2
+    },
+    "Id": "ChaosDemonID",
+    "LocKey": "$FH/ChaosDemon$",
+    "MonsterType": "Monster",
+    "StandeeLimit": 6,
+    "AbilityCards": [
+      538,
+      539,
+      540,
+      541,
+      542,
+      543,
+      544,
+      545
+    ],
+    "Levels": {
+      "0": {
+        "Health": 7,
+        "Move": 3,
+        "Attack": 2,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Muddle"
+        ]
+      },
+      "1": {
+        "Health": 8,
+        "Move": 3,
+        "Attack": 3,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Muddle"
+        ]
+      },
+      "2": {
+        "Health": 11,
+        "Move": 3,
+        "Attack": 3,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Muddle"
+        ]
+      },
+      "3": {
+        "Health": 12,
+        "Move": 3,
+        "Attack": 4,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Muddle"
+        ]
+      },
+      "4": {
+        "Health": 14,
+        "Move": 4,
+        "Attack": 4,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Muddle"
+        ]
+      },
+      "5": {
+        "Health": 16,
+        "Move": 4,
+        "Attack": 5,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Muddle"
+        ]
+      },
+      "6": {
+        "Health": 20,
+        "Move": 4,
+        "Attack": 6,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Muddle"
+        ]
+      },
+      "7": {
+        "Health": 25,
+        "Move": 4,
+        "Attack": 7,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Muddle"
+        ]
+      }
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Campaign/Enemies/Monsters/ChaosDemon/ChaosDemonElite.yml",
+      "line": 2
+    },
+    "Id": "ChaosDemonEliteID",
+    "LocKey": "$FH/ChaosDemonElite$",
+    "MonsterType": "Monster",
+    "StandeeLimit": 6,
+    "AbilityCards": [
+      538,
+      539,
+      540,
+      541,
+      542,
+      543,
+      544,
+      545
+    ],
+    "Levels": {
+      "0": {
+        "Health": 10,
+        "Move": 4,
+        "Attack": 3,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Muddle"
+        ]
+      },
+      "1": {
+        "Health": 12,
+        "Move": 4,
+        "Attack": 4,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Muddle"
+        ]
+      },
+      "2": {
+        "Health": 14,
+        "Move": 4,
+        "Attack": 5,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Muddle"
+        ]
+      },
+      "3": {
+        "Health": 18,
+        "Move": 5,
+        "Attack": 5,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Muddle"
+        ]
+      },
+      "4": {
+        "Health": 21,
+        "Move": 5,
+        "Attack": 6,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Muddle"
+        ]
+      },
+      "5": {
+        "Health": 26,
+        "Move": 5,
+        "Attack": 6,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Muddle"
+        ]
+      },
+      "6": {
+        "Health": 33,
+        "Move": 5,
+        "Attack": 8,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Muddle"
+        ]
+      },
+      "7": {
+        "Health": 39,
+        "Move": 6,
+        "Attack": 9,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Muddle"
+        ]
+      }
+    }
+  }
+]
