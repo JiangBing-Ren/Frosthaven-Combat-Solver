@@ -14,6 +14,7 @@
 | 2026-10-28 v2 | `TurnOrder` 元素定义为**行动单元** | 怪物组共享先攻、作为一个整体行动 |
 | 2026-10-28 v2 | A1 验证方案重做：双 hook + 可区分材料 | 原 hook 点可能在解析之后，看不到"替换动作"；且原测试材料 L0/L1 Attack 相同，无法否证 |
 | 2026-10-28 v2 | 新增假设 A7（元素衰减）、A8（选牌与翻卡顺序）、A9（洗牌触发点） | — |
+| 2026-10-28 **v4** | **A1-C2 判据由两种改为三种**（含"其他语义"分支与暂停规则）；**A1-C1 加修正牌控制**；**ELEMENT_DECAYED payload 定死为全量快照**；ROUND_END 第 1 步注明"轮末持续效果阶段 3 不实现" | 用户 v4 裁决 |
 
 ---
 
@@ -66,7 +67,7 @@
 | DAMAGE_APPLIED | `targetId` / `amount` / `preShieldAmount` / `shieldAbsorbed` / `pierce` / `killed` | string / int×4 / bool | `amount` 为**最终**伤害 |
 | ELEMENT_INFUSED | `elements` / `byAbilityId` / `byActorId` | string[] / string / string | 触发点为该单位的 TURN_ENDED |
 | ELEMENT_CONSUMED | `elements` / `byActorId` / `forAbility` | string[] / string / string | — |
-| **ELEMENT_DECAYED** | `before` / `after` | object / object | 元素名→档位，衰减**前后**两份快照 |
+| **ELEMENT_DECAYED** | `before` / `after` | object / object | **全量**快照：6 个元素各记一档（Fire/Ice/Air/Earth/Light/Dark），即使本轮只有 Fire 变化，其余 5 个的当前档位也要记进 `after` |
 | TURN_ENDED | `actorId` / `unitActorIds` | string / string[] | — |
 | ROUND_ENDED | `round` / `decayedElements` | int / object | `decayedElements` 记录衰减前后档位 |
 
@@ -234,13 +235,17 @@ RunRound(state, provider):
     state.Phase = ROUND_END
     # ★ ROUND_END **不是原子步骤**，内部顺序定死（否则阶段 4 事件序列对不齐）
     #   1) 处理轮末持续效果（若有）
-    结算轮末持续效果
+    #      ⚠ **阶段 3 最小闭环不实现**，留空；阶段 5 补齐。
+    #      候选内容：Wound 每轮伤害、Regenerate 每轮治疗、其他轮末结算类效果。
+    结算轮末持续效果（阶段 3 为空操作）
     #   2) 元素衰减：Strong → Waning → Inert
     before = Elements.Levels 的快照
     for each element:
         Strong → Waning ; Waning → Inert
     #   3) 衰减本身产生事件（状态修改必须有事件承载）
-    emit(ELEMENT_DECAYED{ before, after = Elements.Levels 快照 })
+    #      payload 为**全量**快照（6 元素各一档），不是增量 —— 让 apply 成为纯函数：
+    #      state.Elements = event.payload.after，零推导
+    emit(ELEMENT_DECAYED{ before = 全量, after = 全量 })
     #   4) 轮结束
     emit(ROUND_ENDED{ round })
     #   5) 轮号推进
@@ -296,12 +301,31 @@ RunRound(state, provider):
 
 **验证用例（两条，互为交叉）**
 
-| 用例 | 做法 | 若 A 成立 | 否证条件 |
-|---|---|---|---|
-| **A1-C1** 跨等级（Attack） | 卡 **539**（`AAttack.Attack = -1`），ChaosDemon 在 **L0 与 L1** 各执行一次 | L0 攻击 = **2**、L1 = **3**（随等级表 Attack 变化） | 两级攻击恒为某硬编码值、不随等级变化 |
-| **A1-C2** 同义多值（Move） | 卡 **538**（`Move:-1`）与卡 **540**（`Move:-2`），**同一 Level** 各执行一次 | 两者实际移动力**相同**，均 = ChaosDemon Move(**3**) | 两者移动力不同 → -1 与 -2 语义不同 |
+#### A1-C1 跨等级（Attack 哨兵）
 
-`A1-C2` 更干净：不改场景等级，变量最少，直接在同等条件下比较两个哨兵值。
+- **做法**：卡 **539**（`AAttack.Attack = -1`），ChaosDemon 在 **L0 与 L1** 各执行一次
+- **★ 修正牌必须受控**（否则随机修正牌的噪声会淹没伤害对比）：
+  - **推荐**：用种子固定 `ModifierDeckState` 的初始洗牌，或用 `ScriptedDecisionProvider` **预置抽牌序列**，让两次攻击抽到**同一张**修正牌（例如都抽 `P0`）
+  - 备选：在 hook 日志里记录两次的 `ATTACK_MODIFIER_DRAWN.payload.modifierName`，分析时**只在"两次修正牌相同"的样本**里比较 `baseAttack`
+  - 前者优先——后者需跑很多次才能凑齐配对样本
+- **若 A 成立**：L0 `baseAttack` = **2**、L1 = **3**（随等级表 Attack 变化）
+- **否证**：两级攻击恒为某硬编码值、不随等级变化
+
+#### A1-C2 同义多值（Move 哨兵）—— 判据为**三种**结果
+
+- **做法**：卡 **538**（`Move:-1`）与卡 **540**（`Move:-2`），**同一 Level** 各执行一次
+- 不改场景等级，变量最少，直接在同等条件下比较两个哨兵值
+
+| 538（`Move:-1`）实测 | 540（`Move:-2`）实测 | 解释 | 后续动作 |
+|---|---|---|---|
+| 3 | **3** | 两者同义，均取怪物 Move 属性 | **A 成立**，继续 |
+| 3 | **2** | `-2` = 怪物 Move − 1 → 哨兵值有**多个不同语义**，A 需拆成 `A(-1)` 与 `A(-2)` 分别建模 | **暂停阶段 4** |
+| 3 | **其他**（1 / 0 / 4 …） | `-2` 是**第三种语义**（取半、取 Attack、占位等）→ 需重新分类哨兵值 | **暂停阶段 4** |
+
+> ⚠ **结果 2 或 3 的处理（硬性）**：
+> 若出现这两种结果，说明 `extract_rules.py` 里的 `SENTINEL_TO_STAT` **单值映射表从一开始就是错的**。
+> 必须：**暂停阶段 4 → 回到提取层重建哨兵值映射表 → `resolved` 全部重算 → 重跑阶段 1 断言**，
+> 不允许在引擎侧打补丁绕过。
 
 **hook 方案（双 hook）**
 1. **主 hook（抓替换动作）**：`CAbilityAttack` 构造函数（看 `Attack` 赋值前后）

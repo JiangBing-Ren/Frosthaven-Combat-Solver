@@ -94,7 +94,11 @@ namespace FHEngine.Engine
         ///   DAMAGE_APPLIED       : targetId, amount, shieldAbsorbed, pierce, killed
         ///   ELEMENT_INFUSED      : elements(string[]), byActorId
         ///   ELEMENT_CONSUMED     : elements(string[]), byActorId, forAbility
-        ///   ELEMENT_DECAYED      : before(object: 元素→档位), after(object: 元素→档位)
+        ///   ELEMENT_DECAYED      : before(object), after(object) —— **全量**快照，
+        ///                          6 个元素各记一档（Fire/Ice/Air/Earth/Light/Dark）。
+        ///                          即使本轮只有 Fire 变化，其余 5 个的当前档位也要记进 after。
+        ///                          全量让 apply 成为纯函数：state.Elements = after，零推导；
+        ///                          增量会让 apply 需要向前推导未变化元素，推导链长且易错。
         ///   TURN_ENDED           : actorId
         ///   ROUND_ENDED          : round
         /// </summary>
