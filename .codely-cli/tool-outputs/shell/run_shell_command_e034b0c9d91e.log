@@ -1,0 +1,133 @@
+LineNumber Line                                                                                                                                                           
+---------- ----                                                                                                                                                           
+        10 public class MonsterClassManager                                                                                                                               
+        16 	private static CMonsterAttackModifierDeck s_EnemyMonsterAttackModifierDeck = new CMonsterAttackModifierDeck();                                                
+        18 	private static CMonsterAttackModifierDeck s_AlliedMonsterAttackModifierDeck = new CMonsterAttackModifierDeck();                                               
+        20 	private static CMonsterAttackModifierDeck s_Enemy2MonsterAttackModifierDeck = new CMonsterAttackModifierDeck();                                               
+        22 	private static CMonsterAttackModifierDeck s_NeutralMonsterAttackModifierDeck = new CMonsterAttackModifierDeck();                                              
+        24 	public static List<CMonsterClass> Classes => s_Classes;                                                                                                       
+        26 	public static List<CObjectClass> ObjectClasses => s_ObjectClasses;                                                                                            
+        28 	public static List<CMonsterClass> MonsterAndObjectClasses => s_Classes.Concat(s_ObjectClasses).ToList();                                                      
+        30 	public static IEnumerable<CMonsterClass> MonsterAndObjectClassesWithInitiative => Classes.Concat(ObjectClasses.Where((CObjectClass o) => o.AbilityCardsPool.An
+           y()));                                                                                                                                                         
+        32 	public static CMonsterAttackModifierDeck EnemyMonsterAttackModifierDeck => s_EnemyMonsterAttackModifierDeck;                                                  
+        34 	public static CMonsterAttackModifierDeck AlliedMonsterAttackModifierDeck => s_AlliedMonsterAttackModifierDeck;                                                
+        36 	public static CMonsterAttackModifierDeck Enemy2MonsterAttackModifierDeck => s_Enemy2MonsterAttackModifierDeck;                                                
+        38 	public static CMonsterAttackModifierDeck NeutralMonsterAttackModifierDeck => s_NeutralMonsterAttackModifierDeck;                                              
+        40 	public static int MonsterBlessCount => EnemyMonsterAttackModifierDeck.AttackModifierCards.Count((AttackModifierYMLData x) => x.IsBless) + AlliedMonsterAttackM
+           odifierDeck.AttackModifierCards.Count((AttackModifierYMLData x) => x.IsBless) + Enemy2MonsterAttackModifierDeck.AttackModifierCards.Count((AttackModifierYMLDat
+           a x) => x.IsBless) + NeutralMonsterAttackModifierDeck.AttackModifierCards.Count((AttackModifierYMLData x) => x.IsBless);                                       
+        42 	public static List<CMonsterAbilityCard> LoadMonsterCards(MonsterYMLData monster)                                                                              
+        62 	public static void Load()                                                                                                                                     
+        67 		EnemyMonsterAttackModifierDeck.LoadCardPool();                                                                                                               
+        68 		AlliedMonsterAttackModifierDeck.LoadCardPool();                                                                                                              
+        69 		Enemy2MonsterAttackModifierDeck.LoadCardPool();                                                                                                              
+        70 		NeutralMonsterAttackModifierDeck.LoadCardPool();                                                                                                             
+       102 		s_Classes.Sort((CMonsterClass a, CMonsterClass b) => a.ID.CompareTo(b.ID));                                                                                  
+       103 		s_ObjectClasses.Sort((CObjectClass a, CObjectClass b) => a.ID.CompareTo(b.ID));                                                                              
+       124 		s_Classes.Sort((CMonsterClass a, CMonsterClass b) => a.ID.CompareTo(b.ID));                                                                                  
+       125 		s_ObjectClasses.Sort((CObjectClass a, CObjectClass b) => a.ID.CompareTo(b.ID));                                                                              
+       145 	public static void Unload()                                                                                                                                   
+       149 		s_EnemyMonsterAttackModifierDeck = new CMonsterAttackModifierDeck();                                                                                         
+       150 		s_AlliedMonsterAttackModifierDeck = new CMonsterAttackModifierDeck();                                                                                        
+       151 		s_Enemy2MonsterAttackModifierDeck = new CMonsterAttackModifierDeck();                                                                                        
+       152 		s_NeutralMonsterAttackModifierDeck = new CMonsterAttackModifierDeck();                                                                                       
+       155 	public static void ValidateMonsterClassManager()                                                                                                              
+       159 	public static void SelectRoundAbilityCards(bool reset = false)                                                                                                
+       161 		foreach (CMonsterClass item in ScenarioManager.Scenario.AllAliveMonsters.Select((CEnemyActor m) => m.MonsterClass).Distinct())                               
+       169 		foreach (CObjectClass objectClass in s_ObjectClasses)                                                                                                        
+       171 			if (ScenarioManager.Scenario.Objects.Find((CObjectActor x) => x.MonsterClass == objectClass) != null)                                                       
+       182 	public static void DiscardRoundAbilityCards()                                                                                                                 
+       184 		foreach (CMonsterClass monsterClass in s_Classes)                                                                                                            
+       186 			if (ScenarioManager.Scenario.AllMonsters.Find((CEnemyActor x) => x.MonsterClass == monsterClass) != null)                                                   
+       191 		foreach (CObjectClass objectMonsterClass in s_ObjectClasses)                                                                                                 
+       193 			if (ScenarioManager.Scenario.AllObjects.Find((CObjectActor x) => x.MonsterClass == objectMonsterClass) != null)                                             
+       200 	public static List<AttackModifierYMLData> DrawAttackModifierCards(CActor actor, int attackStrength, EAdvantageStatuses advStatus, out List<AttackModifierYMLDa
+           ta> notUsed, CAbilityAttack attackAbility, CActor currentTarget, out List<AttackModifierYMLData> cardsDrawnTotal, CAttackSummary.TargetSummary targetSummary)  
+       202 		cardsDrawnTotal = new List<AttackModifierYMLData>();                                                                                                         
+       205 			return GetAttackModifiersDeck(enemyActor).DrawAttackModifierCards(actor, attackStrength, advStatus, out notUsed, attackAbility, currentTarget, out cardsDraw
+           nTotal, targetSummary);                                                                                                                                        
+       207 		notUsed = new List<AttackModifierYMLData>();                                                                                                                 
+       211 	public static void CheckAllAttackModifierDecksForShuffle()                                                                                                    
+       213 		EnemyMonsterAttackModifierDeck.CheckAttackModifierCardShuffle();                                                                                             
+       214 		AlliedMonsterAttackModifierDeck.CheckAttackModifierCardShuffle();                                                                                            
+       215 		Enemy2MonsterAttackModifierDeck.CheckAttackModifierCardShuffle();                                                                                            
+       216 		NeutralMonsterAttackModifierDeck.CheckAttackModifierCardShuffle();                                                                                           
+       219 	public static bool IsDeckEmpty(CEnemyActor checkActor)                                                                                                        
+       221 		return GetAttackModifiersDeck(checkActor).AttackModifierCards.Count <= 0;                                                                                    
+       224 	public static void CheckAttackModifierCardShuffle(CEnemyActor forceShuffleForActor)                                                                           
+       228 			GetAttackModifiersDeck(forceShuffleForActor).CheckAttackModifierCardShuffle(force: true);                                                                   
+       232 	public static CMonsterClass Find(string classID)                                                                                                              
+       234 		return MonsterAndObjectClasses.FirstOrDefault((CMonsterClass x) => x.ID == classID);                                                                         
+       237 	public static CObjectClass FindObjectClass(string classID)                                                                                                    
+       239 		return s_ObjectClasses.SingleOrDefault((CObjectClass x) => x.ID == classID);                                                                                 
+       242 	public static IEnumerable<CActiveBonus> FindAllActiveBonuses()                                                                                                
+       253 	public static List<CActiveBonus> FindAllActiveBonuses(CActor actor)                                                                                           
+       263 	public static List<CActiveBonus> FindAllActiveBonuses(CAbility.EAbilityType type, CActor actor)                                                               
+       269 			CMonsterClass cMonsterClass = allActor.Class as CMonsterClass;                                                                                              
+       270 			if (cMonsterClass == null)                                                                                                                                  
+       276 				cMonsterClass = cMonsterClass.NonEliteVariant;                                                                                                             
+       291 	public static List<CActiveBonus> FindAllActiveBonuses(CActiveBonus.EActiveBonusDurationType durationType, CActor actor)                                       
+       301 	public static void SetAllMonsterStatLevels(int level, List<CStatBasedOnXOverrideDetails> statBasedOnXOverrides = null)                                        
+       303 		foreach (CMonsterClass monsterClass in MonsterAndObjectClasses)                                                                                              
+       316 	public static CClass FindActiveBonusClass(CActiveBonus activeBonus)                                                                                           
+       319 		foreach (CMonsterClass monsterAndObjectClass in MonsterAndObjectClasses)                                                                                     
+       329 	public static void Reset()                                                                                                                                    
+       331 		foreach (CMonsterClass monsterAndObjectClass in MonsterAndObjectClasses)                                                                                     
+       337 			ResetAttackModifiers();                                                                                                                                     
+       341 	public static void ResetAttackModifiers()                                                                                                                     
+       343 		EnemyMonsterAttackModifierDeck.ResetAttackModifiers(ScenarioManager.CurrentScenarioState.EnemyClassManager?.EnemyAttackModifierDeck);                        
+       344 		AlliedMonsterAttackModifierDeck.ResetAttackModifiers(ScenarioManager.CurrentScenarioState.EnemyClassManager?.AlliedMonsterAttackModifierDeck);               
+       345 		Enemy2MonsterAttackModifierDeck.ResetAttackModifiers(ScenarioManager.CurrentScenarioState.EnemyClassManager?.Enemy2MonsterAttackModifierDeck);               
+       346 		NeutralMonsterAttackModifierDeck.ResetAttackModifiers(ScenarioManager.CurrentScenarioState.EnemyClassManager?.NeutralMonsterAttackModifierDeck);             
+       349 	public static void RandomizeAllMonsterAvailableAttackModifierCardsOrder()                                                                                     
+       351 		EnemyMonsterAttackModifierDeck.RandomizeAvailableAttackModifierCardsOrder();                                                                                 
+       352 		AlliedMonsterAttackModifierDeck.RandomizeAvailableAttackModifierCardsOrder();                                                                                
+       353 		Enemy2MonsterAttackModifierDeck.RandomizeAvailableAttackModifierCardsOrder();                                                                                
+       354 		NeutralMonsterAttackModifierDeck.RandomizeAvailableAttackModifierCardsOrder();                                                                               
+       357 	public static void AddAdditionalModifierCards(CEnemyActor enemyActor, List<string> cardNames)                                                                 
+       359 		GetAttackModifiersDeck(enemyActor)?.AddAdditionalModifierCards(cardNames);                                                                                   
+       362 	public static void AddAdditionalModifierCardsToEnemies(List<string> cardNames)                                                                                
+       364 		EnemyMonsterAttackModifierDeck.AddAdditionalModifierCards(cardNames);                                                                                        
+       365 		Enemy2MonsterAttackModifierDeck.AddAdditionalModifierCards(cardNames);                                                                                       
+       368 	public static void RemoveModifierCards(CEnemyActor enemyActor, List<string> cardNames)                                                                        
+       370 		CMonsterAttackModifierDeck attackModifiersDeck = GetAttackModifiersDeck(enemyActor);                                                                         
+       371 		if (attackModifiersDeck != null)                                                                                                                             
+       373 			RemoveModifierCards(attackModifiersDeck, cardNames);                                                                                                        
+       377 	public static void RemoveModifierCards(CMonsterAttackModifierDeck deck, List<string> cardNames)                                                               
+       382 	public static void RemoveAllModifierCards(CMonsterAttackModifierDeck deck, List<string> cardNames)                                                            
+       387 	public static string DebugSetAttackMod(CEnemyActor enemyActor)                                                                                                
+       389 		CMonsterAttackModifierDeck attackModifiersDeck = GetAttackModifiersDeck(enemyActor);                                                                         
+       390 		if (attackModifiersDeck == null)                                                                                                                             
+       394 		return attackModifiersDeck.DebugSetAttackMod();                                                                                                              
+       397 	public static CMonsterAttackModifierDeck GetAttackModifiersDeck(CEnemyActor enemyActor)                                                                       
+       400 		return GetAttackModifiersDeck(enemyActor, out deckID);                                                                                                       
+       403 	public static CMonsterAttackModifierDeck GetAttackModifiersDeck(CEnemyActor enemyActor, out string deckID)                                                    
+       409 			return AlliedMonsterAttackModifierDeck;                                                                                                                     
+       412 			return NeutralMonsterAttackModifierDeck;                                                                                                                    
+       415 			return EnemyMonsterAttackModifierDeck;                                                                                                                      
+       418 			return Enemy2MonsterAttackModifierDeck;                                                                                                                     
+       425 	public static int GetCurseCardCount(CEnemyActor enemyActor)                                                                                                   
+       427 		return GetCurseCards(enemyActor)?.Count ?? 0;                                                                                                                
+       430 	public static List<AttackModifierYMLData> GetCurseCards(CEnemyActor enemyActor)                                                                               
+       432 		return GetAttackModifiersDeck(enemyActor)?.AttackModifierCards.Where((AttackModifierYMLData x) => x.IsCurse).ToList();                                       
+       435 	public static int RemoveAllCurseCards(CEnemyActor enemyActor)                                                                                                 
+       437 		CMonsterAttackModifierDeck attackModifiersDeck = GetAttackModifiersDeck(enemyActor);                                                                         
+       438 		if (attackModifiersDeck == null)                                                                                                                             
+       442 		List<AttackModifierYMLData> curseCards = GetCurseCards(enemyActor);                                                                                          
+       443 		foreach (AttackModifierYMLData item in curseCards)                                                                                                           
+       445 			attackModifiersDeck.AttackModifierCards.Remove(item);                                                                                                       
+       447 		return curseCards.Count;                                                                                                                                     
+       450 	public static void AddCurseCard(CEnemyActor enemyActor)                                                                                                       
+       452 		CMonsterAttackModifierDeck attackModifiersDeck = GetAttackModifiersDeck(enemyActor);                                                                         
+       453 		if (attackModifiersDeck != null)                                                                                                                             
+       455 			AddCurseCard(attackModifiersDeck);                                                                                                                          
+       459 	public static void AddCurseCard(CMonsterAttackModifierDeck deck)                                                                                              
+       461 		CClass.AddCurseCardToDeck(deck.AttackModifierCards);                                                                                                         
+       464 	public static void AddBlessCardToEnemies()                                                                                                                    
+       466 		CClass.AddBlessCardToDeck(EnemyMonsterAttackModifierDeck.AttackModifierCards);                                                                               
+       467 		CClass.AddBlessCardToDeck(Enemy2MonsterAttackModifierDeck.AttackModifierCards);                                                                              
+       470 	public static void AddBlessCard(CEnemyActor enemyActor)                                                                                                       
+       472 		CMonsterAttackModifierDeck attackModifiersDeck = GetAttackModifiersDeck(enemyActor);                                                                         
+       473 		if (attackModifiersDeck != null)                                                                                                                             
+       475 			CClass.AddBlessCardToDeck(attackModifiersDeck.AttackModifierCards);

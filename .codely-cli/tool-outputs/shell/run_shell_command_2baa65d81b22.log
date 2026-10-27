@@ -1,0 +1,263 @@
+LineNumber Line                                                                                                                                                           
+---------- ----                                                                                                                                                           
+        27 	private List<CEnemyActor> m_InitialEnemies = new List<CEnemyActor>();                                                                                         
+        33 	private List<CEnemyActor> m_InitialAllyMonsters = new List<CEnemyActor>();                                                                                    
+        36 	private List<CEnemyActor> m_InitialEnemy2Monsters = new List<CEnemyActor>();                                                                                  
+        39 	private List<CEnemyActor> m_InitialNeutralMonsters = new List<CEnemyActor>();                                                                                 
+        46 	private List<CEnemyActor> m_Enemies = new List<CEnemyActor>();                                                                                                
+        50 	private List<CEnemyActor> m_AllyMonsters = new List<CEnemyActor>();                                                                                           
+        52 	private List<CEnemyActor> m_Enemy2Monsters = new List<CEnemyActor>();                                                                                         
+        54 	private List<CEnemyActor> m_NeutralMonsters = new List<CEnemyActor>();                                                                                        
+        80 	public List<CPlayerActor> PlayerActors => m_Players;                                                                                                          
+        84 	public List<CEnemyActor> Enemies => m_Enemies;                                                                                                                
+        86 	public List<CEnemyActor> DeadEnemies { get; private set; }                                                                                                    
+        92 	public List<CEnemyActor> AllyMonsters => m_AllyMonsters;                                                                                                      
+        94 	public List<CEnemyActor> DeadAllyMonsters { get; private set; }                                                                                               
+        96 	public List<CEnemyActor> Enemy2Monsters => m_Enemy2Monsters;                                                                                                  
+        98 	public List<CEnemyActor> DeadEnemy2Monsters { get; private set; }                                                                                             
+       100 	public List<CEnemyActor> NeutralMonsters => m_NeutralMonsters;                                                                                                
+       102 	public List<CEnemyActor> DeadNeutralMonsters { get; private set; }                                                                                            
+       120 	public List<CEnemyActor> InitialEnemies => m_InitialEnemies;                                                                                                  
+       124 	public List<CEnemyActor> InitialAllyMonsters => m_InitialAllyMonsters;                                                                                        
+       126 	public List<CEnemyActor> InitialEnemy2Monsters => m_InitialEnemy2Monsters;                                                                                    
+       128 	public List<CEnemyActor> InitialNeutralMonsters => m_InitialNeutralMonsters;                                                                                  
+       136 	public List<CPlayerActor> AllPlayers => PlayerActors.Concat(ExhaustedPlayers).ToList();                                                                       
+       138 	public int PartyGold => AllPlayers.Sum((CPlayerActor s) => s.Gold) + HeroSummons.Where((CHeroSummonActor it) => it.IsCompanionSummon).Sum((CHeroSummonActor it
+           ) => it.Gold);                                                                                                                                                 
+       140 	public List<CEnemyActor> AllEnemies => Enemies.Concat(DeadEnemies).ToList();                                                                                  
+       144 	public List<CEnemyActor> AllAllyMonsters => AllyMonsters.Concat(DeadAllyMonsters).ToList();                                                                   
+       146 	public List<CEnemyActor> AllEnemy2Monsters => Enemy2Monsters.Concat(DeadEnemy2Monsters).ToList();                                                             
+       148 	public List<CEnemyActor> AllNeutralMonsters => NeutralMonsters.Concat(DeadNeutralMonsters).ToList();                                                          
+       150 	public List<CEnemyActor> AllAliveMonsters => Enemies.Concat(AllyMonsters).Concat(Enemy2Monsters).Concat(NeutralMonsters)                                      
+       153 	public List<CEnemyActor> AllMonsters => AllEnemies.Concat(AllAllyMonsters).Concat(AllEnemy2Monsters).Concat(AllNeutralMonsters)                               
+       158 	public List<CEnemyActor> AllEnemyMonsters => Enemies.Concat(Enemy2Monsters).ToList();                                                                         
+       160 	public List<CEnemyActor> AllEnemyMonstersAndObjects => Enemies.Concat(Enemy2Monsters).Concat(Objects).ToList();                                               
+       162 	public List<CActor> AllActors                                                                                                                                 
+       169 				list.AddRange(AllPlayers);                                                                                                                                 
+       170 				list.AddRange(AllEnemies);                                                                                                                                 
+       172 				list.AddRange(AllAllyMonsters);                                                                                                                            
+       173 				list.AddRange(AllEnemy2Monsters);                                                                                                                          
+       174 				list.AddRange(AllNeutralMonsters);                                                                                                                         
+       186 	public List<CActor> AllActorsThreadSafe                                                                                                                       
+       190 			List<CActor> allActors = CActiveBonus.ActiveBonusCalculationScope.GetAllActors();                                                                           
+       191 			if (allActors != null)                                                                                                                                      
+       193 				return allActors;                                                                                                                                          
+       195 			return AllActors;                                                                                                                                           
+       199 	public List<CActor> AllAliveActors                                                                                                                            
+       204 			list.AddRange(PlayerActors);                                                                                                                                
+       205 			list.AddRange(Enemies);                                                                                                                                     
+       207 			list.AddRange(AllyMonsters);                                                                                                                                
+       208 			list.AddRange(Enemy2Monsters);                                                                                                                              
+       209 			list.AddRange(NeutralMonsters);                                                                                                                             
+       215 	public List<CActor> AllAliveActorsThreadSafe                                                                                                                  
+       219 			List<CActor> allAliveActors = CActiveBonus.ActiveBonusCalculationScope.GetAllAliveActors();                                                                 
+       220 			if (allAliveActors != null)                                                                                                                                 
+       222 				return allAliveActors;                                                                                                                                     
+       224 			return AllAliveActors;                                                                                                                                      
+       234 			list.AddRange(DeadEnemies);                                                                                                                                 
+       236 			list.AddRange(DeadAllyMonsters);                                                                                                                            
+       237 			list.AddRange(DeadEnemy2Monsters);                                                                                                                          
+       238 			list.AddRange(DeadNeutralMonsters);                                                                                                                         
+       270 		DeadEnemies = new List<CEnemyActor>();                                                                                                                       
+       272 		DeadAllyMonsters = new List<CEnemyActor>();                                                                                                                  
+       273 		DeadEnemy2Monsters = new List<CEnemyActor>();                                                                                                                
+       274 		DeadNeutralMonsters = new List<CEnemyActor>();                                                                                                               
+       281 		m_InitialEnemies.Clear();                                                                                                                                    
+       283 		m_InitialAllyMonsters.Clear();                                                                                                                               
+       284 		m_InitialEnemy2Monsters.Clear();                                                                                                                             
+       285 		m_InitialNeutralMonsters.Clear();                                                                                                                            
+       286 		m_InitialNeutralMonsters.Clear();                                                                                                                            
+       290 		m_Enemies.Clear();                                                                                                                                           
+       292 		m_AllyMonsters.Clear();                                                                                                                                      
+       293 		m_Enemy2Monsters.Clear();                                                                                                                                    
+       294 		m_NeutralMonsters.Clear();                                                                                                                                   
+       296 		DeadEnemies.Clear();                                                                                                                                         
+       297 		DeadAllyMonsters.Clear();                                                                                                                                    
+       298 		DeadEnemy2Monsters.Clear();                                                                                                                                  
+       299 		DeadNeutralMonsters.Clear();                                                                                                                                 
+       311 		Enemies.Sort(GameState.CompareActorsByGUID);                                                                                                                 
+       312 		DeadEnemies.Sort(GameState.CompareActorsByGUID);                                                                                                             
+       315 		AllyMonsters.Sort(GameState.CompareActorsByGUID);                                                                                                            
+       316 		DeadAllyMonsters.Sort(GameState.CompareActorsByGUID);                                                                                                        
+       317 		Enemy2Monsters.Sort(GameState.CompareActorsByGUID);                                                                                                          
+       318 		DeadEnemy2Monsters.Sort(GameState.CompareActorsByGUID);                                                                                                      
+       319 		NeutralMonsters.Sort(GameState.CompareActorsByGUID);                                                                                                         
+       320 		DeadNeutralMonsters.Sort(GameState.CompareActorsByGUID);                                                                                                     
+       442 					Log.Warning("Maximum number of enemies of this type has been reached.  Will not spawn another.");                                                         
+       459 			ScenarioManager.Scenario.DeadEnemies.Add(cEnemyActor);                                                                                                      
+       463 			m_InitialEnemies.Add(cEnemyActor);                                                                                                                          
+       467 			m_Enemies.Add(cEnemyActor);                                                                                                                                 
+       514 					Log.Warning("Maximum number of enemies of this type has been reached.  Will not spawn another.");                                                         
+       531 			ScenarioManager.Scenario.DeadAllyMonsters.Add(cEnemyActor);                                                                                                 
+       535 			m_InitialAllyMonsters.Add(cEnemyActor);                                                                                                                     
+       539 			m_AllyMonsters.Add(cEnemyActor);                                                                                                                            
+       565 	public CEnemyActor AddEnemy2Monster(EnemyState actorState, bool initial, bool noIDRegen = false, bool fromSpawnerAtRoundStart = false, bool resetHealth = true
+           )                                                                                                                                                              
+       587 					Log.Warning("Maximum number of enemies of this type has been reached.  Will not spawn another.");                                                         
+       595 			cEnemyActor = new CEnemyActor(new Point(actorState.Location), cMonsterClass, CActor.EType.Enemy2, actorState.IsSummon, actorState.SummonerGuid, actorState.A
+           ctorGuid, actorState.Health, actorState.MaxHealth, actorState.Level, num, initial, actorState.ChosenModelIndex, actorState.CustomLocKey);                      
+       604 			ScenarioManager.Scenario.DeadEnemy2Monsters.Add(cEnemyActor);                                                                                               
+       608 			m_InitialEnemy2Monsters.Add(cEnemyActor);                                                                                                                   
+       612 			m_Enemy2Monsters.Add(cEnemyActor);                                                                                                                          
+       660 					Log.Warning("Maximum number of enemies of this type has been reached.  Will not spawn another.");                                                         
+       677 			ScenarioManager.Scenario.DeadNeutralMonsters.Add(cEnemyActor);                                                                                              
+       681 			m_InitialNeutralMonsters.Add(cEnemyActor);                                                                                                                  
+       685 			m_NeutralMonsters.Add(cEnemyActor);                                                                                                                         
+       743 				num = PlayerActors.First((CPlayerActor a) => a.ActorGuid == heroSummonState.Summoner).GetNextSummonId(cHeroSummonClass);                                   
+       850 					Log.Warning("Maximum number of enemies of this type has been reached.  Will not spawn another.");                                                         
+       903 	public bool AnyMapsHiddenAndStillHaveEnemies()                                                                                                                
+       915 	public List<CActor> FindAllActorsWithActiveBonusClass(CClass classToFind)                                                                                     
+       919 		List<CEnemyActor> list3 = m_Enemies.FindAll((CEnemyActor x) => x.ActiveBonusClass() == classToFind);                                                         
+       920 		List<CEnemyActor> list4 = m_AllyMonsters.FindAll((CEnemyActor x) => x.ActiveBonusClass() == classToFind);                                                    
+       921 		List<CEnemyActor> list5 = m_Enemy2Monsters.FindAll((CEnemyActor x) => x.ActiveBonusClass() == classToFind);                                                  
+       922 		List<CEnemyActor> list6 = m_NeutralMonsters.FindAll((CEnemyActor x) => x.ActiveBonusClass() == classToFind);                                                 
+       968 				cActor = m_Enemies.Find((CEnemyActor x) => IsValidFindActor(x));                                                                                           
+       976 				cActor = m_AllyMonsters.Find((CEnemyActor x) => IsValidFindActor(x));                                                                                      
+       980 				cActor = m_Enemy2Monsters.Find((CEnemyActor x) => IsValidFindActor(x));                                                                                    
+       984 				cActor = m_NeutralMonsters.Find((CEnemyActor x) => IsValidFindActor(x));                                                                                   
+      1007 					cActor = m_InitialEnemies.Find((CEnemyActor x) => IsValidFindActor(x));                                                                                   
+      1015 					cActor = m_InitialAllyMonsters.Find((CEnemyActor x) => IsValidFindActor(x));                                                                              
+      1019 					cActor = m_InitialEnemy2Monsters.Find((CEnemyActor x) => IsValidFindActor(x));                                                                            
+      1023 					cActor = m_InitialNeutralMonsters.Find((CEnemyActor x) => IsValidFindActor(x));                                                                           
+      1070 			if (m_Enemies == null)                                                                                                                                      
+      1072 				text += "m_Enemies list is null.\n";                                                                                                                       
+      1074 			if (m_Enemies.Any((CEnemyActor x) => x == null))                                                                                                            
+      1076 				text += "m_Enemies contains a null actor.\n";                                                                                                              
+      1078 			if (m_Enemies.Any((CEnemyActor x) =>                                                                                                                        
+      1084 				text += "m_Enemies contains an actor with a null array index.\n";                                                                                          
+      1102 			if (m_AllyMonsters == null)                                                                                                                                 
+      1104 				text += "m_AllyMonsters list is null.\n";                                                                                                                  
+      1106 			if (m_AllyMonsters.Any((CEnemyActor x) => x == null))                                                                                                       
+      1108 				text += "m_AllyMonsters contains a null actor.\n";                                                                                                         
+      1110 			if (m_AllyMonsters.Any((CEnemyActor x) =>                                                                                                                   
+      1116 				text += "m_AllyMonsters contains an actor with a null array index.\n";                                                                                     
+      1118 			if (m_Enemy2Monsters == null)                                                                                                                               
+      1120 				text += "m_Enemy2Monsters list is null.\n";                                                                                                                
+      1122 			if (m_Enemy2Monsters.Any((CEnemyActor x) => x == null))                                                                                                     
+      1124 				text += "m_Enemy2Monsters contains a null actor.\n";                                                                                                       
+      1126 			if (m_Enemy2Monsters.Any((CEnemyActor x) =>                                                                                                                 
+      1132 				text += "m_Enemy2Monsters contains an actor with a null array index.\n";                                                                                   
+      1134 			if (m_NeutralMonsters == null)                                                                                                                              
+      1136 				text += "m_NeutralMonsters list is null.\n";                                                                                                               
+      1138 			if (m_NeutralMonsters.Any((CEnemyActor x) => x == null))                                                                                                    
+      1140 				text += "m_NeutralMonsters contains a null actor.\n";                                                                                                      
+      1142 			if (m_NeutralMonsters.Any((CEnemyActor x) =>                                                                                                                
+      1148 				text += "m_NeutralMonsters contains an actor with a null array index.\n";                                                                                  
+      1184 				if (m_InitialEnemies == null)                                                                                                                              
+      1186 					text += "m_InitialEnemies list is null.\n";                                                                                                               
+      1188 				if (m_InitialEnemies.Any((CEnemyActor x) => x == null))                                                                                                    
+      1190 					text += "m_InitialEnemies contains a null actor.\n";                                                                                                      
+      1192 				if (m_InitialEnemies.Any((CEnemyActor x) =>                                                                                                                
+      1198 					text += "m_InitialEnemies contains an actor with a null array index.\n";                                                                                  
+      1216 				if (m_InitialAllyMonsters == null)                                                                                                                         
+      1218 					text += "m_InitialAllyMonsters list is null.\n";                                                                                                          
+      1220 				if (m_InitialAllyMonsters.Any((CEnemyActor x) => x == null))                                                                                               
+      1222 					text += "m_InitialAllyMonsters contains a null actor.\n";                                                                                                 
+      1224 				if (m_InitialAllyMonsters.Any((CEnemyActor x) =>                                                                                                           
+      1230 					text += "m_InitialAllyMonsters contains an actor with a null array index.\n";                                                                             
+      1232 				if (m_InitialEnemy2Monsters == null)                                                                                                                       
+      1234 					text += "m_InitialEnemy2Monsters list is null.\n";                                                                                                        
+      1236 				if (m_InitialEnemy2Monsters.Any((CEnemyActor x) => x == null))                                                                                             
+      1238 					text += "m_InitialEnemy2Monsters contains a null actor.\n";                                                                                               
+      1240 				if (m_InitialEnemy2Monsters.Any((CEnemyActor x) =>                                                                                                         
+      1246 					text += "m_InitialEnemy2Monsters contains an actor with a null array index.\n";                                                                           
+      1248 				if (m_InitialNeutralMonsters == null)                                                                                                                      
+      1250 					text += "m_InitialNeutralMonsters list is null.\n";                                                                                                       
+      1252 				if (m_InitialNeutralMonsters.Any((CEnemyActor x) => x == null))                                                                                            
+      1254 					text += "m_InitialNeutralMonsters contains a null actor.\n";                                                                                              
+      1256 				if (m_InitialNeutralMonsters.Any((CEnemyActor x) =>                                                                                                        
+      1262 					text += "m_InitialNeutralMonsters contains an actor with a null array index.\n";                                                                          
+      1302 			list.AddRange(m_Enemies.FindAll((CEnemyActor x) => IsValidFindActor(x)));                                                                                   
+      1304 			list.AddRange(m_AllyMonsters.FindAll((CEnemyActor x) => IsValidFindActor(x)));                                                                              
+      1305 			list.AddRange(m_Enemy2Monsters.FindAll((CEnemyActor x) => IsValidFindActor(x)));                                                                            
+      1306 			list.AddRange(m_NeutralMonsters.FindAll((CEnemyActor x) => IsValidFindActor(x)));                                                                           
+      1315 				list.AddRange(m_InitialEnemies.FindAll((CEnemyActor x) => IsValidFindActor(x)));                                                                           
+      1317 				list.AddRange(m_InitialAllyMonsters.FindAll((CEnemyActor x) => IsValidFindActor(x)));                                                                      
+      1318 				list.AddRange(m_InitialEnemy2Monsters.FindAll((CEnemyActor x) => IsValidFindActor(x)));                                                                    
+      1319 				list.AddRange(m_InitialNeutralMonsters.FindAll((CEnemyActor x) => IsValidFindActor(x)));                                                                   
+      1357 			if (m_Enemies == null)                                                                                                                                      
+      1359 				text += "m_Enemies list is null.\n";                                                                                                                       
+      1361 			if (m_Enemies.Any((CEnemyActor x) => x == null))                                                                                                            
+      1363 				text += "m_Enemies contains a null actor.\n";                                                                                                              
+      1365 			if (m_Enemies.Any((CEnemyActor x) =>                                                                                                                        
+      1371 				text += "m_Enemies contains an actor with a null array index.\n";                                                                                          
+      1389 			if (m_AllyMonsters == null)                                                                                                                                 
+      1391 				text += "m_AllyMonsters list is null.\n";                                                                                                                  
+      1393 			if (m_AllyMonsters.Any((CEnemyActor x) => x == null))                                                                                                       
+      1395 				text += "m_AllyMonsters contains a null actor.\n";                                                                                                         
+      1397 			if (m_AllyMonsters.Any((CEnemyActor x) =>                                                                                                                   
+      1403 				text += "m_AllyMonsters contains an actor with a null array index.\n";                                                                                     
+      1405 			if (m_Enemy2Monsters == null)                                                                                                                               
+      1407 				text += "m_Enemy2Monsters list is null.\n";                                                                                                                
+      1409 			if (m_Enemy2Monsters.Any((CEnemyActor x) => x == null))                                                                                                     
+      1411 				text += "m_Enemy2Monsters contains a null actor.\n";                                                                                                       
+      1413 			if (m_Enemy2Monsters.Any((CEnemyActor x) =>                                                                                                                 
+      1419 				text += "m_Enemy2Monsters contains an actor with a null array index.\n";                                                                                   
+      1421 			if (m_NeutralMonsters == null)                                                                                                                              
+      1423 				text += "m_NeutralMonsters list is null.\n";                                                                                                               
+      1425 			if (m_NeutralMonsters.Any((CEnemyActor x) => x == null))                                                                                                    
+      1427 				text += "m_NeutralMonsters contains a null actor.\n";                                                                                                      
+      1429 			if (m_NeutralMonsters.Any((CEnemyActor x) =>                                                                                                                
+      1435 				text += "m_NeutralMonsters contains an actor with a null array index.\n";                                                                                  
+      1471 				if (m_InitialEnemies == null)                                                                                                                              
+      1473 					text += "m_InitialEnemies list is null.\n";                                                                                                               
+      1475 				if (m_InitialEnemies.Any((CEnemyActor x) => x == null))                                                                                                    
+      1477 					text += "m_InitialEnemies contains a null actor.\n";                                                                                                      
+      1479 				if (m_InitialEnemies.Any((CEnemyActor x) =>                                                                                                                
+      1485 					text += "m_InitialEnemies contains an actor with a null array index.\n";                                                                                  
+      1503 				if (m_InitialAllyMonsters == null)                                                                                                                         
+      1505 					text += "m_InitialAllyMonsters list is null.\n";                                                                                                          
+      1507 				if (m_InitialAllyMonsters.Any((CEnemyActor x) => x == null))                                                                                               
+      1509 					text += "m_InitialAllyMonsters contains a null actor.\n";                                                                                                 
+      1511 				if (m_InitialAllyMonsters.Any((CEnemyActor x) =>                                                                                                           
+      1517 					text += "m_InitialAllyMonsters contains an actor with a null array index.\n";                                                                             
+      1519 				if (m_InitialEnemy2Monsters == null)                                                                                                                       
+      1521 					text += "m_InitialEnemy2Monsters list is null.\n";                                                                                                        
+      1523 				if (m_InitialEnemy2Monsters.Any((CEnemyActor x) => x == null))                                                                                             
+      1525 					text += "m_InitialEnemy2Monsters contains a null actor.\n";                                                                                               
+      1527 				if (m_InitialEnemy2Monsters.Any((CEnemyActor x) =>                                                                                                         
+      1533 					text += "m_InitialEnemy2Monsters contains an actor with a null array index.\n";                                                                           
+      1535 				if (m_InitialNeutralMonsters == null)                                                                                                                      
+      1537 					text += "m_InitialNeutralMonsters list is null.\n";                                                                                                       
+      1539 				if (m_InitialNeutralMonsters.Any((CEnemyActor x) => x == null))                                                                                            
+      1541 					text += "m_InitialNeutralMonsters contains a null actor.\n";                                                                                              
+      1543 				if (m_InitialNeutralMonsters.Any((CEnemyActor x) =>                                                                                                        
+      1549 					text += "m_InitialNeutralMonsters contains an actor with a null array index.\n";                                                                          
+      1588 		return m_Enemies.Find((CEnemyActor x) => x.ArrayIndex == position);                                                                                          
+      1598 		return m_AllyMonsters.Find((CEnemyActor x) => x.ArrayIndex == position);                                                                                     
+      1601 	public CEnemyActor FindEnemy2MonsterAt(Point position)                                                                                                        
+      1603 		return m_Enemy2Monsters.Find((CEnemyActor x) => x.ArrayIndex == position);                                                                                   
+      1608 		return m_NeutralMonsters.Find((CEnemyActor x) => x.ArrayIndex == position);                                                                                  
+      1618 		if (m_Enemies.Contains(monster))                                                                                                                             
+      1622 		else if (m_AllyMonsters.Contains(monster))                                                                                                                   
+      1624 			RemoveAllyMonsters(monster);                                                                                                                                
+      1626 		else if (m_Enemy2Monsters.Contains(monster))                                                                                                                 
+      1628 			RemoveEnemy2Monster(monster);                                                                                                                               
+      1630 		else if (m_NeutralMonsters.Contains(monster))                                                                                                                
+      1642 		m_Enemies.Remove(enemyActor);                                                                                                                                
+      1643 		if (!DeadEnemies.Exists((CEnemyActor x) => x.ActorGuid == enemyActor.ActorGuid))                                                                             
+      1645 			DeadEnemies.Add(enemyActor);                                                                                                                                
+      1667 	public void RemoveAllyMonsters(CEnemyActor allyMonster)                                                                                                       
+      1669 		m_AllyMonsters.Remove(allyMonster);                                                                                                                          
+      1670 		if (!DeadAllyMonsters.Exists((CEnemyActor x) => x.ActorGuid == allyMonster.ActorGuid))                                                                       
+      1672 			DeadAllyMonsters.Add(allyMonster);                                                                                                                          
+      1676 	public void RemoveEnemy2Monster(CEnemyActor enemy2monster)                                                                                                    
+      1678 		m_Enemy2Monsters.Remove(enemy2monster);                                                                                                                      
+      1679 		if (!DeadEnemy2Monsters.Exists((CEnemyActor x) => x.ActorGuid == enemy2monster.ActorGuid))                                                                   
+      1681 			DeadEnemy2Monsters.Add(enemy2monster);                                                                                                                      
+      1687 		m_NeutralMonsters.Remove(neutralMonster);                                                                                                                    
+      1688 		if (!DeadNeutralMonsters.Exists((CEnemyActor x) => x.ActorGuid == neutralMonster.ActorGuid))                                                                 
+      1690 			DeadNeutralMonsters.Add(neutralMonster);                                                                                                                    
+      1715 			return AllAliveMonsters.Contains((CEnemyActor)actor);                                                                                                       
+      1737 			obj = m_Enemies.SingleOrDefault((CEnemyActor s) => s.ActorGuid == actorGuid);                                                                               
+      1741 			obj = DeadEnemies.SingleOrDefault((CEnemyActor s) => s.ActorGuid == actorGuid);                                                                             
+      1745 			obj = m_InitialEnemies.SingleOrDefault((CEnemyActor s) => s.ActorGuid == actorGuid);                                                                        
+      1749 			obj = m_AllyMonsters.SingleOrDefault((CEnemyActor s) => s.ActorGuid == actorGuid);                                                                          
+      1753 			obj = DeadAllyMonsters.SingleOrDefault((CEnemyActor s) => s.ActorGuid == actorGuid);                                                                        
+      1757 			obj = m_Enemy2Monsters.SingleOrDefault((CEnemyActor s) => s.ActorGuid == actorGuid);                                                                        
+      1761 			obj = DeadEnemy2Monsters.SingleOrDefault((CEnemyActor s) => s.ActorGuid == actorGuid);                                                                      
+      1765 			obj = m_InitialEnemy2Monsters.SingleOrDefault((CEnemyActor s) => s.ActorGuid == actorGuid);                                                                 
+      1769 			obj = m_NeutralMonsters.SingleOrDefault((CEnemyActor s) => s.ActorGuid == actorGuid);                                                                       
+      1773 			obj = DeadNeutralMonsters.SingleOrDefault((CEnemyActor s) => s.ActorGuid == actorGuid);                                                                     
+      1777 			obj = m_InitialNeutralMonsters.SingleOrDefault((CEnemyActor s) => s.ActorGuid == actorGuid);                                                                
+      1832 			if (!allObject.IsDead && CActor.AreActorsEnemies(actor.Type, allObject.Type, actor, allObject))

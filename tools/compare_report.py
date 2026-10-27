@@ -28,6 +28,20 @@ from collections import defaultdict
 DEFAULT = r'D:\1Mods\FH\combat_report.tsv'
 
 
+def newest_report(directory, prefix='combat_report'):
+    """v1.33 起战报按版本分文件（combat_report_v1.35.0.tsv）。
+    没显式给路径时，优先用最新的版本化战报，避免误读旧文件。"""
+    try:
+        names = [n for n in os.listdir(directory)
+                 if n.startswith(prefix) and n.endswith('.tsv')]
+    except OSError:
+        return None
+    if not names:
+        return None
+    names.sort(key=lambda n: os.path.getmtime(os.path.join(directory, n)), reverse=True)
+    return os.path.join(directory, names[0])
+
+
 def load(path):
     rows = []
     if not os.path.exists(path):
@@ -85,7 +99,8 @@ def norm_mods(s):
 
 
 def main():
-    path = sys.argv[1] if len(sys.argv) > 1 else DEFAULT
+    path = sys.argv[1] if len(sys.argv) > 1 else (
+        newest_report(os.path.dirname(DEFAULT)) or DEFAULT)
     rows = load(path)
     if not rows:
         print('没有战报：%s' % path)

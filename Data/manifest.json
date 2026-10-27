@@ -1,0 +1,93 @@
+{
+  "phase": 1,
+  "generated_at": "2026-10-28T03:11:02",
+  "source_root": "extracted/Base_ruleset",
+  "original_archive": "D:/Steam/steamapps/common/Frosthaven/Frosthaven_Data/StreamingAssets/Rulebase/Base.ruleset",
+  "archive_format": {
+    "magic": "02392fe1",
+    "magic_encoding": "ASCII (8 bytes)",
+    "bytes_8_11": "u32 = 0 (reserved, meaning unconfirmed)",
+    "bytes_12_15": "u32 entryCount (LE) = 3397",
+    "toc_entry_bytes": 144,
+    "toc_layout": "128B path(UTF-8,space-padded) + u32 meta1 + u32 meta2 + u32 offset + u32 size",
+    "verified": "dataOffset 489184 = 16 + 3397*144"
+  },
+  "subset": {
+    "characters": [
+      "BannerSpear",
+      "Drifter"
+    ],
+    "monsters": [
+      "AlgoxScout",
+      "AbaelHerder"
+    ],
+    "decks": [
+      "Standard",
+      "ReducedRandomness",
+      "MonsterDeck",
+      "MonsterReducedRandomness"
+    ]
+  },
+  "counts": {
+    "cards": 60,
+    "monsters": 4,
+    "monster_cards": 16,
+    "attack_modifiers": 140,
+    "modifier_decks": 4,
+    "amc_in_any_deck": 9,
+    "amc_not_in_any_deck": 131
+  },
+  "files": [
+    "Data/cards.json",
+    "Data/monsters.json",
+    "Data/monster_cards.json",
+    "Data/attack_modifiers.json",
+    "Data/modifier_decks.json",
+    "Data/deck_membership.json"
+  ],
+  "characters_full_enumeration": {
+    "total": 17,
+    "note": "17 个职业目录全部含 AbilityCards（27–34 张），均判定为可玩；未发现 NPC / 未启用职业。",
+    "list": [
+      "BannerSpear",
+      "Blinkblade",
+      "Boneshaper",
+      "CharacterResources.yml",
+      "CrashingTide",
+      "Deathwalker",
+      "Deepwraith",
+      "Drifter",
+      "FrozenFist",
+      "Geminate",
+      "HIVE",
+      "Infuser",
+      "MetalMosaic",
+      "PainConduit",
+      "Pyroclast",
+      "Shattersong",
+      "Snowdancer",
+      "Trapper"
+    ]
+  },
+  "unresolved": {
+    "sentinel_values": {
+      "evidence": [
+        "extracted/.../Scout/Cards/770_Scout_CruelBow.yml 等处出现 Move: -1",
+        "extracted/.../AbaelHerder/Cards/779_*.yml 出现 Attack: -2",
+        "decompiled/SRL/ScenarioRuleLibrary/CMonsterClass.cs:233-234 有 CreateDefaultAttack(m_CurrentMonsterStat.Attack, ...) / CreateDefaultMove(m_CurrentMonsterStat.Move, ...)"
+      ],
+      "candidate_a": "负数 = 取怪物自身同名属性（Move:-1 → 怪物 Move；Attack:-2 → 怪物 Attack）",
+      "candidate_b": "负数 = 未指定，运行时由 MonsterClass 默认能力填充（CMonsterClass.cs:233-234）",
+      "candidate_c": "负数 = 相对修正（如怪物 Attack 上 -2），实测会导致 0 伤害，与观察不符",
+      "current_choice": "本脚本按 candidate_a 生成 resolved，raw 同时保留以便修正",
+      "affects_tests": [
+        "怪物移动力",
+        "怪物攻击力",
+        "伤害计算",
+        "AI 纯函数输出"
+      ]
+    },
+    "lvldat_parsing": "关卡 .lvldat 为 .NET BinaryFormatter，需要 C# + 游戏程序集才能解析；阶段 1 未产出。",
+    "baseline_scenario": "“烈焰焚城”使命的内部 ID 未能从明文数据确定（场景为 .lvldat 二进制且本地化不提取）。"
+  }
+}

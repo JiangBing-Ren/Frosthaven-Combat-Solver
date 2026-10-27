@@ -1,0 +1,640 @@
+---L52
+		public List<string> AdditionalNonScalarModifiers = new List<string>();
+
+>> 		public List<string> PreShieldScalarModifiers = new List<string>();
+
+		public List<(string, string)> PostShieldScalarModifiers = new List<(string, string)>();
+
+		public string OverrideMathModifier = string.Empty;
+---L54
+		public List<string> PreShieldScalarModifiers = new List<string>();
+
+>> 		public List<(string, string)> PostShieldScalarModifiers = new List<(string, string)>();
+
+		public string OverrideMathModifier = string.Empty;
+
+		public SEventAttackModifier AttackModifierEvent;
+---L70
+		public CActor RedirectedFromActor { get; set; }
+
+>> 		public int Shield { get; private set; }
+
+		public int Pierce { get; private set; }
+
+		public int ShieldMinusPierce { get; private set; }
+---L72
+		public int Shield { get; private set; }
+
+>> 		public int Pierce { get; private set; }
+
+		public int ShieldMinusPierce { get; private set; }
+
+		public bool Poison { get; private set; }
+---L74
+		public int Pierce { get; private set; }
+
+>> 		public int ShieldMinusPierce { get; private set; }
+
+		public bool Poison { get; private set; }
+
+		public bool ExploitedVulnerability { get; private set; }
+---L76
+		public int ShieldMinusPierce { get; private set; }
+
+>> 		public bool Poison { get; private set; }
+
+		public bool ExploitedVulnerability { get; private set; }
+
+		public int ExploitedVulnerabilityStrength { get; private set; }
+---L82
+		public int ExploitedVulnerabilityStrength { get; private set; }
+
+>> 		public bool Brittle { get; set; }
+
+		public bool Ward { get; set; }
+
+		public bool Invulnerable { get; private set; }
+---L84
+		public bool Brittle { get; set; }
+
+>> 		public bool Ward { get; set; }
+
+		public bool Invulnerable { get; private set; }
+
+		public CAbilityAttack ItemOverrideAbility { get; set; }
+---L114
+		public EAdvantageStatuses OverallAdvantage { get; set; }
+
+>> 		public List<CActiveBonus> PassiveShieldBonuses { get; private set; }
+
+		public int ActiveBonusShieldBuff { get; private set; }
+
+		public List<int> ConditionalOverridesStrengthBuffs { get; private set; }
+---L116
+		public List<CActiveBonus> PassiveShieldBonuses { get; private set; }
+
+>> 		public int ActiveBonusShieldBuff { get; private set; }
+
+		public List<int> ConditionalOverridesStrengthBuffs { get; private set; }
+
+		public List<int> ConditionalOverridesXPBuffs { get; private set; }
+---L126
+		public int AttackEffectBuff { get; private set; }
+
+>> 		public int AttackEffectPierce { get; private set; }
+
+		public int AttackEffectXP { get; private set; }
+
+		public int AttackScalar { get; private set; }
+---L180
+		public int DamageIfTargetMoves { get; private set; }
+
+>> 		public int PreShieldAttackStrength => AttackAbilityWithOverrides?.Strength ?? OriginalAbility?.Strength ?? 0;
+
+		public int FinalAttackStrength => CalcExpressionString(calcPostShieldScalars: true, calcShield: true);
+
+		public int TargetNumber { get; private set; }
+---L182
+		public int PreShieldAttackStrength => AttackAbilityWithOverrides?.Strength ?? OriginalAbility?.Strength ?? 0;
+
+>> 		public int FinalAttackStrength => CalcExpressionString(calcPostShieldScalars: true, calcShield: true);
+
+		public int TargetNumber { get; private set; }
+
+		public IEnumerable<AttackModifierYMLData> AllDrawnModifiers => m_DrawnAttackMods;
+---L230
+			Actor = other.Actor;
+			RedirectedFromActor = other.RedirectedFromActor;
+>> 			Shield = other.Shield;
+			Pierce = other.Pierce;
+			ProcessedStatusEffects = other.ProcessedStatusEffects;
+			ShieldMinusPierce = other.ShieldMinusPierce;
+			Poison = other.Poison;
+---L231
+			RedirectedFromActor = other.RedirectedFromActor;
+			Shield = other.Shield;
+>> 			Pierce = other.Pierce;
+			ProcessedStatusEffects = other.ProcessedStatusEffects;
+			ShieldMinusPierce = other.ShieldMinusPierce;
+			Poison = other.Poison;
+			ExploitedVulnerability = other.ExploitedVulnerability;
+---L233
+			Pierce = other.Pierce;
+			ProcessedStatusEffects = other.ProcessedStatusEffects;
+>> 			ShieldMinusPierce = other.ShieldMinusPierce;
+			Poison = other.Poison;
+			ExploitedVulnerability = other.ExploitedVulnerability;
+			ExploitedVulnerabilityStrength = other.ExploitedVulnerabilityStrength;
+			Brittle = other.Brittle;
+---L234
+			ProcessedStatusEffects = other.ProcessedStatusEffects;
+			ShieldMinusPierce = other.ShieldMinusPierce;
+>> 			Poison = other.Poison;
+			ExploitedVulnerability = other.ExploitedVulnerability;
+			ExploitedVulnerabilityStrength = other.ExploitedVulnerabilityStrength;
+			Brittle = other.Brittle;
+			Ward = other.Ward;
+---L237
+			ExploitedVulnerability = other.ExploitedVulnerability;
+			ExploitedVulnerabilityStrength = other.ExploitedVulnerabilityStrength;
+>> 			Brittle = other.Brittle;
+			Ward = other.Ward;
+			Invulnerable = other.Invulnerable;
+			ItemOverrideAbility = other.ItemOverrideAbility;
+			ActualDamageTaken = other.ActualDamageTaken;
+---L238
+			ExploitedVulnerabilityStrength = other.ExploitedVulnerabilityStrength;
+			Brittle = other.Brittle;
+>> 			Ward = other.Ward;
+			Invulnerable = other.Invulnerable;
+			ItemOverrideAbility = other.ItemOverrideAbility;
+			ActualDamageTaken = other.ActualDamageTaken;
+			AttackAbilityWithOverrides = other.AttackAbilityWithOverrides;
+---L250
+			AttackersGainAdvantage = other.AttackersGainAdvantage;
+			OverallAdvantage = other.OverallAdvantage;
+>> 			PassiveShieldBonuses = other.PassiveShieldBonuses?.ToList();
+			ActiveBonusShieldBuff = other.ActiveBonusShieldBuff;
+			ConditionalOverridesStrengthBuffs = other.ConditionalOverridesStrengthBuffs?.ToList();
+			ConditionalOverridesXPBuffs = other.ConditionalOverridesXPBuffs?.ToList();
+			ItemStrengthBuffs = other.ItemStrengthBuffs?.ToList();
+---L251
+			OverallAdvantage = other.OverallAdvantage;
+			PassiveShieldBonuses = other.PassiveShieldBonuses?.ToList();
+>> 			ActiveBonusShieldBuff = other.ActiveBonusShieldBuff;
+			ConditionalOverridesStrengthBuffs = other.ConditionalOverridesStrengthBuffs?.ToList();
+			ConditionalOverridesXPBuffs = other.ConditionalOverridesXPBuffs?.ToList();
+			ItemStrengthBuffs = other.ItemStrengthBuffs?.ToList();
+			AttackEffectBuff = other.AttackEffectBuff;
+---L256
+			ItemStrengthBuffs = other.ItemStrengthBuffs?.ToList();
+			AttackEffectBuff = other.AttackEffectBuff;
+>> 			AttackEffectPierce = other.AttackEffectPierce;
+			AttackEffectXP = other.AttackEffectXP;
+			AttackScalar = other.AttackScalar;
+			AttackAbilityScalar = other.AttackAbilityScalar;
+			ScenarioBonusStrength = other.ScenarioBonusStrength;
+---L277
+			NonScalarMathModifiers = other.NonScalarMathModifiers?.ToList() ?? new List<string>();
+			AdditionalNonScalarModifiers = other.AdditionalNonScalarModifiers?.ToList() ?? new List<string>();
+>> 			PreShieldScalarModifiers = other.PreShieldScalarModifiers?.ToList() ?? new List<string>();
+			PostShieldScalarModifiers = other.PostShieldScalarModifiers?.ToList() ?? new List<(string, string)>();
+			OverrideMathModifier = other.OverrideMathModifier;
+			AttackModifierEvent = null;
+			if (other.AttackModifierEvent != null)
+---L278
+			AdditionalNonScalarModifiers = other.AdditionalNonScalarModifiers?.ToList() ?? new List<string>();
+			PreShieldScalarModifiers = other.PreShieldScalarModifiers?.ToList() ?? new List<string>();
+>> 			PostShieldScalarModifiers = other.PostShieldScalarModifiers?.ToList() ?? new List<(string, string)>();
+			OverrideMathModifier = other.OverrideMathModifier;
+			AttackModifierEvent = null;
+			if (other.AttackModifierEvent != null)
+			{
+---L303
+			DrawnAttackMods = new List<AttackModifierYMLData>();
+			m_eventOverrideBuffData = new List<SEventAttackModifier.OverrideBuffData>();
+>> 			Poison = Actor.Tokens.HasKey(CCondition.ENegativeCondition.Poison);
+			Brittle = Actor.Tokens.HasKey(CCondition.ENegativeCondition.Brittle);
+			Ward = Actor.Tokens.HasKey(CCondition.EPositiveCondition.Ward);
+			AttackAbilityScalar = 0;
+			m_InitialAbilityAttackStrength = (m_PreModifierAttackStrength = strength);
+---L304
+			m_eventOverrideBuffData = new List<SEventAttackModifier.OverrideBuffData>();
+			Poison = Actor.Tokens.HasKey(CCondition.ENegativeCondition.Poison);
+>> 			Brittle = Actor.Tokens.HasKey(CCondition.ENegativeCondition.Brittle);
+			Ward = Actor.Tokens.HasKey(CCondition.EPositiveCondition.Ward);
+			AttackAbilityScalar = 0;
+			m_InitialAbilityAttackStrength = (m_PreModifierAttackStrength = strength);
+			Invulnerable = Actor.Invulnerable;
+---L305
+			Poison = Actor.Tokens.HasKey(CCondition.ENegativeCondition.Poison);
+			Brittle = Actor.Tokens.HasKey(CCondition.ENegativeCondition.Brittle);
+>> 			Ward = Actor.Tokens.HasKey(CCondition.EPositiveCondition.Ward);
+			AttackAbilityScalar = 0;
+			m_InitialAbilityAttackStrength = (m_PreModifierAttackStrength = strength);
+			Invulnerable = Actor.Invulnerable;
+			ShadowMarked = target.IsShadowMarked;
+---L310
+			Invulnerable = Actor.Invulnerable;
+			ShadowMarked = target.IsShadowMarked;
+>> 			PassiveShieldBonuses = (from x in Actor.FindApplicableActiveBonuses(CAbility.EAbilityType.Shield)
+				where !x.Ability.ActiveBonusData.IsToggleBonus && x.IsActiveBonusToggledAndNotRestricted(Actor)
+				select x).ToList();
+		}
+
+---L485
+						CAbilityOverride cAbilityOverride = AttackAbilityWithOverrides.OverrideAbilityValues(abilityOverride, perform: false, null, conditionalOverride.Filter, target);
+						AbilityData.MiscAbilityData miscAbilityData = cAbilityOverride.MiscAbilityData;
+>> 						if (miscAbilityData != null && miscAbilityData.AddTargetPropertyToStrength == CActor.EOverrideLookupProperty.Shield)
+						{
+							int num6 = ((cAbilityOverride.MiscAbilityData == null || !cAbilityOverride.MiscAbilityData.AddTargetPropertyToStrengthMultiplier.HasValue) ? 1 : cAbilityOverride.MiscAbilityData.AddTargetPropertyToStrengthMultiplier.Value);
+							AttackAbilityWithOverrides.Strength += target.CalculateShield(ability) * num6;
+						}
+---L488
+						{
+							int num6 = ((cAbilityOverride.MiscAbilityData == null || !cAbilityOverride.MiscAbilityData.AddTargetPropertyToStrengthMultiplier.HasValue) ? 1 : cAbilityOverride.MiscAbilityData.AddTargetPropertyToStrengthMultiplier.Value);
+>> 							AttackAbilityWithOverrides.Strength += target.CalculateShield(ability) * num6;
+						}
+						if (cAbilityOverride.NegativeConditions != null)
+						{
+							list2.AddRange(cAbilityOverride.NegativeConditions);
+---L611
+					AttackEffectBuff = 0;
+					AttackEffectXP = 0;
+>> 					AttackEffectPierce = 0;
+					foreach (CAttackEffect attackEffect2 in cAbilityAttack6.AttackEffects)
+					{
+						attackEffect2.GetBonus(target, cAbilityAttack6, out var attackBuff2, out var xpBuff2, out var _, out var _, out var pierceBuff2, out var _, out var _, out var _);
+						AttackEffectBuff += attackBuff2;
+---L614
+					foreach (CAttackEffect attackEffect2 in cAbilityAttack6.AttackEffects)
+					{
+>> 						attackEffect2.GetBonus(target, cAbilityAttack6, out var attackBuff2, out var xpBuff2, out var _, out var _, out var pierceBuff2, out var _, out var _, out var _);
+						AttackEffectBuff += attackBuff2;
+						AttackEffectXP += xpBuff2;
+						AttackEffectPierce += pierceBuff2;
+					}
+---L617
+						AttackEffectBuff += attackBuff2;
+						AttackEffectXP += xpBuff2;
+>> 						AttackEffectPierce += pierceBuff2;
+					}
+					foreach (CAttackActiveBonus_BuffAttack item4 in from y in ThisTargetAttackActiveBonuses.SelectMany((CActiveBonus x) => x.BespokeBehaviours)
+						where y is CAttackActiveBonus_BuffAttack
+						select y)
+---L623
+						select y)
+					{
+>> 						AttackEffectPierce += item4.ReferencePierce(cAbilityAttack6, target);
+					}
+					foreach (CAttackActiveBonus_BuffIncomingAttacks item5 in from y in ThisTargetAttackActiveBonuses.SelectMany((CActiveBonus x) => x.BespokeBehaviours)
+						where y is CAttackActiveBonus_BuffIncomingAttacks
+						select y)
+---L629
+						select y)
+					{
+>> 						AttackEffectPierce += item5.ReferencePierce(cAbilityAttack6, target);
+					}
+					m_PreModifierAttackStrength += AttackEffectBuff;
+					CalcOverallAdvantageDisadvantage();
+					Poison = Actor.Tokens.HasKey(CCondition.ENegativeCondition.Poison);
+---L633
+					m_PreModifierAttackStrength += AttackEffectBuff;
+					CalcOverallAdvantageDisadvantage();
+>> 					Poison = Actor.Tokens.HasKey(CCondition.ENegativeCondition.Poison);
+					if (Poison)
+					{
+						m_PreModifierAttackStrength++;
+					}
+---L634
+					CalcOverallAdvantageDisadvantage();
+					Poison = Actor.Tokens.HasKey(CCondition.ENegativeCondition.Poison);
+>> 					if (Poison)
+					{
+						m_PreModifierAttackStrength++;
+					}
+					if (cAbilityAttack6.ExploitVulnerability && !ExploitedVulnerability)
+---L668
+					}
+				}
+>> 				Invulnerable = Actor.Invulnerable && !ability.TargetingActor.PierceInvulnerability;
+				CacheFinalAttackStrength(initial: true, beforeModifiers: true);
+			}
+		}
+
+---L692
+				}
+				AttackAbilityWithOverrides?.SetModifiedStrength(modifiedStrength);
+>> 				CalcShieldPierce();
+			}
+		}
+
+		public void CalcShieldPierce()
+---L696
+		}
+
+>> 		public void CalcShieldPierce()
+		{
+			using (new CActiveBonus.ActiveBonusCalculationScope())
+			{
+				if (AttackAbilityWithOverrides is CAbilityAttack cAbilityAttack)
+---L703
+				{
+					CActor actor = Actor;
+>> 					Shield = Actor.BaseShield();
+					int num = actor.CalculateShield(OriginalAbility, ignoreNeutralizeShield: false, includeItemShieldValues: true, cache: true, forceActiveItems: true);
+					ActiveBonusShieldBuff = num - Shield;
+					Shield += ActiveBonusShieldBuff;
+					GameState.TotalShieldDuringLastAttack = Shield;
+---L704
+					CActor actor = Actor;
+					Shield = Actor.BaseShield();
+>> 					int num = actor.CalculateShield(OriginalAbility, ignoreNeutralizeShield: false, includeItemShieldValues: true, cache: true, forceActiveItems: true);
+					ActiveBonusShieldBuff = num - Shield;
+					Shield += ActiveBonusShieldBuff;
+					GameState.TotalShieldDuringLastAttack = Shield;
+					Pierce = cAbilityAttack.Pierce + AttackEffectPierce;
+---L705
+					Shield = Actor.BaseShield();
+					int num = actor.CalculateShield(OriginalAbility, ignoreNeutralizeShield: false, includeItemShieldValues: true, cache: true, forceActiveItems: true);
+>> 					ActiveBonusShieldBuff = num - Shield;
+					Shield += ActiveBonusShieldBuff;
+					GameState.TotalShieldDuringLastAttack = Shield;
+					Pierce = cAbilityAttack.Pierce + AttackEffectPierce;
+					if (Pierce >= 99999)
+---L706
+					int num = actor.CalculateShield(OriginalAbility, ignoreNeutralizeShield: false, includeItemShieldValues: true, cache: true, forceActiveItems: true);
+					ActiveBonusShieldBuff = num - Shield;
+>> 					Shield += ActiveBonusShieldBuff;
+					GameState.TotalShieldDuringLastAttack = Shield;
+					Pierce = cAbilityAttack.Pierce + AttackEffectPierce;
+					if (Pierce >= 99999)
+					{
+---L707
+					ActiveBonusShieldBuff = num - Shield;
+					Shield += ActiveBonusShieldBuff;
+>> 					GameState.TotalShieldDuringLastAttack = Shield;
+					Pierce = cAbilityAttack.Pierce + AttackEffectPierce;
+					if (Pierce >= 99999)
+					{
+						ShieldMinusPierce = 0;
+---L708
+					Shield += ActiveBonusShieldBuff;
+					GameState.TotalShieldDuringLastAttack = Shield;
+>> 					Pierce = cAbilityAttack.Pierce + AttackEffectPierce;
+					if (Pierce >= 99999)
+					{
+						ShieldMinusPierce = 0;
+					}
+---L709
+					GameState.TotalShieldDuringLastAttack = Shield;
+					Pierce = cAbilityAttack.Pierce + AttackEffectPierce;
+>> 					if (Pierce >= 99999)
+					{
+						ShieldMinusPierce = 0;
+					}
+					else
+---L711
+					if (Pierce >= 99999)
+					{
+>> 						ShieldMinusPierce = 0;
+					}
+					else
+					{
+						ShieldMinusPierce = Math.Max(0, Shield - Pierce);
+---L715
+					else
+					{
+>> 						ShieldMinusPierce = Math.Max(0, Shield - Pierce);
+					}
+				}
+			}
+		}
+---L750
+			}
+			DisadvantageFromAdjacent = !attackAbility.IsMeleeAttack & flag;
+>> 			AttackersGainDisadvantage = (Actor is CEnemyActor cEnemyActor && cEnemyActor.MonsterClass.AttackersGainDisadv) || CActiveBonus.FindApplicableActiveBonuses(Actor, CAbility.EAbilityType.AttackersGainDisadvantage).Count > 0 || CActiveBonus.FindApplicableActiveBonuses(Actor, CAbility.EAbilityType.Shield).FindAll((CActiveBonus x) => x is CShieldActiveBonus && x.HasBehaviour<CShieldActiveBonus_ShieldAndDisadvantage>()).Count > 0;
+			AttackersGainDisadvantage |= ThisTargetAttackActiveBonuses.Any((CActiveBonus x) => x.TryGetBehaviour(out CAttackActiveBonus_BuffAttack behaviour) && behaviour.ReferenceDisadvantage(attackAbility, Actor));
+			bool attackersGainDisadvantage = AttackersGainDisadvantage;
+			AbilityData.MiscAbilityData miscAbilityData = attackAbility.MiscAbilityData;
+			AttackersGainDisadvantage = attackersGainDisadvantage | (miscAbilityData != null && miscAbilityData.AttackHasDisadvantage == true);
+---L799
+		}
+
+>> 		public int CalcExpressionString(bool calcPostShieldScalars, bool calcShield)
+		{
+			return CalcExpressionString(ShieldMinusPierce, calcPostShieldScalars, calcShield);
+		}
+
+---L801
+		public int CalcExpressionString(bool calcPostShieldScalars, bool calcShield)
+		{
+>> 			return CalcExpressionString(ShieldMinusPierce, calcPostShieldScalars, calcShield);
+		}
+
+		public int CalcExpressionString(int shield, bool calcPostShieldScalars, bool calcShield)
+		{
+---L804
+		}
+
+>> 		public int CalcExpressionString(int shield, bool calcPostShieldScalars, bool calcShield)
+		{
+			int strength = AttackAbilityWithOverrides?.ModifiedStrength() ?? m_PreModifierAttackStrength;
+			return CalcExpressionString(strength, shield, calcPostShieldScalars, calcShield);
+		}
+---L807
+		{
+			int strength = AttackAbilityWithOverrides?.ModifiedStrength() ?? m_PreModifierAttackStrength;
+>> 			return CalcExpressionString(strength, shield, calcPostShieldScalars, calcShield);
+		}
+
+		public int CalcExpressionString(int strength, int shield, bool calcPostShieldScalars, bool calcShield)
+		{
+---L810
+		}
+
+>> 		public int CalcExpressionString(int strength, int shield, bool calcPostShieldScalars, bool calcShield)
+		{
+			int num = strength - m_PreModifierAttackStrength;
+			string text = $"({m_PreModifierAttackStrength + num}";
+			if (OverrideMathModifier != null)
+---L827
+				text += additionalNonScalarModifier;
+			}
+>> 			if (PreShieldScalarModifiers.Count > 0)
+			{
+				text = text.Insert(0, "(");
+				text += ")";
+				foreach (string preShieldScalarModifier in PreShieldScalarModifiers)
+---L831
+				text = text.Insert(0, "(");
+				text += ")";
+>> 				foreach (string preShieldScalarModifier in PreShieldScalarModifiers)
+				{
+					text += preShieldScalarModifier;
+				}
+			}
+---L833
+				foreach (string preShieldScalarModifier in PreShieldScalarModifiers)
+				{
+>> 					text += preShieldScalarModifier;
+				}
+			}
+			if (calcShield && shield != 0)
+			{
+---L836
+				}
+			}
+>> 			if (calcShield && shield != 0)
+			{
+				text += $"-{shield}";
+			}
+			if (calcPostShieldScalars)
+---L838
+			if (calcShield && shield != 0)
+			{
+>> 				text += $"-{shield}";
+			}
+			if (calcPostShieldScalars)
+			{
+				text = text.Insert(0, "(");
+---L840
+				text += $"-{shield}";
+			}
+>> 			if (calcPostShieldScalars)
+			{
+				text = text.Insert(0, "(");
+				text += ")";
+				foreach (var postShieldScalarModifier in PostShieldScalarModifiers)
+---L844
+				text = text.Insert(0, "(");
+				text += ")";
+>> 				foreach (var postShieldScalarModifier in PostShieldScalarModifiers)
+				{
+					string item = postShieldScalarModifier.Item1;
+					if (item.StartsWith("/"))
+					{
+---L846
+				foreach (var postShieldScalarModifier in PostShieldScalarModifiers)
+				{
+>> 					string item = postShieldScalarModifier.Item1;
+					if (item.StartsWith("/"))
+					{
+						text = text.Insert(0, "floor(");
+						text = text + item + ")";
+---L857
+					}
+				}
+>> 				if (Brittle)
+				{
+					text += "*2";
+				}
+				if (Ward)
+---L861
+					text += "*2";
+				}
+>> 				if (Ward)
+				{
+					text = text.Insert(0, "floor(");
+					text += "/2)";
+				}
+---L887
+			Log.SimpleInfo("Drawing attack modifiers. OverallAdvantage status is: " + OverallAdvantage);
+			CActor actorToAttack = summary.ActorToAttack;
+>> 			GameState.DrawAndApplyAttackModifierCards(attackAbility, OriginalAbility as CAbilityAttack, actor, summary, m_PreModifierAttackStrength, OverallAdvantage, out m_UsedAttackMods, out m_NotUsedAttackMods, out var outPierce, out var outAttackModifierEvent, out addTargetsDrawn, attackIndex, out m_DrawnAttackMods);
+			int pierce = Pierce;
+			Pierce += outPierce;
+			CacheFinalAttackStrength(initial: false, beforeModifiers: false);
+			IsTargeted = true;
+---L888
+			CActor actorToAttack = summary.ActorToAttack;
+			GameState.DrawAndApplyAttackModifierCards(attackAbility, OriginalAbility as CAbilityAttack, actor, summary, m_PreModifierAttackStrength, OverallAdvantage, out m_UsedAttackMods, out m_NotUsedAttackMods, out var outPierce, out var outAttackModifierEvent, out addTargetsDrawn, attackIndex, out m_DrawnAttackMods);
+>> 			int pierce = Pierce;
+			Pierce += outPierce;
+			CacheFinalAttackStrength(initial: false, beforeModifiers: false);
+			IsTargeted = true;
+			Actor.IncomingAttackDamage = CalcExpressionString(calcPostShieldScalars: true, calcShield: true);
+---L889
+			GameState.DrawAndApplyAttackModifierCards(attackAbility, OriginalAbility as CAbilityAttack, actor, summary, m_PreModifierAttackStrength, OverallAdvantage, out m_UsedAttackMods, out m_NotUsedAttackMods, out var outPierce, out var outAttackModifierEvent, out addTargetsDrawn, attackIndex, out m_DrawnAttackMods);
+			int pierce = Pierce;
+>> 			Pierce += outPierce;
+			CacheFinalAttackStrength(initial: false, beforeModifiers: false);
+			IsTargeted = true;
+			Actor.IncomingAttackDamage = CalcExpressionString(calcPostShieldScalars: true, calcShield: true);
+			PrepareDamageIfTargetMovesAbility(actor);
+---L892
+			CacheFinalAttackStrength(initial: false, beforeModifiers: false);
+			IsTargeted = true;
+>> 			Actor.IncomingAttackDamage = CalcExpressionString(calcPostShieldScalars: true, calcShield: true);
+			PrepareDamageIfTargetMovesAbility(actor);
+			outAttackModifierEvent.TargetActorShield = Shield;
+			outAttackModifierEvent.DrawingActorPierce = pierce;
+			outAttackModifierEvent.FinalPierce = Pierce;
+---L894
+			Actor.IncomingAttackDamage = CalcExpressionString(calcPostShieldScalars: true, calcShield: true);
+			PrepareDamageIfTargetMovesAbility(actor);
+>> 			outAttackModifierEvent.TargetActorShield = Shield;
+			outAttackModifierEvent.DrawingActorPierce = pierce;
+			outAttackModifierEvent.FinalPierce = Pierce;
+			outAttackModifierEvent.FinalAttackStrength = Actor.IncomingAttackDamage;
+			outAttackModifierEvent.AttackAbilityAttackStrength = m_InitialAbilityAttackStrength;
+---L895
+			PrepareDamageIfTargetMovesAbility(actor);
+			outAttackModifierEvent.TargetActorShield = Shield;
+>> 			outAttackModifierEvent.DrawingActorPierce = pierce;
+			outAttackModifierEvent.FinalPierce = Pierce;
+			outAttackModifierEvent.FinalAttackStrength = Actor.IncomingAttackDamage;
+			outAttackModifierEvent.AttackAbilityAttackStrength = m_InitialAbilityAttackStrength;
+			outAttackModifierEvent.OverrideBuffs = m_eventOverrideBuffData;
+---L896
+			outAttackModifierEvent.TargetActorShield = Shield;
+			outAttackModifierEvent.DrawingActorPierce = pierce;
+>> 			outAttackModifierEvent.FinalPierce = Pierce;
+			outAttackModifierEvent.FinalAttackStrength = Actor.IncomingAttackDamage;
+			outAttackModifierEvent.AttackAbilityAttackStrength = m_InitialAbilityAttackStrength;
+			outAttackModifierEvent.OverrideBuffs = m_eventOverrideBuffData;
+			outAttackModifierEvent.TargetActorWasPoisoned = Poison;
+---L900
+			outAttackModifierEvent.AttackAbilityAttackStrength = m_InitialAbilityAttackStrength;
+			outAttackModifierEvent.OverrideBuffs = m_eventOverrideBuffData;
+>> 			outAttackModifierEvent.TargetActorWasPoisoned = Poison;
+			outAttackModifierEvent.ExploitedVulnerabilityStrength = ExploitedVulnerabilityStrength;
+			outAttackModifierEvent.TargetActorWasInvulnerable = Invulnerable;
+			outAttackModifierEvent.TargetActorHasWard = Ward;
+			outAttackModifierEvent.TargetActorHasBrittle = Brittle;
+---L903
+			outAttackModifierEvent.ExploitedVulnerabilityStrength = ExploitedVulnerabilityStrength;
+			outAttackModifierEvent.TargetActorWasInvulnerable = Invulnerable;
+>> 			outAttackModifierEvent.TargetActorHasWard = Ward;
+			outAttackModifierEvent.TargetActorHasBrittle = Brittle;
+			AttackModifierEvent = outAttackModifierEvent;
+			CLogAttackModifier_MessageData message = new CLogAttackModifier_MessageData(attackAbility.TargetingActor)
+			{
+---L904
+			outAttackModifierEvent.TargetActorWasInvulnerable = Invulnerable;
+			outAttackModifierEvent.TargetActorHasWard = Ward;
+>> 			outAttackModifierEvent.TargetActorHasBrittle = Brittle;
+			AttackModifierEvent = outAttackModifierEvent;
+			CLogAttackModifier_MessageData message = new CLogAttackModifier_MessageData(attackAbility.TargetingActor)
+			{
+				m_Ability = attackAbility,
+---L948
+					Restriction = CActiveBonus.EActiveBonusRestrictionType.OncePerAction,
+					Tracker = new List<int> { 0 }
+>> 				}, activeBonusYML: null, areaEffectYMLString: null, areaEffectLayoutOverrideYMLString: null, areaEffectFlipAxis: null, name: "DamageIfMoveAbility", abilityEnhancements: null, positiveConditions: null, negativeConditions: null, multiPassAttack: false, chainAttack: false, chainAttackRange: 0, chainAttackDamageReduction: 0, damageSelfBeforeAttack: 0, addAttackBaseStat: false, strengthIsBase: false, rangeIsBase: false, targetIsBase: false, text: null, textOnly: false, noLayoutSpace: false, showRange: false, showTarget: false, showArea: false, onDeath: false, isConsumeAbility: false, allTargetsOnMovePath: false, allTargetsOnMovePathSameStartAndEnd: false, allTargetsOnAttackPath: false, allTargetsInRangeAlongPath: false, summons: null, xpPerTargetData: null, targeting: CAbility.EAbilityTargeting.All, targetingVars: null, vars: null, performVars: null, elementsToInfuse: null, elementalConditions: null, isMonster: false, propName: null, trapData: null, isSubAbility: false, isInlineSubAbility: false, pierce: 0, retaliateRange: 0, isTargetedAbility: false, spawnDelay: 0f, pullType: CAbilityPull.EPullType.None, additionalPushEffect: CAbilityPush.EAdditionalPushEffect.None, additionalPushEffectDamage: 0, additionalPushEffectXP: 0, lootData: null, conditionalOverrides: null, startAbilityConditions: null, abilityXP: 0, parentName: null, skipAnim: true, conditionDuration: 0, conditionDecTrigger: EConditionDecTrigger.None, augment: null, song: null, doom: null, controlActorData: null, changeAllegianceData: null, attackEffects: null, targetActorWithTrapEffects: false, targetActorWithTrapEffectRange: 0, isMergedAbility: false, mergedAbilities: null, statIsBasedOnXEntries: null, moveObstacleRange: 0, moveObstacleAnimOverload: null, slotsToRefresh: null, slotStatesToRefresh: null, addActiveBonusAbility: cAbility, overrideAugmentAttackType: CAbility.EAttackType.None, chooseAbilities: null, recoverCardsAbilityTypeFilter: null, cardAction: CAbility.ECardAction.None, forgoTopActionAbility: null, forgoBottomActionAbility: null, extraTurnType: CAbilityExtraTurn.EExtraTurnType.None, actionMonsterClassID: null, swapAbilityFirstTargetFilter: null, swapAbilitySecondTargetFilter: null, supplyCardsToGive: null, consumes: null, teleportData: null, immunityToAbilityTypes: null, immuneToAttackTypes: null, immuneToSelfDamage: false, addOrRemoveModifiers: null, healData: null, resourcesToAddOnAbilityEnd: null, resourcesToTakeFromTargets: null, resourcesToGiveToTargets: null, destroyObstacleData: null, changeCharacterModel: ECharacter.None, tileFilter: CAbilityFilter.EFilterTile.None, disableCardActionData: null, isDefault: false, isItemAbility: false, showElementPicker: false, isModifierAbility: false, parentBaseCard: null, previewEffectId: null, previewEffectText: null, canUndoOverride: null, exploitVulnerability: false, helpBoxTooltipLocKey: null, extraTurnAbilityTypeFilter: null, maxExtraTurnAbilityLevel: int.MaxValue) as CAbilityAddActiveBonus;
+				cAbilityAddActiveBonus2.Start(targetingActor, ActorToAttack);
+				cAbilityAddActiveBonus2.ApplyToActor(ActorToAttack);
+				if (PhaseManager.CurrentPhaseAction?.CurrentPhaseAbility == null)
+				{
+---L1230
+				DrawnAttackMods = targetSummary.DrawnAttackMods,
+				State = targetSummary.State,
+>> 				PreShieldScalarModifiers = targetSummary.PreShieldScalarModifiers?.ToList(),
+				NonScalarMathModifiers = targetSummary.NonScalarMathModifiers?.ToList(),
+				PostShieldScalarModifiers = targetSummary.PostShieldScalarModifiers?.ToList(),
+				AdditionalNonScalarModifiers = targetSummary.AdditionalNonScalarModifiers?.ToList(),
+				ActualDamageTaken = targetSummary.ActualDamageTaken
+---L1232
+				PreShieldScalarModifiers = targetSummary.PreShieldScalarModifiers?.ToList(),
+				NonScalarMathModifiers = targetSummary.NonScalarMathModifiers?.ToList(),
+>> 				PostShieldScalarModifiers = targetSummary.PostShieldScalarModifiers?.ToList(),
+				AdditionalNonScalarModifiers = targetSummary.AdditionalNonScalarModifiers?.ToList(),
+				ActualDamageTaken = targetSummary.ActualDamageTaken
+			};
+			if (GameState.LastTargetSummary == targetSummary)
+---L1274
+			DrawnAttackMods = targetSummary.DrawnAttackMods,
+			State = targetSummary.State,
+>> 			PreShieldScalarModifiers = targetSummary.PreShieldScalarModifiers?.ToList(),
+			NonScalarMathModifiers = targetSummary.NonScalarMathModifiers?.ToList(),
+			PostShieldScalarModifiers = targetSummary.PostShieldScalarModifiers?.ToList(),
+			AdditionalNonScalarModifiers = targetSummary.AdditionalNonScalarModifiers?.ToList(),
+			ActualDamageTaken = targetSummary.ActualDamageTaken
+---L1276
+			PreShieldScalarModifiers = targetSummary.PreShieldScalarModifiers?.ToList(),
+			NonScalarMathModifiers = targetSummary.NonScalarMathModifiers?.ToList(),
+>> 			PostShieldScalarModifiers = targetSummary.PostShieldScalarModifiers?.ToList(),
+			AdditionalNonScalarModifiers = targetSummary.AdditionalNonScalarModifiers?.ToList(),
+			ActualDamageTaken = targetSummary.ActualDamageTaken
+		};
+		if (GameState.LastTargetSummary == targetSummary)

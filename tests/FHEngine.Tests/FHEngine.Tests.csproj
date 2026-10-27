@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    FHEngine 离线测试台 / 数据校验台（阶段 1）。
+
+    net472：可以用 .NET Framework 自带的 DataContractJsonSerializer 读 Data/*.json，
+    不引入任何 NuGet 包（与本项目其余工程一致，不依赖 restore）。
+
+    直接编译 FHEngine/Model/*.cs 源码（不引用 DLL），与 FHSolver.Tests 的做法一致。
+  -->
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net472</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>FHEngine.Tests</AssemblyName>
+    <RootNamespace>FHEngine.Tests</RootNamespace>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="../../src/FHEngine/Model/*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!--
+      JavaScriptSerializer（System.Web.Extensions，.NET Framework 自带）。
+      不用 DataContractJsonSerializer 的原因：它按成员**字母序**期望 JSON 键，
+      键顺序不符时后续成员会静默丢失（实测 Discard / Top / ResolvedValues 均为 null）。
+      JavaScriptSerializer 按名称匹配，不关心顺序。
+    -->
+    <Reference Include="System.Web.Extensions" />
+  </ItemGroup>
+
+</Project>

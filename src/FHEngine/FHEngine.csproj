@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    FHEngine — 霜港迷城 战斗规则引擎（镜像复刻 / 等效实现）
+
+    设计约束（与本项目其余工程一致，勿破坏）：
+      · **零 NuGet 依赖** —— 不依赖 restore，换机器即可编译。
+      · 因此 JSON 解析不放在这里。本工程只放：
+          纯数据模型（Model/）+ 纯规则逻辑（阶段 2 起 + Rules/）
+        读 JSON / 读磁盘 / 对拍 IO 全部放在 tests/FHEngine.Tests（net472，
+        可用 .NET Framework 自带的 DataContractJsonSerializer）。
+      · target netstandard2.0：逻辑层与具体运行时解耦，测试台可 net472 直接引用源码。
+
+    事实源：D:\Steam\steamapps\common\Frosthaven（只读）
+            → extracted\Base_ruleset\**\*.yml（明文规则数据）
+            → decompiled\**（IL 反编译，用于确认行为语义）
+  -->
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>FHEngine</AssemblyName>
+    <RootNamespace>FHEngine</RootNamespace>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>bin\</OutputPath>
+    <DebugType>none</DebugType>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);NU1701;CS1591</NoWarn>
+  </PropertyGroup>
+
+  <!-- 提取产物目录（相对仓库根）。Data/ 下的 .json 由 tools/extract_rules.py 生成。 -->
+  <PropertyGroup>
+    <EngineDataDir>$(MSBuildThisFileDirectory)..\..\Data</EngineDataDir>
+  </PropertyGroup>
+
+</Project>

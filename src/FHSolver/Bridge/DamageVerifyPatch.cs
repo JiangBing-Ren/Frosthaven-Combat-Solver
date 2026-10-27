@@ -262,6 +262,17 @@ namespace FHSolver.Bridge
             foreach (AttackModifierYMLData c in src)
             {
                 if (c == null) continue;
+                bool neg = false, add = false;
+                try
+                {
+                    if (c.Card != null)
+                    {
+                        neg = c.Card.HasNegativeEffect;
+                        add = c.Card.HasAdditionalEffect;
+                    }
+                }
+                catch { /* 忽略 */ }
+
                 list.Add(new ModifierCardSnapshot
                 {
                     Name = c.Name,
@@ -270,6 +281,8 @@ namespace FHSolver.Bridge
                     Rolling = c.Rolling,
                     IsCurse = c.IsCurse,
                     IsBless = c.IsBless,
+                    HasNegativeEffect = neg,
+                    HasAdditionalEffect = add,
                 });
             }
             return list;

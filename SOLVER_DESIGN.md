@@ -2329,3 +2329,245 @@ Teleport2 83 · Poison 63 · Pull 16 · Strengthen 6
 **只提示、不自动计分的部分**：22 种使命目标类型里，
 只有歼灭/伤害/拾取/位置几类能自动判定，其余（压力板、刷怪点、脚本触发…）
 在窗口里如实列出，不假装替玩家决策。
+
+---
+
+### v1.35 ★★ 审计后的五个 P0 修复（2026-10-25）
+
+对 v1.34 做了一次逐文件审计（文档 + 源码 + 反编译产物 + 实机战报交叉核对），
+修掉五个会直接产出错误推荐的问题，全部带离线回归。
+
+#### ① ★★★ 单体攻击被当成「打射程内所有敌人」
+
+`P1Planner.TargetsFor` 返回射程内**全部**敌人，枚举层再把它们逐个塞进同一个方案
+（`off1` 递进、每目标独立抽牌）。这个结构本来只该给真 AOE 用，但**没有按 `AttackTargets` 截断**。
+
+实测（临时探针，两张 `Attack:3,1,1` + 两个相邻敌人）：
+
+```
+--- 伤6 有效6 杀0
+    攻击次数=2
+      -> 敌甲 伤3
+      -> 敌乙 伤3
+```
+
+实机报告同样中招：方案 #1 写「造成 10 点伤害」，两条可见攻击只合计 3+4=7
+（`DescribeHalf` 用 `FirstOrDefault` 只显示每半边第一个攻击，剩下的是隐藏命中）。
+
+**修法**：新增目标分组 `groups(o, cands)` ——
+
+| 类型 | 方案结构 |
+|---|---|
+| 真 AOE（`HasAreaEffect && AttackTargets != 1`） | 一次打到的多个目标放进**同一个方案** |
+| 单体（目标数 1、无形状） | **每个候选目标一个方案**，互不叠加 |
+| 阵型单体 / 打不到 | 走一圈占位（伤害仍不计） |
+
+AOE 的 `AttackTargets > 1` 时还会按上限截断（`= 0` 才是"形状内全部"）。
+第二半步也改用同一分组 —— 顺带修掉了"AOE 在第二半步只算第一个目标"的少算。
+
+**回归**：`SingleTargetLimitTests()`（同一半边最多 1 个目标 / 总伤害不被虚报）、
+`AoeTargetCapTests()`（目标数 0 → 3 个；目标数 2 → 最多 2 个）。
+
+#### ② ★★ v1.34 的「敌人预测落点」修复仍会静默失效
+
+v1.34 把"先动敌人的位置换成预测落点"的代码搬到了 `Others.Add(...)` 之后，
+但它仍然位于 `foreach (AllActors)` 的 **`else`（非敌对单位）分支内部**：
+
+- 本局**没有任何盟友/召唤物/中立**时，这段一次都不执行 → v1.32 的"打空气"复现；
+- 每遇到一个非敌对单位还会重跑一遍。
+
+**修法**：抽成纯函数 `Model.PredictedPositions.Apply(monsters, moves, myInitiative)`，
+在遍历完所有单位后调用一次，并打日志「已按敌人预测落点重写 N 只」。
+纯函数也让它第一次能被离线回归锁住。
+
+**回归**：`PredictedPositionTests()`（只改先动者 / 后动者不动 / 无友方单位也生效 / 先攻无效时不改）。
+
+#### ③ ★★ 多回合里敌我先后手用错了先攻
+
+`MultiTurnSearch` 每一层都传第 1 回合的 `myInitiative`，而第 2 回合起的
+`TurnPlan.Initiative` 是玩家**当回合选的**（先攻与执行顺序解耦）。结果：
+第 2 回合明明选了 60 先攻，仍按第 1 回合的 10 结算"敌人先打我"。
+
+**修法**：每层用 `RoundInitiative(p, fallback)`，优先取本回合方案自己的先攻。
+
+**回归**：`MultiTurnInitiativeTests()`（怪先攻 50；第 1 回合先攻 10 → 不挨打；
+第 2 回合先攻 60 → 敌人先动、必须挨打；旧版会误判为 0）。
+
+#### ④ ★★ 敌人焦点规则与游戏 `CompareEnemies` 不一致（两套实现还互相打架）
+
+反编译实证（`CAIMoveNew.cs` L1115）：
+
+```
+isFocusOverride 降序 → lowestMoveCostToAttack 升序 → hexDist 升序 → 先攻
+```
+
+（`AttackFurthestTarget` 为真时改用 `CompareEnemiesUsingFurthesFocus`：hexDist **降序**优先。）
+
+现状有两个偏差：
+
+- `Solver/EnemyPathing`：焦点 = 路径距离最近（少了"走到攻击位最省"这个主键）；
+- `Bridge/EnemyPredictor`：又另写一套（无先攻 tie-break、跳过纯移动敌人、
+  声明的 `occupied` 集合从未更新 → 两个怪可能预测到同一格）。
+
+**修法**：
+1. `EnemyPathing.PlanMove` 改为对每个目标算 `攻击代价 = min(走到任一可攻击格的距离)`，
+   再按三级键选焦点；落点 = 该目标下代价最小的攻击格；
+2. `EnemyPredictor` **直接调用 `EnemyPathing.PlanMove`**（唯一真源），
+   并把预测落点计入占用集、纯移动敌人也预测落点；
+3. `ActionSnapshot.AttackFurthestTarget`（反射读 `MiscAbilityData.AttackFurthestTarget`，
+   已登记 `verify_reflection.py`）透传到焦点排序。
+
+**顺带修掉一个隐藏 bug**：逼近循环原来用 `x == -1` 当"没找到"的哨兵，
+而六边形地图坐标可以是负的（实测 `(-1,1)` 是合法格）→ 逼近被判成"不动"。
+现在用独立 `bool found`。
+
+**回归**：`FocusRuleTests()`（同距比先攻 / 够不着走 Approach / 最远焦点）。
+
+**仍保留的近似**：`lowestMoveCostToAttack` 用 `Geometry.RangeDistance`（路径长度）近似，
+不额外把困难地形算成双倍移动力。
+
+#### ⑤ ★ 优/劣势二选一改成逐条复刻 `ChooseCardBasedOnAdvantage`
+
+旧实现只比"当前基础攻击力下的伤害"，平局取第一张。反编译原文（`CActor.cs` L4730）：
+
+```csharp
+num  = Parse("100" + MathModifier);           // 卡片数值：×2=200 / +2=102 / ×0=0
+num2 = Parse(attackStrength + MathModifier);  // 实际伤害
+Advantage:     伤害不同取高；相同 → 负面效果（有者劣）→ 附加效果（有者优）
+               → 卡片数值 → 第一张
+Disadvantage:  (伤害更低 && 第二张数值 != 0) || 第一张数值 == 0 → 第一张；
+               伤害相同 → 负面效果（有者**优**）→ 附加效果（有者劣）→ 第一张
+```
+
+`ModifierCardSnapshot` 新增 `HasNegativeEffect / HasAdditionalEffect`
+（`DeckReader` / `DamageVerifyPatch` 从 `AttackModifierYMLData.Card` 读取），
+`ModifierDraw.IsBetter` 按上述分支实现。
+
+**回归**：`AdvantageChoiceTests()` 5 条（含 `×2 vs +2` 平局、诅咒的负面效果变向）。
+
+#### ⑥ 顺带清理
+
+- `FormationRequirement` 里重复两行的「你站灰格(G)」（阵型文本输出两遍）；
+- `TurnPlan.TopFirst` 把基础攻击也算作"上"槽位（之前 DefaultAttack 载体被当成下半）；
+- `CombatReport._written` 死字段（构建警告 CS0649）—— 改为"写完即清空"；
+- `StateAdvancer` 里恒为 0 的护盾扣减死算式（伤害已含护盾，护盾按次生效不抽干）；
+- `P1Runner` 反编译残留的未使用变量 `flag`。
+
+**测试台**：252 条断言（原 227），`README` 同步；`dotnet build` 0 警告 0 错误。
+
+#### ⑦ ★★ 反射字段/属性错配：三个开关从 v1.19 起静默失效
+
+核对反编译声明时发现 `MiscAbilityData` 上三个开关都是**公开字段**：
+
+| 开关 | 声明 |
+|---|---|
+| `IgnoreLOS` | `public bool IgnoreLOS;` |
+| `CanTargetInvisible` | `public bool? CanTargetInvisible;` |
+| `AttackFurthestTarget` | `public bool AttackFurthestTarget;` |
+
+而 `HandReader` 全部用 `GetProperty` 读 → 永远返回 null → false。
+也就是说「忽略视线」「可打隐形」两条从 v1.19 起**从未真正生效**；
+离线测试全绿是因为 `IgnoreLosTests` / `InvisibleTargetTests` 直接构造
+`ActionSnapshot`，根本不经过反射 —— 又一个"测试通过、实战失效"的样本。
+
+**修法**：统一 `ReadMiscBool(ab, name)` —— 先 `GetField`、再 `GetProperty`，
+兼容 `bool` / `bool?`（null 视为 false）。
+
+**同时堵住校验脚本的盲区**：`verify_reflection.py` 旧正则给"属性"也允许以 `;` 结尾，
+于是 `public bool IgnoreLOS;` 能被当成属性通过校验。现在：
+
+- 属性必须以 `{ get` / `{` / `=>` 开头；
+- 字段必须以 `;` 或 `=` 结尾。
+
+三个目标重新登记为 `field`。
+
+#### 仍未做（下一轮）
+
+- `EnemyPredictor` 的逐目标 `lowestMoveCostToAttack` 仍用路径长度近似（困难地形不双倍）；
+- 多回合第 2 回合起仍不推进敌人行动牌/先攻、不回填阴影数与状态条件；
+- 主线程无求解预算/取消。
+
+---
+
+### v1.36 规则层核查后的修复（2026-10-27）
+
+两轮规则核查的完整结论落盘在 `build/rule-audit-combat.md` 与 `build/rule-audit-enemy.md`
+（规则文档 × 代码 × 反编译三方对照，每条含证据行号）。本轮修掉证据最硬的 6 条，全部带回归。
+
+#### ① ★★ Strengthen 被重复计一次（伤害系统性 +1）
+
+`CTokens.GetAdvantageStatus`（反编译 L330）已经把 Strengthen 折算成 **Advantage**，
+`P1Runner.ReadAdvantage` 调的就是它；`P1Planner.EffectiveAttack` 又额外 `+1` 攻击力。
+同一条状态计了两次，且 +1 本身不是该状态的规则效果。
+
+**修法**：删除 +1 分支；强化只通过 `ctx.Adv = Advantage`（抽 2 取优）体现。
+**回归**：`StrengthenNoDoubleCountTests()`；旧的 `StrengthenModelTests()` 断言已改正
+（原来测的正是错误规则）。
+
+#### ② ★ 中毒规则建错：应是「攻击该目标 +1 攻击力」
+
+反编译 `CAttackSummary.cs:633-636`：`if (Poison) m_PreModifierAttackStrength++`。
+回合末掉血是 **Wound**，不是 Poison。
+
+**修法**：`EvaluateOn` 里目标带 Poison → `baseAtk += 1`（在抽牌前）；
+`ExtraEffectText` 文案改为「攻击该目标 +1 攻击力（中毒不是 Wound）」。
+**回归**：`PoisonRuleTests()`（伤害 3+0+1=4；文案校验）。
+
+#### ③ ★ 普通 Target N 被压成单体（v1.35 的回归）
+
+v1.35 的目标分组要求 `HasAreaEffect` 才算多目标，
+于是没有形状的普通「Attack 3, Target 2」（约 60 处）只打 1 个目标。
+
+**修法**：判据改为 `AttackTargets != 1` ——
+`0` = 形状内全部、`> 1` = 最多 N 个、`1` = 单体（阵型单体仍按不支持处理）。
+**回归**：`MultiTargetWithoutAreaTests()`（Target 2 命中 2 个）。
+
+#### ④ ★ 穿透 / Brittle / Ward 进入伤害模型
+
+反编译 `CAttackSummary.cs:711-717 / 857-866`：
+`ShieldMinusPierce = max(0, Shield - Pierce)` → PostShieldScalars → Brittle `×2` → Ward `floor(/2)` → `Max(0)`。
+
+**修法**：
+- `ActionSnapshot.Pierce` + `HandReader` 读 `CAbilityAttack.Pierce`；
+- `DamageModel.Compute/Expression` 增加 `pierce / brittle / ward`（默认关闭，旧调用不受影响）；
+- `EvaluateOn` / `Diagnose` 从目标 token 取 `Brittle` / `Ward`。
+**回归**：`DamageModelRuleTests()` 4 条。
+
+#### ⑤ ★★ 战利品「下一袋是装备 = 120 分」从未生效
+
+`GoalReader.PeekLootCard` 用 `fi.GetValue(null) as List<LootCard>`，
+而反编译 `CLootDeck.AllCards` 是 **`LootCard[]`**（L375）→ 强转恒 null →
+`NextLootIsItem` 恒 false，优先级链第 2 档（120）对第 6 档（15）整条失效。
+
+**修法**：按 `LootCard[]` 读取（保留 `IList` 兜底）。
+这是第三次「反射类型/成员形态错配 + 静默失败」，与 v1.35 ⑦ 同类。
+
+#### ⑥ ★ 死亡/力竭单位仍占位、仍被敌人当目标
+
+- `P1Runner` 的 `Others` 没有过滤 `IsDead`（尸体参与治疗估值）；
+- 占位条件写成 `(!hostile || !dead)` → 死掉的盟友/中立仍占格；
+- `StateAdvancer.RunEnemyTurn` 的目标列表只看 `IsHostileToPlayer` → 可能把尸体当焦点。
+
+**修法**：三处统一加存活过滤（`!IsDead` / `Health > 0`）。
+
+#### 核实为正确的项（本轮未改）
+
+伤害运算顺序；`ChooseCardBasedOnAdvantage` 逐分支复刻；Rolling 链与「劣势丢弃 rolling」；
+确定牌序零 RNG；每目标独立抽牌；护盾按次不抽干；StatIsBasedOnX 纯函数求值；
+AOE 目标数 0 = 全部；隐形 / IgnoreLOS 字段读取（v1.35 修复）；
+敌人焦点三级键与 `AttackFurthestTarget` 排序（v1.35 实现）；四副怪物牌堆映射与按先攻消耗；
+战利品「回合末按最终落点结算」与「捡拾前可知」。
+
+#### 仍未做（按审计优先级）
+
+1. **多格怪（Boss）只占中心格** —— 落点可能落进身体，射程/焦点少算 1~2 格；
+2. **焦点代价语义**：游戏的 `lowestMoveCostToAttack` 不受本回合移动力截断，且逼近应沿
+   「通往最佳攻击位」的路径；无任何攻击位时游戏**不动**、代码会动；
+3. **Retaliate（反击）** 未计入；
+4. **免疫 / Invulnerable** 未读；
+5. **牌堆见底**：游戏洗牌后照打，求解器把该次攻击整条丢弃；多回合 `ShufflePending` 从不真正洗牌；
+6. **Curse/Bless/Persistent** 抽到应永久移出，当前被塞进 `Discarded`；
+7. **AOE/Target N 截断**取「候选前 N 个」，不是「最优 N 个」；
+8. 敌人 `InitiativePredicted` 漏 `GetInitiativeBonus` / `OverrideRoundAbilityCard`；
+9. 使命 `RequiredObjectiveStates` 与 5 条胜负组合未实现；`RouteValue` 不含 `GoalValue`；
+10. `StateAdvancer` 头注释仍写「不模拟寻路」（已过期）；`EnemyStrike.FromX/FromY` 存的是落点。

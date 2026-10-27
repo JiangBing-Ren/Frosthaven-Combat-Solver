@@ -17,6 +17,18 @@ namespace FHSolver.Bridge
             if (c == null) return null;
             try
             {
+                // 优/劣势二选一的 tie-break 要看牌面效果标记（v1.35）
+                bool neg = false, add = false;
+                try
+                {
+                    if (c.Card != null)
+                    {
+                        neg = c.Card.HasNegativeEffect;
+                        add = c.Card.HasAdditionalEffect;
+                    }
+                }
+                catch { /* 读不到就当没有，不影响主体 */ }
+
                 return new ModifierCardSnapshot
                 {
                     Name = c.Name,
@@ -24,7 +36,9 @@ namespace FHSolver.Bridge
                     Shuffle = c.Shuffle,
                     Rolling = c.Rolling,
                     IsCurse = c.IsCurse,
-                    IsBless = c.IsBless
+                    IsBless = c.IsBless,
+                    HasNegativeEffect = neg,
+                    HasAdditionalEffect = add,
                 };
             }
             catch (Exception e)

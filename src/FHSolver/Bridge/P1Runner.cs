@@ -447,7 +447,6 @@ internal static class P1Runner
 		p1Context.IsShadowTile = ShadowCached;
 		P1Context p1Context2 = p1Context;
 		Point arrayIndex = ((CActor)val).ArrayIndex;
-		bool flag = true;
 		p1Context2.StartX = arrayIndex.X;
 		p1Context2.StartY = arrayIndex.Y;
 		p1Context2.ThreatByInitiative = BuildThreatByInitiative(enemyPreds, MyInitiativeOptions(p1Context2, myInitiative));
@@ -506,32 +505,11 @@ internal static class P1Runner
 				}
 				else
 				{
-					p1Context2.Others.Add(unitSnapshot2);
-
-
-		// ★★ 先攻比我低的敌人**这回合会先移动** —— 目标评估必须用它们的**预测落点**，
-		//   否则会推荐"打一个已经不在这儿的怪"（用户实机：腐鼠侦察兵#2 先攻 53 会先走，
-		//   漂泊者先攻 65 却在 (1,7) 打它 → 打空气）。
-		//   注意只改**先动的**那些：后动的敌人这回合还没走，位置不变。
-		//   漂泊者先攻 65 却在 (1,7) 打它 → 打空气）。
-		//   注意只改**先动的**那些：后动的敌人这回合还没走，位置不变。
-		if (enemyPreds != null && myInitiative > 0 && p1Context2.Monsters != null)
-		{
-			var byGuid = new Dictionary<string, EnemyPredictor.Prediction>();
-			foreach (EnemyPredictor.Prediction pr in enemyPreds)
-			{
-				if (pr != null && !string.IsNullOrEmpty(pr.Guid)) byGuid[pr.Guid] = pr;
-			}
-			foreach (UnitSnapshot m in p1Context2.Monsters)
-			{
-				if (m == null || string.IsNullOrEmpty(m.Guid)) continue;
-				EnemyPredictor.Prediction pr;
-				if (!byGuid.TryGetValue(m.Guid, out pr)) continue;
-				if (pr.Initiative <= 0 || pr.Initiative >= myInitiative) continue;  // 它后动，位置不变
-				m.X = pr.ToX;
-				m.Y = pr.ToY;
-			}
-		}
+					// v1.36：死亡/力竭的盟友/中立/召唤物不参与占位、治疗与敌人目标
+					if (!allActor.IsDead)
+					{
+						p1Context2.Others.Add(unitSnapshot2);
+					}
 				}
 			}
 		}
@@ -541,6 +519,40 @@ internal static class P1Runner
 			if (log != null)
 			{
 				log.LogWarning((object)("[FHSolver] 读取单位列表失败: " + ex.Message));
+			}
+		}
+
+		// ★★ 先攻比我低的敌人**这回合会先移动** —— 目标评估必须用它们的**预测落点**，
+		//   否则会推荐"打一个已经不在这儿的怪"（用户实机：腐鼠侦察兵#2 先攻 53 会先走，
+		//   漂泊者先攻 65 却在 (1,7) 打它 → 打空气）。
+		//
+		//   ⚠ v1.35：这段必须放在**遍历完所有单位之后**。
+		//     v1.34 曾把它误放进"非敌对单位"的 else 分支 —— 场上没有盟友/召唤物时
+		//     一次都不执行（和 v1.32 "改到空列表" 是同一类坑）。
+		//     现在抽成 Model.PredictedPositions，离线测试台能锁住"无友方单位也生效"。
+		var predictedMoves = new List<PredictedPositions.Move>();
+		if (enemyPreds != null)
+		{
+			foreach (EnemyPredictor.Prediction pr in enemyPreds)
+			{
+				if (pr == null) continue;
+				predictedMoves.Add(new PredictedPositions.Move
+				{
+					Guid = pr.Guid,
+					Initiative = pr.Initiative,
+					X = pr.ToX,
+					Y = pr.ToY,
+				});
+			}
+		}
+		int rewritten = PredictedPositions.Apply(p1Context2.Monsters, predictedMoves, myInitiative);
+		if (rewritten > 0)
+		{
+			ManualLogSource logPos = Plugin.Log;
+			if (logPos != null)
+			{
+				logPos.LogInfo((object)("[FHSolver] 已按敌人预测落点重写 " + rewritten
+					+ " 只敌人的位置（先攻 < " + myInitiative + "）"));
 			}
 		}
 		if (adjust != null && adjust.Count > 0)
@@ -563,11 +575,11 @@ internal static class P1Runner
 				{
 					p1Context2.Occupied.Add(value2);
 				}
-				else if ((!item.Snap.IsHostileToPlayer || !item.Actor.IsDead) && !EnemyLeavesTileBefore(item, myInitiative))
+				else if (!item.Actor.IsDead && !EnemyLeavesTileBefore(item, myInitiative, enemyPreds))
 				{
 					p1Context2.Occupied.Add((item.X, item.Y));
 				}
-				else if (EnemyLeavesTileBefore(item, myInitiative))
+				else if (EnemyLeavesTileBefore(item, myInitiative, enemyPreds))
 				{
 					// ★ 它会先走：原格让出来，但**它将要站的新格要占上** ——
 					//   否则我会推荐走到它将要站的位置（实际执行时那格已被它占住）。
@@ -609,7 +621,8 @@ internal static class P1Runner
 		}
 	}
 
-	private static bool EnemyLeavesTileBefore(UnitRef ur, int myInitiative)
+	private static bool EnemyLeavesTileBefore(UnitRef ur, int myInitiative,
+		List<EnemyPredictor.Prediction> preds = null)
 	{
 		try
 		{
@@ -630,6 +643,17 @@ internal static class P1Runner
 			{
 				return false;
 			}
+
+			// ★ 有预测就以预测为准（v1.35）：
+			//   旧逻辑只看"意图里有移动"，可它可能已经站在攻击位上、根本不会动 ——
+			//   那样会把它的原格错误地让出来。
+			EnemyPredictor.Prediction pr = preds != null ? FindPrediction(preds, ur) : null;
+			if (pr != null)
+			{
+				return pr.WillMove;
+			}
+
+			// 没预测（移动力 0 / 读不到意图）→ 保守按"有移动就会走"
 			ActionSnapshot intent = ur.Snap.Intent;
 			if (intent == null)
 			{

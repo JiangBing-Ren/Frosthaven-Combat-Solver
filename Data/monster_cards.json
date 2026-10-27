@@ -1,0 +1,1843 @@
+[
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Campaign/Enemies/Monsters/Scout/Cards/770_Scout_CruelBow.yml",
+      "line": 2,
+      "line_initiative": 4
+    },
+    "Id": 770,
+    "LocKey": "$Monster_Ability_770_Scout_CruelBow$",
+    "Initiative": 29,
+    "Shuffle": true,
+    "UsedBy": [
+      "AlgoxScoutEliteID",
+      "AlgoxScoutID"
+    ],
+    "RawValues": [
+      {
+        "path": "Abilities.AMove.Move",
+        "field": "Move",
+        "raw": -1
+      },
+      {
+        "path": "Abilities.AAttack.Attack",
+        "field": "Attack",
+        "raw": -1
+      },
+      {
+        "path": "Abilities.AAttack.Range",
+        "field": "Range",
+        "raw": 3
+      }
+    ],
+    "ResolvedValues": {
+      "AlgoxScoutID": {
+        "0": {
+          "Abilities.AMove.Move": 3,
+          "Abilities.AAttack.Attack": 2,
+          "Abilities.AAttack.Range": 3
+        },
+        "1": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 2,
+          "Abilities.AAttack.Range": 3
+        },
+        "2": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 2,
+          "Abilities.AAttack.Range": 3
+        },
+        "3": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 3,
+          "Abilities.AAttack.Range": 3
+        },
+        "4": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 3,
+          "Abilities.AAttack.Range": 3
+        },
+        "5": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 3,
+          "Abilities.AAttack.Range": 3
+        },
+        "6": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 4,
+          "Abilities.AAttack.Range": 3
+        },
+        "7": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 4,
+          "Abilities.AAttack.Range": 3
+        }
+      },
+      "AlgoxScoutEliteID": {
+        "0": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 3,
+          "Abilities.AAttack.Range": 3
+        },
+        "1": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 3,
+          "Abilities.AAttack.Range": 3
+        },
+        "2": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 4,
+          "Abilities.AAttack.Range": 3
+        },
+        "3": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 4,
+          "Abilities.AAttack.Range": 3
+        },
+        "4": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 4,
+          "Abilities.AAttack.Range": 3
+        },
+        "5": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 5,
+          "Abilities.AAttack.Range": 3
+        },
+        "6": {
+          "Abilities.AMove.Move": 6,
+          "Abilities.AAttack.Attack": 6,
+          "Abilities.AAttack.Range": 3
+        },
+        "7": {
+          "Abilities.AMove.Move": 6,
+          "Abilities.AAttack.Attack": 7,
+          "Abilities.AAttack.Range": 3
+        }
+      }
+    },
+    "Abilities": "{\"AAttack\": {\"AnimOverload\": \"RangedAttack\", \"Attack\": -1, \"Condition\": [\"Impair\"], \"Range\": 3, \"RangeIsBase\": true}, \"AMove\": {\"Move\": -1}}"
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Campaign/Enemies/Monsters/Scout/Cards/771_Scout_HastyAssault.yml",
+      "line": 2,
+      "line_initiative": 4
+    },
+    "Id": 771,
+    "LocKey": "$Monster_Ability_HastyAssault$",
+    "Initiative": 40,
+    "Shuffle": false,
+    "UsedBy": [
+      "AlgoxScoutEliteID",
+      "AlgoxScoutID"
+    ],
+    "RawValues": [
+      {
+        "path": "Abilities.AMove.Move",
+        "field": "Move",
+        "raw": 1
+      },
+      {
+        "path": "Abilities.AAttack.Attack",
+        "field": "Attack",
+        "raw": -1
+      }
+    ],
+    "ResolvedValues": {
+      "AlgoxScoutID": {
+        "0": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Attack": 2
+        },
+        "1": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Attack": 2
+        },
+        "2": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Attack": 2
+        },
+        "3": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Attack": 3
+        },
+        "4": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Attack": 3
+        },
+        "5": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Attack": 3
+        },
+        "6": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Attack": 4
+        },
+        "7": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Attack": 4
+        }
+      },
+      "AlgoxScoutEliteID": {
+        "0": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Attack": 3
+        },
+        "1": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Attack": 3
+        },
+        "2": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Attack": 4
+        },
+        "3": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Attack": 4
+        },
+        "4": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Attack": 4
+        },
+        "5": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Attack": 5
+        },
+        "6": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Attack": 6
+        },
+        "7": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Attack": 7
+        }
+      }
+    },
+    "Abilities": "{\"AAttack\": {\"Attack\": -1}, \"AMove\": {\"Move\": 1}}"
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Campaign/Enemies/Monsters/Scout/Cards/772_Scout_NothingSpecial.yml",
+      "line": 2,
+      "line_initiative": 4
+    },
+    "Id": 772,
+    "LocKey": "$Monster_Ability_BasicAttack$",
+    "Initiative": 53,
+    "Shuffle": false,
+    "UsedBy": [
+      "AlgoxScoutEliteID",
+      "AlgoxScoutID"
+    ],
+    "RawValues": [
+      {
+        "path": "Abilities.AMove.Move",
+        "field": "Move",
+        "raw": 0
+      },
+      {
+        "path": "Abilities.AAttack.Attack",
+        "field": "Attack",
+        "raw": 0
+      }
+    ],
+    "ResolvedValues": {
+      "AlgoxScoutID": {
+        "0": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "1": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "2": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "3": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "4": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "5": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "6": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "7": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        }
+      },
+      "AlgoxScoutEliteID": {
+        "0": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "1": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "2": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "3": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "4": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "5": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "6": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        },
+        "7": {
+          "Abilities.AMove.Move": 0,
+          "Abilities.AAttack.Attack": 0
+        }
+      }
+    },
+    "Abilities": "{\"AAttack\": {\"Attack\": 0}, \"AMove\": {\"Move\": 0}}"
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Campaign/Enemies/Monsters/Scout/Cards/773_Scout_RancidArrow.yml",
+      "line": 2,
+      "line_initiative": 4
+    },
+    "Id": 773,
+    "LocKey": "$Monster_Ability_773_Scout_RancidArrow$",
+    "Initiative": 54,
+    "Shuffle": false,
+    "UsedBy": [
+      "AlgoxScoutEliteID",
+      "AlgoxScoutID"
+    ],
+    "RawValues": [
+      {
+        "path": "Abilities.AMove.Move",
+        "field": "Move",
+        "raw": -2
+      },
+      {
+        "path": "Abilities.AAttack.Attack",
+        "field": "Attack",
+        "raw": 0
+      },
+      {
+        "path": "Abilities.AAttack.Range",
+        "field": "Range",
+        "raw": 3
+      }
+    ],
+    "ResolvedValues": {
+      "AlgoxScoutID": {
+        "0": {
+          "Abilities.AMove.Move": 3,
+          "Abilities.AAttack.Attack": 0,
+          "Abilities.AAttack.Range": 3
+        },
+        "1": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 0,
+          "Abilities.AAttack.Range": 3
+        },
+        "2": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 0,
+          "Abilities.AAttack.Range": 3
+        },
+        "3": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 0,
+          "Abilities.AAttack.Range": 3
+        },
+        "4": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 0,
+          "Abilities.AAttack.Range": 3
+        },
+        "5": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 0,
+          "Abilities.AAttack.Range": 3
+        },
+        "6": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 0,
+          "Abilities.AAttack.Range": 3
+        },
+        "7": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 0,
+          "Abilities.AAttack.Range": 3
+        }
+      },
+      "AlgoxScoutEliteID": {
+        "0": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 0,
+          "Abilities.AAttack.Range": 3
+        },
+        "1": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 0,
+          "Abilities.AAttack.Range": 3
+        },
+        "2": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 0,
+          "Abilities.AAttack.Range": 3
+        },
+        "3": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 0,
+          "Abilities.AAttack.Range": 3
+        },
+        "4": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 0,
+          "Abilities.AAttack.Range": 3
+        },
+        "5": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 0,
+          "Abilities.AAttack.Range": 3
+        },
+        "6": {
+          "Abilities.AMove.Move": 6,
+          "Abilities.AAttack.Attack": 0,
+          "Abilities.AAttack.Range": 3
+        },
+        "7": {
+          "Abilities.AMove.Move": 6,
+          "Abilities.AAttack.Attack": 0,
+          "Abilities.AAttack.Range": 3
+        }
+      }
+    },
+    "Abilities": "{\"AAttack\": {\"AnimOverload\": \"RangedAttack\", \"Attack\": 0, \"Condition\": [\"Poison\"], \"Range\": 3, \"RangeIsBase\": true}, \"AMove\": {\"Move\": -2}}"
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Campaign/Enemies/Monsters/Scout/Cards/774_Scout_CalculatedStrike.yml",
+      "line": 2,
+      "line_initiative": 4
+    },
+    "Id": 774,
+    "LocKey": "$Monster_Ability_CalculatedStrike$",
+    "Initiative": 69,
+    "Shuffle": false,
+    "UsedBy": [
+      "AlgoxScoutEliteID",
+      "AlgoxScoutID"
+    ],
+    "RawValues": [
+      {
+        "path": "Abilities.AMove.Move",
+        "field": "Move",
+        "raw": -1
+      },
+      {
+        "path": "Abilities.AAttack.Attack",
+        "field": "Attack",
+        "raw": 1
+      }
+    ],
+    "ResolvedValues": {
+      "AlgoxScoutID": {
+        "0": {
+          "Abilities.AMove.Move": 3,
+          "Abilities.AAttack.Attack": 1
+        },
+        "1": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 1
+        },
+        "2": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 1
+        },
+        "3": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 1
+        },
+        "4": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 1
+        },
+        "5": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 1
+        },
+        "6": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 1
+        },
+        "7": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 1
+        }
+      },
+      "AlgoxScoutEliteID": {
+        "0": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 1
+        },
+        "1": {
+          "Abilities.AMove.Move": 4,
+          "Abilities.AAttack.Attack": 1
+        },
+        "2": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 1
+        },
+        "3": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 1
+        },
+        "4": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 1
+        },
+        "5": {
+          "Abilities.AMove.Move": 5,
+          "Abilities.AAttack.Attack": 1
+        },
+        "6": {
+          "Abilities.AMove.Move": 6,
+          "Abilities.AAttack.Attack": 1
+        },
+        "7": {
+          "Abilities.AMove.Move": 6,
+          "Abilities.AAttack.Attack": 1
+        }
+      }
+    },
+    "Abilities": "{\"AAttack\": {\"Attack\": 1}, \"AMove\": {\"Move\": -1}}"
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Campaign/Enemies/Monsters/Scout/Cards/775_Scout_NoxiousBlade.yml",
+      "line": 2,
+      "line_initiative": 4
+    },
+    "Id": 775,
+    "LocKey": "$Monster_Ability_775_Scout_NoxiousBlade$",
+    "Initiative": 92,
+    "Shuffle": false,
+    "UsedBy": [
+      "AlgoxScoutEliteID",
+      "AlgoxScoutID"
+    ],
+    "RawValues": [
+      {
+        "path": "Abilities.AAttack.Attack",
+        "field": "Attack",
+        "raw": 2
+      }
+    ],
+    "ResolvedValues": {
+      "AlgoxScoutID": {
+        "0": {
+          "Abilities.AAttack.Attack": 2
+        },
+        "1": {
+          "Abilities.AAttack.Attack": 2
+        },
+        "2": {
+          "Abilities.AAttack.Attack": 2
+        },
+        "3": {
+          "Abilities.AAttack.Attack": 2
+        },
+        "4": {
+          "Abilities.AAttack.Attack": 2
+        },
+        "5": {
+          "Abilities.AAttack.Attack": 2
+        },
+        "6": {
+          "Abilities.AAttack.Attack": 2
+        },
+        "7": {
+          "Abilities.AAttack.Attack": 2
+        }
+      },
+      "AlgoxScoutEliteID": {
+        "0": {
+          "Abilities.AAttack.Attack": 2
+        },
+        "1": {
+          "Abilities.AAttack.Attack": 2
+        },
+        "2": {
+          "Abilities.AAttack.Attack": 2
+        },
+        "3": {
+          "Abilities.AAttack.Attack": 2
+        },
+        "4": {
+          "Abilities.AAttack.Attack": 2
+        },
+        "5": {
+          "Abilities.AAttack.Attack": 2
+        },
+        "6": {
+          "Abilities.AAttack.Attack": 2
+        },
+        "7": {
+          "Abilities.AAttack.Attack": 2
+        }
+      }
+    },
+    "Abilities": "{\"AAttack\": {\"Attack\": 2, \"Condition\": [\"Poison\"]}}"
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Campaign/Enemies/Monsters/Scout/Cards/776_Scout_RapidBolts.yml",
+      "line": 2,
+      "line_initiative": 4
+    },
+    "Id": 776,
+    "LocKey": "$Monster_Ability_776_Scout_RapidBolts$",
+    "Initiative": 79,
+    "Shuffle": false,
+    "UsedBy": [
+      "AlgoxScoutEliteID",
+      "AlgoxScoutID"
+    ],
+    "RawValues": [
+      {
+        "path": "Abilities.AAttack.Attack",
+        "field": "Attack",
+        "raw": -1
+      },
+      {
+        "path": "Abilities.AAttack.Target",
+        "field": "Target",
+        "raw": 2
+      },
+      {
+        "path": "Abilities.AAttack.Range",
+        "field": "Range",
+        "raw": 4
+      }
+    ],
+    "ResolvedValues": {
+      "AlgoxScoutID": {
+        "0": {
+          "Abilities.AAttack.Attack": 2,
+          "Abilities.AAttack.Target": 2,
+          "Abilities.AAttack.Range": 4
+        },
+        "1": {
+          "Abilities.AAttack.Attack": 2,
+          "Abilities.AAttack.Target": 2,
+          "Abilities.AAttack.Range": 4
+        },
+        "2": {
+          "Abilities.AAttack.Attack": 2,
+          "Abilities.AAttack.Target": 2,
+          "Abilities.AAttack.Range": 4
+        },
+        "3": {
+          "Abilities.AAttack.Attack": 3,
+          "Abilities.AAttack.Target": 2,
+          "Abilities.AAttack.Range": 4
+        },
+        "4": {
+          "Abilities.AAttack.Attack": 3,
+          "Abilities.AAttack.Target": 2,
+          "Abilities.AAttack.Range": 4
+        },
+        "5": {
+          "Abilities.AAttack.Attack": 3,
+          "Abilities.AAttack.Target": 2,
+          "Abilities.AAttack.Range": 4
+        },
+        "6": {
+          "Abilities.AAttack.Attack": 4,
+          "Abilities.AAttack.Target": 2,
+          "Abilities.AAttack.Range": 4
+        },
+        "7": {
+          "Abilities.AAttack.Attack": 4,
+          "Abilities.AAttack.Target": 2,
+          "Abilities.AAttack.Range": 4
+        }
+      },
+      "AlgoxScoutEliteID": {
+        "0": {
+          "Abilities.AAttack.Attack": 3,
+          "Abilities.AAttack.Target": 2,
+          "Abilities.AAttack.Range": 4
+        },
+        "1": {
+          "Abilities.AAttack.Attack": 3,
+          "Abilities.AAttack.Target": 2,
+          "Abilities.AAttack.Range": 4
+        },
+        "2": {
+          "Abilities.AAttack.Attack": 4,
+          "Abilities.AAttack.Target": 2,
+          "Abilities.AAttack.Range": 4
+        },
+        "3": {
+          "Abilities.AAttack.Attack": 4,
+          "Abilities.AAttack.Target": 2,
+          "Abilities.AAttack.Range": 4
+        },
+        "4": {
+          "Abilities.AAttack.Attack": 4,
+          "Abilities.AAttack.Target": 2,
+          "Abilities.AAttack.Range": 4
+        },
+        "5": {
+          "Abilities.AAttack.Attack": 5,
+          "Abilities.AAttack.Target": 2,
+          "Abilities.AAttack.Range": 4
+        },
+        "6": {
+          "Abilities.AAttack.Attack": 6,
+          "Abilities.AAttack.Target": 2,
+          "Abilities.AAttack.Range": 4
+        },
+        "7": {
+          "Abilities.AAttack.Attack": 7,
+          "Abilities.AAttack.Target": 2,
+          "Abilities.AAttack.Range": 4
+        }
+      }
+    },
+    "Abilities": "{\"AAttack\": {\"AnimOverload\": \"RangedAttack\", \"Attack\": -1, \"Range\": 4, \"RangeIsBase\": true, \"Target\": 2, \"TargetIsBase\": true}}"
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Campaign/Enemies/Monsters/Scout/Cards/777_Scout_Greed.yml",
+      "line": 2,
+      "line_initiative": 4
+    },
+    "Id": 777,
+    "LocKey": "$Monster_Ability_777_Scout_Greed$",
+    "Initiative": 35,
+    "Shuffle": true,
+    "UsedBy": [
+      "AlgoxScoutEliteID",
+      "AlgoxScoutID"
+    ],
+    "RawValues": [
+      {
+        "path": "Abilities.AMove.Move",
+        "field": "Move",
+        "raw": 1
+      },
+      {
+        "path": "Abilities.AAttack.Target",
+        "field": "Target",
+        "raw": -1
+      }
+    ],
+    "ResolvedValues": {
+      "AlgoxScoutID": {
+        "0": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Target": 1
+        },
+        "1": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Target": 1
+        },
+        "2": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Target": 1
+        },
+        "3": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Target": 1
+        },
+        "4": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Target": 1
+        },
+        "5": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Target": 1
+        },
+        "6": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Target": 1
+        },
+        "7": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Target": 1
+        }
+      },
+      "AlgoxScoutEliteID": {
+        "0": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Target": 1
+        },
+        "1": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Target": 1
+        },
+        "2": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Target": 1
+        },
+        "3": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Target": 1
+        },
+        "4": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Target": 1
+        },
+        "5": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Target": 1
+        },
+        "6": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Target": 1
+        },
+        "7": {
+          "Abilities.AMove.Move": 1,
+          "Abilities.AAttack.Target": 1
+        }
+      }
+    },
+    "Abilities": "{\"AAttack\": {\"AnimOverload\": \"Loot\", \"Loot\": 1, \"RangeIsBase\": true, \"Target\": -1, \"TargetIsBase\": true}, \"AMove\": {\"Jump\": true, \"Move\": 1}}"
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Campaign/Enemies/Monsters/AbaelHerder/Cards/778_AbaelHerder_BrinyBristles.yml",
+      "line": 2,
+      "line_initiative": 4
+    },
+    "Id": 778,
+    "LocKey": "$Monster_Ability_778_AbaelHerder_BrinyBristles$",
+    "Initiative": 18,
+    "Shuffle": false,
+    "UsedBy": [
+      "AbaelHerderEliteID",
+      "AbaelHerderID"
+    ],
+    "RawValues": [
+      {
+        "path": "Abilities.Move1.Move",
+        "field": "Move",
+        "raw": -1
+      },
+      {
+        "path": "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move",
+        "field": "Move",
+        "raw": 0
+      },
+      {
+        "path": "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack",
+        "field": "Attack",
+        "raw": 1
+      },
+      {
+        "path": "Abilities.ControlPig1.Range",
+        "field": "Range",
+        "raw": 4
+      }
+    ],
+    "ResolvedValues": {
+      "AbaelHerderID": {
+        "0": {
+          "Abilities.Move1.Move": 3,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 0,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 1,
+          "Abilities.ControlPig1.Range": 4
+        },
+        "1": {
+          "Abilities.Move1.Move": 3,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 0,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 1,
+          "Abilities.ControlPig1.Range": 4
+        },
+        "2": {
+          "Abilities.Move1.Move": 3,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 0,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 1,
+          "Abilities.ControlPig1.Range": 4
+        },
+        "3": {
+          "Abilities.Move1.Move": 3,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 0,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 1,
+          "Abilities.ControlPig1.Range": 4
+        },
+        "4": {
+          "Abilities.Move1.Move": 4,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 0,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 1,
+          "Abilities.ControlPig1.Range": 4
+        },
+        "5": {
+          "Abilities.Move1.Move": 4,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 0,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 1,
+          "Abilities.ControlPig1.Range": 4
+        },
+        "6": {
+          "Abilities.Move1.Move": 4,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 0,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 1,
+          "Abilities.ControlPig1.Range": 4
+        },
+        "7": {
+          "Abilities.Move1.Move": 4,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 0,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 1,
+          "Abilities.ControlPig1.Range": 4
+        }
+      },
+      "AbaelHerderEliteID": {
+        "0": {
+          "Abilities.Move1.Move": 3,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 0,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 1,
+          "Abilities.ControlPig1.Range": 4
+        },
+        "1": {
+          "Abilities.Move1.Move": 3,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 0,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 1,
+          "Abilities.ControlPig1.Range": 4
+        },
+        "2": {
+          "Abilities.Move1.Move": 4,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 0,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 1,
+          "Abilities.ControlPig1.Range": 4
+        },
+        "3": {
+          "Abilities.Move1.Move": 4,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 0,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 1,
+          "Abilities.ControlPig1.Range": 4
+        },
+        "4": {
+          "Abilities.Move1.Move": 4,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 0,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 1,
+          "Abilities.ControlPig1.Range": 4
+        },
+        "5": {
+          "Abilities.Move1.Move": 4,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 0,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 1,
+          "Abilities.ControlPig1.Range": 4
+        },
+        "6": {
+          "Abilities.Move1.Move": 5,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 0,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 1,
+          "Abilities.ControlPig1.Range": 4
+        },
+        "7": {
+          "Abilities.Move1.Move": 5,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 0,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 1,
+          "Abilities.ControlPig1.Range": 4
+        }
+      }
+    },
+    "Abilities": "{\"ControlPig1\": {\"AnimOverload\": \"Control\", \"ControlActor\": {\"Abilities\": {\"AllyAttack\": {\"Attack\": 1, \"TextOnly\": true}, \"AllyMove\": {\"Move\": 0, \"Text\": \"$FH/0778_monster_ability_cards_abael_herder_briny_bristles_2$\", \"TextOnly\": true}}, \"ChooseClosestActor\": true, \"UseControllingActorType\": true}, \"Filter\": {\"EnemyClasses\": [\"PiranhaPigID\", \"PiranhaPigEliteID\"]}, \"Range\": 4, \"RangeIsBase\": true}, \"Move1\": {\"Move\": -1}}"
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Campaign/Enemies/Monsters/AbaelHerder/Cards/779_AbaelHerder_DesperateHerd.yml",
+      "line": 2,
+      "line_initiative": 4
+    },
+    "Id": 779,
+    "LocKey": "$Monster_Ability_779_AbaelHerder_DesperateHerd$",
+    "Initiative": 72,
+    "Shuffle": false,
+    "UsedBy": [
+      "AbaelHerderEliteID",
+      "AbaelHerderID"
+    ],
+    "RawValues": [
+      {
+        "path": "Abilities.Move1.Move",
+        "field": "Move",
+        "raw": -1
+      },
+      {
+        "path": "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move",
+        "field": "Move",
+        "raw": -1
+      },
+      {
+        "path": "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack",
+        "field": "Attack",
+        "raw": -2
+      },
+      {
+        "path": "Abilities.ControlPig1.ControlActor.Abilities.SelfDamage.Damage",
+        "field": "Damage",
+        "raw": 1
+      },
+      {
+        "path": "Abilities.ControlPig1.Range",
+        "field": "Range",
+        "raw": 3
+      },
+      {
+        "path": "Abilities.ControlPig1.Target",
+        "field": "Target",
+        "raw": 99
+      }
+    ],
+    "ResolvedValues": {
+      "AbaelHerderID": {
+        "0": {
+          "Abilities.Move1.Move": 3,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 3,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 2,
+          "Abilities.ControlPig1.ControlActor.Abilities.SelfDamage.Damage": 1,
+          "Abilities.ControlPig1.Range": 3,
+          "Abilities.ControlPig1.Target": 99
+        },
+        "1": {
+          "Abilities.Move1.Move": 3,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 3,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 2,
+          "Abilities.ControlPig1.ControlActor.Abilities.SelfDamage.Damage": 1,
+          "Abilities.ControlPig1.Range": 3,
+          "Abilities.ControlPig1.Target": 99
+        },
+        "2": {
+          "Abilities.Move1.Move": 3,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 3,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 2,
+          "Abilities.ControlPig1.ControlActor.Abilities.SelfDamage.Damage": 1,
+          "Abilities.ControlPig1.Range": 3,
+          "Abilities.ControlPig1.Target": 99
+        },
+        "3": {
+          "Abilities.Move1.Move": 3,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 3,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 3,
+          "Abilities.ControlPig1.ControlActor.Abilities.SelfDamage.Damage": 1,
+          "Abilities.ControlPig1.Range": 3,
+          "Abilities.ControlPig1.Target": 99
+        },
+        "4": {
+          "Abilities.Move1.Move": 4,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 4,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 3,
+          "Abilities.ControlPig1.ControlActor.Abilities.SelfDamage.Damage": 1,
+          "Abilities.ControlPig1.Range": 3,
+          "Abilities.ControlPig1.Target": 99
+        },
+        "5": {
+          "Abilities.Move1.Move": 4,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 4,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 3,
+          "Abilities.ControlPig1.ControlActor.Abilities.SelfDamage.Damage": 1,
+          "Abilities.ControlPig1.Range": 3,
+          "Abilities.ControlPig1.Target": 99
+        },
+        "6": {
+          "Abilities.Move1.Move": 4,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 4,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 4,
+          "Abilities.ControlPig1.ControlActor.Abilities.SelfDamage.Damage": 1,
+          "Abilities.ControlPig1.Range": 3,
+          "Abilities.ControlPig1.Target": 99
+        },
+        "7": {
+          "Abilities.Move1.Move": 4,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 4,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 4,
+          "Abilities.ControlPig1.ControlActor.Abilities.SelfDamage.Damage": 1,
+          "Abilities.ControlPig1.Range": 3,
+          "Abilities.ControlPig1.Target": 99
+        }
+      },
+      "AbaelHerderEliteID": {
+        "0": {
+          "Abilities.Move1.Move": 3,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 3,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 3,
+          "Abilities.ControlPig1.ControlActor.Abilities.SelfDamage.Damage": 1,
+          "Abilities.ControlPig1.Range": 3,
+          "Abilities.ControlPig1.Target": 99
+        },
+        "1": {
+          "Abilities.Move1.Move": 3,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 3,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 3,
+          "Abilities.ControlPig1.ControlActor.Abilities.SelfDamage.Damage": 1,
+          "Abilities.ControlPig1.Range": 3,
+          "Abilities.ControlPig1.Target": 99
+        },
+        "2": {
+          "Abilities.Move1.Move": 4,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 4,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 3,
+          "Abilities.ControlPig1.ControlActor.Abilities.SelfDamage.Damage": 1,
+          "Abilities.ControlPig1.Range": 3,
+          "Abilities.ControlPig1.Target": 99
+        },
+        "3": {
+          "Abilities.Move1.Move": 4,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 4,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 4,
+          "Abilities.ControlPig1.ControlActor.Abilities.SelfDamage.Damage": 1,
+          "Abilities.ControlPig1.Range": 3,
+          "Abilities.ControlPig1.Target": 99
+        },
+        "4": {
+          "Abilities.Move1.Move": 4,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 4,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 4,
+          "Abilities.ControlPig1.ControlActor.Abilities.SelfDamage.Damage": 1,
+          "Abilities.ControlPig1.Range": 3,
+          "Abilities.ControlPig1.Target": 99
+        },
+        "5": {
+          "Abilities.Move1.Move": 4,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 4,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 5,
+          "Abilities.ControlPig1.ControlActor.Abilities.SelfDamage.Damage": 1,
+          "Abilities.ControlPig1.Range": 3,
+          "Abilities.ControlPig1.Target": 99
+        },
+        "6": {
+          "Abilities.Move1.Move": 5,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 5,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 5,
+          "Abilities.ControlPig1.ControlActor.Abilities.SelfDamage.Damage": 1,
+          "Abilities.ControlPig1.Range": 3,
+          "Abilities.ControlPig1.Target": 99
+        },
+        "7": {
+          "Abilities.Move1.Move": 5,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 5,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 6,
+          "Abilities.ControlPig1.ControlActor.Abilities.SelfDamage.Damage": 1,
+          "Abilities.ControlPig1.Range": 3,
+          "Abilities.ControlPig1.Target": 99
+        }
+      }
+    },
+    "Abilities": "{\"ControlPig1\": {\"AnimOverload\": \"Control\", \"ControlActor\": {\"Abilities\": {\"AllyAttack\": {\"Attack\": -2, \"TextOnly\": true}, \"AllyMove\": {\"Move\": -1, \"Text\": \"$FH/0779_monster_ability_cards_abael_herder_desperate_herd_2$\", \"TextOnly\": true}, \"SelfDamage\": {\"Damage\": 1, \"Filter\": \"Self\", \"Text\": \"$FH/0779_monster_ability_cards_abael_herder_desperate_herd_3$\", \"TextOnly\": true}}, \"UseControllingActorType\": true}, \"Filter\": {\"EnemyClasses\": [\"PiranhaPigID\", \"PiranhaPigEliteID\"]}, \"Range\": 3, \"RangeIsBase\": true, \"Target\": 99, \"TargetIsBase\": true}, \"Move1\": {\"Move\": -1}}"
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Campaign/Enemies/Monsters/AbaelHerder/Cards/780_AbaelHerder_PigParade.yml",
+      "line": 2,
+      "line_initiative": 4
+    },
+    "Id": 780,
+    "LocKey": "$Monster_Ability_780_AbaelHerder_PigParade$",
+    "Initiative": 68,
+    "Shuffle": true,
+    "UsedBy": [
+      "AbaelHerderEliteID",
+      "AbaelHerderID"
+    ],
+    "RawValues": [
+      {
+        "path": "Abilities.Summon1.Target",
+        "field": "Target",
+        "raw": 1
+      }
+    ],
+    "ResolvedValues": {
+      "AbaelHerderID": {
+        "0": {
+          "Abilities.Summon1.Target": 1
+        },
+        "1": {
+          "Abilities.Summon1.Target": 1
+        },
+        "2": {
+          "Abilities.Summon1.Target": 1
+        },
+        "3": {
+          "Abilities.Summon1.Target": 1
+        },
+        "4": {
+          "Abilities.Summon1.Target": 1
+        },
+        "5": {
+          "Abilities.Summon1.Target": 1
+        },
+        "6": {
+          "Abilities.Summon1.Target": 1
+        },
+        "7": {
+          "Abilities.Summon1.Target": 1
+        }
+      },
+      "AbaelHerderEliteID": {
+        "0": {
+          "Abilities.Summon1.Target": 1
+        },
+        "1": {
+          "Abilities.Summon1.Target": 1
+        },
+        "2": {
+          "Abilities.Summon1.Target": 1
+        },
+        "3": {
+          "Abilities.Summon1.Target": 1
+        },
+        "4": {
+          "Abilities.Summon1.Target": 1
+        },
+        "5": {
+          "Abilities.Summon1.Target": 1
+        },
+        "6": {
+          "Abilities.Summon1.Target": 1
+        },
+        "7": {
+          "Abilities.Summon1.Target": 1
+        }
+      }
+    },
+    "Abilities": "{\"Summon1\": {\"AnimOverload\": \"Summon\", \"Summon\": \"PiranhaPigID\", \"Target\": 1, \"TargetIsBase\": true, \"Text\": \"$FH/0780_monster_ability_cards_abael_herder_pig_parade_2$\", \"TextOnly\": true}}"
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Campaign/Enemies/Monsters/AbaelHerder/Cards/781_AbaelHerder_FishNet.yml",
+      "line": 2,
+      "line_initiative": 4
+    },
+    "Id": 781,
+    "LocKey": "$Monster_Ability_781_AbaelHerder_FishNet$",
+    "Initiative": 20,
+    "Shuffle": false,
+    "UsedBy": [
+      "AbaelHerderEliteID",
+      "AbaelHerderID"
+    ],
+    "RawValues": [
+      {
+        "path": "Abilities.Move1.Move",
+        "field": "Move",
+        "raw": 0
+      },
+      {
+        "path": "Abilities.Attack1.Attack",
+        "field": "Attack",
+        "raw": 0
+      },
+      {
+        "path": "Abilities.Attack1.Range",
+        "field": "Range",
+        "raw": 3
+      }
+    ],
+    "ResolvedValues": {
+      "AbaelHerderID": {
+        "0": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3
+        },
+        "1": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3
+        },
+        "2": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3
+        },
+        "3": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3
+        },
+        "4": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3
+        },
+        "5": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3
+        },
+        "6": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3
+        },
+        "7": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3
+        }
+      },
+      "AbaelHerderEliteID": {
+        "0": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3
+        },
+        "1": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3
+        },
+        "2": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3
+        },
+        "3": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3
+        },
+        "4": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3
+        },
+        "5": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3
+        },
+        "6": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3
+        },
+        "7": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3
+        }
+      }
+    },
+    "Abilities": "{\"Attack1\": {\"AnimOverload\": \"RangedAttack\", \"Attack\": 0, \"Condition\": \"Immobilize\", \"Range\": 3, \"RangeIsBase\": true, \"SubAbilities\": {\"AttackSubPush\": {\"IsInlineSubAbility\": true, \"Pull\": {\"Amount\": 2}}}}, \"Move1\": {\"Move\": 0}}"
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Campaign/Enemies/Monsters/AbaelHerder/Cards/782_AbaelHerder_AdvancingHorde.yml",
+      "line": 2,
+      "line_initiative": 4
+    },
+    "Id": 782,
+    "LocKey": "$Monster_Ability_782_AbaelHerder_AdvancingHorde$",
+    "Initiative": 88,
+    "Shuffle": false,
+    "UsedBy": [
+      "AbaelHerderEliteID",
+      "AbaelHerderID"
+    ],
+    "RawValues": [
+      {
+        "path": "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move",
+        "field": "Move",
+        "raw": 0
+      },
+      {
+        "path": "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack",
+        "field": "Attack",
+        "raw": 0
+      },
+      {
+        "path": "Abilities.ControlPig1.Range",
+        "field": "Range",
+        "raw": 4
+      },
+      {
+        "path": "Abilities.Summon1.Target",
+        "field": "Target",
+        "raw": 1
+      }
+    ],
+    "ResolvedValues": {
+      "AbaelHerderID": {
+        "0": {
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 0,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 0,
+          "Abilities.ControlPig1.Range": 4,
+          "Abilities.Summon1.Target": 1
+        },
+        "1": {
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 0,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 0,
+          "Abilities.ControlPig1.Range": 4,
+          "Abilities.Summon1.Target": 1
+        },
+        "2": {
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 0,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 0,
+          "Abilities.ControlPig1.Range": 4,
+          "Abilities.Summon1.Target": 1
+        },
+        "3": {
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 0,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 0,
+          "Abilities.ControlPig1.Range": 4,
+          "Abilities.Summon1.Target": 1
+        },
+        "4": {
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 0,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 0,
+          "Abilities.ControlPig1.Range": 4,
+          "Abilities.Summon1.Target": 1
+        },
+        "5": {
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 0,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 0,
+          "Abilities.ControlPig1.Range": 4,
+          "Abilities.Summon1.Target": 1
+        },
+        "6": {
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 0,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 0,
+          "Abilities.ControlPig1.Range": 4,
+          "Abilities.Summon1.Target": 1
+        },
+        "7": {
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 0,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 0,
+          "Abilities.ControlPig1.Range": 4,
+          "Abilities.Summon1.Target": 1
+        }
+      },
+      "AbaelHerderEliteID": {
+        "0": {
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 0,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 0,
+          "Abilities.ControlPig1.Range": 4,
+          "Abilities.Summon1.Target": 1
+        },
+        "1": {
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 0,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 0,
+          "Abilities.ControlPig1.Range": 4,
+          "Abilities.Summon1.Target": 1
+        },
+        "2": {
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 0,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 0,
+          "Abilities.ControlPig1.Range": 4,
+          "Abilities.Summon1.Target": 1
+        },
+        "3": {
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 0,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 0,
+          "Abilities.ControlPig1.Range": 4,
+          "Abilities.Summon1.Target": 1
+        },
+        "4": {
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 0,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 0,
+          "Abilities.ControlPig1.Range": 4,
+          "Abilities.Summon1.Target": 1
+        },
+        "5": {
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 0,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 0,
+          "Abilities.ControlPig1.Range": 4,
+          "Abilities.Summon1.Target": 1
+        },
+        "6": {
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 0,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 0,
+          "Abilities.ControlPig1.Range": 4,
+          "Abilities.Summon1.Target": 1
+        },
+        "7": {
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyMove.Move": 0,
+          "Abilities.ControlPig1.ControlActor.Abilities.AllyAttack.Attack": 0,
+          "Abilities.ControlPig1.Range": 4,
+          "Abilities.Summon1.Target": 1
+        }
+      }
+    },
+    "Abilities": "{\"ControlPig1\": {\"AnimOverload\": \"Control\", \"ControlActor\": {\"Abilities\": {\"AllyAttack\": {\"Attack\": 0, \"Condition\": \"Muddle\", \"TextOnly\": true}, \"AllyMove\": {\"Move\": 0, \"Text\": \"$FH/0782_monster_ability_cards_abael_herder_advancing_horde_2$\", \"TextOnly\": true}}, \"ChooseClosestActor\": true, \"UseControllingActorType\": true}, \"Filter\": {\"EnemyClasses\": [\"PiranhaPigID\", \"PiranhaPigEliteID\"]}, \"Range\": 4, \"RangeIsBase\": true}, \"Summon1\": {\"AnimOverload\": \"Summon\", \"StartAbilityRequirements\": {\"AbilityHasHappened\": false, \"Type\": \"PreviousAbility\"}, \"Summon\": \"PiranhaPigID\", \"Target\": 1, \"TargetIsBase\": true, \"Text\": \"$FH/0782_monster_ability_cards_abael_herder_advancing_horde_3$\", \"TextOnly\": true}}"
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Campaign/Enemies/Monsters/AbaelHerder/Cards/783_AbaelHerder_GuideTheSchool.yml",
+      "line": 2,
+      "line_initiative": 4
+    },
+    "Id": 783,
+    "LocKey": "$Monster_Ability_783_AbaelHerder_GuideTheSchool$",
+    "Initiative": 12,
+    "Shuffle": false,
+    "UsedBy": [
+      "AbaelHerderEliteID",
+      "AbaelHerderID"
+    ],
+    "RawValues": [
+      {
+        "path": "Abilities.Attack1.Attack",
+        "field": "Attack",
+        "raw": 0
+      },
+      {
+        "path": "Abilities.Attack1.Range",
+        "field": "Range",
+        "raw": 3
+      },
+      {
+        "path": "Abilities.Strengthen1.Range",
+        "field": "Range",
+        "raw": 3
+      },
+      {
+        "path": "Abilities.Strengthen1.Target",
+        "field": "Target",
+        "raw": 99
+      }
+    ],
+    "ResolvedValues": {
+      "AbaelHerderID": {
+        "0": {
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3,
+          "Abilities.Strengthen1.Range": 3,
+          "Abilities.Strengthen1.Target": 99
+        },
+        "1": {
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3,
+          "Abilities.Strengthen1.Range": 3,
+          "Abilities.Strengthen1.Target": 99
+        },
+        "2": {
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3,
+          "Abilities.Strengthen1.Range": 3,
+          "Abilities.Strengthen1.Target": 99
+        },
+        "3": {
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3,
+          "Abilities.Strengthen1.Range": 3,
+          "Abilities.Strengthen1.Target": 99
+        },
+        "4": {
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3,
+          "Abilities.Strengthen1.Range": 3,
+          "Abilities.Strengthen1.Target": 99
+        },
+        "5": {
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3,
+          "Abilities.Strengthen1.Range": 3,
+          "Abilities.Strengthen1.Target": 99
+        },
+        "6": {
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3,
+          "Abilities.Strengthen1.Range": 3,
+          "Abilities.Strengthen1.Target": 99
+        },
+        "7": {
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3,
+          "Abilities.Strengthen1.Range": 3,
+          "Abilities.Strengthen1.Target": 99
+        }
+      },
+      "AbaelHerderEliteID": {
+        "0": {
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3,
+          "Abilities.Strengthen1.Range": 3,
+          "Abilities.Strengthen1.Target": 99
+        },
+        "1": {
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3,
+          "Abilities.Strengthen1.Range": 3,
+          "Abilities.Strengthen1.Target": 99
+        },
+        "2": {
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3,
+          "Abilities.Strengthen1.Range": 3,
+          "Abilities.Strengthen1.Target": 99
+        },
+        "3": {
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3,
+          "Abilities.Strengthen1.Range": 3,
+          "Abilities.Strengthen1.Target": 99
+        },
+        "4": {
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3,
+          "Abilities.Strengthen1.Range": 3,
+          "Abilities.Strengthen1.Target": 99
+        },
+        "5": {
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3,
+          "Abilities.Strengthen1.Range": 3,
+          "Abilities.Strengthen1.Target": 99
+        },
+        "6": {
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3,
+          "Abilities.Strengthen1.Range": 3,
+          "Abilities.Strengthen1.Target": 99
+        },
+        "7": {
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3,
+          "Abilities.Strengthen1.Range": 3,
+          "Abilities.Strengthen1.Target": 99
+        }
+      }
+    },
+    "Abilities": "{\"Attack1\": {\"AnimOverload\": \"RangedAttack\", \"Attack\": 0, \"Range\": 3, \"RangeIsBase\": true}, \"Strengthen1\": {\"AnimOverload\": \"Control\", \"Filter\": {\"EnemyClasses\": [\"PiranhaPigID\", \"PiranhaPigEliteID\"]}, \"Range\": 3, \"RangeIsBase\": true, \"Strengthen\": true, \"Target\": 99, \"TargetIsBase\": true, \"Text\": \"$FH/0783_monster_ability_cards_abael_herder_guide_the_school_2$\", \"TextOnly\": true}}"
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Campaign/Enemies/Monsters/AbaelHerder/Cards/784_AbaelHerder_HeedThePigs.yml",
+      "line": 2,
+      "line_initiative": 4
+    },
+    "Id": 784,
+    "LocKey": "$Monster_Ability_784_AbaelHerder_HeedThePigs$",
+    "Initiative": 65,
+    "Shuffle": true,
+    "UsedBy": [
+      "AbaelHerderEliteID",
+      "AbaelHerderID"
+    ],
+    "RawValues": [
+      {
+        "path": "Abilities.Move1.Move",
+        "field": "Move",
+        "raw": 0
+      },
+      {
+        "path": "Abilities.Attack1.Attack",
+        "field": "Attack",
+        "raw": 0
+      }
+    ],
+    "ResolvedValues": {
+      "AbaelHerderID": {
+        "0": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0
+        },
+        "1": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0
+        },
+        "2": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0
+        },
+        "3": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0
+        },
+        "4": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0
+        },
+        "5": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0
+        },
+        "6": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0
+        },
+        "7": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0
+        }
+      },
+      "AbaelHerderEliteID": {
+        "0": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0
+        },
+        "1": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0
+        },
+        "2": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0
+        },
+        "3": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0
+        },
+        "4": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0
+        },
+        "5": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0
+        },
+        "6": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0
+        },
+        "7": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0
+        }
+      }
+    },
+    "Abilities": "{\"Attack1\": {\"AnimOverload\": \"RangedAttack\", \"Attack\": 0, \"StatIsBasedOnX\": {\"Range\": {\"AddTo\": true, \"BasedOn\": \"ActorCount\", \"Filter\": {\"EnemyClasses\": [\"PiranhaPigID\", \"PiranhaPigEliteID\"]}}, \"Strength\": {\"AddTo\": true, \"BasedOn\": \"ActorCount\", \"Filter\": {\"EnemyClasses\": [\"PiranhaPigID\", \"PiranhaPigEliteID\"]}}}, \"StrengthIsBase\": true, \"Text\": \"$FH/0784_monster_ability_cards_abael_herder_heed_the_pigs_2$\", \"TextOnly\": true, \"TreatAsRange\": true}, \"Move1\": {\"Move\": 0}}"
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Campaign/Enemies/Monsters/AbaelHerder/Cards/785_AbaelHerder_NothingSpecial.yml",
+      "line": 2,
+      "line_initiative": 4
+    },
+    "Id": 785,
+    "LocKey": "$Monster_Ability_BasicAttack$",
+    "Initiative": 56,
+    "Shuffle": false,
+    "UsedBy": [
+      "AbaelHerderEliteID",
+      "AbaelHerderID"
+    ],
+    "RawValues": [
+      {
+        "path": "Abilities.Move1.Move",
+        "field": "Move",
+        "raw": 0
+      },
+      {
+        "path": "Abilities.Attack1.Attack",
+        "field": "Attack",
+        "raw": 0
+      },
+      {
+        "path": "Abilities.Attack1.Range",
+        "field": "Range",
+        "raw": 3
+      }
+    ],
+    "ResolvedValues": {
+      "AbaelHerderID": {
+        "0": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3
+        },
+        "1": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3
+        },
+        "2": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3
+        },
+        "3": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3
+        },
+        "4": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3
+        },
+        "5": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3
+        },
+        "6": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3
+        },
+        "7": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3
+        }
+      },
+      "AbaelHerderEliteID": {
+        "0": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3
+        },
+        "1": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3
+        },
+        "2": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3
+        },
+        "3": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3
+        },
+        "4": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3
+        },
+        "5": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3
+        },
+        "6": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3
+        },
+        "7": {
+          "Abilities.Move1.Move": 0,
+          "Abilities.Attack1.Attack": 0,
+          "Abilities.Attack1.Range": 3
+        }
+      }
+    },
+    "Abilities": "{\"Attack1\": {\"AnimOverload\": \"RangedAttack\", \"Attack\": 0, \"Filter\": \"Enemy\", \"Range\": 3, \"RangeIsBase\": true}, \"Move1\": {\"Move\": 0}}"
+  }
+]

@@ -83,6 +83,21 @@ namespace FHSolver.Tests
             // v1.26 新增：多样性分桶（学 StS2 的 SearchRouteTraits 泳道）
             DiversityBucketTests();
 
+            // v1.35 新增：单体目标上限 / AOE 目标数 / 优劣势选牌 / 多回合先攻 / 焦点规则
+            SingleTargetLimitTests();
+            AoeTargetCapTests();
+            AdvantageChoiceTests();
+            MultiTurnInitiativeTests();
+            PredictedPositionTests();
+            FocusRuleTests();
+            FormationTextTests();
+
+            // v1.36 新增：规则核查后的伤害/目标数修正
+            StrengthenNoDoubleCountTests();
+            PoisonRuleTests();
+            MultiTargetWithoutAreaTests();
+            DamageModelRuleTests();
+
             Console.WriteLine();
             if (_fail == 0)
             {
@@ -1458,11 +1473,11 @@ namespace FHSolver.Tests
             }
         }
 
-        // ---------- ㉘ 强化 Strengthen：攻击 +1 ----------
+        // ---------- ㉘ 强化 Strengthen：换算成 Advantage（不是攻击 +1）----------
         private static void StrengthenModelTests()
         {
             Console.WriteLine();
-            Console.WriteLine("== 强化（自己有 Strengthen → 攻击 +1）==");
+            Console.WriteLine("== 强化（Strengthen → Advantage，不加攻击力）==");
 
             var monsters = new List<UnitSnapshot>
             {
@@ -1489,10 +1504,10 @@ namespace FHSolver.Tests
             List<TurnPlan> p2 = P1Planner.Enumerate(strong, 40);
             int dmgStrong = p2.Count > 0 ? p2[0].TotalDamage : 0;
 
-            // 两次翻到的修正牌应该相同（牌堆一样、攻击次数一样）→ 差值就是 +1
+            // Strengthen 的规则效果是 Advantage（由 P1Runner.ReadAdvantage 走游戏折算），
+            // 不是攻击 +1。这里只放 token、Adv 仍是 None → 伤害必须与无强化完全一致。
             Console.WriteLine($"  无强化伤害={dmgPlain}，有强化伤害={dmgStrong}");
-            True("有强化时伤害更高", dmgStrong > dmgPlain);
-            True("差值来自攻击 +1", dmgStrong - dmgPlain >= 1);
+            Eq("Strengthen 不再额外 +1（伤害与无强化一致）", dmgPlain, dmgStrong);
 
             // 诊断/输出不报错
             List<string> diag = P1Planner.Diagnose(strong);
@@ -1528,7 +1543,7 @@ namespace FHSolver.Tests
 
             // ② 诊断文本
             string t1 = P1Planner.ExtraEffectText(poison.Top);
-            True("中毒文本提到中毒与回合末掉血", t1.Contains("中毒 3") && t1.Contains("回合末"));
+            True("中毒文本写明 +1 攻击力", t1.Contains("中毒") && t1.Contains("+1"));
             string t2 = P1Planner.ExtraEffectText(pull.Top);
             True("拉拽文本提到拉拽格数", t2.Contains("拉拽 2"));
             Eq("普通牌无附加效果文本", "", P1Planner.ExtraEffectText(plain.Top));
@@ -1657,9 +1672,12 @@ namespace FHSolver.Tests
             // AOE 攻击 2（目标数 0 = 打范围内所有）
             var aoe = Card("范围击", "Discard", "Discard", 20, A("Attack:2,2,0", "AOE"), A("Move:2"));
             var single = Card("单体击", "Discard", "Discard", 40, A("Attack:2,1,1"), A("Move:2"));
+            // 第三张非 AOE 牌：让「单体口径」真的有方案可统计 ——
+            // 只有两张牌时，任何方案都必然用到 AOE 卡，maxSingle 恒为 0，断言等于没测。
+            var plain = Card("普通", "Discard", "Discard", 80, A("Attack:2,1,1"), A("Move:2"));
 
             P1Context ctx = MakeCtx("测试", 14, 3,
-                new List<AbilityCardSnapshot> { aoe, single }, monsters,
+                new List<AbilityCardSnapshot> { aoe, single, plain }, monsters,
                 new HashSet<(int, int)> { (14, 4), (13, 4), (14, 5) });
 
             // ① AOE 不再算"未建模"
@@ -2017,6 +2035,351 @@ namespace FHSolver.Tests
 
             // ⑤ 第 1 名始终是最优的（多样性不影响榜首）
             True("第 1 名与纯 top-K 相同", pDiv[0].Score == pPlain[0].Score);
+        }
+
+        // ---------- v1.35 回归 ----------
+
+        /// <summary>单体攻击不能被算成"打射程内所有敌人"（v1.34 实测虚报伤害的根因）。</summary>
+        private static void SingleTargetLimitTests()
+        {
+            Console.WriteLine();
+            Console.WriteLine("== v1.35：单体攻击每个半边最多命中 1 个目标 ==");
+
+            var a = Card("单体A", "Discard", "Discard", 20, A("Attack:3,1,1"), A("Move:2"));
+            var b = Card("单体B", "Discard", "Discard", 40, A("Attack:3,1,1"), A("Move:2"));
+            var monsters = new List<UnitSnapshot>
+            {
+                new UnitSnapshot { Guid = "m1", Name = "敌甲", DisplayName = "敌甲",
+                                   X = 14, Y = 4, Health = 20, MaxHealth = 20, IsHostileToPlayer = true },
+                new UnitSnapshot { Guid = "m2", Name = "敌乙", DisplayName = "敌乙",
+                                   X = 15, Y = 4, Health = 20, MaxHealth = 20, IsHostileToPlayer = true },
+            };
+            var ctx = MakeCtx("测试", 14, 3, new List<AbilityCardSnapshot> { a, b }, monsters,
+                new HashSet<(int, int)> { (14, 4), (15, 4) });
+
+            var plans = P1Planner.Enumerate(ctx, 20);
+            True("有方案", plans.Count > 0);
+
+            bool overHit = false;
+            int maxAttacks = 0;
+            foreach (TurnPlan p in plans)
+            {
+                var perHalf = new Dictionary<string, int>();
+                foreach (AttackChoice atk in p.Attacks)
+                {
+                    string key = atk.CardIndex + ":" + (int)atk.Source;
+                    perHalf.TryGetValue(key, out int c);
+                    perHalf[key] = c + 1;
+                }
+                foreach (var kv in perHalf)
+                {
+                    if (kv.Value > 1) overHit = true;
+                }
+                if (p.Attacks.Count > maxAttacks) maxAttacks = p.Attacks.Count;
+            }
+
+            True("同一半边最多命中 1 个目标（不再把单体当 AOE）", !overHit);
+            True("单体方案最多 2 次攻击（两个攻击半边各一次）", maxAttacks <= 2);
+
+            // 伤害上限：两次单体攻击，每次最高 (3+2)*2 = 10（+2 与 ×2 连乘极端）→ 20
+            True("总伤害没有被多目标虚报（≤20）", plans.TrueForAll(p => p.TotalDamage <= 20));
+        }
+
+        /// <summary>AOE 仍能一次打多个；但「目标数 = N(&gt;1)」的牌最多打 N 个。</summary>
+        private static void AoeTargetCapTests()
+        {
+            Console.WriteLine();
+            Console.WriteLine("== v1.35：AOE 目标数上限 ==");
+
+            var filler = Card("填充", "Discard", "Discard", 90, A("Move:1"), A("Move:1"));
+            var monsters = new List<UnitSnapshot>
+            {
+                new UnitSnapshot { Guid = "m1", Name = "甲", DisplayName = "甲", X = 14, Y = 4, Health = 30, MaxHealth = 30, IsHostileToPlayer = true },
+                new UnitSnapshot { Guid = "m2", Name = "乙", DisplayName = "乙", X = 15, Y = 4, Health = 30, MaxHealth = 30, IsHostileToPlayer = true },
+                new UnitSnapshot { Guid = "m3", Name = "丙", DisplayName = "丙", X = 14, Y = 5, Health = 30, MaxHealth = 30, IsHostileToPlayer = true },
+            };
+            var occupied = new HashSet<(int, int)> { (14, 4), (15, 4), (14, 5) };
+
+            var aoeAll = Card("范围全", "Discard", "Discard", 20, A("Attack:2,2,0", "AOE"), A("Move:2"));
+            var ctxAll = MakeCtx("测试", 14, 3, new List<AbilityCardSnapshot> { aoeAll, filler }, monsters, occupied);
+            var plansAll = P1Planner.Enumerate(ctxAll, 20);
+            int maxAll = plansAll.Count == 0 ? 0 : plansAll.Max(p => p.Attacks.Count(a => a.CardIndex == 0));
+            Eq("目标数 0（形状内全部）→ 命中 3 个", 3, maxAll);
+
+            var aoeTwo = Card("范围二", "Discard", "Discard", 30, A("Attack:2,2,2", "AOE"), A("Move:2"));
+            var ctxTwo = MakeCtx("测试", 14, 3, new List<AbilityCardSnapshot> { aoeTwo, filler }, monsters, occupied);
+            var plansTwo = P1Planner.Enumerate(ctxTwo, 20);
+            int maxTwo = plansTwo.Count == 0 ? 0 : plansTwo.Max(p => p.Attacks.Count(a => a.CardIndex == 0));
+            Eq("目标数 2 → 最多命中 2 个", 2, maxTwo);
+        }
+
+        /// <summary>优/劣势二选一逐条对照 CActor.ChooseCardBasedOnAdvantage。</summary>
+        private static void AdvantageChoiceTests()
+        {
+            Console.WriteLine();
+            Console.WriteLine("== v1.35：优/劣势选牌照抄游戏 ==");
+
+            var deck = new List<ModifierCardSnapshot>
+            {
+                new ModifierCardSnapshot { Name = "×2", MathModifier = "*2" },
+                new ModifierCardSnapshot { Name = "+2", MathModifier = "+2" },
+            };
+
+            var adv = ModifierDraw.Simulate(deck, 0, AdvStatus.Advantage, 1, out _);
+            Eq("优势（基础1）：取伤害高的 +2", "+2", adv[0].MathModifier);
+
+            var dis = ModifierDraw.Simulate(deck, 0, AdvStatus.Disadvantage, 1, out _);
+            Eq("劣势（基础1）：取伤害低的 ×2", "*2", dis[0].MathModifier);
+
+            // 平局（基础2：×2=4，+2=4）→ 按卡片数值 200 > 102
+            var tie = ModifierDraw.Simulate(deck, 0, AdvStatus.Advantage, 2, out _);
+            Eq("优势平局：按卡片数值取 ×2", "*2", tie[0].MathModifier);
+
+            var cursed = new List<ModifierCardSnapshot>
+            {
+                new ModifierCardSnapshot { Name = "诅咒", MathModifier = "*2", IsCurse = true, HasNegativeEffect = true },
+                new ModifierCardSnapshot { Name = "+2", MathModifier = "+2" },
+            };
+            var advNeg = ModifierDraw.Simulate(cursed, 0, AdvStatus.Advantage, 2, out _);
+            Eq("优势平局：有负面效果的牌劣后", "+2", advNeg[0].MathModifier);
+
+            var disNeg = ModifierDraw.Simulate(cursed, 0, AdvStatus.Disadvantage, 2, out _);
+            Eq("劣势平局：有负面效果的牌胜出（要更差）", "*2", disNeg[0].MathModifier);
+        }
+
+        /// <summary>多回合的敌人结算必须用**本回合方案**的先攻，不是第 1 回合的。</summary>
+        private static void MultiTurnInitiativeTests()
+        {
+            Console.WriteLine();
+            Console.WriteLine("== v1.35：多回合按本回合先攻结算敌人 ==");
+
+            var lowAtk = Card("先攻10-攻", "Discard", "Discard", 10, A("Attack:3,1,1"), A("Move:2"));
+            var lowMove = Card("先攻10-走", "Discard", "Discard", 10, A("Move:2"), A("Move:2"));
+            var highAtk = Card("先攻60-攻", "Discard", "Discard", 60, A("Attack:3,1,1"), A("Move:2"));
+            var highMove = Card("先攻60-走", "Discard", "Discard", 60, A("Move:2"), A("Move:2"));
+
+            var enemy = new UnitSnapshot
+            {
+                Guid = "e1", Name = "怪", DisplayName = "怪",
+                X = 14, Y = 4, Health = 200, MaxHealth = 200,
+                IsHostileToPlayer = true, Initiative = 50,
+                Intent = new ActionSnapshot
+                {
+                    Kind = HalfKind.Action,
+                    HasAttack = true, AttackStrength = 5, AttackRange = 1, AttackTargets = 1,
+                    HasMove = true, MoveStrength = 4,
+                },
+            };
+
+            var ctx = MakeCtx("测试", 14, 3,
+                new List<AbilityCardSnapshot> { lowAtk, lowMove, highAtk, highMove },
+                new List<UnitSnapshot> { enemy },
+                new HashSet<(int, int)> { (14, 4) });
+            ctx.StartHealth = 20;
+            ctx.StartMaxHealth = 20;
+
+            // 第 1 回合只允许用前两张（先攻 10）→ 我先动（怪先攻 50）
+            var round1 = P1Planner.Enumerate(ctx, 30)
+                .Where(p => p.TopCardIndex < 2 && p.BottomCardIndex < 2).ToList();
+            True("第 1 回合有低先攻方案", round1.Count > 0);
+
+            var res = MultiTurnSearch.Search(ctx, round1, 2, 3, 10, new MultiTurnSearch.EvalWeights());
+            True("推演出了 2 回合的路线", res.Routes.Count > 0 && res.Routes.All(r => r.Count == 2));
+
+            int r1Incoming = 0, r2Incoming = 0;
+            foreach (var route in res.Routes)
+            {
+                r1Incoming += route[0].IncomingDamage;
+                r2Incoming += route[1].IncomingDamage;
+            }
+            Eq("第 1 回合先攻 10 → 我先动，不挨打", 0, r1Incoming);
+            True("第 2 回合先攻 60 → 怪（50）先动，会挨打（旧版会误判为 0）", r2Incoming > 0);
+        }
+
+        /// <summary>预测落点重写必须与"有没有友方单位"无关（v1.34 的 bug）。</summary>
+        private static void PredictedPositionTests()
+        {
+            Console.WriteLine();
+            Console.WriteLine("== v1.35：敌人预测落点重写（纯函数）==");
+
+            var monsters = new List<UnitSnapshot>
+            {
+                new UnitSnapshot { Guid = "g1", Name = "先动", X = 1, Y = 1 },
+                new UnitSnapshot { Guid = "g2", Name = "后动", X = 2, Y = 2 },
+            };
+            var moves = new List<PredictedPositions.Move>
+            {
+                new PredictedPositions.Move { Guid = "g1", Initiative = 5, X = 10, Y = 10 },
+                new PredictedPositions.Move { Guid = "g2", Initiative = 50, X = 20, Y = 20 },
+            };
+
+            int n = PredictedPositions.Apply(monsters, moves, 10);
+            Eq("只重写先攻更低的敌人", 1, n);
+            Eq("先动敌人的位置被改写", 10, monsters[0].X);
+            Eq("后动敌人保持原位", 2, monsters[1].X);
+
+            // 这个用例本身就没有 Others —— 正是 v1.34 里"没有友方单位就不执行"的场景
+            Eq("myInitiative 无效时不改", 0,
+                PredictedPositions.Apply(monsters, moves, 0));
+        }
+
+        /// <summary>敌人焦点：同距比先攻；AttackFurthestTarget 时选最远。</summary>
+        private static void FocusRuleTests()
+        {
+            Console.WriteLine();
+            Console.WriteLine("== v1.35：敌人焦点排序（CAIMoveNew.CompareEnemies）==");
+
+            Func<int, int, int, List<(int X, int Y, int Hazard)>> reach = (x, y, r) =>
+            {
+                var l = new List<(int X, int Y, int Hazard)>();
+                for (int dy = -r; dy <= r; dy++)
+                {
+                    for (int dx = -r - 1; dx <= r + 1; dx++)
+                    {
+                        int nx = x + dx, ny = y + dy;
+                        if (HexDist(x, y, nx, ny) <= r) l.Add((nx, ny, 0));
+                    }
+                }
+                return l;
+            };
+            Func<int, int, int, int, int> dist = (x1, y1, x2, y2) => HexDist(x1, y1, x2, y2);
+            Func<int, int, int, int, bool> los = (a, b, c, d) => true;
+
+            // 两个目标距离相同（都是 3）→ 同距比先攻（10 < 30）
+            var tied = new List<EnemyPathing.Target>
+            {
+                new EnemyPathing.Target(3, 0, "近30", 30),
+                new EnemyPathing.Target(0, 3, "近10", 10),
+            };
+            int tx, ty, fi;
+            EnemyMovePlan plan = EnemyPathing.PlanMove(
+                0, 0, 1, 1, reach, dist, los, tied, new HashSet<(int, int)>(),
+                out tx, out ty, out fi);
+            Eq("同距时选先攻小的", 1, fi);
+            Eq("够不着时走 Approach", EnemyMovePlan.Approach, plan);
+            True("够不着也会朝焦点逼近", tx != 0 || ty != 0);
+
+            // 最远焦点（AttackFurthestTarget）
+            var far = new List<EnemyPathing.Target>
+            {
+                new EnemyPathing.Target(2, 0, "近", 10),
+                new EnemyPathing.Target(6, 0, "远", 20),
+            };
+            EnemyPathing.PlanMove(0, 0, 3, 1, reach, dist, los, far, new HashSet<(int, int)>(),
+                out tx, out ty, out fi, preferFurthest: true);
+            Eq("AttackFurthestTarget：焦点取最远的", 1, fi);
+        }
+
+        /// <summary>阵型文本不能把「你站灰格」重复输出两遍。</summary>
+        private static void FormationTextTests()
+        {
+            Console.WriteLine();
+            Console.WriteLine("== v1.35：阵型文本去重 ==");
+
+            string text = P1Planner.FormationRequirement("0,0,G|1,1,R|2,0,R|3,1,B");
+            int first = text.IndexOf("你站灰格(G)", System.StringComparison.Ordinal);
+            int second = first < 0 ? -1 : text.IndexOf("你站灰格(G)", first + 1, System.StringComparison.Ordinal);
+            True("阵型文本包含灰格要求", first >= 0);
+            Eq("「你站灰格」只出现一次", -1, second);
+        }
+
+        // ---------- v1.36：规则核查后的修复 ----------
+
+        /// <summary>Strengthen 已由游戏折算成 Advantage，不能再加 +1。</summary>
+        private static void StrengthenNoDoubleCountTests()
+        {
+            Console.WriteLine();
+            Console.WriteLine("== v1.36：Strengthen 不再额外 +1 ==");
+
+            var card = Card("攻击", "Discard", "Discard", 20, A("Attack:3,1,1"), A("Move:2"));
+            var fill = Card("填充", "Discard", "Discard", 40, A("Move:1"), A("Move:1"));
+            var monster = new UnitSnapshot
+            {
+                Guid = "m1", Name = "敌", DisplayName = "敌",
+                X = 14, Y = 4, Health = 20, MaxHealth = 20, IsHostileToPlayer = true,
+            };
+            var ctx = MakeCtx("测试", 14, 3,
+                new List<AbilityCardSnapshot> { card, fill },
+                new List<UnitSnapshot> { monster },
+                new HashSet<(int, int)> { (14, 4) },
+                deckCards: Deck(Mod("+0")));
+            ctx.MyPositiveConditions = new List<string> { "Strengthen" };
+
+            var plans = P1Planner.Enumerate(ctx, 10);
+            TurnPlan hit = plans.FirstOrDefault(p => p.Attacks.Count > 0);
+            True("有攻击方案", hit != null);
+            Eq("攻击 3 + 翻 +0 → 3 伤（不再 +1）", 3, hit != null ? hit.Attacks[0].Damage : -1);
+        }
+
+        /// <summary>中毒目标被攻击时 +1 攻击力；文案不能写成 Wound。</summary>
+        private static void PoisonRuleTests()
+        {
+            Console.WriteLine();
+            Console.WriteLine("== v1.36：中毒 = 攻击该目标 +1 ==");
+
+            var card = Card("攻击", "Discard", "Discard", 20, A("Attack:3,1,1"), A("Move:2"));
+            var fill = Card("填充", "Discard", "Discard", 40, A("Move:1"), A("Move:1"));
+            var monster = new UnitSnapshot
+            {
+                Guid = "m1", Name = "敌", DisplayName = "敌",
+                X = 14, Y = 4, Health = 20, MaxHealth = 20, IsHostileToPlayer = true,
+            };
+            monster.NegativeConditions.Add("Poison");
+
+            var ctx = MakeCtx("测试", 14, 3,
+                new List<AbilityCardSnapshot> { card, fill },
+                new List<UnitSnapshot> { monster },
+                new HashSet<(int, int)> { (14, 4) },
+                deckCards: Deck(Mod("+0")));
+
+            TurnPlan hit = P1Planner.Enumerate(ctx, 10).FirstOrDefault(p => p.Attacks.Count > 0);
+            True("有攻击方案", hit != null);
+            Eq("中毒目标：3 + 翻 +0 + 中毒 1 = 4", 4, hit != null ? hit.Attacks[0].Damage : -1);
+
+            var poisonHalf = new ActionSnapshot
+            {
+                Kind = HalfKind.Action, HasPoison = true, PoisonStrength = 3,
+            };
+            string text = P1Planner.ExtraEffectText(poisonHalf);
+            True("中毒文案写明 +1 攻击力", text.Contains("+1"));
+            True("中毒文案不再写「回合末掉血」", !text.Contains("回合末"));
+        }
+
+        /// <summary>普通「Target N」（无 AOE 形状）也是一次打 N 个。</summary>
+        private static void MultiTargetWithoutAreaTests()
+        {
+            Console.WriteLine();
+            Console.WriteLine("== v1.36：普通 Target 2（无 AOE）= 一次打 2 个 ==");
+
+            var multi = Card("双击", "Discard", "Discard", 20, A("Attack:2,2,2"), A("Move:2"));
+            var fill = Card("填充", "Discard", "Discard", 40, A("Move:1"), A("Move:1"));
+            var monsters = new List<UnitSnapshot>
+            {
+                new UnitSnapshot { Guid = "m1", Name = "甲", DisplayName = "甲", X = 14, Y = 4, Health = 30, MaxHealth = 30, IsHostileToPlayer = true },
+                new UnitSnapshot { Guid = "m2", Name = "乙", DisplayName = "乙", X = 15, Y = 4, Health = 30, MaxHealth = 30, IsHostileToPlayer = true },
+                new UnitSnapshot { Guid = "m3", Name = "丙", DisplayName = "丙", X = 14, Y = 5, Health = 30, MaxHealth = 30, IsHostileToPlayer = true },
+            };
+            var ctx = MakeCtx("测试", 14, 3,
+                new List<AbilityCardSnapshot> { multi, fill }, monsters,
+                new HashSet<(int, int)> { (14, 4), (15, 4), (14, 5) });
+
+            var plans = P1Planner.Enumerate(ctx, 20);
+            True("有方案", plans.Count > 0);
+            int maxHits = plans.Max(p => p.Attacks.Count(a => a.CardIndex == 0));
+            Eq("Target 2：最多命中 2 个（旧版只打 1 个）", 2, maxHits);
+        }
+
+        /// <summary>穿透 / Brittle / Ward 的伤害顺序（对照 CAttackSummary）。</summary>
+        private static void DamageModelRuleTests()
+        {
+            Console.WriteLine();
+            Console.WriteLine("== v1.36：穿透 / Brittle / Ward ==");
+
+            var plus0 = Deck(Mod("+0"));
+            Eq("穿透：护盾 3、穿透 2 → 只减 1", 3, DamageModel.Compute(4, plus0, 3, 2));
+            Eq("Brittle：护盾后 ×2", 6, DamageModel.Compute(4, plus0, 1, 0, true, false));
+            Eq("Ward：护盾后 floor(/2)", 1, DamageModel.Compute(4, plus0, 1, 0, false, true));
+            Eq("Brittle+Ward：floor((4-1)*2/2)", 3, DamageModel.Compute(4, plus0, 1, 0, true, true));
         }
 
         // ---------- ① 伤害模型：对照 ATTACK.md 的实证表达式 ----------

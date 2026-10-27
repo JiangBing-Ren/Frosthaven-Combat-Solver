@@ -1,0 +1,158 @@
+[
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifierDecks/Standard.yml",
+      "line": 4
+    },
+    "Name": "Standard",
+    "IsMonsterDeck": false,
+    "Cards": [
+      {
+        "Name": "AMC_Basic_P0",
+        "Count": 6
+      },
+      {
+        "Name": "AMC_Basic_P1",
+        "Count": 5
+      },
+      {
+        "Name": "AMC_Basic_P2",
+        "Count": 1
+      },
+      {
+        "Name": "AMC_Basic_M1",
+        "Count": 5
+      },
+      {
+        "Name": "AMC_Basic_M2",
+        "Count": 1
+      },
+      {
+        "Name": "AMC_Basic_T0",
+        "Count": 1
+      },
+      {
+        "Name": "AMC_Basic_T2",
+        "Count": 1
+      }
+    ],
+    "TotalCards": 20
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifierDecks/ReducedRandomness.yml",
+      "line": 5
+    },
+    "Name": "ReducedRandomness",
+    "IsMonsterDeck": false,
+    "Cards": [
+      {
+        "Name": "AMC_Basic_P0",
+        "Count": 6
+      },
+      {
+        "Name": "AMC_Basic_P1",
+        "Count": 5
+      },
+      {
+        "Name": "AMC_Basic_P2",
+        "Count": 1
+      },
+      {
+        "Name": "AMC_Basic_M1",
+        "Count": 5
+      },
+      {
+        "Name": "AMC_Basic_M2",
+        "Count": 1
+      },
+      {
+        "Name": "AMC_Basic_M2_Shuffle",
+        "Count": 1
+      },
+      {
+        "Name": "AMC_Basic_P2_Shuffle",
+        "Count": 1
+      }
+    ],
+    "TotalCards": 20
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifierDecks/MonsterDeck.yml",
+      "line": 4
+    },
+    "Name": "MonsterDeck",
+    "IsMonsterDeck": true,
+    "Cards": [
+      {
+        "Name": "AMC_Basic_P0",
+        "Count": 6
+      },
+      {
+        "Name": "AMC_Basic_P1",
+        "Count": 5
+      },
+      {
+        "Name": "AMC_Basic_P2",
+        "Count": 1
+      },
+      {
+        "Name": "AMC_Basic_M1",
+        "Count": 5
+      },
+      {
+        "Name": "AMC_Basic_M2",
+        "Count": 1
+      },
+      {
+        "Name": "AMC_Basic_T0",
+        "Count": 1
+      },
+      {
+        "Name": "AMC_Basic_T2",
+        "Count": 1
+      }
+    ],
+    "TotalCards": 20
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifierDecks/MonsterReducedRandomness.yml",
+      "line": 5
+    },
+    "Name": "MonsterReducedRandomnessDeck",
+    "IsMonsterDeck": true,
+    "Cards": [
+      {
+        "Name": "AMC_Basic_P0",
+        "Count": 6
+      },
+      {
+        "Name": "AMC_Basic_P1",
+        "Count": 5
+      },
+      {
+        "Name": "AMC_Basic_P2",
+        "Count": 1
+      },
+      {
+        "Name": "AMC_Basic_M1",
+        "Count": 5
+      },
+      {
+        "Name": "AMC_Basic_M2",
+        "Count": 1
+      },
+      {
+        "Name": "AMC_Basic_M2_Shuffle",
+        "Count": 1
+      },
+      {
+        "Name": "AMC_Basic_P2_Shuffle",
+        "Count": 1
+      }
+    ],
+    "TotalCards": 20
+  }
+]

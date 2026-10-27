@@ -84,9 +84,19 @@ namespace FHSolver.Solver
         }
 
         /// <summary>
-        /// 优劣势二选一。优势取伤害高者，劣势取伤害低者。
-        /// 平局时的游戏侧 tie-break 会看 HasNegativeEffect / HasAdditionalEffect，
-        /// 这里没有那两个字段，按「取第一张」近似 —— 已在调用处标注为近似。
+        /// 优/劣势二选一 —— **逐条复刻游戏 `CActor.ChooseCardBasedOnAdvantage`**（v1.35）。
+        ///
+        /// 反编译原文（decompiled/SRL/ScenarioRuleLibrary/CActor.cs L4730）：
+        ///   num  = Parse("100" + MathModifier)          ← 卡片"数值"（×2=200 / +2=102 / ×0=0）
+        ///   num2 = Parse(attackStrength + MathModifier) ← 实际伤害
+        ///   优势：伤害不同 → 取高；相同 → 先比负面效果（有负面者劣），
+        ///         再比附加效果（有附加者优），最后比卡片数值，再相同取第一张。
+        ///   劣势：`(实际伤害更低 && 第二张数值 != 0) || 第一张数值 == 0` → 取第一张；
+        ///         伤害相同 → 先比负面效果（有负面者**优**——劣势要更差），
+        ///         再比附加效果（有附加者劣），最后取第一张。
+        ///
+        /// ⚠ 之前只按伤害比较、平局取第一张 —— 平局（如 ×2 vs +2 在基础 2 时）
+        ///   会选错牌，预测伤害与翻牌一起错。
         /// </summary>
         private static bool IsBetter(ModifierCardSnapshot first, ModifierCardSnapshot second,
             int baseStrength, AdvStatus adv)
@@ -94,8 +104,61 @@ namespace FHSolver.Solver
             int d1 = DamageModel.ComputePreShield(baseStrength, new List<ModifierCardSnapshot> { first });
             int d2 = DamageModel.ComputePreShield(baseStrength, new List<ModifierCardSnapshot> { second });
 
-            if (d1 == d2) return true;
-            return adv == AdvStatus.Advantage ? d1 > d2 : d1 < d2;
+            int v1 = CardValue(first);
+            int v2 = CardValue(second);
+
+            bool neg1 = first != null && first.HasNegativeEffect;
+            bool neg2 = second != null && second.HasNegativeEffect;
+            bool add1 = first != null && first.HasAdditionalEffect;
+            bool add2 = second != null && second.HasAdditionalEffect;
+
+            if (adv == AdvStatus.Advantage)
+            {
+                if (d1 == d2)
+                {
+                    if (neg1 && neg2) return true;
+                    if (neg1) return false;
+                    if (neg2) return true;
+                    if (add1 && add2) return true;
+                    if (add1) return true;
+                    if (add2) return false;
+                    if (v1 == v2) return true;
+                    return v1 > v2;
+                }
+                return d1 > d2;
+            }
+
+            // 劣势
+            if ((d1 < d2 && v2 != 0) || v1 == 0) return true;
+            if (d1 == d2)
+            {
+                if (neg1 && neg2) return true;
+                if (neg1) return true;
+                if (neg2) return false;
+                if (add1 && add2) return true;
+                if (add1) return false;
+                return true;      // 游戏原文：第二张有没有附加效果都不改变结果
+            }
+            return false;
+        }
+
+        /// <summary>卡片"数值" = Parse("100" + MathModifier)，用于优势平局时的最终 tie-break。</summary>
+        private static int CardValue(ModifierCardSnapshot c)
+        {
+            if (c == null) return 0;
+            if (!DamageModel.TryParse(c.MathModifier, out char op, out int val)) return 0;
+            switch (op)
+            {
+                case '+':
+                case '-':
+                    return 100 + val;          // '-' 已在 TryParse 里折成负数
+                case '*':
+                    return 100 * val;
+                case '/':
+                    return val == 0 ? 0 : 100 / val;
+                default:
+                    return 0;
+            }
         }
     }
 }

@@ -164,7 +164,10 @@ namespace FHSolver.Solver
             {
                 WorldState st = StateAdvancer.Apply(init, p);
                 RouteStep step = MakeStep(st, p, 1);
-                RunEnemy(st, step, myInitiative);
+                // ★ v1.35：每回合用自己的先攻判断敌我先后手。
+                //   之前所有层都传第 1 回合的 myInitiative ——
+                //   第 2 回合明明选了高先攻，仍按第 1 回合的低先攻结算挨打。
+                RunEnemy(st, step, RoundInitiative(p, myInitiative));
                 live.Add((new List<RouteStep> { step }, st, Evaluate(st, 1, w)));
             }
 
@@ -194,7 +197,8 @@ namespace FHSolver.Solver
 
                         // ★ 每一层都要跑敌人回合 —— 上一版只在第一层跑了，
                         //   深度 ≥3 时后面几回合的敌人完全没动手，等于白推。
-                        RunEnemy(st, step, myInitiative);
+                        //   v1.35：先攻取**本回合方案**的先攻，不是第 1 回合的。
+                        RunEnemy(st, step, RoundInitiative(p, myInitiative));
 
                         var steps = new List<RouteStep>(b.steps) { step };
                         next.Add((steps, st, Evaluate(st, d, w)));
@@ -218,6 +222,12 @@ namespace FHSolver.Solver
             }
             res.Routes.Sort((a, b) => RouteValue(b, w).CompareTo(RouteValue(a, w)));
             return res;
+        }
+
+        /// <summary>本回合结算用的先攻：优先用方案自己的先攻，缺失才退回外部值。</summary>
+        private static int RoundInitiative(TurnPlan plan, int fallback)
+        {
+            return plan != null && plan.Initiative > 0 ? plan.Initiative : fallback;
         }
 
         /// <summary>造一个路线步骤（还没跑敌人回合时的我方状态）。</summary>

@@ -1,0 +1,4241 @@
+[
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/BannerSpear/AbilityCards/61_BannerSpear_AtAllCosts.yml",
+      "line": 6,
+      "line_initiative": 8
+    },
+    "Id": 61,
+    "LocKey": "$FH/061_character_ability_cards_banner_spear_at_all_costs_1$",
+    "Character": "BannerSpearID",
+    "Level": 1,
+    "Initiative": 60,
+    "Discard": [
+      "Discard",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "THeal": {
+          "Filter": "Ally",
+          "Targeting": "All",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": 3,
+          "Damage": null,
+          "Range": null,
+          "Target": 99,
+          "Shield": null,
+          "Retaliate": null,
+          "SubAbilities": {
+            "THealSubDamage": {
+              "Filter": "Self",
+              "Targeting": "All",
+              "AttackAmount": null,
+              "Move": null,
+              "Heal": null,
+              "Damage": 0,
+              "Range": null,
+              "Target": null,
+              "Shield": null,
+              "Retaliate": null,
+              "Types": [
+                "Damage"
+              ]
+            }
+          },
+          "Types": [
+            "Heal"
+          ]
+        }
+      },
+      "XP": 1
+    },
+    "Bottom": {
+      "Abilities": {
+        "BSummon": {
+          "Summon": "ReinforcementID",
+          "AnimOverload": "Summon",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Summon",
+            "Summon"
+          ]
+        }
+      },
+      "XP": 1
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/BannerSpear/AbilityCards/62_BannerSpear_RallyingCry.yml",
+      "line": 5,
+      "line_initiative": 7
+    },
+    "Id": 62,
+    "LocKey": "$FH/062_character_ability_cards_banner_spear_rallying_cry_1$",
+    "Character": "BannerSpearID",
+    "Level": 1,
+    "Initiative": 71,
+    "Discard": [
+      "Discard",
+      "Lost"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "Conditions": "Disarm",
+          "AreaEffect": "0,0,G|2,0,R|3,1,B|4,0,E",
+          "AreaEffectLayoutOverride": "0,0,G|1,1,R|0,2,B|2,2,E",
+          "MultiPassAttack": "false",
+          "AttackAmount": 3,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 1
+    },
+    "Bottom": {
+      "Abilities": {
+        "BSummon": {
+          "Summon": "BannerOfStrengthID",
+          "AnimOverload": "Summon",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Summon",
+            "Summon"
+          ]
+        }
+      },
+      "XP": 2
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/BannerSpear/AbilityCards/63_BannerSpear_UnbreakableWall.yml",
+      "line": 5,
+      "line_initiative": 7
+    },
+    "Id": 63,
+    "LocKey": "$FH/063_character_ability_cards_banner_spear_unbreakable_wall_1$",
+    "Character": "BannerSpearID",
+    "Level": 1,
+    "Initiative": 83,
+    "Discard": [
+      "Discard",
+      "Lost"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "AreaEffect": "0,0,G|1,1,B|1,-1,R|2,0,R|3,1,R",
+          "AreaEffectLayoutOverride": "0,0,G|-2,0,B|-3,1,R|-1,1,R|1,1,R",
+          "MultiPassAttack": "false",
+          "AnimOverload": "Attack2",
+          "AttackAmount": 3,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "SubAbilities": {
+            "TAttackSubPush": {
+              "AttackAmount": null,
+              "Move": null,
+              "Heal": null,
+              "Damage": null,
+              "Range": null,
+              "Target": null,
+              "Shield": null,
+              "Retaliate": null,
+              "Types": [
+                "Push"
+              ]
+            }
+          },
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 1
+    },
+    "Bottom": {
+      "Abilities": {
+        "BShield": {
+          "AnimOverload": "SelfBuff",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": 1,
+          "Retaliate": null,
+          "SubAbilities": {
+            "BRangeDebuff": {
+              "Filter": "Self",
+              "AttackAmount": null,
+              "Move": null,
+              "Heal": null,
+              "Damage": null,
+              "Range": null,
+              "Target": null,
+              "Shield": null,
+              "Retaliate": null
+            }
+          },
+          "Types": [
+            "Shield"
+          ]
+        }
+      },
+      "XP": 2
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/BannerSpear/AbilityCards/64_BannerSpear_Javelin.yml",
+      "line": 5,
+      "line_initiative": 7
+    },
+    "Id": 64,
+    "LocKey": "$FH/064_character_ability_cards_banner_spear_javelin$",
+    "Character": "BannerSpearID",
+    "Level": 1,
+    "Initiative": 21,
+    "Discard": [
+      "Discard",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "AnimOverload": "RangedAttack",
+          "AttackAmount": 3,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 0,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BMove": {
+          "AttackAmount": null,
+          "Move": 0,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Move"
+          ]
+        },
+        "BPull": {
+          "AnimOverload": "SelfBuff",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 0,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Pull"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/BannerSpear/AbilityCards/65_BannerSpear_DeflectingManeuver.yml",
+      "line": 5,
+      "line_initiative": 7
+    },
+    "Id": 65,
+    "LocKey": "$FH/065_character_ability_cards_banner_spear_deflecting_maneuver_1$",
+    "Character": "BannerSpearID",
+    "Level": 1,
+    "Initiative": 15,
+    "Discard": [
+      "Discard",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "AnimOverload": "Attack",
+          "AttackAmount": 2,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        },
+        "TDisadvantage": {
+          "Filter": "Self",
+          "AnimOverload": "SelfBuff",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 0,
+          "Target": -1,
+          "Shield": null,
+          "Retaliate": null
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BShield": {
+          "AnimOverload": "SelfBuff",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": 0,
+          "Retaliate": null,
+          "Types": [
+            "Shield"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/BannerSpear/AbilityCards/66_BannerSpear_TipsOfTheSpear.yml",
+      "line": 5,
+      "line_initiative": 7
+    },
+    "Id": 66,
+    "LocKey": "$FH/066_character_ability_cards_banner_spear_tip_of_the_spear$",
+    "Character": "BannerSpearID",
+    "Level": 1,
+    "Initiative": 67,
+    "Discard": [
+      "Discard",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "AreaEffect": "0,0,G|-2,0,B|2,0,R|4,0,R|6,0,E",
+          "AreaEffectLayoutOverride": "0,0,G|-1,-1,B|1,1,R|2,2,R|3,3,E",
+          "MultiPassAttack": "false",
+          "AnimOverload": "Attack1_TipOfTheSpear",
+          "AttackAmount": 3,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 1
+    },
+    "Bottom": {
+      "Abilities": {
+        "BMove": {
+          "AttackAmount": null,
+          "Move": 0,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Move"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/BannerSpear/AbilityCards/67_BannerSpear_CombinedEffort.yml",
+      "line": 5,
+      "line_initiative": 7
+    },
+    "Id": 67,
+    "LocKey": "$FH/067_character_ability_cards_banner_spear_combined_effort_1$",
+    "Character": "BannerSpearID",
+    "Level": 1,
+    "Initiative": 32,
+    "Discard": [
+      "Discard",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "Conditions": "Wound",
+          "AreaEffect": "0,0,G|1,-1,B|2,0,R",
+          "AreaEffectLayoutOverride": "0,0,G|2,0,B|1,1,R",
+          "MultiPassAttack": "false",
+          "AttackAmount": 3,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 1
+    },
+    "Bottom": {
+      "Abilities": {
+        "BMove": {
+          "AttackAmount": null,
+          "Move": 0,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Move"
+          ]
+        },
+        "BAlly": {
+          "Filter": "Ally",
+          "AnimOverload": "Grant",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 2,
+          "Target": 2,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "ControlActor"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/BannerSpear/AbilityCards/68_BannerSpear_SetForTheCharge.yml",
+      "line": 5,
+      "line_initiative": 7
+    },
+    "Id": 68,
+    "LocKey": "$FH/068_character_ability_cards_banner_spear_set_for_the_charge_1$",
+    "Character": "BannerSpearID",
+    "Level": 1,
+    "Initiative": 6,
+    "Discard": [
+      "Discard",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TActive": {
+          "Filter": "Self",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 1,
+          "Target": -1,
+          "Shield": null,
+          "Retaliate": null
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BMove": {
+          "AttackAmount": null,
+          "Move": 0,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Move"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/BannerSpear/AbilityCards/69_BannerSpear_PincerMovement.yml",
+      "line": 5,
+      "line_initiative": 7
+    },
+    "Id": 69,
+    "LocKey": "$FH/069_character_ability_cards_banner_spear_pincer_movement$",
+    "Character": "BannerSpearID",
+    "Level": 1,
+    "Initiative": 69,
+    "Discard": [
+      "Discard",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "Conditions": "Muddle",
+          "AreaEffect": "0,0,G|2,0,R|4,0,B",
+          "AreaEffectLayoutOverride": "0,0,G|1,1,R|2,2,B",
+          "MultiPassAttack": "false",
+          "AttackAmount": 5,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 1
+    },
+    "Bottom": {
+      "Abilities": {
+        "BMove": {
+          "AttackAmount": null,
+          "Move": 0,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Move"
+          ]
+        },
+        "BLoot": {
+          "AnimOverload": "Loot",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": -1,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Loot"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/BannerSpear/AbilityCards/70_BannerSpear_Regroup.yml",
+      "line": 5,
+      "line_initiative": 7
+    },
+    "Id": 70,
+    "LocKey": "$FH/070_character_ability_cards_banner_spear_regroup_1$",
+    "Character": "BannerSpearID",
+    "Level": 1,
+    "Initiative": 25,
+    "Discard": [
+      "Discard",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "THeal": {
+          "Conditions": "Regenerate",
+          "Filter": "Self|Ally",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": 0,
+          "Damage": null,
+          "Range": 2,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Heal"
+          ]
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BAlly": {
+          "Filter": "Ally",
+          "AnimOverload": "Grant",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 3,
+          "Target": 2,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "ControlActor"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/BannerSpear/AbilityCards/71_BannerSpear_ResolvedCourage.yml",
+      "line": 5,
+      "line_initiative": 7
+    },
+    "Id": 71,
+    "LocKey": "$FH/071_character_ability_cards_banner_spear_resolved_courage_1$",
+    "Character": "BannerSpearID",
+    "Level": 0,
+    "Initiative": 10,
+    "Discard": [
+      "Discard",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "Conditions": "Immobilize",
+          "AreaEffect": "0,0,G|-2,0,B|2,0,R|1,1,R|1,-1,R",
+          "MultiPassAttack": "false",
+          "AnimOverload": "Attack2",
+          "AttackAmount": 3,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 1
+    },
+    "Bottom": {
+      "Abilities": {
+        "BActive": {
+          "Filter": "Self",
+          "AnimOverload": "SelfBuff",
+          "AttackAmount": 1,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 1,
+          "Target": 1,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/BannerSpear/AbilityCards/72_BannerSpear_IncendiaryThrow.yml",
+      "line": 5,
+      "line_initiative": 7
+    },
+    "Id": 72,
+    "LocKey": "$FH/072_character_ability_cards_banner_spear_incendiary_throw_1$",
+    "Character": "BannerSpearID",
+    "Level": 0,
+    "Initiative": 22,
+    "Discard": [
+      "Discard",
+      "Lost"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "AnimOverload": "RangedAttack_IncendiaryThrow",
+          "AttackAmount": 1,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 0,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "SubAbilities": {
+            "TCSubWoundAdjacent": {
+              "Filter": "Enemy",
+              "AttackAmount": null,
+              "Move": null,
+              "Heal": null,
+              "Damage": null,
+              "Range": 1,
+              "Target": -1,
+              "Shield": null,
+              "Retaliate": null,
+              "Types": [
+                "Wound"
+              ]
+            }
+          },
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BSummon": {
+          "Summon": "TorchBearerID",
+          "AnimOverload": "Summon",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Summon",
+            "Summon"
+          ]
+        }
+      },
+      "XP": 2
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/BannerSpear/AbilityCards/73_BannerSpear_DrivingInspiration.yml",
+      "line": 5,
+      "line_initiative": 7
+    },
+    "Id": 73,
+    "LocKey": "$FH/073_character_ability_cards_banner_spear_driving_inspiration_1$",
+    "Character": "BannerSpearID",
+    "Level": 0,
+    "Initiative": 18,
+    "Discard": [
+      "Discard",
+      "Lost"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "AnimOverload": "RangedAttack",
+          "AttackAmount": 2,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 0,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BSummon": {
+          "Summon": "BannerOfHopeID",
+          "AnimOverload": "Summon",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Summon",
+            "Summon"
+          ]
+        }
+      },
+      "XP": 2
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/BannerSpear/AbilityCards/74_BannerSpear_MeatGrinder.yml",
+      "line": 5,
+      "line_initiative": 7
+    },
+    "Id": 74,
+    "LocKey": "$FH/074_character_ability_cards_banner_spear_meat_grinder$",
+    "Character": "BannerSpearID",
+    "Level": 2,
+    "Initiative": 62,
+    "Discard": [
+      "Discard",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "Conditions": "Wound",
+          "AreaEffect": "0,0,G|1,1,R|2,0,R|3,1,B",
+          "AreaEffectLayoutOverride": "0,0,G|-1,1,R|1,1,R|0,2,B",
+          "MultiPassAttack": "false",
+          "AnimOverload": "Attack2",
+          "AttackAmount": 4,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 1
+    },
+    "Bottom": {
+      "Abilities": {
+        "BMove": {
+          "AttackAmount": null,
+          "Move": 3,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Move"
+          ]
+        },
+        "BHeal": {
+          "Conditions": "Regenerate",
+          "Filter": "Self|Ally",
+          "Targeting": "Range",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": 0,
+          "Damage": null,
+          "Range": 1,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Heal"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/BannerSpear/AbilityCards/75_BannerSpear_PinningCharge.yml",
+      "line": 5,
+      "line_initiative": 7
+    },
+    "Id": 75,
+    "LocKey": "$FH/075_character_ability_cards_banner_spear_pinning_charge_1$",
+    "Character": "BannerSpearID",
+    "Level": 2,
+    "Initiative": 17,
+    "Discard": [
+      "Discard",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "AnimOverload": "RangedAttack",
+          "AttackAmount": 2,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 3,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BAlly": {
+          "Filter": "Ally",
+          "AnimOverload": "Grant",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 4,
+          "Target": 3,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "ControlActor"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/BannerSpear/AbilityCards/76_BannerSpear_LetThemCome.yml",
+      "line": 5,
+      "line_initiative": 7
+    },
+    "Id": 76,
+    "LocKey": "$FH/076_character_ability_cards_banner_spear_let_them_come_1$",
+    "Character": "BannerSpearID",
+    "Level": 3,
+    "Initiative": 24,
+    "Discard": [
+      "Discard",
+      "Lost"
+    ],
+    "Top": {
+      "Abilities": {
+        "TLetThemComeAttack": {
+          "Conditions": "Poison",
+          "AreaEffect": "0,0,G|2,0,R|4,0,R|3,-1,R|1,1,B",
+          "AreaEffectLayoutOverride": "0,0,G|-1,1,R|-2,2,R|0,2,R|-2,0,B",
+          "MultiPassAttack": "false",
+          "AnimOverload": "Attack2",
+          "AttackAmount": 2,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        },
+        "TSubHeal": {
+          "Filter": "Ally|Self",
+          "Targeting": "Custom",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": 0,
+          "Damage": null,
+          "Range": null,
+          "Target": 2,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Heal"
+          ]
+        }
+      },
+      "XP": 1
+    },
+    "Bottom": {
+      "Abilities": {
+        "BSummon": {
+          "Summon": "BannerOfCourageID",
+          "AnimOverload": "Summon",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Summon",
+            "Summon"
+          ]
+        }
+      },
+      "XP": 2
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/BannerSpear/AbilityCards/77_BannerSpear_HeadOfTheHammer.yml",
+      "line": 5,
+      "line_initiative": 7
+    },
+    "Id": 77,
+    "LocKey": "$FH/077_character_ability_cards_banner_spear_head_of_the_hammer_1$",
+    "Character": "BannerSpearID",
+    "Level": 3,
+    "Initiative": 87,
+    "Discard": [
+      "Lost",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "Conditions": "Stun",
+          "AreaEffect": "0,0,G|2,0,R|-2,0,B",
+          "AreaEffectLayoutOverride": "0,0,G|1,1,R|-1,-1,B",
+          "MultiPassAttack": "false",
+          "AnimOverload": "Attack",
+          "AttackAmount": 7,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 3
+    },
+    "Bottom": {
+      "Abilities": {
+        "BMove": {
+          "AttackAmount": null,
+          "Move": 0,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Move"
+          ]
+        },
+        "BMuddle": {
+          "Filter": "Enemy",
+          "AnimOverload": "SelfBuff",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 1,
+          "Target": 99,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Muddle"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/BannerSpear/AbilityCards/78_BannerSpear_BoldeningBlow.yml",
+      "line": 4,
+      "line_initiative": 6
+    },
+    "Id": 78,
+    "LocKey": "$FH/078_character_ability_cards_banner_spear_boldening_blow_1$",
+    "Character": "BannerSpearID",
+    "Level": 4,
+    "Initiative": 72,
+    "Discard": [
+      "Discard",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "AreaEffect": "0,0,G|-2,0,B|2,0,R|-1,1,R|1,1,R|-1,-1,B|1,-1,R",
+          "Filter": "{\"ActorType\": [\"Enemy\", \"Enemy2\"], \"EnemyType\": [\"Normal\", \"Elite\", \"Boss\", \"Object\"]}",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "SubAbilities": {
+            "TSubAttack": {
+              "Conditions": "Disarm",
+              "Filter": "Enemy",
+              "Targeting": "Custom",
+              "AttackAmount": 4,
+              "Move": null,
+              "Heal": null,
+              "Damage": null,
+              "Range": null,
+              "Target": 1,
+              "Shield": null,
+              "Retaliate": null,
+              "Types": [
+                "Attack"
+              ]
+            },
+            "TBless": {
+              "Filter": "Ally",
+              "Targeting": "Custom",
+              "AttackAmount": null,
+              "Move": null,
+              "Heal": null,
+              "Damage": null,
+              "Range": null,
+              "Target": -1,
+              "Shield": null,
+              "Retaliate": null,
+              "Types": [
+                "Bless"
+              ]
+            }
+          }
+        }
+      },
+      "XP": 1
+    },
+    "Bottom": {
+      "Abilities": {
+        "BMove": {
+          "AttackAmount": null,
+          "Move": 0,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Move"
+          ]
+        },
+        "BAlly": {
+          "Filter": "Ally",
+          "Targeting": "Range",
+          "AnimOverload": "Grant",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 3,
+          "Target": 2,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "ControlActor"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/BannerSpear/AbilityCards/79_BannerSpear_AirSupport.yml",
+      "line": 5,
+      "line_initiative": 7
+    },
+    "Id": 79,
+    "LocKey": "$FH/079_character_ability_cards_banner_spear_air_support_1$",
+    "Character": "BannerSpearID",
+    "Level": 4,
+    "Initiative": 20,
+    "Discard": [
+      "Discard",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "Filter": "Enemy",
+          "AnimOverload": "RangedAttack",
+          "AttackAmount": 4,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 3,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BSummon": {
+          "Summon": "TrainedFalconID",
+          "AnimOverload": "Summon",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Summon",
+            "Summon"
+          ]
+        }
+      },
+      "XP": 1
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/BannerSpear/AbilityCards/80_BannerSpear_ExplosiveEpicenter.yml",
+      "line": 5,
+      "line_initiative": 7
+    },
+    "Id": 80,
+    "LocKey": "$FH/080_character_ability_cards_banner_spear_explosive_epicenter_1$",
+    "Character": "BannerSpearID",
+    "Level": 5,
+    "Initiative": 78,
+    "Discard": [
+      "Discard",
+      "Lost"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "AreaEffect": "0,0,G|-1,-1,B|-3,-1,R|-2,0,R|-1,1,R|0,-2,R|1,-1,R|2,0,R",
+          "AreaEffectLayoutOverride": "0,0,G|-2,0,B|-3,1,R|-1,1,R|1,1,R|-3,-1,R|-1,-1,R|1,-1,R",
+          "MultiPassAttack": "false",
+          "AnimOverload": "Epicenter",
+          "AttackAmount": 3,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "SubAbilities": {
+            "TSubPush": {
+              "AttackAmount": null,
+              "Move": null,
+              "Heal": null,
+              "Damage": null,
+              "Range": null,
+              "Target": -1,
+              "Shield": null,
+              "Retaliate": null,
+              "Types": [
+                "Push"
+              ]
+            },
+            "TSubMove": {
+              "Filter": "Ally|Self",
+              "Targeting": "Custom",
+              "AnimOverload": "Grant",
+              "AttackAmount": null,
+              "Move": null,
+              "Heal": null,
+              "Damage": null,
+              "Range": null,
+              "Target": -1,
+              "Shield": null,
+              "Retaliate": null,
+              "Types": [
+                "ControlActor"
+              ]
+            }
+          },
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 1
+    },
+    "Bottom": {
+      "Abilities": {
+        "BGrantMove": {
+          "AnimOverload": "SelfBuff",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 0,
+          "Target": -1,
+          "Shield": null,
+          "Retaliate": null
+        }
+      },
+      "XP": 2
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/BannerSpear/AbilityCards/81_BannerSpear_HoldTheLine.yml",
+      "line": 5,
+      "line_initiative": 7
+    },
+    "Id": 81,
+    "LocKey": "$FH/081_character_ability_cards_banner_spear_hold_the_line_1$",
+    "Character": "BannerSpearID",
+    "Level": 5,
+    "Initiative": 5,
+    "Discard": [
+      "Discard",
+      "Lost"
+    ],
+    "Top": {
+      "Abilities": {
+        "TShield": {
+          "AnimOverload": "SelfBuff",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": 0,
+          "Retaliate": null,
+          "Types": [
+            "Shield"
+          ]
+        },
+        "TAllySubShield": {
+          "Filter": "Ally",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 1,
+          "Target": 99,
+          "Shield": 2,
+          "Retaliate": null,
+          "Types": [
+            "Shield"
+          ]
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BMove": {
+          "AttackAmount": null,
+          "Move": 0,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Move"
+          ]
+        },
+        "BShield": {
+          "AnimOverload": "SelfBuff",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": 2,
+          "Retaliate": null,
+          "Types": [
+            "Shield"
+          ]
+        },
+        "BRetaliate": {
+          "AnimOverload": "SelfBuff",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": 0,
+          "Types": [
+            "Retaliate"
+          ]
+        }
+      },
+      "XP": 2
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/BannerSpear/AbilityCards/82_BannerSpear_Barricade.yml",
+      "line": 5,
+      "line_initiative": 7
+    },
+    "Id": 82,
+    "LocKey": "$FH/082_character_ability_cards_banner_spear_barricade_1$",
+    "Character": "BannerSpearID",
+    "Level": 6,
+    "Initiative": 16,
+    "Discard": [
+      "Discard",
+      "Lost"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "Conditions": "Wound",
+          "AreaEffect": "0,0,G|-1,1,B|1,-1,B|2,0,R|1,1,R|3,-1,R|0,2,R",
+          "AreaEffectLayoutOverride": "0,0,G|-2,0,B|2,0,B|-3,1,R|-1,1,R|1,1,R|3,1,R",
+          "MultiPassAttack": "false",
+          "AnimOverload": "Attack2_ImpactSpears",
+          "AttackAmount": 3,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "SubAbilities": {
+            "TSubShield": {
+              "Filter": "Ally|Self",
+              "Targeting": "Custom",
+              "AnimOverload": "SelfBuff",
+              "AttackAmount": null,
+              "Move": null,
+              "Heal": null,
+              "Damage": null,
+              "Range": null,
+              "Target": 3,
+              "Shield": 1,
+              "Retaliate": null,
+              "Types": [
+                "Shield"
+              ]
+            }
+          },
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 1
+    },
+    "Bottom": {
+      "Abilities": {
+        "BSummon": {
+          "Summon": "BannerOfValorID",
+          "AnimOverload": "Summon",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Summon",
+            "Summon"
+          ]
+        }
+      },
+      "XP": 2
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/BannerSpear/AbilityCards/83_BannerSpear_BolsteringShout.yml",
+      "line": 5,
+      "line_initiative": 7
+    },
+    "Id": 83,
+    "LocKey": "$FH/083_character_ability_cards_banner_spear_bolstering_shout$",
+    "Character": "BannerSpearID",
+    "Level": 6,
+    "Initiative": 75,
+    "Discard": [
+      "Discard",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "THeal": {
+          "Conditions": "Regenerate",
+          "Filter": "Self|Ally",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": 3,
+          "Damage": null,
+          "Range": 0,
+          "Target": 1,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Heal"
+          ]
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BMove": {
+          "AttackAmount": null,
+          "Move": 0,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Move"
+          ]
+        },
+        "BPull": {
+          "AnimOverload": "SelfBuff",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 3,
+          "Target": 0,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Pull"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/BannerSpear/AbilityCards/84_BannerSpear_TriThrust.yml",
+      "line": 5,
+      "line_initiative": 7
+    },
+    "Id": 84,
+    "LocKey": "$FH/084_character_ability_cards_banner_spear_tri-thrust_1$",
+    "Character": "BannerSpearID",
+    "Level": 7,
+    "Initiative": 27,
+    "Discard": [
+      "Discard",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "Conditions": "Stun",
+          "AreaEffect": "0,0,G|2,0,R|3,1,B|3,-1,B",
+          "AreaEffectLayoutOverride": "0,0,G|1,1,R|0,2,B|3,1,B",
+          "MultiPassAttack": "false",
+          "AnimOverload": "Tri-Trust",
+          "AttackAmount": 7,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 1
+    },
+    "Bottom": {
+      "Abilities": {
+        "BMove": {
+          "AttackAmount": null,
+          "Move": 0,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Move"
+          ]
+        },
+        "BAttack": {
+          "AnimOverload": "Attack2",
+          "AttackAmount": 1,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 1,
+          "Target": 3,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/BannerSpear/AbilityCards/85_BannerSpear_LeadFromAfar.yml",
+      "line": 5,
+      "line_initiative": 7
+    },
+    "Id": 85,
+    "LocKey": "$FH/085_character_ability_cards_banner_spear_lead_from_afar_1$",
+    "Character": "BannerSpearID",
+    "Level": 7,
+    "Initiative": 80,
+    "Discard": [
+      "Discard",
+      "Lost"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "AnimOverload": "RangedAttack",
+          "AttackAmount": 2,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 4,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BSummon": {
+          "Summon": "LongbowmanID",
+          "AnimOverload": "Summon",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Summon",
+            "Summon"
+          ]
+        }
+      },
+      "XP": 2
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/BannerSpear/AbilityCards/86_BannerSpear_SweepingAid.yml",
+      "line": 5,
+      "line_initiative": 7
+    },
+    "Id": 86,
+    "LocKey": "$FH/086_character_ability_cards_banner_spear_sweeping_aid$",
+    "Character": "BannerSpearID",
+    "Level": 8,
+    "Initiative": 73,
+    "Discard": [
+      "Discard",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "Conditions": "Immobilize",
+          "AreaEffect": "0,0,G|2,0,B|3,1,R|3,-1,R|4,0,R",
+          "MultiPassAttack": "false",
+          "AnimOverload": "Summon_SpearsFromGround",
+          "AttackAmount": 4,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 1
+    },
+    "Bottom": {
+      "Abilities": {
+        "BHeal": {
+          "Filter": "Self|Ally",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": 2,
+          "Damage": null,
+          "Range": 2,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Heal"
+          ]
+        },
+        "BMove": {
+          "AttackAmount": null,
+          "Move": 0,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Move"
+          ]
+        },
+        "BHealBottom": {
+          "Filter": "Self|Ally",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": 2,
+          "Damage": null,
+          "Range": 2,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Heal"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/BannerSpear/AbilityCards/87_BannerSpear_TauntingHowl.yml",
+      "line": 5,
+      "line_initiative": 7
+    },
+    "Id": 87,
+    "LocKey": "$FH/087_character_ability_cards_banner_spear_taunting_howl_1$",
+    "Character": "BannerSpearID",
+    "Level": 8,
+    "Initiative": 11,
+    "Discard": [
+      "Lost",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TPull": {
+          "Conditions": "Muddle",
+          "AnimOverload": "SelfBuff",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 4,
+          "Target": -1,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Pull"
+          ]
+        },
+        "TShield": {
+          "Filter": "Self",
+          "AnimOverload": "SelfBuff",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": 0,
+          "Retaliate": null,
+          "Types": [
+            "Shield"
+          ]
+        }
+      },
+      "XP": 2
+    },
+    "Bottom": {
+      "Abilities": {
+        "BMove": {
+          "AttackAmount": null,
+          "Move": 0,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Move"
+          ]
+        },
+        "BAlly": {
+          "Filter": "Ally",
+          "AnimOverload": "Grant",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 3,
+          "Target": 2,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "ControlActor"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/BannerSpear/AbilityCards/88_BannerSpear_TakeNoPrisoners.yml",
+      "line": 5,
+      "line_initiative": 7
+    },
+    "Id": 88,
+    "LocKey": "$FH/088_character_ability_cards_banner_spear_take_no_prisoners_1$",
+    "Character": "BannerSpearID",
+    "Level": 9,
+    "Initiative": 85,
+    "Discard": [
+      "Discard",
+      "Lost"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "Conditions": "Poison",
+          "AreaEffect": "-2,0,B|-1,-1,B|0,0,G|2,0,R|4,0,R|1,-1,R|3,-1,R|1,1,R|3,1,R|2,2,R|0,2,R|-1,1,R",
+          "MultiPassAttack": "false",
+          "AnimOverload": "Attack2_TakeNoPrisoners",
+          "AttackAmount": 3,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 1
+    },
+    "Bottom": {
+      "Abilities": {
+        "BSummon": {
+          "Summon": "BannerOfDoomID",
+          "AnimOverload": "Summon",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Summon",
+            "Summon"
+          ]
+        }
+      },
+      "XP": 2
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/BannerSpear/AbilityCards/89_BannerSpear_HailOfSpears.yml",
+      "line": 5,
+      "line_initiative": 7
+    },
+    "Id": 89,
+    "LocKey": "$FH/089_character_ability_cards_banner_spear_hail_of_spears_1$",
+    "Character": "BannerSpearID",
+    "Level": 9,
+    "Initiative": 44,
+    "Discard": [
+      "Discard",
+      "Permanently Lost"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "AnimOverload": "RangedAttack",
+          "AttackAmount": 5,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 4,
+          "Target": 1,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        },
+        "TTeleport": {
+          "Filter": "OwnBannerSummon",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 1,
+          "Target": -1,
+          "Shield": null,
+          "Retaliate": null
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BMove": {
+          "AttackAmount": null,
+          "Move": 0,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Move"
+          ]
+        },
+        "BSummon": {
+          "Filter": "Self",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/Drifter/AbilityCards/10_Drifter_DeadlyShot.yml",
+      "line": 4,
+      "line_initiative": 7
+    },
+    "Id": 10,
+    "LocKey": "$FH/010_character_ability_cards_drifter_deadly_shot_1$",
+    "Character": "DrifterID",
+    "Level": 1,
+    "Initiative": 32,
+    "Discard": [
+      "Discard",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "Conditions": "Poison",
+          "Filter": "Enemy",
+          "AnimOverload": "RangedAttack",
+          "AttackAmount": 1,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 4,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BMove": {
+          "AttackAmount": null,
+          "Move": 4,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Move"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/Drifter/AbilityCards/11_Drifter_Bloodletting.yml",
+      "line": 4,
+      "line_initiative": 7
+    },
+    "Id": 11,
+    "LocKey": "$FH/011_character_ability_cards_drifter_bloodletting_1$",
+    "Character": "DrifterID",
+    "Level": 1,
+    "Initiative": 65,
+    "Discard": [
+      "Discard",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "Filter": "Enemy",
+          "AttackAmount": 3,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "SubAbilities": {
+            "TMoveTracker": {
+              "Filter": "Self",
+              "AnimOverload": "PowerUp",
+              "AttackAmount": null,
+              "Move": null,
+              "Heal": null,
+              "Damage": null,
+              "Range": null,
+              "Target": null,
+              "Shield": null,
+              "Retaliate": null
+            }
+          },
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BAttack": {
+          "Conditions": "Wound",
+          "Filter": "Enemy",
+          "AttackAmount": 1,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/Drifter/AbilityCards/12_Drifter_ViolentInheritance.yml",
+      "line": 4,
+      "line_initiative": 7
+    },
+    "Id": 12,
+    "LocKey": "$FH/012_character_ability_cards_drifter_violent_inheritance_1$",
+    "Character": "DrifterID",
+    "Level": 1,
+    "Initiative": 70,
+    "Discard": [
+      "Discard",
+      "Lost"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "AttackAmount": 1,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        },
+        "TLoot": {
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": -1,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Loot"
+          ]
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BMove": {
+          "AttackAmount": null,
+          "Move": 0,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Move"
+          ]
+        },
+        "BAttack": {
+          "AnimOverload": "RangedAttack",
+          "AttackAmount": 3,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 3,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/Drifter/AbilityCards/13_Drifter_Fortitude.yml",
+      "line": 4,
+      "line_initiative": 7
+    },
+    "Id": 13,
+    "LocKey": "$FH/013_character_ability_cards_drifter_fortitude_1$",
+    "Character": "DrifterID",
+    "Level": 0,
+    "Initiative": 31,
+    "Discard": [
+      "Discard",
+      "Lost"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "AttackAmount": 3,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BActive": {
+          "AnimOverload": "Persistent Buff",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": 0,
+          "Shield": null,
+          "Retaliate": null
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/Drifter/AbilityCards/14_Drifter_NoRemorse.yml",
+      "line": 4,
+      "line_initiative": 7
+    },
+    "Id": 14,
+    "LocKey": "$FH/014_character_ability_cards_drifter_no_remorse_1$",
+    "Character": "DrifterID",
+    "Level": 0,
+    "Initiative": 20,
+    "Discard": [
+      "Discard",
+      "Lost"
+    ],
+    "Top": {
+      "Abilities": {
+        "THeal": {
+          "Filter": "Self|Ally",
+          "AnimOverload": "Heal",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": 0,
+          "Damage": null,
+          "Range": 3,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Heal"
+          ]
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BMove1": {
+          "AttackAmount": null,
+          "Move": 0,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Move"
+          ]
+        },
+        "BAttack": {
+          "AttackAmount": 3,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        },
+        "BMove2": {
+          "AttackAmount": null,
+          "Move": 0,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Move"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/Drifter/AbilityCards/15_Drifter_DestructiveFury.yml",
+      "line": 4,
+      "line_initiative": 7
+    },
+    "Id": 15,
+    "LocKey": "$FH/015_character_ability_cards_drifter_destructive_fury_1$",
+    "Character": "DrifterID",
+    "Level": 0,
+    "Initiative": 19,
+    "Discard": [
+      "Lost",
+      "Lost"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "AreaEffect": "0,0,G|2,0,R|4,0,R|1,1,R|2,2,R|3,1,R",
+          "MultiPassAttack": "false",
+          "AnimOverload": "Attack_AOE_Cone",
+          "AttackAmount": 3,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BAttack": {
+          "AreaEffect": "0,0,R|2,0,R|1,1,R",
+          "MultiPassAttack": "false",
+          "AnimOverload": "RangedAttack_AOE",
+          "AttackAmount": 3,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 2,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/Drifter/AbilityCards/16_Drifter_Shockwave.yml",
+      "line": 4,
+      "line_initiative": 7
+    },
+    "Id": 16,
+    "LocKey": "$FH/016_character_ability_cards_drifter_shockwave_1$",
+    "Character": "DrifterID",
+    "Level": 2,
+    "Initiative": 17,
+    "Discard": [
+      "Lost",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TActive": {
+          "Filter": "Self",
+          "AnimOverload": "Persistent Buff",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BMove": {
+          "AttackAmount": null,
+          "Move": 3,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Move"
+          ]
+        },
+        "BShield": {
+          "Filter": "Self",
+          "AnimOverload": "PowerUp",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": 0,
+          "Retaliate": null,
+          "Types": [
+            "Shield"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/Drifter/AbilityCards/17_Drifter_EverForward.yml",
+      "line": 4,
+      "line_initiative": 7
+    },
+    "Id": 17,
+    "LocKey": "$FH/017_character_ability_cards_drifter_ever_forward_1$",
+    "Character": "DrifterID",
+    "Level": 2,
+    "Initiative": 67,
+    "Discard": [
+      "Discard",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "AnimOverload": "RangedAttack",
+          "AttackAmount": 2,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 3,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        },
+        "TRegenerate": {
+          "Filter": "Self",
+          "AnimOverload": "PowerUp_No_VFX",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Regenerate"
+          ]
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BHeal": {
+          "Filter": "Self|Ally",
+          "AnimOverload": "Heal",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": 0,
+          "Damage": null,
+          "Range": 3,
+          "Target": 3,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Heal"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/Drifter/AbilityCards/18_Drifter_FierceBarrage.yml",
+      "line": 4,
+      "line_initiative": 7
+    },
+    "Id": 18,
+    "LocKey": "$FH/018_character_ability_cards_drifter_fierce_barrage_1$",
+    "Character": "DrifterID",
+    "Level": 3,
+    "Initiative": 32,
+    "Discard": [
+      "Discard",
+      "Lost"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "AreaEffect": "0,0,G|2,0,R|1,1,R",
+          "MultiPassAttack": "false",
+          "AnimOverload": "Attack_AOE_Cone",
+          "AttackAmount": 2,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BBuffAttack": {
+          "Filter": "Self",
+          "AnimOverload": "Persistent Buff",
+          "AttackAmount": 0,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/Drifter/AbilityCards/19_Drifter_DualBow.yml",
+      "line": 4,
+      "line_initiative": 7
+    },
+    "Id": 19,
+    "LocKey": "$FH/019_character_ability_cards_drifter_dual_bow_1$",
+    "Character": "DrifterID",
+    "Level": 3,
+    "Initiative": 26,
+    "Discard": [
+      "Discard",
+      "Lost"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "Filter": "Enemy",
+          "AnimOverload": "RangedAttack",
+          "AttackAmount": 2,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 3,
+          "Target": 2,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BMoveTracker": {
+          "Filter": "Self",
+          "AnimOverload": "PowerUp",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/Drifter/AbilityCards/1_Drifter_CrushingWeight.yml",
+      "line": 4,
+      "line_initiative": 7
+    },
+    "Id": 1,
+    "LocKey": "$FH/001_character_ability_cards_drifter_crushing_weight_1$",
+    "Character": "DrifterID",
+    "Level": 1,
+    "Initiative": 71,
+    "Discard": [
+      "Lost",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TBuffAttack": {
+          "Filter": "Self",
+          "AnimOverload": "Persistent Buff",
+          "AttackAmount": 0,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BHeal": {
+          "Filter": "Self|Ally",
+          "AnimOverload": "Heal",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": 0,
+          "Damage": null,
+          "Range": 2,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Heal"
+          ]
+        },
+        "BMoveTracker": {
+          "Filter": "Self",
+          "AnimOverload": "PowerUp",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/Drifter/AbilityCards/20_Drifter_ChunkofFlesh.yml",
+      "line": 4,
+      "line_initiative": 7
+    },
+    "Id": 20,
+    "LocKey": "$FH/020_character_ability_cards_drifter_chunk_of_flesh_1$",
+    "Character": "DrifterID",
+    "Level": 4,
+    "Initiative": 62,
+    "Discard": [
+      "Discard",
+      "Lost"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "AttackAmount": 2,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        },
+        "THeal": {
+          "Filter": "Self|Ally",
+          "AnimOverload": "Heal",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": 0,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Heal"
+          ]
+        },
+        "TMoveTracker": {
+          "Filter": "Self",
+          "AnimOverload": "PowerUp",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BShieldIncomingAttacks_ChunkOfFlesh": {
+          "Filter": "Self",
+          "AnimOverload": "Persistent Buff",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": 2,
+          "Retaliate": null,
+          "Types": [
+            "Shield"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/Drifter/AbilityCards/21_Drifter_GiftofthePrey.yml",
+      "line": 4,
+      "line_initiative": 7
+    },
+    "Id": 21,
+    "LocKey": "$FH/021_character_ability_cards_drifter_gift_of_the_prey_1$",
+    "Character": "DrifterID",
+    "Level": 4,
+    "Initiative": 40,
+    "Discard": [
+      "Discard",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "AnimOverload": "RangedAttack",
+          "AttackAmount": 3,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 0,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        },
+        "TMoveTracker": {
+          "Filter": "Self",
+          "AnimOverload": "PowerUp",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BMove": {
+          "AttackAmount": null,
+          "Move": 0,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Move"
+          ]
+        },
+        "BMoveTracker": {
+          "Filter": "Self",
+          "AnimOverload": "PowerUp",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/Drifter/AbilityCards/22_Drifter_Survivalist.yml",
+      "line": 4,
+      "line_initiative": 7
+    },
+    "Id": 22,
+    "LocKey": "$FH/022_character_ability_cards_drifter_survivalist_1$",
+    "Character": "DrifterID",
+    "Level": 5,
+    "Initiative": 91,
+    "Discard": [
+      "Lost",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TBuffHeal": {
+          "AnimOverload": "Persistent Buff",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BMove": {
+          "AttackAmount": null,
+          "Move": 0,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Move"
+          ]
+        },
+        "BLoot": {
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": -1,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Loot"
+          ]
+        },
+        "BHeal": {
+          "Filter": "Self",
+          "AnimOverload": "Heal",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": 0,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Heal"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/Drifter/AbilityCards/23_Drifter_BreakThrough.yml",
+      "line": 4,
+      "line_initiative": 7
+    },
+    "Id": 23,
+    "LocKey": "$FH/023_character_ability_cards_drifter_break_through_1$",
+    "Character": "DrifterID",
+    "Level": 5,
+    "Initiative": 34,
+    "Discard": [
+      "Discard",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "AttackAmount": 4,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BMove": {
+          "AttackAmount": null,
+          "Move": 0,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Move"
+          ]
+        },
+        "BMoveTracker": {
+          "Filter": "Self",
+          "AnimOverload": "PowerUp",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/Drifter/AbilityCards/24_Drifter_AccurateStrikes.yml",
+      "line": 4,
+      "line_initiative": 7
+    },
+    "Id": 24,
+    "LocKey": "$FH/024_character_ability_cards_drifter_accurate_strikes_1$",
+    "Character": "DrifterID",
+    "Level": 6,
+    "Initiative": 56,
+    "Discard": [
+      "Lost",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TBuffAttack": {
+          "Filter": "Self",
+          "AnimOverload": "Persistent Buff",
+          "AttackAmount": 0,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BMove": {
+          "AttackAmount": null,
+          "Move": 0,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Move"
+          ]
+        },
+        "BAdvantage": {
+          "Filter": "Self",
+          "AnimOverload": "PowerUp",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/Drifter/AbilityCards/25_Drifter_ConsumeStamina.yml",
+      "line": 4,
+      "line_initiative": 7
+    },
+    "Id": 25,
+    "LocKey": "$FH/025_character_ability_cards_drifter_consume_stamina_1$",
+    "Character": "DrifterID",
+    "Level": 6,
+    "Initiative": 21,
+    "Discard": [
+      "Discard",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "Filter": "Enemy",
+          "AnimOverload": "RangedAttack",
+          "AttackAmount": 2,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 4,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        },
+        "THeal": {
+          "Filter": "Self|Ally",
+          "AnimOverload": "Heal",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": 0,
+          "Damage": null,
+          "Range": 4,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Heal"
+          ]
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BMove": {
+          "AttackAmount": null,
+          "Move": 2,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Move"
+          ]
+        },
+        "BRetaliate": {
+          "AnimOverload": "PowerUp",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": 0,
+          "Types": [
+            "Retaliate"
+          ]
+        },
+        "BMoveTracker": {
+          "Filter": "Self",
+          "AnimOverload": "PowerUp",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 1,
+          "Target": -1,
+          "Shield": null,
+          "Retaliate": null
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/Drifter/AbilityCards/26_Drifter_LiketheWind.yml",
+      "line": 4,
+      "line_initiative": 7
+    },
+    "Id": 26,
+    "LocKey": "$FH/026_character_ability_cards_drifter_like_the_wind_1$",
+    "Character": "DrifterID",
+    "Level": 7,
+    "Initiative": 77,
+    "Discard": [
+      "Lost",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TActive": {
+          "AnimOverload": "Persistent Buff",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BMove": {
+          "AttackAmount": null,
+          "Move": 3,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Move"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/Drifter/AbilityCards/27_Drifter_UnendingFight.yml",
+      "line": 4,
+      "line_initiative": 7
+    },
+    "Id": 27,
+    "LocKey": "$FH/027_character_ability_cards_drifter_unending_fight_1$",
+    "Character": "DrifterID",
+    "Level": 7,
+    "Initiative": 25,
+    "Discard": [
+      "Discard",
+      "Lost"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack1": {
+          "AttackAmount": 2,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        },
+        "TMove": {
+          "AttackAmount": null,
+          "Move": 3,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Move"
+          ]
+        },
+        "TAttack2": {
+          "AttackAmount": 2,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BMoveTracker": {
+          "Filter": "Self",
+          "AnimOverload": "PowerUp",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/Drifter/AbilityCards/28_Drifter_AgainstAllOdds.yml",
+      "line": 4,
+      "line_initiative": 7
+    },
+    "Id": 28,
+    "LocKey": "$FH/028_character_ability_cards_drifter_against_all_odds_1$",
+    "Character": "DrifterID",
+    "Level": 8,
+    "Initiative": 37,
+    "Discard": [
+      "Discard",
+      "Lost"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "MultiPassAttack": "false",
+          "AnimOverload": "Attack_AOE_Radial",
+          "AttackAmount": 1,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 2,
+          "Target": 99,
+          "Shield": null,
+          "Retaliate": null,
+          "SubAbilities": {
+            "BMoveTracker0": {
+              "Filter": "Self",
+              "AnimOverload": "PowerUp",
+              "AttackAmount": null,
+              "Move": null,
+              "Heal": null,
+              "Damage": null,
+              "Range": null,
+              "Target": null,
+              "Shield": null,
+              "Retaliate": null
+            },
+            "BMoveTracker1": {
+              "Filter": "Self",
+              "AnimOverload": "PowerUp",
+              "AttackAmount": null,
+              "Move": null,
+              "Heal": null,
+              "Damage": null,
+              "Range": null,
+              "Target": null,
+              "Shield": null,
+              "Retaliate": null
+            },
+            "BMoveTracker2": {
+              "Filter": "Self",
+              "AnimOverload": "PowerUp",
+              "AttackAmount": null,
+              "Move": null,
+              "Heal": null,
+              "Damage": null,
+              "Range": null,
+              "Target": null,
+              "Shield": null,
+              "Retaliate": null
+            },
+            "BMoveTracker3": {
+              "Filter": "Self",
+              "AnimOverload": "PowerUp",
+              "AttackAmount": null,
+              "Move": null,
+              "Heal": null,
+              "Damage": null,
+              "Range": null,
+              "Target": null,
+              "Shield": null,
+              "Retaliate": null
+            },
+            "BMoveTracker4": {
+              "Filter": "Self",
+              "AnimOverload": "PowerUp",
+              "AttackAmount": null,
+              "Move": null,
+              "Heal": null,
+              "Damage": null,
+              "Range": null,
+              "Target": null,
+              "Shield": null,
+              "Retaliate": null
+            },
+            "BMoveTracker5": {
+              "Filter": "Self",
+              "AnimOverload": "PowerUp",
+              "AttackAmount": null,
+              "Move": null,
+              "Heal": null,
+              "Damage": null,
+              "Range": null,
+              "Target": null,
+              "Shield": null,
+              "Retaliate": null
+            },
+            "BMoveTracker6": {
+              "Filter": "Self",
+              "AnimOverload": "PowerUp",
+              "AttackAmount": null,
+              "Move": null,
+              "Heal": null,
+              "Damage": null,
+              "Range": null,
+              "Target": null,
+              "Shield": null,
+              "Retaliate": null
+            },
+            "BMoveTracker7": {
+              "Filter": "Self",
+              "AnimOverload": "PowerUp",
+              "AttackAmount": null,
+              "Move": null,
+              "Heal": null,
+              "Damage": null,
+              "Range": null,
+              "Target": null,
+              "Shield": null,
+              "Retaliate": null
+            },
+            "BMoveTracker8": {
+              "Filter": "Self",
+              "AnimOverload": "PowerUp",
+              "AttackAmount": null,
+              "Move": null,
+              "Heal": null,
+              "Damage": null,
+              "Range": null,
+              "Target": null,
+              "Shield": null,
+              "Retaliate": null
+            },
+            "BMoveTracker9": {
+              "Filter": "Self",
+              "AnimOverload": "PowerUp",
+              "AttackAmount": null,
+              "Move": null,
+              "Heal": null,
+              "Damage": null,
+              "Range": null,
+              "Target": null,
+              "Shield": null,
+              "Retaliate": null
+            },
+            "BMoveTracker10": {
+              "Filter": "Self",
+              "AnimOverload": "PowerUp",
+              "AttackAmount": null,
+              "Move": null,
+              "Heal": null,
+              "Damage": null,
+              "Range": null,
+              "Target": null,
+              "Shield": null,
+              "Retaliate": null
+            },
+            "BMoveTracker11": {
+              "Filter": "Self",
+              "AnimOverload": "PowerUp",
+              "AttackAmount": null,
+              "Move": null,
+              "Heal": null,
+              "Damage": null,
+              "Range": null,
+              "Target": null,
+              "Shield": null,
+              "Retaliate": null
+            }
+          },
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BActive": {
+          "Filter": "Self",
+          "AnimOverload": "DangerArea",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 1,
+          "Target": -1,
+          "Shield": null,
+          "Retaliate": null
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/Drifter/AbilityCards/29_Drifter_InevitableConclusion.yml",
+      "line": 4,
+      "line_initiative": 7
+    },
+    "Id": 29,
+    "LocKey": "$FH/029_character_ability_cards_drifter_inevitable_conclusion_1$",
+    "Character": "DrifterID",
+    "Level": 8,
+    "Initiative": 29,
+    "Discard": [
+      "Lost",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "AreaEffect": "0,0,R|2,0,R|4,0,R|1,1,R|2,2,R|3,1,R",
+          "AreaEffectLayoutOverride": "0,0,R|-1,1,R|1,1,R|-2,2,R|0,2,R|2,2,R",
+          "MultiPassAttack": "false",
+          "AnimOverload": "RangedAttack_AOE",
+          "AttackAmount": 4,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 2,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BAttack": {
+          "Conditions": "Poison",
+          "Filter": "Enemy",
+          "AttackAmount": 3,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/Drifter/AbilityCards/2_Drifter_SustainedMomentum.yml",
+      "line": 4,
+      "line_initiative": 7
+    },
+    "Id": 2,
+    "LocKey": "$FH/002_character_ability_cards_drifter_sustained_momentum_1$",
+    "Character": "DrifterID",
+    "Level": 1,
+    "Initiative": 76,
+    "Discard": [
+      "Discard",
+      "Lost"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "AttackAmount": 2,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        },
+        "TMoveTracker": {
+          "Filter": "Self",
+          "AnimOverload": "PowerUp",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BBuffMove": {
+          "Filter": "Self",
+          "AnimOverload": "Persistent Buff",
+          "AttackAmount": null,
+          "Move": 2,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Move"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/Drifter/AbilityCards/30_Drifter_Everlasting.yml",
+      "line": 4,
+      "line_initiative": 7
+    },
+    "Id": 30,
+    "LocKey": "$FH/030_character_ability_cards_drifter_everlasting_1$",
+    "Character": "DrifterID",
+    "Level": 9,
+    "Initiative": 96,
+    "Discard": [
+      "Lost",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TPreventDamage": {
+          "Filter": "Self",
+          "AnimOverload": "Persistent Buff",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BHeal": {
+          "Conditions": "Regenerate|Strengthen",
+          "Filter": "Self|Ally",
+          "Targeting": "Range",
+          "AnimOverload": "Heal",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": 0,
+          "Damage": null,
+          "Range": 3,
+          "Target": 1,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Heal"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/Drifter/AbilityCards/31_Drifter_UseEveryPart.yml",
+      "line": 4,
+      "line_initiative": 7
+    },
+    "Id": 31,
+    "LocKey": "$FH/031_character_ability_cards_drifter_use_every_part_1$",
+    "Character": "DrifterID",
+    "Level": 9,
+    "Initiative": 18,
+    "Discard": [
+      "Discard",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack_UseEveryPart": {
+          "AnimOverload": "RangedAttack",
+          "AttackAmount": 4,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 4,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        },
+        "THeal": {
+          "Filter": "Ally",
+          "Targeting": "Custom",
+          "AnimOverload": "Heal",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": 4,
+          "Damage": null,
+          "Range": null,
+          "Target": 99,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Heal"
+          ]
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BMoveForAttack": {
+          "AttackAmount": null,
+          "Move": 3,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Move"
+          ]
+        },
+        "BAttack": {
+          "Targeting": "Custom",
+          "AttackAmount": 0,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 1,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/Drifter/AbilityCards/3_Drifter_PrecisionAim.yml",
+      "line": 4,
+      "line_initiative": 7
+    },
+    "Id": 3,
+    "LocKey": "$FH/003_character_ability_cards_drifter_precision_aim_1$",
+    "Character": "DrifterID",
+    "Level": 1,
+    "Initiative": 66,
+    "Discard": [
+      "Lost",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TBuffAttack": {
+          "Filter": "Self",
+          "AnimOverload": "Persistent Buff",
+          "AttackAmount": 0,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BMove": {
+          "AttackAmount": null,
+          "Move": 0,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Move"
+          ]
+        },
+        "BMoveTracker": {
+          "Filter": "Self",
+          "AnimOverload": "PowerUp",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/Drifter/AbilityCards/4_Drifter_ContinuousHealth.yml",
+      "line": 4,
+      "line_initiative": 7
+    },
+    "Id": 4,
+    "LocKey": "$FH/004_character_ability_cards_drifter_continuous_health_1$",
+    "Character": "DrifterID",
+    "Level": 1,
+    "Initiative": 61,
+    "Discard": [
+      "Discard",
+      "Lost"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "Targeting": "Range",
+          "AnimOverload": "RangedAttack",
+          "AttackAmount": 2,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 2,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        },
+        "TMoveTracker": {
+          "Filter": "Self",
+          "AnimOverload": "PowerUp",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "TBuffHeal": {
+          "Filter": "Self",
+          "AnimOverload": "Persistent Buff",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/Drifter/AbilityCards/5_Drifter_Relentless.yml",
+      "line": 4,
+      "line_initiative": 7
+    },
+    "Id": 5,
+    "LocKey": "$FH/005_character_ability_cards_drifter_relentless_1$",
+    "Character": "DrifterID",
+    "Level": 1,
+    "Initiative": 89,
+    "Discard": [
+      "Discard",
+      "Lost"
+    ],
+    "Top": {
+      "Abilities": {
+        "TMoveTracker": {
+          "Filter": "Self",
+          "AnimOverload": "PowerUp",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BDamageAttacker": {
+          "Filter": "Self",
+          "AnimOverload": "Persistent Buff",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": 2,
+          "Types": [
+            "Retaliate"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/Drifter/AbilityCards/6_Drifter_Unbreakable.yml",
+      "line": 4,
+      "line_initiative": 7
+    },
+    "Id": 6,
+    "LocKey": "$FH/006_character_ability_cards_drifter_unbreakable_1$",
+    "Character": "DrifterID",
+    "Level": 1,
+    "Initiative": 90,
+    "Discard": [
+      "Discard",
+      "Lost"
+    ],
+    "Top": {
+      "Abilities": {
+        "TMoveTracker": {
+          "Filter": "Self",
+          "AnimOverload": "PowerUp",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BShieldIncomingAttacks_Unbreakable": {
+          "Filter": "Self",
+          "AnimOverload": "Persistent Buff",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": 1,
+          "Retaliate": null,
+          "Types": [
+            "Shield"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/Drifter/AbilityCards/7_Drifter_VileAssault.yml",
+      "line": 4,
+      "line_initiative": 7
+    },
+    "Id": 7,
+    "LocKey": "$FH/7_character_ability_cards_drifter_vile_assault_1$",
+    "Character": "DrifterID",
+    "Level": 1,
+    "Initiative": 27,
+    "Discard": [
+      "Lost",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack1": {
+          "Conditions": "Poison",
+          "AttackAmount": 2,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        },
+        "TAttack2": {
+          "Conditions": "Wound",
+          "AttackAmount": 2,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BMove": {
+          "AttackAmount": null,
+          "Move": 0,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Move"
+          ]
+        },
+        "BHeal": {
+          "Filter": "Self",
+          "AnimOverload": "Heal",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": 2,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Heal"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/Drifter/AbilityCards/8_Drifter_DrainingArrows.yml",
+      "line": 4,
+      "line_initiative": 7
+    },
+    "Id": 8,
+    "LocKey": "$FH/008_character_ability_cards_drifter_draining_arrows_1$",
+    "Character": "DrifterID",
+    "Level": 1,
+    "Initiative": 23,
+    "Discard": [
+      "Discard",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TAttack": {
+          "Conditions": "Muddle",
+          "Filter": "Enemy",
+          "MultiPassAttack": "false",
+          "AnimOverload": "RangedAttack_AOE_NonArea",
+          "AttackAmount": 1,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": 2,
+          "Target": 3,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Attack"
+          ]
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BMove": {
+          "AttackAmount": null,
+          "Move": 3,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Move"
+          ]
+        },
+        "BMoveTracker": {
+          "Filter": "Self",
+          "AnimOverload": "PowerUp",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null
+        }
+      },
+      "XP": 0
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/Characters/Drifter/AbilityCards/9_Drifter_PrudentPreparation.yml",
+      "line": 4,
+      "line_initiative": 7
+    },
+    "Id": 9,
+    "LocKey": "$FH/009_character_ability_cards_drifter_prudent_preparation_1$",
+    "Character": "DrifterID",
+    "Level": 1,
+    "Initiative": 14,
+    "Discard": [
+      "Discard",
+      "Discard"
+    ],
+    "Top": {
+      "Abilities": {
+        "TShield": {
+          "Filter": "Self",
+          "AnimOverload": "PowerUp",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": 0,
+          "Retaliate": null,
+          "Types": [
+            "Shield"
+          ]
+        },
+        "TRataliate": {
+          "Filter": "Self",
+          "AnimOverload": "PowerUp",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": null,
+          "Damage": null,
+          "Range": null,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": 0,
+          "Types": [
+            "Retaliate"
+          ]
+        }
+      },
+      "XP": 0
+    },
+    "Bottom": {
+      "Abilities": {
+        "BHeal": {
+          "Filter": "Self|Ally",
+          "AnimOverload": "Heal",
+          "AttackAmount": null,
+          "Move": null,
+          "Heal": 0,
+          "Damage": null,
+          "Range": 3,
+          "Target": null,
+          "Shield": null,
+          "Retaliate": null,
+          "Types": [
+            "Heal"
+          ]
+        }
+      },
+      "XP": 0
+    }
+  }
+]

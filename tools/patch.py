@@ -14,7 +14,9 @@
 设计要点（都是踩过坑换来的）：
   · **原子写**：先写临时文件再 os.replace —— 中途失败不会留下截断的文件。
   · **先断言后写**：old 在目标里必须**恰好出现 1 次**，否则**一个字节都不写**。
-  · 支持字面量 \\n / \\t 展开（调用方用单引号 heredoc 时不会自动转义）。
+  · **绝不展开字面量 \\n / \\t**：C# 源码里大量存在字面转义序列，
+    展开会把字符串变成真换行/真 tab（v1.30 连踩三次）。
+    old/new 文件里直接写**真实换行**，字面的 \\n 原样保留。
 """
 
 import io
@@ -36,10 +38,6 @@ def atomic_write(path, text):
         except OSError:
             pass
         raise
-
-
-def expand(s):
-    return s.replace('\\n', '\n').replace('\\t', '\t')
 
 
 def main():

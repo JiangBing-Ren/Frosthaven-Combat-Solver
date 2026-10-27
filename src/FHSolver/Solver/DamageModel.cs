@@ -68,10 +68,21 @@ namespace FHSolver.Solver
             return v;
         }
 
-        /// <summary>完整伤害：乘算后减护盾，再截断到 0。</summary>
-        public static int Compute(int baseStrength, IEnumerable<ModifierCardSnapshot> drawn, int shield)
+        /// <summary>
+        /// 完整伤害：乘算后减护盾（先扣穿透）→ Brittle ×2 → Ward floor(/2) → 截断到 0。
+        ///
+        /// 依据反编译 `CAttackSummary.CalcExpressionString`（L810-866）：
+        ///   · `ShieldMinusPierce = max(0, Shield - Pierce)`（Pierce ≥ 99999 视为完全穿透）
+        ///   · 之后依次：PostShieldScalars → Brittle `*2` → Ward `floor(.../2)`
+        ///   · 最后 `Max(0, ...)`
+        /// </summary>
+        public static int Compute(int baseStrength, IEnumerable<ModifierCardSnapshot> drawn, int shield,
+            int pierce = 0, bool brittle = false, bool ward = false)
         {
-            int v = ComputePreShield(baseStrength, drawn) - shield;
+            int effShield = pierce >= 99999 ? 0 : Math.Max(0, shield - Math.Max(0, pierce));
+            int v = ComputePreShield(baseStrength, drawn) - effShield;
+            if (brittle) v *= 2;
+            if (ward) v = (int)Math.Floor(v / 2.0);
             return v < 0 ? 0 : v;
         }
 
@@ -87,8 +98,13 @@ namespace FHSolver.Solver
             return v;
         }
 
-        /// <summary>还原出与游戏日志同形的表达式串，便于逐条比对。</summary>
-        public static string Expression(int baseStrength, IEnumerable<ModifierCardSnapshot> drawn, int shield)
+        /// <summary>
+        /// 还原出与游戏日志同形的表达式串，便于逐条比对。
+        /// 顺序照抄 `CAttackSummary.CalcExpressionString`：
+        ///   (基础+加减) ×/÷ … − 护盾（已扣穿透）→ Brittle ×2 → Ward floor(/2)。
+        /// </summary>
+        public static string Expression(int baseStrength, IEnumerable<ModifierCardSnapshot> drawn, int shield,
+            int pierce = 0, bool brittle = false, bool ward = false)
         {
             var sb = new StringBuilder();
             var scalars = new List<string>();
@@ -109,7 +125,20 @@ namespace FHSolver.Solver
                 sb.Append(')');
                 foreach (string s in scalars) sb.Append(s);
             }
-            if (shield != 0) sb.Append('-').Append(shield);
+
+            int effShield = pierce >= 99999 ? 0 : Math.Max(0, shield - Math.Max(0, pierce));
+            if (effShield != 0) sb.Append('-').Append(effShield);
+
+            if (brittle)
+            {
+                sb.Insert(0, "(");
+                sb.Append(")*2");
+            }
+            if (ward)
+            {
+                sb.Insert(0, "floor(");
+                sb.Append("/2)");
+            }
             return sb.ToString();
         }
 

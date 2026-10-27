@@ -1,0 +1,392 @@
+[
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Campaign/Enemies/Monsters/AlgoxScout/AlgoxScout.yml",
+      "line": 2,
+      "line_abilitycards": 8
+    },
+    "Id": "AlgoxScoutID",
+    "LocKey": "$FH/AlgoxScout$",
+    "MonsterType": "Monster",
+    "StandeeLimit": 6,
+    "PredominantlyMelee": true,
+    "NonEliteVariant": null,
+    "AbilityCards": [
+      770,
+      771,
+      772,
+      773,
+      774,
+      775,
+      776,
+      777
+    ],
+    "Levels": {
+      "0": {
+        "Health": 7,
+        "Move": 3,
+        "Attack": 2,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": []
+      },
+      "1": {
+        "Health": 8,
+        "Move": 4,
+        "Attack": 2,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": []
+      },
+      "2": {
+        "Health": 11,
+        "Move": 4,
+        "Attack": 2,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": []
+      },
+      "3": {
+        "Health": 12,
+        "Move": 4,
+        "Attack": 3,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": []
+      },
+      "4": {
+        "Health": 15,
+        "Move": 4,
+        "Attack": 3,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": []
+      },
+      "5": {
+        "Health": 18,
+        "Move": 5,
+        "Attack": 3,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": []
+      },
+      "6": {
+        "Health": 24,
+        "Move": 5,
+        "Attack": 4,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": []
+      },
+      "7": {
+        "Health": 33,
+        "Move": 5,
+        "Attack": 4,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": []
+      }
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Campaign/Enemies/Monsters/AlgoxScout/AlgoxScoutElite.yml",
+      "line": 2,
+      "line_abilitycards": 9
+    },
+    "Id": "AlgoxScoutEliteID",
+    "LocKey": "$FH/AlgoxScoutElite$",
+    "MonsterType": "Monster",
+    "StandeeLimit": 6,
+    "PredominantlyMelee": true,
+    "NonEliteVariant": "AlgoxScoutID",
+    "AbilityCards": [
+      770,
+      771,
+      772,
+      773,
+      774,
+      775,
+      776,
+      777
+    ],
+    "Levels": {
+      "0": {
+        "Health": 10,
+        "Move": 4,
+        "Attack": 3,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": []
+      },
+      "1": {
+        "Health": 12,
+        "Move": 4,
+        "Attack": 3,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Impair"
+        ]
+      },
+      "2": {
+        "Health": 13,
+        "Move": 5,
+        "Attack": 4,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Impair"
+        ]
+      },
+      "3": {
+        "Health": 17,
+        "Move": 5,
+        "Attack": 4,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Impair"
+        ]
+      },
+      "4": {
+        "Health": 22,
+        "Move": 5,
+        "Attack": 4,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Impair"
+        ]
+      },
+      "5": {
+        "Health": 26,
+        "Move": 5,
+        "Attack": 5,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Impair"
+        ]
+      },
+      "6": {
+        "Health": 32,
+        "Move": 6,
+        "Attack": 6,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Impair"
+        ]
+      },
+      "7": {
+        "Health": 40,
+        "Move": 6,
+        "Attack": 7,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Impair"
+        ]
+      }
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Campaign/Enemies/Monsters/AbaelHerder/AbaelHerder.yml",
+      "line": 2,
+      "line_abilitycards": 8
+    },
+    "Id": "AbaelHerderID",
+    "LocKey": "$FH/AbaelHerder$",
+    "MonsterType": "Monster",
+    "StandeeLimit": 6,
+    "PredominantlyMelee": false,
+    "NonEliteVariant": null,
+    "AbilityCards": [
+      778,
+      779,
+      780,
+      781,
+      782,
+      783,
+      784,
+      785
+    ],
+    "Levels": {
+      "0": {
+        "Health": 4,
+        "Move": 3,
+        "Attack": 2,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": []
+      },
+      "1": {
+        "Health": 6,
+        "Move": 3,
+        "Attack": 2,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": []
+      },
+      "2": {
+        "Health": 8,
+        "Move": 3,
+        "Attack": 2,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": []
+      },
+      "3": {
+        "Health": 9,
+        "Move": 3,
+        "Attack": 3,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": []
+      },
+      "4": {
+        "Health": 11,
+        "Move": 4,
+        "Attack": 3,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": []
+      },
+      "5": {
+        "Health": 14,
+        "Move": 4,
+        "Attack": 3,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": []
+      },
+      "6": {
+        "Health": 18,
+        "Move": 4,
+        "Attack": 4,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Muddle"
+        ]
+      },
+      "7": {
+        "Health": 24,
+        "Move": 4,
+        "Attack": 4,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Muddle"
+        ]
+      }
+    }
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Campaign/Enemies/Monsters/AbaelHerder/AbaelHerderElite.yml",
+      "line": 2,
+      "line_abilitycards": 9
+    },
+    "Id": "AbaelHerderEliteID",
+    "LocKey": "$FH/AbaelHerderElite$",
+    "MonsterType": "Monster",
+    "StandeeLimit": 6,
+    "PredominantlyMelee": false,
+    "NonEliteVariant": "AbaelHerderID",
+    "AbilityCards": [
+      778,
+      779,
+      780,
+      781,
+      782,
+      783,
+      784,
+      785
+    ],
+    "Levels": {
+      "0": {
+        "Health": 6,
+        "Move": 3,
+        "Attack": 3,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Muddle"
+        ]
+      },
+      "1": {
+        "Health": 9,
+        "Move": 3,
+        "Attack": 3,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Muddle"
+        ]
+      },
+      "2": {
+        "Health": 11,
+        "Move": 4,
+        "Attack": 3,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Muddle"
+        ]
+      },
+      "3": {
+        "Health": 13,
+        "Move": 4,
+        "Attack": 4,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Muddle"
+        ]
+      },
+      "4": {
+        "Health": 17,
+        "Move": 4,
+        "Attack": 4,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Muddle"
+        ]
+      },
+      "5": {
+        "Health": 20,
+        "Move": 4,
+        "Attack": 5,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Muddle"
+        ]
+      },
+      "6": {
+        "Health": 28,
+        "Move": 5,
+        "Attack": 5,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Muddle"
+        ]
+      },
+      "7": {
+        "Health": 36,
+        "Move": 5,
+        "Attack": 6,
+        "Range": 1,
+        "Target": 1,
+        "Conditions": [
+          "Muddle"
+        ]
+      }
+    }
+  }
+]

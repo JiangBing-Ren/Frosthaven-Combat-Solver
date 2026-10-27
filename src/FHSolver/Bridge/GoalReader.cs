@@ -253,14 +253,30 @@ namespace FHSolver.Bridge
         {
             try
             {
-                // CLootDeck.AllCards 是静态表
+                // CLootDeck.AllCards 是静态**数组**（LootCard[]，见反编译 CLootDeck.cs:375）。
+                // ⚠ v1.36 修正：旧代码 `as List<LootCard>` 强转恒为 null →
+                //   PeekLootCard 永远 null →「下一袋是装备 = 120 分」整档从未生效。
                 FieldInfo fi = typeof(CLootDeck).GetField("AllCards",
                     BindingFlags.Public | BindingFlags.Static);
                 if (fi == null) return null;
 
-                var all = fi.GetValue(null) as List<LootCard>;
-                if (all == null || index >= all.Count) return null;
-                return all[index];
+                object raw = fi.GetValue(null);
+                if (raw == null) return null;
+
+                LootCard[] arr = raw as LootCard[];
+                if (arr != null)
+                {
+                    if (index >= arr.Length) return null;
+                    return arr[index];
+                }
+
+                // 兜底：万一以后改成 List/IList
+                System.Collections.IList list = raw as System.Collections.IList;
+                if (list != null && index < list.Count)
+                {
+                    return (LootCard)list[index];
+                }
+                return null;
             }
             catch
             {

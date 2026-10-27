@@ -194,6 +194,12 @@ namespace FHSolver.Bridge
             Vector2 prev = _lastMouse;
             if (e != null) _lastMouse = e.mousePosition;
 
+            // ★ 让 _rect.height 始终等于**当前真实窗口高度**：
+            //   之前只回填 x/y/width，_rect.height 永远是初始 660 ——
+            //   玩家把窗口拖高后，下半部分不挡鼠标、深色底也铺不满。
+            //   （仍然绝不把 GUI.Window 的返回值写回高度，见下方注释。）
+            _rect.height = _collapsed ? TitleH + ButtonBarH : _expandedHeight;
+
             // ★ 只拦"鼠标真的在窗口上"的时候，移出去立刻放行 ——
             //   目的是让玩家能一边看方案一边操作游戏，不是接管鼠标。
             bool inside = IsMouseInside();

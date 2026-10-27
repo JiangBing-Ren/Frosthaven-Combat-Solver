@@ -1,0 +1,1822 @@
+[
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_AddAttack1ForEachAllyAdjToTarget_P1.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_AddAttack1ForEachAllyAdjToTarget_P1",
+    "MathModifier": "+1",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_AddTarget.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_AddTarget",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_AddTarget_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_AddTarget_R",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Air.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Air",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Air_Dark_P0.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Air_Dark_P0",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Air_Earth_Dark_M1.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Air_Earth_Dark_M1",
+    "MathModifier": "-1",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Air_Earth_P0.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Air_Earth_P0",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Air_Light_P2.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Air_Light_P2",
+    "MathModifier": "+2",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Air_P0.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Air_P0",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Air_P1.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Air_P1",
+    "MathModifier": "+1",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Air_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Air_R",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Basic_M1.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Basic_M1",
+    "MathModifier": "-1",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Basic_M2.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Basic_M2",
+    "MathModifier": "-2",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Basic_M2_Shuffle.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Basic_M2_Shuffle",
+    "MathModifier": "-2",
+    "Rolling": false,
+    "Shuffle": true,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Basic_P0.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Basic_P0",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Basic_P1.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Basic_P1",
+    "MathModifier": "+1",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Basic_P2.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Basic_P2",
+    "MathModifier": "+2",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Basic_P2_Shuffle.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Basic_P2_Shuffle",
+    "MathModifier": "+2",
+    "Rolling": false,
+    "Shuffle": true,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Basic_P3.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Basic_P3",
+    "MathModifier": "+3",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Basic_P4.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Basic_P4",
+    "MathModifier": "+4",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Basic_T0.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Basic_T0",
+    "MathModifier": "*0",
+    "Rolling": false,
+    "Shuffle": true,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Basic_T2.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Basic_T2",
+    "MathModifier": "*2",
+    "Rolling": false,
+    "Shuffle": true,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Brittle_P0.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Brittle_P0",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Brittle_T2.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Brittle_T2",
+    "MathModifier": "*2",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_ConsumeInfuseWild.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_ConsumeInfuseWild",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_CreateIce_P2.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_CreateIce_P2",
+    "MathModifier": "+2",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_CreateLimitedHazardous_P0.yml",
+      "line": 2,
+      "line_math": 4
+    },
+    "Name": "AMC_CreateLimitedHazardous_P0",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Curse2_M2.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Curse2_M2",
+    "MathModifier": "-2",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Curse_P0.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Curse_P0",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Curse_P1.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Curse_P1",
+    "MathModifier": "+1",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Curse_P2.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Curse_P2",
+    "MathModifier": "+2",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Curse_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Curse_R",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Damage1Range1_P0.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Damage1Range1_P0",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Damage1Trap_P0.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Damage1Trap_P0",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_DamageIfTargetMoves_P0.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_DamageIfTargetMoves_P0",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Dark_M1.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Dark_M1",
+    "MathModifier": "-1",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Dark_P1.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Dark_P1",
+    "MathModifier": "+1",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Dark_P2.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Dark_P2",
+    "MathModifier": "+2",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Dark_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Dark_R",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Disarm_P0.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Disarm_P0",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Disarm_P1.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Disarm_P1",
+    "MathModifier": "+1",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Disarm_P1_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Disarm_P1_R",
+    "MathModifier": "+1",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Disarm_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Disarm_R",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Earth.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Earth",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Earth_Dark_P0.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_EarthDark_P0",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Earth_Dark_P2.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_EarthOrDark_P2",
+    "MathModifier": "+2",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Earth_P0.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Earth_P0",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Earth_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Earth_R",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Fire.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Fire",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_FireAir_P1.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_FireAir_P1",
+    "MathModifier": "+1",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_FireEarth_P1.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_FireEarth_P1",
+    "MathModifier": "+1",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Fire_P0.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Fire_P0",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Fire_P2.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Fire_P2",
+    "MathModifier": "+2",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Fire_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Fire_R",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Heal1_1Ally.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Heal1_1Ally",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Heal1_1Ally_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Heal1_1Ally_R",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Heal1_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Heal1_R",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Heal1_R_FrozenFist.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Heal1_R_FrozenFist",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Heal1_R_PainConduit.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Heal1_R_PainConduit",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Heal1_Self_P1.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Heal1_Self_P1",
+    "MathModifier": "+1",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Heal1_TBoneshaper_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Heal1_TBoneshaper_R",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Heal1_Ward_1Ally_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Heal1_Ward_1Ally_R",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Heal2BlessAlly_P0_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Heal2BlessAlly_P0_R",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Heal2Trap_P0.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Heal2Trap_P0",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Heal2_P1.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Heal2_P1",
+    "MathModifier": "+1",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Heal2_Self_P1.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Heal2_Self_P1",
+    "MathModifier": "+1",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Heal3_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Heal3_R",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Ice.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Ice",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Ice_Air_P1.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Ice_Air_P1",
+    "MathModifier": "+1",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Ice_Earth_P1.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Ice_Earth_P1",
+    "MathModifier": "+1",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Ice_P0.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Ice_P0",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Ice_P2.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Ice_P2",
+    "MathModifier": "+2",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Immobilize_P0.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Immobilize_P0",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Immobilize_P1.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Immobilize_P1",
+    "MathModifier": "+1",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Immobilize_P1_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Immobilize_P1_R",
+    "MathModifier": "+1",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Immobilize_P2.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Immobilize_P2",
+    "MathModifier": "+2",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Immobilize_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Immobilize_R",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_ImproveTrapDamage2OrHeal2_P0.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_ImproveTrapDamage2OrHeal2_P0",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_InfuseOneWaning_P0_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_InfuseOneWaning_P0_R",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Invisible_P0.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Invisible_P0",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Invisible_P1.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Invisible_P1",
+    "MathModifier": "+1",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Invisible_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Invisible_R",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_KillSummon_P1.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_KillSummon_P1",
+    "MathModifier": "+1",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Light_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Light_R",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_M1Gain1TT.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_M1Gain1TT",
+    "MathModifier": "-1",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_M3.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_M3",
+    "MathModifier": "-3",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_M4.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_M4",
+    "MathModifier": "-4",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_MoveTrackerBackOneSlot.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_MoveTrackerBackOneSlot",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Muddle_P1_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Muddle_P1_R",
+    "MathModifier": "+1",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Muddle_P2.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Muddle_P2",
+    "MathModifier": "+2",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Muddle_P3.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Muddle_P3",
+    "MathModifier": "+3",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Muddle_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Muddle_R",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_P0_Attack2Rolling.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_P0_Attack2Rolling",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_P0_ControlSummonMove2.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_P0_ControlSummonMove2",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_P1_ModeTransfer.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_P1_ModeTransfer",
+    "MathModifier": "+1",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_P1_Or_P2_IfPlayedTideThisRound.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_P1_Or_P2_IfPlayedTideThisRound",
+    "MathModifier": "+1",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_P1_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_P1_R",
+    "MathModifier": "+1",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_P2_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_P2_R",
+    "MathModifier": "+2",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_P3.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_P3",
+    "MathModifier": "+3",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_P4.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_P4",
+    "MathModifier": "+4",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_PActiveInfusionCards_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_PActiveInfusionCards_R",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_PNumNegativeConditions.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_PNumNegativeConditions",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Pierce3_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Pierce3_R",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Poison_P0.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Poison_P0",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Poison_P1.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Poison_P1",
+    "MathModifier": "+1",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Poison_P2.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Poison_P2",
+    "MathModifier": "+2",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Poison_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Poison_R",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Pressure_P0.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Pressure_P0",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Pull1_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Pull1_R",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Push1_P1.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Push1_P1",
+    "MathModifier": "+1",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Push1_P2.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Push1_P2",
+    "MathModifier": "+2",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Push1_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Push1_R",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Push2_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Push2_R",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Push3_P1.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Push3_P1",
+    "MathModifier": "+1",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_PushOrPull2_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_PushOrPull2_R",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_RefreshItem.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_RefreshItem",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Regenerate1_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Regenerate1_R",
+    "MathModifier": "+1",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Regenerate2_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Regenerate2_R",
+    "MathModifier": "+2",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Resonance_P1.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Resonance_P1",
+    "MathModifier": "+1",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Retaliate2_P0_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Retaliate2_P0_R",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Shield1_P1.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Shield1_P1",
+    "MathModifier": "+1",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Shield1_P1_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Shield1_P1_R",
+    "MathModifier": "+1",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Shield1_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Shield1_R",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Shield1_R_BannerSpear.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Shield1_R_BannerSpear",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Shield1_R_FrozenFist.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Shield1_R_Frozen_Fist",
+    "MathModifier": "+1",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_ShowNextAbilityCard_P0.yml",
+      "line": 2,
+      "line_math": 4
+    },
+    "Name": "AMC_ShowNextAbilityCard_P0",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Strengthen_Ally_P1.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Strengthen_Ally_P1",
+    "MathModifier": "+1",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Stun.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Stun",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Stun_M1.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Stun_M1",
+    "MathModifier": "-1",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Stun_P0.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Stun_P0",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Stun_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Stun_R",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_TrophyToken_P1.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_TrophyToken_P1",
+    "MathModifier": "+1",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Wound_P0.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Wound_P0",
+    "MathModifier": "+0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Wound_P1.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Wound_P1",
+    "MathModifier": "+1",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Wound_P2.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Wound_P2",
+    "MathModifier": "+2",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/AMC_Wound_R.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "AMC_Wound_R",
+    "MathModifier": "+0",
+    "Rolling": true,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/Bless.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "Bless",
+    "MathModifier": "*2",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": true
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/Curse.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "Curse",
+    "MathModifier": "*0",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": true,
+    "IsBless": false
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/Reduced_Randomness_Bless.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "Reduced_Randomness_Bless",
+    "MathModifier": "+2",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": false,
+    "IsBless": true
+  },
+  {
+    "_source": {
+      "file": "extracted/Base_ruleset/Global/AttackModifiers/Reduced_Randomness_Curse.yml",
+      "line": 2,
+      "line_math": 3
+    },
+    "Name": "Reduced_Randomness_Curse",
+    "MathModifier": "-2",
+    "Rolling": false,
+    "Shuffle": false,
+    "IsCurse": true,
+    "IsBless": false
+  }
+]

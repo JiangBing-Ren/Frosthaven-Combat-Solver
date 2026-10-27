@@ -38,6 +38,9 @@ namespace FHSolver.Bridge
 
         private static bool _lastApplied = true;   // 首帧强制写一次
 
+        // 每帧都会读一次控制状态；读失败只报一次，避免 60 条/秒刷日志
+        private static bool _readErrorLogged;
+
         /// <summary>当前是否已打开。</summary>
         public static bool IsOn
         {
@@ -230,7 +233,11 @@ namespace FHSolver.Bridge
             }
             catch (Exception e)
             {
-                Plugin.Log?.LogWarning($"[FHSolver] 读取控制状态失败({_readerName}): {e.Message}");
+                if (!_readErrorLogged)
+                {
+                    _readErrorLogged = true;
+                    Plugin.Log?.LogWarning($"[FHSolver] 读取控制状态失败({_readerName}): {e.Message}（后续同类错误不再刷屏）");
+                }
             }
             return false;
         }

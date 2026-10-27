@@ -465,7 +465,6 @@ namespace FHSolver.Solver
 
             var bits = new List<string>();
             if (g > 0) bits.Add("你站灰格(G)");
-                            if (g > 0) bits.Add("你站灰格(G)");
                 // 攻略实证（旗矛 Resolved Courage）：蓝格**不限于角色** ——
                 //   "This can be another character, one of your banners, or another summon."
                 //   旗帜、其他召唤物都算。
@@ -612,7 +611,8 @@ namespace FHSolver.Solver
 
             if (half.HasPoison)
             {
-                bits.Add($"给目标上**中毒 {half.PoisonStrength}**（目标回合末持续掉血，直到被治疗移除）");
+                bits.Add($"给目标上**中毒**（持续 {half.PoisonStrength}）—— 之后攻击该目标 **+1 攻击力**"
+                    + "（中毒不是 Wound）");
             }
             if (half.HasPull)
             {
@@ -911,6 +911,49 @@ namespace FHSolver.Solver
                                 iniStun = iniThreat.AppliedConditions.Contains("Stun");
                             }
 
+                            // ★ 目标分组（v1.35 修复"单体攻击被当成多目标"，v1.36 修正判据）：
+                            //   一次打多个（AOE **或普通 Target N**）→ 多个目标落在**同一个方案**里；
+                            //   单体（目标数 1）→ **每个候选目标一个方案**，互不叠加。
+                            //   ⚠ 之前不分组，单体攻击也被算成"打射程内所有敌人" →
+                            //     方案虚报伤害/击杀（实测：单体攻 3 一次记两个目标，报告 10 伤实际只能打 7）。
+                            //   ⚠ v1.35 的分组又误要求 HasAreaEffect，把普通 Target 2/3 压成单体 —— v1.36 改用 AttackTargets。
+                            Func<ActionOption, List<UnitSnapshot>, List<List<UnitSnapshot>>> groups =
+                                (o, cands) =>
+                                {
+                                    var gs = new List<List<UnitSnapshot>>();
+                                    if (o == null || o.Half == null || !o.Half.HasAttack || o.Half.IsUnsupportedAttack
+                                        || cands == null || cands.Count == 0)
+                                    {
+                                        // 不攻击 / 打不到 / 阵型单体（伤害不可算）→ 走一圈占位
+                                        gs.Add(OneNull);
+                                        return gs;
+                                    }
+
+                                    // 单体：目标数 1（且不是形状攻击）。
+                                    // 其余都算"一次可打多个"：0 = 形状内全部；>1 = 最多 N 个。
+                                    // ⚠ v1.36：判据不能再要求 HasAreaEffect ——
+                                    //   普通「Attack 3, Target 2」没有形状，但也是一次打 2 个；
+                                    //   v1.35 只看 HasAreaEffect 会把它压成单体（少算一半输出）。
+                                    bool multi = o.Half.AttackTargets != 1;
+                                    if (!multi)
+                                    {
+                                        foreach (UnitSnapshot c in cands)
+                                        {
+                                            gs.Add(new List<UnitSnapshot> { c });
+                                        }
+                                        return gs;
+                                    }
+
+                                    // 真 AOE：AttackTargets = 0 → 形状内全部；> 1 → 最多打 N 个
+                                    int cap = o.Half.AttackTargets;
+                                    if (cap > 0 && cands.Count > cap)
+                                    {
+                                        cands = cands.GetRange(0, cap);
+                                    }
+                                    gs.Add(cands);
+                                    return gs;
+                                };
+
                             foreach ((int X, int Y, int HAZ1) p1 in d1s)
                             {
                                 List<UnitSnapshot> t1s = o1Atk
@@ -921,12 +964,6 @@ namespace FHSolver.Solver
                                 // ⚠ 但若这个落点顺手能捡到东西（P2 战役目标），不要剪 ——
                                 //   捡宝箱本身就是收益，不需要能攻击。
                                 if (o1Atk && t1s.Count == 0 && !HasSpotValue(ctx, p1.X, p1.Y)) continue;
-
-                                // 用 OneNull 占位保证循环走一圈。
-                                // ⚠ 打不到人时也一样：只要这个落点能捡到东西，
-                                //   就当"无攻击"处理，照样建出方案（捡宝箱本身就是收益）。
-                                bool t1Hit = o1Atk && t1s.Count > 0;
-                                var t1list = t1Hit ? t1s : OneNull;
 
                                 // ★ 状态会不会让我"执行不了"（缴械/静足/眩晕）——
                                 //   判定放在**方案构造之后**（要精确到落点）：
@@ -939,37 +976,33 @@ namespace FHSolver.Solver
                                             second.Half.MoveRestriction)
                                     : One(p1);
 
-                                foreach ((int X, int Y, int HAZ2) p2 in d2s)
+                                // 第一步的目标组：AOE 一组多个，单体一个目标一组
+                                foreach (List<UnitSnapshot> g1 in groups(first, t1s))
                                 {
-                                    // ★★ 第一步的**所有**目标先一起算完 ★★
-                                    //   AOE 攻击一次打多个目标，必须落在**同一个方案**里
-                                    //   （旧写法是"每个目标一个方案"，AOE 的总伤害就丢了）。
-                                    //   off1 累加：★ 每个目标**独立抽修正牌**
-                                    //   （反编译实证：CAbilityAttack.m_TotalTargetSummaries 逐目标结算）
-                                    var step1Attacks = new List<AttackChoice>();
-                                    int off1 = 0;
-                                    foreach (UnitSnapshot m1 in t1list)
+                                    foreach ((int X, int Y, int HAZ2) p2 in d2s)
                                     {
-                                        AttackOnTarget a1 = (m1 != null) ? on(first, p1.X, p1.Y, off1, m1) : null;
-                                        if (a1 == null) continue;
-                                        if (a1.Choice != null) step1Attacks.Add(a1.Choice);
-                                        off1 += a1.Consumed;
-                                    }
-
-                                    // 第二步的目标清单依赖 off1（牌堆消耗），所以放在这里取
-                                    var t2dep = o2Atk ? targets(second, p2.X, p2.Y, off1) : OneNull;
-                                    bool t2Hit = o2Atk && t2dep.Count > 0;
-                                    if (o2Atk && !t2Hit && !HasSpotValue(ctx, p2.X, p2.Y)) continue;
-
-                                    var t2list = t2Hit ? t2dep : OneNull;
-
-                                    {
-                                        int off2 = off1;
-                                        foreach (UnitSnapshot m2 in t2list)
+                                        // 第一步的所有目标先一起算完（AOE 时不止一个）。
+                                        // off1 累加：★ 每个目标**独立抽修正牌**
+                                        // （反编译实证：CAbilityAttack.m_TotalTargetSummaries 逐目标结算）
+                                        var step1Attacks = new List<AttackChoice>();
+                                        int off1 = 0;
+                                        foreach (UnitSnapshot m1 in g1)
                                         {
-                                            AttackOnTarget a2 = (m2 != null) ? on(second, p2.X, p2.Y, off2, m2) : null;
-                                            if (a2 != null) off2 += a2.Consumed;
+                                            AttackOnTarget a1 = (m1 != null) ? on(first, p1.X, p1.Y, off1, m1) : null;
+                                            if (a1 == null) continue;
+                                            if (a1.Choice != null) step1Attacks.Add(a1.Choice);
+                                            off1 += a1.Consumed;
+                                        }
 
+                                        // 第二步的目标清单依赖 off1（牌堆消耗），所以放在这里取
+                                        List<UnitSnapshot> t2dep = o2Atk
+                                            ? targets(second, p2.X, p2.Y, off1)
+                                            : EmptyTargets;
+                                        if (o2Atk && t2dep.Count == 0 && !HasSpotValue(ctx, p2.X, p2.Y)) continue;
+
+                                        // 第二步同样分组：单体每个目标一个方案，AOE 一组多个
+                                        foreach (List<UnitSnapshot> g2 in groups(second, t2dep))
+                                        {
                                             var plan = new TurnPlan
                                             {
                                                 // 先攻由 ini 决定，不再跟着执行顺序走
@@ -978,7 +1011,9 @@ namespace FHSolver.Solver
                                                 BottomCardInitiative = ctx.Hand[j].Initiative,
                                                 First = MakeHalf(ctx, first, p1.X, p1.Y),
                                                 Second = MakeHalf(ctx, second, p2.X, p2.Y),
-                                                TopFirst = first.Source == HalfSource.Top,
+                                                // 上半位 = 卡面上半 或 基础攻击（两者都占"上"槽位）
+                                                TopFirst = first.Source == HalfSource.Top
+                                                        || first.Source == HalfSource.DefaultAttack,
                                                 TopCardIndex = i,
                                                 BottomCardIndex = j,
                                                 TopCardName = ctx.Hand[i].DisplayName,
@@ -995,7 +1030,16 @@ namespace FHSolver.Solver
 
                                             // 第一步的所有目标（AOE 时不止一个）
                                             foreach (AttackChoice c1 in step1Attacks) plan.Attacks.Add(c1);
-                                            if (a2 != null && a2.Choice != null) plan.Attacks.Add(a2.Choice);
+
+                                            // 第二步的所有目标（AOE 时不止一个）
+                                            int off2 = off1;
+                                            foreach (UnitSnapshot m2 in g2)
+                                            {
+                                                AttackOnTarget a2 = (m2 != null) ? on(second, p2.X, p2.Y, off2, m2) : null;
+                                                if (a2 == null) continue;
+                                                if (a2.Choice != null) plan.Attacks.Add(a2.Choice);
+                                                off2 += a2.Consumed;
+                                            }
 
                                             // ★★ 敌人先手给我上状态 → 这个方案执行不了
                                             //   精确判定：**敌人得真的打得到我的落点**才会施加条件
@@ -1234,21 +1278,15 @@ namespace FHSolver.Solver
         /// <summary>
         /// 这一击的**实际基础攻击力**。
         ///
-        /// 自己有 Strengthen（强化）→ 攻击 +1。
-        /// 依据：GH/FH 标准规则，社区攻略一致（旗矛 Banner of Strength、
-        /// 灌注 Gemstone Resonance 都是 +1）。
-        /// ⚠ 精确的代码应用点没在反编译里定位到（攻击力计算链路较深），
-        ///   按标准规则实现 —— 若实测不符再回来查。
+        /// ⚠ v1.36 修正：**不要**再给 Strengthen 加 +1。
+        ///   反编译 `CTokens.GetAdvantageStatus`（L330）已经把 Strengthen 折算成 Advantage，
+        ///   `P1Runner.ReadAdvantage` 调的就是它 → 求解器已经在抽牌阶段享受"抽 2 取优"。
+        ///   再加 +1 等于同一条状态计两次（实测伤害系统性虚高 1 点）。
+        ///   目标身上的 Poison 才是"攻击力 +1"，在 `EvaluateOn` 里按目标单独加。
         /// </summary>
         private static int EffectiveAttack(P1Context ctx, ActionSnapshot half)
         {
-            int v = half != null ? half.AttackStrength : 0;
-            if (ctx != null && ctx.MyPositiveConditions != null
-                && ctx.MyPositiveConditions.Contains("Strengthen"))
-            {
-                v += 1;
-            }
-            return v;
+            return half != null ? half.AttackStrength : 0;
         }
 
         private static AttackOnTarget EvaluateOn(P1Context ctx, ActionOption o,
@@ -1264,14 +1302,19 @@ namespace FHSolver.Solver
             //   结果"能选到墙后目标"但 EvaluateOn 又返回 null，伤害算不出来。
             if (!half.IgnoreLOS && ctx.HasLOS != null && !ctx.HasLOS(x, y, m.X, m.Y)) return null;
 
-            // 实际基础攻击力（含强化 +1）
+            // 实际基础攻击力（Strengthen 已在 Adv 里体现，不再 +1）
             int baseAtk = EffectiveAttack(ctx, half);
+
+            // 中毒目标被攻击 → 攻击力 +1（反编译 CAttackSummary.cs:633-636）
+            if (m.HasNegative("Poison")) baseAtk += 1;
 
             List<ModifierCardSnapshot> drawn = ModifierDraw.Simulate(
                 ctx.Deck?.Remaining, offset, ctx.Adv, baseAtk, out int consumed);
             if (drawn == null) return null;   // 牌堆见底 → 会洗牌，本次不可预知
 
-            int dmg = DamageModel.Compute(baseAtk, drawn, m.Shield);
+            // 穿透 / Brittle（易碎）/ Ward（结界）：反编译 CAttackSummary.cs:711-717、857-866
+            int dmg = DamageModel.Compute(baseAtk, drawn, m.Shield,
+                half.Pierce, m.HasNegative("Brittle"), m.HasPositive("Ward"));
             bool kills = dmg >= m.EffectiveHealth;
 
             var choice = new AttackChoice
@@ -1282,7 +1325,8 @@ namespace FHSolver.Solver
                 CardName = o.CardName,
                 CardInternalName = o.CardInternalName,
                 CardsConsumed = consumed,
-                Expr = DamageModel.Expression(baseAtk, drawn, m.Shield),
+                Expr = DamageModel.Expression(baseAtk, drawn, m.Shield,
+                    half.Pierce, m.HasNegative("Brittle"), m.HasPositive("Ward")),
                 BaseStrength = baseAtk,
                 Range = half.AttackRange,
                 FromX = x,
@@ -1591,10 +1635,13 @@ namespace FHSolver.Solver
                         if (ctx.HasLOS != null && !ctx.HasLOS(ctx.StartX, ctx.StartY, m.X, m.Y)) continue;
                         withLos.Add(m.DisplayName);
 
+                        // 诊断也按真实口径：中毒目标 +1 攻击力，穿透/易碎/结界同 EvaluateOn
+                        int diagBase = half.AttackStrength + (m.HasNegative("Poison") ? 1 : 0);
                         List<ModifierCardSnapshot> drawn = ModifierDraw.Simulate(
-                            ctx.Deck?.Remaining, 0, ctx.Adv, half.AttackStrength, out _);
+                            ctx.Deck?.Remaining, 0, ctx.Adv, diagBase, out _);
                         if (drawn == null) continue;
-                        int dmg = DamageModel.Compute(half.AttackStrength, drawn, m.Shield);
+                        int dmg = DamageModel.Compute(diagBase, drawn, m.Shield,
+                            half.Pierce, m.HasNegative("Brittle"), m.HasPositive("Ward"));
                         if (dmg > bestDmg) { bestDmg = dmg; picked = m.DisplayName; }
                     }
 

@@ -112,6 +112,16 @@ namespace FHSolver.Model
         /// </summary>
         public bool CanTargetInvisible;
 
+        /// <summary>
+        /// 是否优先攻击**最远**的目标（`MiscAbilityData.AttackFurthestTarget`）。
+        ///
+        /// 反编译实证（CAIMoveNew）：
+        ///   `if (thisAttack?.MiscAbilityData?.AttackFurthestTarget == true) useFurthestFocus = true;`
+        ///   → `SortEnemyEvals` 改用 `CompareEnemiesUsingFurthesFocus`（hexDist **降序**优先）。
+        /// 不建模就会把这类怪的焦点判反（它会去打最远的人，不是最近的人）。
+        /// </summary>
+        public bool AttackFurthestTarget;
+
         /// <summary>这一半的移动是否带落脚限制。</summary>
         public bool IsMoveRestricted => HasMove && MoveRestriction != "None";
 
@@ -184,6 +194,13 @@ namespace FHSolver.Model
         public int AttackStrength;
         public int AttackRange;
         public int AttackTargets;
+
+        /// <summary>
+        /// 穿透（`CAbilityAttack.Pierce`）：先扣护盾再进表达式。
+        /// 反编译 `CAttackSummary.cs:711-717`：`ShieldMinusPierce = max(0, Shield - Pierce)`。
+        /// 不建模会让带穿透的攻击被护盾多减。
+        /// </summary>
+        public int Pierce;
 
         /// <summary>
         /// 强度/距离会随场上条件变化（YAML 的 `StatIsBasedOnX`）。

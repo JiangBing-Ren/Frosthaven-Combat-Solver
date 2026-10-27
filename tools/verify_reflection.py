@@ -33,9 +33,14 @@ EXPECTED = [
     ('CAbility', 'StatIsBasedOnXEntries', 'property'),
     # 忽略视线
     ('CAbility', 'MiscAbilityData', 'property'),
-    ('MiscAbilityData', 'IgnoreLOS', 'property'),   # AbilityData 的嵌套类，按类名索引
+    # ⚠ 这三个在 MiscAbilityData 上是**公开字段**（bool / bool?），不是属性。
+    #   v1.35 之前登记成 property，脚本靠"属性声明允许以 ; 结尾"的宽松正则误判通过，
+    #   运行期 GetProperty 永远 null → 三个开关静默失效。
+    ('MiscAbilityData', 'IgnoreLOS', 'field'),
     ('CAbilityInfuse', 'ElementsToInfuse', 'property'),
-    ('MiscAbilityData', 'CanTargetInvisible', 'property'),
+    ('MiscAbilityData', 'CanTargetInvisible', 'field'),
+    # 优先攻击最远目标（v1.35：CAIMoveNew.useFurthestFocus）
+    ('MiscAbilityData', 'AttackFurthestTarget', 'field'),
     # 范围攻击形状
     ('CAbility', 'AreaEffectYMLString', 'property'),
     # 阴影
@@ -117,18 +122,19 @@ def find_member(by_class, cls, member, kind):
     if not texts:
         return False, '类不存在'
     for text in texts:
-        # 属性 / 字段
-        if kind in ('property', 'field'):
+        # ★ 属性与字段**分开**匹配（v1.35）：
+        #   旧正则给属性也允许以 `;` 结尾，于是 `public bool IgnoreLOS;`（字段）
+        #   被当成属性通过校验 —— 运行期 GetProperty 返回 null，静默失效。
+        if kind == 'property':
             pat = (r'\bpublic\s+[\w<>\[\],\.\?\s]+?\s+' + re.escape(member)
-                   + r'\s*(?:\{\s*get|\{|=>|;)')
+                   + r'\s*(?:\{\s*get|\{|=>)')
             if re.search(pat, text):
                 return True, ''
-            # 简化再试一次（有些声明跨行）
-            if re.search(r'\b' + re.escape(member) + r'\b', text) and kind == 'field':
-                # 字段：m_Xxx 形式
-                if re.search(r'\b(?:public|private|protected|internal)\s+[\w<>\[\],\.\?\s]+?\s+'
-                             + re.escape(member) + r'\s*[;=]', text):
-                    return True, ''
+        elif kind == 'field':
+            pat = (r'\b(?:public|private|protected|internal)\s+[\w<>\[\],\.\?\s]+?\s+'
+                   + re.escape(member) + r'\s*[;=]')
+            if re.search(pat, text):
+                return True, ''
         elif kind == 'method':
             if re.search(r'\b' + re.escape(member) + r'\s*\(', text):
                 return True, ''

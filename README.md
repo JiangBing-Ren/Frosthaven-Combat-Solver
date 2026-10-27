@@ -30,7 +30,7 @@
 
 ```
 src/FHSolver/          插件源码（net472，Unity Mono）
-src/FHSolver.Tests/    离线测试台（纯 C#，不需要游戏，237 项断言）
+src/FHSolver.Tests/    离线测试台（纯 C#，不需要游戏，263 项断言）
 tools/                 构建与校验脚本
 decompiled/            游戏 DLL 的反编译产物（规则查证用）
 extracted/             游戏规则数据（Base.ruleset）解包结果

@@ -13,6 +13,16 @@ namespace FHSolver.Model
         public bool IsCurse;
         public bool IsBless;
 
+        /// <summary>
+        /// 牌面上带**负面效果**（`AttackModifierCard.HasNegativeEffect`）。
+        /// 优/劣势二选一在**伤害相同**时要用它做 tie-break（游戏
+        /// `ChooseCardBasedOnAdvantage` 的真实逻辑，不是按卡片数值硬排）。
+        /// </summary>
+        public bool HasNegativeEffect;
+
+        /// <summary>牌面上带**附加效果**（`AttackModifierCard.HasAdditionalEffect`）。</summary>
+        public bool HasAdditionalEffect;
+
         public override string ToString()
         {
             string s = MathModifier;

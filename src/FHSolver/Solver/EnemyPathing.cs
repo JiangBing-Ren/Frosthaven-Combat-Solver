@@ -78,8 +78,11 @@ namespace FHSolver.Solver
         /// <param name="toX">输出：落点</param>
         /// <param name="toY">输出：落点</param>
         /// <param name="focusIdx">输出：焦点在 targets 里的下标；-1 = 打不到任何人</param>
+        /// <param name="preferFurthest">
+        /// `MiscAbilityData.AttackFurthestTarget`（游戏里的「攻击最远目标」怪）。
+        /// 为 true 时焦点先按 hexDist **降序**（CompareEnemiesUsingFurthesFocus）。
+        /// </param>
         /// <returns>移动意图（Attack / Approach / None）</returns>
-        /// <returns>移动意图：能攻击 / 只能靠近 / 不动</returns>
         public static EnemyMovePlan PlanMove(
             int fromX, int fromY,
             int movePoints,
@@ -89,7 +92,8 @@ namespace FHSolver.Solver
             Func<int, int, int, int, bool> hasLOS,
             List<Target> targets,
             HashSet<(int, int)> blocked,
-            out int toX, out int toY, out int focusIdx)
+            out int toX, out int toY, out int focusIdx,
+            bool preferFurthest = false)
         {
             toX = fromX;
             toY = fromY;
@@ -120,126 +124,111 @@ namespace FHSolver.Solver
 
             if (rangeDistance == null) return EnemyMovePlan.None;
 
-            // ---- ① 焦点 = **距离最近**的敌对单位（同距比先攻）----
-            //    ★ 严格照抄游戏：CAIMoveNew.ChooseClosestActor + ActorInitiativeComparer
-            //      —— 先按 hexDist 选最近，同距再比先攻（小的先动）。
+            // ---- ① 每个目标的「攻击代价 / 距离 / 先攻」----
+            //   游戏 CAIMoveNew.CompareEnemies（反编译实证，无随机 tie-break）：
+            //     isFocusOverride 降序 → lowestMoveCostToAttack 升序
+            //     → hexDist 升序 → 调整后先攻
+            //   其中 hexDist = 地形感知的**路径长度**（忽略单位），
+            //   lowestMoveCostToAttack = 走到**任一攻击位**的最小移动代价。
             //
-            //    ⚠ v1.31 之前这里是"在**能打到的**目标里选移动代价最小" ——
-            //      维度错了！后果：真实 AI 追的是"最近的人"（哪怕够不着），
-            //      我却可能去追"移动代价最小的人" → 落点不同 →
-            //      多回合推演里第 2 回合打在敌人已经不在这儿的格子上（打空气）。
-            int bestFocusDist = int.MaxValue;
-            int bestFocusIni = int.MaxValue;
-            int bestFocus = -1;
+            //   ⚠ v1.31 把焦点简化成"路径距离最近"，维度不对：
+            //     隔困难地形/绕墙时，"最近"和"打它最省移动力"会指向不同目标。
+            //     这里按三级键照抄游戏；move cost 用 rangeDistance 近似（不额外计困难地形双倍）。
+            int n = targets.Count;
+            var dist = new int[n];
+            var cost = new int[n];
+            var spotX = new int[n];
+            var spotY = new int[n];
 
-            for (int ti = 0; ti < targets.Count; ti++)
+            for (int ti = 0; ti < n; ti++)
             {
-                Target tg = targets[ti];
-                int d = rangeDistance(fromX, fromY, tg.X, tg.Y);
-                if (d < 0) continue;
-                int ini = tg.Initiative;
-                if (d < bestFocusDist || (d == bestFocusDist && ini < bestFocusIni))
+                dist[ti] = rangeDistance(fromX, fromY, targets[ti].X, targets[ti].Y);
+                cost[ti] = int.MaxValue;
+                spotX[ti] = -1;
+                spotY[ti] = -1;
+            }
+
+            foreach ((int X, int Y) s in spots)
+            {
+                int costToSpot = rangeDistance(fromX, fromY, s.X, s.Y);
+                if (costToSpot < 0) continue;
+
+                for (int ti = 0; ti < n; ti++)
                 {
-                    bestFocusDist = d;
-                    bestFocusIni = ini;
+                    if (cost[ti] <= costToSpot) continue;             // 已有更省的攻击位
+
+                    int r = rangeDistance(s.X, s.Y, targets[ti].X, targets[ti].Y);
+                    if (r < 0 || r > attackRange) continue;
+                    if (hasLOS != null && !hasLOS(s.X, s.Y, targets[ti].X, targets[ti].Y)) continue;
+
+                    cost[ti] = costToSpot;
+                    spotX[ti] = s.X;
+                    spotY[ti] = s.Y;
+                }
+            }
+
+            // ---- ② 焦点（CompareEnemies / CompareEnemiesUsingFurthesFocus）----
+            int bestFocus = -1;
+            for (int ti = 0; ti < n; ti++)
+            {
+                if (dist[ti] < 0) continue;                            // 完全没有路径
+                if (bestFocus < 0 || BetterFocus(ti, bestFocus, targets, dist, cost, preferFurthest))
+                {
                     bestFocus = ti;
                 }
             }
-
             if (bestFocus < 0) return EnemyMovePlan.None;
             Target focus = targets[bestFocus];
 
-            // ---- ② 在这个焦点下找落点：能打到它 + 移动代价最小 ----
-            int bestCost = int.MaxValue;
-            int bestX = -1, bestY = -1;
-
-            for (int si = 0; si < spots.Count; si++)
+            // ---- ③ 能打到焦点 → 走到最省的攻击位（原地代价 0，自然不动）----
+            if (cost[bestFocus] < int.MaxValue)
             {
-                (int X, int Y) s = spots[si];
-
-                int r = rangeDistance(s.X, s.Y, focus.X, focus.Y);
-                if (r < 0 || r > attackRange) continue;
-
-                // 视线：墙后面打不到
-                if (hasLOS != null && !hasLOS(s.X, s.Y, focus.X, focus.Y)) continue;
-
-                // 移动代价 = 从原地走到这一格的距离
-                int cost = rangeDistance(fromX, fromY, s.X, s.Y);
-                if (cost < 0) continue;
-
-                if (cost < bestCost)
-                {
-                    bestCost = cost;
-                    bestX = s.X;
-                    bestY = s.Y;
-                }
-            }
-
-            if (bestCost < int.MaxValue)
-            {
-                toX = bestX;
-                toY = bestY;
+                toX = spotX[bestFocus];
+                toY = spotY[bestFocus];
                 focusIdx = bestFocus;
                 return EnemyMovePlan.Attack;
             }
 
-            // ---- ② 打不到任何人 → **朝焦点靠近**（真实 AI 的 fallback，不是原地不动）----
+            // ---- ④ 打不到任何人 → **朝焦点靠近**（真实 AI 的 fallback，不是原地不动）----
             //    CAIMoveNew.FindPathToFocus：走不到 bestAttackTile 时，
             //    会在所有可达格里挑一个"离攻击位最近"的走过去（InitReachableTiles + 代价比较）。
             //    这里简化为「离**焦点本人**最近的可达格」—— 攻击位本来就是焦点旁边的格子，
             //    两者在绝大多数场景下等价，且更好解释。
-            return PlanApproach(fromX, fromY, movePoints, reachable, rangeDistance,
-                targets, blocked, spots, out toX, out toY, out focusIdx);
-        }
-
-        /// <summary>够不着时的贴近逻辑：走到离焦点最近的可达格（必须比现在更近才动）。</summary>
-        private static EnemyMovePlan PlanApproach(
-            int fromX, int fromY, int movePoints,
-            Func<int, int, int, List<(int X, int Y, int Hazard)>> reachable,
-            Func<int, int, int, int, int> rangeDistance,
-            List<Target> targets,
-            HashSet<(int, int)> blocked,
-            List<(int X, int Y)> spots,
-            out int toX, out int toY, out int focusIdx)
-        {
-            toX = fromX;
-            toY = fromY;
-            focusIdx = -1;
-
             if (movePoints <= 0) return EnemyMovePlan.None;
 
-            // 焦点 = 离它最近的敌对单位（**同距比先攻**，照抄游戏）
-            int bestFd = int.MaxValue;
-            int bestIni = int.MaxValue;
-            int fi = -1;
-            for (int i = 0; i < targets.Count; i++)
-            {
-                int d = rangeDistance(fromX, fromY, targets[i].X, targets[i].Y);
-                if (d < 0) continue;
-                int ini = targets[i].Initiative;
-                if (d < bestFd || (d == bestFd && ini < bestIni))
-                {
-                    bestFd = d; bestIni = ini; fi = i;
-                }
-            }
-            if (fi < 0) return EnemyMovePlan.None;
-
-            // 在可达格里找离焦点最近的
-            int bestD = bestFd;              // 必须比"现在到焦点的距离"更近才值得动
-            int bx = -1, by = -1;
+            int bestD = dist[bestFocus];          // 必须比"现在到焦点的距离"更近才值得动
+            int bx = fromX, by = fromY;
+            bool found = false;
             foreach ((int X, int Y) s in spots)
             {
                 if (s.X == fromX && s.Y == fromY) continue;
-                int d = rangeDistance(s.X, s.Y, targets[fi].X, targets[fi].Y);
-                if (d >= 0 && d < bestD) { bestD = d; bx = s.X; by = s.Y; }
+                int d = rangeDistance(s.X, s.Y, focus.X, focus.Y);
+                if (d >= 0 && d < bestD) { bestD = d; bx = s.X; by = s.Y; found = true; }
             }
 
-            if (bx < 0) return EnemyMovePlan.None;
+            // ⚠ 不能用 x/y == -1 当"没找到"的哨兵：
+            //   六边形地图的坐标可以是负的（实测 (-1,1) 就是合法格）。
+            if (!found) return EnemyMovePlan.None;
 
             toX = bx;
             toY = by;
-            focusIdx = fi;
+            focusIdx = bestFocus;
             return EnemyMovePlan.Approach;
+        }
+
+        /// <summary>
+        /// 焦点排序：<c>dist</c> 是六边形路径距离，<c>cost</c> 是"走到攻击位的最小代价"。
+        /// 与游戏 <c>CompareEnemies</c> 一致：cost 升序 → dist 升序 → 先攻升序；
+        /// <c>preferFurthest</c>（AttackFurthestTarget）时先按 dist **降序**。
+        /// </summary>
+        private static bool BetterFocus(int i, int j, List<Target> targets,
+            int[] dist, int[] cost, bool preferFurthest)
+        {
+            if (preferFurthest && dist[i] != dist[j]) return dist[i] > dist[j];
+
+            if (cost[i] != cost[j]) return cost[i] < cost[j];
+            if (dist[i] != dist[j]) return dist[i] < dist[j];
+            return targets[i].Initiative < targets[j].Initiative;
         }
     }
 }

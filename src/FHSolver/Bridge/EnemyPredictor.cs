@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AStar;
 using FHSolver.Model;
+using FHSolver.Solver;
 using ScenarioRuleLibrary;
 
 namespace FHSolver.Bridge
@@ -130,10 +131,23 @@ namespace FHSolver.Bridge
                 if (p != null) occupied.Add((p.X, p.Y));
             }
 
+            // ★ 焦点规则现在要算「走到每个攻击位的代价」，同一个 Insert 里
+            //   不同敌人会反复查同样的格子对 —— 用局部缓存挡掉重复 A*。
+            var distCache = new Dictionary<(int, int, int, int), int>();
+            Func<int, int, int, int, int> dist = (x1, y1, x2, y2) =>
+            {
+                var key = (x1, y1, x2, y2);
+                int v;
+                if (distCache.TryGetValue(key, out v)) return v;
+                v = Geometry.RangeDistance(x1, y1, x2, y2);
+                distCache[key] = v;
+                return v;
+            };
+
             foreach (UnitRef e in enemies.OrderBy(x => x.Initiative))
             {
                 ActionSnapshot intent = e.Snap.Intent;
-                if (intent == null || !intent.HasAttack) continue;
+                if (intent == null) continue;
 
                 int move = intent.HasMove ? intent.MoveStrength : 0;
                 if (move < 0)
@@ -141,60 +155,54 @@ namespace FHSolver.Bridge
                     try { move = (e.Actor as CEnemyActor)?.MonsterClass?.Move ?? 0; }
                     catch { move = 0; }
                 }
-                if (move <= 0) continue;
+                if (move <= 0) continue;                       // 不走就原地不动，占用集已经包含它
 
-                // 焦点：与它敌对、寻路距离最小的存活单位
-                CActor focus = null;
-                int bestD = int.MaxValue;
+                // 候选目标：与它敌对的存活单位（含玩家/盟友/召唤物）。
+                // 只取焦点排序需要的字段，**不调 StateReader.ReadUnit**
+                // （那会为每个目标重复读手牌/牌堆，怪多时是明显的浪费）。
+                var targets = new List<EnemyPathing.Target>();
+                var names = new List<string>();
                 foreach (CActor other in alive)
                 {
                     if (other == e.Actor) continue;
-                    bool enemies2;
-                    try { enemies2 = CActor.AreActorsEnemies(e.Actor.Type, other.Type, e.Actor, other); }
+                    bool isEnemy;
+                    try { isEnemy = CActor.AreActorsEnemies(e.Actor.Type, other.Type, e.Actor, other); }
                     catch { continue; }
-                    if (!enemies2) continue;
+                    if (!isEnemy) continue;
 
                     Point op;
                     try { op = other.ArrayIndex; } catch { continue; }
                     if (op == null) continue;
 
-                    int d = Geometry.RangeDistance(e.X, e.Y, op.X, op.Y);
-                    if (d < bestD) { bestD = d; focus = other; }
+                    bool dead = true;
+                    try { dead = other.IsDead; } catch { /* 拿不准就当活的 */ dead = false; }
+                    if (dead) continue;
+
+                    int ini = 0;
+                    try { ini = other.Initiative(); } catch { /* 忽略 */ }
+
+                    targets.Add(new EnemyPathing.Target(op.X, op.Y, other.ActorLocKey(), ini));
+                    names.Add(Loc.T(other.ActorLocKey()));
                 }
+                if (targets.Count == 0) continue;
 
-                if (focus == null) continue;
-                Point fp;
-                try { fp = focus.ArrayIndex; } catch { continue; }
-                if (fp == null) continue;
+                // ★ 与多回合共用同一套焦点/落点规则（EnemyPathing = CAIMoveNew 的复刻）：
+                //   lowestMoveCostToAttack 升序 → hexDist 升序 → 先攻；
+                //   AttackFurthestTarget 时改用 hexDist 降序优先。
+                //   以前这里另写了一套"路径距离最近"，两套实现会互相打架（v1.31 的教训）。
+                var blocked = new HashSet<(int, int)>(occupied);
+                blocked.Remove((e.X, e.Y));                    // 自己站的格子不算阻挡
 
-                // ③ 现在就能打到 → 不动（保守：不释放原格）
-                if (Geometry.RangeDistance(e.X, e.Y, fp.X, fp.Y) <= intent.AttackRange
-                    && Geometry.HasLOS(e.X, e.Y, fp.X, fp.Y))
-                {
-                    continue;
-                }
+                int toX, toY, focusIdx;
+                EnemyMovePlan plan = EnemyPathing.PlanMove(
+                    e.X, e.Y, move, intent.AttackRange,
+                    (x, y, r) => Geometry.Reachable(e.Actor, x, y, r),
+                    dist, Geometry.HasLOS,
+                    targets, blocked,
+                    out toX, out toY, out focusIdx,
+                    intent.AttackFurthestTarget);
 
-                // ② 落点：可达格里能打到焦点、且离自己最近者
-                var reach = Geometry.Reachable(e.Actor, e.X, e.Y, move);
-                int bestCost = int.MaxValue;
-                int bx = -1, by = -1;
-                foreach ((int X, int Y, int HAZ) t in reach)
-                {
-                    if (t.X == e.X && t.Y == e.Y) continue;                 // 它站的地方不算"走过去"
-                    int fr = Geometry.RangeDistance(t.X, t.Y, fp.X, fp.Y);
-                    if (fr > intent.AttackRange) continue;
-                    if (!Geometry.HasLOS(t.X, t.Y, fp.X, fp.Y)) continue;
-
-                    int cost = Geometry.RangeDistance(e.X, e.Y, t.X, t.Y);
-                    if (cost < bestCost)
-                    {
-                        bestCost = cost;
-                        bx = t.X;
-                        by = t.Y;
-                    }
-                }
-
-                if (bx < 0) continue;
+                if (plan == EnemyMovePlan.None) continue;
 
                 var pred = new Prediction
                 {
@@ -202,15 +210,15 @@ namespace FHSolver.Bridge
                     DisplayName = e.Snap.DisplayName,
                     FromX = e.X,
                     FromY = e.Y,
-                    ToX = bx,
-                    ToY = by,
+                    ToX = toX,
+                    ToY = toY,
                     MovePoints = move,
                     Initiative = e.Initiative,
                     HasAttack = intent.HasAttack,
                     AttackRange = intent.AttackRange,
                     AttackStrength = intent.AttackStrength,
-                    FocusName = focus != null ? Loc.T(focus.ActorLocKey()) : "(无)",
-                    WillMove = true,
+                    FocusName = focusIdx >= 0 && focusIdx < names.Count ? names[focusIdx] : "(无)",
+                    WillMove = toX != e.X || toY != e.Y,
                 };
                 // 它这次攻击会给我方上什么条件（缴械/中毒/静足…）
                 if (intent.AppliesNegative != null)
@@ -221,6 +229,16 @@ namespace FHSolver.Bridge
                     }
                 }
                 list.Add(pred);
+
+                // ★ 占用集随移动推进：先动的怪让出原格、占住新格，
+                //   后动的怪不会预测到同一格（旧代码声明了 occupied 却从没更新）。
+                if (pred.WillMove)
+                {
+                    occupied.Remove((e.X, e.Y));
+                    occupied.Add((toX, toY));
+                    e.X = toX;
+                    e.Y = toY;
+                }
             }
 
             return list;

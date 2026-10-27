@@ -46,14 +46,11 @@ namespace FHSolver.Solver
                 int dmg = Math.Max(0, a.Damage);
                 target.Health -= dmg;
                 st.TotalDamage += dmg;
-                st.TotalXp += a.TargetGuid != null ? EstimateXp(dmg, target) : 0;
+                st.TotalXp += EstimateXp(dmg, target);
 
-                // 护盾先扣
-                if (target.Shield > 0)
-                {
-                    int absorbed = Math.Min(target.Shield, Math.Max(0, -target.Health - target.MaxHealth + target.Health));
-                    if (absorbed > 0) target.Shield -= absorbed;
-                }
+                // ⚠ AttackChoice.Damage 已经是**减过护盾**的值（DamageModel.Compute），
+                //   护盾按每次攻击独立生效、不会在本回合被"抽干"，
+                //   所以这里不再重复扣护盾（旧代码那行算式恒为 0，等于死代码）。
 
                 if (target.Health <= 0)
                 {
@@ -164,7 +161,8 @@ namespace FHSolver.Solver
                 };
                 foreach (UnitSnapshot o in st.Others)
                 {
-                    if (o == null || o.IsHostileToPlayer) continue;
+                    // v1.36：尸体/力竭单位不能被当成目标（旧代码会把死亡盟友列入焦点候选）
+                    if (o == null || o.IsHostileToPlayer || o.Health <= 0) continue;
                     targets.Add(new EnemyPathing.Target(o.X, o.Y, o.DisplayName, o.Initiative));
                 }
 
@@ -178,7 +176,8 @@ namespace FHSolver.Solver
                     e.X, e.Y, move, it.AttackRange,
                     st.Reachable, st.RangeDistance, st.HasLOS,
                     targets, blocked,
-                    out int toX, out int toY, out int focusIdx);
+                    out int toX, out int toY, out int focusIdx,
+                    it.AttackFurthestTarget);
 
                 if (plan == EnemyMovePlan.None) continue;
 

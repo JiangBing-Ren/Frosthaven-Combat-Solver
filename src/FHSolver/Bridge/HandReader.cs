@@ -231,6 +231,8 @@ namespace FHSolver.Bridge
                         a.IgnoreLOS |= ReadIgnoreLOS(ab);
                         // 能打隐形目标的能力（默认不能）
                         a.CanTargetInvisible |= ReadCanTargetInvisible(ab);
+                        // 「优先攻击最远目标」的怪（CAIMoveNew.useFurthestFocus）
+                        a.AttackFurthestTarget |= ReadAttackFurthestTarget(ab);
                         // 元素需求（只提示）
                         string els = ReadElementNeed(ab);
                         if (els.Length > 0 && !a.ElementNeed.Contains(els))
@@ -242,6 +244,10 @@ namespace FHSolver.Bridge
                         if (ab.Strength > a.AttackStrength) a.AttackStrength = ab.Strength;
                         if (ab.Range > a.AttackRange) a.AttackRange = ab.Range;
                         if (ab.NumberTargets > a.AttackTargets) a.AttackTargets = ab.NumberTargets;
+
+                        // 穿透：CAbilityAttack.Pierce（护盾先减穿透）
+                        CAbilityAttack atkAb = ab as CAbilityAttack;
+                        if (atkAb != null && atkAb.Pierce > a.Pierce) a.Pierce = atkAb.Pierce;
 
                         // ★ 强度随场上条件变化时（StatIsBasedOnX），求出**实际**强度。
                         //   死行「深渊力量」= 1 + 阴影数（上限 5 → 最高攻击 6）。
@@ -653,26 +659,10 @@ namespace FHSolver.Bridge
             }
         }
 
-        /// <summary>读 `MiscAbilityData.CanTargetInvisible`（可空 bool，读不到当 false）。</summary>
+        /// <summary>读 `MiscAbilityData.CanTargetInvisible`（bool? 字段，读不到当 false）。</summary>
         private static bool ReadCanTargetInvisible(CAbility ab)
         {
-            try
-            {
-                if (PMiscAbilityData == null) return false;
-                object misc = PMiscAbilityData.GetValue(ab, null);
-                if (misc == null) return false;
-
-                PropertyInfo pi = misc.GetType().GetProperty("CanTargetInvisible",
-                    BindingFlags.Public | BindingFlags.Instance);
-                if (pi == null) return false;
-
-                object v = pi.GetValue(misc, null);
-                return v is bool b && b;
-            }
-            catch
-            {
-                return false;
-            }
+            return ReadMiscBool(ab, "CanTargetInvisible");
         }
 
         /// <summary>读 `ElementsToInfuse`，返回如 "Fire" / "Fire+Water"；无需求返回空。</summary>
@@ -705,21 +695,51 @@ namespace FHSolver.Bridge
             }
         }
 
-        /// <summary>读 `MiscAbilityData.IgnoreLOS`（可空 bool，读不到当 false）。</summary>
+        /// <summary>读 `MiscAbilityData.AttackFurthestTarget`（"优先打最远目标"，读不到当 false）。</summary>
+        private static bool ReadAttackFurthestTarget(CAbility ab)
+        {
+            return ReadMiscBool(ab, "AttackFurthestTarget");
+        }
+
+        /// <summary>读 `MiscAbilityData.IgnoreLOS`（读不到当 false）。</summary>
         private static bool ReadIgnoreLOS(CAbility ab)
+        {
+            return ReadMiscBool(ab, "IgnoreLOS");
+        }
+
+        /// <summary>
+        /// 读 `MiscAbilityData` 上的一个布尔开关 —— **字段或属性都认**，`bool` / `bool?` 都认。
+        ///
+        /// ⚠ v1.35 修掉的静默 bug：这三个开关在反编译里都是**公开字段**
+        ///   （`AttackFurthestTarget` / `IgnoreLOS` 是 bool，`CanTargetInvisible` 是 bool?），
+        ///   而旧代码用 `GetProperty` 取 → 永远 null → 返回 false。
+        ///   于是「忽略视线」「可打隐形」「打最远目标」三条从 v1.19 起一直**没生效**，
+        ///   离线测试却全绿（测试直接构造 ActionSnapshot，不经过反射）。
+        /// </summary>
+        private static bool ReadMiscBool(CAbility ab, string name)
         {
             try
             {
-                if (PMiscAbilityData == null) return false;
+                if (ab == null || PMiscAbilityData == null) return false;
                 object misc = PMiscAbilityData.GetValue(ab, null);
                 if (misc == null) return false;
 
-                PropertyInfo pi = misc.GetType().GetProperty("IgnoreLOS",
-                    BindingFlags.Public | BindingFlags.Instance);
-                if (pi == null) return false;
+                Type t = misc.GetType();
+                FieldInfo fi = t.GetField(name,
+                    BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                if (fi != null)
+                {
+                    object fv = fi.GetValue(misc);
+                    return fv is bool b && b;      // bool? 的 null → false
+                }
 
-                object v = pi.GetValue(misc, null);
-                return v is bool b && b;
+                PropertyInfo pi = t.GetProperty(name, BindingFlags.Public | BindingFlags.Instance);
+                if (pi != null)
+                {
+                    object pv = pi.GetValue(misc, null);
+                    return pv is bool b2 && b2;
+                }
+                return false;
             }
             catch
             {

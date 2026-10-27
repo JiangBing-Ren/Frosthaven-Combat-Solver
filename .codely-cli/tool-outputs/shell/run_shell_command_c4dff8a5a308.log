@@ -1,0 +1,150 @@
+Filename                             LineNumber Line                                                                                                                                          
+--------                             ---------- ----                                                                                                                                          
+CObjective.cs                                54 	public bool EnoughToWinAlone { get; protected set; }                                                                                         
+CObjective.cs                               179 		info.AddValue("EnoughToWinAlone", EnoughToWinAlone);                                                                                        
+CObjective.cs                               243 				case "EnoughToWinAlone":                                                                                                                  
+CObjective.cs                               244 					EnoughToWinAlone = info.GetBoolean("EnoughToWinAlone");                                                                                  
+CObjective.cs                               276 	public CObjective(EObjectiveType objType, EObjectiveResult result, CObjectiveFilter objectiveFilter, bool hideCounter, bool activeFromStart =
+                                                 true, int? activateOnRound = null, string customLoc = null, string customTileHoverLoc = null, string eventIdentifier = null, bool isHidden = 
+                                                false, bool isOptional = false, bool winDespiteExhaustion = false, bool enoughToWinAlone = false, Dictionary<string, bool> requiredObjectiveSt
+                                                ates = null)                                                                                                                                  
+CObjective.cs                               293 		EnoughToWinAlone = enoughToWinAlone;                                                                                                        
+CObjective_ActivatePressurePlateX.cs         78 	public CObjective_ActivatePressurePlateX(EObjectiveResult result, CObjectiveFilter objectiveFilter, List<int> numberToActivate, bool hideCoun
+                                                ter, bool activeFromStart = true, int? activateOnRound = null, string customLoc = null, string customTileHoverLoc = null, string eventIdentifi
+                                                er = null, bool isHidden = false, bool isOptional = false, bool winDespiteExhaustion = false, bool enoughToWinAlone = false, Dictionary<string
+                                                , bool> requiredObjectiveStates = null)                                                                                                       
+CObjective_ActivatePressurePlateX.cs         79 		: base(EObjectiveType.ActivateXPressurePlates, result, objectiveFilter, hideCounter, activeFromStart, activateOnRound, customLoc, customTile
+                                                HoverLoc, eventIdentifier, isHidden, isOptional, winDespiteExhaustion, enoughToWinAlone, requiredObjectiveStates)                             
+CObjective_ActivateXProps.cs                 84 	public CObjective_ActivateXProps(EObjectiveResult result, CObjectiveFilter objectiveFilter, List<int> activateAmount, bool hideCounter, bool 
+                                                activeFromStart = true, int? activateOnRound = null, string customLoc = null, string customTileHoverLoc = null, string eventIdentifier = null,
+                                                 bool isHidden = false, bool isOptional = false, bool winDespiteExhaustion = false, bool enoughToWinAlone = false, Dictionary<string, bool> re
+                                                quiredObjectiveStates = null)                                                                                                                 
+CObjective_ActivateXProps.cs                 85 		: base(EObjectiveType.ActivateXProps, result, objectiveFilter, hideCounter, activeFromStart, activateOnRound, customLoc, customTileHoverLoc,
+                                                 eventIdentifier, isHidden, isOptional, winDespiteExhaustion, enoughToWinAlone, requiredObjectiveStates)                                      
+CObjective_ActivateXSpawners.cs              72 	public CObjective_ActivateXSpawners(EObjectiveResult result, CObjectiveFilter objectiveFilter, List<int> numberToActivate, bool hideCounter, 
+                                                bool activeFromStart = true, int? activateOnRound = null, string customLoc = null, string customTileHoverLoc = null, string eventIdentifier = 
+                                                null, bool isHidden = false, bool isOptional = false, bool winDespiteExhaustion = false, bool enoughToWinAlone = false, Dictionary<string, boo
+                                                l> requiredObjectiveStates = null)                                                                                                            
+CObjective_ActivateXSpawners.cs              73 		: base(EObjectiveType.ActivateXSpawners, result, objectiveFilter, hideCounter, activeFromStart, activateOnRound, customLoc, customTileHoverL
+                                                oc, eventIdentifier, isHidden, isOptional, winDespiteExhaustion, enoughToWinAlone, requiredObjectiveStates)                                   
+CObjective_ActorReachPosition.cs             57 	public CObjective_ActorReachPosition(EObjectiveResult result, CObjectiveFilter objectiveFilter, List<int> reachPositionAmounts, List<TileInde
+                                                x> actorTargetPositions, bool hideCounter, bool activeFromStart = true, int? activateOnRound = null, string customLoc = null, string customTil
+                                                eHoverLoc = null, string eventIdentifier = null, bool isHidden = false, bool isOptional = false, bool winDespiteExhaustion = false, bool enoug
+                                                hToWinAlone = false, Dictionary<string, bool> requiredObjectiveStates = null)                                                                 
+CObjective_ActorReachPosition.cs             58 		: base(EObjectiveType.ActorReachPosition, result, objectiveFilter, hideCounter, activeFromStart, activateOnRound, customLoc, customTileHover
+                                                Loc, eventIdentifier, isHidden, isOptional, winDespiteExhaustion, enoughToWinAlone, requiredObjectiveStates)                                  
+CObjective_ActorsEscaped.cs                  57 	public CObjective_ActorsEscaped(EObjectiveResult result, CObjectiveFilter objectiveFilter, List<int> targetNumberOfEscapees, List<TileIndex> 
+                                                actorEscapePositions, bool hideCounter, bool activeFromStart = true, int? activateOnRound = null, string customLoc = null, string customTileHo
+                                                verLoc = null, string eventIdentifier = null, bool isHidden = false, bool isOptional = false, bool winDespiteExhaustion = false, bool enoughTo
+                                                WinAlone = false, Dictionary<string, bool> requiredObjectiveStates = null)                                                                    
+CObjective_ActorsEscaped.cs                  58 		: base(EObjectiveType.ActorsEscaped, result, objectiveFilter, hideCounter, activeFromStart, activateOnRound, customLoc, customTileHoverLoc, 
+                                                eventIdentifier, isHidden, isOptional, winDespiteExhaustion, enoughToWinAlone, requiredObjectiveStates)                                       
+CObjective_ActorsNotInAllRooms.cs            44 	public CObjective_ActorsNotInAllRooms(EObjectiveResult result, CObjectiveFilter objectiveFilter, List<string> roomMapGUIDs, bool hideCounter,
+                                                 bool activeFromStart = true, int? activateOnRound = null, string customLoc = null, string customTileHoverLoc = null, string eventIdentifier =
+                                                 null, bool isHidden = false, bool isOptional = false, bool winDespiteExhaustion = false, bool enoughToWinAlone = false, Dictionary<string, bo
+                                                ol> requiredObjectiveStates = null)                                                                                                           
+CObjective_ActorsNotInAllRooms.cs            45 		: base(EObjectiveType.ActorsNotInAllRooms, result, objectiveFilter, hideCounter, activeFromStart, activateOnRound, customLoc, customTileHove
+                                                rLoc, eventIdentifier, isHidden, isOptional, winDespiteExhaustion, enoughToWinAlone, requiredObjectiveStates)                                 
+CObjective_AllCharactersMustLoot.cs          61 	public CObjective_AllCharactersMustLoot(EObjectiveResult result, CObjectiveFilter objectiveFilter, bool hideCounter, bool activeFromStart = t
+                                                rue, int? activateOnRound = null, string customLoc = null, string customTileHoverLoc = null, string eventIdentifier = null, bool isHidden = fa
+                                                lse, bool isOptional = false, bool winDespiteExhaustion = false, bool enoughToWinAlone = false, Dictionary<string, bool> requiredObjectiveStat
+                                                es = null)                                                                                                                                    
+CObjective_AllCharactersMustLoot.cs          62 		: base(EObjectiveType.AllCharactersMustLoot, result, objectiveFilter, hideCounter, activeFromStart, activateOnRound, customLoc, customTileHo
+                                                verLoc, eventIdentifier, isHidden, isOptional, winDespiteExhaustion, enoughToWinAlone, requiredObjectiveStates)                               
+CObjective_AnyActorReachPosition.cs          57 	public CObjective_AnyActorReachPosition(EObjectiveResult result, CObjectiveFilter objectiveFilter, List<int> reachPositionAmounts, List<TileI
+                                                ndex> actorTargetPositions, bool hideCounter, bool activeFromStart = true, int? activateOnRound = null, string customLoc = null, string custom
+                                                TileHoverLoc = null, string eventIdentifier = null, bool isHidden = false, bool isOptional = false, bool winDespiteExhaustion = false, bool en
+                                                oughToWinAlone = false, Dictionary<string, bool> requiredObjectiveStates = null)                                                              
+CObjective_AnyActorReachPosition.cs          58 		: base(EObjectiveType.AnyActorReachPosition, result, objectiveFilter, hideCounter, activeFromStart, activateOnRound, customLoc, customTileHo
+                                                verLoc, eventIdentifier, isHidden, isOptional, winDespiteExhaustion, enoughToWinAlone, requiredObjectiveStates)                               
+CObjective_BringItemsToArea.cs               56 	public CObjective_BringItemsToArea(EObjectiveResult result, CObjectiveFilter objectiveFilter, List<int> targetNumberOfEscapees, List<TileInde
+                                                x> areaPositions, bool hideCounter, bool activeFromStart = true, int? activateOnRound = null, string customLoc = null, string customTileHoverL
+                                                oc = null, string eventIdentifier = null, bool isHidden = false, bool isOptional = false, bool winDespiteExhaustion = false, bool enoughToWinA
+                                                lone = false, Dictionary<string, bool> requiredObjectiveStates = null)                                                                        
+CObjective_BringItemsToArea.cs               57 		: base(EObjectiveType.BringItemsToArea, result, objectiveFilter, hideCounter, activeFromStart, activateOnRound, customLoc, customTileHoverLo
+                                                c, eventIdentifier, isHidden, isOptional, winDespiteExhaustion, enoughToWinAlone, requiredObjectiveStates)                                    
+CObjective_CustomTrigger.cs                  52 	public CObjective_CustomTrigger(EObjectiveResult result, CObjectiveFilter objectiveFilter, CLevelTrigger customTrigger, bool hideCounter, boo
+                                                l activeFromStart = true, int? activateOnRound = null, string customLoc = null, string customTileHoverLoc = null, string eventIdentifier = nul
+                                                l, bool isHidden = false, bool isOptional = false, bool winDespiteExhaustion = false, bool enoughToWinAlone = false, Dictionary<string, bool> 
+                                                requiredObjectiveStates = null)                                                                                                               
+CObjective_CustomTrigger.cs                  53 		: base(EObjectiveType.CustomTrigger, result, objectiveFilter, hideCounter, activeFromStart, activateOnRound, customLoc, customTileHoverLoc, 
+                                                eventIdentifier, isHidden, isOptional, winDespiteExhaustion, enoughToWinAlone, requiredObjectiveStates)                                       
+CObjective_DamageQuota.cs                    45 	public CObjective_DamageQuota(EObjectiveResult result, CObjectiveFilter objectiveFilter, List<int> currentDamageAmounts, bool hideCounter, bo
+                                                ol activeFromStart = true, int? activateOnRound = null, string customLoc = null, string customTileHoverLoc = null, string eventIdentifier = nu
+                                                ll, bool isHidden = false, bool isOptional = false, bool winDespiteExhaustion = false, bool enoughToWinAlone = false, Dictionary<string, bool>
+                                                 requiredObjectiveStates = null)                                                                                                              
+CObjective_DamageQuota.cs                    46 		: base(EObjectiveType.DamageQuota, result, objectiveFilter, hideCounter, activeFromStart, activateOnRound, customLoc, customTileHoverLoc, ev
+                                                entIdentifier, isHidden, isOptional, winDespiteExhaustion, enoughToWinAlone, requiredObjectiveStates)                                         
+CObjective_DeactivateXSpawners.cs            72 	public CObjective_DeactivateXSpawners(EObjectiveResult result, CObjectiveFilter objectiveFilter, List<int> numberToActivate, bool hideCounter
+                                                , bool activeFromStart = true, int? activateOnRound = null, string customLoc = null, string customTileHoverLoc = null, string eventIdentifier 
+                                                = null, bool isHidden = false, bool isOptional = false, bool winDespiteExhaustion = false, bool enoughToWinAlone = false, Dictionary<string, b
+                                                ool> requiredObjectiveStates = null)                                                                                                          
+CObjective_DeactivateXSpawners.cs            73 		: base(EObjectiveType.DeactivateXSpawners, result, objectiveFilter, hideCounter, activeFromStart, activateOnRound, customLoc, customTileHove
+                                                rLoc, eventIdentifier, isHidden, isOptional, winDespiteExhaustion, enoughToWinAlone, requiredObjectiveStates)                                 
+CObjective_DealXDamage.cs                    87 	public CObjective_DealXDamage(EObjectiveResult result, CObjectiveFilter objectiveFilter, List<int> targetDamage, bool hideCounter, bool activ
+                                                eFromStart = true, int? activateOnRound = null, string customLoc = null, string customTileHoverLoc = null, string eventIdentifier = null, bool
+                                                 isHidden = false, bool isOptional = false, bool winDespiteExhaustion = false, bool enoughToWinAlone = false, Dictionary<string, bool> require
+                                                dObjectiveStates = null)                                                                                                                      
+CObjective_DealXDamage.cs                    88 		: base(EObjectiveType.DealXDamage, result, objectiveFilter, hideCounter, activeFromStart, activateOnRound, customLoc, customTileHoverLoc, ev
+                                                entIdentifier, isHidden, isOptional, winDespiteExhaustion, enoughToWinAlone, requiredObjectiveStates)                                         
+CObjective_DestroyXObjects.cs                85 	public CObjective_DestroyXObjects(EObjectiveResult result, CObjectiveFilter objectiveFilter, List<int> destroyAmount, bool hideCounter, bool 
+                                                activeFromStart = true, int? activateOnRound = null, string customLoc = null, string customTileHoverLoc = null, string eventIdentifier = null,
+                                                 bool isHidden = false, bool isOptional = false, bool winDespiteExhaustion = false, bool enoughToWinAlone = false, Dictionary<string, bool> re
+                                                quiredObjectiveStates = null)                                                                                                                 
+CObjective_DestroyXObjects.cs                86 		: base(EObjectiveType.DestroyXObjects, result, objectiveFilter, hideCounter, activeFromStart, activateOnRound, customLoc, customTileHoverLoc
+                                                , eventIdentifier, isHidden, isOptional, winDespiteExhaustion, enoughToWinAlone, requiredObjectiveStates)                                     
+CObjective_KillAllBosses.cs                  23 	public CObjective_KillAllBosses(EObjectiveResult result, CObjectiveFilter objectiveFilter, bool hideCounter, bool activeFromStart = true, int
+                                                ? activateOnRound = null, string customLoc = null, string customTileHoverLoc = null, string eventIdentifier = null, bool isHidden = false, boo
+                                                l isOptional = false, bool winDespiteExhaustion = false, bool enoughToWinAlone = false, Dictionary<string, bool> requiredObjectiveStates = nul
+                                                l)                                                                                                                                            
+CObjective_KillAllBosses.cs                  24 		: base(EObjectiveType.KillAllBosses, result, objectiveFilter, hideCounter, activeFromStart, activateOnRound, customLoc, customTileHoverLoc, 
+                                                eventIdentifier, isHidden, isOptional, winDespiteExhaustion, enoughToWinAlone, requiredObjectiveStates)                                       
+CObjective_KillAllEnemies.cs                 56 	public CObjective_KillAllEnemies(EObjectiveResult result, CObjectiveFilter objectiveFilter, bool hideCounter, bool activeFromStart = true, in
+                                                t? activateOnRound = null, string customLoc = null, string customTileHoverLoc = null, string eventIdentifier = null, bool isHidden = false, bo
+                                                ol isOptional = false, bool winDespiteExhaustion = false, bool enoughToWinAlone = false, Dictionary<string, bool> requiredObjectiveStates = nu
+                                                ll)                                                                                                                                           
+CObjective_KillAllEnemies.cs                 57 		: base(EObjectiveType.KillAllEnemies, result, objectiveFilter, hideCounter, activeFromStart, activateOnRound, customLoc, customTileHoverLoc,
+                                                 eventIdentifier, isHidden, isOptional, winDespiteExhaustion, enoughToWinAlone, requiredObjectiveStates)                                      
+CObjective_LootX.cs                          91 	public CObjective_LootX(EObjectiveResult result, CObjectiveFilter objectiveFilter, List<int> lootAmount, bool hideCounter, bool activeFromSta
+                                                rt = true, int? activateOnRound = null, string customLoc = null, string customTileHoverLoc = null, string eventIdentifier = null, bool isHidde
+                                                n = false, bool isOptional = false, bool winDespiteExhaustion = false, bool enoughToWinAlone = false, Dictionary<string, bool> requiredObjecti
+                                                veStates = null)                                                                                                                              
+CObjective_LootX.cs                          92 		: base(EObjectiveType.LootX, result, objectiveFilter, hideCounter, activeFromStart, activateOnRound, customLoc, customTileHoverLoc, eventIde
+                                                ntifier, isHidden, isOptional, winDespiteExhaustion, enoughToWinAlone, requiredObjectiveStates)                                               
+CObjective_ReachRound.cs                     54 	public CObjective_ReachRound(EObjectiveResult result, CObjectiveFilter objectiveFilter, int reachRoundNumber, bool countFromActivationRound, 
+                                                bool hideCounter, bool activeFromStart = true, int? activateOnRound = null, string customLoc = null, string customTileHoverLoc = null, string 
+                                                eventIdentifier = null, bool isHidden = false, bool isOptional = false, bool winDespiteExhaustion = false, bool enoughToWinAlone = false, Dict
+                                                ionary<string, bool> requiredObjectiveStates = null)                                                                                          
+CObjective_ReachRound.cs                     55 		: base(EObjectiveType.ReachRound, result, objectiveFilter, hideCounter, activeFromStart, activateOnRound, customLoc, customTileHoverLoc, eve
+                                                ntIdentifier, isHidden, isOptional, winDespiteExhaustion, enoughToWinAlone, requiredObjectiveStates)                                          
+CObjective_RevealAllRooms.cs                 43 	public CObjective_RevealAllRooms(EObjectiveResult result, CObjectiveFilter objectiveFilter, bool hideCounter, bool activeFromStart = true, in
+                                                t? activateOnRound = null, string customLoc = null, string customTileHoverLoc = null, string eventIdentifier = null, bool isHidden = false, bo
+                                                ol isOptional = false, bool winDespiteExhaustion = false, bool enoughToWinAlone = false, Dictionary<string, bool> requiredObjectiveStates = nu
+                                                ll)                                                                                                                                           
+CObjective_RevealAllRooms.cs                 44 		: base(EObjectiveType.RevealAllRooms, result, objectiveFilter, hideCounter, activeFromStart, activateOnRound, customLoc, customTileHoverLoc,
+                                                 eventIdentifier, isHidden, isOptional, winDespiteExhaustion, enoughToWinAlone, requiredObjectiveStates)                                      
+CObjective_Scripted.cs                       23 	public bool ScriptedEnoughToWinAlone;                                                                                                        
+CObjective_Scripted.cs                       45 		info.AddValue("ScriptedEnoughToWinAlone", ScriptedEnoughToWinAlone);                                                                        
+CObjective_Scripted.cs                       72 				case "ScriptedEnoughToWinAlone":                                                                                                          
+CObjective_Scripted.cs                       73 					ScriptedEnoughToWinAlone = info.GetBoolean(name);                                                                                        
+CObjective_Scripted.cs                       91 	public CObjective_Scripted(EObjectiveResult result, CObjectiveFilter objectiveFilter, bool hideCounter, bool activeFromStart = true, int? act
+                                                ivateOnRound = null, string customLoc = null, string customTileHoverLoc = null, string eventIdentifier = null, bool isHidden = false, bool isO
+                                                ptional = false, bool winDespiteExhaustion = false, bool enoughToWinAlone = false, Dictionary<string, bool> requiredObjectiveStates = null)   
+CObjective_Scripted.cs                       92 		: base(EObjectiveType.Scripted, result, objectiveFilter, hideCounter, activeFromStart, activateOnRound, customLoc, customTileHoverLoc, event
+                                                Identifier, isHidden, isOptional, winDespiteExhaustion, enoughToWinAlone, requiredObjectiveStates)                                            
+CObjective_Scripted.cs                      100 		EnoughToWinAlone = ScriptedEnoughToWinAlone;                                                                                                
+CObjective_XActorsHealToMax.cs               54 	public CObjective_XActorsHealToMax(EObjectiveResult result, CObjectiveFilter objectiveFilter, List<int> actorAmount, bool hideCounter, bool a
+                                                ctiveFromStart = true, int? activateOnRound = null, string customLoc = null, string customTileHoverLoc = null, string eventIdentifier = null, 
+                                                bool isHidden = false, bool isOptional = false, bool winDespiteExhaustion = false, bool enoughToWinAlone = false, Dictionary<string, bool> req
+                                                uiredObjectiveStates = null)                                                                                                                  
+CObjective_XActorsHealToMax.cs               55 		: base(EObjectiveType.XActorsHealToMax, result, objectiveFilter, hideCounter, activeFromStart, activateOnRound, customLoc, customTileHoverLo
+                                                c, eventIdentifier, isHidden, isOptional, winDespiteExhaustion, enoughToWinAlone, requiredObjectiveStates)                                    
+CObjective_XCharactersDie.cs                 84 	public CObjective_XCharactersDie(EObjectiveResult result, CObjectiveFilter objectiveFilter, List<int> killAmount, bool hideCounter, bool acti
+                                                veFromStart = true, int? activateOnRound = null, string customLoc = null, string customTileHoverLoc = null, string eventIdentifier = null, boo
+                                                l isHidden = false, bool isOptional = false, bool winDespiteExhaustion = false, bool enoughToWinAlone = false, Dictionary<string, bool> requir
+                                                edObjectiveStates = null)                                                                                                                     
+CObjective_XCharactersDie.cs                 85 		: base(EObjectiveType.XCharactersDie, result, objectiveFilter, hideCounter, activeFromStart, activateOnRound, customLoc, customTileHoverLoc,
+                                                 eventIdentifier, isHidden, isOptional, winDespiteExhaustion, enoughToWinAlone, requiredObjectiveStates)                                      
+ScenarioScript_FH004.cs                     168 			_killObjective.ScriptedEnoughToWinAlone = true;                                                                                            
+ScenarioScript_FH086.cs                      29 		_ladyInWhiteObjective.ScriptedEnoughToWinAlone = true;                                                                                      
+ScenarioState.cs                           1833 		if (WinObjectives.Count > 0 && WinObjectives.Any((CObjective a) => a.EnoughToWinAlone && a.IsComplete))
