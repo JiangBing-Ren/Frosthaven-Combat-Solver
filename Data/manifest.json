@@ -1,6 +1,6 @@
 {
   "phase": 1,
-  "generated_at": "2026-10-28T03:11:02",
+  "generated_at": "2026-10-28T03:22:42",
   "source_root": "extracted/Base_ruleset",
   "original_archive": "D:/Steam/steamapps/common/Frosthaven/Frosthaven_Data/StreamingAssets/Rulebase/Base.ruleset",
   "archive_format": {
@@ -85,9 +85,52 @@
         "怪物攻击力",
         "伤害计算",
         "AI 纯函数输出"
-      ]
+      ],
+      "search_evidence": {
+        "searched_symbols": {
+          "EnemyCard (in CSRLYML.cs)": 0,
+          "EnemyCard parser file (decompiled/SRL)": 0,
+          "Sentinel": 0,
+          "ResolveAmount": 0,
+          "ParseAmount": 0,
+          "Attack < 0 / Strength < 0 / amount < 0": "1 处，位于 CAbilityMoveActiveBonusTracker.cs:119，语义为 TrackerIndex 判断，与卡面数值无关",
+          "GetStat": "152 处，全部为 ScenarioState.LogMismatch 日志文本，无关",
+          "CreateDefaultAttack call sites": "CAbilityAttack.cs:1117 (2,1,1)、CAbilityMove.cs:606 (1,Range,1)、以及 CMonsterClass.cs:233 —— 除 233 外均为**硬编码值**，不是从卡面负值解析"
+        },
+        "conclusion": "**未找到**“卡面值为负 → 替换为怪物属性”的分支。CMonsterClass.cs:233-234 的语义是“卡面没有该能力时补一个默认能力”，对应 candidate B，不是 A。因此 A 只能作为**工作假设**。",
+        "new_observation_2026_10_28": "770_Scout_CruelBow 的 AAttack 用 **-1**，而 779_AbaelHerder 的 AllyAttack 用 **-2** —— 同一语义出现两个不同哨兵值，进一步说明不能凭猜测定规则。"
+      }
     },
-    "lvldat_parsing": "关卡 .lvldat 为 .NET BinaryFormatter，需要 C# + 游戏程序集才能解析；阶段 1 未产出。",
-    "baseline_scenario": "“烈焰焚城”使命的内部 ID 未能从明文数据确定（场景为 .lvldat 二进制且本地化不提取）。"
+    "lvldat_parsing": "关卡 .lvldat 为 .NET BinaryFormatter，需要 C# + 游戏程序集才能解析；阶段 1 未产出。"
+  },
+  "flat_convention": {
+    "where": "tools/extract_rules.py::flat()",
+    "rule": "异构字段统一为字符串：标量→str；数组→用 \"|\" 连接；dict→JSON 文本；None→\"\"",
+    "why": "本体 yml 的 Filter/Conditions/Targeting 等字段“有时标量、有时数组、有时嵌套 dict”，通用 JSON 反序列化会在类型不固定时崩溃（实测 JavaScriptSerializer 报“数组的反序列化不支持类型 System.String”）。在提取层统一类型是数据清洗的本职。",
+    "reverse_parse": "下游若要还原数组：value.Split(\"|\")。注意：字符串本身含 \"|\" 时不可还原 —— 因此**结构化查询请走 Abilities 递归树，不要反向解析 flat 后的字符串**。",
+    "applies_to": [
+      "Ability.Summon",
+      "Ability.Conditions",
+      "Ability.AreaEffect",
+      "Ability.Filter",
+      "Ability.Targeting"
+    ],
+    "does_not_apply_to": [
+      "MonsterCard.Abilities（已改为递归结构，见 abilities_structure）"
+    ]
+  },
+  "abilities_structure": {
+    "cards.json": "CardHalf.Abilities = { 能力名 → Ability 节点 }（递归，含 SubAbilities / Nested）",
+    "monster_cards.json": "与 cards.json **同构** —— 2026-10-28 修正：原先被 flat() 扁平化，导致阶段 3 拿不到“有没有 Move 节点”“ControlActor 嵌套了什么”等结构信息。",
+    "nested": "ControlActor 这类嵌套挂在功能键内部（ControlActor.Abilities），不是 SubAbilities 键 —— 提取时单独递归到 Ability.Nested。",
+    "numeric_layer": "数值取值走 ResolvedValues；Abilities 只用于判断“卡面写了什么”。"
+  },
+  "baseline_scenario_confirmed": {
+    "scenario_file": "extracted/Base_ruleset/Campaign/Scenarios/LevelEditorScenarios/FS_001_A_Town_in_Flames.lvldat",
+    "size_bytes": 294061,
+    "name_match": "A Town in Flames = “烈焰焚城”（直译/官方译名）",
+    "uniqueness": "全 Campaign/Scenarios 搜 *flame* / *town* 仅此 1 个命中 → 唯一",
+    "correction": "阶段 1 报告曾写“无法从明文确定内部 ID”——**该说法不成立**，阶段 0 扫描时已列过此路径，属我表述不一致，已更正。",
+    "remaining": ".lvldat 仍是 .NET BinaryFormatter，需要 C# + 游戏程序集解析；A001.dat 的 scenario ID 读取方式同理，列为阶段 2 待办。"
   }
 }

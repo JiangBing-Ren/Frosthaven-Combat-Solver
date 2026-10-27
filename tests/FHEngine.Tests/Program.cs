@@ -170,6 +170,46 @@ namespace FHEngine.Tests
                     Eq("  AbaelHerderID L0 的 AllyAttack.Attack（= 怪物 Attack 2）", 2, resolvedAttack);
                 }
 
+                // ---------- 3b. 能力树结构（阶段 3 的 AI 依赖，不能扁平化）----------
+                Console.WriteLine();
+                Console.WriteLine("== 能力树结构（阶段 3 AI 需要：有没有 Move/Attack 节点、嵌套了什么）==");
+                MonsterCard mc770 = FindMonsterCard(mcards, 770);
+                True("存在 Id=770（Scout_CruelBow）", mc770 != null);
+                if (mc770 != null)
+                {
+                    var ab = mc770.Abilities;
+                    True("  770 有 AMove 节点", ab != null && ab.ContainsKey("AMove"));
+                    True("  770 有 AAttack 节点", ab != null && ab.ContainsKey("AAttack"));
+                    int a770 = -999;
+                    if (ab != null && ab.ContainsKey("AAttack"))
+                        a770 = ab["AAttack"].AttackAmount ?? -999;
+                    Eq("  770 AAttack 的卡面原值（源文件 = -1）", -1, a770);
+                    bool hasMoveType = ab != null && ab.ContainsKey("AMove")
+                                      && ab["AMove"].Types != null
+                                      && ab["AMove"].Types.Contains("Move");
+                    True("  770 AMove 的类型含 Move", hasMoveType);
+                }
+                if (mc779 != null)
+                {
+                    var ab = mc779.Abilities;
+                    True("  779 有 Move1 节点", ab != null && ab.ContainsKey("Move1"));
+                    True("  779 有 ControlPig1 节点", ab != null && ab.ContainsKey("ControlPig1"));
+                    bool nested = false;
+                    int allyAtk = -999;
+                    if (ab != null && ab.ContainsKey("ControlPig1"))
+                    {
+                        var cp = ab["ControlPig1"];
+                        if (cp.Nested != null && cp.Nested.ContainsKey("ControlActor"))
+                        {
+                            var inner = cp.Nested["ControlActor"];
+                            nested = inner.ContainsKey("AllyAttack");
+                            if (nested) allyAtk = inner["AllyAttack"].AttackAmount ?? -999;
+                        }
+                    }
+                    True("  779 ControlActor 嵌套含 AllyAttack", nested);
+                    Eq("  779 AllyAttack 的卡面原值（源文件 = -2）", -2, allyAtk);
+                }
+
                 // ---------- 4. 抽样 3：牌组与入组关系 ----------
                 Console.WriteLine();
                 Console.WriteLine("== 抽样3：Standard 牌组（20 张，7 种牌）==");

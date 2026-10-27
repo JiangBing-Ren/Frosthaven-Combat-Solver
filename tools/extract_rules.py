@@ -142,6 +142,16 @@ def extract_ability(node):
             got = extract_ability(sv)
             if got:
                 a['SubAbilities'][sk] = got
+
+    # ★ 嵌套能力组递归 —— 例如 ControlActor: { Abilities: { AllyMove, AllyAttack, ... } }。
+    #   这类嵌套**不走 SubAbilities 键**，而是挂在功能键（ControlActor）内部。
+    #   阶段 3 的 AI 需要知道"ControlActor 让被控单位做什么"，必须递归到这一层。
+    for k, v in node.items():
+        if not isinstance(v, dict) or k == 'SubAbilities':
+            continue
+        inner = v.get('Abilities')
+        if isinstance(inner, dict) and inner:
+            a.setdefault('Nested', {})[k] = extract_abilities_dict(inner)
     # 只关心"做什么"的能力类型名
     for type_key in ('Move', 'Attack', 'Heal', 'Summon', 'Damage', 'Shield',
                      'Retaliate', 'ControlActor', 'Push', 'Pull', 'Pierce',
@@ -152,6 +162,26 @@ def extract_ability(node):
         if type_key in node:
             a.setdefault('Types', []).append(type_key)
     return a or None
+
+
+def extract_abilities_dict(abilities):
+    """
+    把 yml 的 Abilities 字典转成与 **cards.json 同构**的递归结构
+    { 能力名: Ability节点 }。
+
+    ⚠ 为什么不能用 flat()：阶段 3 的怪物 AI 纯函数需要判断
+      “这张卡有没有移动图标 / 有没有攻击图标 / 有几个能力节点 /
+       ControlActor 嵌套了什么”，这类**布尔与结构信息**只能从能力树读；
+      扁平化成字符串后，下游要么二次解析（脆），要么根本拿不到。
+    """
+    out = {}
+    if not isinstance(abilities, dict):
+        return out
+    for name, node in abilities.items():
+        got = extract_ability(node)
+        if got:
+            out[name] = got
+    return out
 
 
 def extract_half(half_node):
@@ -344,7 +374,7 @@ def extract_monster_cards(monsters):
             'UsedBy': sorted(set(want_ids[cid])),
             'RawValues': raw_values,          # 溯源用
             'ResolvedValues': resolved_values,  # 下游**只用这个** {monsterId: {level: {path: value}}}
-            'Abilities': flat((y.get('Data') or {}).get('Abilities')),
+            'Abilities': extract_abilities_dict((y.get('Data') or {}).get('Abilities')),
         })
     return cards
 

@@ -469,6 +469,23 @@
           "Target": 2,
           "Shield": null,
           "Retaliate": null,
+          "Nested": {
+            "ControlActor": {
+              "BAllyMove": {
+                "AttackAmount": null,
+                "Move": 0,
+                "Heal": null,
+                "Damage": null,
+                "Range": null,
+                "Target": null,
+                "Shield": null,
+                "Retaliate": null,
+                "Types": [
+                  "Move"
+                ]
+              }
+            }
+          },
           "Types": [
             "ControlActor"
           ]
@@ -645,6 +662,23 @@
           "Target": 2,
           "Shield": null,
           "Retaliate": null,
+          "Nested": {
+            "ControlActor": {
+              "BAllyMove": {
+                "AttackAmount": null,
+                "Move": 0,
+                "Heal": null,
+                "Damage": null,
+                "Range": null,
+                "Target": null,
+                "Shield": null,
+                "Retaliate": null,
+                "Types": [
+                  "Move"
+                ]
+              }
+            }
+          },
           "Types": [
             "ControlActor"
           ]
@@ -959,6 +993,23 @@
           "Target": 3,
           "Shield": null,
           "Retaliate": null,
+          "Nested": {
+            "ControlActor": {
+              "BAllyMove": {
+                "AttackAmount": null,
+                "Move": 0,
+                "Heal": null,
+                "Damage": null,
+                "Range": null,
+                "Target": null,
+                "Shield": null,
+                "Retaliate": null,
+                "Types": [
+                  "Move"
+                ]
+              }
+            }
+          },
           "Types": [
             "ControlActor"
           ]
@@ -1206,6 +1257,23 @@
           "Target": 2,
           "Shield": null,
           "Retaliate": null,
+          "Nested": {
+            "ControlActor": {
+              "BAllyMove": {
+                "AttackAmount": null,
+                "Move": 0,
+                "Heal": null,
+                "Damage": null,
+                "Range": null,
+                "Target": null,
+                "Shield": null,
+                "Retaliate": null,
+                "Types": [
+                  "Move"
+                ]
+              }
+            }
+          },
           "Types": [
             "ControlActor"
           ]
@@ -1327,6 +1395,23 @@
               "Target": -1,
               "Shield": null,
               "Retaliate": null,
+              "Nested": {
+                "ControlActor": {
+                  "TAllyMove": {
+                    "AttackAmount": null,
+                    "Move": 0,
+                    "Heal": null,
+                    "Damage": null,
+                    "Range": null,
+                    "Target": null,
+                    "Shield": null,
+                    "Retaliate": null,
+                    "Types": [
+                      "Move"
+                    ]
+                  }
+                }
+              },
               "Types": [
                 "ControlActor"
               ]
@@ -1884,6 +1969,23 @@
           "Target": 2,
           "Shield": null,
           "Retaliate": null,
+          "Nested": {
+            "ControlActor": {
+              "BAllyMove": {
+                "AttackAmount": null,
+                "Move": 0,
+                "Heal": null,
+                "Damage": null,
+                "Range": null,
+                "Target": null,
+                "Shield": null,
+                "Retaliate": null,
+                "Types": [
+                  "Move"
+                ]
+              }
+            }
+          },
           "Types": [
             "ControlActor"
           ]

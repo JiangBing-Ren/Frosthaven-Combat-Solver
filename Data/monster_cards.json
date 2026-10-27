@@ -116,7 +116,35 @@
         }
       }
     },
-    "Abilities": "{\"AAttack\": {\"AnimOverload\": \"RangedAttack\", \"Attack\": -1, \"Condition\": [\"Impair\"], \"Range\": 3, \"RangeIsBase\": true}, \"AMove\": {\"Move\": -1}}"
+    "Abilities": {
+      "AMove": {
+        "AttackAmount": null,
+        "Move": -1,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Move"
+        ]
+      },
+      "AAttack": {
+        "AnimOverload": "RangedAttack",
+        "AttackAmount": -1,
+        "Move": null,
+        "Heal": null,
+        "Damage": null,
+        "Range": 3,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Attack"
+        ]
+      }
+    }
   },
   {
     "_source": {
@@ -214,7 +242,34 @@
         }
       }
     },
-    "Abilities": "{\"AAttack\": {\"Attack\": -1}, \"AMove\": {\"Move\": 1}}"
+    "Abilities": {
+      "AMove": {
+        "AttackAmount": null,
+        "Move": 1,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Move"
+        ]
+      },
+      "AAttack": {
+        "AttackAmount": -1,
+        "Move": null,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Attack"
+        ]
+      }
+    }
   },
   {
     "_source": {
@@ -312,7 +367,34 @@
         }
       }
     },
-    "Abilities": "{\"AAttack\": {\"Attack\": 0}, \"AMove\": {\"Move\": 0}}"
+    "Abilities": {
+      "AMove": {
+        "AttackAmount": null,
+        "Move": 0,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Move"
+        ]
+      },
+      "AAttack": {
+        "AttackAmount": 0,
+        "Move": null,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Attack"
+        ]
+      }
+    }
   },
   {
     "_source": {
@@ -431,7 +513,35 @@
         }
       }
     },
-    "Abilities": "{\"AAttack\": {\"AnimOverload\": \"RangedAttack\", \"Attack\": 0, \"Condition\": [\"Poison\"], \"Range\": 3, \"RangeIsBase\": true}, \"AMove\": {\"Move\": -2}}"
+    "Abilities": {
+      "AMove": {
+        "AttackAmount": null,
+        "Move": -2,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Move"
+        ]
+      },
+      "AAttack": {
+        "AnimOverload": "RangedAttack",
+        "AttackAmount": 0,
+        "Move": null,
+        "Heal": null,
+        "Damage": null,
+        "Range": 3,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Attack"
+        ]
+      }
+    }
   },
   {
     "_source": {
@@ -529,7 +639,34 @@
         }
       }
     },
-    "Abilities": "{\"AAttack\": {\"Attack\": 1}, \"AMove\": {\"Move\": -1}}"
+    "Abilities": {
+      "AMove": {
+        "AttackAmount": null,
+        "Move": -1,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Move"
+        ]
+      },
+      "AAttack": {
+        "AttackAmount": 1,
+        "Move": null,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Attack"
+        ]
+      }
+    }
   },
   {
     "_source": {
@@ -606,7 +743,21 @@
         }
       }
     },
-    "Abilities": "{\"AAttack\": {\"Attack\": 2, \"Condition\": [\"Poison\"]}}"
+    "Abilities": {
+      "AAttack": {
+        "AttackAmount": 2,
+        "Move": null,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Attack"
+        ]
+      }
+    }
   },
   {
     "_source": {
@@ -725,7 +876,22 @@
         }
       }
     },
-    "Abilities": "{\"AAttack\": {\"AnimOverload\": \"RangedAttack\", \"Attack\": -1, \"Range\": 4, \"RangeIsBase\": true, \"Target\": 2, \"TargetIsBase\": true}}"
+    "Abilities": {
+      "AAttack": {
+        "AnimOverload": "RangedAttack",
+        "AttackAmount": -1,
+        "Move": null,
+        "Heal": null,
+        "Damage": null,
+        "Range": 4,
+        "Target": 2,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Attack"
+        ]
+      }
+    }
   },
   {
     "_source": {
@@ -823,7 +989,35 @@
         }
       }
     },
-    "Abilities": "{\"AAttack\": {\"AnimOverload\": \"Loot\", \"Loot\": 1, \"RangeIsBase\": true, \"Target\": -1, \"TargetIsBase\": true}, \"AMove\": {\"Jump\": true, \"Move\": 1}}"
+    "Abilities": {
+      "AMove": {
+        "AttackAmount": null,
+        "Move": 1,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Move"
+        ]
+      },
+      "AAttack": {
+        "AnimOverload": "Loot",
+        "AttackAmount": null,
+        "Move": null,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": -1,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Loot"
+        ]
+      }
+    }
   },
   {
     "_source": {
@@ -963,7 +1157,66 @@
         }
       }
     },
-    "Abilities": "{\"ControlPig1\": {\"AnimOverload\": \"Control\", \"ControlActor\": {\"Abilities\": {\"AllyAttack\": {\"Attack\": 1, \"TextOnly\": true}, \"AllyMove\": {\"Move\": 0, \"Text\": \"$FH/0778_monster_ability_cards_abael_herder_briny_bristles_2$\", \"TextOnly\": true}}, \"ChooseClosestActor\": true, \"UseControllingActorType\": true}, \"Filter\": {\"EnemyClasses\": [\"PiranhaPigID\", \"PiranhaPigEliteID\"]}, \"Range\": 4, \"RangeIsBase\": true}, \"Move1\": {\"Move\": -1}}"
+    "Abilities": {
+      "Move1": {
+        "AttackAmount": null,
+        "Move": -1,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Move"
+        ]
+      },
+      "ControlPig1": {
+        "Filter": "{\"EnemyClasses\": [\"PiranhaPigID\", \"PiranhaPigEliteID\"]}",
+        "AnimOverload": "Control",
+        "AttackAmount": null,
+        "Move": null,
+        "Heal": null,
+        "Damage": null,
+        "Range": 4,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Nested": {
+          "ControlActor": {
+            "AllyMove": {
+              "AttackAmount": null,
+              "Move": 0,
+              "Heal": null,
+              "Damage": null,
+              "Range": null,
+              "Target": null,
+              "Shield": null,
+              "Retaliate": null,
+              "Types": [
+                "Move"
+              ]
+            },
+            "AllyAttack": {
+              "AttackAmount": 1,
+              "Move": null,
+              "Heal": null,
+              "Damage": null,
+              "Range": null,
+              "Target": null,
+              "Shield": null,
+              "Retaliate": null,
+              "Types": [
+                "Attack"
+              ]
+            }
+          }
+        },
+        "Types": [
+          "ControlActor"
+        ]
+      }
+    }
   },
   {
     "_source": {
@@ -1145,7 +1398,80 @@
         }
       }
     },
-    "Abilities": "{\"ControlPig1\": {\"AnimOverload\": \"Control\", \"ControlActor\": {\"Abilities\": {\"AllyAttack\": {\"Attack\": -2, \"TextOnly\": true}, \"AllyMove\": {\"Move\": -1, \"Text\": \"$FH/0779_monster_ability_cards_abael_herder_desperate_herd_2$\", \"TextOnly\": true}, \"SelfDamage\": {\"Damage\": 1, \"Filter\": \"Self\", \"Text\": \"$FH/0779_monster_ability_cards_abael_herder_desperate_herd_3$\", \"TextOnly\": true}}, \"UseControllingActorType\": true}, \"Filter\": {\"EnemyClasses\": [\"PiranhaPigID\", \"PiranhaPigEliteID\"]}, \"Range\": 3, \"RangeIsBase\": true, \"Target\": 99, \"TargetIsBase\": true}, \"Move1\": {\"Move\": -1}}"
+    "Abilities": {
+      "Move1": {
+        "AttackAmount": null,
+        "Move": -1,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Move"
+        ]
+      },
+      "ControlPig1": {
+        "Filter": "{\"EnemyClasses\": [\"PiranhaPigID\", \"PiranhaPigEliteID\"]}",
+        "AnimOverload": "Control",
+        "AttackAmount": null,
+        "Move": null,
+        "Heal": null,
+        "Damage": null,
+        "Range": 3,
+        "Target": 99,
+        "Shield": null,
+        "Retaliate": null,
+        "Nested": {
+          "ControlActor": {
+            "AllyMove": {
+              "AttackAmount": null,
+              "Move": -1,
+              "Heal": null,
+              "Damage": null,
+              "Range": null,
+              "Target": null,
+              "Shield": null,
+              "Retaliate": null,
+              "Types": [
+                "Move"
+              ]
+            },
+            "AllyAttack": {
+              "AttackAmount": -2,
+              "Move": null,
+              "Heal": null,
+              "Damage": null,
+              "Range": null,
+              "Target": null,
+              "Shield": null,
+              "Retaliate": null,
+              "Types": [
+                "Attack"
+              ]
+            },
+            "SelfDamage": {
+              "Filter": "Self",
+              "AttackAmount": null,
+              "Move": null,
+              "Heal": null,
+              "Damage": 1,
+              "Range": null,
+              "Target": null,
+              "Shield": null,
+              "Retaliate": null,
+              "Types": [
+                "Damage"
+              ]
+            }
+          }
+        },
+        "Types": [
+          "ControlActor"
+        ]
+      }
+    }
   },
   {
     "_source": {
@@ -1222,7 +1548,24 @@
         }
       }
     },
-    "Abilities": "{\"Summon1\": {\"AnimOverload\": \"Summon\", \"Summon\": \"PiranhaPigID\", \"Target\": 1, \"TargetIsBase\": true, \"Text\": \"$FH/0780_monster_ability_cards_abael_herder_pig_parade_2$\", \"TextOnly\": true}}"
+    "Abilities": {
+      "Summon1": {
+        "Summon": "PiranhaPigID",
+        "AnimOverload": "Summon",
+        "AttackAmount": null,
+        "Move": null,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": 1,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Summon",
+          "Summon"
+        ]
+      }
+    }
   },
   {
     "_source": {
@@ -1341,7 +1684,50 @@
         }
       }
     },
-    "Abilities": "{\"Attack1\": {\"AnimOverload\": \"RangedAttack\", \"Attack\": 0, \"Condition\": \"Immobilize\", \"Range\": 3, \"RangeIsBase\": true, \"SubAbilities\": {\"AttackSubPush\": {\"IsInlineSubAbility\": true, \"Pull\": {\"Amount\": 2}}}}, \"Move1\": {\"Move\": 0}}"
+    "Abilities": {
+      "Move1": {
+        "AttackAmount": null,
+        "Move": 0,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Move"
+        ]
+      },
+      "Attack1": {
+        "AnimOverload": "RangedAttack",
+        "AttackAmount": 0,
+        "Move": null,
+        "Heal": null,
+        "Damage": null,
+        "Range": 3,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "SubAbilities": {
+          "AttackSubPush": {
+            "AttackAmount": null,
+            "Move": null,
+            "Heal": null,
+            "Damage": null,
+            "Range": null,
+            "Target": null,
+            "Shield": null,
+            "Retaliate": null,
+            "Types": [
+              "Pull"
+            ]
+          }
+        },
+        "Types": [
+          "Attack"
+        ]
+      }
+    }
   },
   {
     "_source": {
@@ -1481,7 +1867,69 @@
         }
       }
     },
-    "Abilities": "{\"ControlPig1\": {\"AnimOverload\": \"Control\", \"ControlActor\": {\"Abilities\": {\"AllyAttack\": {\"Attack\": 0, \"Condition\": \"Muddle\", \"TextOnly\": true}, \"AllyMove\": {\"Move\": 0, \"Text\": \"$FH/0782_monster_ability_cards_abael_herder_advancing_horde_2$\", \"TextOnly\": true}}, \"ChooseClosestActor\": true, \"UseControllingActorType\": true}, \"Filter\": {\"EnemyClasses\": [\"PiranhaPigID\", \"PiranhaPigEliteID\"]}, \"Range\": 4, \"RangeIsBase\": true}, \"Summon1\": {\"AnimOverload\": \"Summon\", \"StartAbilityRequirements\": {\"AbilityHasHappened\": false, \"Type\": \"PreviousAbility\"}, \"Summon\": \"PiranhaPigID\", \"Target\": 1, \"TargetIsBase\": true, \"Text\": \"$FH/0782_monster_ability_cards_abael_herder_advancing_horde_3$\", \"TextOnly\": true}}"
+    "Abilities": {
+      "ControlPig1": {
+        "Filter": "{\"EnemyClasses\": [\"PiranhaPigID\", \"PiranhaPigEliteID\"]}",
+        "AnimOverload": "Control",
+        "AttackAmount": null,
+        "Move": null,
+        "Heal": null,
+        "Damage": null,
+        "Range": 4,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Nested": {
+          "ControlActor": {
+            "AllyMove": {
+              "AttackAmount": null,
+              "Move": 0,
+              "Heal": null,
+              "Damage": null,
+              "Range": null,
+              "Target": null,
+              "Shield": null,
+              "Retaliate": null,
+              "Types": [
+                "Move"
+              ]
+            },
+            "AllyAttack": {
+              "AttackAmount": 0,
+              "Move": null,
+              "Heal": null,
+              "Damage": null,
+              "Range": null,
+              "Target": null,
+              "Shield": null,
+              "Retaliate": null,
+              "Types": [
+                "Attack"
+              ]
+            }
+          }
+        },
+        "Types": [
+          "ControlActor"
+        ]
+      },
+      "Summon1": {
+        "Summon": "PiranhaPigID",
+        "AnimOverload": "Summon",
+        "AttackAmount": null,
+        "Move": null,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": 1,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Summon",
+          "Summon"
+        ]
+      }
+    }
   },
   {
     "_source": {
@@ -1621,7 +2069,37 @@
         }
       }
     },
-    "Abilities": "{\"Attack1\": {\"AnimOverload\": \"RangedAttack\", \"Attack\": 0, \"Range\": 3, \"RangeIsBase\": true}, \"Strengthen1\": {\"AnimOverload\": \"Control\", \"Filter\": {\"EnemyClasses\": [\"PiranhaPigID\", \"PiranhaPigEliteID\"]}, \"Range\": 3, \"RangeIsBase\": true, \"Strengthen\": true, \"Target\": 99, \"TargetIsBase\": true, \"Text\": \"$FH/0783_monster_ability_cards_abael_herder_guide_the_school_2$\", \"TextOnly\": true}}"
+    "Abilities": {
+      "Attack1": {
+        "AnimOverload": "RangedAttack",
+        "AttackAmount": 0,
+        "Move": null,
+        "Heal": null,
+        "Damage": null,
+        "Range": 3,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Attack"
+        ]
+      },
+      "Strengthen1": {
+        "Filter": "{\"EnemyClasses\": [\"PiranhaPigID\", \"PiranhaPigEliteID\"]}",
+        "AnimOverload": "Control",
+        "AttackAmount": null,
+        "Move": null,
+        "Heal": null,
+        "Damage": null,
+        "Range": 3,
+        "Target": 99,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Strengthen"
+        ]
+      }
+    }
   },
   {
     "_source": {
@@ -1719,7 +2197,35 @@
         }
       }
     },
-    "Abilities": "{\"Attack1\": {\"AnimOverload\": \"RangedAttack\", \"Attack\": 0, \"StatIsBasedOnX\": {\"Range\": {\"AddTo\": true, \"BasedOn\": \"ActorCount\", \"Filter\": {\"EnemyClasses\": [\"PiranhaPigID\", \"PiranhaPigEliteID\"]}}, \"Strength\": {\"AddTo\": true, \"BasedOn\": \"ActorCount\", \"Filter\": {\"EnemyClasses\": [\"PiranhaPigID\", \"PiranhaPigEliteID\"]}}}, \"StrengthIsBase\": true, \"Text\": \"$FH/0784_monster_ability_cards_abael_herder_heed_the_pigs_2$\", \"TextOnly\": true, \"TreatAsRange\": true}, \"Move1\": {\"Move\": 0}}"
+    "Abilities": {
+      "Move1": {
+        "AttackAmount": null,
+        "Move": 0,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Move"
+        ]
+      },
+      "Attack1": {
+        "AnimOverload": "RangedAttack",
+        "AttackAmount": 0,
+        "Move": null,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Attack"
+        ]
+      }
+    }
   },
   {
     "_source": {
@@ -1838,6 +2344,35 @@
         }
       }
     },
-    "Abilities": "{\"Attack1\": {\"AnimOverload\": \"RangedAttack\", \"Attack\": 0, \"Filter\": \"Enemy\", \"Range\": 3, \"RangeIsBase\": true}, \"Move1\": {\"Move\": 0}}"
+    "Abilities": {
+      "Move1": {
+        "AttackAmount": null,
+        "Move": 0,
+        "Heal": null,
+        "Damage": null,
+        "Range": null,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Move"
+        ]
+      },
+      "Attack1": {
+        "Filter": "Enemy",
+        "AnimOverload": "RangedAttack",
+        "AttackAmount": 0,
+        "Move": null,
+        "Heal": null,
+        "Damage": null,
+        "Range": 3,
+        "Target": null,
+        "Shield": null,
+        "Retaliate": null,
+        "Types": [
+          "Attack"
+        ]
+      }
+    }
   }
 ]

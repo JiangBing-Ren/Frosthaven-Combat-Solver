@@ -31,7 +31,22 @@ namespace FHEngine.Model
 
     // ---------- 角色能力卡 ----------
 
-    /// <summary>单个能力节点（Attack / Move / Heal / Summon / …）的扁平化表示。</summary>
+    /// <summary>
+    /// 单个能力节点（Attack / Move / Heal / Summon / …）。
+    ///
+    /// ⚠ **字符串字段的编码约定**（务必读）：
+    ///   本体 yml 里 Summon / Conditions / AreaEffect / Filter / Targeting 等字段是
+    ///   **异构类型**——有时标量、有时数组、有时嵌套 dict。
+    ///   提取层（tools/extract_rules.py::flat()）统一编码为字符串：
+    ///       标量 → str
+    ///       数组 → 各元素用 "|" 连接      ← 例：Filter "Ally|Self"
+    ///       dict → JSON 文本
+    ///       None → ""
+    ///   反向解析用 value.Split('|')，但**字符串本身含 "|" 时无法还原**，
+    ///   所以**结构化查询请走 Abilities 递归树**（SubAbilities / Nested），
+    ///   不要依赖对字符串字段的反向解析。
+    ///   详见 Data/manifest.json 的 flat_convention。
+    /// </summary>
     [DataContract]
     public sealed class Ability
     {
@@ -74,6 +89,14 @@ namespace FHEngine.Model
         /// <summary>子能力（SubAbilities）递归。</summary>
         [DataMember]
         public Dictionary<string, Ability> SubAbilities;
+
+        /// <summary>
+        /// 嵌套能力组 —— 例如 <c>ControlActor: { Abilities: {...} }</c>。
+        /// 这类嵌套不挂在 SubAbilities 键下，而是藏在功能键内部，
+        /// 阶段 3 需要它来判断"被控单位会做什么"。
+        /// </summary>
+        [DataMember]
+        public Dictionary<string, Dictionary<string, Ability>> Nested;
     }
 
     /// <summary>一张卡的一个半边（Top / Bottom）。</summary>
@@ -205,9 +228,16 @@ namespace FHEngine.Model
         public Dictionary<string, Dictionary<string, Dictionary<string, int>>> ResolvedValues =
             new Dictionary<string, Dictionary<string, Dictionary<string, int>>>();
 
-        /// <summary>原始能力树（供阶段 2 建模时递归分析，不作为执行依据）。</summary>
+        /// <summary>
+        /// 能力树 —— 与 <see cref="CardHalf.Abilities"/> **同构**的递归结构
+        /// { 能力名 → Ability 节点 }。
+        ///
+        /// ⚠ 阶段 3 的怪物 AI 纯函数依赖这里的**结构信息**（有没有 Move 节点、
+        /// 有没有 Attack 节点、ControlActor 嵌套了什么），因此绝不能扁平化。
+        /// 数值的取值请用 ResolvedValues；这里只用于判断"卡面写了什么"。
+        /// </summary>
         [DataMember]
-        public string Abilities;
+        public Dictionary<string, Ability> Abilities;
 
         public override string ToString() => $"MonsterCard#{Id} {LocKey} ini={Initiative}";
     }
