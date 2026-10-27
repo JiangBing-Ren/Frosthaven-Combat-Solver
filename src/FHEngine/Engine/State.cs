@@ -112,18 +112,56 @@ namespace FHEngine.Engine
         public List<HexCoord> Occupied = new List<HexCoord>();
     }
 
-    /// <summary>元素盘（六种元素的当前强度）。灌注只发生在回合结束。</summary>
+    /// <summary>元素档位。衰减方向：Strong → Waning → Inert（**在 ROUND_END 衰减**）。</summary>
+    public enum ElementLevel
+    {
+        Inert = 0,
+        Waning = 1,
+        Strong = 2,
+    }
+
+    /// <summary>
+    /// 元素盘（六种元素）。
+    ///
+    /// ★ 时序（2026-10-28 修正，此前写成"灌注在 ROUND_END"，是**错的**）：
+    ///   · **灌注**发生在 **TURN_ENDED**（单位回合结束），不是轮末。
+    ///     怪物组的特例：组内**最后一个**怪物的 TURN_ENDED 才灌注。
+    ///     若放在 ROUND_END，A 单位回合末灌注的元素，同轮后续的 B 单位本可消耗却消耗不到，
+    ///     与本体行为不一致。
+    ///   · **衰减**发生在 **ROUND_END**：Strong → Waning → Inert。
+    ///   · 能力结算中途**不得**修改元素表。
+    /// </summary>
     public sealed class ElementBoard
     {
         /// <summary>顺序固定：Fire, Ice, Air, Earth, Light, Dark。</summary>
-        public int[] Levels = new int[6];
+        public ElementLevel[] Levels = new ElementLevel[6];
 
         /// <summary>
-        /// 本回合是否已灌注。
-        /// 时序约束：能力结算中途**不得**修改元素表；只有 END_OF_TURN 才灌注，
-        /// 且灌注后下一回合才可消耗。
+        /// 某个单位本回合是否已执行灌注指令（决定其 TURN_ENDED 时是否发 ELEMENT_INFUSED）。
+        /// 由 EngineEvent 驱动，不在这里隐式判定。
         /// </summary>
-        public bool InfusedThisRound;
+        public Dictionary<string, bool> PendingInfusion = new Dictionary<string, bool>();
+    }
+
+    /// <summary>
+    /// 行动单元 —— TurnOrder 的**元素类型**。
+    ///
+    /// ⚠ 关键：怪物组的多只怪物**共享一个先攻值、作为一个整体行动**。
+    /// 因此 TurnOrder 的元素不是"单个怪物"，而是"行动单元"（1 个玩家角色 / 1 个怪物组）。
+    /// 不这样定义，阶段 3 排序会出歧义，阶段 4 的事件序列也对不齐。
+    /// </summary>
+    public sealed class TurnUnit
+    {
+        public int Initiative;
+
+        /// <summary>玩家角色为 1 个 Id；怪物组为组内所有怪物 Id。</summary>
+        public List<string> ActorIds = new List<string>();
+
+        /// <summary>是否为怪物组。</summary>
+        public bool IsMonsterGroup;
+
+        /// <summary>组内是否已全部行动完（用于判断"最后一个怪物"→ 触发灌注）。</summary>
+        public bool AllActed;
     }
 
     /// <summary>一副攻击修正牌组的运行时状态。</summary>
@@ -151,8 +189,8 @@ namespace FHEngine.Engine
         /// <summary>当前行动单位在其序列中的下标（TURN_LOOP 用）。</summary>
         public int TurnIndex;
 
-        /// <summary>本回合的行动顺序（先攻升序），元素为 ActorState.Id。</summary>
-        public List<string> TurnOrder = new List<string>();
+        /// <summary>本回合的行动顺序（先攻升序）。元素是**行动单元**，不是单个单位。</summary>
+        public List<TurnUnit> TurnOrder = new List<TurnUnit>();
 
         public List<ActorState> Actors = new List<ActorState>();
         public List<MonsterState> Monsters = new List<MonsterState>();

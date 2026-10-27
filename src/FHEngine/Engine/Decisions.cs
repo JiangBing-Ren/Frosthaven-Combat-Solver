@@ -10,7 +10,15 @@ namespace FHEngine.Engine
     /// </summary>
     public enum DecisionKind
     {
-        /// <summary>优势 / 劣势：抽修正牌前选择抽 1 张（无）、2 张取好（优势）、2 张取坏（劣势）。</summary>
+        /// <summary>
+        /// 优势 / 劣势下的"选哪一张"。
+        ///
+        /// ★ 触发时机（2026-10-28 修正）：**不是**"抽牌前决定有没有优势"。
+        ///   优势/劣势的来源是**明确给定的**（卡面写了 Advantage，或状态给了 Disadvantage），
+        ///   玩家不需要在抽牌前决定"这次有没有优势"。
+        ///   真正需要玩家意图的是：**抽完两张后，选哪一张**——这才是"优势模糊性"的所在。
+        ///   Trigger = "after_draw_before_select"；无优势/劣势时抽一张直接用，**不挂起**。
+        /// </summary>
         AdvantageDisadvantage,
 
         /// <summary>燃烧卡牌：用打出一张手牌来抵消一次伤害。需玩家选择烧哪张。</summary>
@@ -55,7 +63,10 @@ namespace FHEngine.Engine
         /// <summary>需要做决定的单位 Id；"*" 表示由玩家侧统一决定。</summary>
         public string ActorId;
 
-        /// <summary>触发时机描述，如 "before_draw_modifier" / "on_damage_taken"。</summary>
+        /// <summary>
+        /// 触发时机描述，如 "after_draw_before_select" / "on_damage_taken"。
+        /// 注意：优势/劣势是 **after_draw_before_select**（抽牌之后），不是 before_draw。
+        /// </summary>
         public string Trigger;
 
         /// <summary>可选动作集合（**可为空**表示自由输入，如坐标选择）。</summary>

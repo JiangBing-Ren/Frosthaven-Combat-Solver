@@ -24,6 +24,15 @@ namespace FHEngine.Engine
         /// <summary>一个能力（半边动作）结算完成。</summary>
         ABILITY_RESOLVED,
 
+        /// <summary>
+        /// 一次攻击的攻击力结算（基础攻击 + 修正 = 最终值）。
+        ///
+        /// 为什么要单独一个事件：ATTACK_MODIFIER_DRAWN 只记录"抽到什么牌"，
+        /// 中间"基础攻击 → 应用修正 → 最终攻击值"这一步若没有落点，
+        /// 对拍粒度会变粗，也无法溯源伤害是怎么算出来的。
+        /// </summary>
+        ATTACK_RESOLVED,
+
         /// <summary>一次攻击抽到了修正牌。</summary>
         ATTACK_MODIFIER_DRAWN,
 
@@ -72,7 +81,8 @@ namespace FHEngine.Engine
         ///   INITIATIVE_REVEALED  : initiative(int), source("card"|"default")
         ///   TURN_STARTED         : kind("player"|"monster")
         ///   ABILITY_RESOLVED     : abilityName, half("Top"|"Bottom"), cardId
-        ///   ATTACK_MODIFIER_DRAWN: modifierName, mathModifier, isRolling, deckOwner
+        ///   ATTACK_RESOLVED       : baseAttack(int), modifierMath(string), finalAttack(int), targetId
+        ///   ATTACK_MODIFIER_DRAWN : modifierName, mathModifier, isRolling, deckOwner, drawnCount
         ///   DAMAGE_APPLIED       : targetId, amount, shieldAbsorbed, pierce, killed
         ///   ELEMENT_INFUSED      : elements(string[]), byActorId
         ///   ELEMENT_CONSUMED     : elements(string[]), byActorId, forAbility
